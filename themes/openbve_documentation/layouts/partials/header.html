@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ .Site.Title | markdownify | plainify }}</title>
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/theme.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    {{ .Hugo.Generator }}
+
+  </head>
+  <body>
+
+    <div id="sidebar">
+
+      {{ if isset .Site.Params "logoimage" }}
+      <div id="site-logo">
+          <img alt="Site logo" src="{{ .Site.BaseURL }}{{ .Site.Params.logoimage }}">
+      </div>
+      {{ end }}
+
+      {{ partial "menu.html" . }}
+    </div>
+
+    {{ partial "language.html" . }}
+
+    <div id="container">
+
+        <div id="page-title">
+          <h1>{{ .Title | markdownify }}</h1>
+        </div>
+
+        {{ partial "toc.html" . }}

@@ -1,0 +1,14 @@
+{{ if .IsTranslated }}
+<div id="language-menu">
+  <ul class="language-selector">
+    <li>
+      <a class="selected">{{ .Language.LanguageName }}</a>
+    </li>
+    {{ range .Translations }}
+    <li>
+      <a href="{{.RelPermalink}}">{{ .Language.LanguageName }}</a>
+    </li>
+    {{ end}}
+  </ul>
+</div>
+{{ end }}

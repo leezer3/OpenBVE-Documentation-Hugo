@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>openBVE Documentation</title>
+    <link rel="stylesheet" href="../../../en/css/theme.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    <meta name="generator" content="Hugo 0.46" />
+
+  </head>
+  <body>
+
+    <div id="sidebar">
+
+      
+      <div id="site-logo">
+          <img alt="Site logo" src="../../../en/images/logo.png">
+      </div>
+      
+
+      <nav>
+<input type="checkbox" id="burger-toggle" class="burger-toggle" hidden>
+
+<div id="menu-entries">
+  <ul class="first">
+    
+    
+    
+    <li>Objects
+      
+      <ul class="second">
+        
+        <li>Native formats
+          
+          <ul class="third">
+            
+            <li><a href="../../../en/objects/native/b3d.html">The B3D object</a>
+              
+            </li>
+            
+            <li><a href="../../../en/objects/native/csv.html">The CSV object</a>
+              
+            </li>
+            
+            <li><a href="../../../en/objects/native/animated.html">The ANIMATED object</a>
+              
+            </li>
+            
+            
+              
+            </li>
+            
+            
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        <li>Other formats
+          
+          <ul class="third">
+            
+            <li><a href="../../../en/objects/other/loksim.html">Loksim3D (.l3dobj)</a>
+              
+            </li>
+            
+            <li><a href="../../../en/objects/other/x.html">Microsoft DirectX (.x)</a>
+              
+            </li>
+            
+            <li><a href="../../../en/objects/other/msts.html">Microsoft Train Simulator (.s)</a>
+              
+            </li>
+            
+            <li><a href="../../../en/objects/other/obj.html">Wavefront (.obj)</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        <li><a href="../../../en/objects/information.html">Information and tips</a>
+          
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>Routes
+      
+      <ul class="second">
+        
+        <li><a href="../../../en/routes/csv.html">The CSV route</a>
+          
+        </li>
+        
+        
+          
+          <ul class="third">
+            
+            <li><a href="../../../en/routes/xml/dynamiclight.html">Adding Dynamic Lighting</a>
+              
+            </li>
+            
+            <li><a href="../../../en/routes/xml/dynamicbackground.html">Dynamic and Object Based Backgrounds</a>
+              
+            </li>
+            
+            <li><a href="../../../en/routes/xml/route_marker.html">Scripted Markers</a>
+              
+            </li>
+            
+            <li><a href="../../../en/routes/xml/stationxml.html">XML Stations &amp; Request Stops</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        <li><a href="../../../en/routes/rw.html">The RW route</a>
+          
+        </li>
+        
+        <li><a href="../../../en/routes/tutorial_ats.html">Tutorial: Using ATS</a>
+          
+        </li>
+        
+        <li><a href="../../../en/routes/tutorial_atc.html">Tutorial: Using ATC</a>
+          
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>Trains
+      
+      <ul class="second">
+        
+        <li><a href="../../../en/trains/overview.html">Overview</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/train_dat.html">The train.dat file</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/extensions_cfg.html">The extensions.cfg file</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/panel_cfg.html">The panel.cfg file</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/panel2_cfg.html">The panel2.cfg file</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/panel_animated.html">The panel.animated file</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/default_sounds.html">Default sounds</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/sound_cfg.html">The sound.cfg file</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/ats_cfg.html">The ats.cfg file</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/plugins.html">Train plugins</a>
+          
+        </li>
+        
+        <li><a href="../../../en/trains/information.html">Information and tips</a>
+          
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>Plugins
+      
+      <ul class="second">
+        
+        <li><a href="../../../en/plugins/overview.html">Overview</a>
+          
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>Information
+      
+      <ul class="second">
+        
+        <li><a href="../../../en/information/encodings.html">Character encodings</a>
+          
+        </li>
+        
+        <li><a href="../../../en/information/numberformats.html">Number formats</a>
+          
+        </li>
+        
+        <li><a href="../../../en/information/whitespaces.html">White spaces</a>
+          
+        </li>
+        
+        <li><a href="../../../en/information/textureformats.html">Texture formats</a>
+          
+        </li>
+        
+        <li><a href="../../../en/information/soundformats.html">Sound formats</a>
+          
+        </li>
+        
+        <li><a href="../../../en/information/standards.html">Standards</a>
+          
+        </li>
+        
+        <li><a href="../../../en/information/distribution.html">Distributing add-ons</a>
+          
+        </li>
+        
+        <li><a href="../../../en/information/forking.html">Forking guidelines</a>
+          
+        </li>
+        
+        <li><a href="../../../en/information/bve.html">Vs. BVE Trainsim</a>
+          
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>Tools
+      
+      <ul class="second">
+        
+        <li><a href="../../../en/tools/objectviewer.html">Object Viewer</a>
+          
+        </li>
+        
+        <li><a href="../../../en/tools/objectbender.html">Object Bender</a>
+          
+        </li>
+        
+        <li><a href="../../../en/tools/routeviewer.html">Route Viewer</a>
+          
+        </li>
+        
+        <li><a href="../../../en/tools/traineditor.html">Train Editor</a>
+          
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+  </ul>
+</div>
+</nav>
+
+    </div>
+
+    
+<div id="language-menu">
+  <ul class="language-selector">
+    <li>
+      <a class="selected">English</a>
+    </li>
+    
+    <li>
+      <a href="../../../ca/objects/native/b3d.html">Català</a>
+    </li>
+    
+  </ul>
+</div>
+
+
+
+    <div id="container">
+
+        <div id="page-title">
+          <h1>The <strong>.b3d</strong> object format</h1>
+        </div>
+
+        
+
+
+
+
+<div id="content">
+  
+
+<h2 id="1-overview">■ 1. Overview</h2>
+
+<p>A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.</p>
+
+<p>The file is a plain text file encoded in any arbitrary <a href="../../../information/encodings.html">encoding</a>, however, UTF-8 with a byte order mark is the preferred choice. The <a href="../../../information/numberformats.html">parsing model</a></a> for numbers is <strong>Loose</strong>, however, you are encouraged to produce <em>Strict</em> output nonetheless. The file name is arbitrary, but must have the extension <strong>.b3d</strong>. The file is interpreted on a per-line basis, from top to bottom.</p>
+
+<p>➟ <a href="../../../objects/native/b3d_quick.html">See also the quick reference for the B3D format&hellip;</a></p>
+
+<h2 id="2-syntax">■ 2. Syntax</h2>
+
+<p>Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:</p>
+
+<div id="command">
+<p><strong>NameOfTheCommand</strong> <em>Argument<sub>1</sub></em>, <em>Argument<sub>2</sub></em>, <em>Argument<sub>3</sub></em>, &hellip;, <em>Argument<sub>n</sub></em></p>
+
+</div>
+
+
+<p><em>NameOfTheCommand</em> is case-insensitive. If there are arguments, <em>NameOfTheCommand</em> and <em>Argument1</em> are separated by at least one space space (U+0020). Arguments are separated by a comma (U+002C). <a href="../../../information/whitespaces.html">White spaces</a> around the arguments, and well as at the beginning and the end of the line, are ignored. Empty lines or lines solely consisting of white spaces are also ignored.</p>
+
+<p>Arguments may also be omitted by leaving the text at each of the <em>Argument<sub>i</sub></em> blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands. Note however that the first argument may not be omitted if other arguments are provided.</p>
+
+<p>You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.</p>
+
+<h2 id="3-available-commands">■ 3. Available commands</h2>
+
+<div id="command">
+<p><strong>[MeshBuilder]</strong></p>
+
+</div>
+
+
+<p>This command marks the beginning of a new section of faces. It must precede any of the following commands. There might be as many [MeshBuilder] sections as desired in the object file. All subsequent commands will then relate to the last [MeshBuilder] section opened.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Vertex</strong> <em>vX</em>, <em>vY</em>, <em>vZ</em>, <em>nX</em>, <em>nY</em>, <em>nZ</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>vX</em></strong>: The x-coordinate for the vertex in meters. Negative values are left, positive ones right. The default value is 0.</li>
+<li><strong><em>vY</em></strong>: The y-coordinate for the vertex in meters. Negative values are down, positive ones up. The default value is 0.</li>
+<li><strong><em>vZ</em></strong>: The z-coordinate for the vertex in meters. Negative values are backward, positive ones forward. The default value is 0.</li>
+<li><strong><em>nX</em></strong>: The x-coordinate for the normal of this vertex. The default value is 0.</li>
+<li><strong><em>nY</em></strong>: The y-coordinate for the normal of this vertex. The default value is 0.</li>
+<li><strong><em>nZ</em></strong>: The z-coordinate for the normal of this vertex. The default value is 0.</li>
+</ul>
+
+</div>
+
+
+<p>This command creates a new vertex which can then be used to create faces via the Face or Face2 commands. There can be as many Vertex commands as desired within a [MeshBuilder] section. However, the order of the vertices given is important for other commands. The first vertex given has index 0, and subsequent vertices have indices 1, 2, 3 and so on.</p>
+
+<p>The normal is the direction perpendicular to the face at a particular point. If all vertices in a face have the same normal, the face will look flat. If used appropriately, you can give the illusion of a curved face by specifying different normals per vertex, but using the same normal on all vertices that share the same spatial coordinate - across multiple faces. If left all zero, the normal will be calculated automatically.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Face</strong> <em>v<sub>1</sub></em>, <em>v<sub>2</sub></em>, <em>v<sub>3</sub></em>, &hellip;, <em>v<sub>max</sub></em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>v<sub>i</sub></em></strong>: The vertex index to include in this face. Allowed values are 0 through <em>n</em>-1, where <em>n</em> is the number of Vertex commands used.</li>
+</ul>
+
+</div>
+
+
+<p>This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will not be visible. However, the Face2 command can be used to create a face which is visible from both sides. Only convex polygons are supported.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Face2</strong> <em>v<sub>1</sub></em>, <em>v<sub>2</sub></em>, <em>v<sub>3</sub></em>, &hellip;, <em>v<sub>max</sub></em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>v<sub>i</sub></em></strong>: The vertex index to include in this face. Allowed values are 0 through <em>n</em>-1, where <em>n</em> is the number of Vertex commands used.</li>
+</ul>
+
+</div>
+
+
+<p>This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will also be visible, however, lighting on the back face might be the same as on the front face. Only convex polygons are supported.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Cube</strong> <em>HalfWidth</em>, <em>HalfHeight</em>, <em>HalfDepth</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>HalfWidth</em></strong>: A floating-point number representing half the width of the cube in <strong>meters</strong>.</li>
+<li><strong><em>HalfHeight</em></strong>: A floating-point number representing half the height of the cube in <strong>meters</strong>.</li>
+<li><strong><em>HalfDepth</em></strong>: A floating-point number representing half the depth of the cube in <strong>meters</strong>.</li>
+</ul>
+
+</div>
+
+
+<p>This command creates a cube having dimensions as specified by <em>HalfWidth</em>, <em>HalfHeight</em> and <em>HalfDepth</em>. The cube will be centered on the origin (0,0,0). Thus, on the x-axis, the cube extends from -<em>HalfWidth</em> to <em>HalfWidth</em>, on the y-axis from -<em>HalfHeight</em> to <em>HalfHeight</em> and on the z-axis from -<em>HalfDepth</em> to <em>HalfDepth</em>. The cube always has 8 vertices and 6 faces.</p>
+
+<div id="notice">
+<span>ⓘ Cube representation</span>
+<p>The Cube command is equivalent to a series of Vertex and Face commands, which you need to account for when using other commands in the same [MeshBuilder] section. The details on what the Cube command does are available <a href="../../../objects/native/objects_cubecylinder.html">here</a>.</p>
+
+</div>
+
+
+<hr />
+
+<div id="command">
+<p><strong>Cylinder</strong> <em>n</em>, <em>UpperRadius</em>, <em>LowerRadius</em>, <em>Height</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>n</em></strong>: An integer representing the number of vertices to be used for the base of the frustum.</li>
+<li><strong><em>UpperRadius</em></strong>: A floating-point number representing the radius for the upper base of the frustum in <strong>meters</strong>. Can be negative to indicate that the top cap is to be omitted.</li>
+<li><strong><em>LowerRadius</em></strong>: A floating-point number representing the radius for the lower base of the frustum in <strong>meters</strong>. Can be negative to indicate that the bottom cap is to be omitted.</li>
+<li><strong><em>Height</em></strong>: A floating-point number representing the height of the prism in <strong>meters</strong>. Can be negative, which will flip the frustum vertically and display it inside-out.</li>
+</ul>
+
+</div>
+
+
+<p>This command creates a <a href="http://en.wikipedia.org/wiki/Frustrum">frustrum</a>. If <em>LowerRadius</em> and <em>UpperRadius</em> are equal, the object generated will reduce to a <a href="http://en.wikipedia.org/wiki/Prism_(geometry)">prism</a>, which can be used as an approximation to the cylinder. If either <em>LowerRadius</em> or <em>UpperRadius</em> are zero, the object generated will reduce to a <a href="http://en.wikipedia.org/wiki/Pyramid_(geometry)">pyramid</a>. The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -<em>LowerRadius</em> to <em>LowerRadius</em> for the lower base and from -<em>UpperRadius</em> to <em>UpperRadius</em> for the upper base. On the y-axis, the frustum extends from -½*<em>Height</em> to ½*<em>Height</em>.</p>
+
+<p>The number of vertices <em>n</em> will usually suffice to be 6 or 8 when only small radii are used, for example to create a pole. Regardless of the values of <em>UpperRadius</em>, <em>LowerRadius</em> and <em>n</em>, the frustum will always have 2*<em>n</em> vertices, and usually <em>n</em>+2 faces unless any of the caps are omitted. If <em>UpperRadius</em> or <em>LowerRadius</em> are negative, the absolute value is being taken, but the respective caps are not created. If <em>Height</em> is negative, the roles of top and bottom are reversed and the faces will be visible from the inside, while otherwise, they will be visible from the outside.</p>
+
+<div id="notice">
+<span>ⓘ Cylinder representation</span>
+<p>The Cylinder command is equivalent to a series of Vertex and Face commands, which you need to account for when using other commands in the same [MeshBuilder] section. The details on what the Cylinder command does are available <a href="../../../objects/native/objects_cubecylinder.html">here</a>.</p>
+
+</div>
+
+
+<hr />
+
+<div id="command">
+<p>[Texture]</p>
+
+</div>
+
+
+<p><em>This command is ignored by openBVE.</em></p>
+
+<hr />
+
+<div id="command">
+<p><strong>Translate</strong> <em>X</em>, <em>Y</em>, <em>Z</em><br />
+<strong>TranslateAll</strong> <em>X</em>, <em>Y</em>, <em>Z</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>X</em></strong>: A floating-point number representing the translation on the x-coordinate in <strong>meters</strong>. Negative values translate to the left, positive ones right. The default value is 0.</li>
+<li><strong><em>Y</em></strong>: A floating-point number representing the translation on the y-coordinate in <strong>meters</strong>. Negative values translate down, positive ones up. The default value is 0.</li>
+<li><strong><em>Z</em></strong>: A floating-point number representing the translation on the z-coordinate in <strong>meters</strong>. Negative values translate backward, positive ones forward. The default value is 0.</li>
+</ul>
+
+</div>
+
+
+<p>The <strong>Translate</strong> command moves all vertices that have been created so far in the [MeshBuilder] section via the Vertex, Cube or Cylinder commands. Subsequent vertices are not affected. You can use as many Translate commands as desired in a [MeshBuilder] section. The <strong>TranslateAll</strong> command not only affects the vertices generated in the current [MeshBuilder] section, but also those created in previous [MeshBuilder] sections. This is useful to insert at the end of the file in order to translate the whole object.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Scale</strong> <em>X</em>, <em>Y</em>, <em>Z</em><br />
+<strong>ScaleAll</strong> <em>X</em>, <em>Y</em>, <em>Z</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>X</em></strong>: A non-zero floating-point number representing the scale factor on the x-coordinate. The default value is 1.</li>
+<li><strong><em>Y</em></strong>: A non-zero floating-point number representing the scale factor on the y-coordinate. The default value is 1.</li>
+<li><strong><em>Z</em></strong>: non-zero A floating-point number representing the scale factor on the z-coordinate. The default value is 1.</li>
+</ul>
+
+</div>
+
+
+<p>The <strong>Scale</strong> command scales all vertices that have been created so far in the [MeshBuilder] section via the Vertex, Cube or Cylinder commands. Subsequent vertices are not affected. You can use as many Scale commands as desired in a [MeshBuilder] section. The <strong>ScaleAll</strong> command not only affects the vertices generated in the current [MeshBuilder] section, but also those created in previous [MeshBuilder] sections. This is useful to insert at the end of the file in order to scale the whole object.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Rotate</strong> <em>X</em>, <em>Y</em>, <em>Z</em>, <em>Angle</em><br />
+<strong>RotateAll</strong> <em>X</em>, <em>Y</em>, <em>Z</em>, <em>Angle</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>X</em></strong>: The x-direction of the rotational axis. Negative values point to the left, positive ones to the right. The default value is 0.</li>
+<li><strong><em>Y</em></strong>: The y-direction of the rotational axis. Negative values point down, positive ones up. The default value is 0.</li>
+<li><strong><em>Z</em></strong>: The z-direction of the rotational axis. Negative values point backward, positive ones forward. The default value is 0.</li>
+<li><strong><em>Angle</em></strong>: The angle to rotate in degrees. Negative values rotate counter-clockwise, positive ones clock-wise. The default value is 0.</li>
+</ul>
+
+</div>
+
+
+<p>The <strong>Rotate</strong> command rotates all vertices that have been created so far in the current [MeshBuilder] section via the Vertex, Cube or Cylinder commands. Subsequent vertices are not affected. The axis of rotation is specified via the <em>X</em>, <em>Y</em> and <em>Z</em> values. Rotation will occur in the plane perpendicular to that direction. A zero vector for this axis is treated as (1,0,0). All other directions are normalized. You can use as many Rotate commands as desired in a [MeshBuilder] section. The <strong>RotateAll</strong> command not only affects the vertices generated in the current [MeshBuilder] section, but also those created in previous [MeshBuilder] sections. This is useful to insert at the end of the file in order to rotate the whole object.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Shear</strong> <em>dX</em>, <em>dY</em>, <em>dZ</em>, <em>sX</em>, <em>sY</em>, <em>sZ</em>, <em>Ratio</em><br />
+<strong>ShearAll</strong> <em>dX</em>, <em>dY</em>, <em>dZ</em>, <em>sX</em>, <em>sY</em>, <em>sZ</em>, <em>Ratio</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>dX</em></strong>: The x-coordinate of the vector D. The default value is 0.</li>
+<li><strong><em>dY</em></strong>: The y-coordinate of the vector D. The default value is 0.</li>
+<li><strong><em>dZ</em></strong>: The z-coordinate of the vector D. The default value is 0.</li>
+<li><strong><em>sX</em></strong>: The x-coordinate of the vector S. The default value is 0.</li>
+<li><strong><em>sY</em></strong>: The y-coordinate of the vector S. The default value is 0.</li>
+<li><strong><em>sZ</em></strong>: The z-coordinate of the vector S. The default value is 0.</li>
+<li><strong><em>r</em></strong>: The ratio that indicates how much to displace vectors. The default value is 0.</li>
+</ul>
+
+</div>
+
+
+<p>The <strong>Shear</strong> command performs a <a href="http://en.wikipedia.org/wiki/Shear_mapping">shear mapping</a> for all vertices that have been created so far in the current CreateMeshBuilder section. The <strong>ShearAll</strong> command not only affects the vertices generated in the current CreateMeshBuilder section, but also those created in previous CreateMeshBuilder sections. This is useful to insert at the end of the file in order to shear the whole object.</p>
+
+<p><img src="../../../images/illustration_shear.png" alt="illustration_shear" /></p>
+
+<p>The shear mapping is performed around the origin. Loosely speaking, the object is sliced into planes along the direction D and then displaced along the direction S. Typically, D and S are perpendicular. D and S are always normalized. If <em>Ratio</em> is 0, no transformation is performed. If D and S are perpendicular, a <em>Ratio</em> of 1 corresponds to a slope of 45 degrees.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Mirror</strong>, <em>X</em>, <em>Y</em>, <em>Z</em><br />
+<strong>MirrorAll</strong>, <em>X</em>, <em>Y</em>, <em>Z</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>X</em></strong>: Whether the x-axis should be mirrored. The default value is 0 (false).</li>
+<li><strong><em>Y</em></strong>: Whether the y-axis should be mirrored. The default value is 0 (false).</li>
+<li><strong><em>Z</em></strong>: Whether the z-axis should be mirrored. The default value is 0 (false).</li>
+</ul>
+
+</div>
+
+
+<p>The <strong>Mirror</strong> command mirrors all vertices that have been created so far in the current CreateMeshBuilder section via the AddVertex, Cube or Cylinder commands. Subsequent vertices are not affected. The direction(s) to mirror are specified via the <em>X</em>, <em>Y</em> and <em>Z</em> values. You can use as many Mirror commands as desired in a CreateMeshBuilder section.<br><br> The <strong>MirrorAll</strong> command not only affects the vertices generated in the current CreateMeshBuilder section, but also those created in previous CreateMeshBuilder sections. This is useful to insert at the end of the file in order to mirror the whole object.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Color</strong> <em>Red</em>, <em>Green</em>, <em>Blue</em>, <em>Alpha</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>Red</em></strong>: The red component of the color. Measured from 0 (black) to 255 (red). The default value is 255.</li>
+<li><strong><em>Green</em></strong>: The green component of the color. Measured from 0 (black) to 255 (green). The default value is 255.</li>
+<li><strong><em>Blue</em></strong>: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 255.</li>
+<li><strong><em>Alpha</em></strong>: The alpha component of the color. Measured from 0 (transparent) to 255 (opaque). The default value is 255.</li>
+</ul>
+
+</div>
+
+
+<p>This command sets the color for all faces that were already created in the current [MeshBuilder] section. If no texture is used, the faces will be colored using the color data as specified by <em>Red</em>, <em>Green</em> and <em>Blue</em>. If a texture is used, the pixels in the texture will be multiplied by the color, where multiplying with black results in black and multiplying with white does not change the color of the texture pixels. Values in-between make the texture pixels darker. When lighting is used in the route, the actual color can change depending on the lighting conditions, but will usually become darker.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>EmissiveColor</strong> <em>Red</em>, <em>Green</em>, <em>Blue</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>Red</em></strong>: The red component of the color. Measured from 0 (black) to 255 (red). The default value is 0.</li>
+<li><strong><em>Green</em></strong>: The green component of the color. Measured from 0 (black) to 255 (green). The default value is 0.</li>
+<li><strong><em>Blue</em></strong>: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 0.</li>
+</ul>
+
+</div>
+
+
+<p>This command sets the emissive color for all faces that were already created in the current [MeshBuilder] section. The difference between the Color command and the EmissiveColor command is that the Color command is affected by lighting, while the EmissiveColor command is not. Thus, the EmissiveColor command should be used for faces which would emit light themselves, including signals, lamps, windows and the like. The actual color contribution to the faces will be the sum of the light-affected color data and the static emissive color data.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>BlendMode</strong> <em>BlendMode</em>, <em>GlowHalfDistance</em>, <em>GlowAttenuationMode</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>BlendMode</em></strong>: The blend mode to use. The default is Normal.</li>
+<li><strong><em>GlowHalfDistance</em></strong>: The distance at which the glow is at 50% of its intensity, measured in meters. The value must be an integer in the range from 1 to 4095, or 0 to disable glow attenuation. The default value is 0.</li>
+<li><strong><em>GlowAttenuationMode</em></strong>: The glow attenuation mode to use. The default is DivideExponent4.</li>
+</ul>
+
+</div>
+
+
+<p>▸ Available options for <em>BlendMode</em>:</p>
+
+<div id="command-arguments">
+<ul>
+<li><strong>Normal</strong>: The faces are rendered normally.</li>
+<li><strong>Additive</strong>: The faces are rendered additively.</li>
+</ul>
+
+</div>
+
+
+<p>▸ Available options for <em>GlowAttenuationMode</em>:</p>
+
+<div id="command-arguments">
+<ul>
+<li><strong>DivideExponent2</strong>: The glow intensity is determined via the function <em>x</em><sup>2</sup> / (<em>x</em><sup>2</sup> + <em>GlowHalfDistance</em><sup>2</sup>), where <em>x</em> is the distance from the camera to the object in meters.</li>
+<li><strong>DivideExponent4</strong>: The glow intensity is determined via the function <em>x</em><sup>4</sup> / (<em>x</em><sup>4</sup> + <em>GlowHalfDistance</em><sup>4</sup>), where <em>x</em> is the distance from the camera to the object in meters.</li>
+</ul>
+
+</div>
+
+
+<p>This command sets the blend mode for all faces in the current [MeshBuilder] section. The <em>Normal</em> mode replaces screen pixels with texture pixels. The <em>Additive</em> mode adds the color of texture pixels to the color of screen pixels, where adding black does not change the screen pixel, while adding white results in white. If <em>GlowHalfDistance</em> is 0, glow attenuation will be disabled, which is the default. If glow attenuation is to be used, <em>GlowHalfDistance</em> represents the distance in meters at which the glow is exactly at 50% of its intensity. When the camera approaches the face, the face will gradually fade out (become transparent). The function used to determine the exact intensity for a given distance can be influenced with the setting of <em>GlowAttenuationMode</em>. DivideExponent2 creates a smoother transition, but will converge to the maximum intensity very slowly, while DivideExponent4 creates a sharper transition which converges more quickly.</p>
+
+<div id="warning">
+<span>ⓘ openBVE 2 compatibility note:</span>
+<p>In openBVE 2, only additive glow will be supported and the <em>GlowAttenuationMode</em> parameter is likely going to be dropped. Please avoid using normal blending in conjunction with using glow.</p>
+
+</div>
+
+
+<hr />
+
+<div id="command">
+<p><strong>Load</strong> <em>DaytimeTexture</em>, <em>NighttimeTexture</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>DaytimeTexture</em></strong>: The file name of the daytime version of the texture to load, relative to the directory the object file is stored in.</li>
+<li><strong><em>NighttimeTexture</em></strong>: The file name of the daytime version of the texture to load, relative to the directory the object file is stored in.</li>
+</ul>
+
+</div>
+
+
+<p>This command loads a texture and uses it for all faces in the current CreateMeshBuilder section. The file name is relative to the directory the object file is stored in. You can use PNG, which supports full alpha channels, but use the alpha channel only if absolutely required as it reduces performance. Prefer using a texture without an alpha channel in conjunction with the SetDecalTransparentColor command in order to use color-key transparency.</p>
+
+<p>If <em>NighttimeTexture</em> is used, it specifies the texture to be used on nighttime lighting conditions, while <em>DaytimeTexture</em> then specifies the texture to be used on daytime lighting conditions. The textures might blend into each other and should be designed accordingly. If <em>NighttimeTexture</em> is used, <em>DaytimeTexture</em> must also be specified. If <em>NighttimeTexture</em> is not used, low lighting conditions will make the daytime version darker. Nighttime textures are meant for use with train interior/exterior objects.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Transparent</strong> <em>Red</em>, <em>Green</em>, <em>Blue</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>Red</em></strong>: The red component of the color. Measured from 0 (black) to 255 (red). The default value is 0.</li>
+<li><strong><em>Green</em></strong>: The green component of the color. Measured from 0 (black) to 255 (green). The default value is 0.</li>
+<li><strong><em>Blue</em></strong>: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 0.</li>
+</ul>
+
+</div>
+
+
+<p>This command sets the color used for screendoor transparency for all faces that were already created. The texture loaded via the Load command will become transparent for all pixels which match exactly with the color specified via the <em>Red</em>, <em>Green</em> and <em>Blue</em> parameters. The use of screendoor transparency is much more efficient than using a full alpha channel, so prefer using a texture without an alpha channel and use this command instead to make parts of the texture transparent. You need to specify texture coordinates via the Coordinate command in order for the texture to correctly appear on the faces.</p>
+
+<hr />
+
+<div id="command">
+<p><strong>Coordinates</strong> <em>VertexIndex</em>, <em>X</em>, <em>Y</em></p>
+
+</div>
+
+
+<div id="command-arguments">
+<ul>
+<li><strong><em>VertexIndex</em></strong>: The vertex index the coordinate is referring to. Allowed values are 0 through <em>n</em>-1, where <em>n</em> is the number of Vertex commands used.</li>
+<li><strong><em>X</em></strong>: The x-coordinate of the texture. Integer values correspond to the left/right edge of the texture. If only values between 0 and 1 are to be considered, 0 corresponds to the left and 1 to the right.</li>
+<li><strong><em>Y</em></strong>: The y-coordinate of the texture. Integer values correspond to the top/bottom edge of the texture. If only values between 0 and 1 are to be considered, 0 corresponds to the top and 1 to the bottom.</li>
+</ul>
+
+</div>
+
+
+<p>This command associates a coordinate in the texture to the vertex specified by <em>VertexIndex</em>. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Coordinates command needs to be stated after the corresponding Vertex command. The <em>X</em> and <em>Y</em> values do not necessarily need to be in the range between 0 (left or top) to 1 (right or bottom), but can have any other value. It is assumed in this case that the texture is repeated on an infinite grid where integer values for <em>X</em> and <em>Y</em> correspond to the corners of the texture.</p>
+
+</div>
+
+      <div id="footer">
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
+
