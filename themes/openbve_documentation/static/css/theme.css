@@ -235,7 +235,7 @@ hr {
 
 /* Shortcodes */
 
-div #notice span {
+div #notice h4 {
   padding: 5px 10px;
   display: block;
   font-size: 1rem;
@@ -244,6 +244,10 @@ div #notice span {
   background: #FFD633;
   color: #222222;
   font-weight: bold;
+}
+
+div #notice h4:before {
+  content: "ⓘ ";
 }
 
 div #notice p {
@@ -255,7 +259,7 @@ div #notice p {
   background: #FFFF99;
 }
 
-div #warning span {
+div #warning h4 {
   padding: 5px 10px;
   display: block;
   font-size: 1rem;
@@ -264,6 +268,10 @@ div #warning span {
   background: #FF3333;
   color: #222222;
   font-weight: bold;
+}
+
+div #warning h4:before {
+  content: "ⓘ ";
 }
 
 div #warning p {
@@ -275,7 +283,7 @@ div #warning p {
   background: #FF9999;
 }
 
-#command {
+div #command {
   padding: 5px 5px 5px 5px;
   border: 1px dotted;
   background: #EEEEEE;
@@ -285,15 +293,15 @@ div #warning p {
   border-color: #111111;
 }
 
-#command p {
+div #command p {
   margin: 0;
 }
 
-#command del {
+div #command del {
   color: #555555;
 }
 
-#command-arguments ul {
+div #command-arguments {
   color: #555555;
-  list-style: none;
+  margin-left: 40px;
 }

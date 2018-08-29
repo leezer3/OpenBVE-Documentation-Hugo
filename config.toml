@@ -6,10 +6,14 @@ removePathAccents = "true"
 relativeURLs = "true"
 uglyURLs = "true"
 
-disableKinds = ["404", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
+disableKinds = ["page", "404", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
 
 [params]
   logoimage = "/images/logo.png"
+
+[blackfriday]
+  hrefTargetBlank = true
+  extensions = ["laxHtmlBlocks"]
 
 [languages]
 [languages.en]
