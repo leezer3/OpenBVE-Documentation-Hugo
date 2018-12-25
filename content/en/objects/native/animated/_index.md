@@ -14,10 +14,10 @@ Animated objects can be used in CSV/RW routes (unless explicitly disallowed by s
 
 Animation is performed via the following primitives:
 
-● State changes - basically allowing to switch between different objects at any time  
-● Translation - moving objects in three independent directions  
-● Rotation - rotating objects around three independent axes  
-● Texture shifts - allowing to shift the texture coordinates of objects in two independent directions
+- State changes - basically allowing to switch between different objects at any time
+- Translation - moving objects in three independent directions
+- Rotation - rotating objects around three independent axes
+- Texture shifts - allowing to shift the texture coordinates of objects in two independent directions
 
 ##### ● A little formality
 
