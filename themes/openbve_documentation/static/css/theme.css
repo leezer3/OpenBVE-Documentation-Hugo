@@ -259,6 +259,7 @@ div #notice p {
   background: #FFFF99;
 }
 
+div #warning span,
 div #warning h4 {
   padding: 5px 10px;
   display: block;
@@ -271,7 +272,7 @@ div #warning h4 {
 }
 
 div #warning h4:before {
-  content: "ⓘ ";
+  content: "⚠ ";
 }
 
 div #warning p {
@@ -313,7 +314,9 @@ table {
 .type0 th,
 .type0 td,
 .type1 th,
-.type1 td {
+.type1 td,
+.type2 th,
+.type2 td {
   border: 2px;
   border-style: ridge;
   padding: 4px;
@@ -328,6 +331,38 @@ table {
   font-weight: normal;
 }
 
+.type2 tr th:nth-child(1),
+.type2 tr td:nth-child(1) {
+  background: #D0D0D0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.type2 tr :nth-child(n + 2) {
+  font-weight: normal;
+}
+
 li {
   margin-bottom: 0.5em;
+}
+
+div #note span {
+  padding: 5px 10px;
+  display: block;
+  font-size: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  background: #B3B3B3;
+  color: #222222;
+  font-weight: bold;
+}
+
+div #note p {
+  padding: 15px;
+  display: block;
+  font-size: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  background: #E0E0E0;
+  color: #0060C0;
 }

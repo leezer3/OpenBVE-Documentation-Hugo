@@ -169,11 +169,11 @@ During the development of openBVE (v0.9) and during the development of the anima
 
 First of all, infix notation, which is what you can enter for *Formula*, is converted into functional notation. Thus for every infix notation, there is a corresponding functional notation. Some functions do not have an infix operator and can thus only be entered in functional notation. For operators, precedence plays an important role. You can use parantheses to override the order of precedence just as in any usual mathematical formula. Names of functions are case-insensitive.
 
-{{% warning %}}
+{{% warning-nontitle %}}
 
 Please note that if the result of any mathematical operation or function would be infinity, indeterminate or non-real, 0 is returned. Numeric overflow is not prevented, so you need to take that into account yourself.
 
-{{% /warning %}}
+{{% /warning-nontitle %}}
 
 ## ■ 3. List of infix notation operators
 
@@ -227,7 +227,7 @@ All operations treat 0 as false and any other value as true, and return 1 for tr
 
 From highest precedence to lowest. Operators of same precedence are evaluated left to right in the order in they occur in the formula.
 
-{{% table-noheader %}}
+{{% table-nonheader %}}
 
 | `a[...]`                         |
 | -------------------------------- |
@@ -241,15 +241,15 @@ From highest precedence to lowest. Operators of same precedence are evaluated le
 | `^`                              |
 | &#124;                           |
 
-{{% /table-noheader %}}
+{{% /table-nonheader %}}
 
 <br>
 
-{{% warning %}}
+{{% warning-nontitle %}}
 
 Please note that some combinations of prefix and infix operators are not recognized. For example `a*-b` is not accepted. Use `a*(-b)` or `-a*b` instead.
 
-{{% /warning %}}
+{{% /warning-nontitle %}}
 
 ## ■ 4. List of functions
 
