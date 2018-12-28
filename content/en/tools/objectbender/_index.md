@@ -19,6 +19,7 @@ Supported object file formats:
 
 ## ■ Command-line arguments
 {{% table %}}
+
 | Argument           | Meaning                                                      |
 | ------------------ | ------------------------------------------------------------ |
 | /?                 | Shows the list of command-line arguments.                    |
@@ -55,9 +56,10 @@ Object Bender accepts special markup in the comments of SetTextureCoordinates (C
 
 {{% table-leftheader %}}
 
-| {X=*value*}    | Shifts each segment by *value* on the x-axis of the texture. |
-| -------------- | ------------------------------------------------------------ |
-| {Y=*value*}    | Shifts each segment by *value* on the y-axis of the texture. |
+| {X=*value*} | Shifts each segment by *value* on the x-axis of the texture. |
+| ----------- | ------------------------------------------------------------ |
+| {Y=*value*} | Shifts each segment by *value* on the y-axis of the texture. |
+
 {{% /table-leftheader %}}
 
 This markup can be present anywhere in the comments on the same line as the SetTextureCoordinates/Coordinates command. See the tutorial for more details.
