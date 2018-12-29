@@ -12,28 +12,20 @@ A character encoding is a way to translate characters into bytes that can be sto
 
 Example of a Japanese text encoded in Shift_JIS (requires appropriate fonts available):
 
-{{% code %}}
-
-|      |                        |
-| ---- | ---------------------- |
-|      | `ひらがなカタカナ漢字` |
-
+{{% code %}}  
+ひらがなカタカナ漢字  
 {{% /code %}}
 
 The byte sequence generated from the previous example in Shift_JIS:
 
-{{% code %}}
-
-|      |                                                              |
-| ---- | ------------------------------------------------------------ |
-|      | `82 D0 82 E7 82 AA 82 C8 83 4A 83 5E 83 4A 83 69 8A BF 8E 9A` |
+{{% code %}}  
+82 D0 82 E7 82 AA 82 C8 83 4A 83 5E 83 4A 83 69 8A BF 8E 9A  
 {{% /code %}}
 
-What happens if the byte sequence is misinterpreted as being ISO 8859-1 (Latin-1) instead of Shift_JIS:
-{{% code %}}
-|      |  |
-| ---- | ------------------------------------------------------------ |
-|      | `‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš`                                       |
+What happens if the byte sequence is misinterpreted as being ISO 8859-1 (Latin-1) instead of Shift_JIS: 
+
+{{% code %}}  
+‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš  
 {{% /code %}}
 
 Usually, one particular encoding only allows to use the writing system for which it was designed for. Unicode, a standard which covers basically all characters as used in writing systems throughout the world, provides a solution here.
@@ -53,6 +45,7 @@ As said, while Unicode allows to encode virtually all characters used in all wri
 Using a byte order mark provides openBVE the ability to automatically detect the encoding for each individual file. If you have a good text editor, you will not only be able to select the encoding manually, but also if you want to save with a byte order mark or not. Notepad (Windows) always saves with a byte order mark if UTF-8 is selected as the character encoding upon saving the file, to make an acceptable example.
 
 Technically, the byte order mark is the first bytes of a particular text file. The byte order marks which can be automatically detected by openBVE are:
+
 {{% table %}}
 
 | Encoding               | Hexadecimal representation |
@@ -62,6 +55,7 @@ Technically, the byte order mark is the first bytes of a particular text file. T
 | UTF-16 (little endian) | FF FE                      |
 | UTF-32 (big endian)    | 00 00 FE FF                |
 | UTF-32 (little endian) | FF FE 00 00                |
+
 {{% /table %}}
 
 You are encouraged to always save text files in one of those encodings with a byte order mark in order for openBVE to automatically detect the encoding used.

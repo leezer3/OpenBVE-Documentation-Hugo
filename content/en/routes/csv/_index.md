@@ -403,7 +403,7 @@ In the following, all arguments of all commands are highlighted in <font color="
 ---
 
 {{% command %}}  
-**Options.BlockLength** <font color="green">*Length*</font>  
+**Options.BlockLength** *<font color="green">Length</font>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -593,6 +593,323 @@ Train.Gauge is the same as Route.Gauge.
 ---
 
 {{% command %}}  
+**Route.Signal**(*AspectIndex*)<font color="gray">.Set</font> *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***AspectIndex***: A non-negative integer representing the signal aspect. The aspect 0 corresponds to red.  
+***<font color="blue">Speed</font>***: A non-negative floating-point number representing the allowed speed for this aspect, **by default** measured in **kilometers per hour** (km/h).  
+{{% /command-arguments %}}
+
+Use this command to associate speed limits to signal aspects. Aspect 0 represents a red signal, higher values represent more permissive aspects. The default values (for the included Japanese signals) are: 
+
+{{% table %}}
+
+| *Index* | Aspect                                                       | Speed       |
+| ------- | ------------------------------------------------------------ | ----------- |
+| 0       | <font color="#C00000">●</font>                               | 0 km/h      |
+| 1       | <font color="#FFC000">●●</font>                              | 25 km/h     |
+| 2       | <font color="#FFC000">●</font>                               | 55 km/h     |
+| 3       | <font color="#00C000">●</font><font color="#FFC000">●</font> | 75 km/h     |
+| 4       | <font color="#00C000">●</font>                               | *unlimited* |
+| 5       | <font color="#00C000">●●</font>                              | *unlimited* |
+
+{{% /table %}}
+
+---
+
+{{% command %}}  
+***Route.RunInterval*** *Interval<sub>0</sub>*; *Interval<sub>1</sub>*; ...; *Interval<sub>n-1</sub>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Interval<sub>i</sub>***: A floating-point number representing the time interval between the player's train's timetable and that of another train to be created, measured in **seconds**. Positive values indicate an earlier train, negative numbers a later train.  
+{{% /command-arguments %}}
+
+This command creates one or more preceding or following trains. These other trains are visible, fully operational, and use the same train as the player has. The other trains follow the same schedule as the player does, but are offset in time by *Intervali*. Via the Track.Sta command, you can also define stations where only the player or only the other trains should stop. Follow-up trains only appear once the section they are placed in has been cleared by other trains, but the player's train is introduced regardless of the current signalling section's state. Therefore, you should make sure that other trains have cleared the area where the player's train will appear when the scenario begins.
+
+{{% note %}}
+
+Route.RunInterval is the same as Train.Interval.
+
+{{% /note %}}
+
+---
+
+{{% command %}}  
+**Route.AccelerationDueToGravity** *Value*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Value**: A positive floating-point number representing the acceleration due to gravity in **meters per second squared** (m/s²). The default value is 9.80665.  
+{{% /command-arguments %}}
+
+---
+
+{{% command %}}  
+**Route.Elevation** *<font color="green">Height</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***<font color="green">Height</font>***: A floating-point number representing the initial height above sea level, **by default** measured in **meters** (m). The default value is 0.  
+{{% /command-arguments %}}
+
+---
+
+{{% command %}}  
+**Route.Temperature** *ValueInCelsius*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Value***: A floating-point number representing the initial temperature in **Celsius**. The default value is 20.  
+{{% /command-arguments %}}
+
+---
+
+{{% command %}}  
+**Route.Pressure** *ValueInKPa*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***ValueInKPa***: A positive floating-point number representing the initial air pressure in **kPa** (1000 Pascal). The default value is 101.325.  
+{{% /command-arguments %}}
+
+---
+
+{{% command %}}  
+**Route.DisplaySpeed** *Unit; ConversionFactor*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Unit***: The textual units in which speed-related messages are to be displayed.    ***ConversionFactor***: The conversion factor between km/h and your custom unit of speed. For mph, this is 0.621371.  
+{{% /command-arguments %}}
+
+This command allows speed related messages (overspeed etc.) to be displayed in a custom unit, for example mph.
+
+---
+
+{{% command %}}  
+**Route.LoadingScreen** *Image*  
+{{% /command %}}
+
+{{% command-arguments %}}    
+***Image***: A path to a supported image file.  
+{{% /command-arguments %}}
+
+This command allows a custom image to be set as the loading screen background.
+
+---
+
+{{% command %}}  
+**Route.StartTime** *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The time at which the simulation is to start.  
+{{% /command-arguments %}}
+
+This command allows the start time of the simulation to be set.
+
+{{% note %}}
+
+If this is not set or is invalid, the simulation will start at the arrival time set at the first station.
+
+{{% /note %}}
+
+---
+
+{{% command %}}  
+**Route.DynamicLight** *Dynamic.XML*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Dynamic.XML***: A path to a Dynamic Lighting definition XML file.  
+{{% /command-arguments %}}
+
+This command may be used as an alternative to the *Route.AmbientLight* , *Route.DirectionalLight* and *Route.LightDirection* commands.
+
+It allows the lighting to be varied using a time-based model, and is described fully on the following page:
+
+[Dynamic Lighting](/routes/xml/dynamiclight.html)
+
+---
+
+{{% command %}}  
+**Route.AmbientLight** *RedValue*; *GreenValue*; *BlueValue*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RedValue***: An integer ranging from 0 to 255 representing the red component of the ambient light. The default value is 160.  
+***GreenValue***: An integer ranging from 0 to 255 representing the green component of the ambient light. The default value is 160.   
+***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the ambient light. The default value is 160.  
+{{% /command-arguments %}}
+
+This command defines the ambient light color to be used. All polygons in the scene are illuminated by the ambient light regardless of the light direction.
+
+---
+
+{{% command %}}  
+**Route.DirectionalLight** *RedValue*; *GreenValue*; *BlueValue*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RedValue***: An integer ranging from 0 to 255 representing the red component of the directional light. The default value is 160.  
+***GreenValue***: An integer ranging from 0 to 255 representing the green component of the directional light. The default value is 160.  
+***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the directional light. The default value is 160.  
+{{% /command-arguments %}}
+
+This command defines the directional light to be used. The polygons in the scene are only fully illuminated by the directional light if the light direction points at the front faces. If pointing at back faces, no light is contributed. *Route.LightDirection* should be set to specify the light direction.
+
+---
+
+{{% command %}}  
+**Route.LightDirection** *Theta*; *Phi*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Theta***: A floating-point number representing the angle in **degrees** which controls the pitch of the light direction. The default value is 60.  
+***Phi***: A floating-point number representing the angle in **degrees** which controls the planar rotation of the light direction. The default value is about -26.57.  
+{{% /command-arguments %}}
+
+This command defines the initial light direction for track position 0. This is the direction the light shines at, meaning the opposite direction the sun is located at. First, *Theta* determines the pitch. A value of 90 represents a downward direction, while a value of -90 represents an upward direction. With those extremes, the value of *Phi* is irrelevant. A value of 0 for *Theta* represents a forward direction originating at the horizon behind. Once the pitch is defined by *Theta*, *Phi* determines the rotation in the plane. A value of 0 does not rotate, a value of 90 rotates the direction to the right and a value of -90 rotates to the left. A backward direction can be both obtained by setting *Theta* and *Phi* to 180 and 0 or to 0 and 180, respectively. Values in-between allow for more precise control of the exact light direction.
+
+![illustration_light_direction](/images/illustration_light_direction.png)
+
+{{% function "*Converting a spherical direction (theta,phi) into a cartesian direction (x,y,z):*" %}}
+
+x = cos(theta) * sin(phi)  
+y = -sin(theta)  
+z = cos(theta) * cos(phi)
+
+{{% /function %}}
+
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²≠1:*" %}}
+
+theta = -arctan(y/sqrt(x<sup>2</sup>+z<sup>2</sup>))  
+phi = arctan(z,x)
+
+{{% /function %}}
+
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²=1:*" %}}
+
+theta = -y * pi/2  
+phi = 0
+
+{{% /function %}}
+
+In the formulas above, [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) represents the cosine, [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) the sine, [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) the inverse tangent, [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) the two-argument inverse tangent and [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) the square root. The formulas can be used to convert between spherical and cartesian coordinates if working with either one seems more intuitive than working with the other one. The formulas also serve as the official documentation on how the light direction is mathematically defined (using radians for the trigonometric functions).
+
+---
+
+{{% command %}}  
+**Route.InitialViewpoint** *Value*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Value***: An integer defining the initial camera viewpoint mode. The following values are valid:  
+*0* : The camera will be placed in the cab. (Default)  
+*1* : The camera will be placed in 'Track Camera' mode.  
+*2* : The camera will be placed in 'Flyby Camera' mode.  
+*3* : The camera will be placed in 'Flyby Zooming Camera' mode.  
+{{% /command-arguments %}}
+
+This command allows the route developer to place the initial camera in one of the alternate camera modes.
+
+---
+
+{{% command %}}  
+**<font color=#555555>Route.DeveloperID</font>**  
+{{% /command %}}
+
+<font color=#555555>This command is ignored by openBVE.</font>
+
+## ■ 6. The Train namespace
+
+Commands from this namespace define route-train associations. 
+
+---
+
+{{% command %}}  
+Train.Folder *FolderName*  
+Train.File *FolderName*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***FolderName***: The folder name of the default train to use on this route.  
+{{% /command-arguments %}}
+
+---
+
+{{% command %}}  
+**Train.Run**(*RailTypeIndex*)<font color="gray">.Set</font> *RunSoundIndex*   
+**Train.Rail**(*RailTypeIndex*)<font color="gray">.Set</font> *RunSoundIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailTypeIndex***: A non-negative integer representing the rail type as defined via Structure.Rail and used via Track.RailType.  
+***RunSoundIndex***: A non-negative integer representing the train's run sound to associate to the rail type.  
+{{% /command-arguments %}}
+
+The train developer provides a repertoire of different run sounds. Use this command to associate these run sounds to the rail types you use in your route. In order for the correct run sounds to be played on any of your rail types, you need to coordinate your efforts with the train developer. Please see the page about [standards](/information/standards.html) for further information.
+
+---
+
+{{% command %}}  
+**Train.Flange**(*RailTypeIndex*)<font color="gray">.Set</font> *FlangeSoundIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailTypeIndex***: A non-negative integer representing the rail type as defined via Structure.Rail and used via Track.RailType.  
+***RunSoundIndex***: A non-negative integer representing the train's flange sound to associate to the rail type.  
+{{% /command-arguments %}}
+
+The train developer provides a repertoire of different flange sounds. Use this command to associate these flange sounds to the rail types you use in your route. In order for the correct flange sounds to be played on any of your rail types, you need to coordinate your efforts with the train developer. Please see the page about [standards](/information/standards.html) for further information.
+
+---
+
+{{% command %}}  
+**Train.Timetable**(*TimetableIndex*)**.Day**<font color="gray">.Load</font> FileName  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***TimetableIndex***: A non-negative integer representing the timetable index.  
+***FileName***: The file name for the daytime version of the timetable, relative to the train's folder (1<sup>st</sup> choice), or relative to the **Object** folder (2<sup>nd</sup> choice).  
+{{% /command-arguments %}}
+
+Use this command to load daytime versions of the timetable. Which timetable index to show starting with a particular station can be set in Track.Sta commands.
+
+---
+
+{{% command %}}  
+**Train.Timetable**(*TimetableIndex*)**.Night**<font color="gray">.Load</font> FileName  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***TimetableIndex***: A non-negative integer representing the timetable index.  
+***FileName***: The file name for the daytime version of the timetable, relative to the train's folder (1<sup>st</sup> choice), or relative to the **Object** folder (2<sup>nd</sup> choice).  
+{{% /command-arguments %}}
+
+Use this command to load nighttime versions of the timetable. Which timetable index to show starting with a particular station can be set in Track.Sta commands.
+
+---
+
+{{% command %}}  
+**Train.Gauge** *ValueInMillimeters*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***ValueInMillimeters***: A floating-point number representing the rail gauge, measured in **millimeters** (0.001 meters). The default value is 1435.  
+{{% /command-arguments %}}
+
+{{% note %}}
+
+Train.Gauge is the same as Route.Gauge.
+
+{{% /note %}}
+
+---
+
+{{% command %}}  
 **Train.Interval** *Interval<sub>0</sub>*; *Interval<sub>1</sub>*; ...; *Interval<sub>n-1</sub>*  
 {{% /command %}}
 
@@ -605,3 +922,74 @@ Train.Gauge is the same as Route.Gauge.
 Train.ValueInSeconds is the same as Route.RunInterval.
 
 {{% /note %}}
+
+---
+
+{{% command %}}  
+**Train.Velocity** *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***<font color="blue">Speed</font>***: A positive floating-point number representing the maximum speed the preceding trains may travel at, **by default** measured in **kilometers per hour**, or 0 for infinite speed. The default value is 0.  
+{{% /command-arguments %}}
+
+This command defines the maximum speed limit the preceding trains may travel at. The actual speed limit may be reduced by Track.Limit commands. The player's train is unaffected by this setting and may travel up to the limits defined by Track.Limit.
+
+---
+
+{{% command %}}  
+**<font color=#555555>Train.Acceleration</font>**  
+{{% /command %}}
+
+<font color=#555555>This command is ignored by openBVE.</font>
+
+---
+
+{{% command %}}  
+**<font color=#555555>Train.Station</font>**  
+{{% /command %}}
+
+<font color=#555555>This command is ignored by openBVE.</font>
+
+## ■ 7. The Structure namespace
+
+The commands in the Structure namespace define which objects to use in other commands. Generally, commands like Track.Rail, Track.FreeObj and so on create objects referenced by a *StructureIndex*. This *StructureIndex* is specific to that command, so you can define a set of objects specific to Track.Rail, Track.FreeObj and so on.
+
+The general syntax for commands in the Structure namespace is:
+
+{{% command %}}  
+**Structure.Command(StructureIndex)**<font color="gray">.Load</font> *FileName*  
+{{% /command %}}
+
+*StructureIndex* is a non-negative integer. *FileName* is the object file to load, relative to the **Object** folder. *Command* is any of the following commands:
+
+{{% table %}}
+
+| *Command*: | Remarks                                                      |
+| ---------- | ------------------------------------------------------------ |
+| Ground     | Defines objects for Cycle.Ground and Track.Ground.           |
+| Rail       | Defines objects for Track.Rail, Track.RailStart and Track.RailType. |
+| WallL      | Defines left objects for Track.Wall.                         |
+| WallR      | Defines right objects for Track.Wall.                        |
+| DikeL      | Defines left objects for Track.Dike.                         |
+| DikeR      | Defines right objects for Track.Dike.                        |
+| FormL      | Defines left platforms edges for Track.Form.                 |
+| FormR      | Defines right platforms edges for Track.Form.                |
+| FormCL     | Defines transformable left platforms for Track.Form. <font color="red">No ANIMATED objects supported.</font> |
+| FormCR     | Defines transformable right platforms for Track.Form. <font color="red">No ANIMATED objects supported.</font> |
+| RoofL      | Defines left roof edges for Track.Form.                      |
+| RoofR      | Defines right roof edges for Track.Form.                     |
+| RoofCL     | Defines transformable left roofs for Track.Form. <font color="red">No ANIMATED objects supported.</font> |
+| RoofCR     | Defines transformable right roofs for Track.Form. <font color="red">No ANIMATED objects supported.</font> |
+| CrackL     | Defines transformable left objects for Track.Crack. <font color="red">No ANIMATED objects supported.</font> |
+| CrackR     | Defines transformable right objects for Track.Crack. <font color="red">No ANIMATED objects supported.</font> |
+| FreeObj    | Defines objects for Track.FreeObj.                           |
+| Beacon     | Defines objects for Track.Beacon.                            |
+
+{{% /table %}}
+
+Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, FormCR, RoofCL, RoofCR, CrackL and CrackR commands only accept B3D, CSV and X objects.
+
+➟ [More information about forms, roofs and cracks...](/routes/formroofcrack.html)
+
+Additionally, there is the Structure.Pole command, which has a slightly different syntax:
