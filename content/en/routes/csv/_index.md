@@ -1187,13 +1187,13 @@ All commands from the Track namespace need to be associated to track positions. 
 ---
 
 {{% command %}}  
-**Track.RailStart** *RailIndex*; *X*; *Y*; *RailType*  
+**Track.RailStart** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *RailType*  
 {{% /command %}}
 
 {{% command-arguments %}}  
 ***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.  
-***X***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
-***Y***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
 ***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command. 
 {{% /command-arguments %}}
 
@@ -1204,3 +1204,13 @@ This command starts a new rail represented by the index *RailIndex*. Upon the po
 This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}
+
+---
+
+{{% command %}}  
+**Track.Rail** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *RailType*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.   
+{{% /command-arguments %}}
