@@ -14,7 +14,32 @@ Commands that still require documentation: **2**
 
 {{% /warning %}}
 
-## ■ 1. Overview
+## ■ Contents
+
+{{% contents %}}
+
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Preprocessing](#preprocessing)
+- [4. The Options namespace](#options)
+- [5. The Route namespace](#route)
+- [6. The Train namespace](#train)
+- [7. The Structure namespace](#structure)
+- [8. The Texture namespace](#texture)
+- [9. The Cycle namespace](#cycle)
+- [10. The Signal namespace](#signal)
+- [11. The Track namespace](#track)
+  - [11.1. Rails](#track_rails)
+  - [11.2. Geometry](#track_geometry)
+  - [11.3. Objects](#track_objects)
+  - [11.4. Stations](#track_stations)
+  - [11.5. Signalling and speed limits](#track_signalling)
+  - [11.6. Safety systems](#track_safety)
+  - [11.7. Miscellaneous](#track_misc)
+
+{{% /contents %}}
+
+## <a name="overview"></a>■ 1. Overview
 
 A CSV route allows to create a route in a text file.
 
@@ -28,7 +53,7 @@ Geometrically, you can curve and pitch the implicit rail 0, while all other rail
 
 ➟ [See also the quick reference for the CSV route...](/routes/csv_quick.html)
 
-## ■ 2. Syntax
+## <a name="syntax"></a>■ 2. Syntax
 
 For each line in the file, [white spaces](/information/whitespaces.html) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
 
@@ -104,7 +129,7 @@ Route.Gauge 1435
 Route.Timetable 1157_M  
 {{% /code %}}
 
-## ■ 3. Preprocessing
+## <a name="preprocessing"></a>■ 3. Preprocessing
 
 Before any of the commands in the route file are actually interpreted, the expressions are preprocessed. The first thing done is to replace any occurrences of the $-directives within an expression from right to left. The $Chr, $Rnd and $Sub directives may be nested in any way, while $Include, $If, $Else and $EndIf must not appear inside another directive.
 
@@ -304,7 +329,7 @@ Track.FreeObj 1; 42
 1050, Track.RailType 0; 1  
 {{% /code %}}
 
-## ■ 4. The Options namespace
+## <a name="options"></a>■ 4. The Options namespace
 
 Commands from this namespace provide generic options that affect the way other commands are processed. You should make use of commands from this namespace before making use of commands from other namespaces.
 
@@ -474,7 +499,7 @@ This command can be used to specify the length of a block. This is an overall se
 **1**: On: Hacks are enabled.  
 {{% /command-arguments %}}
 
-## ■ 5. The Route namespace
+## <a name="route"></a>■ 5. The Route namespace
 
 Commands from this namespace define general properties of the route.
 
@@ -579,7 +604,7 @@ Use this command to associate speed limits to signal aspects. Aspect 0 represent
 ---
 
 {{% command %}}  
-***Route.RunInterval*** *Interval<sub>0</sub>*; *Interval<sub>1</sub>*; ...; *Interval<sub>n-1</sub>*  
+**Route.RunInterval** *Interval<sub>0</sub>*; *Interval<sub>1</sub>*; ...; *Interval<sub>n-1</sub>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -777,7 +802,7 @@ This command allows the route developer to place the initial camera in one of th
 
 <font color=#555555>This command is ignored by openBVE.</font>
 
-## ■ 6. The Train namespace
+## <a name="train"></a>■ 6. The Train namespace
 
 Commands from this namespace define route-train associations. 
 
@@ -905,7 +930,7 @@ This command defines the maximum speed limit the preceding trains may travel at.
 
 <font color=#555555>This command is ignored by openBVE.</font>
 
-## ■ 7. The Structure namespace
+## <a name="structure"></a>■ 7. The Structure namespace
 
 The commands in the Structure namespace define which objects to use in other commands. Generally, commands like Track.Rail, Track.FreeObj and so on create objects referenced by a *StructureIndex*. This *StructureIndex* is specific to that command, so you can define a set of objects specific to Track.Rail, Track.FreeObj and so on.
 
@@ -960,7 +985,7 @@ Additionally, there is the Structure.Pole command, which has a slightly differen
 
 Please note that all objects but the FreeObj are inserted at the beginning of a block and should thus extend from 0 to *BlockLength* (by default 25m) on the z-axis. For further information on usage, see the respective commands from the Track namespace.
 
-## ■ 8. The Texture namespace
+## <a name="texture"></a>■ 8. The Texture namespace
 
 Commands from this namespace define which background images to use and how they are aligned.
 
@@ -1035,7 +1060,7 @@ Ignored if using a dynamic or object based background.
 
 {{% /note %}}
 
-## ■ 9. The Cycle namespace
+## <a name="cycle"></a>■ 9. The Cycle namespace
 
 {{% command %}}  
 **Cycle.Ground(GroundStructureIndex)<font color="gray">.Params</font> GroundStructureIndex<sub>0</sub>; GroundStructureIndex<sub>1</sub>; GroundStructureIndex<sub>2</sub>; ...; GroundStructureIndex<sub>n-1</sub>**  
@@ -1086,4 +1111,96 @@ With Track
 0, .Ground 0  
 {{% /code %}}
 
-## ■ 10. The Signal namespace
+## <a name="signal"></a>■ 10. The Signal namespace
+
+Commands from this namespace define custom signals.
+
+---
+
+{{% command %}}  
+__Signal(__*SignalIndex*__)__<font color="gray">.Load</font> *AnimatedObjectFile*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***SignalIndex***: A non-negative integer representing the signal index.  
+***AnimatedObjectFile***: A reference to an animated object file, relative to the **Object** folder.  
+{{% /command-arguments %}}
+
+Use this command to load signals directly from animated objects. The *SignalIndex* can be later referenced in Track.SigF commands to place the signal.
+
+---
+
+{{% command %}}  
+__Signal(__*SignalIndex*__)__<font color="gray">.Load</font> *SignalFileWithoutExtension*; *GlowFileWithoutExtension*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***SignalIndex***: A non-negative integer representing the signal index.  
+***SignalFileWithoutExtension***: A reference to a B3D/CSV/X object file representing the signal, relative to the **Object** folder, but without the file extension. **Is required to be specified.**  
+***GlowFileWithoutExtension***: An optional reference to a B3D/CSV/X object file representing the distance glow, relative to the **Object** folder, but without the file extension.  
+{{% /command-arguments %}}
+
+Use this command to load signals from a series of individual textures applied onto a common object. openBVE looks for X, CSV and B3D objects in this exact order. Textures are required to have the same name as the signal or glow, plus a non-negative aspect index, plus a file extension for textures. The *SignalIndex* can be later referenced in Track.SigF commands to place the signal.
+
+For the *SignalFileWithoutExtension*, there should be the following files present (example):
+
+_SignalFileWithoutExtension_**.x**  
+_SignalFileWithoutExtension_**<font color="red">0</font>.bmp**  
+_SignalFileWithoutExtension_**<font color="red">1</font>.bmp**  
+_SignalFileWithoutExtension_**<font color="red">2</font>.bmp**  
+_SignalFileWithoutExtension_**<font color="red">n</font>.bmp**
+
+The aspect indices from 0 through *n* represent successively more permissive aspects, where 0 is red. The built-in signals, for example, use the indices 0 (<font color="#C00000">●</font>), 1 (<font color="#FFC000">●●</font>), 2 (<font color="#FFC000">●</font>), 3 (<font color="#00C000">●</font><font color="#FFC000">●</font>), 4 (<font color="#00C000">●</font>) and 5 (<font color="#00C000">●●</font>). You can use as many as required.
+
+All faces in the object will be applied the currently active aspect texture. This means that you cannot use any other texture in the object, but still have to assign texture coordinates appropriately. For the glow object, the above rules also apply. The glow object is usually a rectangle placed clearly in front of the signal, although you can also use different shapes.
+
+The glow textures deserve special attention. All glow textures are pre-processed in the following way:
+
+{{% table %}}
+
+| A                                                       | B                                                       | C                                                       | D                                                       | E                                                       | F                                                       |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| ![illustration_glow_1](/images/illustration_glow_1.png) | ![illustration_glow_2](/images/illustration_glow_2.png) | ![illustration_glow_3](/images/illustration_glow_3.png) | ![illustration_glow_4](/images/illustration_glow_4.png) | ![illustration_glow_5](/images/illustration_glow_5.png) | ![illustration_glow_6](/images/illustration_glow_6.png) |
+
+{{% /table %}}
+
+The texture you start with should have a sharp shape, usually oval. The shape should be fully saturated in the core and blend into pure white at its outer rim. The surroundings of the shape can be either pure black (A) or pure white (B).
+
+When openBVE loads the glow texture, it will replace all purely black pixels with purely white pixels, thus arriving at (B). From there, the image is inverted (C), then hue-shifted by 180 degrees (D). Compared to (B), this has the overall effect of inverting the lightness of the image, i.e. fully saturated pixels will be left unchanged (e.g. the core), while bright pixels (such as the outer rim of the shape) will become dark, and vice versa. Then, the image is gamma-corrected to further darken the dark parts (E), and finally, the image is blurred slightly (F).
+
+The resulting texture is always additively blended. This means that instead of directly drawing the texture onto the screen, the pixels of the texture are added to the screen pixels. Here, adding black (0) does not change the screen pixels, while adding a fully satured color channel (1) will result in a fully satured color channel, e.g. adding white produces white. Keep in mind that when designing the textures, you will have to follow the inverse rules, e.g. design the image as depicted in (A) or (B), while having in mind how it will be processed afterward.
+
+## <a name="track"></a>■ 11. The Track namespace
+
+Commands from this namespace define the track layout. Commands from this namespace should appear after commands from any of the other namespaces, and they usually form the largest part of the route file.
+
+{{% notice %}}
+
+#### Use of track positions
+
+All commands from the Track namespace need to be associated to track positions. Once a track position has been defined, all subsequent commands are associated to this track position until a new track position is defined. If you do not explicitly state a track position before the first command of the Track namespace is used, 0 will be assumed. While you do not need to use track positions in ascending order, series of commands which are associated the same track position will be sorted into ascending order once the file is loaded. While track positions can be any non-negative floating-point number, many commands in the Track namespace are only to be applied at the beginning of a block, which is 25m by default. For the default situation, this means that some commands are only to be used at track positions 0, 25, 50, 75, 100, 125 and so on. All commands for which this restriction applies are marked as such.
+
+{{% /notice %}}
+
+##### <a name="track_rails"></a>● 11.1. Rails
+
+---
+
+{{% command %}}  
+**Track.RailStart** *RailIndex*; *X*; *Y*; *RailType*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.  
+***X***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***Y***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command. 
+{{% /command-arguments %}}
+
+This command starts a new rail represented by the index *RailIndex*. Upon the point where this command is used, a rail of the same *RailIndex* must either not have been used so far in the route, or must have been ended via a Track.RailEnd command. If a rail of the same *RailIndex* was already used in the route, the default values of *X*, *Y* and *RailType* are the values last used by that rail, otherwise 0. If the rail is to be updated, use the Track.Rail command. If it is to be ended, use the Track.RailEnd command. You can end a rail of a given *RailIndex* and start a new rail of the same *RailIndex* at the same track position provided that the old rail is first ended and the new rail started afterward. For every block, a structure, determined by *RailType*, is automatically placed.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}

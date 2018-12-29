@@ -4,7 +4,34 @@ linktitle: "The B3D object"
 weight: 1
 ---
 
-## ■ 1. Overview
+## ■ Contents
+
+{{% contents %}}
+
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Available commands](#commands)
+  - [[MeshBuilder]](#createmeshbuilder)
+  - [Vertex](#addvertex)
+  - [Face](#addface)
+  - [Face2](#addface2)
+  - [Cube](#cube)
+  - [Cylinder](#cylinder)
+  - [Translate, TranslateAll](#translate)
+  - [Scale, ScaleAll](#scale)
+  - [Rotate, RotateAll](#rotate)
+  - [Shear, ShearAll](#shear)
+  - [Mirror, MirrorAll](#mirror)
+  - [Color](#setcolor)
+  - [EmissiveColor](#setemissivecolor)
+  - [BlendMode](#setblendmode)
+  - [Load](#loadtexture)
+  - [Transparent](#setdecaltransparentcolor)
+  - [Coordinates](#settexturecoordinates)
+
+{{% /contents %}}
+
+## <a name="overview"></a>■ 1. Overview
 
 A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
 
@@ -12,7 +39,7 @@ The file is a plain text file encoded in any arbitrary [encoding](/information/e
 
 ➟ [See also the quick reference for the B3D format...](/objects/native/b3d_quick.html)
 
-## ■ 2. Syntax
+## <a name="syntax"></a>■ 2. Syntax
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
@@ -26,7 +53,9 @@ Arguments may also be omitted by leaving the text at each of the *Argument<sub>i
 
 You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## ■ 3. Available commands
+## <a name="commands"></a>■ 3. Available commands
+
+<a name="createmeshbuilder"></a>
 
 {{% command %}}
 **[MeshBuilder]**
@@ -35,6 +64,8 @@ You can use comments anywhere at the end of a line. A comment is started by a se
 This command marks the beginning of a new section of faces. It must precede any of the following commands. There might be as many [MeshBuilder] sections as desired in the object file. All subsequent commands will then relate to the last [MeshBuilder] section opened.
 
 ----------
+
+<a name="addvertex"></a>
 
 {{% command %}}
 **Vertex** *vX*, *vY*, *vZ*, *nX*, *nY*, *nZ*
@@ -57,6 +88,8 @@ The normal is the direction perpendicular to the face at a particular point. If 
 
 ----------
 
+<a name="addface"></a>
+
 {{% command %}}
 **Face** *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>max</sub>*
 {{% /command %}}
@@ -69,6 +102,8 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 
 ----------
 
+<a name="addface2"></a>
+
 {{% command %}}
 **Face2** *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>max</sub>*
 {{% /command %}}
@@ -80,6 +115,8 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will also be visible, however, lighting on the back face might be the same as on the front face. Only convex polygons are supported.
 
 ----------
+
+<a name="cube"></a>
 
 {{% command %}}
 **Cube** *HalfWidth*, *HalfHeight*, *HalfDepth*
@@ -102,6 +139,8 @@ The Cube command is equivalent to a series of Vertex and Face commands, which yo
 {{% /notice %}}
 
 ----------
+
+<a name="cylinder"></a>
 
 {{% command %}}
 **Cylinder** *n*, *UpperRadius*, *LowerRadius*, *Height*
@@ -136,6 +175,8 @@ The Cylinder command is equivalent to a series of Vertex and Face commands, whic
 
 ----------
 
+<a name="translate"></a>
+
 {{% command %}}
 **Translate** *X*, *Y*, *Z*  
 **TranslateAll** *X*, *Y*, *Z*
@@ -150,6 +191,8 @@ The Cylinder command is equivalent to a series of Vertex and Face commands, whic
 The **Translate** command moves all vertices that have been created so far in the [MeshBuilder] section via the Vertex, Cube or Cylinder commands. Subsequent vertices are not affected. You can use as many Translate commands as desired in a [MeshBuilder] section. The **TranslateAll** command not only affects the vertices generated in the current [MeshBuilder] section, but also those created in previous [MeshBuilder] sections. This is useful to insert at the end of the file in order to translate the whole object.
 
 ----------
+
+<a name="scale"></a>
 
 {{% command %}}
 **Scale** *X*, *Y*, *Z*  
@@ -166,6 +209,8 @@ The **Scale** command scales all vertices that have been created so far in the [
 
 ----------
 
+<a name="rotate"></a>
+
 {{% command %}}
 **Rotate** *X*, *Y*, *Z*, *Angle*  
 **RotateAll** *X*, *Y*, *Z*, *Angle*
@@ -181,6 +226,8 @@ The **Scale** command scales all vertices that have been created so far in the [
 The **Rotate** command rotates all vertices that have been created so far in the current [MeshBuilder] section via the Vertex, Cube or Cylinder commands. Subsequent vertices are not affected. The axis of rotation is specified via the *X*, *Y* and *Z* values. Rotation will occur in the plane perpendicular to that direction. A zero vector for this axis is treated as (1,0,0). All other directions are normalized. You can use as many Rotate commands as desired in a [MeshBuilder] section. The **RotateAll** command not only affects the vertices generated in the current [MeshBuilder] section, but also those created in previous [MeshBuilder] sections. This is useful to insert at the end of the file in order to rotate the whole object.
 
 ----------
+
+<a name="shear"></a>
 
 {{% command %}}
 **Shear** *dX*, *dY*, *dZ*, *sX*, *sY*, *sZ*, *Ratio*  
@@ -205,6 +252,8 @@ The shear mapping is performed around the origin. Loosely speaking, the object i
 
 ----------
 
+<a name="mirror"></a>
+
 {{% command %}}
 **Mirror**, *X*, *Y*, *Z*  
 **MirrorAll**, *X*, *Y*, *Z*
@@ -219,6 +268,8 @@ The shear mapping is performed around the origin. Loosely speaking, the object i
 The **Mirror** command mirrors all vertices that have been created so far in the current CreateMeshBuilder section via the AddVertex, Cube or Cylinder commands. Subsequent vertices are not affected. The direction(s) to mirror are specified via the *X*, *Y* and *Z* values. You can use as many Mirror commands as desired in a CreateMeshBuilder section.<br><br> The **MirrorAll** command not only affects the vertices generated in the current CreateMeshBuilder section, but also those created in previous CreateMeshBuilder sections. This is useful to insert at the end of the file in order to mirror the whole object.
 
 ----------
+
+<a name="setcolor"></a>
 
 {{% command %}}
 **Color** *Red*, *Green*, *Blue*, *Alpha*
@@ -235,6 +286,8 @@ This command sets the color for all faces that were already created in the curre
 
 ----------
 
+<a name="setemissivecolor"></a>
+
 {{% command %}}
 **EmissiveColor** *Red*, *Green*, *Blue*
 {{% /command %}}
@@ -248,6 +301,8 @@ This command sets the color for all faces that were already created in the curre
 This command sets the emissive color for all faces that were already created in the current [MeshBuilder] section. The difference between the Color command and the EmissiveColor command is that the Color command is affected by lighting, while the EmissiveColor command is not. Thus, the EmissiveColor command should be used for faces which would emit light themselves, including signals, lamps, windows and the like. The actual color contribution to the faces will be the sum of the light-affected color data and the static emissive color data.
 
 ----------
+
+<a name="setblendmode"></a>
 
 {{% command %}}
 **BlendMode** *BlendMode*, *GlowHalfDistance*, *GlowAttenuationMode*
@@ -285,6 +340,8 @@ In openBVE 2, only additive glow will be supported and the *GlowAttenuationMode*
 
 ----------
 
+<a name="loadtexture"></a>
+
 {{% command %}}
 **Load** *DaytimeTexture*, *NighttimeTexture*
 {{% /command %}}
@@ -300,6 +357,8 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 
 ----------
 
+<a name="setdecaltransparentcolor"></a>
+
 {{% command %}}
 **Transparent** *Red*, *Green*, *Blue*
 {{% /command %}}
@@ -313,6 +372,8 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 This command sets the color used for screendoor transparency for all faces that were already created. The texture loaded via the Load command will become transparent for all pixels which match exactly with the color specified via the *Red*, *Green* and *Blue* parameters. The use of screendoor transparency is much more efficient than using a full alpha channel, so prefer using a texture without an alpha channel and use this command instead to make parts of the texture transparent. You need to specify texture coordinates via the Coordinate command in order for the texture to correctly appear on the faces.
 
 ----------
+
+<a name="settexturecoordinates"></a>
 
 {{% command %}}
 **Coordinates** *VertexIndex*, *X*, *Y*

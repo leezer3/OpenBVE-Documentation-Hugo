@@ -4,7 +4,23 @@ linktitle: "The ANIMATED object"
 weight: 3
 ---
 
-## ■ 1. Overview
+## ■ Contents
+
+{{% contents %}}
+
+- [1. Overview](#overview)
+- [2. Sections](#description)
+- [3. List of infix notation operators](#operators)
+- [4. List of functions](#functions)
+- [5. List of variables](#variables)
+- [6. Performance](#performance)
+- [7. Tips](#tips)
+- [8. Example functions](#examples)
+- [9. Formal Grammar](#grammar)
+
+{{% /contents %}}
+
+## <a name="overview"></a>■ 1. Overview
 
 The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
 
@@ -23,7 +39,7 @@ Animation is performed via the following primitives:
 
 The file is a plain text file encoded in any arbitrary [encoding](/information/encodings.html), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model](/information/numberformats.html) for numbers is **Strict**. The file name is arbitrary, but must have the extension **.animated**. The file is interpreted on a per-line basis, from top to bottom.
 
-## ■ 2. Sections
+## <a name="description"></a>■ 2. Sections
 
 ##### ● The [Include] section
 
@@ -175,7 +191,7 @@ Please note that if the result of any mathematical operation or function would b
 
 {{% /warning-nontitle %}}
 
-## ■ 3. List of infix notation operators
+## <a name="operators"></a>■ 3. List of infix notation operators
 
 ##### ● Basic arithmetics
 
@@ -251,7 +267,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% /warning-nontitle %}}
 
-## ■ 4. List of functions
+## <a name="functions"></a>■ 4. List of functions
 
 ##### ● Basic arithmetics
 
@@ -310,7 +326,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% /table %}}
 
-## ■ 5. List of variables
+## <a name="variables"></a>■ 5. List of variables
 
 ##### ● Primitives
 
@@ -478,7 +494,7 @@ The section context is defined when the object is placed using Track.SigF.
 
 {{% /table %}}
 
-## ■ 6. Performance
+## <a name="performance"></a>■ 6. Performance
 
 There are certain kinds of animation which are less expensive, and others which are more. Also, the underlying object plays a significant role. If you want to design your animated objects with as best performance as possible **for future releases of openBVE**, take a look at the following performance table:
 
@@ -501,7 +517,7 @@ Performance is generally better if the result of a function only infrequently ch
 
 Generally, you should avoid using animation with partially transparent faces and stick to opaque faces when possible. Also, try to avoid texture shifts, and consider using state changes or translation where possible.
 
-## ■ 7. Tips
+## <a name="tips"></a>■ 7. Tips
 
 - Generally speaking, try to keep the complexity of functions as low as possible. This is not the most critical aspect, though, as most of the performance impact will result from applying the results of a function, e.g. rotating the object, and not evaluating the function.
 - Use the RefreshRate parameter when possible to optimize performance. Usually, you can use this parameter when you don't need a smooth animation, or when you deliberately want the functions to only update in intervals.
@@ -511,7 +527,7 @@ Generally, you should avoid using animation with partially transparent faces and
 - Certain functions, e.g. Exp, Sin, Cos, etc., are relatively expensive. Use them only if absolutely necessary for an effect. Don't include unnecessary operations. For example, the result of StateFunction is automatically rounded toward the nearest integer, so don't apply an additional explicit Round.
 - When working with car objects, bear in mind that some variables have an optional car index. You should use this index if you want to query the state of a particular car (that is, not necessarily the one the object is attached to). If, however, you just want to query the value of the particular car the object is attached to, use the variable without the index. For scenery objects, you should not generally use car indices as you can't be sure how many cars the queried train has.
 
-## ■ 8. Example functions
+## <a name="examples"></a>■ 8. Example functions
 
 ##### ● Blinking light
 
@@ -557,7 +573,7 @@ States = RED_OBJECT, ..., GREEN_OBJECT
 StateFunction = if[trackDistance>DISTANCE | section==0, 0, if[value<0.5, value + 0.5*value/DELAY, section]]  
 {{% /code %}}
 
-## ■ 9. Formal Grammar
+## <a name="grammar"></a>■ 9. Formal Grammar
 
 The formal grammar for the language may not match up perfectly with the implimentation included in OpenBVE. An example is a*-b which is valid under the grammar but the parser rejects it.
 
