@@ -80,3 +80,10 @@ If *r2*>0, a lower cap is then added (B3D style):
 Face **<font color="red">2\*n-2</font>**, **<font color="fuchsia">2\*n-4</font>**, **<font color="blue">2\*n-6</font>**, ..., **<font color="green">4</font>**, **<font color=#E0A000>2</font>**, **<font color="red">0</font>**  
 {{% /code %}}
 
+If *r1*>0, an upper cap is then added (B3D style):
+
+{{% code %}}  
+Face **<font color="red">1</font>**, **<font color=#E0A000>3</font>**, **<font color="green">5</font>**, ..., **<font color="blue">2\*n-5</font>**, **<font color="fuchsia">2\*n-3</font>**, **<font color="red">2\*n-1</font>**  
+{{% /code %}}
+
+If you want to texture the cylinder, you need to add appropriate Coordinate/SetTextureCoordinate commands manually.

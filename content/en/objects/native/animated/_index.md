@@ -515,106 +515,71 @@ Generally, you should avoid using animation with partially transparent faces and
 
 ##### ● Blinking light
 
-{{% code "*Template for a blinking light:*" %}}
-
-```
-States = OBJECT0, OBJECT1
-StateFunction = value == 0
-RefreshRate = SECONDS
-```
-
+{{% code "*Template for a blinking light:*" %}}  
+States = OBJECT0, OBJECT1  
+StateFunction = value == 0  
+RefreshRate = SECONDS  
 {{% /code %}}
 
 ##### ● Rotating wheel
 
-{{% code "*Template for the code used in an exterior car object:*" %}}
-
-```
-States = OBJECT
-RotateXFunction = value + delta * speedometer / RADIUS_OF_THE_WHEEL
-```
-
+{{% code "*Template for the code used in an exterior car object:*" %}}  
+States = OBJECT  
+RotateXFunction = value + delta * speedometer / RADIUS_OF_THE_WHEEL  
 {{% /code %}}
 
 ##### ● Cycling through a list of objects
 
-{{% code "*Template for objects that are to be cycled through:*"%}}
-
-```
-States = OBJECT0, OBJECT1, OBJECT2, ...
-StateFunction = mod[value + 1, AMOUNT_OF_OBJECTS]
-RefreshRate = TIME_PER_OBJECT
-```
-
+{{% code "*Template for objects that are to be cycled through:*"%}}  
+States = OBJECT0, OBJECT1, OBJECT2, ...  
+StateFunction = mod[value + 1, AMOUNT_OF_OBJECTS]  
+RefreshRate = TIME_PER_OBJECT  
 {{% /code %}}
 
 ##### ● Signal (3-aspect) for Track.Section(0; 2; 4)
 
-{{% code %}}
-
-```
-States = RED_OBJECT, YELLOW_OBJECT, GREEN_OBJECT
-StateFunction = section / 2
-```
-
+{{% code %}}  
+States = RED_OBJECT, YELLOW_OBJECT, GREEN_OBJECT  
+StateFunction = section / 2  
 {{% /code %}}
 
 ##### ● Employing an approach-controlled delay in signals
 
 If you want to create a signal that keeps being red until the train approaches it to some distance, then counts down a timer before it changes aspect to green, please refer to [this post](http://openbve.freeforums.org/delay-in-approach-controlled-signals-t1195.html#p5378) on the forum for a detailed explanation. Once you understand the concepts, you can use this code template:
 
-{{% code "*Template for an approach-controlled delay in a signal with two aspects:*" %}}
-
-```
-States = RED_OBJECT, GREEN_OBJECT
-StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta/DELAY, 1]]
-```
-
+{{% code "*Template for an approach-controlled delay in a signal with two aspects:*" %}}  
+States = RED_OBJECT, GREEN_OBJECT  
+StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta/DELAY, 1]]  
 {{% /code %}}
 
-{{% code "*Template for an approach-controlled delay in a signal with any number of aspects:*" %}}
-
-```
-States = RED_OBJECT, ..., GREEN_OBJECT
-StateFunction = if[trackDistance>DISTANCE | section==0, 0, if[value<0.5, value + 0.5*value/DELAY, section]]
-```
-
+{{% code "*Template for an approach-controlled delay in a signal with any number of aspects:*" %}}  
+States = RED_OBJECT, ..., GREEN_OBJECT  
+StateFunction = if[trackDistance>DISTANCE | section==0, 0, if[value<0.5, value + 0.5*value/DELAY, section]]  
 {{% /code %}}
 
 ## ■ 9. Formal Grammar
 
 The formal grammar for the language may not match up perfectly with the implimentation included in OpenBVE. An example is a*-b which is valid under the grammar but the parser rejects it.
 
-{{% code %}}
-
-```
-<expression>        ::= <xor_expression> "" <expression>     | <xor_expression>
-<xor_expression>    ::= <or_expression>  "^" <xor_expression> | <or_expression>
-<or_expression>     ::= <not_expression> "|" <or_expression>  | <not_expression>
-
-<not_expression>    ::= "!" <equal_expression> | <equal_expression>
-
-<equal_expression>  ::= <plus_expression> "==" <equal_expression> | <plus_expression> "!=" <equal_expression> |
-                        <plus_expression> ">"  <equal_expression> | <plus_expression> "<"  <equal_expression> | 
-                        <plus_expression> "<=" <equal_expression> | <plus_expression> "<=" <equal_expression> | <plus_expression>
-
-<plus_expression>   ::= <times_expression> "+" <plus_expression>  | <times_expression> "-" <plus_expression> | <times_expression>
-
-<times_expression>  ::= <divide_expression> "*" <times_expression>  | <divide_expression>
-<divide_expression> ::= <minus_expression>  "/" <divide_expression> | <minus_expression>
-
-<minus_expression>  ::= "-" <function_call> | <function_call>
-<function_call>     ::= <name> "[" <expression> ("," <expression>)* "]" | <term>
-
-<term>   ::= "(" <expression> ")" | <name> | <number>
-<number> ::= <digit>*
-<name>   ::= <letter> (<letter> | <digit>)*
-
-<letter> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" |
-             "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" |
-             "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" |
-             "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
-<digit>  ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
-```
-
+{{% code %}}  
+&lt;expression>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::=  &lt;xor_expression> "" &lt;expression>     | &lt;xor_expression>  
+&lt;xor_expression>&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;or_expression>  "^" &lt;xor_expression> | &lt;or_expression>  
+&lt;or_expression>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;not_expression> "|" &lt;or_expression>  | &lt;not_expression>   
+<br/>&lt;not_expression>&nbsp;&nbsp;&nbsp;&nbsp;::= "!" &lt;equal_expression> | &lt;equal_expression>  
+<br/>&lt;equal_expression>&nbsp;&nbsp;::= &lt;plus_expression> "==" &lt;equal_expression> | &lt;plus_expression> "!=" &lt;equal_expression> |  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plus_expression> ">"  &nbsp;&lt;equal_expression> | &lt;plus_expression> "&lt;"  &nbsp;&lt;equal_expression> |  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plus_expression> "&lt;=" &lt;equal_expression> | &lt;plus_expression> "&lt;=" &lt;equal_expression> | &lt;plus_expression>  
+<br/>&lt;plus_expression>&nbsp;&nbsp;&nbsp;::= &lt;times_expression> "+" &lt;plus_expression> &nbsp;| &lt;times_expression> "-" &lt;plus_expression> &nbsp;| &lt;times_expression>  
+<br/>&lt;times_expression>&nbsp;&nbsp;::= &lt;divide_expression> "\*" &lt;times_expression>  | &lt;divide_expression>  
+&lt;divide_expression> ::= &lt;minus_expression>  "/" &lt;divide_expression> | &lt;minus_expression>  
+<br/>&lt;minus_expression>&nbsp;&nbsp;::= "-" &lt;function_call> | &lt;function_call>  
+&lt;function_call>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;name> "[" &lt;expression> ("," &lt;expression>)* "]" | &lt;term>  
+<br/>&lt;term>&nbsp;&nbsp;&nbsp;::= "(" &lt;expression> ")" | &lt;name> | &lt;number>  
+&lt;number> ::= &lt;digit>*  
+&lt;name>&nbsp;&nbsp;&nbsp;::= &lt;letter> (&lt;letter> | &lt;digit>)*  
+<br/>&lt;letter> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" |  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" |  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" |  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"  
+&lt;digit>&nbsp;&nbsp;::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"  
 {{% /code %}}

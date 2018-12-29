@@ -91,25 +91,17 @@ With *Prefix*
 
 All subsequent commands that start with a period (U+002E) are prepended by *Prefix*. For example:
 
-{{% code %}}
-
-```
-With Route
-.Gauge 1435
-.Timetable 1157_M
-```
-
+{{% code %}}  
+With Route  
+.Gauge 1435  
+.Timetable 1157_M  
 {{% /code %}}
 
 Is equivalent to:
 
-{{% code %}}
-
-```
-Route.Gauge 1435
-Route.Timetable 1157_M
-```
-
+{{% code %}}  
+Route.Gauge 1435  
+Route.Timetable 1157_M  
 {{% /code %}}
 
 ## ■ 3. Preprocessing
@@ -188,22 +180,14 @@ $Rnd(*Start*; *End*)
 
 This directive is replaced by a random integer in the range from *Start* to *End*. It is useful to add randomness to a route.
 
-{{% code "*Example for the use of the $Rnd directive:*" %}}
-
-```
-10$Rnd(3;5)0, Track.FreeObj 0; 1
-```
-
+{{% code "*Example for the use of the $Rnd directive:*" %}}  
+10$Rnd(3;5)0, Track.FreeObj 0; 1  
 {{% /code %}}
 
-{{% code "*Possible outcome from the previous example is exactly __one__ of these lines:*" %}}
-
-```
-1030, Track.FreeObj 0; 1
-1040, Track.FreeObj 0; 1
-1050, Track.FreeObj 0; 1
-```
-
+{{% code "*Possible outcome from the previous example is exactly __one__ of these lines:*" %}}  
+1030, Track.FreeObj 0; 1  
+1040, Track.FreeObj 0; 1  
+1050, Track.FreeObj 0; 1  
 {{% /code %}}
 
 ---
@@ -239,15 +223,11 @@ $Sub(*Index*)
 
 This directive is replaced by the content of the variable *Index*. The variable must have been assigned prior to retrieving it.
 
-{{% code "*Example for the use of the $Sub(Index)=Value and $Sub(Index) directives:*" %}}
-
-```
-$Sub(0) = $Rnd(3; 5)
-1000, Track.FreeObj $Sub(0); 47
-1020, Track.FreeObj $Sub(0); 47
-1040, Track.FreeObj $Sub(0); 47
-```
-
+{{% code "*Example for the use of the $Sub(Index)=Value and $Sub(Index) directives:*" %}}  
+$Sub(0) = $Rnd(3; 5)  
+1000, Track.FreeObj $Sub(0); 47  
+1020, Track.FreeObj $Sub(0); 47  
+1040, Track.FreeObj $Sub(0); 47  
 {{% /code %}}
 
 In the previous example, all three Track.FreeObj commands are guaranteed to use the same randomly-generated value in order to place a free object on the same rail. If you inserted the $Rnd(3;5) directive in each of the three lines individually, the objects could be placed on different rails each time.
@@ -280,29 +260,21 @@ $EndIf()
 
 The $EndIf directive marks the end of an $If block that was started previously.
 
-{{% code "*Example of $If, $Else and $EndIf*" %}}
-
-```
-$Sub(1) = 0
-With Track
-$If($Sub(1))
-    1020, .FreeObj 0; 1
-    1040, .FreeObj 0; 2
-$Else()
-    1030, .FreeObj 0; 3
-$EndIf()
-```
-
+{{% code "*Example of $If, $Else and $EndIf*" %}}  
+$Sub(1) = 0  
+With Track  
+$If($Sub(1))  
+&nbsp;&nbsp;&nbsp;&nbsp;1020, .FreeObj 0; 1  
+&nbsp;&nbsp;&nbsp;&nbsp;1040, .FreeObj 0; 2  
+$Else()  
+&nbsp;&nbsp;&nbsp;&nbsp;1030, .FreeObj 0; 3  
+$EndIf()  
 {{% /code %}}
 
-{{% code "*Another example of $If, $Else and $EndIf*" %}}
-
-```
-With Track
-1050
-$If($Rnd(0;1)), .FreeObj 0; 4, $Else(), .FreeObj 0; 5, $EndIf()
-```
-
+{{% code "*Another example of $If, $Else and $EndIf*" %}}  
+With Track  
+1050  
+$If($Rnd(0;1)), .FreeObj 0; 4, $Else(), .FreeObj 0; 5, $EndIf()  
 {{% /code %}}
 
 It is possible to nest $If blocks. If you place $If/$Else/$EndIf on separate lines, you may want to employ indentation to improve readability of the block structure (as in the first example).
@@ -311,37 +283,25 @@ It is possible to nest $If blocks. If you place $If/$Else/$EndIf on separate lin
 
 **Finally**, after the $-directives have been processed, all expressions in the route file are sorted according to their associated track positions.
 
-{{% code "*Example of a partial route file:*" %}}
-
-```
-1000, Track.FreeObj 0; 23
-1050, Track.RailType 0; 1
-10$Rnd(3;7)0, Track.Rail 1; 4
-Track.FreeObj 1; 42
-```
-
+{{% code "*Example of a partial route file:*" %}}  
+1000, Track.FreeObj 0; 23  
+1050, Track.RailType 0; 1  
+10$Rnd(3;7)0,  Track.Rail 1; 4  
+Track.FreeObj 1; 42  
 {{% /code %}}
 
-{{% code "*Preprocessing the $Rnd directive (assuming 3 is produced):*" %}}
-
-```
-1000, Track.FreeObj 0; 23
-1050, Track.RailType 0; 1
-1030, Track.Rail 1; 4
-Track.FreeObj 1; 42
-```
-
+{{% code "*Preprocessing the $Rnd directive (assuming 3 is produced):*" %}}  
+1000, Track.FreeObj 0; 23  
+1050, Track.RailType 0; 1  
+1030, Track.Rail 1; 4  
+Track.FreeObj 1; 42  
 {{% /code %}}
 
-{{% code "*Sorting by associated track positions:*" %}}
-
-```
-1000, Track.FreeObj 0; 23
-1030, Track.Rail 1; 4
-Track.FreeObj 1; 42
-1050, Track.RailType 0; 1
-```
-
+{{% code "*Sorting by associated track positions:*" %}}  
+1000, Track.FreeObj 0; 23  
+1030, Track.Rail 1; 4  
+Track.FreeObj 1; 42  
+1050, Track.RailType 0; 1  
 {{% /code %}}
 
 ## ■ 4. The Options namespace
@@ -775,26 +735,20 @@ This command defines the initial light direction for track position 0. This is t
 
 ![illustration_light_direction](/images/illustration_light_direction.png)
 
-{{% function "*Converting a spherical direction (theta,phi) into a cartesian direction (x,y,z):*" %}}
-
+{{% function "*Converting a spherical direction (theta,phi) into a cartesian direction (x,y,z):*" %}}  
 x = cos(theta) * sin(phi)  
 y = -sin(theta)  
-z = cos(theta) * cos(phi)
-
+z = cos(theta) * cos(phi)  
 {{% /function %}}
 
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²≠1:*" %}}
-
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²≠1:*" %}}  
 theta = -arctan(y/sqrt(x<sup>2</sup>+z<sup>2</sup>))  
-phi = arctan(z,x)
-
+phi = arctan(z,x)  
 {{% /function %}}
 
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²=1:*" %}}
-
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²=1:*" %}}  
 theta = -y * pi/2  
-phi = 0
-
+phi = 0  
 {{% /function %}}
 
 In the formulas above, [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) represents the cosine, [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) the sine, [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) the inverse tangent, [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) the two-argument inverse tangent and [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) the square root. The formulas can be used to convert between spherical and cartesian coordinates if working with either one seems more intuitive than working with the other one. The formulas also serve as the official documentation on how the light direction is mathematically defined (using radians for the trigonometric functions).
@@ -993,3 +947,143 @@ Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, 
 ➟ [More information about forms, roofs and cracks...](/routes/formroofcrack.html)
 
 Additionally, there is the Structure.Pole command, which has a slightly different syntax:
+
+{{% command %}}  
+**Structure.Pole(NumberOfAdditionalRails; PoleStructureIndex)**<font color="gray">.Load</font> *FileName*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***NumberOfAdditionalRails***: An non-negative integer representing the number of additional rails covered by the pole. 0 creates a pole for one rail, 1 for two rails, etc.  
+***PoleStructureIndex***: A non-negative integer representing the pole structure index.  
+***FileName***: The object file to load, relative to the **Object** folder.  
+{{% /command-arguments %}}
+
+Please note that all objects but the FreeObj are inserted at the beginning of a block and should thus extend from 0 to *BlockLength* (by default 25m) on the z-axis. For further information on usage, see the respective commands from the Track namespace.
+
+## ■ 8. The Texture namespace
+
+Commands from this namespace define which background images to use and how they are aligned.
+
+![illustration_background](/images/illustration_background.png)
+
+The background image is displayed as a cylindric wall around the camera whose start (viewed from above) is 60 degrees to the left of the initial forward direction (at the 10 o'clock position). From there, the background image wraps clock-wise around the cylinder with a repetition count specified via Texture.Background(*BackgroundTextureIndex*).X, which by default creates 6 repetitions in a full circle.
+
+The upper 3/4 of the image is displayed above the horizon, while the lower 1/4 is displayed below the horizon. Via Texture.Background(*BackgroundTextureIndex*).Aspect, you can choose whether to have a fixed cylinder height or to preserve the aspect ratio of the texture. If the image should have a fixed height, the cylinder has a height of 1/2 its radius, which corresponds to about 20 degree inclination to the top of the image, and about -7 degrees to the bottom of the image. If the aspect ratio of the image is preserved, this takes not only the width and height of the image into account, but also the repetition count.
+
+Regardless of the repetition count you chose, you should make sure that the left and right edges of the textures fit seamlessly together. Please also take into account that top and bottom caps are created which sample from the top and bottom 10% of the image. You should avoid mountain peaks and similar extremes in the top 10% of the image in order for such extremes to not leak into the top cap.
+
+The image loaded into Texture.Background(0) is displayed at the beginning of the route, unless a Track.Back command at the beginning of the route requests a different image.
+
+As an alternative **Dynamic or Object** based backgrounds may be used. The implementation of these is described upon this page:
+
+[Dynamic & Object Based Backgrounds](/routes/xml/dynamicbackground.html)
+
+---
+
+{{% command %}}  
+**Texture.Background(BackgroundTextureIndex)**<font color="gray">.Load</font> *FileName*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***FileName***: The texture file to load, relative to the **Object** folder.  
+{{% /command-arguments %}}
+
+This command loads a background image to be later used by Track.Back.
+
+{{% note %}}
+
+If a dynamic or object based background is to be used, this must instead point to the appropriate XML file.
+
+{{% /note%}}
+
+---
+
+{{% command %}}  
+**Texture.Background(BackgroundTextureIndex).X** *RepetitionCount*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RepetitionCount***: The number of times the background image is repeated in a full circle. The default value is 6.  
+{{% /command-arguments %}}
+
+{{% note %}}
+
+Ignored if using a dynamic or object based background.
+
+{{% /note %}}
+
+---
+
+{{% command %}}  
+**Texture.Background(BackgroundTextureIndex).Aspect** *Mode*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Mode***: The mode of aspect ratio handling to use. The default value is 0 (fixed).  
+{{% /command-arguments %}}
+
+▸ Options for *Mode*:
+
+{{% command-arguments %}}  
+**0**: Fixed: Use a fixed height for the cylinder.  
+**1**: Aspect: Preserve the aspect ratio of the image.  
+{{% /command-arguments %}}
+
+{{% note %}}
+
+Ignored if using a dynamic or object based background.
+
+{{% /note %}}
+
+## ■ 9. The Cycle namespace
+
+{{% command %}}  
+**Cycle.Ground(GroundStructureIndex)<font color="gray">.Params</font> GroundStructureIndex<sub>0</sub>; GroundStructureIndex<sub>1</sub>; GroundStructureIndex<sub>2</sub>; ...; GroundStructureIndex<sub>n-1</sub>**  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***GroundStructureIndex***: A non-negative integer indicating the ground structure index for which a cycle is to be defined.  
+***GroundStructureIndex<sub>i</sub>***: A non-negative integer indicating a ground structure that has been previously loaded via Structure.Ground.  
+{{% /command-arguments %}}
+
+When usually using Track.Ground(*GroundStructureIndex*), the same ground structure object will be repeatedly placed in every block. Via Cycle.Ground, you can override this behavior and automatically cycle through a series of different objects when using Track.Ground(*GroundStructureIndex*). The cycle repeats indefinitely, where *GroundStructureIndex0* starts at track position 0. Technically, the *i* in *GroundStructureIndex<sub>i</sub>* chosen for a particular track position *p* is `Mod[p / BlockLength, n]`.
+
+{{% command %}}  
+**Cycle.Rail(RailStructureIndex)<font color="gray">.Params</font> RailStructureIndex<sub>0</sub>; RailStructureIndex<sub>1</sub>; RailStructureIndex<sub>2</sub>; ...; RailStructureIndex<sub>n-1</sub>**  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailStructureIndex***: A non-negative integer indicating the rail structure index for which a cycle is to be defined.  
+***RailStructureIndex<sub>i</sub>***: A non-negative integer indicating a rail structure that has been previously loaded via Structure.Rail.  
+{{% /command-arguments %}}
+
+Consider the following definition:
+
+{{% code %}}  
+With Structure  
+.Ground(0)  grass.csv  
+.Ground(1) river.csv  
+.Ground(2) asphalt.csv  
+{{% /code %}}
+
+The following two codes will produce the same output:
+
+{{% code %}}  
+With Track  
+0, .Ground 0  
+25, .Ground 1  
+50, .Ground 2  
+75, .Ground 0  
+100, .Ground 1  
+125, .Ground 2  
+; and so on...  
+{{% /code %}}
+
+{{% code "&nbsp;" %}}  
+With Cycle  
+.Ground(0) 0; 1; 2  
+With Track  
+0, .Ground 0  
+{{% /code %}}
+
+## ■ 10. The Signal namespace

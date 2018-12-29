@@ -12,7 +12,7 @@
        <td width="16" valign="top">ƒ</td>
        <td bgcolor="#FFD8C0" style="border: 1px dotted;">
          <font style="font-family: monospace;">
-         {{ .Inner }}
+         {{ replace .Inner "<p>" "<p style='display:inline;'>" | markdownify }}
          </font>
        </td>
     </tr>
