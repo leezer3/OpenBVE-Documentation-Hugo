@@ -2,7 +2,7 @@
 title: "White Spaces"
 weight: 2
 ---
-<font color="Gray" size="-1">This page describes what white spaces are.</font> 
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="Gray" size="-1">This page describes what white spaces are.</font> 
 
 White spaces are characters which leave an invisible space between characters. The various file formats usually ignore white spaces to parts when parsing an expression.
 
