@@ -1,14 +1,10 @@
-{{ if .IsTranslated }}
 <div id="language-menu">
   <ul class="language-selector">
-    <li>
-      <a class="selected">{{ .Language.LanguageName }}</a>
+    <li id="en">
+      English
     </li>
-    {{ range .Translations }}
-    <li>
-      <a href="{{.RelPermalink}}">{{ .Language.LanguageName }}</a>
+    <li id="ja">
+      “ú–{Œê
     </li>
-    {{ end}}
   </ul>
 </div>
-{{ end }}

@@ -223,8 +223,13 @@ hr {
 
 .language-selector {
   list-style: none;
+  margin: 0;
 }
 
+.language-selector li:before {
+  content: '';
+  margin-left: 0;
+}
 
 /* Page content */
 
