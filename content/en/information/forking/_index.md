@@ -3,7 +3,6 @@ title: "Forking guidelines"
 weight: 8
 ---
 {{% table-nonheader %}}
-
 |<div style="background-color:#60A0FF;"> <font color="#FFFFFF">**Q:** What is a fork?</font></div>                                       |
 |:-- |
 |<font color="#0080FF"> **A:**</font> If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program. |
