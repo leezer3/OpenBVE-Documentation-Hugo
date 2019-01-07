@@ -17,8 +17,6 @@ This is a list of supported sound formats.
 
 Please note that due to its 3D positional nature, openBVE will convert multi-channel audio to mono upon loading, so there is no point in providing multi-channel audio in the first place. For multi-channel audio, openBVE discards silent channels and tries to detect constructive or destructive interference in the mixed version of the remaining channels. If interference is detected, the first non-silent channel in the file is used, otherwise the mixed channel.
 
-
-
 ## ■ RIFF WAVE format
 
 WAVE files are supported, which technically are RIFF (or RIFX) container files with the WAVE format type. WAVE itself allows different formats, of which only a subset are supported. These are:
@@ -61,4 +59,3 @@ Official documentation on FLAC:
 Additional documentation on FLAC:
 
 ➟ http://home.comcast.net/~b.langenb/audioformats_letter.pdf
-

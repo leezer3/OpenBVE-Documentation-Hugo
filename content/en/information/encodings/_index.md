@@ -3,7 +3,7 @@ title: "Character encodings"
 weight: 1
 ---
 
-This page describes what character encodings are and how they should be used.
+<font color="Gray">This page describes what character encodings are and how they should be used.</font>
 
 ■ Overview
 ------

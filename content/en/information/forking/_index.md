@@ -2,17 +2,21 @@
 title: "Forking guidelines"
 weight: 8
 ---
-{{% table-nonheader %}}
-|<div style="background-color:#60A0FF;"> <font color="#FFFFFF">**Q:** What is a fork?</font></div>                                       |
-|:-- |
-|<font color="#0080FF"> **A:**</font> If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program. |
-{{% /table-nonheader %}}
+{{% information %}}
 
-{{% table-nonheader %}}
-| <div style="background-color:#60A0FF;"> <font color="#FFFFFF">**Q:** When to make a fork?</font></div>                                  |
-|:-- |
-| <font color="#0080FF"> **A:**</font> If you are not satisfied with openBVE and cannot identify with the goals set forth for future versions of it, there might be no other way as to implement your desired features yourself. |
-{{% /table-nonheader %}}
+#### What is a fork?
+
+If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program.
+
+{{% /information %}}
+
+{{% information %}}
+
+#### When to make a fork?
+
+If you are not satisfied with openBVE and cannot identify with the goals set forth for future versions of it, there might be no other way as to implement your desired features yourself.
+
+{{% /information %}}
 
 
 If you are planning on creating a fork of openBVE or one of its tools, these are a set of guidelines (not requirements) that you are encouraged to follow.
@@ -28,8 +32,6 @@ Your fork should have a title distinct from **openBVE** and all possible spellin
 You should generally remove the references to the openBVE homepage and the version checking mechanism from the main menu.
 
 This does not mean that you are discouraged to mention openBVE or its origin, but that you should make sure that users don't mistake this homepage as the origin of your fork.
-
-
 
 ## ■ There is no official support for forks
 

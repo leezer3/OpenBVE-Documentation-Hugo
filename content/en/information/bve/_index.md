@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Differences compared to BVE Trainsim"
 linktitle: "Vs. BVE Trainsim"
 weight: 9
@@ -14,14 +14,14 @@ The Track.Signal command (alternatively: Track.Sig) is used to create a default 
 
 In openBVE, the Track.Signal command takes the following arguments:
 
-{{% command %}}
-**Track.Signal** *Aspects*; *~~Unused~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*
+{{% command %}}  
+**Track.Signal** *Aspects*; *~~Unused~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
 {{% /command %}}
 
 In BVE Trainsim, the Track.Signal command takes the following arguments:
 
-{{% command %}}
-**Track.Signal** *Aspects*; *Label*; *X*; *Y*; <u>*Type*</u>
+{{% command %}}  
+**Track.Signal** *Aspects*; *Label*; *X*; *Y*; <u>*Type*</u>  
 {{% /command %}}
 
 The *Label* parameter in BVE Trainsim is a textual description of the signal which serves no function in openBVE (thus termed *Unused* in the documentation).

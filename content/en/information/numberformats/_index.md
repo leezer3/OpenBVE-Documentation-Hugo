@@ -3,7 +3,7 @@ title: "Number formats"
 weight: 2
 ---
 
-This page describes which number formats are encountered in the various route and train files and how to adhere to them.
+<font color="Gray">This page describes which number formats are encountered in the various route and train files and how to adhere to them.</font>
 
 ## ■ Contents
 
