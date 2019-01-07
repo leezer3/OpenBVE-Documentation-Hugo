@@ -1,30 +1,20 @@
 $(function() {
-    url = window.location.href;
-    $('#en').css('font-weight', '600');
-    $('#ja').css('font-weight', '600');
-    if (url.search(/\/en\//) !== -1) {
-        $('#en').css('color', '#BBBBBB');
-        $('#ja').css('color', '#0080FF');
-    } else if (url.search(/\/ja\//) !== -1) {
-        $('#en').css('color', '#0080FF');
-        $('#ja').css('color', '#BBBBBB');
-    }
-
-    $(document).on('mouseover', '#en', function() {
-        $('#en').css('cursor','pointer');
+    $(document).ready(function() {
+        var $select = $('.language-selector').select2({width: 'resolve'});
+        var url = location.href;
+        if (url.search(/\/en\//) !== -1) {
+            $select.val('en').trigger('change');
+        } else if (url.search(/\/ja\//) !== -1) {
+            $select.val('ja').trigger('change');
+        }
     });
 
-    $(document).on('mouseover', '#ja', function() {
-        $('#ja').css('cursor','pointer');
-    });
-
-    $(document).on('click', '#en', function() {
-        var x = location.href;
-        location.href = x.replace(/\/ja\//, "/en/");
-    });
-
-    $(document).on('click', '#ja', function() {
-        var x = location.href;
-        location.href = x.replace(/\/en\//, "/ja/");
+    $('.language-selector').on('select2:select', function (e) {
+        var url = location.href;
+        if (url.search(/\/en\//) !== -1) {
+            location.href = url.replace(/\/en\//, `/${e.params.data.id}/`);
+        } else if (url.search(/\/ja\//) !== -1) {
+            location.href = url.replace(/\/ja\//, `/${e.params.data.id}/`);
+        }
     });
 });
