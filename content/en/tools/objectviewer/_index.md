@@ -17,10 +17,10 @@ Please note that Object Viewer always interprets files as UTF-8 unless a byte or
 
 Supported object file formats:
 
-- **B3D**
-- **CSV**
-- **X**
-- **ANIMATED**
+- B3D
+- CSV
+- X
+- ANIMATED
 
 This tool does not support the plugin API yet. This means that only the built-in texture formats (BMP, PNG, GIF, JPG, TIF) are supported.
 
