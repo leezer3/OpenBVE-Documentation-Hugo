@@ -21,9 +21,8 @@ contentDir = "content/en"
 baseURL = "/en"
 languageName = "English"
 weight = 1
-
-[languages.ca]
-contentDir = "content/ca"
-baseURL = "/ca"
-languageName = "Català"
+[languages.ja]
+contentDir = "content/ja"
+baseURL = "/ja"
+languageName = "Japanese"
 weight = 2
