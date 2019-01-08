@@ -1,4 +1,4 @@
----
+﻿---
 title: "Character encodings"
 weight: 1
 ---
