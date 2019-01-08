@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Number formats"
 weight: 2
 ---

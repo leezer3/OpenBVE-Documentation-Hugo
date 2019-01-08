@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Default sounds"
 weight: 6
 ---

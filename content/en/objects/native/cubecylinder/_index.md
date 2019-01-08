@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Cubes and cylinders"
 hidden: true
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "White Spaces"
 weight: 3
 ---

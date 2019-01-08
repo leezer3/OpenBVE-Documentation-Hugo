@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Train plugins"
 weight: 9
 ---

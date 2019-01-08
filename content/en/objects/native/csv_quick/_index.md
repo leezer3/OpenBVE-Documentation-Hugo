@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The **.csv** object format - Quick reference"
 hidden: true
 ---

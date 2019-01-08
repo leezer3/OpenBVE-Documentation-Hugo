@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Object Bender"
 weight: 2
 ---
