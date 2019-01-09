@@ -37,7 +37,7 @@ Animation is performed via the following primitives:
 
 ##### ● A little formality
 
-The file is a plain text file encoded in any arbitrary [encoding](/information/encodings.html), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model](/information/numberformats.html) for numbers is **Strict**. The file name is arbitrary, but must have the extension **.animated**. The file is interpreted on a per-line basis, from top to bottom.
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file name is arbitrary, but must have the extension **.animated**. The file is interpreted on a per-line basis, from top to bottom.
 
 ## <a name="description"></a>■ 2. Sections
 

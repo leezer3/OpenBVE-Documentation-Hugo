@@ -4,7 +4,7 @@ linktitle: "The CSV route"
 weight: 1
 ---
 
-➟ [Quick reference...](/routes/csv_quick.html) 
+➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
 {{% warning %}}
 
@@ -43,7 +43,7 @@ Commands that still require documentation: **2**
 
 A CSV route allows to create a route in a text file.
 
-The file is a plain text file encoded in any arbitrary [encoding](/information/encodings.html), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model](https://openbve-project.net/documentation/HTML/information_numberformats.html) for numbers is **Loose** (unless otherwise stated), however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside any folder whose current or parent folder includes the *Railway* and *Train* folders. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom, where each line is split into expressions, which are interpreted from left to right.
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose** (unless otherwise stated), however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside any folder whose current or parent folder includes the *Railway* and *Train* folders. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom, where each line is split into expressions, which are interpreted from left to right.
 
 The route file consists of a series of commands to define the objects which are used throughout the route (Structure namespace). Additional properties for the route, for the default train to be used and for the background images to be used can also be defined. At last, the route file will contain instructions from the Track namespace. Here, track positions (usually in meters) are used to define when the track should curve, when stations are to be placed, when a wall should start and end, and so on. Generally speaking, instructions from the Track namespace should be used after using instructions from any of the other namespaces.
 
@@ -51,11 +51,11 @@ The format assumes an implicit rail 0 which cannot be explicitly started or ende
 
 Geometrically, you can curve and pitch the implicit rail 0, while all other rails are defined relative to rail 0 and follow rail 0 into curves and pitch changes. Unless overridden, the file format is built around a fixed block size of 25 meters length, and it is only possible for certain commands to be used on 25 meter block boundaries. The placement of objects always assumes a non-curved coordinate system which connects blocks linearly.
 
-➟ [See also the quick reference for the CSV route...](/routes/csv_quick.html)
+➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
 
 ## <a name="syntax"></a>■ 2. Syntax
 
-For each line in the file, [white spaces](/information/whitespaces.html) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
+For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
 
 {{% command %}}  
 *Expression<sub>1</sub>*, *Expression<sub>2</sub>*, *Expression<sub>3</sub>*, ..., *Expression<sub>n</sub>*  
@@ -72,12 +72,12 @@ A comment is completely ignored by the parser. To form a comment, the expression
 {{% command %}}  
 *Position*  
 {{% /command %}}  
-A non-negative [strict](/information/numberformats.html) floating-point number corresponding to a track position. All subsequent commands from the Track namespace are associated to this track position.
+A non-negative [strict]({{< ref "/information/numberformats/_index.md" >}}) floating-point number corresponding to a track position. All subsequent commands from the Track namespace are associated to this track position.
 
 {{% command %}}  
 *Part<sub>1</sub>*:*Part<sub>2</sub>*:...:*Part<sub>n</sub>*  
 {{% /command %}}  
-This is a more complex way of specifying track positions for use in conjunction with Options.UnitOfLength. Each of the *Part<sub>i</sub>* is a [strict](/information/numberformats.html) floating-point number. *Part<sub>1</sub>* will be multiplied with *Factor<sub>1</sub>*, *Part<sub>2</sub>* with *Factor<sub>2</sub>*, and so on, then all products are added together to form the final track position. This track position must be non-negative. The parts are separated by colons (U+003A). Please consult Options.UnitOfLength for further information on how to define the factors.
+This is a more complex way of specifying track positions for use in conjunction with Options.UnitOfLength. Each of the *Part<sub>i</sub>* is a [strict]({{< ref "/information/numberformats/_index.md" >}}) floating-point number. *Part<sub>1</sub>* will be multiplied with *Factor<sub>1</sub>*, *Part<sub>2</sub>* with *Factor<sub>2</sub>*, and so on, then all products are added together to form the final track position. This track position must be non-negative. The parts are separated by colons (U+003A). Please consult Options.UnitOfLength for further information on how to define the factors.
 
 Wherever arguments in commands represent lengths, they can also be entered using the colon notation. These cases are highlighted in green in the following.
 
@@ -715,7 +715,7 @@ This command may be used as an alternative to the *Route.AmbientLight* , *Route.
 
 It allows the lighting to be varied using a time-based model, and is described fully on the following page:
 
-[Dynamic Lighting](/routes/xml/dynamiclight.html)
+[Dynamic Lighting]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
 
 ---
 
@@ -829,7 +829,7 @@ Train.File *FolderName*
 ***RunSoundIndex***: A non-negative integer representing the train's run sound to associate to the rail type.  
 {{% /command-arguments %}}
 
-The train developer provides a repertoire of different run sounds. Use this command to associate these run sounds to the rail types you use in your route. In order for the correct run sounds to be played on any of your rail types, you need to coordinate your efforts with the train developer. Please see the page about [standards](/information/standards.html) for further information.
+The train developer provides a repertoire of different run sounds. Use this command to associate these run sounds to the rail types you use in your route. In order for the correct run sounds to be played on any of your rail types, you need to coordinate your efforts with the train developer. Please see the page about [standards]({{< ref "/information/standards/_index.md" >}}) for further information.
 
 ---
 
@@ -842,7 +842,7 @@ The train developer provides a repertoire of different run sounds. Use this comm
 ***RunSoundIndex***: A non-negative integer representing the train's flange sound to associate to the rail type.  
 {{% /command-arguments %}}
 
-The train developer provides a repertoire of different flange sounds. Use this command to associate these flange sounds to the rail types you use in your route. In order for the correct flange sounds to be played on any of your rail types, you need to coordinate your efforts with the train developer. Please see the page about [standards](/information/standards.html) for further information.
+The train developer provides a repertoire of different flange sounds. Use this command to associate these flange sounds to the rail types you use in your route. In order for the correct flange sounds to be played on any of your rail types, you need to coordinate your efforts with the train developer. Please see the page about [standards]({{< ref "/information/standards/_index.md" >}}) for further information.
 
 ---
 
@@ -969,7 +969,7 @@ The general syntax for commands in the Structure namespace is:
 
 Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, FormCR, RoofCL, RoofCR, CrackL and CrackR commands only accept B3D, CSV and X objects.
 
-➟ [More information about forms, roofs and cracks...](/routes/formroofcrack.html)
+➟ [More information about forms, roofs and cracks...]({{< ref "/routes/formroofcrack/_index.md" >}})
 
 Additionally, there is the Structure.Pole command, which has a slightly different syntax:
 
@@ -1001,7 +1001,7 @@ The image loaded into Texture.Background(0) is displayed at the beginning of the
 
 As an alternative **Dynamic or Object** based backgrounds may be used. The implementation of these is described upon this page:
 
-[Dynamic & Object Based Backgrounds](/routes/xml/dynamicbackground.html)
+[Dynamic & Object Based Backgrounds]({{< ref "/routes/xml/dynamicbackground/_index.md" >}})
 
 ---
 

@@ -35,9 +35,9 @@ weight: 2
 
 A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
-The file is a plain text file encoded in any arbitrary [encoding](/information/encodings.html), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model](/information/numberformats.html) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom.
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom.
 
-➟ [See also the quick reference for the CSV format...](/objects/native/csv_quick.html)
+➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
 ## <a name="syntax"></a>■ 2. Syntax
 
@@ -47,7 +47,7 @@ Each line in the file is split into the name of a command and its arguments. The
 **NameOfTheCommand**, *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*  
 {{% /command %}}
 
-*NameOfTheCommand* is case-insensitive. If there are arguments, *NameOfTheCommand* and *Argument1* are separated by a comma (U+002C). Likewise, arguments are also separated by a comma (U+002C). [White spaces](/information/whitespaces.html) around the arguments and around the *NameOfTheCommand*, and well as at the beginning and the end of the line, are ignored. Empty lines or lines solely consisting of white spaces are also ignored.
+*NameOfTheCommand* is case-insensitive. If there are arguments, *NameOfTheCommand* and *Argument1* are separated by a comma (U+002C). Likewise, arguments are also separated by a comma (U+002C). [White spaces]({{< ref "/information/whitespaces/_index.md" >}}) around the arguments and around the *NameOfTheCommand*, and well as at the beginning and the end of the line, are ignored. Empty lines or lines solely consisting of white spaces are also ignored.
 
 Arguments may also be omitted by leaving the text at each of the *Argumenti* blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands.
 
@@ -132,7 +132,7 @@ This command creates a cube having dimensions as specified by *HalfWidth*, *Half
 
 #### Cube representation
 
-The Cube command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cube command does are available [here](/objects/native/cubecylinder.html).
+The Cube command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cube command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
 {{% /notice %}}
 
@@ -159,7 +159,7 @@ The number of vertices *n* will usually suffice to be 6 or 8 when only small rad
 
 #### Cylinder representation
 
-The Cylinder command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cylinder command does are available [here](/objects/native/cubecylinder.html).
+The Cylinder command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cylinder command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
 {{% /notice %}}
 

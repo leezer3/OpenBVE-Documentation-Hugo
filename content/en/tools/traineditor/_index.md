@@ -9,7 +9,7 @@ weight: 4
 
 This tool can be used to more conveniently edit the train.dat. You can configure the train haracteristics, preview the acceleration curves and edit the motor sound curves.
 
-Please refer to the documentation of the [train.dat](/trains/train_dat.html) for explanations about the various entries.
+Please refer to the documentation of the [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) for explanations about the various entries.
 
 ## ■ Notes
 

@@ -7,7 +7,7 @@ This page presents information developers need to be aware of and general tips f
 
 ## ■ Exterior objects
 
-- Exterior objects need to follow the same rules as any other object. See [Information and tips on object creation](/objects/information.html).
+- Exterior objects need to follow the same rules as any other object. See [Information and tips on object creation]({{< ref "/objects/information/_index.md" >}}).
 
 
 

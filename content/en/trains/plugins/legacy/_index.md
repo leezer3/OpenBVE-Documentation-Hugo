@@ -5,7 +5,7 @@ hidden: true
 
 ------
 
-<font size="+2">Win32 train plugins are not available on operating systems other than Microsoft Windows. Therefore, these plugins are officially deprecated. Please use [.NET assemblies](/plugins/overview.html) from now on.</font>
+<font size="+2">Win32 train plugins are not available on operating systems other than Microsoft Windows. Therefore, these plugins are officially deprecated. Please use [.NET assemblies]({{< ref "/plugins/overview/_index.md" >}}) from now on.</font>
 
 ------
 
@@ -268,4 +268,4 @@ This function is called when a beacon is passed.
 
 {{% /table-nonheader %}} 
 
-*Type* can be in the range from 0 to 2147483647, while *Data* can be in the range from 2147483648 to 2147483647. Please see the page about [standards](/information/standards.html) to learn more about assigning beacon types.
+*Type* can be in the range from 0 to 2147483647, while *Data* can be in the range from 2147483648 to 2147483647. Please see the page about [standards]({{< ref "/information/standards/_index.md" >}}) to learn more about assigning beacon types.
