@@ -14,4 +14,4 @@ This form of plugin is retained for backward compatibility with BVE Trainsim, bu
 
 ## ■ Setting up a train to using a plugin
 
-You will need to ship the plugin somewhere in your train folder and configure the path to your plugin inside the [ats.cfg]({{< ref "/trains/ats_cfg/_index.md" >}}) file. Please note that for .NET assembly train lugins, you should **not** ship OpenBveApi.dll along with your plugin.
+You will need to ship the plugin somewhere in your train folder and configure the path to your plugin inside the [ats.cfg]({{< ref "/trains/ats_cfg/_index.md" >}}) file. Please note that for .NET assembly train plugins, you should **not** ship OpenBveApi.dll along with your plugin.

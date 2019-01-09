@@ -80,8 +80,11 @@ This function is called after Load() in order to query the version of the API to
 *Return value:*
 
 {{% table-nonheader %}}
+
 | ATS_VERSION | 0x20000 (131072) | Valid plugin version |
 | ----------- | ---------------- | -------------------- |
+|             |                  |                      |
+
 {{% /table-nonheader %}}
 
 ------
@@ -91,6 +94,7 @@ This function is called after Load() in order to query the version of the API to
 This function is called after GetPluginVersion() is called and informs the plugin about the specifications of the train.
 
 *struct ATS_VEHICLESPEC:*
+
 {{% table-nonheader %}}
 
 | <span style="white-space: nowrap;">int BrakeNotches</span> | The amount of brake notches the train has. This does not include the emergency brake, but it does include the hold brake if the train has one. For trains with automatic air brakes, 2 is returned. |
@@ -166,7 +170,9 @@ An array with 256 elements (0 through 255) which can be set to any sound instruc
 | <span style="white-space: nowrap;">int Power</span>         | The power notch to apply. Must be within the range from 0 to *PowerNotches*. |
 | <span style="white-space: nowrap;">int Reverser</span>      | The reverser to apply. -1 is backward, 0 is neutral and 1 is forward. |
 | <span style="white-space: nowrap;">int ConstantSpeed</span> | The operation mode of the constant speed system. ATS_CONSTANTSPEED_CONTINUE (0) uses the driver's setting,  ATS_CONSTANTSPEED_ENABLE (1) forces the system on and  ATS_CONSTANTSPEED_DISABLE (2) forces the system off. |
-{{% /table-nonheader %}} 
+{{% /table-nonheader %}}
+
+<br/>
 
 {{% warning-nontitle %}}
 
@@ -216,7 +222,8 @@ This function is called when a plugin-specific key is released. The passed value
 
 This function is called when any of the horn starts or stops playing.
 
-*hornType:*  
+*hornType:* 
+
 {{% table-nonheader %}} 
 
 | ATS_HORN_PRIMARY   | 0    | The function is called only when the horn starts playing.    |
