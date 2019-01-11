@@ -1,10 +1,11 @@
 title = "openBVE Documentation"
 theme = "openbve_documentation"
 DefaultContentLanguage = "en"
-removePathAccents = "true"
+defaultContentLanguageInSubdir = true
+removePathAccents = true
 
-relativeURLs = "true"
-uglyURLs = "true"
+relativeURLs = true
+uglyURLs = true
 
 disableKinds = ["page", "404", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
 
@@ -18,11 +19,9 @@ disableKinds = ["page", "404", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
 [languages]
 [languages.en]
 contentDir = "content/en"
-baseURL = "/en"
 languageName = "English"
 weight = 1
 [languages.ja]
 contentDir = "content/ja"
-baseURL = "/ja"
 languageName = "日本語"
 weight = 2
