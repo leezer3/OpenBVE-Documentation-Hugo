@@ -110,6 +110,8 @@ Be sure to compile against AnyCPU, to enable CLS-compliance checks and to remove
 | ------------- | ------------- | ------------------------------------------------- |
 | IRuntime      | Train plugins | [View]({{< ref "/plugins/iruntime/_index.md" >}}) |
 
+{{% /table %}}
+
 ## <a name="templates"></a>■ Template projects
 
 In the directory **Examples\Sample Plugins**, you can find template projects targeting different programming languages. In these templates, almost everything has been prepared for you. The only thing you have to do is to include a reference to OpenBveApi.dll which comes with openBVE.
