@@ -4,4 +4,4 @@ linktitle: "Overview"
 weight: 1
 ---
 
-Under construction
+Under construction. Please wait...
