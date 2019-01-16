@@ -1,0 +1,27 @@
+title = "openBVE Documentation"
+theme = "openbve_documentation"
+DefaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+removePathAccents = true
+
+relativeURLs = true
+uglyURLs = true
+
+disableKinds = ["page", "404", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
+
+[params]
+  logoimage = "/images/logo.png"
+
+[blackfriday]
+  hrefTargetBlank = true
+  extensions = ["laxHtmlBlocks"]
+
+[languages]
+[languages.en]
+contentDir = "content/en"
+languageName = "English"
+weight = 1
+[languages.ja]
+contentDir = "content/ja"
+languageName = "日本語"
+weight = 2

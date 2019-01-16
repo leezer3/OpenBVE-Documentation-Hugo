@@ -1,0 +1,2 @@
+{{ $v := replace .Inner "<table>" "<table class='type1'>" }}
+{{ replace $v "<td></td>" "" | markdownify }}
