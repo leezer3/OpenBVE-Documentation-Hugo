@@ -1,7 +1,6 @@
 ---
 title: "The **.b3d** object format"
 linktitle: "The B3D object"
-
 weight: 1
 ---
 
