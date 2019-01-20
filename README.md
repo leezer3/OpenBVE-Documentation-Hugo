@@ -1,1 +1,3 @@
-# openBVE Documentation in Hugo!
+# OpenBVE-Site
+
+Documentation in Hugo, test 1
