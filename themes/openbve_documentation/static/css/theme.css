@@ -305,3 +305,29 @@ div #command-arguments {
   color: #555555;
   margin-left: 40px;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+.type0 th,
+.type0 td,
+.type1 th,
+.type1 td {
+  border: 2px;
+  border-style: ridge;
+  padding: 4px;
+}
+
+.type0 th {
+  background: #D0D0D0;
+  text-align: center;
+}
+
+.type1 th {
+  font-weight: normal;
+}
+
+li {
+  margin-bottom: 1em;
+}

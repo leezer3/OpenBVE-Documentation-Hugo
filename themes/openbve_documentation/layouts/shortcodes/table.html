@@ -1,0 +1,2 @@
+{{ $v := replace .Inner "<table>" "<table class='type0'>" }}
+{{ replace $v "<td></td>" "<td bgcolor='#D0D0D0'></td>" | markdownify }}
