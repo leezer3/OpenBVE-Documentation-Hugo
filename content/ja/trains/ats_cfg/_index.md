@@ -4,4 +4,4 @@ linktitle: The ats.cfg file
 weight: 8
 ---
 
-Under construction, test bot 1
+Under construction
