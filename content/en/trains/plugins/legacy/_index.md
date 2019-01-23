@@ -29,6 +29,8 @@ The header and code files for the C/C++ programming languages are available to d
 | float  | 32-bit floating point number according to the IEEE 754 binary32 standard |
 | double | 64-bit floating point number according to the IEEE 754 binary64 standard |
 
+{{% /table-nonheader %}}
+
 ## ■ Overview
 
 The following functions are called in this order when the plugin is loaded:
@@ -103,6 +105,7 @@ This function is called after GetPluginVersion() is called and informs the plugi
 | <span style="white-space: nowrap;">int AtsNotch</span>     | The brake notch index corresponding to the first real brake notch. For trains with automatic air brakes, this returns 1. For other trains, this returns 2 if the train has a hold brake, and 1 otherwise. |
 | <span style="white-space: nowrap;">int B67Notch</span>     | The brake notch index corresponding to 70% of the brake notches, i.e. round(0.7 * BrakeNotches). |
 | <span style="white-space: nowrap;">int Cars</span>         | The number of cars the train has.                            |
+
 {{% /table-nonheader %}}
 
 ------
@@ -119,6 +122,7 @@ This function is called after SetVehicleSpec() is called and informs the plugin 
 | ---------------- | ---- | ------------------------------------------------------------ |
 | ATS_INIT_ON_EMG  | 0    | The plugin should start in an **active** state. The **emergency** brakes are applied on startup. |
 | ATS_INIT_OFF_EMG | 1    | The plugin should start in an *inactive* state. The **emergency** brakes are applied on startup. |
+
 {{% /table-nonheader %}}  
 
 ------
@@ -170,6 +174,7 @@ An array with 256 elements (0 through 255) which can be set to any sound instruc
 | <span style="white-space: nowrap;">int Power</span>         | The power notch to apply. Must be within the range from 0 to *PowerNotches*. |
 | <span style="white-space: nowrap;">int Reverser</span>      | The reverser to apply. -1 is backward, 0 is neutral and 1 is forward. |
 | <span style="white-space: nowrap;">int ConstantSpeed</span> | The operation mode of the constant speed system. ATS_CONSTANTSPEED_CONTINUE (0) uses the driver's setting,  ATS_CONSTANTSPEED_ENABLE (1) forces the system on and  ATS_CONSTANTSPEED_DISABLE (2) forces the system off. |
+
 {{% /table-nonheader %}}
 
 <br/>
