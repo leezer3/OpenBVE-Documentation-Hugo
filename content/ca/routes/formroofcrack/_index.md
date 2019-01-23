@@ -5,4 +5,4 @@ hidden: true
 
 ![construction_64](/images/construction_64.png)
 
-This page is under construction.
+Aquesta pàgina està en construcció.

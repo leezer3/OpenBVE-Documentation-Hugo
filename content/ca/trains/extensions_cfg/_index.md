@@ -4,4 +4,4 @@ linktitle: The extensions.cfg file
 weight: 3
 ---
 
-Under construction
+En construcció
