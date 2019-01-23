@@ -49,8 +49,8 @@ For this reason, you must never construct file names in any of the following way
 
 {{% table-nonheader %}}
 
-| <font color="Red">✗</font> | string file = "configuration.ini"; | This is a relative path that uses the current working directory. Prone to failure across platforms. |
-| --- | --- | --- |
+| <font color="Red">✗</font> | string file = "configuration.ini";                | This is a relative path that uses the current working directory. Prone to failure across platforms. |
+| -------------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
 | <font color="Red">✗</font> | string file = TrainFolder + "/configuration.ini"; | This uses a slash as the directory separator. Works on Linux and Mac OS X, but not on Windows. |
 
 {{% /table-nonheader %}}
@@ -60,7 +60,7 @@ The way you should construct file names:
 {{% table-nonheader %}}
 
 | <font color="Green">✓</font> | string file = System.IO.Path.Combine(TrainFolder, "configuration.ini"); | This works perfectly on all platforms. |
-| --- | --- | --- |
+| ---------------------------- | ------------------------------------------------------------ | -------------------------------------- |
 | <font color="Green">✓</font> | string subdirectory = System.IO.Path.Combine(TrainFolder, "subdirectory");<BR>string file = System.IO.Path.Combine(subdirectory, "configuration.ini"); | This works perfectly on all platforms. |
 
 {{% /table-nonheader %}}
@@ -75,9 +75,9 @@ For this reason, you must never read from text files or interpret them in any of
 
 {{% table-nonheader %}}
 
-| <font color="Red">✗</font> |string[] lines = System.IO.File.ReadAllLines(file); | Uses an unspecified encoding. |
-| --- | --- | --- |
-| <font color="Red">✗</font> |int number = double.Parse(lines[0]); | Uses an unspecified culture. |
+| <font color="Red">✗</font> | string[] lines = System.IO.File.ReadAllLines(file); | Uses an unspecified encoding. |
+| -------------------------- | --------------------------------------------------- | ----------------------------- |
+| <font color="Red">✗</font> | int number = double.Parse(lines[0]);                | Uses an unspecified culture.  |
 
 {{% /table-nonheader %}}
 
@@ -85,8 +85,8 @@ The way you should read from files and interpret them:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | string[] lines = System.IO.File.ReadAllLines(file, System.Text.Encoding.UTF8); | Uses an explicit encoding. |
-| --- | --- | --- |
+| <font color="Green">✓</font> | string[] lines = System.IO.File.ReadAllLines(file, System.Text.Encoding.UTF8); | Uses an explicit encoding.  |
+| ---------------------------- | ------------------------------------------------------------ | --------------------------- |
 | <font color="Green">✓</font> | int number;<BR>double.TryParse(lines[0], System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out number); | Uses the invariant culture. |
 | <font color="Green">✓</font> | System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;<BR>int number = double.Parse(lines[0]); | Uses the invariant culture. |
 
