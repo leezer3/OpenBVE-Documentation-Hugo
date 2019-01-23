@@ -60,7 +60,8 @@ Arguments:
 {{% table-nonheader %}}
 
 | LoadProperties | properties | The properties supplied to the plugin on loading. |
-| --- | --- | --- |
+| -------------- | ---------- | ------------------------------------------------- |
+|                |            |                                                   |
 
 {{% /table-nonheader %}}
 
@@ -68,13 +69,15 @@ LoadProperties (class):
 
 {{% table-nonheader %}}
 
-| string | PluginFolder | Gets the absolute path to the plugin folder. |
-| --- | --- | --- |
-| string | TrainFolder | Gets the absolute path to the train folder. |
-| int[] | Panel | Gets or sets the array of panel variables. |
-| PlaySoundDelegate | PlaySound | Gets the callback function for playing sounds. |
-| AISupport | AISupport | The extent to which the plugin supports the AI. |
-| string | FailureReason | Gets or sets the reason why the plugin failed loading. |
+| string            | PluginFolder  | Gets the absolute path to the plugin folder.           |
+| ----------------- | ------------- | ------------------------------------------------------ |
+| string            | TrainFolder   | Gets the absolute path to the train folder.            |
+| int[]             | Panel         | Gets or sets the array of panel variables.             |
+| PlaySoundDelegate | PlaySound     | Gets the callback function for playing sounds.         |
+| AISupport         | AISupport     | The extent to which the plugin supports the AI.        |
+| string            | FailureReason | Gets or sets the reason why the plugin failed loading. |
+
+{{% /table-nonheader %}}
 
 PlaySound (function):  
 See the section on [playing sounds](#sound).
@@ -84,7 +87,7 @@ AISupport (enumeration):
 {{% table-nonheader %}}
 
 | AISupport.None  | 0    | The plugin does not support the AI. Calls to PerformAI will not be made. Non-player trains will not use the plugin. |
-| --- | --- | --- |
+| --------------- | ---- | ------------------------------------------------------------ |
 | AISupport.Basic | 1    | The plugin complements the built-in AI by performing only functions specific to the plugin. |
 
 {{% /table-nonheader %}}
@@ -95,6 +98,7 @@ Return value:
 
 | bool | Whether the plugin was loaded successfully. |
 | ---- | ------------------------------------------- |
+|      |                                             |
 
 {{% /table-nonheader %}}
 
@@ -126,6 +130,7 @@ Arguments:
 
 | VehicleSpecs | specs | The specifications of the train. |
 | ------------ | ----- | -------------------------------- |
+|              |       |                                  |
 
 {{% /table-nonheader %}}
 
@@ -169,6 +174,7 @@ Arguments:
 
 | InitializationModes | mode | The mode of initialization. |
 | ------------------- | ---- | --------------------------- |
+|                     |      |                             |
 
 {{% /table-nonheader %}}
 
@@ -197,6 +203,7 @@ Arguments:
 
 | ElapseData | data | The data passed to the plugin. |
 | ---------- | ---- | ------------------------------ |
+|            |      |                                |
 
 {{% /table-nonheader %}}
 
@@ -287,6 +294,7 @@ Arguments:
 
 | int  | reverser | The new reverser position. |
 | ---- | -------- | -------------------------- |
+|      |          |                            |
 
 {{% /table-nonheader %}}
 
@@ -304,6 +312,7 @@ Arguments:
 
 | int  | powerNotch | The new power notch. |
 | ---- | ---------- | -------------------- |
+|      |            |                      |
 
 {{% /table-nonheader %}}
 
@@ -321,6 +330,7 @@ Arguments:
 
 | int  | brakeNotch | The new brake notch. |
 | ---- | ---------- | -------------------- |
+|      |            |                      |
 
 {{% /table-nonheader %}}
 
@@ -344,6 +354,7 @@ Arguments:
 
 | VirtualKeys | key  | The virtual key that was pressed. |
 | ----------- | ---- | --------------------------------- |
+|             |      |                                   |
 
 {{% /table-nonheader %}}
 
@@ -385,6 +396,7 @@ Arguments:
 
 | VirtualKeys | key  | The virtual key that was released. |
 | ----------- | ---- | ---------------------------------- |
+|             |      |                                    |
 
 {{% /table-nonheader %}}
 
@@ -420,12 +432,13 @@ When making use of plugin-specific keys in your plugin, be sure to release a doc
 
 This function is called when a horn starts playing. In case of the musical horn, this function is also called when the horn stops playing.
 
-{{% table-nonheader %}}
-
 Arguments:
+
+{{% table-nonheader %}}
 
 | HornTypes | type | The type of horn. |
 | --------- | ---- | ----------------- |
+|           |      |                   |
 
 {{% /table-nonheader %}}
 
@@ -480,6 +493,7 @@ Arguments:
 
 | SignalData[] | data | The signal data per section. |
 | ------------ | ---- | ---------------------------- |
+|              |      |                              |
 
 {{% /table-nonheader %}}
 
@@ -513,6 +527,7 @@ Arguments:
 
 | BeaconData | data | The beacon data. |
 | ---------- | ---- | ---------------- |
+|            |      |                  |
 
 {{% /table-nonheader %}}
 
@@ -553,6 +568,7 @@ Arguments:
 
 | AIData | data | The AI data. |
 | ------ | ---- | ------------ |
+|        |      |              |
 
 {{% /table-nonheader %}}
 
@@ -578,11 +594,11 @@ Arguments:
 
 {{% table-nonheader %}}
 
-| int | index | The index to the sound to be played. |
-| --- | --- | --- |
+| int    | index  | The index to the sound to be played.                         |
+| ------ | ------ | ------------------------------------------------------------ |
 | double | volume | The initial volume of the sound. A value of 1.0 represents nominal volume. |
-| double | pitch | The initial pitch of the sound. A value of 1.0 represents nominal pitch. |
-| bool | looped | Whether the sound should be played in an indefinate loop. |
+| double | pitch  | The initial pitch of the sound. A value of 1.0 represents nominal pitch. |
+| bool   | looped | Whether the sound should be played in an indefinate loop.    |
 
 {{% /table-nonheader %}}
 
@@ -591,7 +607,8 @@ Return value:
 {{% table-nonheader %}}
 
 | SoundHandle | The handle to the sound, or a null reference if the sound could not be played. |
-| --- | --- |
+| ----------- | ------------------------------------------------------------ |
+|             |                                                              |
 
 {{% /table-nonheader %}}
 
@@ -601,12 +618,12 @@ SoundHandle (class):
 
 {{% table-nonheader %}}
 
-| bool | Playing | Gets whether the sound is still playing. Once this returns false, the sound handle is invalid. |
-| --- | --- | --- |
-| bool | Stopped | Gets whether the sound has stopped. Once this returns true, the sound handle is invalid. |
-| double | Volume | Gets or sets the volume. A value of 1.0 represents nominal volume. |
-| double | Pitch | Gets or sets the pitch. A value of 1.0 represents nominal pitch. |
-| void | Stop() | Stops the sound and invalidates the handle. |
+| bool   | Playing | Gets whether the sound is still playing. Once this returns false, the sound handle is invalid. |
+| ------ | ------- | ------------------------------------------------------------ |
+| bool   | Stopped | Gets whether the sound has stopped. Once this returns true, the sound handle is invalid. |
+| double | Volume  | Gets or sets the volume. A value of 1.0 represents nominal volume. |
+| double | Pitch   | Gets or sets the pitch. A value of 1.0 represents nominal pitch. |
+| void   | Stop()  | Stops the sound and invalidates the handle.                  |
 
 {{% /table-nonheader %}}
 
@@ -629,7 +646,8 @@ Arguments:
 {{% table-nonheader %}}
 
 | AIData | data | The AI data. |
-| --- | --- | --- |
+| ------ | ---- | ------------ |
+|        |      |              |
 
 {{% /table-nonheader %}}
 
@@ -637,9 +655,9 @@ AIData (class):
 
 {{% table-nonheader %}}
 
-| Handles | Handles | Gets or sets the driver handles. |
-| --- | --- | --- |
-| AIResponse | Response | Gets or sets the AI response. |
+| Handles    | Handles  | Gets or sets the driver handles. |
+| ---------- | -------- | -------------------------------- |
+| AIResponse | Response | Gets or sets the AI response.    |
 
 {{% /table-nonheader %}}
 
@@ -647,10 +665,10 @@ Handles (class):
 
 {{% table-nonheader %}}
 
-| int | Reverser | Gets or sets the reverser position. |
-| --- | --- | --- |
-| int | PowerNotch | Gets or sets the power notch. |
-| int | BrakeNotch | Gets or sets the brake notch. |
+| int  | Reverser   | Gets or sets the reverser position.                     |
+| ---- | ---------- | ------------------------------------------------------- |
+| int  | PowerNotch | Gets or sets the power notch.                           |
+| int  | BrakeNotch | Gets or sets the brake notch.                           |
 | bool | ConstSpeed | Gets or sets whether the const speed system is enabled. |
 
 {{% /table-nonheader %}}
@@ -661,11 +679,14 @@ AIResponse (enumeration):
 
 {{% table-nonheader %}}
 
-| AIResponse.None | No action was performed by the plugin. |
-| --- | --- |
-| AIResponse.Short | The action performed took a short time. |
+| AIResponse.None   | No action was performed by the plugin.               |
+| ----------------- | ---------------------------------------------------- |
+| AIResponse.Short  | The action performed took a short time.              |
 | AIResponse.Medium | The action performed took an average amount of time. |
-| AIResponse.Long | The action performed took a long time. |
+| AIResponse.Long   | The action performed took a long time.               |
+
+{{% /table-nonheader %}}
+
 You can directly control the driver handles with the *data.Handles* member, for example if you want to cut power or apply a certain brake notch. For plugin-specific actions, you should only simulate key presses, for example by calling KeyDown or KeyUp. This will prevent you from letting the AI cheat in any way. If you let the AI operate the handles, you should only change by one notch at a time with a short response time.
 
 If you decide to let the AI do something, you must set the *data.Response* member to a meaningful value. For operating the handles, best use a short response time, while for other actions like turning a switch not directly accessible, use a long response time. Note that the actual timings are at the whim of the host application.
