@@ -20,7 +20,7 @@ weight: 3
 
 The extensions.cfg file allows to define properties for individual cars, like length, axle positions and exterior objects.
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file is required to be located inside the [train folder](https://openbve-project.net/documentation/HTML/information_folderstructure.html) and is expected to be named **extensions.cfg**. The file is interpreted on a per-line basis, from top to bottom.
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file is required to be located inside the train folder and is expected to be named **extensions.cfg**. The file is interpreted on a per-line basis, from top to bottom.
 
 ##### ● Car indices
 
