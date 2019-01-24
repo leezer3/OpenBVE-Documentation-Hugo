@@ -11,7 +11,7 @@ weight: 3
 - [1. Overview](#overview)
 - [2. Syntax](#syntax)
 - [3. The Car*i* section](#car)
-- [4. The Coupler*i* section](#car)
+- [4. The Coupler*i* section](#coupler)
 - [5. The Exterior section (outdated)](#exterior)
 
 {{% /contents %}}
@@ -127,7 +127,7 @@ Axles = -6, 6
 Reversed = False  
 {{% /code %}}
 
-## ■ 4. The Coupler*i* section
+## <a name="coupler"></a>■ 4. The Coupler*i* section
 
 The Coupler*i* section allows to define properties specific to a certain coupler.
 
@@ -141,7 +141,7 @@ This starts the section for coupler *i*, which is an integer between 0 and *n*-2
 
 ------
 
-{{% command %}} 
+{{% command %}}  
 **Distances** = *Minimum*, *Maximum*  
 {{% /command %}}
 
@@ -159,7 +159,7 @@ This key-value pair defines the lowest and highest allowed distances between the
 Distances = 0.30, 0.35  
 {{% /code %}}
 
-## ■ 5. The Exterior section (outdated)
+## <a name="exterior"></a>■ 5. The Exterior section (outdated)
 
 The Exterior section provides an easy way of adding exterior objects to the particular train. For more control on the setting of axle positions and individual car lengths, the Car*i* section has been introduced and should be used instead.
 

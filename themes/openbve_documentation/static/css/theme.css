@@ -284,6 +284,7 @@ div #warning p {
   background: #FF9999;
 }
 
+div #note h4,
 div #note span {
   padding: 5px 10px;
   display: block;
@@ -293,6 +294,11 @@ div #note span {
   background: #B3B3B3;
   color: #222222;
   font-weight: bold;
+}
+
+div #note h4:before {
+  color: #C00000;
+  content: "☀ ";
 }
 
 div #note p {
