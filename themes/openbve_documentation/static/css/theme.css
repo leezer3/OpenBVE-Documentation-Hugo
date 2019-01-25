@@ -322,10 +322,6 @@ div #information h4 {
   font-weight: bold;
 }
 
-div #information h4:before {
-  content: "Q: ";
-}
-
 div #information p {
   padding: 15px;
   display: block;
@@ -333,11 +329,6 @@ div #information p {
   margin-top: 0rem;
   margin-bottom: 0rem;
   background: #B8D4FF;
-}
-
-div #information p:before {
-  content: "A: ";
-  font-weight: bold;
 }
 
 div #command {

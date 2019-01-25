@@ -1,6 +1,5 @@
 ---
 title: "The **panel2.cfg** file format - Quick reference"
-linktitle: "The panel2.cfg file"
 hidden: true
 ---
 
