@@ -4,17 +4,19 @@ weight: 8
 ---
 {{% information %}}
 
-#### What is a fork?
+#### Q: What is a fork?
 
-If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program.
+**A:** If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program.
 
 {{% /information %}}
 
+<br/>
+
 {{% information %}}
 
-#### When to make a fork?
+#### Q: When to make a fork?
 
-If you are not satisfied with openBVE and cannot identify with the goals set forth for future versions of it, there might be no other way as to implement your desired features yourself.
+**A:** If you are not satisfied with openBVE and cannot identify with the goals set forth for future versions of it, there might be no other way as to implement your desired features yourself.
 
 {{% /information %}}
 
