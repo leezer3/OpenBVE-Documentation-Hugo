@@ -415,3 +415,8 @@ ul.contents li:before {
   content: '↷ ';
   margin-left: -1em;
 }
+
+ol li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
