@@ -79,7 +79,7 @@ A non-negative [strict]({{< ref "/information/numberformats/_index.md" >}}) floa
 {{% /command %}}  
 This is a more complex way of specifying track positions for use in conjunction with Options.UnitOfLength. Each of the *Part<sub>i</sub>* is a [strict]({{< ref "/information/numberformats/_index.md" >}}) floating-point number. *Part<sub>1</sub>* will be multiplied with *Factor<sub>1</sub>*, *Part<sub>2</sub>* with *Factor<sub>2</sub>*, and so on, then all products are added together to form the final track position. This track position must be non-negative. The parts are separated by colons (U+003A). Please consult Options.UnitOfLength for further information on how to define the factors.
 
-Wherever arguments in commands represent lengths, they can also be entered using the colon notation. These cases are highlighted in green in the following.
+Wherever arguments in commands represent lengths, they can also be entered using the colon notation. These cases are highlighted in <font color="green">green</font> in the following.
 
 When *n* units are defined via Options.UnitOfLength, but fewer parameters are given using the colon notation, the parameters are right-associative, meaning, the parameters on the left are those which are skipped. Therefore, each of the following lengths are equivalent: *0:0:2*, *0:2*, and *2*.
 
@@ -96,6 +96,14 @@ Commands with arguments:
 {{% command %}}  
 *NameOfTheCommand* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
 *NameOfTheCommand*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
+{{% /command %}}
+
+Commands with indices and arguments:
+
+{{% command %}} 
+*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*) *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
+*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
+*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
 {{% /command %}}
 
 Rules:
@@ -937,7 +945,7 @@ The commands in the Structure namespace define which objects to use in other com
 The general syntax for commands in the Structure namespace is:
 
 {{% command %}}  
-**Structure.Command(StructureIndex)**<font color="gray">.Load</font> *FileName*  
+**Structure._Command_(_StructureIndex_)**<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 *StructureIndex* is a non-negative integer. *FileName* is the object file to load, relative to the **Object** folder. *Command* is any of the following commands:
@@ -974,7 +982,7 @@ Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, 
 Additionally, there is the Structure.Pole command, which has a slightly different syntax:
 
 {{% command %}}  
-**Structure.Pole(NumberOfAdditionalRails; PoleStructureIndex)**<font color="gray">.Load</font> *FileName*  
+**Structure.Pole(_NumberOfAdditionalRails_; _PoleStructureIndex_)**<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -999,14 +1007,14 @@ Regardless of the repetition count you chose, you should make sure that the left
 
 The image loaded into Texture.Background(0) is displayed at the beginning of the route, unless a Track.Back command at the beginning of the route requests a different image.
 
-As an alternative **Dynamic or Object** based backgrounds may be used. The implementation of these is described upon this page:
+As an alternative ***Dynamic or Object*** based backgrounds may be used. The implementation of these is described upon this page:
 
 [Dynamic & Object Based Backgrounds]({{< ref "/routes/xml/dynamicbackground/_index.md" >}})
 
 ---
 
 {{% command %}}  
-**Texture.Background(BackgroundTextureIndex)**<font color="gray">.Load</font> *FileName*  
+**Texture.Background(_BackgroundTextureIndex_)**<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1024,7 +1032,7 @@ If a dynamic or object based background is to be used, this must instead point t
 ---
 
 {{% command %}}  
-**Texture.Background(BackgroundTextureIndex).X** *RepetitionCount*  
+**Texture.Background(_BackgroundTextureIndex_).X** *RepetitionCount*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1040,7 +1048,7 @@ Ignored if using a dynamic or object based background.
 ---
 
 {{% command %}}  
-**Texture.Background(BackgroundTextureIndex).Aspect** *Mode*  
+**Texture.Background(_BackgroundTextureIndex_).Aspect** *Mode*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1063,7 +1071,7 @@ Ignored if using a dynamic or object based background.
 ## <a name="cycle"></a>■ 9. The Cycle namespace
 
 {{% command %}}  
-**Cycle.Ground(GroundStructureIndex)<font color="gray">.Params</font> GroundStructureIndex<sub>0</sub>; GroundStructureIndex<sub>1</sub>; GroundStructureIndex<sub>2</sub>; ...; GroundStructureIndex<sub>n-1</sub>**  
+**Cycle.Ground(_GroundStructureIndex_)<font color="gray">.Params</font> _GroundStructureIndex<sub>0</sub>_; _GroundStructureIndex<sub>1</sub>_; _GroundStructureIndex<sub>2</sub>_; ...; _GroundStructureIndex<sub>n-1</sub>_**  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1074,7 +1082,7 @@ Ignored if using a dynamic or object based background.
 When usually using Track.Ground(*GroundStructureIndex*), the same ground structure object will be repeatedly placed in every block. Via Cycle.Ground, you can override this behavior and automatically cycle through a series of different objects when using Track.Ground(*GroundStructureIndex*). The cycle repeats indefinitely, where *GroundStructureIndex0* starts at track position 0. Technically, the *i* in *GroundStructureIndex<sub>i</sub>* chosen for a particular track position *p* is `Mod[p / BlockLength, n]`.
 
 {{% command %}}  
-**Cycle.Rail(RailStructureIndex)<font color="gray">.Params</font> RailStructureIndex<sub>0</sub>; RailStructureIndex<sub>1</sub>; RailStructureIndex<sub>2</sub>; ...; RailStructureIndex<sub>n-1</sub>**  
+**Cycle.Rail(_RailStructureIndex_)<font color="gray">.Params</font> _RailStructureIndex<sub>0</sub>_; _RailStructureIndex<sub>1</sub>_; _RailStructureIndex<sub>2</sub>_; ...; _RailStructureIndex<sub>n-1</sub>_**  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1166,7 +1174,7 @@ The glow textures deserve special attention. All glow textures are pre-processed
 
 The texture you start with should have a sharp shape, usually oval. The shape should be fully saturated in the core and blend into pure white at its outer rim. The surroundings of the shape can be either pure black (A) or pure white (B).
 
-When openBVE loads the glow texture, it will replace all purely black pixels with purely white pixels, thus arriving at (B). From there, the image is inverted (C), then hue-shifted by 180 degrees (D). Compared to (B), this has the overall effect of inverting the lightness of the image, i.e. fully saturated pixels will be left unchanged (e.g. the core), while bright pixels (such as the outer rim of the shape) will become dark, and vice versa. Then, the image is gamma-corrected to further darken the dark parts (E), and finally, the image is blurred slightly (F).
+When openBVE loads the glow texture, it will replace all purely black pixels with purely white pixels, thus arriving at (B). From there, the image is inverted \(C), then hue-shifted by 180 degrees (D). Compared to (B), this has the overall effect of inverting the lightness of the image, i.e. fully saturated pixels will be left unchanged (e.g. the core), while bright pixels (such as the outer rim of the shape) will become dark, and vice versa. Then, the image is gamma-corrected to further darken the dark parts (E), and finally, the image is blurred slightly (F).
 
 The resulting texture is always additively blended. This means that instead of directly drawing the texture onto the screen, the pixels of the texture are added to the screen pixels. Here, adding black (0) does not change the screen pixels, while adding a fully satured color channel (1) will result in a fully satured color channel, e.g. adding white produces white. Keep in mind that when designing the textures, you will have to follow the inverse rules, e.g. design the image as depicted in (A) or (B), while having in mind how it will be processed afterward.
 
@@ -1212,5 +1220,216 @@ This command can only be used at the beginning of a block.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.   
+***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command. 
 {{% /command-arguments %}}
+
+This command starts a new rail or updates an existing rail. The rail is represented by the index *RailIndex*. If a rail of the same *RailIndex* was already used in the route, the default values of *X*, *Y* and *RailType* are the values last used by that rail, otherwise 0. If the rail is to be ended, use the Track.RailEnd command. You can end a rail of a given *RailIndex* and start a new rail of the same *RailIndex* at the same track position provided that the old rail is first ended and the new rail started afterward. In each block, the *X* and *Y* values are repeated if a Track.Rail command is not used for that block. As a consequence, updating the *X* or *Y* values affects the layout of the rail from the preceding block only. Changing the *RailType* will affect the rail from the point on where this command is used. If this command is used multiple times on the same track position for the same rail, then the first instance of the command takes effect, while subsequent ones are ignored.  
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+{{% warning-nontitle %}}
+
+Using a RailIndex value of 0 is not valid for this command: [Errata Note](https://github.com/leezer3/OpenBVE/wiki/Errata#rail-and-railend-commands-with-an-index-of-zero)
+
+{{% /warning-nontitle %}}
+
+{{% notice %}}
+
+#### Track.RailStart vs. Track.Rail
+
+If you want to start a new rail, you can either use Track.RailStart or Track.Rail. When using Track.RailStart, you provide markup that a new rail is in fact to be started, which is invalid if the rail already exists. Using an explicit Track.RailStart will protect you from using a *RailIndex* which is already in use, in which case an error message is generated. 
+
+{{% /notice %}}
+
+---
+
+{{% command %}} 
+**Track.RailType** *RailIndex*; *RailType*
+{{% /command %}} 
+
+{{% command-arguments %}}
+***RailIndex***: A non-negative integer indicating which rail index to change. The player's rail can be referred to with index **0**. The default value is 0.  
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command. The default value is 0.  
+{{% /command-arguments %}}
+
+This command changes the rail type for an existing rail, represented by *RailIndex*. The rail must have been started with a Track.RailStart or Track.Rail command and must not have been ended by a Track.RailEnd command. Changing the *RailType* will affect the rail from the point on where this command is used.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}	 
+
+---
+
+{{% command %}}
+**Track.RailEnd** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*
+{{% /command %}}
+
+{{% command-arguments %}}
+***RailIndex***: A positive integer (>=1) indicating which rail index to use.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+{{% /command-arguments %}}
+
+This command ends an existing rail, represented by the index *RailIndex*. The default values of *X* and *Y* are the ones last used by the rail. Once this command is used for a specific *RailIndex*, the corresponding rail is considered to be non-existing afterward.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+{{% warning-nontitle %}}
+
+Using a RailIndex value of 0 is not valid for this command: [Errata Note](https://github.com/leezer3/OpenBVE/wiki/Errata#rail-and-railend-commands-with-an-index-of-zero)
+
+{{% /warning-nontitle %}} 
+
+Example of Track.RailStart, Track.Rail, Track.RailType and Track.RailEnd commands
+
+{{% code %}}
+With Track  
+1000, .RailStart 1; 3.8; 0.0; 0  
+1025, .RailType 1; 1  
+1050, .Rail 1; 1.9; 0.0; 0  
+1075, .RailEnd 1  
+{{% /code %}}
+
+In the preceding example, rail 1 starts with an x-value of 3.8 and bears a rail index which corresponds to an object intended to depict a straight rail. The rail keeps the x-value of 3.8 at track position 1025, where the rail type is changed to correspond to an object intended to depict an s-shaped curve. At track position 1050, the rail is redefined to have an x-value of 1.9, after which the rail is straight again until 1075, where it is ended, still having an x-value of 1.9.
+
+---
+
+{{% command %}}
+**Track.Accuracy** *Value*
+{{% /command %}}
+
+{{% command-arguments %}}
+***Value***: A non-negative floating-point number representing the accuracy of the track. The default value is 2.
+{{% /command-arguments %}}
+
+This command sets the accuracy of the track from this point on. Values should be in the range from 0 to 4, where 0 means perfect accuracy (no inaccuracy at all), 1 means very good accuracy (high speed lines), 2 means good accuracy, 3 means mediocre accuracy, and 4 means poor accuracy. Intermediate values are also possible. Currently, values below 0 are clamped at 0, and values above 4 are clamped at 4.
+
+---
+
+{{% command %}}
+**Track.Adhesion** *Rate*
+{{% /command %}}
+
+{{% command-arguments %}}
+***Rate***: A non-negative floating-point number measured in percent representing the adhesion of the track. The default value is 100.
+{{% /command-arguments %}}
+
+This command sets the adhesion of the track from this point on. As a reference, the value of 135 represents dry conditions, 85 represents frost and 50 represents snowy conditions. With a value of 0, the train will not be able to move at all. 
+
+##### <a name="track_geometry"></a>● 11.2. Geometry
+
+---
+
+{{% command %}}
+**Track.Pitch** *Rate*
+{{% /command %}}
+
+{{% command-arguments %}}
+***Rate***: A floating-point number measured in per thousands representing the pitch of the track. The default value is 0.  
+{{% /command-arguments %}}
+
+This command defines the pitch of all rails from this point on. Negative values indicate a downward gradient, positive ones an upward gradient. The value of 0 represents a level track. Rate can be calculated from a length difference X and a height difference Y in the following way:
+
+*Rate expressed through X and Y:*
+{{% function %}}  
+_Rate = 1000 * Y / X_
+{{% /function %}}
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}	 
+
+---
+
+{{% command %}}
+**Track.Curve** *<font color=green>Radius</font>*; *CantInMillimeters*
+{{% /command %}}
+
+{{% command-arguments %}}
+***<font color=green>Radius</font>***: A floating-point number representing the radius of the curve, **by default** measured in **meters**. The default value is 0.  
+***CantInMillimeters***: A floating-point number which represents the superelevation of a banked curve, **always** measured in **millimeters** (0.001 meters). The default value is 0. See also Options.CantBehavior.  
+{{% /command-arguments %}}
+
+This command defines the radius of the curve for the player's rail from this point on. Negative values for *Radius* indicate a curve to the left, positive ones to the right. The value of 0 represents straight track. The *CantInMillimeters* parameter defines the cant (superelevation) in millimeters. If Options.CantBehavior is 0 (default), only the absolute value of *CantInMillimeters* is considered, and the superelevation is always towards the curve center (inward). Also, cant cannot be applied on straight track. If Options.CantBehavior is 1, *CantInMillimeters* is signed, i.e. negative values bank outward and positive ones inward on curved track. Also, cant can be applied on straight track, where negative values bank toward the left and positive ones toward the right.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}} 
+
+---
+
+{{% command %}}
+**Track.Turn** *Ratio*
+{{% /command %}}
+
+{{% command-arguments %}}
+***Rate***: A floating-point number representing a turn. The default value is 0.
+{{% /command-arguments %}}
+
+This command creates a point-based turn at the point of insertion. *Ratio* indicates the ratio between the length difference *Z* and the horizontal offset *X* in the following way:
+	
+{{% function %}}  
+*Ratio = X / Z*
+{{% /function %}}
+
+A negative ratio represents a turn to the left, a positive one to the right. The value of 0 represents a straight track.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+{{% warning-nontitle %}}
+
+This command is deprecated - use Track.Curve instead.
+
+{{% /warning-nontitle %}} 	 
+
+---
+
+{{% command %}}
+**Track.Height** *<font color=green>Y</font>*
+{{% /command %}}
+
+{{% command-arguments %}}
+***<font color=green>Y</font>***: A floating-point number representing the height of the player's rail, **by default** measured in **meters**.
+This command defines the height of the player's rail above the ground at the point of insertion. It influences the placement of the ground objects defined via Structure.Ground and changed via Track.Ground. The height is interpolated between adjacent Track.Height commands. For example, the following two codes produce equivalent results:
+{{% /command-arguments %}}
+
+*Example of a Track.Height command interpolated at 25m boundaries:*
+{{% code %}}
+1000, Track.Height 1  
+1075, Track.Height 4  
+{{% /code %}}
+
+*Example of Track.Height explicitly set each 25m to produce the same result:*
+{{% code %}}
+1000, Track.Height 1  
+1025, Track.Height 2  
+1050, Track.Height 3  
+1075, Track.Height 4  
+{{% /code %}}
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
