@@ -100,7 +100,7 @@ Commands with arguments:
 
 Commands with indices and arguments:
 
-{{% command %}} 
+{{% command %}}  
 *NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*) *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
 *NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
 *NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
@@ -208,7 +208,7 @@ $Rnd(*Start*; *End*)
 
 {{% command-arguments %}}  
 ***Start***: An integer representing the lower bound.  
-***End***: An integer representing the upper bound. 
+***End***: An integer representing the upper bound.  
 {{% /command-arguments %}}
 
 This directive is replaced by a random integer in the range from *Start* to *End*. It is useful to add randomness to a route.
@@ -231,7 +231,7 @@ $Sub(*Index*) = *Expression*
 
 {{% command-arguments %}}  
 ***Index***: A non-negative integer representing the index of a variable.  
-***Expression***: The expression to store in the variable. 
+***Expression***: The expression to store in the variable.  
 {{% /command-arguments %}}
 
 This directive should only appear as a single expression. It is used to assign *Expression* to a variable identified by *Index*. The whole $Sub directive is replaced by an empty string once the assignment is done. It is useful for storing values obtained by the $Rnd directive in order to reuse the same randomly-generated value. See the following definition of the $Sub(*Index*) directive for examples.
@@ -487,7 +487,7 @@ This command can be used to specify the length of a block. This is an overall se
 
 {{% command-arguments %}}  
 **0**: Off: Colors are matched specifically. If the specified transparent color does not exist within the color pallet, no transparency will be added.  
-**1**: On: Fuzzy matching. If the texture uses a restricted color pallet, the transparent color will be clamped to the nearest available color in the pallet. 
+**1**: On: Fuzzy matching. If the texture uses a restricted color pallet, the transparent color will be clamped to the nearest available color in the pallet.  
 {{% /command-arguments %}}
 
 ---
@@ -564,7 +564,7 @@ You need to use $Chr directives if you want to include newlines, commas and the 
 {{% command-arguments %}}  
 **-1**: The safety system is **activated** and the *service* brakes are applied.  
 **0**: The safety system is **activated** and the **emergency** brakes are applied.  
-**1**: The safety system is *deactivated* and the **emergency** brakes are applied. 
+**1**: The safety system is *deactivated* and the **emergency** brakes are applied.  
 {{% /command-arguments %}}
 
 ---
@@ -1202,7 +1202,7 @@ All commands from the Track namespace need to be associated to track positions. 
 ***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.  
 ***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
 ***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
-***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command. 
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command.  
 {{% /command-arguments %}}
 
 This command starts a new rail represented by the index *RailIndex*. Upon the point where this command is used, a rail of the same *RailIndex* must either not have been used so far in the route, or must have been ended via a Track.RailEnd command. If a rail of the same *RailIndex* was already used in the route, the default values of *X*, *Y* and *RailType* are the values last used by that rail, otherwise 0. If the rail is to be updated, use the Track.Rail command. If it is to be ended, use the Track.RailEnd command. You can end a rail of a given *RailIndex* and start a new rail of the same *RailIndex* at the same track position provided that the old rail is first ended and the new rail started afterward. For every block, a structure, determined by *RailType*, is automatically placed.
@@ -1223,7 +1223,7 @@ This command can only be used at the beginning of a block.
 ***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.  
 ***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
 ***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
-***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command. 
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command.  
 {{% /command-arguments %}}
 
 This command starts a new rail or updates an existing rail. The rail is represented by the index *RailIndex*. If a rail of the same *RailIndex* was already used in the route, the default values of *X*, *Y* and *RailType* are the values last used by that rail, otherwise 0. If the rail is to be ended, use the Track.RailEnd command. You can end a rail of a given *RailIndex* and start a new rail of the same *RailIndex* at the same track position provided that the old rail is first ended and the new rail started afterward. In each block, the *X* and *Y* values are repeated if a Track.Rail command is not used for that block. As a consequence, updating the *X* or *Y* values affects the layout of the rail from the preceding block only. Changing the *RailType* will affect the rail from the point on where this command is used. If this command is used multiple times on the same track position for the same rail, then the first instance of the command takes effect, while subsequent ones are ignored.  
@@ -1412,12 +1412,12 @@ This command is deprecated - use Track.Curve instead.
 
 This command defines the height of the player's rail above the ground at the point of insertion. It influences the placement of the ground objects defined via Structure.Ground and changed via Track.Ground. The height is interpolated between adjacent Track.Height commands. For example, the following two codes produce equivalent results:
 
-{{% code "*Example of a Track.Height command interpolated at 25m boundaries:*" %}}
+{{% code "*Example of a Track.Height command interpolated at 25m boundaries:*" %}}  
 1000, Track.Height 1  
 1075, Track.Height 4  
 {{% /code %}}
 
-{{% code "*Example of Track.Height explicitly set each 25m to produce the same result:*" %}}
+{{% code "*Example of Track.Height explicitly set each 25m to produce the same result:*" %}}  
 1000, Track.Height 1  
 1025, Track.Height 2  
 1050, Track.Height 3  
