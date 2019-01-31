@@ -18,7 +18,7 @@ For ATS-S, an S-type transponder is usually placed 600 meters in front of a red 
 
 In the case that your signals are at least 600 meters apart from each other, the setup is quite easy. Place a **Track.Tr 0** command around 600 meters in front of any signal, and a **Track.Tr 1** command around 20 meters in front of any signal:
 
-{{% code %}}
+{{% code %}}  
 With Track  
 0200, .Tr 0  
 0780, .Tr 1  
@@ -33,8 +33,8 @@ When signals are in placed smaller intervals, it can become necessary that an S-
 
 Your code will then need to follow this scheme:
 
-{{% code %}}
-With Track
+{{% code %}}  
+With Track  
 0200, .Tr 0  
 0700, .Tr 0;1 ,; referencing signal B  
 0780, .Tr 1  
@@ -65,7 +65,7 @@ Departure signals are those placed at the end of a station, block signals are si
 
 In the case that your signals are at least 600 meters apart from each other, the setup is quite easy. Place **Track.Tr 3** commands around 600 meters, 280 meters, 180 meters, 85 meters and 50 meters, depending on the requirements, in front of any signal, and a **Track.Tr 4** command around 25 meters in front of any signal:
 
-{{% code %}}
+{{% code %}}  
 With Track  
 0200, .Tr 3 ,; 600m  
 0520, .Tr 3 ,; 280m  
@@ -84,7 +84,7 @@ When signals are placed in shorter intervals, you need to be a little more caref
 
 The corresponding code could look something like this:
 
-{{% code %}}
+{{% code %}}  
 0200, .Tr 3 ,; 600m  
 0520, .Tr 3 ,; 280m  
 0620, .Tr 3;1 ,; 180m (signal A); 605m (signal B)  
@@ -109,7 +109,7 @@ Often, a route equipped with ATS-P additionally employs equipment for ATS-SN, be
 
 You should make sure that no two transponders occupy the same location. Both the S-type and the pattern renewal transponders are usually placed 600 meters in front of each signal. If you place the pattern renewal transponder first, ATS-P can activate if not already active, and the subsequent S-type transponder will have no effect on a train equipped with ATS-P. Your code will thus need to follow this scheme:
 
-{{% code %}} 
+{{% code %}}  
 With Track  
 0195, .Tr 3  
 0200, .Tr 0;;-1  
@@ -130,7 +130,7 @@ In stations, the accidental departure transponders are occasionally placed short
 
 You can employ the accidental departure transponder in the following way:
 
-{{% code %}}
+{{% code %}}  
 0100, .Sta  
 0178, .Stop 1;;;4  
 0180, .Tr 2  
