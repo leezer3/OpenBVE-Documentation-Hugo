@@ -79,7 +79,7 @@ A non-negative [strict]({{< ref "/information/numberformats/_index.md" >}}) floa
 {{% /command %}}  
 This is a more complex way of specifying track positions for use in conjunction with Options.UnitOfLength. Each of the *Part<sub>i</sub>* is a [strict]({{< ref "/information/numberformats/_index.md" >}}) floating-point number. *Part<sub>1</sub>* will be multiplied with *Factor<sub>1</sub>*, *Part<sub>2</sub>* with *Factor<sub>2</sub>*, and so on, then all products are added together to form the final track position. This track position must be non-negative. The parts are separated by colons (U+003A). Please consult Options.UnitOfLength for further information on how to define the factors.
 
-Wherever arguments in commands represent lengths, they can also be entered using the colon notation. These cases are highlighted in green in the following.
+Wherever arguments in commands represent lengths, they can also be entered using the colon notation. These cases are highlighted in <font color="green">green</font> in the following.
 
 When *n* units are defined via Options.UnitOfLength, but fewer parameters are given using the colon notation, the parameters are right-associative, meaning, the parameters on the left are those which are skipped. Therefore, each of the following lengths are equivalent: *0:0:2*, *0:2*, and *2*.
 
@@ -96,6 +96,14 @@ Commands with arguments:
 {{% command %}}  
 *NameOfTheCommand* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
 *NameOfTheCommand*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
+{{% /command %}}
+
+Commands with indices and arguments:
+
+{{% command %}}  
+*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*) *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
+*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
+*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
 {{% /command %}}
 
 Rules:
@@ -200,7 +208,7 @@ $Rnd(*Start*; *End*)
 
 {{% command-arguments %}}  
 ***Start***: An integer representing the lower bound.  
-***End***: An integer representing the upper bound. 
+***End***: An integer representing the upper bound.  
 {{% /command-arguments %}}
 
 This directive is replaced by a random integer in the range from *Start* to *End*. It is useful to add randomness to a route.
@@ -223,7 +231,7 @@ $Sub(*Index*) = *Expression*
 
 {{% command-arguments %}}  
 ***Index***: A non-negative integer representing the index of a variable.  
-***Expression***: The expression to store in the variable. 
+***Expression***: The expression to store in the variable.  
 {{% /command-arguments %}}
 
 This directive should only appear as a single expression. It is used to assign *Expression* to a variable identified by *Index*. The whole $Sub directive is replaced by an empty string once the assignment is done. It is useful for storing values obtained by the $Rnd directive in order to reuse the same randomly-generated value. See the following definition of the $Sub(*Index*) directive for examples.
@@ -479,7 +487,7 @@ This command can be used to specify the length of a block. This is an overall se
 
 {{% command-arguments %}}  
 **0**: Off: Colors are matched specifically. If the specified transparent color does not exist within the color pallet, no transparency will be added.  
-**1**: On: Fuzzy matching. If the texture uses a restricted color pallet, the transparent color will be clamped to the nearest available color in the pallet. 
+**1**: On: Fuzzy matching. If the texture uses a restricted color pallet, the transparent color will be clamped to the nearest available color in the pallet.  
 {{% /command-arguments %}}
 
 ---
@@ -556,7 +564,7 @@ You need to use $Chr directives if you want to include newlines, commas and the 
 {{% command-arguments %}}  
 **-1**: The safety system is **activated** and the *service* brakes are applied.  
 **0**: The safety system is **activated** and the **emergency** brakes are applied.  
-**1**: The safety system is *deactivated* and the **emergency** brakes are applied. 
+**1**: The safety system is *deactivated* and the **emergency** brakes are applied.  
 {{% /command-arguments %}}
 
 ---
@@ -937,7 +945,7 @@ The commands in the Structure namespace define which objects to use in other com
 The general syntax for commands in the Structure namespace is:
 
 {{% command %}}  
-**Structure.Command(StructureIndex)**<font color="gray">.Load</font> *FileName*  
+**Structure._Command_(_StructureIndex_)**<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 *StructureIndex* is a non-negative integer. *FileName* is the object file to load, relative to the **Object** folder. *Command* is any of the following commands:
@@ -974,7 +982,7 @@ Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, 
 Additionally, there is the Structure.Pole command, which has a slightly different syntax:
 
 {{% command %}}  
-**Structure.Pole(NumberOfAdditionalRails; PoleStructureIndex)**<font color="gray">.Load</font> *FileName*  
+**Structure.Pole(_NumberOfAdditionalRails_; _PoleStructureIndex_)**<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -999,14 +1007,14 @@ Regardless of the repetition count you chose, you should make sure that the left
 
 The image loaded into Texture.Background(0) is displayed at the beginning of the route, unless a Track.Back command at the beginning of the route requests a different image.
 
-As an alternative **Dynamic or Object** based backgrounds may be used. The implementation of these is described upon this page:
+As an alternative ***Dynamic or Object*** based backgrounds may be used. The implementation of these is described upon this page:
 
 [Dynamic & Object Based Backgrounds]({{< ref "/routes/xml/dynamicbackground/_index.md" >}})
 
 ---
 
 {{% command %}}  
-**Texture.Background(BackgroundTextureIndex)**<font color="gray">.Load</font> *FileName*  
+**Texture.Background(_BackgroundTextureIndex_)**<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1024,7 +1032,7 @@ If a dynamic or object based background is to be used, this must instead point t
 ---
 
 {{% command %}}  
-**Texture.Background(BackgroundTextureIndex).X** *RepetitionCount*  
+**Texture.Background(_BackgroundTextureIndex_).X** *RepetitionCount*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1040,7 +1048,7 @@ Ignored if using a dynamic or object based background.
 ---
 
 {{% command %}}  
-**Texture.Background(BackgroundTextureIndex).Aspect** *Mode*  
+**Texture.Background(_BackgroundTextureIndex_).Aspect** *Mode*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1063,7 +1071,7 @@ Ignored if using a dynamic or object based background.
 ## <a name="cycle"></a>■ 9. The Cycle namespace
 
 {{% command %}}  
-**Cycle.Ground(GroundStructureIndex)<font color="gray">.Params</font> GroundStructureIndex<sub>0</sub>; GroundStructureIndex<sub>1</sub>; GroundStructureIndex<sub>2</sub>; ...; GroundStructureIndex<sub>n-1</sub>**  
+**Cycle.Ground(_GroundStructureIndex_)<font color="gray">.Params</font> _GroundStructureIndex<sub>0</sub>_; _GroundStructureIndex<sub>1</sub>_; _GroundStructureIndex<sub>2</sub>_; ...; _GroundStructureIndex<sub>n-1</sub>_**  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1074,7 +1082,7 @@ Ignored if using a dynamic or object based background.
 When usually using Track.Ground(*GroundStructureIndex*), the same ground structure object will be repeatedly placed in every block. Via Cycle.Ground, you can override this behavior and automatically cycle through a series of different objects when using Track.Ground(*GroundStructureIndex*). The cycle repeats indefinitely, where *GroundStructureIndex0* starts at track position 0. Technically, the *i* in *GroundStructureIndex<sub>i</sub>* chosen for a particular track position *p* is `Mod[p / BlockLength, n]`.
 
 {{% command %}}  
-**Cycle.Rail(RailStructureIndex)<font color="gray">.Params</font> RailStructureIndex<sub>0</sub>; RailStructureIndex<sub>1</sub>; RailStructureIndex<sub>2</sub>; ...; RailStructureIndex<sub>n-1</sub>**  
+**Cycle.Rail(_RailStructureIndex_)<font color="gray">.Params</font> _RailStructureIndex<sub>0</sub>_; _RailStructureIndex<sub>1</sub>_; _RailStructureIndex<sub>2</sub>_; ...; _RailStructureIndex<sub>n-1</sub>_**  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1166,7 +1174,7 @@ The glow textures deserve special attention. All glow textures are pre-processed
 
 The texture you start with should have a sharp shape, usually oval. The shape should be fully saturated in the core and blend into pure white at its outer rim. The surroundings of the shape can be either pure black (A) or pure white (B).
 
-When openBVE loads the glow texture, it will replace all purely black pixels with purely white pixels, thus arriving at (B). From there, the image is inverted (C), then hue-shifted by 180 degrees (D). Compared to (B), this has the overall effect of inverting the lightness of the image, i.e. fully saturated pixels will be left unchanged (e.g. the core), while bright pixels (such as the outer rim of the shape) will become dark, and vice versa. Then, the image is gamma-corrected to further darken the dark parts (E), and finally, the image is blurred slightly (F).
+When openBVE loads the glow texture, it will replace all purely black pixels with purely white pixels, thus arriving at (B). From there, the image is inverted \(C), then hue-shifted by 180 degrees (D). Compared to (B), this has the overall effect of inverting the lightness of the image, i.e. fully saturated pixels will be left unchanged (e.g. the core), while bright pixels (such as the outer rim of the shape) will become dark, and vice versa. Then, the image is gamma-corrected to further darken the dark parts (E), and finally, the image is blurred slightly (F).
 
 The resulting texture is always additively blended. This means that instead of directly drawing the texture onto the screen, the pixels of the texture are added to the screen pixels. Here, adding black (0) does not change the screen pixels, while adding a fully satured color channel (1) will result in a fully satured color channel, e.g. adding white produces white. Keep in mind that when designing the textures, you will have to follow the inverse rules, e.g. design the image as depicted in (A) or (B), while having in mind how it will be processed afterward.
 
@@ -1194,7 +1202,7 @@ All commands from the Track namespace need to be associated to track positions. 
 ***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.  
 ***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
 ***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
-***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command. 
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command.  
 {{% /command-arguments %}}
 
 This command starts a new rail represented by the index *RailIndex*. Upon the point where this command is used, a rail of the same *RailIndex* must either not have been used so far in the route, or must have been ended via a Track.RailEnd command. If a rail of the same *RailIndex* was already used in the route, the default values of *X*, *Y* and *RailType* are the values last used by that rail, otherwise 0. If the rail is to be updated, use the Track.Rail command. If it is to be ended, use the Track.RailEnd command. You can end a rail of a given *RailIndex* and start a new rail of the same *RailIndex* at the same track position provided that the old rail is first ended and the new rail started afterward. For every block, a structure, determined by *RailType*, is automatically placed.
@@ -1212,5 +1220,1098 @@ This command can only be used at the beginning of a block.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.   
+***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command.  
 {{% /command-arguments %}}
+
+This command starts a new rail or updates an existing rail. The rail is represented by the index *RailIndex*. If a rail of the same *RailIndex* was already used in the route, the default values of *X*, *Y* and *RailType* are the values last used by that rail, otherwise 0. If the rail is to be ended, use the Track.RailEnd command. You can end a rail of a given *RailIndex* and start a new rail of the same *RailIndex* at the same track position provided that the old rail is first ended and the new rail started afterward. In each block, the *X* and *Y* values are repeated if a Track.Rail command is not used for that block. As a consequence, updating the *X* or *Y* values affects the layout of the rail from the preceding block only. Changing the *RailType* will affect the rail from the point on where this command is used. If this command is used multiple times on the same track position for the same rail, then the first instance of the command takes effect, while subsequent ones are ignored.  
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+{{% warning-nontitle %}}
+
+Using a RailIndex value of 0 is not valid for this command: [Errata Note](https://github.com/leezer3/OpenBVE/wiki/Errata#rail-and-railend-commands-with-an-index-of-zero)
+
+{{% /warning-nontitle %}}
+
+{{% notice %}}
+
+#### Track.RailStart vs. Track.Rail
+
+If you want to start a new rail, you can either use Track.RailStart or Track.Rail. When using Track.RailStart, you provide markup that a new rail is in fact to be started, which is invalid if the rail already exists. Using an explicit Track.RailStart will protect you from using a *RailIndex* which is already in use, in which case an error message is generated. 
+
+{{% /notice %}}
+
+---
+
+{{% command %}}  
+**Track.RailType** *RailIndex*; *RailType*  
+{{% /command %}} 
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer indicating which rail index to change. The player's rail can be referred to with index **0**. The default value is 0.  
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command. The default value is 0.  
+{{% /command-arguments %}}
+
+This command changes the rail type for an existing rail, represented by *RailIndex*. The rail must have been started with a Track.RailStart or Track.Rail command and must not have been ended by a Track.RailEnd command. Changing the *RailType* will affect the rail from the point on where this command is used.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}	 
+
+---
+
+{{% command %}}  
+**Track.RailEnd** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A positive integer (>=1) indicating which rail index to use.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+{{% /command-arguments %}}
+
+This command ends an existing rail, represented by the index *RailIndex*. The default values of *X* and *Y* are the ones last used by the rail. Once this command is used for a specific *RailIndex*, the corresponding rail is considered to be non-existing afterward.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+{{% warning-nontitle %}}
+
+Using a RailIndex value of 0 is not valid for this command: [Errata Note](https://github.com/leezer3/OpenBVE/wiki/Errata#rail-and-railend-commands-with-an-index-of-zero)
+
+{{% /warning-nontitle %}} 
+
+{{% code "*Example of Track.RailStart, Track.Rail, Track.RailType and Track.RailEnd commands*" %}}  
+With Track  
+1000, .RailStart 1; 3.8; 0.0; 0  
+1025, .RailType 1; 1  
+1050, .Rail 1; 1.9; 0.0; 0  
+1075, .RailEnd 1  
+{{% /code %}}
+
+In the preceding example, rail 1 starts with an x-value of 3.8 and bears a rail index which corresponds to an object intended to depict a straight rail. The rail keeps the x-value of 3.8 at track position 1025, where the rail type is changed to correspond to an object intended to depict an s-shaped curve. At track position 1050, the rail is redefined to have an x-value of 1.9, after which the rail is straight again until 1075, where it is ended, still having an x-value of 1.9.
+
+---
+
+{{% command %}}  
+**Track.Accuracy** *Value*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Value***: A non-negative floating-point number representing the accuracy of the track. The default value is 2.  
+{{% /command-arguments %}}
+
+This command sets the accuracy of the track from this point on. Values should be in the range from 0 to 4, where 0 means perfect accuracy (no inaccuracy at all), 1 means very good accuracy (high speed lines), 2 means good accuracy, 3 means mediocre accuracy, and 4 means poor accuracy. Intermediate values are also possible. Currently, values below 0 are clamped at 0, and values above 4 are clamped at 4.
+
+---
+
+{{% command %}}  
+**Track.Adhesion** *Rate*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Rate***: A non-negative floating-point number measured in percent representing the adhesion of the track. The default value is 100.  
+{{% /command-arguments %}}
+
+This command sets the adhesion of the track from this point on. As a reference, the value of 135 represents dry conditions, 85 represents frost and 50 represents snowy conditions. With a value of 0, the train will not be able to move at all. 
+
+##### <a name="track_geometry"></a>● 11.2. Geometry
+
+---
+
+{{% command %}}  
+**Track.Pitch** *Rate*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Rate***: A floating-point number measured in per thousands representing the pitch of the track. The default value is 0.  
+{{% /command-arguments %}}
+
+This command defines the pitch of all rails from this point on. Negative values indicate a downward gradient, positive ones an upward gradient. The value of 0 represents a level track. Rate can be calculated from a length difference X and a height difference Y in the following way:
+
+{{% function "*Rate expressed through X and Y:*" %}}  
+_Rate = 1000 * Y / X_  
+{{% /function %}}
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}	 
+
+---
+
+{{% command %}}  
+**Track.Curve** *<font color=green>Radius</font>*; *CantInMillimeters*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***<font color=green>Radius</font>***: A floating-point number representing the radius of the curve, **by default** measured in **meters**. The default value is 0.  
+***CantInMillimeters***: A floating-point number which represents the superelevation of a banked curve, **always** measured in **millimeters** (0.001 meters). The default value is 0. See also Options.CantBehavior.  
+{{% /command-arguments %}}
+
+This command defines the radius of the curve for the player's rail from this point on. Negative values for *Radius* indicate a curve to the left, positive ones to the right. The value of 0 represents straight track. The *CantInMillimeters* parameter defines the cant (superelevation) in millimeters. If Options.CantBehavior is 0 (default), only the absolute value of *CantInMillimeters* is considered, and the superelevation is always towards the curve center (inward). Also, cant cannot be applied on straight track. If Options.CantBehavior is 1, *CantInMillimeters* is signed, i.e. negative values bank outward and positive ones inward on curved track. Also, cant can be applied on straight track, where negative values bank toward the left and positive ones toward the right.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}} 
+
+---
+
+{{% command %}}  
+**Track.Turn** *Ratio*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Rate***: A floating-point number representing a turn. The default value is 0.  
+{{% /command-arguments %}}
+
+This command creates a point-based turn at the point of insertion. *Ratio* indicates the ratio between the length difference *Z* and the horizontal offset *X* in the following way:
+	
+{{% function %}}  
+*Ratio = X / Z*  
+{{% /function %}}
+
+A negative ratio represents a turn to the left, a positive one to the right. The value of 0 represents a straight track.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+{{% warning-nontitle %}}
+
+This command is deprecated - use Track.Curve instead.
+
+{{% /warning-nontitle %}} 	 
+
+---
+
+{{% command %}}  
+**Track.Height** *<font color=green>Y</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***<font color=green>Y</font>***: A floating-point number representing the height of the player's rail, **by default** measured in **meters**.  
+{{% /command-arguments %}}
+
+This command defines the height of the player's rail above the ground at the point of insertion. It influences the placement of the ground objects defined via Structure.Ground and changed via Track.Ground. The height is interpolated between adjacent Track.Height commands. For example, the following two codes produce equivalent results:
+
+{{% code "*Example of a Track.Height command interpolated at 25m boundaries:*" %}}  
+1000, Track.Height 1  
+1075, Track.Height 4  
+{{% /code %}}
+
+{{% code "*Example of Track.Height explicitly set each 25m to produce the same result:*" %}}  
+1000, Track.Height 1  
+1025, Track.Height 2  
+1050, Track.Height 3  
+1075, Track.Height 4  
+{{% /code %}}
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+##### <a name="track_objects"></a>● 11.3. Objects
+
+------
+
+{{% command %}}  
+**Track.FreeObj** *RailIndex*; *FreeObjStructureIndex*; *X*; *Y*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer representing the rail on which to place the object. The default value is 0.   
+***FreeObjStructureIndex***: A non-negative integer representing the object to place as defined via Structure.FreeObj. The default value is 0.  
+***<font color="green">X</font>***: The x-offset from the (straight) rail, **by default** measured in **meters**. Negative values represent the left, positive ones the right. The default value is 0.  
+***<font color="green">Y</font>***: The y-offset from the (straight) rail, **by default** measured in **meters**. Negative values represent below the top of the rails, positive ones above. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
+
+This places a "free" object a single time on a specified rail. The object must have been loaded via Structure.FreeObj(*FreeObjStructureIndex*) prior to using this command. 
+
+------
+
+{{% command %}}  
+**Track.Wall** *RailIndex*; *Direction*; *WallStructureIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer representing the rail on which to start or update the wall. The default value is 0.  
+***Direction***: An integer indicating which wall to use as described below.  
+***WallStructureIndex***: A non-negative integer representing the object to place as defined via Structure.WallL and Structure.WallR. The default value is 0.  
+{{% /command-arguments %}}
+
+▸ Options for *Direction*:
+
+{{% command-arguments %}}  
+**-1**: The WallL object (left wall) is used.  
+**0**: Both the WallL and WallR objects are used.  
+**1**: The WallR object (right wall) is used.  
+{{% /command-arguments %}}
+
+This starts or updates a wall on a specified rail. The object must have been loaded via Structure.WallL(*WallObjectIndex*) or Structure.WallR(*WallObjectIndex*) prior to using this command. The walls are placed at the beginning of every block until a corresponding Track.WallEnd ends the wall for this rail. Please note that walls are resurrected if a rail is ended via Track.RailEnd and then started again via Track.RailStart or Track.Rail unless the wall was also ended via Track.WallEnd.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.WallEnd** *RailIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer representing the rail on which to end an existing wall.  
+{{% /command-arguments %}}
+
+This ends an existing wall that was previously started via Track.Wall on a specified rail. The wall is not placed for the block in which this command is used.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.Dike** *RailIndex*; *Direction*; *DikeStructureIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer representing the rail on which to start or update the dike. The default value is 0.  
+***Direction***: An integer indicating which dike to use as described below.  
+***DikeStructureIndex***: A non-negative integer representing the object to place as defined via Structure.DikeL and Structure.DikeR. The default value is 0.  
+{{% /command-arguments %}}
+
+▸ Options for *Direction*:
+
+{{% command-arguments %}}  
+**-1**: The DikeL object (left dike) is used.  
+**0**: Both the DikeL and DikeR objects are used.  
+**1**: The DikeR object (right dike) is used.  
+{{% /command-arguments %}}
+
+This starts or updates a dike on a specified rail. The object must have been loaded via Structure.DikeL(*DikeObjectIndex*) or Structure.DikeR(*DikeObjectIndex*) prior to using this command. The dikes are placed at the beginning of every block until a corresponding Track.DikeEnd ends the dike for this rail. Please note that dikes are resurrected if a rail is ended via Track.RailEnd and then started again via Track.RailStart or Track.Rail unless the dike was also ended via Track.DikeEnd.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.DikeEnd** *RailIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer representing the rail on which to end an existing dike.  
+{{% /command-arguments %}}
+
+This ends an existing dike that was previously started via Track.Dike on a specified rail. The dike is not placed for the block in which this command is used.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.Pole** *RailIndex*; *NumberOfAdditionalRails*; *Location*; *Interval*; *PoleStructureIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer representing the rail on which to start or update the pole. The default value is 0.  
+***NumberOfAdditionalRails***: A non-negative integer representing the amount of additional rails covered by this pole (i.e. this rail, plus *NumberOfAdditionalRails* rails). The default value is 0.  
+***Location***: If *NumberOfAdditionalRails* is 0, the side on which the pole is placed (see below), or the x-offset in multiples of 3.8 meters if *NumberOfAdditionalRails* is at least 1. The default value is 0.  
+***Interval***: An integer multiple of the block length specifying the interval in which poles are placed.  
+***PoleStructureIndex***: A non-negative integer representing the object to place as defined via Structure.Pole. The default value is 0.  
+{{% /command-arguments %}}
+
+This starts or updates a pole on a specified rail. The object must have been loaded via Structure.Pole(*NumberOfAdditionalRails*; *PoleStructureIndex*) prior to using this command. The poles are placed at the beginning of every block whose track positions are an integer multiple of the *Interval* (that is not necessarily at the same location this command is placed). If *NumberOfAdditionalRails* is 0, *Location*indicates the side of the rail on which the pole is placed. If *Location* is less than or equal to 0, the pole is placed as-is (corresponding to the left side). If *Location* is greater than 0, the object is mirrored on the x-axis and then placed (corresponding to the right side). If *NumberOfAdditionalRails* is greater than or equal to 1, *Location* specifies the x-offset in multiples of 3.8 meters. Please note that poles are resurrected if a rail is ended via Track.RailEnd and then started again via Track.RailStart or Track.Rail unless the pole was also ended via Track.PoleEnd.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.PoleEnd** *RailIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer representing the rail on which to end an existing pole.  
+{{% /command-arguments %}}
+
+This ends an existing pole that was previously started via Track.Pole on a specified rail. The pole is not placed for the block in which this command is used.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+<font color="gray">**Track.Crack** *RailIndex<sub>1</sub>*; *RailIndex<sub>2</sub>*; *CrackStructureIndex*</font>  
+{{% /command %}}
+
+![construction_64](/images/construction_64.png)<font color="gray">Description not available yet.</font>
+
+------
+
+{{% command %}}  
+**Track.Ground** *CycleIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***CycleIndex***: A non-negative integer representing the cycle of ground objects to place as defined via Structure.Ground or Cycle.Ground.  
+{{% /command-arguments %}}
+
+This defines which ground objects to place from this point on. Ground objects are always placed at the beginning of a block at a certain height below the player's rail (as defined via Track.Height). If no cycle was defined for *CycleIndex*, then the object loaded into Structure.Ground(*CycleIndex*) is placed. Otherwise, the cycle of ground objects as defined via Cycle.Ground(*CycleIndex*) is used.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+##### <a name="track_stations"></a>● 11.4. Stations
+
+------
+
+{{% command %}}  
+**Track.Sta** *Name*; *ArrivalTime*; *DepartureTime*; *PassAlarm*; *Doors*; *ForcedRedSignal*; *System*; *ArrivalSound*; *StopDuration*; *PassengerRatio*; *DepartureSound*; *TimetableIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Name***: The name of the station. This is displayed in the timetable and in messages, so should not be omitted.  
+***ArrivalTime***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) the player's train is expected to arrive at this station. Special values may also appear - see below.  
+***DepartureTime***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) the player's train is expected to depart from this station. Special values may also appear - see below.  
+***PassAlarm***: Indicates whether the pass alarm device should remind the driver of stopping at this station. The default value is 0.  
+***Doors***: Indicates which doors should open at this station. The default value is 0.  
+***ForcedRedSignal***: Indicates whether the signal behind the last station stop should be red on a train approach. The default value is 0.  
+***System***: Indicates which built-in safety system should apply until the next station. The default value is 0.  
+***ArrivalSound***: The sound file to be played on arrival, relative to the **Sound** folder.  
+***StopDuration***: A positive floating-point number indicating the minimum stop duration in seconds, including door opening/closing times. The default value is 15.  
+***PassengerRatio***: A non-negative floating-point number indicating the relative amount of passengers in the train from this station on. As a reference, 100 represents a train with normal amount of passengers, while 250 represents an over-crowded train. Values in-between 0 and 250 should be used. The default value is 100.  
+***DepartureSound***: The sound file to be played before departure (departure time minus sound duration minus door closing time), relative to the **Sound** folder.  
+***TimetableIndex***: A non-negative integer representing the timetable to be shown from this station on as defined via Train.Timetable(*TimetableIndex*).  
+{{% /command-arguments %}}
+
+▸ Available options for *ArrivalTime*:
+
+{{% command-arguments %}}  
+*time*: The train is expected to arrive at this particular time.  
+*omitted*: The train may arrive at any time.  
+**P** or **L**: All trains are expected to pass this station.  
+**B**: The player's train is expected to pass this station, while all other trains are expected to stop.  
+**S**: The player's train is expected to stop at this station, while all other trains are expected to pass.  
+**S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
+{{% /command-arguments %}}
+
+▸ Available options for *DepartureTime*:
+
+{{% command-arguments %}}  
+*time*: The train is expected to depart at this particular time.  
+*omitted*: The train may depart at any time.  
+**T** or **=**: This is the terminal station. If *ForcedRedSignal* is set to 1, the departure signal will be held at red indefinately.  
+**T:**_time_: This is the terminal station. If *ForcedRedSignal* is set to 1, the departure signal will still switch to green before the specified time as if this was a regular station.  
+**C**: This is a station at which to "change ends". See the description below.  
+**C:**_time_: This is a station at which to "change ends". Changing ends will take place at the specified time unless *StopDuration* interferes. See the description below.  
+{{% /command-arguments %}}
+
+▸ Available options for *PassAlarm*:
+
+{{% command-arguments %}}  
+**0**: The pass alarm device does not remind the driver of stopping at this station.  
+**1**: The pass alarm device reminds the driver of stopping at this station.  
+{{% /command-arguments %}}
+
+▸ Available options for *Doors*:
+
+{{% command-arguments %}}  
+**L** or **-1**: The left doors are expected to open at this station.  
+**N** or **0**: No doors are expected to open at this station, i.e. the train should simply come to a hold.  
+**R** or **1**: The right doors are expected to open at this station.  
+**B**: Both the left and right doors are expected to open at this station.  
+{{% /command-arguments %}}
+
+▸ Available options for *ForcedRedSignal*:
+
+{{% command-arguments %}}  
+**0**: Signals are unaffected by this station.  
+**1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
+{{% /command-arguments %}}
+
+▸ Available options for *System*:
+
+{{% command-arguments %}}  
+**ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
+**ATC** or **1**: ATC should be used from this station on. The following track is equipped with ATC.  
+{{% /command-arguments %}}
+
+This command initializes a new station. It should be placed at the beginning of the station platform. In order to finalize the creation of a station, use the Track.Stop command to place stop points following this command. All following Track.Stop commands will be associated to this station. At least one Track.Stop command must follow if trains are expected to stop at this station.
+
+Stations can be marked as "changing ends" in the departure time. At such stations, when the departure time has been reached, the train will automatically jump to the next station. This feature is intended to fake a reverse of traveling direction without the need to jump to stations manually from the menu.
+
+{{% warning-nontitle %}}
+
+The "changing ends" feature is only available in the development release 1.2.11 and above.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.Station** *Name*; *ArrivalTime*; *DepartureTime*; *ForcedRedSignal*; *System*; *DepartureSound*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Name***: The name of the station. This is displayed in the timetable and in messages, so should not be omitted.  
+***ArrivalTime***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) the player's train is expected to arrive at this station. Special values may also appear - see below.  
+***DepartureTime***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) the player's train is expected to depart from this station. Special values may also appear - see below.  
+***ForcedRedSignal***: Indicates whether the signal behind the last station stop should be red on a train approach. The default value is 0.  
+***System***: Indicates which built-in safety system should apply until the next station. The default value is 0.  
+***DepartureSound***: The sound file to be played before departure (departure time minus sound duration minus door closing time), relative to the **Sound** folder.  
+{{% /command-arguments %}}
+
+▸ Available options for *ArrivalTime*:
+
+{{% command-arguments %}}  
+*time*: The train is expected to arrive at this particular time.  
+*omitted*: The train may arrive at any time.  
+**P** or **L**: All trains are expected to pass this station.  
+**B**: The player's train is expected to pass this station, while all other trains are expected to stop.  
+**S**: The player's train is expected to stop at this station, while all other trains are expected to pass.  
+**S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
+{{% /command-arguments %}}
+
+▸ Available options for *DepartureTime*:
+
+{{% command-arguments %}}  
+*time*: The train is expected to depart at this particular time.  
+*omitted*: The train may depart at any time.  
+**T** or **=**: This is the terminal station. If *ForcedRedSignal* is set to 1, the departure signal will be held at red indefinately.  
+**T:**_time_: This is the terminal station. If *ForcedRedSignal* is set to 1, the departure signal will still switch to green before the specified time as if this was a regular station.  
+**C**: This is a station at which to "change ends". See the description below.  
+**C:**_time_: This is a station at which to "change ends". Changing ends will take place at the specified time unless *StopDuration* interferes. See the description below.  
+{{% /command-arguments %}}
+
+▸ Available options for *ForcedRedSignal*:
+
+{{% command-arguments %}}  
+**0**: Signals are unaffected by this station.  
+**1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
+{{% /command-arguments %}}
+
+▸ Available options for *System*:
+
+{{% command-arguments %}}  
+**ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
+**ATC** or **1**: ATC should be used from this station on. The following track is equipped with ATC.  
+{{% /command-arguments %}}
+
+This command initializes a new station. Prefer using the Track.Sta command, which includes more options. For the options of Track.Sta which are not offered by Track.Station, the following values apply:
+
+{{% table-nonheader %}}
+
+| *PassAlarm*      | 0 (not used)                  |
+| ---------------- | ----------------------------- |
+| *Doors*          | B (both doors must be opened) |
+| *ArrivalSound*   | Not played                    |
+| *StopDuration*   | 15                            |
+| *PassengerRatio* | 100                           |
+| *TimetableIndex* | Not affected                  |
+
+{{% /table-nonheader %}}
+
+The command should be placed at the beginning of the station platform. In order to finalize the creation of a station, use the Track.Stop command to place stop points following this command. All following Track.Stop commands will be associated to this station. At least one Track.Stop command must follow if trains are expected to stop at this station.
+
+Stations can be marked as "changing ends" in the departure time. At such stations, when the departure time has been reached, the train will automatically jump to the next station. This feature is intended to fake a reverse of traveling direction without the need to jump to stations manually from the menu.
+
+{{% warning-nontitle %}}
+
+The "changing ends" feature is only available in the development release 1.2.11 and above.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.Stop** *Direction*; *<font color="green">BackwardTolerance</font>*; *<font color="green">ForwardTolerance</font>*; *Cars*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Direction***: On which side to place a default stop post. The default value is 0.  
+***<font color="green">BackwardTolerance</font>***: A positive floating-point number indicating the allowed tolerance in the backward direction, **by default** measured in **meters**. The default value is 5.  
+***<font color="green">ForwardTolerance</font>***: A positive floating-point number indicating the allowed tolerance in the forward direction, **by default** measured in **meters**. The default value is 5.  
+***Cars***: A non-negative integer indicating for how many cars this stop point applies, or 0 for all cars. The default value is 0.  
+{{% /command-arguments %}}
+
+▸ Available options for *Direction*:
+
+{{% command-arguments %}}  
+**-1**: A stop post is created on the left side.  
+**0**: No stop post is created.  
+**1**: A stop post is created on the right side.  
+{{% /command-arguments %}}
+
+This command places a stop point for the last created station. If there is more than one stop defined for a station, a train is expected to stop at the first Track.Stop command for which *Cars* is greater than or equal to the number of cars the train has, where a value for *Cars* of 0 indicates a stop point regardless of the amount of cars to be used as the last stop point for a station.
+
+{{% code "*Example of a station with multiple stop points:*" %}}  
+With Track  
+0100, .Sta STATION  
+0178, .Stop 1;;;4 ,; for 4 or less cars  
+0212, .Stop 1;;;6 ,; for 5 or 6 cars  
+0246, .Stop 1;;;8 ,; for 7 or 8 cars  
+0280, .Stop 1;;;0 ,; for 9 or more cars  
+{{% /code %}}
+
+------
+
+{{% command %}}  
+<font color="gray">**Track.Form** *RailIndex<sub>1</sub>*; *RailIndex<sub>2</sub>*; *RoofStructureIndex*; *FormStructureIndex*</font>  
+{{% /command %}}
+
+![construction_64](/images/construction_64.png)<font color="gray">Description not available yet.</font>
+
+##### <a name="track_signalling"></a>● 11.5. Signalling and speed limits
+
+------
+
+{{% command %}}  
+**Track.Limit** *<font color="blue">Speed</font>*; *Post*; *Cource*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***<font color="blue">Speed</font>***: A positive floating-point number representing the speed, **by default** measured in **km/h**, or 0 to indicate no speed restriction. The default value is 0.  
+***Post***: The side on which to place a default Japanese-style speed limit post. The default value is 0.  
+***Cource***: The directional indication. The default value is 0.  
+{{% /command-arguments %}}
+
+![illustration_limit](/images/illustration_limit.png)
+
+▸ Options for *Post*:
+
+{{% command-arguments %}}  
+**-1**: The post is placed on the left side of the track.  
+**0**: No post will be placed.  
+**1**: The post is placed on the right side of the track.  
+{{% /command-arguments %}}
+
+▸ Options for *Cource*:
+
+{{% command-arguments %}}  
+**-1**: The post applies for a left-bound track.  
+**0**: The post does not indicate a particular direction.  
+**1**: The post applies for a right-bound track.  
+{{% /command-arguments %}}
+
+This command defines the new speed limit from this point on. If the new speed limit is lower than the current speed limit, the new speed limit will take effect immediately. If the speed limit is higher than the current speed limit, the new speed limit will take effect only once the whole train has passed this point. By setting *Speed* to `0`, the speed restriction is released. By setting *Post* to either `-1` or `1`, a default Japanese-style speed post is placed at the respective side of the track. Setting *Course* to either `-1` or `1` includes a directional indication, which is usually used at railroad switches to indicate that the speed limit only applies if the respective direction is being taken. If *Speed* is set to `0`, the setting of *Course* has no effect.
+
+------
+
+{{% command %}}  
+**Track.Section** *a<sub>0</sub>*; *a<sub>1</sub>*; *a<sub>2</sub>*; ...; *a<sub>n</sub>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***a<sub>i</sub>***: A non-negative number specifying one of the section's aspects.  
+{{% /command-arguments %}}
+
+This command starts a section, the functional part of signalling, to be used in conjunction with Track.SigF, which creates a visual representation of a section (a signal). The *a<sub>i</sub>* parameters specify the aspects the section can bear. An aspect of 0 corresponds to a red section which must not be passed by a train. The *a<sub>0</sub>* term is mandatory.
+
+{{% notice %}}
+
+#### Default versus simplified section behavior
+
+There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
+
+{{% /notice %}}
+
+**Default behavior:**  
+The *a<sub>i</sub>* terms specify the aspect the section should bear depending on how many sections ahead are clear until a red one is encountered. The order of the terms is relevant. The same aspect may occur multiple times.
+
+▸ Meanings of the *a<sub>i</sub>* terms:
+
+{{% command-arguments %}}  
+**a<sub>0</sub>**: The aspect to show when this section is occupied by a train or otherwise hold at red.  
+**a<sub>1</sub>**: The aspect to show when this section is clear, but the immediately following section is red.  
+**a<sub>2</sub>**: The aspect to show when this section and the following section are clear, but the one immediately following the latter one is red.  
+**a<sub>n</sub>**: The aspect to show when *n* sections are clear before a red one is encountered.  
+{{% /command-arguments %}}
+
+In the case more sections ahead are clear than indicated by the *a<sub>i</sub>* terms, the section will bear the aspect of *a<sub>n</sub>*.
+
+**Simplified behavior:**  
+The *a<sub>i</sub>* terms specify the repertoire of aspects the section can have. A section will bear the smallest of the *a<sub>i</sub>* which is greater than the current aspect of the upcoming section. If no such *a<sub>i</sub>* exists, the section will bear the aspect of *an*. The order of the *a<sub>i</sub>* is irrelevant. If the same aspect occurs multiple times, this has no effect.
+
+{{% code "*Example of a Track.Section command in conjunction with a Track.SigF command:*" %}}  
+With Track  
+1000, .Section 0;2;4, .SigF 3;0;-3;-1  
+{{% /code %}}
+
+------
+
+{{% command %}}  
+**Track.SigF** *SignalIndex*; *Section*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***SignalIndex***: A non-negative integer representing the signal to be placed as defined via Signal(*SignalIndex*).Load.  
+***Section***: A non-negative integer representing the section this signal is attached to, with 0 being the current section, 1 the upcoming section, 2 the section after that, and so on.  
+***<font color="green">X</font>***: The X-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
+
+This command creates a non-function signal, that is, a visual representation of a section as defined via Track.Section. Setting *Y* to a negative number resets the y-coordinate to 4.8 meters and attaches a default signal post. Also see Track.Section.
+
+If no object has been defined by Signal(*SignalIndex*), one of the default Japanese signals is used:
+
+▸ Default signals for *SignalIndex*:
+
+{{% command-arguments %}}  
+**3**: A three-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.  
+**4**: A four-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.  
+**5**: A five-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green and <font color="#00C000">●</font>green.  
+**6**: A repeating signal equivalent to that created by Track.Relay.  
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+**Track.Signal** *Aspects*; *<font color="gray">Unused</font>*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*   
+**Track.Sig** *Aspects*; *<font color="gray">Unused</font>*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: The number of aspects for this signal. The default value is -2.  
+***Unused***: *This argument is not used by openBVE.*  
+***<font color="green">X</font>***: The X-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
+
+▸ Options for *Type*:
+
+{{% command-arguments %}}  
+[![illustration_signals_small](/images/illustration_signals_small.png)](/images/illustration_signals_large.png)  
+**2**: A two-aspect (type A) signal having aspects <font color="#C00000">●</font>red and <font color="#FFC000">●</font>yellow.  
+**-2**: A two-aspect (type B) signal having aspects <font color="#C00000">●</font>red and <font color="#00C000">●</font>green.  
+**3**: A three-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.  
+**4**: A four-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.  
+**-4**: A four-aspect (type B) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●●</font>yellow-green and <font color="#00C000">●</font>green.  
+**5**: A five-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green and <font color="#00C000">●</font>green.  
+**-5**: A five-aspect (type B) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green, <font color="#00C000">●</font>green and <font color="#00C000">●●</font>green-green.  
+**6**: A six-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green, <font color="#00C000">●</font>green and <font color="#00C000">●●</font>green-green.  
+{{% /command-arguments %}}
+
+This command creates a functional signal. You can choose from the available options for *Aspect* to create any of the default Japanese signals. Setting *X* to 0 creates a functional but invisible signal similar to Track.Section. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 meters and attaches a default signal post.
+
+{{% code "*Example of a four-aspect type B signal without a post at x=-3 and y=5:*" %}}  
+1000, Track.Signal -4;;-3;5  
+{{% /code %}}
+
+{{% code "*Example of a four-aspect type B signal including a post at x=-3 and y=4.8:*" %}}  
+1000, Track.Signal -4;;-3;-1  
+{{% /code %}}
+
+Track.Signal is similar to using Track.Section and Track.SigF in one command.
+
+------
+
+{{% command %}}  
+**Track.Relay** *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
+
+This commands creates a default Japanese repeating signal. The repeating signal repeats the state of the upcoming signal. Setting *X* to zero does not create a repeating signal, but forces the command to be ignored. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 and attaches a default signal post.
+
+##### <a name="track_safety"></a>● 11.6. Safety systems
+
+------
+
+{{% command %}}  
+**Track.Beacon** *Type*; *BeaconStructureIndex*; *Section*; *Data*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: A non-negative integer representing the type of the beacon to be transmitted to the train.  
+***BeaconStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Beacon, or -1 to not place any object.  
+***Section***: An integer representing the section to which the beacon is attached, namely 0 for the current section, 1 for the upcoming section, 2 for the section behind that, etc., or -1 for the next red section.  
+***Data***: An integer representing arbitrary data specific to the beacon type to be transmitted to the train.  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
+
+This command places a beacon (transponder). The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command. When the train passes the beacon, the type of beacon and various data will be transmitted to the train, including the state of the referenced section.
+
+It should be noted that the built-in safety systems also receive data from these beacons as Track.Beacon(*Type*) is roughly equivalent to Track.Transponder(*Type*). Please see [the page about beacon standards]({{< ref "/information/standards/_index.md" >}}) for more information.
+
+------
+
+{{% command %}}  
+**Track.Transponder** *Type*; *Signal*; *SwitchSystem*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+**Track.Tr** *Type*; *Signal*; *SwitchSystem*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: The type of the transponder. The default value is 0.  
+***Signal***: The signal this transponder references. The default value is 0.  
+***SwitchSystem***: Whether to automatically switch the safety system. The default value is 0.  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
+
+▸ Options for *Type*:
+
+{{% command-arguments %}}  
+![illustration_transponders](/images/illustration_transponders.png)  
+**0**: An S-type transponder used by ATS-S. Usually placed 600m in front of a signal.  
+**1**: An SN-type transponder used by ATS-SN. Usually placed 20m in front of a signal.  
+**2**: An accidental departure transponder. Usually placed shortly behind a station stop.  
+**3**: An ATS-P pattern renewal transponder. Usually placed 600m, 280m, 180m, 130m, 85m or 50m in front of a signal, depending on the circumstances.  
+**4**: An ATS-P immediate stop transponder. Usually placed either 25m or 30m in front of a signal, depending on the circumstances.  
+{{% /command-arguments %}}
+
+▸ Options for *Signal*:
+
+{{% command-arguments %}}  
+**0**: The upcoming signal is referenced.  
+**1**: The signal immediately behind the upcoming signal is referenced.  
+**n**: The *n*'th signal behind the upcoming signal is referenced.  
+{{% /command-arguments %}}
+
+▸ Options for *SwitchSystem*:
+
+{{% command-arguments %}}  
+**-1**: The transponder does not switch the train between ATS-SN and ATS-P.  
+**0**: The transponder automatically switches the train to ATS-SN for transponder types *0* and *1*, and to ATS-P for types *3* and *4*.  
+{{% /command-arguments %}}
+
+This command places a transponder, usually for the built-in safety systems ATS-SN or ATS-P. For more information about these systems and their transponders, see [the user's documentation about ATS](http://openbve-project.net/play-japanese/).
+
+It should be noted that custom safety system plugins also receive data from these transponders as Track.Transponder(*Type*) is roughly equivalent to Track.Beacon(*Type*). Please see [the page about beacon standards]({{< ref "/information/standards/_index.md" >}}) for more information.
+
+➟ [Go here to find out more about ATS-SN and ATS-P.](https://openbve-project.net/play-japanese/#3-ats-sn)
+
+➟ [There is a tutorial available for the proper use of ATS-SN and ATS-P in route files, including all of the five transponders.]({{< ref "/routes/tutorial_ats/_index.md" >}})
+
+------
+
+{{% command %}}  
+**Track.AtsSn**  
+{{% /command %}}
+
+This command places an S-type transponder for the built-in safety system ATS-SN, referencing the upcoming signal, and automatically switching to ATS-SN. The command is equivalent to **Track.Tr 0;0;0**. See there for more information.
+
+------
+
+{{% command %}}  
+**Track.AtsP**  
+{{% /command %}}
+
+This command places a pattern renewal transponder for the built-in safety system ATS-P, referencing the upcoming signal, and automatically switching to ATS-P. The command is equivalent to **Track.Tr 3;0;0**. See there for more information.
+
+------
+
+{{% command %}}  
+**Track.Pattern** *Type*; *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: The type of speed restriction.  
+***<font color="blue">Speed</font>***: A non-negative floating-point number representing the speed restriction, **by default** measured in **km/h**.  
+{{% /command-arguments %}}
+
+▸ Options for *Type*:
+
+{{% command-arguments %}}  
+**0**: A temporary speed restriction.  
+**1**: A permanent speed restriction.  
+{{% /command-arguments %}}
+
+This command defines a speed restriction for the built-in safety system ATS-P.
+
+A temporary speed restriction (*Type*=0) is to be inserted at the point where the speed restriction should apply. ATS-P will know about this speed restriction in advance and will brake the train so that the train meets the speed restriction at that point. Once the point is passed, the speed restriction no longer applies.
+
+A permanent speed restriction (*Type*=1) is to be inserted at the point where the speed restriction should apply, however, ATS-P does not know about this limit in advance and will only brake the train from that point on. For a higher degree of realism, insert permanent speed restrictions at the same point as ATS-P transponders. A permanent speed restriction, as the name suggests, is remembered by ATS-P and is only released by a subsequent permanent speed restriction.
+
+------
+
+{{% command %}}  
+**Track.PLimit** *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***<font color="blue">Speed</font>***: A positive floating-point number representing the permanent speed restriction for ATS-P, **by default** measured in **km/h**.  
+{{% /command-arguments %}}
+
+This command is equivalent to **Track.Pattern 1;_Speed_**. See there for more information. 
+
+##### <a name="track_misc"></a>● 11.7. Miscellaneous
+
+------
+
+{{% command %}}  
+**Track.Back** *BackgroundTextureIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***BackgroundTextureIndex***: A non-negative integer representing the background image to be displayed as defined via Texture.Background(*BackgroundTextureIndex*).  
+{{% /command-arguments %}}
+
+This command defines which background image to show from now on.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.Fog** *<font color="green">StartingDistance</font>*; *<font color="green">EndingDistance</font>*; *RedValue*; *GreenValue*; *BlueValue*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***<font color="green">StartingDistance</font>***: A floating-point number indicating the start of fog, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">EndingDistance</font>***: A floating-point number indicating the end of fog, **by default** measured in **meters**. The default value is 0.  
+***RedValue***: An integer ranging from 0 to 255 representing the red component of the fog. The default value is 128.  
+***GreenValue***: An integer ranging from 0 to 255 representing the green component of the fog. The default value is 128.  
+***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the fog. The default value is 128.  
+{{% /command-arguments %}}
+
+This command defines the fog from this point on, or deactivates fog. If fog is to be enabled, *StartingDistance* must be less than *EndingDistance*. If fog is to be disabled, *StartingDistance* must be greater than or equal to *EndingDistance*.
+
+Fog affects the coloring of objects. Objects before the starting distance appear as-is, objects after the ending distance appear in the fog color, and objects in-between blend linearly between those. The background image is affected by fog as well. For the fog calculations, the background image is assumed to be at 600 meters distance from the camera, regardless of the actual viewing distance.
+
+Depending on Options.FogBehavior, there are two options how this command affects fog from this point on. In block-wise mode, the current fog blends from the beginning of this block to the new settings at the end of this block. The new setting is kept for following blocks. This is the default behavior. In interpolation mode, each Track.Fog command defines a control point for fog, where all of the settings (distances and colors) are interpolated linearly between the control points.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.Brightness** *Value*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Value***: A non-negative integer within the range from 0 to 255. The default value is 255.  
+{{% /command-arguments %}}
+
+This command marks a point which affects the brightness in the cab. *Value* is measured from 0 (dark) to 255 (light), and is linearly interpolated between successive Track.Brightness commands for any given point on the track. This command should be used for tunnels, bridges, station roofs, or anything else that would affect the brightness as perceived inside the cab.
+
+{{% code "*Example:*" %}}  
+With Track  
+1200, .Brightness 255 ,; before the bridge starts  
+1205, .Brightness 128 ,; directly under the bridge here  
+1210, .Brightness 255 ,; as soon as the bridge ends  
+{{% /code %}}
+
+------
+
+{{% command %}}  
+**Track.Marker** *FileName*; *<font color="green">Distance</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***FileName***: The file name for the marker image, relative to the **Object** folder.  
+***<font color="green">Distance</font>***: A non-zero floating-point number indicating the length for which the marker image is displayed, **by default** measured in **meters**.  
+{{% /command-arguments %}}
+
+▸ Behavior for *Distance*:
+
+{{% command-arguments %}}  
+*negative value*: The marker image starts to display at the Track.Marker command, and ends -*Distance* meters after the Track.Marker command.  
+*positive value*: The marker image starts to display *Distance* meters before the Track.Marker command, and ends at the Track.Marker command.  
+{{% /command-arguments %}}
+
+This command shows a so-called marker image, which is displayed in the top-right corner of the screen. You can use these images for advisory or informational purposes. The RGB color of 64,64,64 inside the image is made transparent.
+
+------
+
+{{% command %}}  
+**Track.Marker** *FileName.xml*  
+{{% /command %}}
+
+A *Track.Marker* command, linking to a single XML file is also supported. These allow more control over markers than is available in the routefile commands.
+
+These are fully described on the [the XML Markers page...]({{< ref "/routes/xml/route_marker/_index.md" >}})
+
+------
+
+{{% command %}}  
+**Track.TextMarker** *Text*; *<font color="green">Distance</font>*; *FontColor*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Text***: The marker text to display. (No special characters supported).  
+***<font color="green">Distance</font>***: A non-zero floating-point number indicating the length for which the text is displayed, **by default** measured in **meters**.  
+***FontColor***: The font color for this marker text  
+{{% /command-arguments %}}
+
+▸ Behavior for *Distance*:
+
+{{% command-arguments %}}  
+*negative value*: The marker image starts to display at the Track.Marker command, and ends -*Distance* meters after the Track.Marker command.  
+*positive value*: The marker image starts to display *Distance* meters before the Track.Marker command, and ends at the Track.Marker command.  
+{{% /command-arguments %}}
+
+▸ Available options for *FontColor*:
+
+{{% command-arguments %}}  
+*1*: Black.  
+*2*: Gray.  
+*3*: White.  
+*4*: Red.  
+*5*: Orange.  
+*6*: Green.  
+*7*: Blue.  
+*8*: Magenta.  
+{{% /command-arguments %}}
+
+This command creates a simple textual marker, which is added to the list of messages in the upper left-hand corner of the screen.
+
+------
+
+{{% command %}}  
+**Track.PointOfInterest** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*; *Text*  
+**Track.POI** *RailIndex*; *X*; *Y*; *Yaw*; *Pitch*; *Roll*; *Text*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer representing the rail for the point of interest.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal offset from the rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical offset from the rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+***Yaw***: The angle in degrees by which the view is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the view is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the view is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+***Text***: A textual representation of the point of interest.  
+{{% /command-arguments %}}
+
+This command creates a point of interest which the user can jump to by pressing the CAMERA_POI_PREVIOUS (NUM 1) or CAMERA_POI_NEXT (NUM 7) keys. The camera will be placed at the specified location with the specified orientation. If *Text* is non-empty, a message will appear briefly showing the text.
+
+------
+
+{{% command %}}  
+**Track.PreTrain** *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) at which the pretrain is at this track position.  
+{{% /command-arguments %}}
+
+This commands creates a position-time-association for an invisible preceding train in order to influence signalling. Contrary to a real preceding train as created by Route.RunInterval, the invisible preceding train created by Track.PreTrain is a way of scripting where the invisible preceding train is at any given time. The position-time-associations must be in increasing order, that is, at a later track position, the associated time must also be later. Before the first scripted time, the invisible preceding train resides at the first scripted position. In-between the first and last scripted time, the invisible preceding train moves (linearly) between the scripted points. After the last scripted time, the invisible preceding train is removed and thus clears signalling.
+
+------
+
+{{% command %}}  
+**Track.Announce** *FileName*; *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***FileName***: The file name for the sound to play, relative to the **Sound** folder.  
+***<font color="blue">Speed</font>***: The reference speed in km/h for speed-dependant sounds, or 0 to play the sound speed-independently. The default value is 0.  
+{{% /command-arguments %}}
+
+This command plays an announcement or other kind of sound in the cab once the player's train crosses the point where this command is used. If *Speed* is set to 0 (default), the sound is played as-is. If a *Speed* is given though, the sound plays at is original pitch at the specified speed, and is pitch-modulated proportionally for other speeds, useful for custom flange sounds, pointwork sounds, etc.
+
+------
+
+{{% command %}}  
+**Track.Doppler** *FileName*; *<font color="green">X</font>*; *<font color="green">Y</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***FileName***: The file name for the sound to play, relative to the **Sound** folder.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal offset from rail 0, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical offset from rail 0, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+{{% /command-arguments %}}
+
+This command places an environmental sound effect at the specified location. The sound will play in a loop for the duration of the simulation and employs the doppler effect. (Note: All sounds in openBVE employ the doppler effect.)
+
+------
+
+{{% command %}}  
+**Track.Buffer**  
+{{%/command %}}
+
+This command places a bumper. The train can collide with the bumper in both the forward and backward directions. Place this command at the beginning and the end of the route. An object is not automatically created, so use Track.FreeObj to create a visual representation of the bumper if necessary.
+
+------
+
+{{% command %}}  
+**Track.Destination** *Type*; *BeaconStructureIndex*; *NextDestination*; *PreviousDestination*; *TriggerOnce*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: Defines the types of trains for which this destination setter applies: *-1* for AI trains only, *0* for all trains and *1* for the player train only.  
+***BeaconStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Beacon, or -1 to not place any object.  
+***NextDestination***: An integer representing the destination value set when passing over this beacon in a forwards direction, or *-1* to disable.  
+***PreviousDestination***: An integer representing the destination value set when passing over this beacon in a reverse direction, or *-1* to disable.  
+***TriggerOnce***: If set to *0*, this beacon will be triggered by all valid trains which pass over it. If set to *1*, it will be triggered by the first valid train only.  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
+
+This command places a special beacon, which sets the destination variable, available for use by plugins and animated objects. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.
