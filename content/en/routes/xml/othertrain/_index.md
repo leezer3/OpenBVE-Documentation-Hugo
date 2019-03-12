@@ -95,7 +95,7 @@ In this example the train runs as follows.
 &lt;/openBVE>
 {{< /textarea >}}
 
-As you can see, the file consists of one **\<Definition>** section, **\<Car>** section, **\<Stops>** section. **\<Stops>** section consists of two or more **\<Stop>** sections.
+As you can see, the file consists of one **\<Definition>** section, one **\<Car>** section and one **\<Stops>** section. The **\<Stops>** section consists of two or more **\<Stop>** sections.
 
 ## ■ Definition attribute
 
@@ -151,7 +151,7 @@ As you can see, the file consists of one **\<Definition>** section, **\<Car>** s
 **\<Decelerate>** *Value* **\</Decelerate>**  
 {{% /command %}}
 
-**Value** sets the deceleration of the train. The unit is ** km/h/s **.
+**Value** sets the deceleration of the train. The unit is **km/h/s**.
 
 ------
 
@@ -159,7 +159,7 @@ As you can see, the file consists of one **\<Definition>** section, **\<Car>** s
 **\<StopPosition>** *Position* **\</StopPosition>**  
 {{% /command %}}
 
-**Position** sets the in-game distance where the train stops. The unit is ** meter **.
+**Position** sets the in-game distance where the train stops. The unit is **meter**.
 
 ------
 
