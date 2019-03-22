@@ -4,21 +4,21 @@ linktitle: "Track Following Object"
 weight: 5
 ---
 
-This page explains the principle and implementation of XML-based Track Following Object supported in 1.5.x or later.
+This page explains the principle and implementation of the XML-based Track Following Object, which is supported in openBVE v1.6.0 or later.
 
 ## ■ Basic Principles
 
-openBVE can freely run Track Following Object on other track.
+openBVE can freely run a Track Following Object on other tracks.
 
-It is necessary to set each object that you want to run using Track Following Object XML files. An example is shown below.
+In order to do this, it is necessary to setup each object that you want to run using Track Following Object XML files. An example is shown below.
 
 In this example the object runs as follows.
 
-0. It is displayed when the in-game time 00:01:00 has elapsed and the object exists within 50 m to 100 m in game. It becomes invisible after 5 minutes have elapsed since being displayed. The appearance is defined in extensions.cfg in 7-car formation.
-1. The in-game distance is 200 m and the right door is opened for 20 seconds and then the object accelerates to 30 km/h at an acceleration of 1.71km/h/s on Rail2.
-2. It travels at 60 km/h above Rail 2 from 400 m distance in game.
-3. The object decelerates from 30km/h to 1.71 km/h/s on Rail2, and opens the doors on both sides to a distance of 1000 m within the game and stops. After stopping for 10 seconds, accelerate backward to 30 km/h with an acceleration of 1.71 km/h/s on Rail1.
-4. The object decelerates from 30 km/h to 1.71 km/h/s on Rail1, and opens the right door and stops at an in-game distance of 200 m.
+0. It is displayed when the in-game time 00:01:00 has elapsed and the object exists within 50 m to 100 m of the player's camera position in game. It becomes invisible after 5 minutes have elapsed since being displayed. The appearance is defined in extensions.cfg in 7-car formation.
+1. The in-game distance is 200 m and the right door is opened for 20 seconds and then the object accelerates to 30 km/h at an acceleration of 1.71km/h/s on **Rail2**.
+2. It travels at 60 km/h on **Rail2** for 400 m.
+3. The object decelerates to 30km/h at 1.71 km/h/s on **Rail2**, when it reaches a distance of 1000 m within the game, it stops and opens the doors on both sides. After stopping for 10 seconds, it accelerates in reverse to 30 km/h with an acceleration of 1.71 km/h/s on Rail1.
+4. The object decelerates to 30 km/h at 1.71 km/h/s on **Rail1**, stops and opens the right door at an in-game distance of 200 m.
 
 {{< textarea >}}  
 &lt;?xml version="1.0" encoding="utf-8"?>
@@ -113,7 +113,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 **\<AppearanceStartPosition>** *Position* **\</AppearanceStartPosition>**  
 {{% /command %}}
 
-**Position** sets the in-game distance at which the object starts appearing. An object will appear when this object passes by this object. The unit is **meter**.
+**Position** sets the in-game distance at which the object starts appearing. The object will appear when the player's camera position passes this point. The unit is **meter**.
 
 *Note:* If this parameter is omitted, the object will emerge from the start of the game.
 
@@ -123,7 +123,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 **\<AppearanceEndPosition>** *Position* **\</AppearanceEndPosition>**  
 {{% /command %}}
 
-**Position** sets the in-game distance at the end point where the object appears. No object will emerge when this object passes by this object. It must also be greater than the value specified for **\<Appearance Start Position>**. The unit is **meter**.
+**Position** sets the in-game distance at the end point where the object appears. The object will be hidden when the player's camera position passes this point. It must also be greater than the value specified for **\<AppearanceStartPosition>**. The unit is **meter**.
 
 *Note:* If this parameter is omitted, the object will emerge from the start of the game.
 
@@ -135,7 +135,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 
 **Time** sets the duration from when the object appears in the game until it disappears. The object will not be visible after this time. This value is not an in-game time.
 
-*Note:* If this parameter is omitted, the object will remain until the end of the game.
+*Note:* If this parameter is omitted, the object will remain visible until the end of the game, or until it is hidden by **\<AppearanceEndPosition>**
 
 ## ■ Train attribute
 
