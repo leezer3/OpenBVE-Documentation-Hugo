@@ -1,5 +1,5 @@
 ---
-title: Information
+title: インフォメーション
 weight: 6
-layout: hidden
+layout: 隠された
 ---
