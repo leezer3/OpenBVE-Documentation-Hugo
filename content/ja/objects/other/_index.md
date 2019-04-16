@@ -1,5 +1,5 @@
 ---
-title: Other formats
+title: その他のフォーマット
 weight: 2
 layout: hidden
 ---
