@@ -197,7 +197,7 @@ Please note that if the result of any mathematical operation or function would b
 
 {{% table %}}
 
-| Infix   | Functional       | Description               |
+| Infix   | Functional       | Descripció               |
 | :------ | :--------------- | :------------------------ |
 | `a + b` | `Plus[a,b, ...]` | Represents addition       |
 | `a - b` | `Subtract[a,b]`  | Represents subtraction    |
@@ -213,7 +213,7 @@ All comparisons return 1 for true and 0 for false.
 
 {{% table %}}
 
-| Infix    | Functional          | Description                                     |
+| Infix    | Functional          | Descripció                                     |
 | :------- | ------------------- | ----------------------------------------------- |
 | `a == b` | `Equal[a,b]`        | True (1) if *a* equals *b*                      |
 | `a != b` | `Unequal[a,b]`      | True (1) if *a* does not equal *b*              |
@@ -230,7 +230,7 @@ All operations treat 0 as false and any other value as true, and return 1 for tr
 
 {{% table %}}
 
-| Infix          | Functional | Description                            |
+| Infix          | Functional | Descripció                            |
 | :------------- | ---------- | -------------------------------------- |
 | `!a`           | `Not[a]`   | True (1) if *a* is false               |
 | `a & b`        | `And[a,b]` | True (1) if both *a* and *b* are true  |
@@ -273,7 +273,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% table %}}
 
-| Function         | Description                                                  |
+| Funció         | Descripció                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `Reciprocal[x]`  | Returns the reciprocal, equal to 1/*x*                       |
 | `Power[a,b,...]` | Returns *a* raised to the *b*<sup>th</sup> power. *b* must be a non-negative number. For consistency, Power[0,*b*] always returns 1, even in the degenerate case Power[0,0], and *a* being negative always returns 0. Adding more arguments will create a chain. Power[a,b,c] will return *a*<sup>*b*<sup>*c*</sup></sup>. |
@@ -284,7 +284,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% table %}}
 
-| Function                      | Description                                                  |
+| Funció                      | Descripció                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
 | `Quotient[a,b]`               | Divides *a* by *b* and rounds the result down, equal to `Floor[a/b]`. |
 | `Mod[a,b]`                    | Returns the remainder of dividing *a* by *b*, equal to `a-b*Floor[a/b]`. |
@@ -304,7 +304,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% table %}}
 
-| Function    | Description                                                  |
+| Funció    | Descripció                                                  |
 | ----------- | ------------------------------------------------------------ |
 | `Exp[x]`    | The exponential function, or *e* to the *x*<sup>th</sup> power. |
 | `Log[x]`    | The natural logarithm, to base *e*.                          |
@@ -320,7 +320,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% table %}}
 
-| Function                        | Description                                                  |
+| Funció                        | Descripció                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
 | `If[cond,truevalue,falsevalue]` | If *cond* is != 0, returns *truevalue*, otherwise *falsevalue* |
 
@@ -332,7 +332,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% table %}}
 
-| Variable       | Description                                                  |
+| Variable       | Descripció                                                  |
 | -------------- | ------------------------------------------------------------ |
 | `value`        | The value returned by the function in the last evaluation. At the beginning of the simulation, this is 0. |
 | `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
@@ -344,7 +344,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% table %}}
 
-| Variable         | Description                                                  |
+| Variable         | Descripció                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `time`           | The current in-game time measured in seconds since midnight of the first day. |
 | `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
@@ -362,7 +362,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                      | Description                                                  |
+| Variable                      | Descripció                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
 | `cars`                        | The number of cars the train has.                            |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
@@ -385,7 +385,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                       | Description                                                  |
+| Variable                       | Descripció                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
@@ -404,7 +404,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                     | Description                                                  |
+| Variable                     | Descripció                                                  |
 | ---------------------------- | ------------------------------------------------------------ |
 | `doors`                      | The state of the doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
 | `doors[carIndex]`            | The state of the doors of car *carIndex*. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
@@ -425,7 +425,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                         | Description                                                  |
+| Variable                         | Descripció                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
 | `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
 | `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
@@ -488,7 +488,7 @@ The section context is defined when the object is placed using Track.SigF.
 
 {{% table %}}
 
-| Variable  | Description                                                  |
+| Variable  | Descripció                                                  |
 | --------- | ------------------------------------------------------------ |
 | `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 

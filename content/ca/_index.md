@@ -1,9 +1,9 @@
 ---
 title: Developing for openBVE
-linktitle: Home
+linktitle: Inici
 ---
 
-Please select a topic from the menu on the left side.
+Seleccioneu un tema al menú a l'esquerra.
 
 ---
 

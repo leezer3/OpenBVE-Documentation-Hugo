@@ -13,5 +13,5 @@ linktitle: ホーム
 
 いくつかのページはまだ作業中ですので注意してください。以下のページが該当します:
 
-- - The X object - 1% 完了
-- - The CSV route - 98% 完了
+- The X object - 1% 完了
+- The CSV route - 98% 完了

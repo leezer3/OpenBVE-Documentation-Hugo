@@ -1,18 +1,10 @@
 ---
-title: The **.csv** route format
+title: "**.csv** ルートデータフォーマット"
 linktitle: The CSV route
 weight: 1
 ---
 
-➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
-
-{{% warning %}}
-
-#### Still under construction
-
-Commands that still require documentation: **2**
-
-{{% /warning %}}
+➟ [クイックリファレンス...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
 ## ■ Contents
 
@@ -1588,7 +1580,17 @@ This command can only be used at the beginning of a block.
 <font color="gray">**Track.Crack** *RailIndex<sub>1</sub>*; *RailIndex<sub>2</sub>*; *CrackStructureIndex*</font>  
 {{% /command %}}
 
-![construction_64](/images/construction_64.png)<font color="gray">Description not available yet.</font>
+This deforms a specified object to fill the space between two Rails.
+
+{{% command-arguments %}}  
+***RailIndex<sub>1</sub>***: A non-negative integer representing the first RailIndex.  
+***RailIndex<sub>2</sub>***: A non-negative integer representing the second RailIndex.  
+***CrackStructureIndex***: A non-negative integer representing the object defined in Structure.Crack  
+{{% /command-arguments %}}
+
+**Note:**
+If *RailIndex<sub>1</sub>* is to the **left** of *RailIndex<sub>2</sub>* (e.g. it's X-cordinate is smaller), then the object defined in Structure.CrackL will be used.  
+Otherwise, the objects defined in Structure.CrackR will be used.
 
 ------
 
@@ -1806,7 +1808,25 @@ With Track
 <font color="gray">**Track.Form** *RailIndex<sub>1</sub>*; *RailIndex<sub>2</sub>*; *RoofStructureIndex*; *FormStructureIndex*</font>  
 {{% /command %}}
 
-![construction_64](/images/construction_64.png)<font color="gray">Description not available yet.</font>
+{{% command-arguments %}}  
+***RailIndex<sub>1</sub>***: The RailIndex to which the platform is bound.  
+***RailIndex<sub>2</sub>***: The secondary RailIndex to which the platform will deform. Special values may also appear- see below.  
+***RoofStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Roof  
+***FormStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Form and Structure.FormC  
+{{% /command-arguments %}}
+
+▸ Available options for *RailIndex<sub>2</sub>*:
+
+{{% command-arguments %}}  
+**Any current RailIndex**: The form is deformed to meet the specified RailIndex.  
+**L**: The specified FormL, FormCL and RoofL objects are placed without deformation.  
+**R**: The specified FormR, FormCR and RoofR objects are placed without deformation.  
+{{% /command-arguments %}}
+
+**Note:**
+If *RailIndex<sub>1</sub>* is to the **left** of *RailIndex<sub>2</sub>* (e.g. it's X-cordinate is smaller), then the objects defined in Structure.FormL, Structure.FormCL and Structure.RoofL will be used.  
+Otherwise, the objects defined in Structure.FormR, Structure.FormCL and Structure.RoofR will be used.
+
 
 ##### <a name="track_signalling"></a>● 11.5. Signalling and speed limits
 

@@ -106,7 +106,7 @@ Be sure to compile against AnyCPU, to enable CLS-compliance checks and to remove
 
 {{% table %}}
 
-| API component | Description   | Documentation                                     |
+| API component | Descripció   | Documentation                                     |
 | ------------- | ------------- | ------------------------------------------------- |
 | IRuntime      | Train plugins | [View]({{< ref "/plugins/iruntime/_index.md" >}}) |
 

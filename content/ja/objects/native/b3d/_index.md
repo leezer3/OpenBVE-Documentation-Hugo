@@ -1,16 +1,16 @@
 ---
-title: The **.b3d** object format
-linktitle: The B3D object
+title: "**.b3d** オブジェクト データ形式"
+linktitle: B3D オブジェクト
 weight: 1
 ---
 
-## ■ Contents
+## ■ 概要
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Available commands](#commands)
+- [1.概観](#overview)
+- [2.文法](#syntax)
+- [3.使用可能なコマンド](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
   - [Vertex](#addvertex)
   - [Face](#addface)
@@ -31,29 +31,29 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概観
 
-A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
+B3Dオブジェクトはテクスチャつきのオブジェクトを作成出来ます。作成したオブジェクトは路線のストラクチャーや車両オブジェクトに用いる事が出来ます。個別のオブジェクトは複数のポリゴンが内包されます。このファイルフォーマットは複数のポリゴンを[MeshBuilder]セクションにおいて色かテクスチャ情報を其々のセクションにおいて設定できます。これにより、いくつかの共通の[MeshBuilder]セクションの属性を用いて複数のポリゴンを生成できます。個別のポリゴンはこのファイルフォーマットにおいてはfaceと呼ばれます。
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.b3d**. The file is interpreted on a per-line basis, from top to bottom.
+ファイルは任意のエンコードで記述されたプレーンテキストですが[encoding]({{< ref "/information/encodings/_index.md" >}})、好ましい選択としてはバイトオーダー付きのUTF-8です。  [parsing model]({{< ref "/information/numberformats/_index.md" >}}) に用いる数字は **ルーズ**ですが、 それでも出力にあたっては *厳密な* 出力をすることが望ましいです。 ファイル名はThe file name is 任意ですが、 拡張子は必ず **.b3d** を用います。 ファイルは基本的に上から下に向かって解釈されていきます。
 
-➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
+➟ [B3Dフォーマットのクイックリファレンスも参照してください...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 文法
 
-Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
+ファイル内のそれぞれの行はコマンド名とその引数に分けられています。全てのコマンドの文法は同様です。
 
 {{% command %}}
-**NameOfTheCommand** *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*
+**コマンド名** *引数<sub>1</sub>*, *引数<sub>2</sub>*, *引数<sub>3</sub>*, ..., *引数<sub>n</sub>*
 {{% /command %}}
 
-*NameOfTheCommand* is case-insensitive. If there are arguments, *NameOfTheCommand* and *Argument1* are separated by at least one space space (U+0020). Arguments are separated by a comma (U+002C). [White spaces]({{< ref "/information/whitespaces/_index.md" >}}) around the arguments, and well as at the beginning and the end of the line, are ignored. Empty lines or lines solely consisting of white spaces are also ignored.
+*コマンド名* は大文字と小文字を区別せず使えます。  もし引数であった場合、 *コマンド名* と *引数1* 少なくとも1つ以上の半角スペース(U+0020)で空ける必要があります。 引数は 半角コンマ(U+002C)で区切られます。 命令の前後の [ホワイトスペース]({{< ref "/information/whitespaces/_index.md" >}}) は、引数の前後、行頭と行末は無視されます。 何もない空白行も同様に、ホワイトスペースとして無視されます。
 
-Arguments may also be omitted by leaving the text at each of the *Argument<sub>i</sub>* blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands. Note however that the first argument may not be omitted if other arguments are provided.
+引数はそれぞれの *引数<sub>i</sub>* を空白にすることで省略することができます。 この場合多くのケースでコマンド固有の既定の値が適用されます。 コマンド固有の規定値の詳細は使用できるコマンドのセクションで記載されています。 ただし、他の引数が指定されているときは最初の引数は省略できません。
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+行末で任意の文字のコメントを記述することができます。コメントを開始するにはセミコロン (U+003B) を用います。 コメント記号から後の記述は行末まで全て無視されます。
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. 使用可能なコマンド
 
 <a name="createmeshbuilder"></a>
 
