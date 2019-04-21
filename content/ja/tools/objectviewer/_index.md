@@ -1,5 +1,5 @@
 ---
-title: Object Viewer
+title: オブジェクトビューア
 weight: 1
 ---
 
