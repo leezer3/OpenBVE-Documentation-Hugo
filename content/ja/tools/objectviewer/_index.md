@@ -11,7 +11,7 @@ weight: 1
 
 コマンドライン引数により渡されたファイルは、起動時に自動で表示されます。 もし CSV ファイルがCSVオブジェクトではなくCSVルートの場合、 *RouteViewer.exe* が
 
-*ObjectViewer.exe* が同一のフォルダに存在する場合優先して実行されます。  これによりObject Viewer と Route Viewerいずれか一つだけに関連付けをしたとしても、適切なツールでファイルを開くことができます。
+*ObjectViewer.exe* と同一のフォルダに存在する場合優先して実行されます。  これによりObject Viewer と Route Viewerいずれか一つだけに関連付けをしたとしても、適切なツールでファイルを開くことができます。
 
 バイトオーダーマーク (BOM) が異なるUnicodeエンコーディングが示されない限り、Object Viewerは常にUTF-8として解釈することに注意してください。非Unicodeのエンコーディングはサポートされません。
 
