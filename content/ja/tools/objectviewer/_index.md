@@ -5,24 +5,24 @@ weight: 1
 
 ![img](/images/tool_objectviewer_screenshot_1.png)![img](/images/tool_objectviewer_screenshot_2.png)![img](/images/tool_objectviewer_screenshot_3.png)
 
-## ■ Overview
+## ■ 概要
 
-This tool allows to preview one or more object files. Objects can be added at any time and also reloaded to quickly reflect changes. Keyboard and mouse controls allow to move and rotate the camera. If objects contain errors, a report can be optionally displayed.
+このツールはひとつ、もしくは複数のオブジェクトファイルをプレビューできます。 オブジェクトはいつでも好きなときに追加して表示でき、 またいつでも素早く再読み込みで反映することができます。 キーボードやマウスの操作でカメラの移動や回転ができます。もしオブジェクトにエラーがあった場合、別途レポートを表示できます。
 
-Files that are passed as command line arguments are automatically opened at startup. If a CSV file is determined to be a CSV route instead of a CSV object, *RouteViewer.exe*
+コマンドライン引数により渡されたファイルは、起動時に自動で表示されます。 もし CSV ファイルがCSVオブジェクトではなくCSVルートの場合、 *RouteViewer.exe* が
 
- will be started if present inside the same folder as *ObjectViewer.exe*. This allows you to link CSV files against either Object Viewer or Route Viewer and still have the correct tool opening the file.
+*ObjectViewer.exe* が同一のフォルダに存在する場合優先して実行されます。  これによりObject Viewer と Route Viewerいずれか一つだけに関連付けをしたとしても、適切なツールでファイルを開くことができます。
 
-Please note that Object Viewer always interprets files as UTF-8 unless a byte order mark indicates a different Unicode encoding. Non-Unicode encodings are not supported.
+バイトオーダーマーク (BOM) が異なるUnicodeエンコーディングが示されない限り、Object Viewerは常にUTF-8として解釈することに注意してください。非Unicodeのエンコーディングはサポートされません。
 
-Supported object file formats:
+サポートされるオブジェクトファイルのフォーマット:
 
 - B3D
 - CSV
 - X
 - ANIMATED
 
-This tool does not support the plugin API yet. This means that only the built-in texture formats (BMP, PNG, GIF, JPG, TIF) are supported.
+このツールではプラグインAPIの表示はサポートされていません。これは組み込みのテクスチャフォーマット (BMP, PNG, GIF, JPG, TIF) のみサポートすることを意味します。
 
 ## ■ Changelog
 
