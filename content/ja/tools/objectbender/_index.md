@@ -1,88 +1,89 @@
 ---
-title: Object Bender
+title: オブジェクトベンダー
 weight: 2
 ---
 
 ![img](/images/tool_objectbender_screenshot_1.png)
 
-## ■ Overview
+## ■ 概要
 
-This tool allows to concatenate object segments and to bend the resulting mesh. This is useful to create curved objects such as rails, walls, embankments, etc. The segments can be of B3D or CSV format. You need to be able to provide those segments, meaning you need a basic understanding of the B3D or CSV file formats. See their respective documentation for more information.
+このツールはオブジェクトのセグメントを結合して、メッシュを曲げることができます。 これはレールや壁、堤防など、曲がった形状のオブジェクトを作るのに有用です。 セグメントは B3D か CSV フォーマットでなければなりません。 あなたはセグメントをこれらで用意しなければならず、 B3DかCSVのオブジェクトのファイルフォーマットの基本的な作成の知識が必要なことを意味します。 詳しくはそれぞれのドキュメントをご覧ください。
 
-Object Bender comes with a GUI and with a command-line interface. Just start the program without command line arguments to get the GUI. The GUI is useful to familiarize yourself with the program. In the long run, you might want to switch to the command-line interface. See the list of command-line arguments below for that purpose.
+Object Bender はGUIとコマンドライン双方のインターフェースを備えます。 コマンドライン引数を省略して起動すると、GUIが起動します。 GUIは本プログラムの独習と慣れるのに有用です。 長期的に見た場合、コマンドラインに変更されるほうが良いとでしょう。 目的別のコマンドライン引数のリストは下記のとおりです。
 
-Please note that Object Bender always interprets files as UTF-8 unless a byte order mark indicates a different Unicode encoding. Non-Unicode encodings are not supported.
+バイトオーダーマーク (BOM) が異なるUnicodeエンコーディングが示されない限り、Object Benderは常にUTF-8として解釈することに注意してください。非Unicodeのエンコーディングはサポートされません。
 
-Supported object file formats:
+サポートされるオブジェクトのファイルフォーマット:
 
 - B3D
 - CSV
 
-## ■ Command-line arguments
+## ■ コマンドライン引数
 {{% table %}}
 
-| Argument           | Meaning                                                      |
+| 引数           | 意味                                                      |
 | ------------------ | ------------------------------------------------------------ |
-| /?                 | Shows the list of command-line arguments.                    |
-| *InputFile*        | The path to the input file. Can be a B3D or CSV file.        |
-| *OutputFile*       | The path to the output file. Will be of the same format as the input file. |
-| /n=*Segments*      | The number of segments.                                      |
-| /s=*SegmentLength* | The length of each segment in meters.                        |
-| /b=*BlockLength*   | The block length in meters. If zero, the object is not rotated for use as a rail object. |
-| /r=*Radius*        | The radius in meters. Negative values are left, positive ones right. Zero does not create a curve. |
-| /g=*RailGauge*     | The gauge of the rail in millimeters. Only required if cant is applied. |
-| /u=*InitialCant*   | The cant at the beginning of the object in millimeters.      |
-| /v=*FinalCant*     | The cant at the end of the object in millimeters.            |
-| /a                 | Appends to the output file instead of overwriting it.        |
+| /?                 | コマンドライン引数の一覧を表示します。                    |
+| *入力ファイル*        | 入力ファイルのパスを指定します。 B3D もしくは CSV ファイルを指定します。        |
+| *出力ファイル*       | 出力先ファイルのパスを指定します。 ファイルフォーマットは入力ファイルのフォーマットと同一です。 |
+| /n=*セグメント*      | セグメントの個数。                                      |
+| /s=*セグメント長* | 各セグメントの長さを、メートル単位で指定します。                        |
+| /b=*ブロック長*   | ブロックの長さをメートルで指定します。レールオブジェクトなどに用いる場合など、ゼロが指定された場合は回転しません。 |
+| /r=*半径*        | 半径をメートルで指定します。 負の値は左側、正の値は右側です。ゼロの場合はカーブを生成しません。 |
+| /g=*レール幅*     | レールのゲージ幅をミリメートルで指定します。カントが適用される場合は必ず指定しなければなりません。 |
+| /u=*始点のカント*   | オブジェクトの始まりの時点のカントをミリメートルで指定します。      |
+| /v=*終点のカント*     | オブジェクトの終点のカントをミリメートルで指定します。            |
+| /a                 | 出力先のファイルを上書きせずに追記します。        |
 
 {{% /table %}}
 
-Example:
+例:
 
 {{% code %}}  
 ObjectBender input.csv output.csv /n=25 /s=1 /b=25 /r=600  
 {{% /code %}}
 
-## ■ What Object Bender does
+## ■ Object Benderの振る舞い
 
-Object Bender takes the segment and then creates copies along the z-axis. Each copy is offset by the segment length specified in the GUI or via the command-line interface. The first segment is left unmodified, the second segment shifted on the z-axis by SegmentLength, the third segment by 2*SegmentLength, the fourth segment by 3*SegmentLength, and so on.
+Object Bender はZ軸方向に向かってセグメントのコピーを生成します。 各々のコピーはGUIもしくはコマンドラインで指定されたセグメントの長さに従ってオフセットされます。 はじめのセグメントは何も修正されず残され、二番目のセグメントはセグメント長に従ってZ軸方向にシフトされます。 三番目のセグメントは 2*セグメント長、4番目は 3*セグメント長、という具合です。
 
-Once the copies have been created, Object Bender performs a polar transformation. In simple words, it means that the z-axis is now bent into a circle where the center of the circle is at coordinates (Radius,0,0), i.e. on the right side for positive values and on the left side for negative values. If a block length was specified, the final object will be additionally rotated so it can be used as a rail object.
+コピーが生成されると、 Object Bender は極座標変換を行います。 簡単に言うと、Z軸は円の中心座標(Radius,0,0)のある方に向かって曲がります。 言い換えると、右側は正の値、左側は負の値です。 ブロック長が指定された場合、 最後のオブジェクトは回転します。それ故レールオブジェクトの生成に有用です。
 
-Object Bender accepts special markup in the comments of SetTextureCoordinates (CSV) or Coordinates (B3D) commands. These are used to tell Object Bender to shift the texture coordinates by the specified amount for every segment.
+Object Bender ではSetTextureCoordinates (CSV) と Coordinates (B3D) コマンドにおいて、コメントとして特別なマークアップを受け入れます。これらは Object Bender がテクスチャを張る座標を各々のセグメントにおいてシフトさせる機能に用いられます。
 
 {{% table-leftheader %}}
 
-| {X=*value*} | Shifts each segment by *value* on the x-axis of the texture. |
+| {X=*値*} | 各セグメントにおいて *値* の数値分、テクスチャをX軸の方向にシフトさせます。 |
 | ----------- | ------------------------------------------------------------ |
-| {Y=*value*} | Shifts each segment by *value* on the y-axis of the texture. |
+| {Y=*値*} | 各セグメントにおいて *値* の数値分、テクスチャをY軸の方向にシフトさせます。 |
 
 {{% /table-leftheader %}}
 
-This markup can be present anywhere in the comments on the same line as the SetTextureCoordinates/Coordinates command. See the tutorial for more details.
+このマークアップはSetTextureCoordinates/Coordinates commandと同一の行におけるコメント内のどこにでも記述できます。 詳細はチュートリアルを参照してください。
 
-## ■ Tutorial
-This is a brief tutorial showing you how to create a curved rail using Object Bender. Aside from the basics, this tutorial will also show you how to work with texture coordinates appropriately, and how to work efficiently with the command-line interface.
+## ■ チュートリアル
+こちらではどの様に Object Bender を用いてカーブレールを生成するか簡単なチュートリアルを示します。
+基本的なことはさておきまして、こちらのチュートリアルではテクスチャの座標を適切に取り扱いどのように働くのか、また、コマンドラインのインターフェースで効率的に動作させる方法も示します。
 
-##### ● The Basics
-Let's suppose we want to create a curved rail object for a 25 m block length and 1435 mm rail gauge, having a radius of 600 meters and curving to the right. The first thing we need is a short segment of a rail, say 5 meters in length.
+##### ● 基礎
+私達はこれから25mのブロック長、軌間1435mm、半径600mで、右方向に曲がるカーブレールオブジェクトを作ろうと思います。最初に必要なものは5mの長さの短いレールのセグメントです。
 
 {{% code "*segment.csv*" %}}  
-; left rail  
+; 左側のレール  
 CreateMeshBuilder  
 AddVertex,-0.7775,0,0  
 AddVertex,-0.7775,0,5  
 AddVertex,-0.7175,0,5  
 AddVertex,-0.7175,0,0  
 AddFace,0,1,2,3  
-<br/>; right rail  
+<br/>; 右側のレール  
 CreateMeshBuilder  
 AddVertex,0.7775,0,0  
 AddVertex,0.7775,0,5  
 AddVertex,0.7175,0,5  
 AddVertex,0.7175,0,0  
 AddFace,3,2,1,0  
-<br/>; ballast  
+<br/>; バラスト  
 CreateMeshBuilder  
 AddVertex,-1,-0.2,0  
 AddVertex,-1,-0.2,5  
@@ -92,21 +93,21 @@ AddFace,0,1,2,3
 SetColor,150,125,100  
 {{% /code %}}
 
-The above code does not use any textures, making things a little simpler for now. We can now open the GUI, select the input file (segment.csv), then set up the parameters we need. Given that our segment is 5 meters in length and our block length is 25 meters, we need 5 copies of the segment to fill out the block, hence:
+今必要なものとして、上記のコードはテクスチャを用いず、簡単なものを作りました。 GUIとして起動した後、 この入力ファイル(segment.csv)を選択し、 必要に応じてパラメータを入力していきます。 私達は今5mの長さのセグメントを持ち、ブロック長は25mですから、それ故にブロックを埋めるためには5つのセグメントのコピーが必要となります。
 
 Number of segments: 5  
 Segment length: 5  
 Block length: 25  
 Radius: 600
 
-Providing the rail gauge is not necessary because we don't want to employ any cant. We can now select the target file, for example *right_curve_600.csv* and hit the Start button. This should bring up the simple *Done!* message. We could now additionally create a left curve with the same settings by simply changing the Radius to -600, select a different output file, for example *left_curve_600.csv*, and hitting the Start button again.
+レール幅は設定する必要はありません。なぜなら今回私達はカントを生成しないからです。 いま私達は出力先のファイルを例えば *right_curve_600.csv* として選び、Startボタンを押下します。 すると Object Bender はシンプルに *Done!* とメッセージを出力します。 半径を-600と設定し、出力先ファイルを例えば *left_curve_600.csv* と変更し、Startボタンをもう一度押すだけで、同様の設定を持った左カーブを追加で生成できます。
 
-##### ● Working with texture coordinates
+##### ● テクスチャの座標設定を伴う動作
 
-Let's suppose our ballast is not of a solid color, but uses an appropriate texture, for example:
+今回は単色ではなく、適切なテクスチャが設定されるものとしましょう。 例:
 
 {{% code "*segment.csv*" %}}  
-; ballast  
+; バラスト  
 CreateMeshBuilder  
 AddVertex,-1,-0.2,0  
 AddVertex,-1,-0.2,5  

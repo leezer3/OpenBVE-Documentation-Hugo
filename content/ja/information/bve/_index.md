@@ -1,29 +1,29 @@
 ---
 title: BVE Trainsimとの違い
-linktitle: Vs. BVE Trainsim
+linktitle: 対BVE Trainsim
 weight: 9
 ---
 
-This page lists **incompatible** differences between openBVE and BVE Trainsim regarding the file formats, i.e. features of content developed for BVE Trainsim that is interpreted differently in openBVE with an incompatible outcome. As of the moment, only one such incompatibility is known.
+このページには、ファイルフォーマットに関するopenBVEとBVE Trainsimの間の**互換性のない**相違点、すなわち互換性のない結果でopenBVEで異なって解釈されるBVE Trainsimのために開発されたコンテンツの機能がリストされています。現時点では、そのような非互換性が1つだけ知られています。
 
-Please note that for all incompatible differences that are mentioned on this page, the resolution is the same: It is considered to be more important to provide stable and consistent features in openBVE than to make backward-incompatible changes between versions just to increase similarity to BVE Trainsim. All differences depicted on this page will thus be permanent.
+このページに記載されているすべての非互換な違いについては、解決方法は同じです。BVEとの類似性を高めるために、バージョン間で後方互換性のない変更を行うよりも、openBVEに安定した一貫した機能を提供することが重要です。 Trainsimこのページに描かれているすべての違いは永久的になるでしょう。
 
-## ■ The Track.Signal command  (CSV and RW routes)
+## Track.Signalコマンド（CSVおよびRWルート）
 
-The Track.Signal command (alternatively: Track.Sig) is used to create a default Japanese-style signal in CSV routes (alternative spellings are used in RW routes).
+Track.Signalコマンド（あるいはTrack.Sig）は、CSVルートでデフォルトの和風信号を作成するために使用されます（代替スペルはRWルートで使用されます）。
 
-In openBVE, the Track.Signal command takes the following arguments:
+openBVEでは、Track.Signalコマンドは次の引数を取ります。
 
 {{% command %}}  
 **Track.Signal** *Aspects*; *~~Unused~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
 {{% /command %}}
 
-In BVE Trainsim, the Track.Signal command takes the following arguments:
+BVE Trainsimでは、Track.Signalコマンドは次の引数を取ります。
 
 {{% command %}}  
 **Track.Signal** *Aspects*; *Label*; *X*; *Y*; <u>*Type*</u>  
 {{% /command %}}
 
-The *Label* parameter in BVE Trainsim is a textual description of the signal which serves no function in openBVE (thus termed *Unused* in the documentation).
+BVE Trainsimの* Label *パラメータは、openBVEでは機能しないシグナルの説明文です（したがって、このドキュメントでは* Unused *と呼ばれています）。
 
-BVE Trainsim features a *Type* argument which can take values 1, 2 or 3. It is used to denote different types of signals, e.g. home signal vs. departure signal. By mere accident, this argument was never included in openBVE, while subsequently, the need arose to include *Yaw*, *Pitch* and *Roll* arguments to provide for more control over a signal head's orientation. Consequently, BVE Trainsim's *Type* and openBVE's *Yaw* argument incompatibly overlap. If a route created for BVE Trainsim includes the *Type* argument, it will be (mis)interpreted as a yaw of up to 3 degrees in openBVE. Usually, this small angle should not produce noticable differences, especially given that the parameter is not often used anyway.
+BVE Trainsimは1、2または3の値を取ることができる* Type *引数を特徴としています。ホーム信号対出発信号。単なる偶然ではあるが、この議論はopenBVEには含まれていなかったが、その後、シグナルヘッドの向きをさらに制御するために* Yaw *、* Pitch *、および* Roll *引数を含める必要性が生じた。その結果、BVE Trainsimの* Type *引数とopenBVEの* Yaw *引数は、互換性がなくなります。 BVE Trainsim用に作成されたルートに* Type *引数が含まれていると、openBVEでは最大3度の偏揺れとして（誤って）解釈されます。通常、この小さな角度では、特にパラメータが使用されないことが多いという点で、目立った違いは生じません。
