@@ -17,11 +17,15 @@ disableKinds = ["page", "404", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
   extensions = ["laxHtmlBlocks"]
 
 [languages]
+[languages.ca]
+contentDir = "content/ca"
+languageName = "Català"
+weight = 1
 [languages.en]
 contentDir = "content/en"
 languageName = "English"
-weight = 1
+weight = 2
 [languages.ja]
 contentDir = "content/ja"
 languageName = "日本語"
-weight = 2
+weight = 3
