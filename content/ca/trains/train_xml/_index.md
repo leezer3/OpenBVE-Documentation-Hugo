@@ -1,6 +1,6 @@
 ---
-title: The **train.xml** file format
-linktitle: The train.xml file
+title: El format de fitxer **train.xml**
+linktitle: El fitxer train.xml
 weight: 2
 ---
 
