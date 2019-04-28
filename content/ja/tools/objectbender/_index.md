@@ -121,10 +121,10 @@ SetTextureCoordinates,2,1,1
 SetTextureCoordinates,3,1,0  
 {{% /code %}}
 
-It should be noted that the texture's y-axis in the above code corresponds to the spatial z-axis. If we now picture that the object is copied along the z-axis, we will get one copy of the texture for every segment, i.e. one copy every 5 meters. This can be desired, but let's suppose we designed the texture to fit a whole 25 meter block. In this case, one segment should not display the whole texture, but just 1/5 of it. For this purpose, we first need to make the segment appear correct on its own:
+注意すべき点として、上記のコードにおけるテクスチャのy軸 は特別なz軸に対応していることです。  もし今、画像データがオブジェクトのz軸方向に向かってコピーされているとすると、各セグメントでは1つのコピーしか得られないことになります。 例えば5m毎に1つのコピーです。 これは望ましいことかもしれませんが、 例えばテクスチャを25メートルのブロック全体で1つのテクスチャを用いるようにデザインしたとしましょう。 このケースでは、ひとつのセグメントでは全てのテクスチャを表示しない上に表示せず、しかしながらちょうど 1/5 です。 こうしたケースの目的のために、 最初にセグメントを正しく表示しなければなりません:
 
 {{% code "*segment.csv*" %}}  
-; ballast  
+; バラスト  
 CreateMeshBuilder  
 AddVertex,-1,-0.2,0  
 AddVertex,-1,-0.2,5  
@@ -138,10 +138,10 @@ SetTextureCoordinates,2,1,0.2
 SetTextureCoordinates,3,1,0.0  
 {{% /code %}}
 
-In the above code, the texture is only shown to 1/5 (=0.2). If we now used Object Bender to concatenate multiple segments to form a longer object, then every segment in the resulting object would show the first fifth of the texture. This is of course undesired. What we need is for every segment to be shifted by 0.2 on the texture's y-axis. Object Bender accepts special markup for this purpose in the comments of the SetTextureCoordinates command, so let's add it:
+上記のコードにおいて、テクスチャは 1/5 (=0.2)しか表示されていません。 もしいま私達がObject Bender で複数のセグメントを持つ長いオブジェクトを結合するために用いる場合、 其々のセグメントは結果としてテクスチャの最初の5分の一の部分だけで全て表示します。 この結果はもちろん望ましいものではありません。 私達が望むのは各セグメントにおいて0.2づつY軸に沿ってシフトするものです。 Object Bender はこのために SetTextureCoordinates コマンドのコメント欄において特別なマークアップを受け入れます。 ですので追加してみてください。
 
 {{% code "*segment.csv*" %}}  
-; ballast  
+; バラスト  
 CreateMeshBuilder  
 AddVertex,-1,-0.2,0  
 AddVertex,-1,-0.2,5  
@@ -155,17 +155,17 @@ SetTextureCoordinates,2,1,0.2 ; {Y=0.2}
 SetTextureCoordinates,3,1,0.0 ; {Y=0.2}  
 {{% /code %}}
 
-Now, Object Bender knows that for every of the above four lines of SetTextureCoordinates, each segment should be added 0.2 in the y-values, hence the first segment is unmodified, the second segment will employ the range of 0.2 to 0.4 in the y-values, the third segment 0.4 to 0.6, the fourth segment 0.6 to 0.8, and the final segment 0.8 to 1.0. This makes the texture repeat every 5 segments. With a segment length of 5 meters, that's every 25 meters, which is our block length.
+現段階で、Object Bender は上記のサンプルのうちSetTextureCoordinatesの4行について、各セグメントでyの値に都度0.2追加しなければならないことを認識しています。 それ故に最初のセグメントは未修正で、2番めのセグメントは0.2から0.4に変更するよう指示に従い、三番目のセグメントは0.4から0.6に、4番めのセグメントは0.6から0.8に、そして最後のセグメントは0.8から1.0に変更されます。 これにより、テクスチャは毎回5セグメントごとに繰り返されます。 セグメント長は5メートルで、毎回25m毎に繰り返されますが、それはすなわちブロック長と同じです。
 
-##### ● Using the command-line interface
+##### ● コマンドラインインターフェースを用いる
 
-Let's suppose our curved rail object should embed an overhead wire. The overhead wire should not be curved, hence it should be a single 25 meter long wire. We cannot do this in a single step because if we included an overhead wire in our segment.csv, this would get copied and bent, too. Instead, we create both objects separately and join them together later. In order to create our curved rail via the command-line interface, we enter the following code in a terminal:
+それでは、架線付きのカーブレールオブジェクトを作ってみましょう。 架線は曲がってはいません。それ故に25m長の長いワイヤーです。 私達はこれをひとつのステップで行うことはできません。 なぜならもし架線をsegment.csvに含めてしまうと、コピーされた上に曲がってしまうからです。 その代わりに、双方のオブジェクトを分割して生成し、後に結合します。 コマンドラインインターフェースを通じてカーブレールを生成しようとした場合、端末から以下のコードを入力します。
 
 {{% code "*Terminal*" %}}  
 ObjectBender segment.csv right_curve_600.csv /n=5 /s=5 /b=25 /r=600  
 {{% /code %}}
 
-Now, let's create the overhead wire in a file called 
+では次に、ファイルに組み込むために架線を作ってみましょう。
 
 {{% code "*wire.csv*" %}}  
 AddVertex,-0.03,5,0  
@@ -176,34 +176,34 @@ AddFace,3,2,1,0
 SetColor,0,0,0  
 {{% /code %}}
 
-The above code is a single 25 meter long wire. Given that the object already is 25 meters long, we don't need to create additional copies, just a single segment. This should be added to our right_curve_600.csv. We can do this in the following way:
+上記のコードは単線の25m長のワイヤーです。 最初からオブジェクト長は25m長を与えてあり、 私達は追加のコピーを生成する必要がなく、ちょうど一つのセグメントで済みます。 これをright_curve_600.csv に追加します。 この場合以下の方法で行います:
 
 {{% code "*Terminal*" %}}  
 ObjectBender wire.csv right_curve_600.csv /n=1 /s=25 /b=25 /r=600 /a  
 {{% /code %}}
 
-The final /a switch tells Object Bender to append the resulting wire to the target file, not to overwrite it. Let's combine the terminal code in a batch file. On Windows, this file could be called 
+最後の /a のスイッチは Object Bender がターゲットファイルの生成結果の末尾に架線を追加するためのもので上書きしません。 バッチファイルに記述し、結合してみましょう。 このバッチファイルは Windows上で呼び出すことができます。
 
 {{% code "*start.bat*" %}}  
 ObjectBender segment.csv right_curve_600.csv /n=5 /s=5 /b=25 /r=600  
 ObjectBender wire.csv right_curve_600.csv /n=1 /s=25 /b=25 /r=600 /a  
 {{% /code %}}
 
-If you want to make changes to the segment or to the wire objects, just execute the batch file any time later to get refreshed results. You can also create longer batch file to create left and right curves of different radii this way:
+もしあなたがセグメントや架線のオブジェクトに変更を加えようとしたいなら、好きなときにバッチファイルを実行するだけで生成結果を更新することができます。 同様により長いバッチファイルで左右の違う半径のカーブレールを以下の方法で生成することができます:
 
 {{% code "*start.bat*" %}}  
-; 300m left  
+; 左向きでR300m  
 ObjectBender segment.csv left_curve_300.csv /n=5 /s=5 /b=25 /r=-300  
 ObjectBender wire.csv left_curve_300.csv /n=1 /s=25 /b=25 /r=-300 /a  
-; 300m right  
+; 右向きでR300m  
 ObjectBender segment.csv right_curve_300.csv /n=5 /s=5 /b=25 /r=300  
 ObjectBender wire.csv right_curve_300.csv /n=1 /s=25 /b=25 /r=300 /a  
-; 600m left  
+; 左向きでR600m  
 ObjectBender segment.csv left_curve_600.csv /n=5 /s=5 /b=25 /r=-600  
 ObjectBender wire.csv left_curve_600.csv /n=1 /s=25 /b=25 /r=-600 /a  
-; 600m right  
+; 右向きでR600m  
 ObjectBender segment.csv right_curve_600.csv /n=5 /s=5 /b=25 /r=600  
 ObjectBender wire.csv right_curve_600.csv /n=1 /s=25 /b=25 /r=600 /a  
 {{% /code %}}
 
-You hopefully get the idea.
+あなたがなにかのアイデアを得られるよう期待しています。
