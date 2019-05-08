@@ -1,29 +1,29 @@
 ---
-title: Route Viewer
+title: ルートビューアー
 weight: 3
 ---
 ![img](/images/tool_routeviewer_screenshot_1.png)
 
-## ■ Overview
+## ■ 概要
 
-This tool allows to preview route files. The camera can be moved, rotated and zoomed, you can jump to stations and points of interest, and also enable a series of options. If routes contain errors, a report can be optionally displayed.
+このツールはルートファイルをプレビューすることができます。 カメラを移動することができ、回転や拡大ができます。 駅と駅の間や任意のビューポイント(Point Of Interest)へジャンプすることができ、  同様に一連のオプションを設定することができます。 もしルートデータにエラーがある場合、 レポートをオプションウインドウに表示することができます。
 
-A file that is passed as a command line argument is automatically opened at startup. If a CSV file is determined to be a CSV object instead of a CSV route, *ObjectViewer.exe* will be started if present inside the same folder as *RouteViewer.exe*. This allows you to link CSV files against either Route Viewer or Object Viewer and still have the correct tool opening the file.
+起動時にコマンドラインオプションでファイルが指定されると、そのファイルが自動で開かれます。 もし CSV ファイルがCSVオブジェクトでなくCSVルートであると判断された場合、 *ObjectViewer.exe* は同一階層のフォルダ内にある *RouteViewer.exe* を自動で実行します。 これにより、 CSVファイルが  Route Viewer もしくは Object Viewer のいずれかに割り当てられたとしても、適切なツールが実行され、ファイルが開かれます。
 
-Please note that Route Viewer always interprets files as UTF-8 unless a byte order mark indicates a different Unicode encoding. Non-Unicode encodings are not supported.
+バイトオーダーマーク (BOM) が異なるUnicodeエンコーディングが示されない限り、ルートビューアーは常にUTF-8として解釈することに注意してください。非Unicodeのエンコーディングはサポートされません。
 
-For moving the camera, use the *WASD* keys, for rotating the *Arrow* keys. Jump to stations with the *PageUp* and *PageDown* keys, or jump to points of interests using the *Num1* and *Num7* keys. You can also enter a specific track position using the *number* keys, then confirm with the *Return* key or cancel with the *Escape* key. For relative offsets, the prefixes *Minus* and *Plus* are also accepted. There are other useful keys which are hinted at in RouteViewer's main window.
+カメラを動かすには *WASD* キーを用い、回転をするには *矢印* キーを用います。 駅の間をジャンプするには *PageUp* と *PageDown* キーを用い、 任意のビューポイント(Points Of Interests)へジャンプするには *Num1* と *Num7* キーを用います。 同様に任意の距離程に移動するにはフルキーの *数字* キーを用います。 入力した後 *Return* key で確定するか *Escape* キーでキャンセルします。 相対的に距離程をオフセットするには *マイナス* もしくは *プラス* キーを押下します。 その他の有用な操作キーの情報はルートビューアーのメインウインドウ内に表示されています。
 
-Supported route file formats:
+サポートされるルートデータのフォーマット:
 
 - CSV
 - RW
 
-This tool does not support the plugin API yet. This means that only the built-in texture formats (BMP, PNG, GIF, JPG, TIF) and the built-in sound formats (WAV) are supported.
+このツールではプラグインAPIの表示はサポートされていません。これは組み込みのテクスチャフォーマット (BMP, PNG, GIF, JPG, TIF) 、及び組み込みののサウンドファイルフォーマット(WAV)のみサポートすることを意味します。
 
 ## ■ Changelog
 
-Please also see the changelog of the main program.
+メインプログラムの更新履歴も同様に確認してください。
 
 ##### ● Version 1.4.4.0 (2016-01-30)
 
