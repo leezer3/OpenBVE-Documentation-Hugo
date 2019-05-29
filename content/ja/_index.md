@@ -1,5 +1,5 @@
 ---
-title: openBVE デベロッパーズマニュアル 
+title: openBVE デベロッパーズマニュアル
 linktitle: ホーム
 ---
 

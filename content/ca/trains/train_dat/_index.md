@@ -8,7 +8,7 @@ weight: 2
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Descripció](#overview)
 - [2. The file identifier](#identifier)
   - [2a. Version history]({{<ref "/trains/train_dat_version/_index.md" >}})
 - [3. Syntax](#syntax)
@@ -26,7 +26,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Descripció
 
 The train.dat file describes the characteristics of trains including acceleration, brake behavior, installed equipment, speed-sound associations, and more.
 

@@ -1,20 +1,20 @@
 ---
-title: The **sound.cfg** file format
-linktitle: The sound.cfg file
+title: El format de fitxer **sound.cfg**
+linktitle: El fitxer sound.cfg
 weight: 7
 ---
 
-## ■ Contents
+## ■ Continguts
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Content of the file](#content)
+- [1. Descripció](#overview)
+- [2. Sintaxi](#syntax)
+- [3. Contingut del fitxer](#content)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Descripció
 
 The sound.cfg file allows to reference which sound files should be used, how they are called and where they are located relative to the train folder.
 
@@ -22,7 +22,7 @@ The sound.cfg file is a plain text file encoded in any arbitrary  [encoding]({{<
 
 ➟ [See also the quick reference for the sound.cfg...]({{< ref "/trains/sound_cfg_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxi
 
 Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
@@ -40,12 +40,12 @@ NameOfTheKey = Value
 
 You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## <a name="content"></a> ■ 3. Content of the file
+## <a name="content"></a> ■ 3. Contingut del fitxer
 
 The first line in the file is required to be the following:
 
 {{% command %}}  
-Version 1.0  
+Versió 1.0  
 {{% /command %}}
 
 Following the version line, these are the sections that can be used and their key-value pairs. In all key-value pairs, the parameter *FileName* corresponds to the file name of the sound to reference, relative to the train folder.

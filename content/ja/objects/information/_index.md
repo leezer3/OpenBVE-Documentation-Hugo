@@ -1,12 +1,12 @@
 ---
-title: Information and tips for object creation
-linktitle: Information and tips
+title: オブジェクト作成に関する情報とヒント
+linktitle: 情報とヒント
 weight: 3
 ---
 
-This page presents information developers need to be aware of and general tips for object creation.
+このページでは、開発者が知っておくべき情報とオブジェクト作成のためのヒントを紹介します。
 
-## ■ Commands
+## ■ コマンド
 
 - In Face (B3D) or AddFace (CSV) commands, vertices need to be given in order of adjacency. Complex polygons, meaning self-intersecting polygons, will lead to erratic results.
 - The current implementation of openBVE produces incorrect illumination on the back face of faces created by Face2 (B3D) or AddFace2 (CSV). This behavior might change in future versions of openBVE so that both sides are correctly illuminated.

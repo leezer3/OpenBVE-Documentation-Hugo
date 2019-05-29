@@ -1,6 +1,6 @@
 ---
 title: .NET assembly plugins
-linktitle: Overview
+linktitle: Descripció
 weight: 1
 ---
 
@@ -10,7 +10,7 @@ Plugins allow to offer functionality that openBVE does not provide out of the bo
 
 Train plugins allow to change the runtime behavior of trains to some degree. Things you can do include displaying custom indicators in the panels, playing custom sounds and overriding the handles the driver originally set. Plugins can be used to simulate safety equipment such as ATS or ATC, among other things.
 
-## ■ Contents
+## ■ Continguts
 
 {{% contents %}}
 
@@ -102,13 +102,13 @@ In order to create a train plugin, first choose a programming language (for exam
 
 Be sure to compile against AnyCPU, to enable CLS-compliance checks and to remove references that are not actually needed. Mind to **not** ship OpenBveApi.dll with your plugin.
 
-## <a name="documentation"></a>■ Documentation
+## <a name="documentation"></a>■ Documentació
 
 {{% table %}}
 
-| API component | Descripció   | Documentation                                     |
+| API component | Descripció   | Documentació                                     |
 | ------------- | ------------- | ------------------------------------------------- |
-| IRuntime      | Train plugins | [View]({{< ref "/plugins/iruntime/_index.md" >}}) |
+| IRuntime      | Train plugins | [Mostra]({{< ref "/plugins/iruntime/_index.md" >}}) |
 
 {{% /table %}}
 

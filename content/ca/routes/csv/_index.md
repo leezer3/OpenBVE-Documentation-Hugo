@@ -10,9 +10,9 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Preprocessing](#preprocessing)
+- [1. Descripció](#overview)
+- [2. Sintaxi](#syntax)
+- [3. Preprocessament](#preprocessing)
 - [4. The Options namespace](#options)
 - [5. The Route namespace](#route)
 - [6. The Train namespace](#train)
@@ -21,17 +21,17 @@ weight: 1
 - [9. The Cycle namespace](#cycle)
 - [10. The Signal namespace](#signal)
 - [11. The Track namespace](#track)
-  - [11.1. Rails](#track_rails)
-  - [11.2. Geometry](#track_geometry)
-  - [11.3. Objects](#track_objects)
-  - [11.4. Stations](#track_stations)
-  - [11.5. Signalling and speed limits](#track_signalling)
-  - [11.6. Safety systems](#track_safety)
-  - [11.7. Miscellaneous](#track_misc)
+  - [11.1. Vies](#track_rails)
+  - [11.2. Geometria](#track_geometry)
+  - [11.3. Objectes](#track_objects)
+  - [11.4. Estacions](#track_stations)
+  - [11.5. Senyalització i límits de velocitat](#track_signalling)
+  - [11.6. Sistemes de seguretat](#track_safety)
+  - [11.7. Miscel·lània](#track_misc)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Descripció
 
 A CSV route allows to create a route in a text file.
 
@@ -45,7 +45,7 @@ Geometrically, you can curve and pitch the implicit rail 0, while all other rail
 
 ➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxi
 
 For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
 
@@ -55,7 +55,7 @@ For each line in the file, [white spaces]({{< ref "/information/whitespaces/_ind
 
 In turn, each expression can be of any of the following forms:
 
-##### ● Comments
+##### ● Comentaris
 
 A comment is completely ignored by the parser. To form a comment, the expression must begin with a semicolon (U+003B).
 
@@ -75,22 +75,22 @@ Wherever arguments in commands represent lengths, they can also be entered using
 
 When *n* units are defined via Options.UnitOfLength, but fewer parameters are given using the colon notation, the parameters are right-associative, meaning, the parameters on the left are those which are skipped. Therefore, each of the following lengths are equivalent: *0:0:2*, *0:2*, and *2*.
 
-##### ● Commands
+##### ● Ordres
 
-Commands without arguments:
-
-{{% command %}}  
-*NameOfTheCommand*  
-{{% /command %}}
-
-Commands with arguments:
+Ordres sense arguments:
 
 {{% command %}}  
-*NameOfTheCommand* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
-*NameOfTheCommand*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
+*Nomdel'ordre*  
 {{% /command %}}
 
-Commands with indices and arguments:
+Odres amb arguments:
+
+{{% command %}}  
+*Nomdel'ordre* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
+*Nomdel'ordre*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
+{{% /command %}}
+
+Ordres amb índexs i arguments:
 
 {{% command %}}  
 *NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*) *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
@@ -98,7 +98,7 @@ Commands with indices and arguments:
 *NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
 {{% /command %}}
 
-Rules:
+Normes:
 
 *NameOfTheCommand* is case-insensitive. Indices and arguments are separated by semicolons (U+003B). White spaces around *NameOfTheCommand* and any of the indices and arguments are ignored. White spaces surrounding any of the parentheses are also ignored.
 
@@ -122,14 +122,14 @@ With Route
 .Timetable 1157_M  
 {{% /code %}}
 
-Is equivalent to:
+és equivalent a:
 
 {{% code %}}  
 Route.Gauge 1435  
 Route.Timetable 1157_M  
 {{% /code %}}
 
-## <a name="preprocessing"></a>■ 3. Preprocessing
+## <a name="preprocessing"></a>■ 3. Preprocessament
 
 Before any of the commands in the route file are actually interpreted, the expressions are preprocessed. The first thing done is to replace any occurrences of the $-directives within an expression from right to left. The $Chr, $Rnd and $Sub directives may be nested in any way, while $Include, $If, $Else and $EndIf must not appear inside another directive.
 

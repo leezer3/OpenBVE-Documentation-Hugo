@@ -8,7 +8,7 @@ weight: 3
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Descripció](#overview)
 - [2. Sections](#description)
 - [3. List of infix notation operators](#operators)
 - [4. List of functions](#functions)
@@ -20,7 +20,7 @@ weight: 3
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Descripció
 
 The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
 
@@ -378,6 +378,10 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `trackDistance`               | The signed track distance measured from the object to the closest end of the nearest train in meters. Is positive when the train is in front of the object, negative when behind, and zero when the object lies between the ends of the train. |
 | `trackDistance[carIndex]`     | The signed track distance measured from the object to the car *carIndex* of the nearest train in meters. Is positive when the center of the car is in front of the object, and negative if behind. Returns 0 if the car does not exist. Only meaningful for scenery objects. |
 | `destination`                 | The currently set destination for this train. (Set via *Track.Destination* or the plugin interface) |
+| `distanceNextStation`         | The distance in m to the next station. |
+| `distanceStation[stationIndex]`| The distance in m to the station with *stationIndex* |
+| `stopsNextStation`            | Whether the train stops at the next station. |
+| `stopsStation[stationIndex]`  | Whether the train stops at the station with *stationIndex* |
 
 {{% /table %}}
 
@@ -385,7 +389,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                       | Descripció                                                  |
+| Variable                       | Description                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
@@ -404,7 +408,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                     | Descripció                                                  |
+| Variable                     | Description                                                  |
 | ---------------------------- | ------------------------------------------------------------ |
 | `doors`                      | The state of the doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
 | `doors[carIndex]`            | The state of the doors of car *carIndex*. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
@@ -425,7 +429,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                         | Descripció                                                  |
+| Variable                         | Description                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
 | `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
 | `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
@@ -488,7 +492,7 @@ The section context is defined when the object is placed using Track.SigF.
 
 {{% table %}}
 
-| Variable  | Descripció                                                  |
+| Variable  | Description                                                  |
 | --------- | ------------------------------------------------------------ |
 | `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 

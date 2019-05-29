@@ -1,5 +1,5 @@
 ---
-title: The **.csv** route format - Quick reference
+title: El format de ruta **.csv** - Referència ràpida
 hidden: true
 ---
 

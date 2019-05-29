@@ -1,5 +1,5 @@
 ---
-title: The **.x** object format
+title: El format d'objecte **.x**
 linktitle: Microsoft DirectX (.x)
 weight: 2
 ---

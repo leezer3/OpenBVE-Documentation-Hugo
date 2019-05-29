@@ -1,11 +1,11 @@
 ---
-title: Information and tips for train creation
-linktitle: Information and tips
+title: Informació i consells per a la creació de trens
+linktitle: Informació i consells
 weight: 10
 ---
-This page presents information developers need to be aware of and general tips for object creation.
+Aquesta pàgina presenta informació que cal saber per al desenvolupament i consells generals per a la creació d'objectes.
 
-## ■ Exterior objects
+## ■ Objectes exteriors
 
 - Exterior objects need to follow the same rules as any other object. See [Information and tips on object creation]({{< ref "/objects/information/_index.md" >}}).
 

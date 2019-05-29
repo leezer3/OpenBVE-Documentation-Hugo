@@ -1,10 +1,10 @@
 ---
-title: Differences compared to BVE Trainsim
-linktitle: Vs. BVE Trainsim
+title: Diferències amb el BVE Trainsim
+linktitle: Diferències amb el BVE Trainsim
 weight: 9
 ---
 
-This page lists **incompatible** differences between openBVE and BVE Trainsim regarding the file formats, i.e. features of content developed for BVE Trainsim that is interpreted differently in openBVE with an incompatible outcome. As of the moment, only one such incompatibility is known.
+Aquesta pàgina enumera diferències **incompatibles** entre l'openBVE i el BVE Trainsim pel que fa als formats de fitxer; és a dir, característiques de continguts per al BVE Trainsim que s'interpreten de manera diferent a l'openBVE i tenen un resultat incompatible. Fins ara només es coneix una incompatibilitat d'aquesta mena.
 
 Please note that for all incompatible differences that are mentioned on this page, the resolution is the same: It is considered to be more important to provide stable and consistent features in openBVE than to make backward-incompatible changes between versions just to increase similarity to BVE Trainsim. All differences depicted on this page will thus be permanent.
 

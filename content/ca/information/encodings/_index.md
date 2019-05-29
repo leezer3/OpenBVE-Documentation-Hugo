@@ -5,7 +5,7 @@ weight: 1
 
 <font color="Gray">This page describes what character encodings are and how they should be used.</font>
 
-■ Overview
+■ Descripció
 ------
 
 A character encoding is a way to translate characters into bytes that can be stored on the hard drive. In the beginnings, one byte (256 states) was used to encode one character. As different writing systems around the world have different requirements for characters to be encoded, there are a lot of different encodings in use throughout the world. Problematically, if the encoding of a text file is not known in advance, misinterpreting the encoding can result in mojibake (meaningless sequence of characters).

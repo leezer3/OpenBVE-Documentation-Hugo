@@ -1,10 +1,10 @@
 ---
-title: White Spaces
+title: Espais en blanc
 weight: 3
 ---
-<font color="Gray">This page describes what white spaces are.</font> 
+<font color="Gray">Aquesta pàgina descriu què són els espais en blanc.</font>
 
-White spaces are characters which leave an invisible space between characters. The various file formats usually ignore white spaces to parts when parsing an expression.
+Els espais en blanc són caràcters que deixen un espai invisible entre caràcters. Els diversos formats de fitxer normalment ignoren els espais en blanc quan es processa una expressió.
 
 {{% code "*Example expression:*" %}}  
 &nbsp;&nbsp;&nbsp;&nbsp;some text  
@@ -19,7 +19,7 @@ This example expression contains three spaces at the beginning, which might be i
 - **U+000B** (LINE TABULATION)
 - **U+000C** (FORM FEED)
 - **U+000D** (CARRIAGE RETURN)
-- **U+0020** (SPACE)
+- **U+0020** (ESPAI)
 - **U+0085** (NEXT LINE)
 - **U+00A0** (NO-BREAK SPACE)
 - **U+1680** (OGHAM SPACE MARK)
@@ -41,4 +41,4 @@ This example expression contains three spaces at the beginning, which might be i
 - **U+205F** (MEDIUM MATHEMATICAL SPACE)
 - **U+3000** (IDEOGRAPHIC SPACE)
 
-For further information, consult Unicode at http://www.unicode.org.
+Per a més informació, consulteu Unicode a http://www.unicode.org.

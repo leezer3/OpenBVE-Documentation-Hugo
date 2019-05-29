@@ -9,7 +9,7 @@ weight: 2
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Descripció](#overview)
 - [2. Integers](#integers)
 - [3. Floating-point numbers](#floating)
 - [4. Times](#times)
@@ -17,7 +17,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Descripció
 
 Within the route and train files, you will encounter numbers like integers or floating-point numbers all the time, occasionally also others. These numbers are required to adhere to a certain format, which is described in the following sections.
 

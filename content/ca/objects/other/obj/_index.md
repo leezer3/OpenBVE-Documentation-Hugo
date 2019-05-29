@@ -10,7 +10,7 @@ openBVE supports a subset of the Wavefront .obj object format.
 
 The following is a non-exhaustive list of unsupported functions:
 
-- Animation
-- Lighting
-- Custom shaders
-- Reflection / luminosity
+- Animacions
+- Il·luminació
+- Shaders personalitzats
+- Reflexos/lluminositat
