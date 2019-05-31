@@ -80,14 +80,14 @@ When *n* units are defined via Options.UnitOfLength, but fewer parameters are gi
 Ordres sense arguments:
 
 {{% command %}}  
-*Nomdel'ordre*  
+*Ordre*  
 {{% /command %}}
 
 Odres amb arguments:
 
 {{% command %}}  
-*Nomdel'ordre* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
-*Nomdel'ordre*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
+*Ordre* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
+*Ordre*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
 {{% /command %}}
 
 Ordres amb índexs i arguments:
