@@ -13,5 +13,5 @@ Podeu trobar exemples a la carpeta «Examples».
 
 Tingueu en compte que algunes de les pàgines encara estan en construcció. Això és aplicable a les pàgines següents:
 
-- The X object - 1% complete
-- The CSV route - 98% complete
+- Objecte X - completada en un 1%
+- Ruta CSV - completada en un 98%
