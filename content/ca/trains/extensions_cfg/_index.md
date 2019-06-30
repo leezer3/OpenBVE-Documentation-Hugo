@@ -119,6 +119,18 @@ With this setting, you can reverse the car in the consist. Please note that axle
 
 ------
 
+{{% command %}}  
+**LoadingSway** = *Value*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Value***: Either **True** or **False** to indicate whether to reverse the car.  
+{{% /command-arguments %}}
+
+With this setting, you can enable or disable loading sway for a specific car in the consist.
+
+------
+
 {{% code "*Example of a Cari section:*" %}}  
 [Car0]  
 Object = locomotive.b3d  

@@ -1,9 +1,9 @@
 ---
-title: Cubes and cylinders
+title: Cubs i cilindres
 hidden: true
 ---
 
-## ■ The Cube command
+## ■ Ordre Cube
 
 The Cube command in B3D and CSV objects is equivalent to a series of Vertex/AddVertex and Face/AddFace commands.
 
@@ -36,7 +36,7 @@ where *v* is the number of vertices that have already been created before the Cu
 
 If you want to texture the cube, you need to add appropriate Coordinate/SetTextureCoordinate commands manually.
 
-## ■ The Cylinder command
+## ■ Ordre Cylinder
 
 The Cylinder command in B3D and CSV objects is equivalent to a series of Vertex/AddVertex and Face/AddFace commands.
 

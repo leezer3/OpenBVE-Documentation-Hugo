@@ -8,4 +8,4 @@ weight: 1
 
 openBVE supports the Loksim3D object format, including both single .l3dobj files, and .l3dgrp groupings (These are roughly analagous to a .animated file) 
 
-Most features other than animations are supported.
+Excepte les animacions, la majoria de característiques són compatibles.

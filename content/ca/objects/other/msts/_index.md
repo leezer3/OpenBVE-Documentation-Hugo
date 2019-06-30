@@ -12,7 +12,7 @@ Both the compressed binary, and the uncompressed textual variants are supported.
 
 The following is a non-exhaustive list of unsupported functions:
 
-- Animation
-- Lighting
-- Custom shaders
-- Reflection / luminosity
+- Animacions
+- Il·luminació
+- Shaders personalitzats
+- Reflexos/lluminositat

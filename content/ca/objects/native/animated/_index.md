@@ -9,13 +9,13 @@ weight: 3
 {{% contents %}}
 
 - [1. Descripció](#overview)
-- [2. Sections](#description)
+- [2. Seccions](#description)
 - [3. List of infix notation operators](#operators)
-- [4. List of functions](#functions)
-- [5. List of variables](#variables)
-- [6. Performance](#performance)
-- [7. Tips](#tips)
-- [8. Example functions](#examples)
+- [4. Llista de funcions](#functions)
+- [5. Llista de variables](#variables)
+- [6. Rendiment](#performance)
+- [7. Consells](#tips)
+- [8. Funcions d'exemple](#examples)
 - [9. Formal Grammar](#grammar)
 
 {{% /contents %}}
@@ -39,9 +39,9 @@ Animation is performed via the following primitives:
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file name is arbitrary, but must have the extension **.animated**. The file is interpreted on a per-line basis, from top to bottom.
 
-## <a name="description"></a>■ 2. Sections
+## <a name="description"></a>■ 2. Seccions
 
-##### ● The [Include] section
+##### ● Secció [Include]
 
 You can use the [Include] section to just include other objects, but without animating them. This allows you to use the ANIMATED object file as a container to group other objects. There can be any number of [Include] sections within the file.
 
@@ -65,7 +65,7 @@ This defines the position of the objects, basically allowing you to offset them 
 
 ------
 
-##### ● The [Object] section
+##### ● Secció [Object]
 
 You can use the [Object] section to create a single animation. This requires to set up at least one state via the *States* parameter, and to use any combination of functions you want, which provide control over the animation. There can be any number of [Object] sections within the file.
 
@@ -207,7 +207,7 @@ Please note that if the result of any mathematical operation or function would b
 
 {{% /table %}}
 
-##### ● Comparisons
+##### ● Comparacions
 
 All comparisons return 1 for true and 0 for false.
 
@@ -224,7 +224,7 @@ All comparisons return 1 for true and 0 for false.
 
 {{% table %}}
 
-##### ● Logical operations
+##### ● Operacions lògiques
 
 All operations treat 0 as false and any other value as true, and return 1 for true and 0 for false.
 
@@ -267,7 +267,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% /warning-nontitle %}}
 
-## <a name="functions"></a>■ 4. List of functions
+## <a name="functions"></a>■ 4. Llista de funcions
 
 ##### ● Basic arithmetics
 
@@ -326,7 +326,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% /table %}}
 
-## <a name="variables"></a>■ 5. List of variables
+## <a name="variables"></a>■ 5. Llista de variables
 
 ##### ● Primitives
 
@@ -340,7 +340,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% /table %}}
 
-##### ● Time and camera
+##### ● Temps i càmera
 
 {{% table %}}
 
@@ -352,13 +352,13 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% /table %}}
 
-##### ● Trains
+##### ● Trens
 
 Generally, objects attached to a particular train and car return values for that train and car, unless stated otherwise. For scenery objects, the reference is the driver's car of the nearest train (not necessarily the player's train).
 
 In some of the following variables, *carIndex* has the following meaning: 0 is the 1<sup>st</sup> car from the front, 1 is the 2<sup>nd</sup> car from the front, etc., while -1 is the 1<sup>st</sup> car from the rear, -2 is the 2<sup>nd</sup> car from the rear, etc. In general, car indices from -*cars* to *cars*-1 represent existing cars, where *cars* is the number of cars the train has, while values outside of this range represent non-existing cars. As all trains have at least 1 car, indices -1 and 0 are guaranteed to exist for any train.
 
-##### ● Trains (general)
+##### ● Trens (general)
 
 {{% table %}}
 
@@ -391,7 +391,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                       | Description                                                  |
+| Variable                       | Descripció                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
@@ -406,11 +406,11 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% /table %}}
 
-##### ● Trains (doors)
+##### ● Trens (portes)
 
 {{% table %}}
 
-| Variable                     | Description                                                  |
+| Variable                     | Descripció                                                  |
 | ---------------------------- | ------------------------------------------------------------ |
 | `doors`                      | The state of the doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
 | `doors[carIndex]`            | The state of the doors of car *carIndex*. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
@@ -431,7 +431,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                         | Description                                                  |
+| Variable                         | Descripció                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
 | `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
 | `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
@@ -494,13 +494,13 @@ The section context is defined when the object is placed using Track.SigF.
 
 {{% table %}}
 
-| Variable  | Description                                                  |
+| Variable  | Descripció                                                  |
 | --------- | ------------------------------------------------------------ |
 | `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 
 {{% /table %}}
 
-## <a name="performance"></a>■ 6. Performance
+## <a name="performance"></a>■ 6. Rendiment
 
 There are certain kinds of animation which are less expensive, and others which are more. Also, the underlying object plays a significant role. If you want to design your animated objects with as best performance as possible **for future releases of openBVE**, take a look at the following performance table:
 
@@ -533,7 +533,7 @@ Generally, you should avoid using animation with partially transparent faces and
 - Certain functions, e.g. Exp, Sin, Cos, etc., are relatively expensive. Use them only if absolutely necessary for an effect. Don't include unnecessary operations. For example, the result of StateFunction is automatically rounded toward the nearest integer, so don't apply an additional explicit Round.
 - When working with car objects, bear in mind that some variables have an optional car index. You should use this index if you want to query the state of a particular car (that is, not necessarily the one the object is attached to). If, however, you just want to query the value of the particular car the object is attached to, use the variable without the index. For scenery objects, you should not generally use car indices as you can't be sure how many cars the queried train has.
 
-## <a name="examples"></a>■ 8. Example functions
+## <a name="examples"></a>■ 8. Funcions d'exemple
 
 ##### ● Blinking light
 

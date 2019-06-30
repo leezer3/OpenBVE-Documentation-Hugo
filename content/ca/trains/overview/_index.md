@@ -38,7 +38,7 @@ The built-in safety systems ATS-SN, ATS-P and ATC are only used if no *ats.cfg* 
 [**ats.cfg:**]({{<ref "/trains/ats_cfg/_index.md">}})  
 This file defines which external train plugin to use. For information on how to create plugins, see [here]({{<ref "/trains/plugins/_index.md">}}).
 
-## ■ Miscellaneous
+## ■ Miscel·lània
 
 [**extensions.cfg:**]({{<ref "/trains/extensions_cfg/_index.md">}})  
 This defines additional characteristics that are not covered by the other files.

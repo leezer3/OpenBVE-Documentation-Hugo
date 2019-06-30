@@ -17,7 +17,7 @@ The only attempt currently known is the [BVE Track Sound Standard](http://www.ra
 
 No attempts are currently known to standardize the meanings of flange*i*.wav sounds.
 
-## ■ Beacons
+## ■ Balises
 
 No attempts are currently known to standardize the meanings of beacons.
 
@@ -25,7 +25,7 @@ However, the following is a list of beacons reserved for the built-in safety sys
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipus de balisa | Dades opcionals  | Significat                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
 | 0           | *SwitchSystem* | S-type transponder for ATS-SN. Placed about 600m in front of a signal. Raises an alarm the driver has to acknowledge whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
 | 1           | *SwitchSystem* | SN-type transponder for ATS-SN. Placed about 20m in front of a signal. Triggers the emergency brakes whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |

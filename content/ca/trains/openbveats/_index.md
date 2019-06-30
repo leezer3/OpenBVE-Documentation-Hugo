@@ -1,6 +1,6 @@
 ---
-title: The OpenBveAts Plugin
-linktitle: The OpenBveAts Plugin
+title: Extensió OpenBveAts
+linktitle: Extensió OpenBveAts
 weight: 8
 ---
 
@@ -11,9 +11,9 @@ This plugin will then be used automatically.
 {{% contents %}}
 
 - [1. Panel Indices](#panel)
-- [2. Sounds](#sounds)
-- [3. Beacons](#beacons)
-- [4. Special Beacons](#beacons-special)
+- [2. Sons](#sounds)
+- [3. Balises](#beacons)
+- [4. Balises especials](#beacons-special)
 - [5. Keyboard Assignments](#keyboard)
 
 {{% /contents %}}
@@ -53,7 +53,7 @@ The following panel indices are exposed:
 
 {{% table %}}
 
-| Value | Descripció       |
+| Valor | Descripció       |
 |-------|-------------------|
 | 0     | ATC not available |
 | 1     | 0 km/h            | 
@@ -71,13 +71,13 @@ The following panel indices are exposed:
 
 {{% /table %}}
 
-## <a name="sounds"></a>■ 2. Sounds
+## <a name="sounds"></a>■ 2. Sons
 
 The following sound indices are exposed:
 
 {{% table %}}
 
-| Index | File       | Descripció    | Type    |
+| Índex | Fitxer       | Descripció    | Tipus    |
 |-------|------------|----------------|---------|
 |0      | ats.wav    | ATS bell       | looping |
 |1      | atscnt.wav | ATS chime      | looping |
@@ -88,7 +88,7 @@ The following sound indices are exposed:
 
 {{% /table %}}
 
-## <a name="beacons"></a>■ 3. Beacons
+## <a name="beacons"></a>■ 3. Balises
 
 The following beacon types are supported:
 
@@ -173,7 +173,7 @@ When passing this beacon:
 * If the signal is red and less than 50 meters away, the brakes are applied immediately and the brake application needs to be canceled manually.
 * The train's safety system may switch modes, depending on the setting of **Optional**.
 
-## <a name="beacons-special"></a>■ 4. Special Beacons
+## <a name="beacons-special"></a>■ 4. Balises especials
 
 _**Note:**_ The following beacon types cannot be used directly in routes - They are automatically created by the CSV/RW parser to provide backward compatibility with ATS-P and ATC.
 
@@ -197,9 +197,9 @@ Sets up an ATC speed limit. The optional data has the following meaning:
 
 {{% table-nonheader %}}
 
-| bits 0-11  | Speed in km/h |
+| bits 0-11  | Velocitat en km/h |
 |------------|---------------|
-| bits 12-31 | Distance in m |
+| bits 12-31 | Distància en metres |
 
 {{% /table-nonheader %}}
 
@@ -211,9 +211,9 @@ Sets up an ATS-P temporary speed limit. The optional data has the following mean
 
 {{% table-nonheader %}}
 
-| bits 0-11  | Speed in km/h |
+| bits 0-11  | Velocitat en km/h |
 |------------|---------------|
-| bits 12-31 | Distance in m |
+| bits 12-31 | Distància en metres |
 
 {{% /table-nonheader %}}
 
@@ -237,7 +237,7 @@ The OpenBveAts Plugin uses the following keyboard assignments:
 | B2          | delete             | Activates the temporary ATS-P brake release.   |
 | C1          | page up            | Switches from ATC to ATS.                      |
 | C2          | page down          | Switches from ATS to ATC.                      |
-| D           | 2                  | Enables the safety systems.                    |
-| E           | 3                  | Disables the safety systems.                   |
+| D           | 2                  | Activa els sistemes de seguretat.                    |
+| E           | 3                  | Desactiva els sistemes de seguretat.                   |
 
 {{% /table %}}

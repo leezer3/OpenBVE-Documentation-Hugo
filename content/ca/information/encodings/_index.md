@@ -48,7 +48,7 @@ Technically, the byte order mark is the first bytes of a particular text file. T
 
 {{% table %}}
 
-| Encoding               | Hexadecimal representation |
+| Codificació               | Hexadecimal representation |
 | ---------------------- | -------------------------- |
 | UTF-8                  | EF BB BF                   |
 | UTF-16 (big endian)    | FE FF                      |

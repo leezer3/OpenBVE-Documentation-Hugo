@@ -4,13 +4,13 @@ linktitle: The B3D object
 weight: 1
 ---
 
-## ■ Contents
+## ■ Continguts
 
 {{% contents %}}
 
 - [1. Descripció](#overview)
-- [2. Syntax](#syntax)
-- [3. Available commands](#commands)
+- [2. Sintaxi](#syntax)
+- [3. Ordres disponibles](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
   - [Vertex](#addvertex)
   - [Face](#addface)
@@ -39,7 +39,7 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxi
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
@@ -53,7 +53,7 @@ Arguments may also be omitted by leaving the text at each of the *Argument<sub>i
 
 You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. Ordres disponibles
 
 <a name="createmeshbuilder"></a>
 

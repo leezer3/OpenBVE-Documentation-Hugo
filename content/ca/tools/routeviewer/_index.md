@@ -21,9 +21,9 @@ Supported route file formats:
 
 This tool does not support the plugin API yet. This means that only the built-in texture formats (BMP, PNG, GIF, JPG, TIF) and the built-in sound formats (WAV) are supported.
 
-## ■ Changelog
+## ■ Registre de canvis
 
-Please also see the changelog of the main program.
+Vegeu també el registre de canvis del programa principal.
 
 ##### ● Version 1.4.4.0 (2016-01-30)
 
@@ -79,4 +79,4 @@ Please also see the changelog of the main program.
 
 ##### ● Version 1.0.4.0 (2009-04-26)
 
-- Changed some key assignments to be more memorable  
+- S'han canviat algunes assignacions de tecles perquè siguin més fàcils de recordar.

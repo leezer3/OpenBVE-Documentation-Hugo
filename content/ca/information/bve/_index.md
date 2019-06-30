@@ -4,21 +4,21 @@ linktitle: Diferències amb el BVE Trainsim
 weight: 9
 ---
 
-Aquesta pàgina enumera diferències **incompatibles** entre l'openBVE i el BVE Trainsim pel que fa als formats de fitxer; és a dir, característiques de continguts per al BVE Trainsim que s'interpreten de manera diferent a l'openBVE i tenen un resultat incompatible. Fins ara només es coneix una incompatibilitat d'aquesta mena.
+Aquesta pàgina enumera les diferències **incompatibles** entre l'openBVE i el BVE Trainsim pel que fa als formats de fitxer; és a dir, característiques de continguts per al BVE Trainsim que s'interpreten de manera diferent a l'openBVE i tenen un resultat incompatible. Fins ara només es coneix una incompatibilitat d'aquesta mena.
 
 Please note that for all incompatible differences that are mentioned on this page, the resolution is the same: It is considered to be more important to provide stable and consistent features in openBVE than to make backward-incompatible changes between versions just to increase similarity to BVE Trainsim. All differences depicted on this page will thus be permanent.
 
-## ■ The Track.Signal command  (CSV and RW routes)
+## ■ Ordre Track.Signal (rutes CSV i RW)
 
 The Track.Signal command (alternatively: Track.Sig) is used to create a default Japanese-style signal in CSV routes (alternative spellings are used in RW routes).
 
-In openBVE, the Track.Signal command takes the following arguments:
+A l'openBVE, l'ordre Track.Signal accepta els arguments següents:
 
 {{% command %}}  
 **Track.Signal** *Aspects*; *~~Unused~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
 {{% /command %}}
 
-In BVE Trainsim, the Track.Signal command takes the following arguments:
+Al BVE Trainsim, l'ordre Track.Signal accepta els arguments següents:
 
 {{% command %}}  
 **Track.Signal** *Aspects*; *Label*; *X*; *Y*; <u>*Type*</u>  

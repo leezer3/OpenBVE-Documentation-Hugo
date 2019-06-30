@@ -145,14 +145,14 @@ Defines the list of trains for which this marker will show.
 
 **TextColor** controls the color in which the message is renderered. The following colors are supported:
 
-- Black
-- Gray
-- White
-- Red
-- Orange
-- Green
-- Blue
-- Magenta
+- Black (Negre)
+- Gray (Gris)
+- White (Blanc)
+- Red (Vermell)
+- Orange (Taronja)
+- Green (Verd)
+- Blue (Blau)
+- Magenta (Magenta)
 
 ## ■ Image Marker Attributes
 

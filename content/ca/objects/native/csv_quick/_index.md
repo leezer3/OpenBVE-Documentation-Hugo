@@ -1,5 +1,5 @@
 ---
-title: El format d'objecte **.csv** - Referència ràpida
+title: Format d'objecte **.csv** - Referència ràpida
 hidden: true
 ---
 

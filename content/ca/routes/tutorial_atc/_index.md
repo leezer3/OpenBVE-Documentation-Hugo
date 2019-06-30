@@ -35,11 +35,11 @@ With Track
 2520, .Stop  
 {{% /code %}}
 
-## ■ Signalling and ATC
+## ■ Senyalització i ATC
 
 Technically, users may ignore any signals as long as the train operates in ATC. Of course you can demand otherwise on your route. In openBVE, instead of using signals, ATC receives the distance to the next train in blocks of 200m. Depending on the deceleration characteristics of the train, ATC then dictates a particular speed limit, which may be released at any time depending on the change of location of the preceding train. These 200m blocks are placed at track positions 0, 200, 400, 600, and so on.
 
-## ■ Speed limits and ATC
+## ■ Límits de velocitat i ATC
 
 When using the **Track.Limit** command, ATC knows the location of the immediately upcoming one in advance and automatically brakes the train before reaching that position. For example:
 

@@ -1,6 +1,6 @@
 ---
-title: The **ats.cfg** file format
-linktitle: The ats.cfg file
+title: Format de fitxer **ats.cfg**
+linktitle: Fitxer ats.cfg
 weight: 8
 ---
 

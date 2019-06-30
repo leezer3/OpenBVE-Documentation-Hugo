@@ -1,6 +1,6 @@
 ---
-title: Supported sound formats
-linktitle: Sound formats
+title: Formats de so compatibles
+linktitle: Formats de so
 weight: 5
 ---
 
@@ -8,10 +8,10 @@ This is a list of supported sound formats.
 
 {{% table %}}
 
-| Format      | Usual file extension |
+| Format      | Extensió de fitxer habitual |
 | ----------- | -------------------- |
 | RIFF WAVE   | .wav                 |
-| Native FLAC | .flac                |
+| FLAC natiu | .flac                |
 
 {{% /table %}}
 
@@ -23,10 +23,10 @@ WAVE files are supported, which technically are RIFF (or RIFX) container files w
 
 {{% table %}}
 
-| Format          | Sample rate | Bitrate | Channels |
+| Format          | Freqüència de mostratge | Taxa de bits | Canals |
 | --------------- | ----------- | ------- | -------- |
-| PCM             | any         | any     | any      |
-| Microsoft ADPCM | any         | 4 bits  | any      |
+| PCM             | qualsevol         | qualsevol     | qualsevol      |
+| Microsoft ADPCM | qualsevol         | 4 bits  | qualsevol      |
 
 {{% /table %}}
 

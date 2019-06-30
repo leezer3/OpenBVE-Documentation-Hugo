@@ -6,13 +6,13 @@ weight: 5
 
 This page explains the principle and implementation of the XML-based Track Following Object, which is supported in openBVE v1.6.0 or later.
 
-## ■ Basic Principles
+## ■ Principis bàsics
 
 openBVE can freely run a Track Following Object on other tracks.
 
 In order to do this, it is necessary to setup each object that you want to run using Track Following Object XML files. An example is shown below.
 
-In this example the object runs as follows.
+En aquest exemple, l'objecte es mou de la manera següent.
 
 0. It is displayed when the in-game time 00:01:00 has elapsed and the object exists within 50 m to 100 m of the player's camera position in game. It becomes invisible after 5 minutes have elapsed since being displayed. The appearance is defined in extensions.cfg in 7-car formation.
 1. The in-game distance is 200 m and the right door is opened for 20 seconds and then the object accelerates to 30 km/h at an acceleration of 1.71km/h/s on **Rail2**.
@@ -169,10 +169,10 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 
 **Value** sets the open door of the object. The valid values are:
 
-- **L** or **-1**: The left door opens.
-- **N** or **0**: Neither door opens.
-- **R** or **1**: The right door opens.
-- **B**: Both doors open.
+- **L** o **-1**: S'obren les portes del costat esquerre.
+- **N** o **0**: No s'obren les portes.
+- **R** o **1**: S'obren les portes del costat dret.
+- **B**: S'obren les portes de tots dos costats.
 
 ------
 
@@ -206,8 +206,8 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 
 **Value** sets the direction of travel of the object. Valid values are as follows.
 
-- **F** or **1** : The object will move forward.
-- **R** or **-1** : The object goes backward.
+- **F** o **1** : L'objecte es mourà cap endavant.
+- **R** o **-1** : L'objecte es mourà cap enrere.
 
 ------
 

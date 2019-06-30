@@ -1,6 +1,6 @@
 ---
-title: El format de fitxer **sound.cfg**
-linktitle: El fitxer sound.cfg
+title: Format de fitxer **sound.cfg**
+linktitle: Fitxer sound.cfg
 weight: 7
 ---
 

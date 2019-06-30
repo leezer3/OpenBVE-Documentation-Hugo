@@ -4,7 +4,7 @@ weight: 9
 ---
 Train plugins allow to change the runtime behavior of trains to some degree. Things you can do include displaying custom indicators in the panels, playing custom sounds and overriding the handles the driver originally set. Plugins can be used to simulate safety equipment such as ATS or ATC, among other things.
 
-## ■ Tipus disponibles d'extensions
+## ■ Tipus d'extensions disponibles
 
 [**.NET assemblies:**]({{< ref "/plugins/overview/_index.md" >}})  
 This is the only officially endorsed form of plugin. The plugins are .NET assemblies and should be designed to be cross-platform-compatible without recompilation. You can choose from a variety of programming languages, including C# and Visual Basic .NET, among many others that target the .NET Framework.

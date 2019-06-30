@@ -5,12 +5,12 @@ weight: 2
 
 <font color="Gray">This page describes which number formats are encountered in the various route and train files and how to adhere to them.</font>
 
-## ■ Contents
+## ■ Continguts
 
 {{% contents %}}
 
 - [1. Descripció](#overview)
-- [2. Integers](#integers)
+- [2. Nombres enters](#integers)
 - [3. Floating-point numbers](#floating)
 - [4. Times](#times)
 - [5. Color values](#colors)
@@ -23,7 +23,7 @@ Within the route and train files, you will encounter numbers like integers or fl
 
 There are two parsing methods for numbers: **Strict** and **Loose**. The Strict method is a very tight specification which does not leave space for making typographic mistakes. This method is used in all new file formats. The Loose method is a legacy parsing model required for compatibility with older material. The different files as presented on the *Developing for openBVE* pages indicate which model is being used. Note that whenever a *Loose* model is permitted, you can also use the *Strict* formats as *Strict* forms a subset of *Loose*.
 
-## <a name="integers"></a>■ 2. Integers
+## <a name="integers"></a>■ 2. Nombres enters
 
 **Strict:** Permitted is any sequence of at least one decimal digit in the range from 0 to 9 (U+0030 - U+0039), optionally prepended by a negative sign (U+002D). The resulting character sequence may include leading or trailing white spaces.
 
