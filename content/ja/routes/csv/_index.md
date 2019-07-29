@@ -1,41 +1,41 @@
 ---
-title: "**.csv** ルートデータフォーマット"
-linktitle: The CSV route
+title: "**.csv** ルートデータ形式"
+linktitle: CSVルート
 weight: 1
 ---
 
 ➟ [クイックリファレンス...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ Contents
+## ■ 概要
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Preprocessing](#preprocessing)
-- [4. The Options namespace](#options)
-- [5. The Route namespace](#route)
-- [6. The Train namespace](#train)
-- [7. The Structure namespace](#structure)
-- [8. The Texture namespace](#texture)
-- [9. The Cycle namespace](#cycle)
-- [10. The Signal namespace](#signal)
-- [11. The Track namespace](#track)
-  - [11.1. Rails](#track_rails)
-  - [11.2. Geometry](#track_geometry)
-  - [11.3. Objects](#track_objects)
-  - [11.4. Stations](#track_stations)
-  - [11.5. Signalling and speed limits](#track_signalling)
-  - [11.6. Safety systems](#track_safety)
-  - [11.7. Miscellaneous](#track_misc)
+- [1.概観](#overview)
+- [2.文法](#syntax)
+- [3. 前処理](#preprocessing)
+- [4.  Options 名前空間](#options)
+- [5. Route 名前空間](#route)
+- [6. Train 名前空間](#train)
+- [7. The Structure 名前空間](#structure)
+- [8. Texture 名前空間](#texture)
+- [9. Cycle 名前空間](#cycle)
+- [10. Signal 名前空間](#signal)
+- [11. Track 名前空間](#track)
+  - [11.1. レール](#track_rails)
+  - [11.2. ジオメトリ](#track_geometry)
+  - [11.3. オブジェクト](#track_objects)
+  - [11.4. 駅](#track_stations)
+  - [11.5. 信号と速度制限](#track_signalling)
+  - [11.6. 保安装置](#track_safety)
+  - [11.7. その他](#track_misc)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概観
 
-A CSV route allows to create a route in a text file.
+CSVルートは、テキストファイルに記述することで路線データを作成できます。
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose** (unless otherwise stated), however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside any folder whose current or parent folder includes the *Railway* and *Train* folders. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom, where each line is split into expressions, which are interpreted from left to right.
+ファイルは任意のエンコードで記述されたプレーンテキストですが [encoding]({{< ref "/information/encodings/_index.md" >}})、好ましい選択としてはバイトオーダー付きのUTF-8です。 [parsing model]({{< ref "/information/numberformats/_index.md" >}}) に用いる数字は **ルーズ**（特に明記しない限りは）ですが、 それでも出力にあたっては *厳密な* 出力をすることが望ましいです。  ファイルは任意のフォルダに格納できますが、カレントフォルダもしくは相対パスは *Railway* と *Train* フォルダ 以下に存在しなければなりません。 ファイル名は任意ですが、 拡張子は必ず **.csv** を用います。 ファイルは基本的に上から下に向かって解釈されていき、各行は式ごとに分割され、左から右に向かって解釈されていきます。
 
 The route file consists of a series of commands to define the objects which are used throughout the route (Structure namespace). Additional properties for the route, for the default train to be used and for the background images to be used can also be defined. At last, the route file will contain instructions from the Track namespace. Here, track positions (usually in meters) are used to define when the track should curve, when stations are to be placed, when a wall should start and end, and so on. Generally speaking, instructions from the Track namespace should be used after using instructions from any of the other namespaces.
 
@@ -43,9 +43,9 @@ The format assumes an implicit rail 0 which cannot be explicitly started or ende
 
 Geometrically, you can curve and pitch the implicit rail 0, while all other rails are defined relative to rail 0 and follow rail 0 into curves and pitch changes. Unless overridden, the file format is built around a fixed block size of 25 meters length, and it is only possible for certain commands to be used on 25 meter block boundaries. The placement of objects always assumes a non-curved coordinate system which connects blocks linearly.
 
-➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
+➟ [CSV ルートフォーマットのクイックリファレンスも参照して下さい...]({{< ref "/routes/csv_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 文法
 
 For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
 
@@ -55,11 +55,11 @@ For each line in the file, [white spaces]({{< ref "/information/whitespaces/_ind
 
 In turn, each expression can be of any of the following forms:
 
-##### ● Comments
+##### ● コメント
 
-A comment is completely ignored by the parser. To form a comment, the expression must begin with a semicolon (U+003B).
+コメントはパーサーによって完全に無視されます。 コメントを記述するには行頭をセミコロン (U+003B)で始める必要があります。
 
-##### ● Track positions and lengths
+##### ● 軌道の位置と長さ
 
 {{% command %}}  
 *Position*  

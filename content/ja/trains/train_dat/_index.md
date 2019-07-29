@@ -1,71 +1,71 @@
 ---
-title: The **train.dat** file format
-linktitle: The train.dat file
+title: "**train.dat** 形式"
+linktitle: train.datファイル
 weight: 2
 ---
 
-## ■ Contents
+## ■ 内容
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. The file identifier](#identifier)
-  - [2a. Version history]({{<ref "/trains/train_dat_version/_index.md" >}})
-- [3. Syntax](#syntax)
-- [4. The Acceleration section](#acceleration)
-- [5. The Performance section](#performance)
-- [6. The Delay section](#delay)
-- [7. The Move section](#move)
-- [8. The Brake section](#brake)
-- [9. The Pressure section](#pressure)
-- [10. The Handle section](#handle)
-- [11. The Cab section](#cab)
-- [12. The Car section](#car)
-- [13. The Device section](#device)
-- [14. The Motor sections](#motor)
+- [1. 概観](#overview)
+- [2. ファイル識別子](#identifier)
+  - [2a. バージョン履歴]({{<ref "/trains/train_dat_version/_index.md" >}})
+- [3. 構文](#syntax)
+- [4. Accelerationセクション](#acceleration)
+- [5. Performance セクション](#performance)
+- [6. Delay セクション](#delay)
+- [7. Move セクション](#move)
+- [8. Brake セクション](#brake)
+- [9. Pressure セクション](#pressure)
+- [10. Handle セクション](#handle)
+- [11. Cab セクション](#cab)
+- [12. Car セクション](#car)
+- [13. Device セクション](#device)
+- [14. Motor セクション](#motor)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概観
 
-The train.dat file describes the characteristics of trains including acceleration, brake behavior, installed equipment, speed-sound associations, and more.
+train.datファイルでは、加速、ブレーキ設定、搭載機器、モータ音など、車両の性能を記述します。
 
 {{% information %}}
 
 #### **☀** Tip: Train Editor
 
-You can use the [Train Editor]({{<ref "/tools/traineditor/_index.md" >}}) to more conveniently edit the train.dat. This page should still be used as a reference. However, you can also edit the train.dat manually if so desired.
+[Train Editor]({{<ref "/tools/traineditor/_index.md" >}})を使用することで、より簡単にtrain.datファイルを編集することができます。このページは参考程度のものですが、必要に応じてtrain.datファイルを直接編集することもできます。
 
 {{% /information %}}
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside the train folder and is expected to be named **train.dat**. The file is interpreted on a per-line basis, from top to bottom.
+ファイルは任意のエンコードで記述されたプレーンテキストですが[encoding]({{< ref "/information/encodings/_index.md" >}})、好ましい選択としてはバイトオーダー付きのUTF-8です。[parsing model]({{< ref "/information/numberformats/_index.md" >}})に用いる数字は **ルーズ**ですが、 それでも出力にあたっては *厳密な* 出力をすることが望ましいです。 ファイルは車両フォルダ内に格納され、且つ、**tarin.dat**というファイル名でなければなりません。ファイルは基本的に上から下に向かって解釈されていきます。
 
-## <a name="identifier"></a>■ 2. The file identifier
+## <a name="identifier"></a>■ 2. ファイル識別子
 
-The first line in the train.dat is expected to be an identifier indicating the version of the file format. Allowed values are:
+先頭の行にはファイル形式のバージョンを示すファイル識別子を記述します。使用可能な値は次のとおりです：
 
-{{% code "*Version 1.22 is being used:*" %}}  
-BVE1200000  
-BVE1210000  
-BVE1220000  
+{{% code "*Version 1.22 is being used:*" %}}
+BVE1200000 
+BVE1210000 
+BVE1220000 
 {{% /code %}}
 
-{{% code "*Version 2.0 is being used (choose either one):*" %}}  
-BVE2000000  
-OPENBVE  
+{{% code "*Version 2.0 is being used (choose either one):*" %}}
+BVE2000000 
+OPENBVE 
 {{% /code %}}
 
-From Version **1.5.3.3** onwards, the *OPENBVE* identifier may optionally be followed by the minimum version number of openBVE required, e.g.
+バージョン **1.5.3.3** 以降では、識別子*OPENBVE*のあとに必要に応じてOpenBVEの最低バージョンを記述することができます。例えば、
 
-{{% code "*openBVE 1.5.3.0 is required:*" %}}  
-OPENBVE1530  
+{{% code "*openBVE 1.5.3.0 is required:*" %}}
+OPENBVE1530 
 {{% /code %}}
 
-Any other value will be reported as being non-supported and version 2.0 will be assumed. The selected version number affects the parsing of the #ACCELERATION section, which is explained later on.
+その他の値はサポートされないものとされ、バージョン2.0として扱われます。選択したバージョンによって#ACCELERATION セクションに影響が出ます。これについては後ほど説明します。
 
-## <a name="syntax"></a>■ 3. Syntax
+## <a name="syntax"></a>■ 3. 構文
 
-For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored.
+どの行においても、行の先頭と末尾の[空白]({{< ref "/information/whitespaces/_index.md" >}})は無視されます。
 
 Each line in the file after the identifier can mark the beginning of a new section or contain data entries for the last opened section. Empty lines or lines solely consisting of white spaces are **not** ignored.
 
