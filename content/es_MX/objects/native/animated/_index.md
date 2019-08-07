@@ -424,6 +424,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `rightDoorsTarget[carIndex]` | The anticipated target state of the right doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
 | `leftDoorsButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
 | `rightDoorsButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
+| `pilotLamp`                  | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 
 {{% /table %}}
 
@@ -460,6 +461,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `PrimaryKlaxon`                  | Returns 1 if the primary horn is currently playing, 0 otherwise. |
 | `SecondaryKlaxon`                | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
 | `MusicKlaxon`                    | Returns 1 if the music horn is currently playing, 0 otherwise. |
+| `passAlarm`                      | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+| `stationAdjustAlarm`             | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 
 {{% /table %}}
 

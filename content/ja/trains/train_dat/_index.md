@@ -67,7 +67,7 @@ OPENBVE1530
 
 どの行においても、行の先頭と末尾の[空白]({{< ref "/information/whitespaces/_index.md" >}})は無視されます。
 
-Each line in the file after the identifier can mark the beginning of a new section or contain data entries for the last opened section. Empty lines or lines solely consisting of white spaces are **not** ignored.
+ファイル内の識別子の後の各行は、新しいセクションの開始をマークしたり、最後に開いたセクションのデータエントリを含むことができます。空行や空白スペースのみの行は**無視されません。**
 
 A new section is opened by starting the line with a number sign character (U+0023). The text which follows the number sign indicates the name of the section and is case-insensitive. The beginning of a section has thus the following form:
 

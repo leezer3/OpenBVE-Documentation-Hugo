@@ -869,6 +869,10 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 | PrimaryKlaxon     | Returns 1 if the primary horn is currently playing, 0 otherwise. |
 | SecondaryKlaxon   | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
 | MusicKlaxon       | Returns 1 if the music horn is currently playing, 0 otherwise. |
+| passAlarm         | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+| pilotLamp         | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
+| stationAdjustAlarm | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+
 
 {{% /table %}}
 
@@ -901,7 +905,7 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% table %}}
 
-| Subject suffix | Descripció                                                  |
+| Subject suffix | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
 | d*i*           | With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10. |
 

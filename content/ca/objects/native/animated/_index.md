@@ -424,6 +424,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `rightDoorsTarget[carIndex]` | The anticipated target state of the right doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
 | `leftDoorsButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
 | `rightDoorsButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
+| `pilotLamp`                  | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 
 {{% /table %}}
 
@@ -431,7 +432,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                         | Descripció                                                  |
+| Variable                         | Description                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
 | `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
 | `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
@@ -460,6 +461,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `PrimaryKlaxon`                  | Returns 1 if the primary horn is currently playing, 0 otherwise. |
 | `SecondaryKlaxon`                | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
 | `MusicKlaxon`                    | Returns 1 if the music horn is currently playing, 0 otherwise. |
+| `passAlarm`                      | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+| `stationAdjustAlarm`             | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 
 {{% /table %}}
 
@@ -494,13 +497,13 @@ The section context is defined when the object is placed using Track.SigF.
 
 {{% table %}}
 
-| Variable  | Descripció                                                  |
+| Variable  | Description                                                  |
 | --------- | ------------------------------------------------------------ |
 | `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 
 {{% /table %}}
 
-## <a name="performance"></a>■ 6. Rendiment
+## <a name="performance"></a>■ 6. Performance
 
 There are certain kinds of animation which are less expensive, and others which are more. Also, the underlying object plays a significant role. If you want to design your animated objects with as best performance as possible **for future releases of openBVE**, take a look at the following performance table:
 
@@ -533,7 +536,7 @@ Generally, you should avoid using animation with partially transparent faces and
 - Certain functions, e.g. Exp, Sin, Cos, etc., are relatively expensive. Use them only if absolutely necessary for an effect. Don't include unnecessary operations. For example, the result of StateFunction is automatically rounded toward the nearest integer, so don't apply an additional explicit Round.
 - When working with car objects, bear in mind that some variables have an optional car index. You should use this index if you want to query the state of a particular car (that is, not necessarily the one the object is attached to). If, however, you just want to query the value of the particular car the object is attached to, use the variable without the index. For scenery objects, you should not generally use car indices as you can't be sure how many cars the queried train has.
 
-## <a name="examples"></a>■ 8. Funcions d'exemple
+## <a name="examples"></a>■ 8. Example functions
 
 ##### ● Blinking light
 
