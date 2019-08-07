@@ -869,6 +869,10 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 | PrimaryKlaxon     | Returns 1 if the primary horn is currently playing, 0 otherwise. |
 | SecondaryKlaxon   | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
 | MusicKlaxon       | Returns 1 if the music horn is currently playing, 0 otherwise. |
+| passAlarm         | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+| pilotLamp         | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
+| stationAdjustAlarm | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+
 
 {{% /table %}}
 
