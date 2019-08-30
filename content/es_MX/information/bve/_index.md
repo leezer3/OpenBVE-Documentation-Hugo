@@ -1,29 +1,29 @@
 ---
-title: Differences compared to BVE Trainsim
-linktitle: Vs. BVE Trainsim
+title: Diferencias comparadas con el simulador de trenes BVE
+linktitle: Vs. Simulador de trenes BVE
 weight: 9
 ---
 
-This page lists **incompatible** differences between openBVE and BVE Trainsim regarding the file formats, i.e. features of content developed for BVE Trainsim that is interpreted differently in openBVE with an incompatible outcome. As of the moment, only one such incompatibility is known.
+Esta pagina muestra las diferencias **incompatibles** entre openBVE y el simulador de trenes BVE sobre los tipos de formato, por ejemplo características de los contenidos desarrollados para el simulador de trenes BVE pudieran ser interpretados diferentes por openBVE con un resultado incompatible. Por el momento, solo una de esta incompatibilidad es conocida.
 
-Please note that for all incompatible differences that are mentioned on this page, the resolution is the same: It is considered to be more important to provide stable and consistent features in openBVE than to make backward-incompatible changes between versions just to increase similarity to BVE Trainsim. All differences depicted on this page will thus be permanent.
+Por favor, tenga en consideración que para todas estas diferencias de incompatibilidad que están mencionadas en esta página, la resolución es la misma: Esta considerado ser mas importante proveer características estable y consistentes en openBVE que hacer cambios posteriores incompatibles entre versiones sólo para incrementar la similitud con el simulador de trenes de BVE .Todas estas diferencias mencionadas en esta página serán permanentes.
 
-## ■ The Track.Signal command  (CSV and RW routes)
+## ■ El comando Track.Signal  ( rutas CSV y RW )
 
-The Track.Signal command (alternatively: Track.Sig) is used to create a default Japanese-style signal in CSV routes (alternative spellings are used in RW routes).
+El comando Track.Signal  (alternativamente: Track.Sig) es usado para crear una Señal predeterminada de estilo Japones en rutas CSV (alternativamente hablando son usadas en rutas RW ).
 
-In openBVE, the Track.Signal command takes the following arguments:
-
-{{% command %}}  
-**Track.Signal** *Aspects*; *~~Unused~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
-{{% /command %}}
-
-In BVE Trainsim, the Track.Signal command takes the following arguments:
+En openBVE, el comando Track.Signal toma los siguientes argumentos:
 
 {{% command %}}  
-**Track.Signal** *Aspects*; *Label*; *X*; *Y*; <u>*Type*</u>  
+**Track.Signal** *Aspects*; *~~Sin uso~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
 {{% /command %}}
 
-The *Label* parameter in BVE Trainsim is a textual description of the signal which serves no function in openBVE (thus termed *Unused* in the documentation).
+en el simulador de trenes BVE, el comando Track.Signal toma los siguientes argumentos:
 
-BVE Trainsim features a *Type* argument which can take values 1, 2 or 3. It is used to denote different types of signals, e.g. home signal vs. departure signal. By mere accident, this argument was never included in openBVE, while subsequently, the need arose to include *Yaw*, *Pitch* and *Roll* arguments to provide for more control over a signal head's orientation. Consequently, BVE Trainsim's *Type* and openBVE's *Yaw* argument incompatibly overlap. If a route created for BVE Trainsim includes the *Type* argument, it will be (mis)interpreted as a yaw of up to 3 degrees in openBVE. Usually, this small angle should not produce noticable differences, especially given that the parameter is not often used anyway.
+{{% command %}}  
+**Track.Signal** *Aspecto*; *Etiqueta*; *X*; *Y*; <u>*Tipo*</u>  
+{{% /command %}}
+
+La *Etiqueta* parámetro en el simulador de trenes BVE es una descripción textual de la señal que provee ninguna función en openBVE (Así llamado *Sin uso* en la documentación).
+
+Las características del simulador de trenes BVE un argumento de clase *Tipo* el cual puede tomar valores 1,2 o 3. Esta usado para denotar diferentes tipos de señal, por ejemplo: señales de estación vs señales de salida. Por mero accidente, estos argumentos nunca han sido incluidos en openBVE, por subsiguiente, surgió la necesidad de incluir los argumentos de *Dirección (Yaw)* , *Cabeceo o elevación (Pitch)* y *Alabeo (Roll)* para proveer más control sobre la orientación de la cabeza de la señal. Consecuentemente, en el simulador de trenes BVE el argumento *Tipo* y el argumento *Dirección* en OpenBVE están sobrepuestos. Esto sería mal interpretado como una rotación en *Dirección* de más de 3 grados en openBVE. Usualmente, este ángulo pequeño no debe producir diferencia perceptible, especialmente a aquellos parámetros que ya no son usados de todas formas. 
