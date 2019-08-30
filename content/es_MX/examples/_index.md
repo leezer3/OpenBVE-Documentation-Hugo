@@ -1,5 +1,5 @@
 ---
-title: Further Examples
+title: Otros Ejemplos
 weight: 8
-layout: hidden
+layout: oculto
 ---
