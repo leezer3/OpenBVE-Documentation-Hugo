@@ -7,11 +7,11 @@ Seleccione un tema del menú del lado izquierdo
 
 ---
 
-Examples may be found in the 'Examples' folder.
+Los ejemplos pueden ser encontrados en la carpeta 'Examples'.
 
 ---
 
-Please note that some of these pages are still under construction. This applies to the following pages:
+Por favor, tenga en consideración que algunas de estas página aun siguen en construcción. Esto aplica a las siguientes páginas:
 
-- The X object - 1% complete
+- El objeto X - 1% completo
 - La documentación de la ruta CSV está 98% completada
