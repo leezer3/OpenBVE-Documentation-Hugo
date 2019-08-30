@@ -1,55 +1,55 @@
 ---
-title: Demonstration route
-linktitle: Demonstration route
+title: Ruta demostrativa
+linktitle: Ruta demostrativa
 weight: 1
 ---
 
-## ■ Overview
+## ■ Vista general
 
 
-The **Animated Object Demonstration Route** is a minimalistic route intended to demonstrate the CSV and RW route formats, and, most importantly, the use of animated objects.
+La **Ruta de Demostración de Objetos Animados** es una ruta minimalista con la intención de demostrar los formatos de ruta CSV y RW, y , lo más importante, el uso de objetos animados.
 
-What this route is:
+Lo que esta ruta es:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | An example to show developers how to create a CSV or RW route |
+| <font color="Green">✓</font> | Un ejemplo para demostrar a los desarrolladores como crear una ruta CSV y RW |
 | ---------------------------- | ------------------------------------------------------------- |
-| <font color="Green">✓</font> | An example to show developers how to create animated objects  |
-| <font color="Green">✓</font> | A way for users to be inspired by the feeling of a non-static environment  |
+| <font color="Green">✓</font> | Un ejemplo para demostrar a los desarrolladores como crear objetos animados  |
+| <font color="Green">✓</font> | Una forma para los usuarios se sientan inspirados por la sensación de ambientes no estáticos.  |
 
 {{% /table-nonheader %}}
 
-What this route is not:
+Lo que esta ruta no es:
 
 {{% table-nonheader %}}
 
-| <font color="Red">✗</font>  | A serious openBVE add-on - just something for developers to study |
+| <font color="Red">✗</font>  | Un complemento de openBVE serio - solo es algo para los desarrolladores lo estudien. |
 | --------------------------- | ------------------------------------------------------------- |
-| <font color="Red">✗</font>  | A rendition of any real route.  |
-| <font color="Red">✗</font>  | A high quality example of a route  |
+| <font color="Red">✗</font>  | Una interpretación de cualquier ruta real.  |
+| <font color="Red">✗</font>  | Un ejemplo de alta calidad de una ruta  |
 
 {{% /table-nonheader %}}
 
-Key features of this route:
+Características claves de esta ruta:
 
-* Animated destination indicators and analog clock at a station.
-* Animated semaphore and blinking light signals.
-* Animated crossing gate and moving cars.
-* Animated escalator and flying airplane.
+* Indicadores de destino animados y reloj analógico en la estación.
+* Semáforo animado y señales con luces intermitentes.
+* Paso a nivel animado y autos movibles.
+* Escalera eléctrica animada y aviones volando.
 
-## ■ Download
+## ■ Descargar
 
-This route may be downloaded in openBVE package format here:
+Esta ruta puede ser descargada en el formato de paquete de openBVE aquí:
 
 <http://openbve-project.net/files/DemoRoute1.zip>
 
-## ■ Using the route
+## ■ Usando la ruta
 
-Select a train of your choice.
+Seleccione un tren de su preferencia.
 
-The default train suggested by this route is the **113-1000atccab**, which may be downloaded from the following page:
+El tren predeterminado sugerido para esta ruta es el  **113-1000atccab**, el cual puede ser descargado a través de la siguiente página:
 
 <http://bve.jpn.org/jr113.html>
 
-The built-in safety systems ATS and ATC are used on this route, which are explained in the <a href="https://openbve-project.net/play-japanese/">How to drive - A quick overview on controls, ATS/ATC, signals and signs</a> guide.
+Los sistemas incorporados ATS y ATC son utilizados en esta ruta, los cuales estan explicados en <a href="https://openbve-project.net/play-japanese/">Cómo conducir - Una visión general rápida de controles, ATS/ATC, señales y indicadores </a> guía.
