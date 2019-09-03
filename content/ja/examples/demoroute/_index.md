@@ -1,55 +1,55 @@
 ---
-title: Demonstration route
-linktitle: Demonstration route
+title: デモンストレーション路線
+linktitle: デモンストレーション路線
 weight: 1
 ---
 
-## ■ Overview
+## ■ 概観
 
 
-The **Animated Object Demonstration Route** is a minimalistic route intended to demonstrate the CSV and RW route formats, and, most importantly, the use of animated objects.
+**Animated Object のデモンストレーション路線** はCSVとRW形式の必要最低限の路線で、最も重要な点はアニメーテッドオブジェクトを用いた紹介を目的としています。
 
-What this route is:
+このルートに向いている事:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | An example to show developers how to create a CSV or RW route |
+| <font color="Green">✓</font> | CSVもしくはRWデータの路線製作者に対し、どのように制作するかの例を示します。 |
 | ---------------------------- | ------------------------------------------------------------- |
-| <font color="Green">✓</font> | An example to show developers how to create animated objects  |
-| <font color="Green">✓</font> | A way for users to be inspired by the feeling of a non-static environment  |
+| <font color="Green">✓</font> | 路線データの製作者に対し、アニメーテッドオブジェクトの例を示します。  |
+| <font color="Green">✓</font> | ユーザーに対し、静的でない環境を示すことにより感覚を触発させるための一つの方法を示します。A way for users to be inspired by the feeling of a non-static environment  |
 
 {{% /table-nonheader %}}
 
-What this route is not:
+このルートに不向きな事:
 
 {{% table-nonheader %}}
 
-| <font color="Red">✗</font>  | A serious openBVE add-on - just something for developers to study |
+| <font color="Red">✗</font>  | 真剣に OpenBVE の路線制作を勉強するための資料としては不向きです。 |
 | --------------------------- | ------------------------------------------------------------- |
-| <font color="Red">✗</font>  | A rendition of any real route.  |
-| <font color="Red">✗</font>  | A high quality example of a route  |
+| <font color="Red">✗</font>  | 実在の路線の演出効果をなしてません。  |
+| <font color="Red">✗</font>  | 路線のハイクオリティな部分:  |
 
 {{% /table-nonheader %}}
 
-Key features of this route:
+このルートの主な特徴:
 
-* Animated destination indicators and analog clock at a station.
-* Animated semaphore and blinking light signals.
-* Animated crossing gate and moving cars.
-* Animated escalator and flying airplane.
+* アニメーション化された駅の行先案内板とアナログ時計。
+* アニメーション化された腕木式信号機と信号のライトの明滅。
+* 自車両の動きに連動してアニメーションする踏切遮断棒と、動く複数の車両。
+* アニメーションするエスカレーターと、飛行する飛行機。
 
-## ■ Download
+## ■ ダウンロード
 
-This route may be downloaded in openBVE package format here:
+本ルートデータは此方のOpenBVEパッケージフォーマット形式でダウンロードできます:
 
 <http://openbve-project.net/files/DemoRoute1.zip>
 
-## ■ Using the route
+## ■ ルートの使用方法
 
-Select a train of your choice.
+あなたのお好みの車両を選択します。
 
-The default train suggested by this route is the **113-1000atccab**, which may be downloaded from the following page:
+この路線データからデフォルトの車両で提案されるものは **113-1000atccab**で、以下のホームページからダウンロードできます:
 
 <http://bve.jpn.org/jr113.html>
 
-The built-in safety systems ATS and ATC are used on this route, which are explained in the <a href="https://openbve-project.net/play-japanese/">How to drive - A quick overview on controls, ATS/ATC, signals and signs</a> guide.
+この路線データではビルトインの ATS と ATC を用います。 ATS と ATC の詳しい説明は <a href="https://openbve-project.net/play-japanese/">運転するには - 運転のクイックリファレンス、 ATS/ATC、信号と標識</a> のガイドを参照して下さい。
