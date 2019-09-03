@@ -1,5 +1,5 @@
 ---
-title: Trains
+title: Trenes
 weight: 4
-layout: hidden
+layout: oculto
 ---
