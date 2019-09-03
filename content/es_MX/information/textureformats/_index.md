@@ -1,26 +1,26 @@
 ---
-title: Supported texture formats
-linktitle: Texture formats
+title: Formatos de textura soportados
+linktitle: Formatos de textura
 weight: 4
 ---
 
-This is a list of officially supported texture formats. Generally, the PNG format is the preferred choice due to its lossless compression.
+Esta es una lista oficial de los formatos de textura soportados. Generalmente, el formato PNG es la opción preferida debido a sin perdida de comprensión.
 
 {{% table %}}
 
-| Format      | Allowed file extensions | Remarks                                                      |
+| Formato      | Extensiones de archivo permitidas | Observaciones                                                      |
 | ----------- | ----------------------- | ------------------------------------------------------------ |
-| PNG         | .png                    | Preferred. Please be aware of the fact that using alpha channels significantly reduces performance when used in scenery objects and train exteriors. |
-| Windows BMP | .bmp                    | Not recommended due to large file size.                      |
-| JPEG        | .jpg, .jpeg             | Not recommended due to lossy compression (unless not noticable even on large magnification). |
-| GIF         | .gif                    | Not recommended due to reduced color depth (unless sufficient for the image). |
+| PNG         | .png                    | Preferido. Por favor entiéndase el hecho de que usar canales alfa significativamente reduce el rendimiento cuando estos son usados en objetos de escenario y exteriores del tren. |
+| Windows BMP | .bmp                    | No recomendado debido al gran tamaño del archivo.                      |
+| JPEG        | .jpg, .jpeg             | No recomendado debido a la perdida de comprensión (a menos que no sea visible incluso en un gran aumento).  |
+| GIF         | .gif                    | No recomendado debido a la reducida profundidad de colores (a menos que sea suficiente para la imagen). |
 
 {{% /table %}}
 
-##### ● Sizes of textures
+##### ● Tamaño de las texturas
 
-The widths and heights of textures should be a power of two, e.g. 1, 2, 4, 8, 16, 32, 64, 128, 256, and so on. While this is not a requirement, having textures whose sizes are not power-of-two increases loading times, increases storage requirements and introduces blurriness, because these textures have to be converted to a power-of-two size by openBVE.
+Los anchos y las alturas de las texturas debe ser potencia de dos, por ejemplo. 1, 2, 4, 8, 16, 32, 64, 128, 256, y así sucesivamente. Mientras que esto no sea un requisito, teniendo texturas que no sean potencia de dos incrementa los tiempos de espera, incrementa los requisitos de almacenamiento y introduce difuminado, debido a que las texturas han sido convertidas a un tamaño potencia de dos por openBVE.
 
-##### ● PNG file optimization
+##### ● Optimización del archivo PNG
 
-PNG is a lossless image compression format. As with many other compression formats, the encoder can make a wide range of choices to result in different outcomes - some encoders can produce smaller files, others larger files. Normally, image editing software do not produce the smallest PNG files, which is why there are a number of tools with the sole purpose of squeezing every last bit out of PNG files. You are invited to use such tools in order to further reduce storage requirements. Windows users can use the convenient [PNGGauntlet](http://brh.numbera.com/software/pnggauntlet/) , while others can find a list of tools [here](http://optipng.sourceforge.net/pngtech/optipng.html)  (scroll down to 3. PNG (lossless) optimization programs).
+PNG es un formato de compresión sin perdida. Así como muchos otros formatos de comprensión, el codificador puede hacer un rango amplio de opciones para tener como resultado diferentes productos - algunos codificadores pueden producir archivos pequeños, otros archivos grandes. Normalmente, los programas de edición de imágenes no producen el tamaño mas pequeño del archivo PNG, esto se debe porque hay un numero de herramientas que manipulan hasta el ultimo bit del archivo PNG. Estas invitado a usar estas herramientas para así reducir el requisito de almacenamiento. Los usuarios de Windows pueden usar esta conveniente herramienta [PNGGauntlet](http://brh.numbera.com/software/pnggauntlet/), mientras que los otros pueden encontrar una lista [aquí](http://optipng.sourceforge.net/pngtech/optipng.html) (deslizate hasta la opción 3. PNG (lossless) optimization programs).
