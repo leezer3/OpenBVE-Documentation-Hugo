@@ -1,18 +1,18 @@
 ---
-title: The Microsoft Train Simulator **.s** object format
+title: El formato de objeto Microsoft Train Simulator **.s**
 linktitle: Microsoft Train Simulator (.s)
 weight: 3
 ---
 
 ![construction_64](/images/construction_64.png)
 
-openBVE supports a subset of the Microsoft Train Simulator .s object format. 
+openBVE soporta una subconfiguración de formato de objeto de Microsoft Train Simulator.
 
-Both the compressed binary, and the uncompressed textual variants are supported. 
+Ambas variantes de binario comprimido y el sin comprimir son soportadas.
 
-The following is a non-exhaustive list of unsupported functions:
+La siguiente lista es una lista no exhaustiva de las funciones no soportas:
 
-- Animation
-- Lighting
-- Custom shaders
-- Reflection / luminosity
+- Animación
+- Iluminación
+- Shaders personalizados
+- Reflexión / luminosidad
