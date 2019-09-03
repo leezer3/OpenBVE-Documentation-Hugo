@@ -1,31 +1,31 @@
 ---
-title: Number formats
+title: Formatos de número
 weight: 2
 ---
 
-<font color="Gray">This page describes which number formats are encountered in the various route and train files and how to adhere to them.</font>
+<font color="Gray">Esta página describe cual formatos de número están disponibles en varios archivos de rutas y trenes y cómo implementarlos en ellos. </font>
 
-## ■ Contents
+## ■ Contenido
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Integers](#integers)
-- [3. Floating-point numbers](#floating)
-- [4. Times](#times)
-- [5. Color values](#colors)
+- [1. Vista general](#overview)
+- [2. Enteros](#integers)
+- [3. Números de punto flotante](#floating)
+- [4. Tiempos](#times)
+- [5. Valores de color](#colors)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
-Within the route and train files, you will encounter numbers like integers or floating-point numbers all the time, occasionally also others. These numbers are required to adhere to a certain format, which is described in the following sections.
+Ya sean archivos de rutas y trenes, encontrarás números como enteros o coma flotantes todo el tiempo, ocasionalmente también hay otros. Estos números están requeridos con un cierto tipo de formato, el cual será descrito en las siguientes secciones.
 
-There are two parsing methods for numbers: **Strict** and **Loose**. The Strict method is a very tight specification which does not leave space for making typographic mistakes. This method is used in all new file formats. The Loose method is a legacy parsing model required for compatibility with older material. The different files as presented on the *Developing for openBVE* pages indicate which model is being used. Note that whenever a *Loose* model is permitted, you can also use the *Strict* formats as *Strict* forms a subset of *Loose*.
+Existen dos métodos para los números: **Strict** y **Loose** . El método Strict posee una especificación muy apretada, el cual no permite dejar espacios para hacer equivocaciones tipográficas. Este método es usado en todos los nuevos tipos de formatos. El método Loose es anticuado y es requerido para compatibilidad con el viejo material. Los diferentes archivos que están presentados en las páginas de *Desarrollando para openBVE* indican qué modelo esta siendo usado. Ten en cuenta que ya sea que el método *Loose* este permitido, también puedes usar el formato *Strict* como *Strict* en un sub-derivado de *Loose*.
 
-## <a name="integers"></a>■ 2. Integers
+## <a name="integers"></a>■ 2. Enteros
 
-**Strict:** Permitted is any sequence of at least one decimal digit in the range from 0 to 9 (U+0030 - U+0039), optionally prepended by a negative sign (U+002D). The resulting character sequence may include leading or trailing white spaces.
+**Strict:** Permitido en cualquier secuencia al menos un dígito decimal en el rango de 0 a 9 (U+0030 - U+0039), opcionalmente como prefijo de un símbolo negativo (U+002D). La cadena de caracteres resultante puede incluir antes o después espacios en blanco.
 
 {{% code "*Examples for Strict integers:*" %}}  
 0  
@@ -33,7 +33,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -98  
 {{% /code %}}
 
-**Loose:** All white spaces are removed from the character sequence first. Then, the remaining character sequence (*abcde*) is interpreted according to the *Strict* model. If this fails to create a valid number, the last character is dropped from the sequence (*abcd*) and then, the sequence is tested again. This continues until a valid number is produced or until no character remains, after which the character sequence is determined to be an invalid number. 
+**Loose:** Todos los espacios en blanco son removidos desde la primera secuencia de caracteres. Entonces, la cadena de caracteres restante (*abcde*) es interpretada de acuerdo al modelo *Strict*. Si esto falla en crear un número válido, el último carácter es quitado de la secuencia (*abcd*) y así, la secuencia es probada otra vez. Esto continúa hasta que un número valido es producido o hasta que no quede ningún carácter, después es determinado si la secuencia de es un número inválido.
 
 {{% code "*Examples for Loose integers:*" %}}  
 123  
@@ -47,9 +47,9 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -987  
 {{% /code %}}
 
-## <a name="floating"></a>■ 3. Floating-point numbers
+## <a name="floating"></a>■ 3. Números de punto flotante
 
-**Strict:** Permitted is any sequence of at least one decimal digit in the range from 0 to 9 (U+0030 - U+0039), optionally interleaved by exactly one decimal separator in form of the period (U+002E), optionally prepended by a negative sign (U+002D). The resulting character sequence may include leading or trailing white spaces.
+**Strict:** Permitido si cualquier secuencia o al menos un dígito en decimal en el rango del 0 al 9 (U+0030 - U+0039), opcionalmente intermediado por exactamente un separador decimal en forma de coma (U+002E), opcionalmente como prefijo por un símbolo negativo (U+002D). La cadena resultante de la secuencia puede incluir antes o después espacios en blanco.
 
 {{% code "*Examples for Strict floating-point numbers:*" %}}  
 123  
@@ -61,7 +61,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -123.456  
 {{% /code %}} 
 
-**Loose:** All white spaces are removed from the character sequence first. Then, the remaining character sequence (*abcde*) is interpreted according to the *Strict* model. If this fails to create a valid number, the last character is dropped from the sequence (*abcd*) and then, the sequence is tested again. This continues until a valid number is produced or until no character remains, after which the character sequence is determined to be an invalid number. 
+**Loose:** Todos los espacios en blanco son quitados desde la secuencia de carácter primero. Entonces, la secuencia de carácter restante (*abcde*) es interpretada de acuerdo al modelo *Strict* . Si esto falla al crear un número valido, el ultimo carácter es quitado de la ultima secuencia (*abcd*) y así , la secuencia es probada. Esto continua hasta que un número valido es producido o hasta que ningún carácter quede, en caso contrario es determinado que no es un número valido.
 
 {{% code "*Examples for Loose floating-point numbers:*" %}}  
 -123 . 456  
@@ -73,9 +73,9 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 987  
 {{% /code %}}
 
-## <a name="times"></a>■ 4. Times
+## <a name="times"></a>■ 4. Tiempos
 
-**Legacy:** Permitted is any of the following sequences:
+**Obsoleto:** Permitido por cualquier de las siguientes secuencias:
 
 {{% code %}}  
 *hhh*__.__*mmss*  
@@ -85,38 +85,38 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 *hhh*  
 {{% /code %}}
 
-In these sequences, *hhh* denotes any sequence of at least one decimal digit to indicate the hour, *mm* denotes the two-digit minute part, *m* denotes a one-digit minute part, *ss* denotes a two-digit second part, *s* denotes a one-digit second part, and the character to separate the hours from the minutes is the period (U+002E). All digits need to be characters from 0 to 9 (U+0030 - U+0039). Leading or trailing white spaces are ignored. The total time is determined via the following formula, resulting in seconds since midnight:
+En estas secuencias, *hhh* denota cualquier secuencia de al menos un dígito decimal para indicar la hora, *mm* denota la parte minuto con dos dígitos *m* denota un dígito de minuto *ss* denota la parte de segundos con dos dígitos, *s* denota la parte segundo con un dígito, y el carácter para separar las horas de los minutos es una coma (U+002E). Todos los dígitos necesitan ser caracteres desde el 0 al 9 (U+0030 - U+0039). Espacios en blanco al comienzo o al final son ignorados. El tiempo total es determinado por la siguiente formula, resultado en segundos desde la media noche: 
 
 {{% function "*Seconds since midnight for a given time:*" %}}  
 3600**hhh* + 60*mm + *ss*  
 {{% /function %}}
 
-If minutes or seconds are not indicated, they are assumed to be zero. You can use any non-negative hour, including values greater than or equal to 24. If, for example, a station arrival time is 23:59:00 (day 1), and the arrival time of the following station is 00:02:15 (day 2), then use the following sequences to represent these times in order to ensure a chronological order:
+Si los minutos o segundos no están indicados, estos se asumen que son iguales a cero. Usted puede usar cualquier hora que no sea negativa, incluyendo valores mayores o iguales que 24. Si por ejemplo, el tiempo de llegada de una estación es a las 23:59:00 (día 1), y el tiempo de llegada de la siguiente estación es 00:02:15 (día 2), entonces usa la siguientes secuencias para representar estos tiempos en orden para asegurar un orden cronológico:
 
 {{% code "*Examples for times:*" %}}  
 23.5900  
 24.0215  
 {{% /code %}}
 
-## <a name="colors"></a>■ 5. Color values
+## <a name="colors"></a>■ 5. Valores de color
 
-**Hexcolor:** A six-digit hexadecimal number is preceded by a number sign character (U+0023). An individual hexadecimal digit can be comprised of the decimal digits from 0 to 9 (U+0030 - U+0039), the lowercase letters from a to f (U+0061 - U+0066) and the uppercase letters from A to F (U+0041 - U+0046).The hexcolor has the following form:
+**Color hexadecimal:** Un número de seis dígitos en hexadecimal precedido por el símbolo numeral (U+0023). Un dígito individual hexadecimal puede ser contenido de los dígitos decimales del 0 al 9 (U+0030 - U+0039), las letras minúsculas de la a a la f (U+0061 - U+0066) y las letras mayúsculas desde la A a la F (U+0041 - U+0046). El color hexadecimal tiene la siguiente forma:
 
 {{% code %}}  
 \#*RRGGBB*  
 {{% /code %}}
 
-In this sequence, RR represents the red component, GG the green component and BB the blue component. Each component ranges from 00 to FF (0 - 255), where 00 represents no contribution for that channel and FF full contribution.
+En esta secuencia, RR representa el componente rojo, GG el componente verde y BB el componente azul. Cada componente tiene un rango del 00 al FF (0 - 255), donde 00 representa no contribución para ese canal y  FF contribución total.
 
-Commonly used colors (to indicate transparency) include:
+Colores comúnmente usados (para indicar transparencias) incluye:
 
 {{% code %}}  
-<font color="Black">#000000 (black)</font>  
-<font color="Red">#FF0000 (red)</font>  
-<font color="Green">#00FF00 (green)</font>  
-<font color="Blue">#0000FF (blue)</font>  
-<font color="Cyan">#00FFFF (cyan)</font>  
+<font color="Black">#000000 (negro)</font>  
+<font color="Red">#FF0000 (rojo)</font>  
+<font color="Green">#00FF00 (verde)</font>  
+<font color="Blue">#0000FF (azul)</font>  
+<font color="Cyan">#00FFFF (aguamarina)</font>  
 <font color="Magenta">#FF00FF (magenta)</font>  
-<font color="Yellow">#FFFF00 (yellow)</font>  
-<font color="White">#FFFFFF (white)</font>  
+<font color="Yellow">#FFFF00 (amarillo)</font>  
+<font color="White">#FFFFFF (blanco)</font>  
 {{% /code %}}
