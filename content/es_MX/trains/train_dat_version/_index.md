@@ -1,9 +1,9 @@
 ---
-title: "The **train.dat** file format: Version History"
+title: "El formato de archivo **train.dat**: Historia de Versión"
 hidden: true
 ---
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
@@ -15,7 +15,7 @@ hidden: true
 
 ## <a name="bve1"></a>■ 1. BVE1
 
-The following BVE1 version strings are recognised:
+La siguientes versiones de cadenas de texto de BVE1 son reconocidas:
 
 {{% code %}}  
 BVE1200000  
@@ -25,7 +25,7 @@ BVE1220000
 
 ## <a name="bve2"></a>■ 2. BVE2
 
-The following BVE2 version strings are recognised: 
+Las siguientes versiones de cadena de texto de BVE2 son reconocidas:
 
 {{% code %}}  
 BVE2000000  
@@ -34,9 +34,9 @@ OPENBVE
 
 ## <a name="openbve"></a>■ 3. openBVE
 
-From openBVE 1.5.3.0 onwards, the ***OPENBVE*** identifier may be optionally followed by a version string.
+Desde openBVE 1.5.3.0 en adelante, el identificador ***OPENBVE*** puede ser opcional seguido por una cadena de texto de la versión.
 
-The changes for each version are described below:
+El cambio para cada versión esta descrita abajo:
 
 {{% code-inline "\- Added the *EbHandleBehaviour* parameter to the **#HANDLE** section."  %}}  
 OPENBVE1530  
