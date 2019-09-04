@@ -1,79 +1,79 @@
 ---
-title: The **sound.cfg** file format - Quick reference
+title: El formato de archivo **sound.cfg** - Referencia rápida
 hidden: true
 ---
 
 <font color="Red">Version 1.0</font>
 
 <font color="Red">[Run]</font>  
-***Index*** =*FileName*
+***Indice*** =*NombreArchivo*
 
 <font color="Red">[Flange]</font>  
-***Index*** = *FileName*
+***Indice*** = *NombreArchivo*
 
 <font color="Red">[Motor]</font>  
-***Index*** = *FileName*
+***Indice*** = *NombreArchivo*
 
 <font color="Red">[Switch]</font>  
-**0** = *FileName*
+**0** = *NombreArchivo*
 
 <font color="Red">[Brake]</font>  
-**BC Release High** = *FileName*  
-**BC Release** = *FileName*  
-**BC Release Full** = *FileName*  
-**Emergency** = *FileName*  
-**BP Decomp** = *FileName*
+**BC Release High** = *NombreArchivo*  
+**BC Release** = *NombreArchivo*  
+**BC Release Full** = *NombreArchivo*  
+**Emergency** = *NombreArchivo*  
+**BP Decomp** = *NombreArchivo*
 
 <font color="Red">[Compressor]</font>  
-**Attack** = *FileName*  
-**Loop** = *FileName*  
-**Release** = *FileName*
+**Attack** = *NombreArchivo*  
+**Loop** = *NombreArchivo*  
+**Release** = *NombreArchivo*
 
 <font color="Red">[Suspension]</font>  
-**Left** = *FileName*  
-**Right** = *FileName*
+**Left** = *NombreArchivo*  
+**Right** = *NombreArchivo*
 
 <font color="Red">[Horn]</font>  
-**Primary** = *FileName*  
-**Secondary** = *FileName*  
-**Music** = *FileName*
+**Primary** = *NombreArchivo*  
+**Secondary** = *NombreArchivo*  
+**Music** = *NombreArchivo*
 
 <font color="Red">[Door]</font>  
-**Open Left** = *FileName*  
-**Open Right** = *FileName*  
-**Close Left** = *FileName*  
-**Close Right** = *FileName*
+**Open Left** = *NombreArchivo*  
+**Open Right** = *NombreArchivo*  
+**Close Left** = *NombreArchivo*  
+**Close Right** = *NombreArchivo*
 
 <font color="Red">[Ats]</font>  
-***Index*** = *FileName*
+***Indice*** = *NombreArchivo*
 
 <font color="Red">[Buzzer]</font>  
-**Correct** = *FileName*
+**Correct** = *NombreArchivo*
 
 <font color="Red">[Pilot Lamp]</font>  
-**On** = *FileName*  
-**Off** = *FileName*
+**On** = *NombreArchivo*  
+**Off** = *NombreArchivo*
 
 <font color="Red">[Brake Handle]</font>  
-**Apply** = *FileName*  
-**Release** = *FileName*  
-**Min** = *FileName*  
-**Max** = *FileName*
+**Apply** = *NombreArchivo*  
+**Release** = *NombreArchivo*  
+**Min** = *NombreArchivo*  
+**Max** = *NombreArchivo*
 
 <font color="Red">[Master Controller]</font>  
-**Up** = *FileName*  
-**Down** = *FileName*  
-**Min** = *FileName*  
-**Max** = *FileName*
+**Up** = *NombreArchivo*  
+**Down** = *NombreArchivo*  
+**Min** = *NombreArchivo*  
+**Max** = *NombreArchivo*
 
 <font color="Red">[Reverser]</font>  
-**On** = *FileName*  
-**Off** = *FileName*
+**On** = *NombreArchivo*  
+**Off** = *NombreArchivo*
 
 <font color="Red">[Breaker]</font>  
-**On** = *FileName*  
-**Off** = *FileName*
+**On** = *NombreArchivo*  
+**Off** = *NombreArchivo*
 
 <font color="Red">[Others]</font>  
-**Noise** = *FileName*  
-**Shoe** = *FileName*
+**Noise** = *NombreArchivo*  
+**Shoe** = *NombreArchivo*
