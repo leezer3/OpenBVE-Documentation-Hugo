@@ -1,5 +1,5 @@
 ---
-title: Routes
+title: Rutas
 weight: 3
-layout: hidden
+layout: oculto
 ---
