@@ -1,13 +1,13 @@
 ---
-title: The **ats.cfg** file format
-linktitle: The ats.cfg file
+title: El formato de archivo **ats.cfg**
+linktitle: El archivo ats.cfg
 weight: 8
 ---
 
-The ats.cfg file is a plain text file consisting of a single line: the relative path to the plugin that is to be used.
+El archivo ats.cfg es un archivo de texto plano consistente de una sola linea : el directorio relativo del plugin que será utilizado.
 
 {{% code "*Example of an ats.cfg file:* " %}}  
-`myplugin.dll`  
+`miplugin.dll`  
 {{% /code %}}  
 
-If you don't include the ats.cfg file, the default plugin for trains is used which provides basic implementations of ATS and ATC. Please find more information about the default safety systems [here](https://openbve-project.net/play-japanese/), in the tutorials on the left, and [here]({{< ref "/trains/openbveats/_index.md" >}}).
+Si no quieres incluir el archivo ats.cfg, el plugin predeterminado par alos trenes será utilizado el cual provee implementación básica del ATS y ATC. Por favor encuentre mas información sobre el sistema predeterminado de seguridad [aquí](https://openbve-project.net/play-japanese/),en los tutoriales a la izquierda, y  [aquí]({{< ref "/trains/openbveats/_index.md" >}}).
