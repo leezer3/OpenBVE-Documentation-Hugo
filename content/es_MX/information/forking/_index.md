@@ -1,12 +1,12 @@
 ---
-title: Forking guidelines
+title: Guía de birufurcaciones
 weight: 8
 ---
 {{% information %}}
 
-#### Q: What is a fork?
+#### P: ¿Qué es una bifurcación?
 
-**A:** If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program.
+**R:** Si usted  toma el código fuente y hace lo que sea pero la mera recopilación o haciendo ajustamientos portales, usted esta creando una modificación del programa original. Si usted persigue un desarrollo independiente aquí en adelante, su proyecto será llamado una bifurcación del programa original.
 
 {{% /information %}}
 
@@ -14,31 +14,31 @@ weight: 8
 
 {{% information %}}
 
-#### Q: When to make a fork?
+#### P: ¿Cuando hacer una bifurcación?
 
-**A:** If you are not satisfied with openBVE and cannot identify with the goals set forth for future versions of it, there might be no other way as to implement your desired features yourself.
+**R:** Si usted no esta satisfecho con openBVE y no puede identificar las metas propuestas para las versiones futuras del mismo, entonces no hay otra forma de que usted implemente las características que desea.
 
 {{% /information %}}
 
 
-If you are planning on creating a fork of openBVE or one of its tools, these are a set of guidelines (not requirements) that you are encouraged to follow.
+Si usted esta planeando en crear una bifurcación de openBVE o algunas de sus herramientas, aquí hay algunas instrucciones (no requisitos) que deben ser tomadas en cuenta a seguir.
 
-## ■ Rename the project
+## ■ Renombrar el proyecto
 
-You should give your project a distinct title and should generally also replace the logos. Just changing the version number does not constitute as giving your fork a distinct title. You should in fact rename it.
+Deberás de darle a tu proyecto un titulo distinto y por lo general también reemplazar los logos. El simple hecho de cambiar el numero de versión no constituye como una bifurcación de un titulo distinto. Deberás de hecho renombrarlo.
 
-Your fork should have a title distinct from **openBVE** and all possible spelling variations thereof. If you fail to give your fork a distinct name, users would be unable to distinguish between the fork and the original, leading to a lot of confusion.
+Su bifurcación debe tener un titulo distinto de **openBVE** y de toda cualquier posible variación similar deletreada. Si fallas en darle a tu bifurcación un nombre distinto, los usuarios por lo general no estarán diferenciando entre la bifurcación y el original, tendiendo a una confusión.
 
-## ■ Remove references to the homepage
+## ■ Elimina las referencias de la página principal
 
-You should generally remove the references to the openBVE homepage and the version checking mechanism from the main menu.
+Deberás por lo general eliminar las referencias de la página principal de openBVE y el mecanismo de chequeo de versión del menú principal.
 
-This does not mean that you are discouraged to mention openBVE or its origin, but that you should make sure that users don't mistake this homepage as the origin of your fork.
+Esto no significa que estarás obligado a no mencionar openBVE o su origen, pero deberás asegurarte que los usuarios no se equivoquen entre la página principal como el origen de tu bifurcación.
 
-## ■ There is no official support for forks
+## ■ No hay soporte oficial para las bifurcaciones
 
-For any fork, regardless of how small the change, the openBVE forum is not the place to discuss it. While you can make a single announcement, you will have to find your own place if you want to further discuss your fork or want to offer support for it.
+Para cualquier bifurcación, sin importar que tan pequeño sea el cambio, el foro de openBVE no es lugar para discutirlo. Mientras que hagas solo un simple anuncio, deberás de encontrar tu propio lugar si es que quieres discutir tus bifurcaciones o quieres ofrecer soporte a el.
 
-## ■ The future of openBVE
+## ■ El futuro de openBVE
 
-Eventually, there will be a successor to openBVE, and with it, an easier means to integrate new functionality in the form of plugins. You may want to wait until that time, or be prepared to later port your fork to become a regular add-on.
+Eventualmente, existirá un sucesor de openBVE, y con el, será mas fácil integrar nuevas funcionalidades en la forma de plugins. Quizás quieras esperar hasta ese tiempo, o estar preparado para luego portar su bifurcación siendo así un complemento regular.
