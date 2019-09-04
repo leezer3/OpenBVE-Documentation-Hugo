@@ -41,4 +41,4 @@ Para cualquier bifurcación, sin importar que tan pequeño sea el cambio, el for
 
 ## ■ El futuro de openBVE
 
-Eventualmente, existirá un sucesor de openBVE, y con el, será mas fácil integrar nuevas funcionalidades en la forma de plugins. Quizás quieras esperar hasta ese tiempo, o estar preparado para luego portar su bifurcación siendo así un complemento regular.
+Eventualmente, existirá un sucesor de openBVE, y con el, será mas fácil integrar nuevas funcionalidades en la forma de plugins. Quizás quieras esperar hasta ese tiempo, o estar preparado para luego portar su bifurcación para ser así un complemento regular.
