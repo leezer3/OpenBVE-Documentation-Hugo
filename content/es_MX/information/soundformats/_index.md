@@ -1,61 +1,61 @@
 ---
-title: Supported sound formats
-linktitle: Sound formats
+title: Formatos de sonido soportados
+linktitle: Formatos de sonido
 weight: 5
 ---
 
-This is a list of supported sound formats.
+Esta es una lista de los formatos soportados de sonido.
 
 {{% table %}}
 
-| Format      | Usual file extension |
+| Formato      | Extensión de archivo usual |
 | ----------- | -------------------- |
 | RIFF WAVE   | .wav                 |
-| Native FLAC | .flac                |
+| FLAC nativo | .flac                |
 
 {{% /table %}}
 
-Please note that due to its 3D positional nature, openBVE will convert multi-channel audio to mono upon loading, so there is no point in providing multi-channel audio in the first place. For multi-channel audio, openBVE discards silent channels and tries to detect constructive or destructive interference in the mixed version of the remaining channels. If interference is detected, the first non-silent channel in the file is used, otherwise the mixed channel.
+Tenga en cuenta que debido a la naturaleza de la posición 3D, openBVE convertirá los canales de multi-audio a mono en su carga, así que no hay ningún punto para proveer audio multi-canal en primer lugar. Para audio multi-canal, openBVE descarta los canales silenciosos e intenta detectar una interferencia constructiva o destructiva en la versión mezclada de los canales restantes. Si la interferencia es detectada, el primer canal no silencioso del archivo es usado, de otra manera el canal se mezclará. 
 
-## ■ RIFF WAVE format
+## ■ Formato RIFF WAVE
 
-WAVE files are supported, which technically are RIFF (or RIFX) container files with the WAVE format type. WAVE itself allows different formats, of which only a subset are supported. These are:
+los archivos WAVE son soportados, técnicamente son archivos contenidos RIFF (o RIFX) en el tipo de formato WAVE. El mismo WAVE permite diferentes tipos de formato, lo que solo un subtipo de ellos esta soportado. Estos son:
 
 {{% table %}}
 
-| Format          | Sample rate | Bitrate | Channels |
+| Formato          | Tasa de ejemplo | Tasa de Bit | Canales |
 | --------------- | ----------- | ------- | -------- |
-| PCM             | any         | any     | any      |
-| Microsoft ADPCM | any         | 4 bits  | any      |
+| PCM             | cualquiera         | cualquiera     | cualquiera      |
+| Microsoft ADPCM | cualquiera         | 4 bits  | cualquiera      |
 
 {{% /table %}}
 
-Sample rate refers to the number of samples per second per channel. Bitrate refers to the umber of bits per sample per channel.
+La tasa de ejemplo refiera al numero de ejemplos por segundo por canal. La tasa de bits se refiera al numero de bits por ejemplo por canal.
 
-## ■ Native FLAC format
+## ■ Formato FLAC nativo
 
-All native FLAC files are supported with the following (in practice rarely occuring) exceptions:
+Todos los archivos nativos de FLAC están soportados con las siguientes (en practica raramente ocurre) excepciones:
 
-- Changing the sample rate in the middle of the file is not supported.  
-- Negative predictor shifts are not supported.  
-- MD5 checks are skipped for bit rates other than 8, 16 or 24.  
+- Cambiar la tasa de ejemplo en el medio del archivo no esta soportado.
+- Cambios de predictor negativos no están soportados.
+- Comprobación MD5 son saltados para la tasa de bits otras que 8, 16 o 24.  
 
 ------
 
-Further information about these formats from a programmer's point of view can be found on these external sites:
+Para mas información sobre estos formatos desde el punto de vista de un programador, puede ser encontrado en estos sitios externos:
 
-General information about RIFF, WAVE and PCM:
+Información general sobre RIFF, WAVE y PCM:
 
 ➟ http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/Docs/riffmci.pdf
 
-Information about Microsoft ADPCM:
+Información sobre Microsoft ADPCM:
 
 ➟ http://icculus.org/SDL_sound/downloads/external_documentation/wavecomp.htm
 
-Official documentation on FLAC:
+Documentación oficial de FLAC:
 
 ➟ http://flac.sourceforge.net/documentation.html
 
-Additional documentation on FLAC:
+Documentación adicional de FLAC:
 
 ➟ http://home.comcast.net/~b.langenb/audioformats_letter.pdf
