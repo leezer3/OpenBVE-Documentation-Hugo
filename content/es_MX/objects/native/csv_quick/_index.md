@@ -1,5 +1,5 @@
 ---
-title: The **.csv** object format - Quick reference
+title: El formato de objeto **.csv** - Referencia rápida
 hidden: true
 ---
 
