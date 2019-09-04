@@ -1,17 +1,17 @@
 ---
-title: Train plugins
+title: Plugins de Tren
 weight: 9
 ---
-Train plugins allow to change the runtime behavior of trains to some degree. Things you can do include displaying custom indicators in the panels, playing custom sounds and overriding the handles the driver originally set. Plugins can be used to simulate safety equipment such as ATS or ATC, among other things.
+Los plugins de tren permiten de cambiar la conducta de los trenes en cierto grado. Cosas que puedes hacer incluidas mostrar indicadores personalizados en los paneles, reproducir sonidos personalizados y sustituir las palancas del conductor que están originalmente configurados. Plugins también pueden usarse para simular los equipos de seguridad tales como ATS o ATC, entre otras cosas.
 
-## ■ Available forms of plugins
+## ■ Formas disponibles de plugins
 
 [**.NET assemblies:**]({{< ref "/plugins/overview/_index.md" >}})  
-This is the only officially endorsed form of plugin. The plugins are .NET assemblies and should be designed to be cross-platform-compatible without recompilation. You can choose from a variety of programming languages, including C# and Visual Basic .NET, among many others that target the .NET Framework.
+Esta es la única forma oficial apoyada de plugin. Los plugins son ensambladores .NET y deben ser diseñados para ser compatibles en multi-plataforma sin recompilarlos. Puedes escoger entre una variedad de lenguajes de programación, incluyendo C# y Visual Basic .NET, así como muchos otros que tienen de objetivo el .NET Framework.
 
 [**Win32 DLLs:**]({{< ref "/trains/plugins/legacy/_index.md" >}})  
-This form of plugin is retained for backward compatibility with BVE Trainsim, but is no longer officially endorsed because these plugins can only run on Microsoft Windows. They are usually developed in C/C++. Given the cross-platform alternative, please develop .NET assemblies from now on.
+Esta forma de plugin es retenida para la vieja compatibilidad con el simulador de trenes BVE Trainsim, pero no esta oficialmente apoyada debido a que estos plugins solo pueden ejecutarse en Microsoft Windows. Estos usualmente son desarrollados en lenguaje C/C++. Otorgando una alternativa multi-plataforma , por favor desarrolle con ensamblador .NET de ahora en adelante.
 
-## ■ Setting up a train to using a plugin
+## ■ Configurando un tren para usar un plugin
 
-You will need to ship the plugin somewhere in your train folder and configure the path to your plugin inside the [ats.cfg]({{< ref "/trains/ats_cfg/_index.md" >}}) file. Please note that for .NET assembly train plugins, you should **not** ship OpenBveApi.dll along with your plugin.
+Deberás de agregar el plugin en algún lado de la carpeta del tren y configurar el directorio del plugin dentro del archivo [ats.cfg]({{< ref "/trains/ats_cfg/_index.md" >}}) Por favor considere que para los plugins del tren ensamblado en .NET, **no** deben agregarse OpenBveApi.dll junto con su plugin.
