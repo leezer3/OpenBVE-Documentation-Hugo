@@ -1,5 +1,5 @@
 ---
-title: Standards
+title: Estàndards
 weight: 6
 ---
 

@@ -11,7 +11,7 @@ Trains consist of a series of individual configuration files accompanied by bitm
 [**train.dat:**]({{<ref "/trains/train_dat/_index.md">}})  
 This is the core configuration file for the train's characteristics, and is mandatory.
 
-## ■ Panels
+## ■ Taulers
 
 [**panel.animated:**]({{<ref "/trains/panel_animated/_index.md">}})  
 This file allows to create a fully 3D cab. If present in the train folder, this file has precedence over the panel2.cfg and panel.cfg files.
@@ -41,4 +41,4 @@ This file defines which external train plugin to use. For information on how to 
 ## ■ Miscel·lània
 
 [**extensions.cfg:**]({{<ref "/trains/extensions_cfg/_index.md">}})  
-This defines additional characteristics that are not covered by the other files.
+Defineix característiques addicionals no recollides als altres fitxers.

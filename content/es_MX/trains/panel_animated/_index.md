@@ -1,10 +1,10 @@
 ---
-title: The **panel.animated** file format
-linktitle: The panel.animated file
+title: El formato de archivo **panel.animated**
+linktitle: El archivo panel.animated
 weight: 5
 ---
 
-If present in the train folder, this file defines a 3D cab.
+Si esta presente en la carpeta del tren, este archivo defina una cabina 3D.
 
 The file is a normal [animated object file]({{< ref "/objects/native/animated/_index.md" >}}). The train body is assumed to be centered on the x- and z-axes, while a value of 0 on the y-axis corresponds to the top of the rails, just as with exterior train objects.
 
@@ -14,7 +14,7 @@ You can use [Object Viewer]({{< ref "/tools/objectviewer/_index.md" >}}) to prev
 
 {{% notice %}}
 
-#### Overlay and Lighting
+#### Sobreposición e Iluminación
 
 The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light. This behavior might change in future versions of openBVE.
 

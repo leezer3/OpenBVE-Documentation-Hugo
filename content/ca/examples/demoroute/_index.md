@@ -1,52 +1,52 @@
 ---
-title: Demonstration route
-linktitle: Demonstration route
+title: Ruta de demostració
+linktitle: Ruta de demostració
 weight: 1
 ---
 
-## ■ Overview
+## ■ Descripció
 
 
 The **Animated Object Demonstration Route** is a minimalistic route intended to demonstrate the CSV and RW route formats, and, most importantly, the use of animated objects.
 
-What this route is:
+Aquesta ruta és:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | An example to show developers how to create a CSV or RW route |
+| <font color="Green">✓</font> | Un exemple per mostrar als desenvolupadors com crear una ruta CSV o RW |
 | ---------------------------- | ------------------------------------------------------------- |
-| <font color="Green">✓</font> | An example to show developers how to create animated objects  |
+| <font color="Green">✓</font> | Un exemple per mostrar als desenvolupadors com crear objectes animats  |
 | <font color="Green">✓</font> | A way for users to be inspired by the feeling of a non-static environment  |
 
 {{% /table-nonheader %}}
 
-What this route is not:
+Aquesta ruta no és:
 
 {{% table-nonheader %}}
 
 | <font color="Red">✗</font>  | A serious openBVE add-on - just something for developers to study |
 | --------------------------- | ------------------------------------------------------------- |
 | <font color="Red">✗</font>  | A rendition of any real route.  |
-| <font color="Red">✗</font>  | A high quality example of a route  |
+| <font color="Red">✗</font>  | Un exemple de ruta d'alta qualitat  |
 
 {{% /table-nonheader %}}
 
-Key features of this route:
+Característiques clau de la ruta:
 
 * Animated destination indicators and analog clock at a station.
 * Animated semaphore and blinking light signals.
 * Animated crossing gate and moving cars.
 * Animated escalator and flying airplane.
 
-## ■ Download
+## ■ Baixada
 
-This route may be downloaded in openBVE package format here:
+Podeu baixar aquesta ruta com a paquet de l'OpenBVE des d'aquí:
 
 <http://openbve-project.net/files/DemoRoute1.zip>
 
-## ■ Using the route
+## ■ Ús de la ruta
 
-Select a train of your choice.
+Seleccioneu un tren que vulgueu.
 
 The default train suggested by this route is the **113-1000atccab**, which may be downloaded from the following page:
 

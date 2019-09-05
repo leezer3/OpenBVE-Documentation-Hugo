@@ -1,16 +1,16 @@
 ---
-title: Character encodings
+title: Codificación de carácter
 weight: 1
 ---
 
-<font color="Gray">This page describes what character encodings are and how they should be used.</font>
+<font color="Gray">Esta página describe que es codificación de caracteres y como deberían ser utilizado</font>
 
-■ Overview
+■ Vista general
 ------
 
-A character encoding is a way to translate characters into bytes that can be stored on the hard drive. In the beginnings, one byte (256 states) was used to encode one character. As different writing systems around the world have different requirements for characters to be encoded, there are a lot of different encodings in use throughout the world. Problematically, if the encoding of a text file is not known in advance, misinterpreting the encoding can result in mojibake (meaningless sequence of characters).
+Una codificación de caracteres es una manera de traducir caracteres en bytes para que así puedan ser almacenados en el disco duro. En el comienzo, un byte (256 estados) eran usados para codificar un carácter. Debido a que existen distintos sistemas de escritura alrededor del mundo con diferentes requisitos para los caracteres sean codificados, hay un montón de codificadores diferentes que son de uso alrededor del mundo. Problematicamente, en la codificación de un archivo de texto no es conocido en ventaja, malinterpretando la codificación puede resultar en un mojibake (secuencia de caracteres sin significado).
 
-Example of a Japanese text encoded in Shift_JIS (requires appropriate fonts available):
+Ejemplo de la codificación Japonesa en Shift_JIS (requiere unas fuentes apropiadas disponibles):
 
 {{% code %}}  
 ひらがなカタカナ漢字  
@@ -48,7 +48,7 @@ Technically, the byte order mark is the first bytes of a particular text file. T
 
 {{% table %}}
 
-| Encoding               | Hexadecimal representation |
+| Codificación               | Representación hexadecimal |
 | ---------------------- | -------------------------- |
 | UTF-8                  | EF BB BF                   |
 | UTF-16 (big endian)    | FE FF                      |
@@ -58,4 +58,4 @@ Technically, the byte order mark is the first bytes of a particular text file. T
 
 {{% /table %}}
 
-You are encouraged to always save text files in one of those encodings with a byte order mark in order for openBVE to automatically detect the encoding used.
+Estas invitado a siempre guardar los archivos de texto en una de estas codificaciones con un byte de orden de marca para openBVE para así automáticamente detectar la codificación usada.

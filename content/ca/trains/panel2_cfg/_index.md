@@ -4,19 +4,19 @@ linktitle: The panel2.cfg file
 weight: 4
 ---
 
-## ■ Contents
+## ■ Continguts
 
 {{% contents %}}
 
 - [1. Descripció](#overview)
-- [2. Syntax](#syntax)
-- [3. The This section](#this)
-- [4. The PilotLamp section](#pilotlamp)
-- [5. The Needle section](#needle)
-- [6. The DigitalNumber section](#digitalnumber)
-- [7. The DigitalGauge section](#digitalgauge)
-- [8. The LinearGauge section](#lineargauge)
-- [9. The Timetable section](#timetable)
+- [2. Sintaxi](#syntax)
+- [3. Secció This](#this)
+- [4. Secció PilotLamp](#pilotlamp)
+- [5. Secció Needle](#needle)
+- [6. Secció DigitalNumber](#digitalnumber)
+- [7. Secció DigitalGauge](#digitalgauge)
+- [8. Secció LinearGauge](#lineargauge)
+- [9. Secció Timetable](#timetable)
 - [10. Available subjects](#subjects)
 
 {{% /contents %}}
@@ -29,7 +29,7 @@ The panel2.cfg file is a plain text file encoded in any arbitrary [encoding]({{<
 
 {{% notice %}}
 
-#### Layers
+#### Capes
 
 All elements in the panel are associated layers. The layer is described as an integer, where small values represent the background and high numbers the foreground. When placing elements, you should make sure that no overlapping elements share the same layer number. The background image of the panel is always associated layer number 0, so elements on top of it should start with layer number 1 or higher. If you want to place elements behind the panel background image, you can likewise use negative numbers to represent these layers.
 
@@ -55,7 +55,7 @@ The cab is rendered as an overlay. This means that the cab will always appear in
 
 {{% /notice %}}
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxi
 
 Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
@@ -77,7 +77,7 @@ You can use comments anywhere at the end of a line. A comment is started by a se
 
 ## <a name="this"></a>■ 3. The This section
 
-The This section defines the background image to use for the panel and which resolution the panel has. Only one This section may be used within the file.
+La secció This defineix la imatge de fons que s'utilitzarà al tauler i la resolució del tauler. Només es pot utilitzar una secció This al fitxer.
 
 ------
 
@@ -90,7 +90,7 @@ This starts the section.
 ------
 
 {{% command %}}  
-Resolution = *Value*  
+Resolution = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -100,7 +100,7 @@ Resolution = *Value*
 ------
 
 {{% command %}}  
-Left = *Value*  
+Left = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -110,7 +110,7 @@ Left = *Value*
 ------
 
 {{% command %}}  
-Right = *Value*  
+Right = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -120,7 +120,7 @@ Right = *Value*
 ------
 
 {{% command %}}  
-Top = *Value*  
+Top = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -130,7 +130,7 @@ Top = *Value*
 ------
 
 {{% command %}}  
-Bottom = *Value*  
+Bottom = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -203,7 +203,7 @@ Camera restriction is the built-in functionality to limit the camera view inside
 
 {{% /notice %}}
 
-## <a name="pilotlamp"></a>■ 4. The PilotLamp section
+## <a name="pilotlamp"></a>■ 4. Secció PilotLamp
 
 The PilotLamp section creates an indicator that can be made visible or invisible. You can use as many of these sections as required.
 
@@ -278,7 +278,7 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="needle"></a>■ 5. The Needle section
+## <a name="needle"></a>■ 5. Secció Needle
 
 The Needle section creates a rotating element, or needle. You can use as many of these sections as required.
 
@@ -401,7 +401,7 @@ LastAngle = *ValueInDegrees*
 ------
 
 {{% command %}}  
-Minimum = *Value*  
+Minimum = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -411,7 +411,7 @@ Minimum = *Value*
 ------
 
 {{% command %}}  
-Maximum = *Value*  
+Maximum = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -421,7 +421,7 @@ Maximum = *Value*
 ------
 
 {{% command %}}  
-NaturalFreq = *Value*  
+NaturalFreq = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -433,7 +433,7 @@ Defines the natural frequency. In an undamped oscillatory system, this is the an
 ------
 
 {{% command %}}  
-DampingRatio = *Value*  
+DampingRatio = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -454,7 +454,7 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="digitalnumber"></a>■ 6. The DigitalNumber section
+## <a name="digitalnumber"></a>■ 6. Secció DigitalNumber
 
 The DigitalNumber section creates an indicator that can switch between multiple states, useful to build up a display of decimal digits. You can use as many of these sections as required.
 
@@ -539,7 +539,7 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="digitalgauge"></a>■ 7. The DigitalGauge section
+## <a name="digitalgauge"></a>■ 7. Secció DigitalGauge
 
 The DigitalGauge section creates a solid-color square of which only a radial section is shown at a time. You can use as many of these sections as required.
 
@@ -674,7 +674,7 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="lineargauge"></a>■ 8. The LinearGauge section
+## <a name="lineargauge"></a>■ 8. Secció LinearGauge
 
 The LinearGauge section creates a panel layer, which uses texture shifting to create a sliding linear gauge. You can use as many of these sections as required.
 
@@ -764,7 +764,7 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="timetable"></a>■ 9. The Timetable section
+## <a name="timetable"></a>■ 9. Secció Timetable
 
 The Timetable section defines where to place custom timetables. The actual images are loaded via the route file. Only one Timetable section may be used within the file.
 
@@ -901,11 +901,11 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% /table %}}
 
-##### ● Suffixes
+##### ● Sufixos
 
 {{% table %}}
 
-| Subject suffix | Description                                                  |
+| Subject suffix | Descripció                                                  |
 | -------------- | ------------------------------------------------------------ |
 | d*i*           | With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10. |
 

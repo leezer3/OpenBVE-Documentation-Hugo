@@ -39,7 +39,7 @@ CSV格式线路是以纯文本形式编辑的线路。
 
 线路文件包括一系列指令，用来导入线路中用到的模型（Structure（结构）命名空间*有点不严谨地说，在CSV线路中和“章节”“部分”差不多。)，线路的属性信息（说明线路使用的默认列车和背景等信息），文件的其余部分是Track（轨道）命名空间（不太严谨地说，意思和段落差不多） 在这一部分中，主轨道位置（一般以米为单位）被用来描述轨道在哪里转弯，车站的位置在哪里，墙壁应当在哪里开始、哪里结束，以此类推。说得明白一点儿，Track（轨道）命名空间的指令是要放在最后的。
 
-这个格式假设了一条游戏默认的主轨道(0号轨道），不可以指定它开始的位置，也不能结束它。和游戏中其他轨道不同的是，它从线路的开始一直延续到线路的终点，代表着玩家驾驶的列车行驶的轨道。除此之外，游戏中的其他轨道都是只供装饰，不能行驶的。（但新版中可以在其他轨道上放置AI列车）
+The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "routes/xml/trackfollowingobject/_index.md" >}}).
 
 可以几何意义上地弯曲和抬升默认的主轨道，而其他轨道都是相对于主轨道定义的，并随主轨道弯曲起伏。除非特别修改定义，线路中每25米划分为一个区间块，特定的命令只有在区间块的边界位置（整25米位置）才能发挥作用。物体的放置（尤其是在弯道上）总是基于一个坐标系，它的轴并不随轨道弯曲，而是直直地指向邻近的下一个区间块。
 

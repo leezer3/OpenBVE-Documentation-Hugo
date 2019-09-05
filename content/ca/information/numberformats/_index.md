@@ -12,7 +12,7 @@ weight: 2
 - [1. Descripció](#overview)
 - [2. Nombres enters](#integers)
 - [3. Floating-point numbers](#floating)
-- [4. Times](#times)
+- [4. Hores](#times)
 - [5. Color values](#colors)
 
 {{% /contents %}}
@@ -73,7 +73,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 987  
 {{% /code %}}
 
-## <a name="times"></a>■ 4. Times
+## <a name="times"></a>■ 4. Hores
 
 **Legacy:** Permitted is any of the following sequences:
 

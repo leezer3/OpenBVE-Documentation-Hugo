@@ -21,7 +21,7 @@ weight: 2
 
 Ya sean archivos de rutas y trenes, encontrarás números como enteros o coma flotantes todo el tiempo, ocasionalmente también hay otros. Estos números están requeridos con un cierto tipo de formato, el cual será descrito en las siguientes secciones.
 
-Existen dos métodos para los números: **Strict** y **Loose** . El método Strict posee una especificación muy apretada, el cual no permite dejar espacios para hacer equivocaciones tipográficas. Este método es usado en todos los nuevos tipos de formatos. El método Loose es anticuado y es requerido para compatibilidad con el viejo material. Los diferentes archivos que están presentados en las páginas de *Desarrollando para openBVE* indican qué modelo esta siendo usado. Ten en cuenta que ya sea que el método *Loose* este permitido, también puedes usar el formato *Strict* como *Strict* en un sub-derivado de *Loose*.
+Existen dos métodos de análisis para los números: **Strict** y **Loose** . El método Strict posee una especificación muy apretada, el cual no permite dejar espacios para hacer equivocaciones tipográficas. Este método es usado en todos los nuevos tipos de formatos. El método Loose es anticuado y es requerido para compatibilidad con el viejo material. Los diferentes archivos que están presentados en las páginas de *Desarrollando para openBVE* indican qué modelo esta siendo usado. Ten en cuenta que ya sea que el método *Loose* este permitido, también puedes usar el formato *Strict* como *Strict* en un sub-derivado de *Loose*.
 
 ## <a name="integers"></a>■ 2. Enteros
 

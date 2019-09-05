@@ -39,6 +39,6 @@ This does not mean that you are discouraged to mention openBVE or its origin, bu
 
 For any fork, regardless of how small the change, the openBVE forum is not the place to discuss it. While you can make a single announcement, you will have to find your own place if you want to further discuss your fork or want to offer support for it.
 
-## ■ Futur de l'openBVE
+## ■ Futur de l'OpenBVE
 
 Eventually, there will be a successor to openBVE, and with it, an easier means to integrate new functionality in the form of plugins. You may want to wait until that time, or be prepared to later port your fork to become a regular add-on.

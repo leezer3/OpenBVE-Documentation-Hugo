@@ -1,93 +1,93 @@
 ---
-title: The **.animated** object format
-linktitle: The ANIMATED object
+title: El formato de objeto **.animated**
+linktitle: El objeto ANIMADO
 weight: 3
 ---
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Sections](#description)
+- [1. Vista general](#overview)
+- [2. Secciones](#description)
 - [3. List of infix notation operators](#operators)
-- [4. List of functions](#functions)
-- [5. List of variables](#variables)
-- [6. Performance](#performance)
-- [7. Tips](#tips)
-- [8. Example functions](#examples)
-- [9. Formal Grammar](#grammar)
+- [4. Lista de funciones](#functions)
+- [5. Lista de variables](#variables)
+- [6. Rendimiento](#performance)
+- [7. Sugerencias](#tips)
+- [8. Ejemplo de funciones](#examples)
+- [9. Gramática formal](#grammar)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
-The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
+El formato ANIMADO de objeto es un formato contenido habilitandote de referir otros objetos (B3D/CSV/X) y de aplicar animación en ellos. Esto tambien permite agrupar otros objetos (incluyendo otros objetos ANIMADOS) sin animarlos.
 
-Animated objects can be used in CSV/RW routes (unless explicitly disallowed by some commands), as train exterior objects via the *extensions.cfg*, and as 3D cabs via the *panel.animated* file.
+Los objetos animados también pueden ser usados en rutas CSV/RW (a menos que este explicita mente deshabilitado por algunos comandos), así como los objetos externos del tren por *extensions.cfg*, y así como la cabina 3D por el archivo *panel.animated*.
 
-##### ● Basics
+##### ● Bases
 
-Animation is performed via the following primitives:
+La animación es realizada por las siguientes directrices:
 
-- State changes - basically allowing to switch between different objects at any time
-- Translation - moving objects in three independent directions
-- Rotation - rotating objects around three independent axes
-- Texture shifts - allowing to shift the texture coordinates of objects in two independent directions
+- Cambios de estado - básicamente habilitando de cambiar entre diferentes objetos en cualquier tiempo.
+- Traslación - moviendo objetos en tres direcciones independientes
+- Rotación - rotando objetos sobre los tres ejes independientes
+- Saltos de textura - habilitando el salto de coordenadas de textura en objetos en dos direcciones independientes
 
-##### ● A little formality
+##### ● Una pequeña formalidad
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file name is arbitrary, but must have the extension **.animated**. The file is interpreted on a per-line basis, from top to bottom.
+El archivo es un texto plano codificado en cualquier arbitrario [codificación] ({{< ref "/information/encodings/_index.md" >}}), Sin embargo, UTF-8 con un byte de marca de orden es la opción preferida. El [modelo de análisis]({{< ref "/information/numberformats/_index.md" >}}) para números es **Strict**. El nombre de archivo es arbitrario, pero debe tener la extensión **.animated**. El archivo es interpretado por cada linea, desde arriba hasta abajo.
 
-## <a name="description"></a>■ 2. Sections
+## <a name="description"></a>■ 2. Secciones
 
-##### ● The [Include] section
+##### ● La sección [Include]
 
-You can use the [Include] section to just include other objects, but without animating them. This allows you to use the ANIMATED object file as a container to group other objects. There can be any number of [Include] sections within the file.
+Puedes usar la sección [Include] solo para incluir otros objetos, pero sin animarlos. Esto te permite de usar el archivo de objetos ANIMADOS como un contenedor de grupo de otros objetos. Puede haber cualquier cantidad de secciones [Include] dentro del archivo.
 
 {{% command %}}  
 [Include]  
 {{% /command %}}  
-This starts the section.
+Esto inicia la sección.
 
 {{% command %}}  
-*FileName<sub>0</sub>*  
-*FileName<sub>1</sub>*  
-*FileName<sub>2</sub>*  
+*NombreArchivo<sub>0</sub>*  
+*NombreArchivo<sub>1</sub>*  
+*NombreArchivo<sub>2</sub>*  
 ...  
 {{% /command %}}  
-Defines a series of B3D/CSV/X/ANIMATED objects that should be included as-is.
+Defina una serie de objetos B3D/CSV/X/ANIMATED que deben ser incluidas como son.
 
 {{% command %}}  
 **Position = X, Y, Z**  
 {{% /command %}}  
-This defines the position of the objects, basically allowing you to offset them with respect to the rest of the ANIMATED object file.
+Esto defina la posición de los objetos, basicamente te permite de separarlos con respecto al resto de los archivos de objeto ANIMADOS.
 
 ------
 
-##### ● The [Object] section
+##### ● La sección [Object]
 
-You can use the [Object] section to create a single animation. This requires to set up at least one state via the *States* parameter, and to use any combination of functions you want, which provide control over the animation. There can be any number of [Object] sections within the file.
+Puedes usar la sección [Object] para crear una sola animación. Esto requiere de configurar un estado a través de los parámetros de *Estados*, y de usar cualquier combinación de funciones que desees, lo cual provee control sobre la animación. Puede haber cualquier cantidad de secciones [Object] dentro del archivo.
 
 {{% command %}}  
 [Object]  
 {{% /command %}}  
-This starts the section.
+Esto inicia la sección.
 
 {{% command %}}  
 **Position = X, Y, Z**  
 {{% /command %}}  
-Defines the position of the object. This basically corresponds to a final TranslateAll command in the respective CSV/B3D file, but is performed after any of the functions are performed. For example, if you want to use rotation, then keep in mind that rotation is done around the origin (0,0,0). The *Position* command allows you to reposition the object after the rotation is performed.
+Defina la posición del objeto. Esto básicamente corresponde a un comando TranslateALL en el archivo CSV/B3D respectivamente, pero es realizado después de que cualquiera de las funciones es realizada. Por ejemplo, si deseas usar rotación, entonces ten en consideración que la rotación es efectuada sobre el origen (0,0,0). El comando *Posición* permite de re-posicionar el objeto después de que la rotación es realizada.
 
 {{% command %}}  
-**States = File<sub>0</sub>, File<sub>1</sub>, ..., File<sub>n-1</sub>**  
+**States = Archivo<sub>0</sub>, Archivo<sub>1</sub>, ..., Archivo<sub>n-1</sub>**  
 {{% /command %}}  
-Loads *n* objects of CSV/B3D/X extension. Please note that the first file indicated has state index 0. Use multiple files only if you want to use state changes.
+Carga *n* objetos de extensión CSV/B3D/X. Por favor tenga en cuenta que el primer archivo indicado posee estado de indice 0. Usa múltiples archivos solo si deseas usar el cambio de estados.
 
 {{% command %}}  
 **StateFunction = Formula**  
 {{% /command %}}  
-This defines the function for state changes. The result of the *Formula* is rounded toward the nearest integer. If that integer is between 0 and *n*-1, where *n* is the number of states as defined via *States*, the respective state is shown, otherwise, no object is shown. You can make use of the latter if you want an object to toggle on/off with only one state.
+Esto defina la función para cambiar de estado. El resultado de la fórmula *Formula* es redondeado al entero mas cercano. Si el entero esta entre 0 y *n*-1, donde *n* es el numero de estados definido por los *Estados*, el estado respectivo es mostrado , de otra manera, ningún objeto es mostrado. Puedes hacer uso del ultimo si deseas que sea un objeto de encendido/apagado con un solo estado.
 
 {{% command %}}  
 **TranslateXDirection = X, Y, Z**  

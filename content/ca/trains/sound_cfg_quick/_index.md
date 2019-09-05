@@ -3,7 +3,7 @@ title: The **sound.cfg** file format - Quick reference
 hidden: true
 ---
 
-<font color="Red">Version 1.0</font>
+<font color="Red">Versió 1.0</font>
 
 <font color="Red">[Run]</font>  
 ***Index*** =*FileName*

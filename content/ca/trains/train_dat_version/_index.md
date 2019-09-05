@@ -9,7 +9,7 @@ hidden: true
 
 - [1. BVE1](#bve1)
 - [2. BVE2](#bve2)
-- [3. openBVE](#openbve)
+- [3. OpenBVE](#openbve)
 
 {{% /contents %}}
 
@@ -32,7 +32,7 @@ BVE2000000
 OPENBVE  
 {{% /code %}}
 
-## <a name="openbve"></a>■ 3. openBVE
+## <a name="openbve"></a>■ 3. OpenBVE
 
 From openBVE 1.5.3.0 onwards, the ***OPENBVE*** identifier may be optionally followed by a version string.
 

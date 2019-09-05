@@ -4,7 +4,7 @@ linktitle: Track Following Object
 weight: 5
 ---
 
-This page explains the principle and implementation of the XML-based Track Following Object, which is supported in openBVE v1.6.0 or later.
+このページでは、OpenBVE1.6.0以降で実装されている XMLベースの Track Following Object の原理とその実装方法について説明します。
 
 ## ■ Basic Principles
 

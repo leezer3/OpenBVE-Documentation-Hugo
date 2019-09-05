@@ -7,13 +7,13 @@ hidden: true
 
 The Cube command in B3D and CSV objects is equivalent to a series of Vertex/AddVertex and Face/AddFace commands.
 
-Given the following code (B3D style):
+A partir del codi següent (estil B3D):
 
 {{% code %}}  
 Cube *x*, *y*, *z*  
 {{% /code %}}
 
-The Cube command corresponds to these instructions (B3D style):
+L'ordre Cube correspon a aquestes instruccions (estil B3D):
 
 {{% code %}}  
 Vertex *x*, *y*, -*z*  
@@ -40,7 +40,7 @@ If you want to texture the cube, you need to add appropriate Coordinate/SetTextu
 
 The Cylinder command in B3D and CSV objects is equivalent to a series of Vertex/AddVertex and Face/AddFace commands.
 
-Given the following code (B3D style):
+A partir del codi següent (estil B3D):
 
 {{% code %}}  
 Cylinder *n*, *r1*, *r2*, *h*  

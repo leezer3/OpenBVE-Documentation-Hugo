@@ -1,6 +1,6 @@
 ---
-title: Distributing add-ons created for openBVE
-linktitle: Distributing add-ons
+title: Distribució de continguts creats per a l'OpenBVE
+linktitle: Distribució de continguts
 weight: 7
 ---
 
@@ -14,33 +14,33 @@ Pràctiques acceptables i no acceptables
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Save your text files as UTF-8.                               |
+| <font color="Green">✓</font> | Desar els fitxers de text en UTF-8.                               |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Green">✓</font> | Save your text files in any Unicode encoding with a byte order mark. |
+| <font color="Green">✓</font> | Desar els fitxers de text en qualsevol codificació d'Unicode amb una marca d'ordre de bytes. |
 | <font color="Red">✗</font>   | Save your text files in any non-Unicode encoding.            |
-| <font color="Red">✗</font>   | Use different encodings for each file in a route or train.   |
+| <font color="Red">✗</font>   | Utilitzar codificacions diferents per a cada fitxer d'una ruta o un tren.   |
 
 {{% /table-nonheader %}}
 
-## ■ Archives versus installers
+## ■ Arxius i instal·ladors
 
 When packaging a route or train, consider using a single archive instead of multiple smaller ones, unless the size of the download justifies splitting the archive. Never use platform-specific installers as they are not portable (unless you also provide an archive as an alternative). Platform-specific installers include Windows EXE files, Linux RPM repositories and Mac DMG files.
 
-Acceptable and not acceptable practices:
+Pràctiques acceptables i inacceptables:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Use an archive format such as 7Z, ZIP, TAR.GZ, etc.         |
+| <font color="Green">✓</font> | Utilitzar un format d'arxiu com ara 7Z, ZIP, TAR.GZ, etc.         |
 | ---------------------------- | ----------------------------------------------------------- |
-| <font color="Red">✗</font>   | Use a platform-specific format, such as EXE, RPM, DMG, etc. |
+| <font color="Red">✗</font>   | Utilitzar un format específic per a una plataforma, com ara EXE, RPM, DMG, etc. |
 
 {{% /table-nonheader %}}
 
-## ■ Files names and archives
+## ■ Noms de fitxer en arxius
 
 Generally, you can use any file name you want, that is, include any characters such as Latin, Japanese, Chinese, and the like. However, you need to make very sure that the archive format you use supports Unicode file names then. If not, the user might be unable to extract your files correctly, leading to a series of files that cannot be found later. Unfortunately, the popuplar ZIP format does not support Unicode file names, while for example [7Z](https://www.7-zip.org/) does. Alternatively, restrict yourself to ASCII characters, e.g. A-Z, a-z, 0-9.
 
-Pràctiques acceptables i no acceptables
+Pràctiques acceptables i inacceptables
 
 {{% table-nonheader %}}
 
@@ -51,25 +51,25 @@ Pràctiques acceptables i no acceptables
 
 {{% /table-nonheader %}}
 
-## ■ Archives and the folder structure
+## ■ Arxius i estructura de carpetes
 
 You should always include the full folder structure, that is, **Railway** and **Train**, when istributing outes or trains. This will make it easiest for people to understand where they need to extract the ontent to. Never just include a subdirectory such as *YourNameHere* that is supposed to be extracted to the Railway\Sound folder, for example. Only the more experienced users will enerally e able to figure out where to put such content to by examining the files or their extensions.
 
-Pràctiques acceptables i no acceptables
+Pràctiques acceptables i inacceptables
 
 {{% table-nonheader %}}
 
 | <font color="Green">✓</font> | Include the two base folders **Railway** or **Train**, best both. |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Red">✗</font>   | Just include some subdirectory or files directly and expect users to figure out how to handle this. |
+| <font color="Red">✗</font>   | Incloure només subcarpetes i fitxers directament i esperar que els usuaris sàpiguen què fer-ne. |
 
 {{% /table-nonheader %}}
 
-## ■ Errors and warnings
+## ■ Errors i avisos
 
 Generally, your route should be free of errors. Please note that openBVE distinguishes between errors and warnings. An error is something definately wrong with your coding that should be fixed immediately. A warning is usually only raised to encourage inspection of potentially ambiguous code or code that might not have been meant the way it was written. In order to inspect your routes and trains for errors and warnings, go to the Options menu in openBVE and enable eporting them. RouteViewer and ObjectViewer always report such messages. Please note that the arious tools and openBVE itself might report a different set of messages as they don't share all the ame functionality. Distributing add-ons containing errors might give users the impression that omething was incompletely downloaded or was incorrectly packaged, and should generally be voided.
 
-Pràctiques acceptables i no acceptables
+Pràctiques acceptables i inacceptables
 
 {{% table-nonheader %}}
 
@@ -77,7 +77,7 @@ Pràctiques acceptables i no acceptables
 | ---------------------------- | ------------------------------------------------------------ |
 | <font color="Green">✓</font> | Distribute add-ons that are eventually free of errors (not necessarily of warnings). |
 | <font color="Red">✗</font>   | Never inspect your add-ons for errors by disabling the error report or by ignoring the messages. |
-| <font color="Red">✗</font>   | Distribute an add-on that contains errors.                   |
+| <font color="Red">✗</font>   | Distribuir continguts que continguin errors.                   |
 
 {{% /table-nonheader %}}
 
