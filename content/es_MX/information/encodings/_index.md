@@ -1,14 +1,14 @@
 ---
-title: Codificación de carácter
+title: Codificación de caracter
 weight: 1
 ---
 
-<font color="Gray">Esta página describe que es codificación de caracteres y como deberían ser utilizado</font>
+<font color="Gray">Esta página describe que es codificación de caracteres y como debería ser utilizado</font>
 
 ■ Vista general
 ------
 
-Una codificación de caracteres es una manera de traducir caracteres en bytes para que así puedan ser almacenados en el disco duro. En el comienzo, un byte (256 estados) eran usados para codificar un carácter. Debido a que existen distintos sistemas de escritura alrededor del mundo con diferentes requisitos para los caracteres sean codificados, hay un montón de codificadores diferentes que son de uso alrededor del mundo. Problematicamente, en la codificación de un archivo de texto no es conocido en ventaja, malinterpretando la codificación puede resultar en un mojibake (secuencia de caracteres sin significado).
+Una codificación de caracteres es una manera de traducir caracteres en bytes para que así puedan ser almacenados en el disco duro. En el comienzo, un byte (256 estados) eran usados para codificar un caracter. Debido a que existen distintos sistemas de escritura alrededor del mundo con diferentes requisitos para los caracteres sean codificados, hay un montón de codificadores diferentes que son de uso alrededor del mundo. Problemáticamente, en la codificación de un archivo de texto no es conocido en ventaja, malinterpretando la codificación puede resultar en un mojibake (secuencia de caracteres sin significado).
 
 Ejemplo de la codificación Japonesa en Shift_JIS (requiere unas fuentes apropiadas disponibles):
 
@@ -16,35 +16,35 @@ Ejemplo de la codificación Japonesa en Shift_JIS (requiere unas fuentes apropia
 ひらがなカタカナ漢字  
 {{% /code %}}
 
-The byte sequence generated from the previous example in Shift_JIS:
+La secuencia de byte generado por el previo ejemplo en Shift_JIS:
 
 {{% code %}}  
 82 D0 82 E7 82 AA 82 C8 83 4A 83 5E 83 4A 83 69 8A BF 8E 9A  
 {{% /code %}}
 
-What happens if the byte sequence is misinterpreted as being ISO 8859-1 (Latin-1) instead of Shift_JIS: 
+Que ocurre si la secuencia de byte es mal interpretado usando ISO 8859-1  (Latin-1) en vez de Shift_JIS:
 
 {{% code %}}  
 ‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš  
 {{% /code %}}
 
-Usually, one particular encoding only allows to use the writing system for which it was designed for. Unicode, a standard which covers basically all characters as used in writing systems throughout the world, provides a solution here.
+Por lo general, una codificación particular solo permite usar el sistema de escritura para el cual fue diseñado. Unicode, un estandard el cual cubre básicamente todos los caracteres y ha sido usado en sistemas de escritura a través del mundo, otorgando una solución a esto.
 
-While Unicode is wide-spread today, there are still some issues. First of all, Unicode is not directly a character encoding. Instead, so-called Unicode Transformation Formats (UTF) provide the means to encode particular characters. Transformation formats frequently used are UTF-8 and UTF-16.
+Mientras que Unicode es una amplia gama hoy en día, tiene sus pequeños inconvenientes. Primero que todo, Unicode no usa codificación de caracter directo. En vez de esto, la así llamada Unicode Transformation Formats (UTF) provee el significado particular de caracteres. los formatos de transformación frecuentemente usados son UTF-8 y UTF-16.
 
-Route and train files are usually, for compatibility reasons, allowed to be encoded in any arbitrary encoding. As the encoding is not known in advance, the user will need to select the correct encoding for the route and the train in the settings tab in the main menu. Of course this is a nuisance and should be avoided somehow.
+Las rutas y los trenes por lo general, debido a razones de compatibilidad, esta permitido de codificarse en cualquier codificación arbitraria. Como la codificación no es conocida en adelante, el usuario necesitará seleccionar la codificación correcta para la ruta y el tren en la pestaña configuración en el menú principal. Por supuesto, esto es molesto y debe ser evitado de cualquier forma.
 
-## ■ The Byte Order Mark
+## ■ El byte de orden marca
 
-UTF-16 descends from a character encoding (UTC-2) which always used two bytes to encode one character. As such, the order of those two bytes matters. In order to know in which order the bytes appear, a so-called byte order mark is frequently prepended to the text, usually automatically and transparently by the text editor. The byte order mark provides decoders a means of detecting in which byte order the file was saved in. Additionally, the byte order mark provides a fairly safe way of detecting that the text file is saved in Unicode in the first place.
+UTF-16 es descendente de la codificación de caracter (UTC-2), el cual siempre ha usado dos bytes para codificar un caracter. Como tal, el orden de esos dos bytes importan. En orden de conocer en qué orden los bytes aparecen, el así llamado byte de orden marca es predispuesto frecuentemente en el texto, por lo general automáticamente y transparentemente en el editor de texto. El byte de orden marca provee a los decodificadores el significado detectando en qué orden de byte el archivo fue guardado. Adicionalmente, el bye de orden marca provee una manera bastante segura de detectar que el archivo fue guardado en Unicode en primer lugar.
 
-While not technically necessary, the byte order mark is also frequently used for UTF-8. As UTF-8 does not have a byte order issue, the sole purpose of using a byte order mark with UTF-8 is to provide a means to flagging the file as being encoded in UTF-8.
+Mientras que esto no es técnicamente necesario, el byte de orden marca es también frecuentemente usado por UTF-8. Así como UTF-8 no tiene problema para ordenar byte, el hecho del propósito de usar un byte de orden marca con UTF-8 es para proveer significado de identidad al archivo como codificado en UTF-8.
 
-As said, while Unicode allows to encode virtually all characters used in all writing systems around the world, it does not necessarily make working with text files easier if the encoding to be used was not agreed on.
+Así como se ha dicho, mientras que Unicode permite codificar virtualmente todos los caracteres usados en todos los sistemas de escritura alrededor del mundo, esto no necesariamente haga funcionar con todos los archivos de texto más facilmente si el codificador a ser utilizado no fue acordado.
 
-Using a byte order mark provides openBVE the ability to automatically detect the encoding for each individual file. If you have a good text editor, you will not only be able to select the encoding manually, but also if you want to save with a byte order mark or not. Notepad (Windows) always saves with a byte order mark if UTF-8 is selected as the character encoding upon saving the file, to make an acceptable example.
+Usar un byte de orden marca provee a openBVE la habilidad de automáticamente detectar la codificación para cada archivo. Si usted tiene un buen editor de texto, no solamente estarás disponible a seleccionar la codificación manualmente, pero también si deseas guardar con un byte de orden marca o no. Notepad (Windows) siempre guarda con un byte de orden de marca si UTF-8 es seleccionado como la codificación de caracter al guardar el archivo, para así hacer un ejemplo aceptable.
 
-Technically, the byte order mark is the first bytes of a particular text file. The byte order marks which can be automatically detected by openBVE are:
+Tecnicamente, el byte de orden de marca son los primeros bytes de un archivo particular de texto. El byte de orden marca, el cual puede ser detectado por openBVE son los siguientes:
 
 {{% table %}}
 
