@@ -41,3 +41,7 @@ weight = 5
 contentDir = "content/zh"
 languageName = "Chinese"
 weight = 6
+[languages.ko]
+contentDir = "content/ko"
+languageName = "한국어"
+weight = 7
