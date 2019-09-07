@@ -1,120 +1,120 @@
 ---
-title: "**.csv** ルートデータ形式"
-linktitle: CSVルート
+title: The **.csv** route format
+linktitle: The CSV route
 weight: 1
 ---
 
-➟ [クイックリファレンス...]({{< ref "/routes/csv_quick/_index.md" >}}) 
+➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ 概要
+## ■ Contents
 
 {{% contents %}}
 
-- [1.概観](#overview)
-- [2.文法](#syntax)
-- [3. 前処理](#preprocessing)
-- [4.  Options 名前空間](#options)
-- [5. Route 名前空間](#route)
-- [6. Train 名前空間](#train)
-- [7. The Structure 名前空間](#structure)
-- [8. Texture 名前空間](#texture)
-- [9. Cycle 名前空間](#cycle)
-- [10. Signal 名前空間](#signal)
-- [11. Track 名前空間](#track)
-  - [11.1. レール](#track_rails)
-  - [11.2. ジオメトリ](#track_geometry)
-  - [11.3. オブジェクト](#track_objects)
-  - [11.4. 駅](#track_stations)
-  - [11.5. 信号と速度制限](#track_signalling)
-  - [11.6. 保安装置](#track_safety)
-  - [11.7. その他](#track_misc)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Preprocessing](#preprocessing)
+- [4. The Options namespace](#options)
+- [5. The Route namespace](#route)
+- [6. The Train namespace](#train)
+- [7. The Structure namespace](#structure)
+- [8. The Texture namespace](#texture)
+- [9. The Cycle namespace](#cycle)
+- [10. The Signal namespace](#signal)
+- [11. The Track namespace](#track)
+  - [11.1. Rails](#track_rails)
+  - [11.2. Geometry](#track_geometry)
+  - [11.3. Objects](#track_objects)
+  - [11.4. Stations](#track_stations)
+  - [11.5. Signalling and speed limits](#track_signalling)
+  - [11.6. Safety systems](#track_safety)
+  - [11.7. Miscellaneous](#track_misc)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. 概観
+## <a name="overview"></a>■ 1. Overview
 
-CSVルートは、テキストファイルに記述することで路線データを作成できます。
+A CSV route allows to create a route in a text file.
 
-ファイルは任意のエンコードで記述されたプレーンテキストですが [encoding]({{< ref "/information/encodings/_index.md" >}})、好ましい選択としてはバイトオーダー付きのUTF-8です。 [parsing model]({{< ref "/information/numberformats/_index.md" >}}) に用いる数字は **ルーズ**（特に明記しない限りは）ですが、 それでも出力にあたっては *厳密な* 出力をすることが望ましいです。  ファイルは任意のフォルダに格納できますが、カレントフォルダもしくは相対パスは *Railway* と *Train* フォルダ 以下に存在しなければなりません。 ファイル名は任意ですが、 拡張子は必ず **.csv** を用います。 ファイルは基本的に上から下に向かって解釈されていき、各行は式ごとに分割され、左から右に向かって解釈されていきます。
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose** (unless otherwise stated), however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside any folder whose current or parent folder includes the *Railway* and *Train* folders. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom, where each line is split into expressions, which are interpreted from left to right.
 
-ルートファイルは、(Structure 名前空間)で定義された一連の命令セットにより、ルートデータ内で一貫して共通で利用されます 。 路線データ向けの追加のプロパティ、路線側が定義した既定の列車、沿線の背景のイメージファイルも同様に定義することができます。 最後に、ルートファイルは Track 名前空間でのコマンドにより指示します。 ここでは、 線路の座標 (殆どの場合、単位はメートル) を指定することにより、線路をカーブさせるタイミングや駅を設置したり、 壁や土手などを開始したり終わらせたりします。一般的には、 Track 名前空間はその他の名前空間を予め記述し、定義した後に記述する必要があります。
+The route file consists of a series of commands to define the objects which are used throughout the route (Structure namespace). Additional properties for the route, for the default train to be used and for the background images to be used can also be defined. At last, the route file will contain instructions from the Track namespace. Here, track positions (usually in meters) are used to define when the track should curve, when stations are to be placed, when a wall should start and end, and so on. Generally speaking, instructions from the Track namespace should be used after using instructions from any of the other namespaces.
 
-ルートフォーマットでは、暗黙の規定として開始や終了命令を実行することができない rail 0 が仮定されます。 代わりに、それは路線の最初から最後まで存在し続け、プレイヤーが運転する列車は必ずここを走行します。 レール0 、またその他のレールは視覚的効果だけでなく、 [Track Following Object]({{< ref "routes/xml/trackfollowingobject/_index.md" >}}) にも用いられます。
+The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "routes/xml/trackfollowingobject/_index.md" >}}).
 
-幾何学的に、カーブや勾配は暗黙の ｒａｉｌ ０ に対して作用しますが、 その他のすべてのレールは rail 0 に相対的に連動して定義され、 rail 0 のカーブや勾配に従って追従します。 オーバーライドされない限りファイルフォーマットではブロック長は25mの固定長で構築され、 特定のコマンドは25mのブロック単位でしか用いることができません。 オブジェクトの配置は、常に直線的に接続する非曲線座標系を想定しています。
+Geometrically, you can curve and pitch the implicit rail 0, while all other rails are defined relative to rail 0 and follow rail 0 into curves and pitch changes. Unless overridden, the file format is built around a fixed block size of 25 meters length, and it is only possible for certain commands to be used on 25 meter block boundaries. The placement of objects always assumes a non-curved coordinate system which connects blocks linearly.
 
-➟ [CSV ルートフォーマットのクイックリファレンスも参照して下さい...]({{< ref "/routes/csv_quick/_index.md" >}})
+➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. 文法
+## <a name="syntax"></a>■ 2. Syntax
 
-ファイルの各行の [ホワイトスペース]({{< ref "/information/whitespaces/_index.md" >}}) は、各行の行頭と行末では無視されます。 この時、各行はコンマ(U+002C)で区切られた個々の式に分割されます。 従って、各行は次のような形式をとります。
+For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
 
 {{% command %}}  
-*式<sub>1</sub>*, *式<sub>2</sub>*, *式<sub>3</sub>*, ..., *式<sub>n</sub>*  
+*Expression<sub>1</sub>*, *Expression<sub>2</sub>*, *Expression<sub>3</sub>*, ..., *Expression<sub>n</sub>*  
 {{% /command %}}
 
-次に、其々の式は次の形式のいずれかをとります:
+In turn, each expression can be of any of the following forms:
 
-##### ● コメント
+##### ● Comments
 
-コメントはパーサーによって完全に無視されます。 コメントを記述するには行頭をセミコロン (U+003B)で始める必要があります。
+A comment is completely ignored by the parser. To form a comment, the expression must begin with a semicolon (U+003B).
 
-##### ● 軌道の位置と長さ
+##### ● Track positions and lengths
 
 {{% command %}}  
 *Position*  
 {{% /command %}}  
-負の数でない [厳密な]({{< ref "/information/numberformats/_index.md" >}}) 浮動小数点数で線路の距離程に対応します。 後続するすべてのコマンドは、Track名前空間からこの線路の距離程に関連付けられます。
+A non-negative [strict]({{< ref "/information/numberformats/_index.md" >}}) floating-point number corresponding to a track position. All subsequent commands from the Track namespace are associated to this track position.
 
 {{% command %}}  
-*パート<sub>1</sub>*:*パート<sub>2</sub>*:...:*パート<sub>n</sub>*  
+*Part<sub>1</sub>*:*Part<sub>2</sub>*:...:*Part<sub>n</sub>*  
 {{% /command %}}  
-これは、Options.UnitOfLengthと組み合わせて距離程の表現を用いるより複雑な方法です。 其々の *パート<sub>i</sub>* は [厳密な]({{< ref "/information/numberformats/_index.md" >}}) 浮動小数点数です。 *パート<sub>1</sub>* は *係数<sub>1</sub>*と乗算し, *パート<sub>2</sub>* は *係数<sub>2</sub>*など、  すべての要素に対して行われ、最終的な距離程をなします。 このパートは負でない数でなければなりません。 パートはコロン (U+003A)で分割されます。 要素の定義の詳細については Options.UnitOfLength を参照して下さい。
+This is a more complex way of specifying track positions for use in conjunction with Options.UnitOfLength. Each of the *Part<sub>i</sub>* is a [strict]({{< ref "/information/numberformats/_index.md" >}}) floating-point number. *Part<sub>1</sub>* will be multiplied with *Factor<sub>1</sub>*, *Part<sub>2</sub>* with *Factor<sub>2</sub>*, and so on, then all products are added together to form the final track position. This track position must be non-negative. The parts are separated by colons (U+003A). Please consult Options.UnitOfLength for further information on how to define the factors.
 
-コマンド内において、長さを表す引数はどこにおいても、コロン表記で同様に記述することができます。 そのような場合は <font color="green">緑</font> でハイライトされます。
+Wherever arguments in commands represent lengths, they can also be entered using the colon notation. These cases are highlighted in <font color="green">green</font> in the following.
 
-*n* ユニットが Options.UnitOfLength を通じて定義されている場合でも、 いくつかのパラメータはコロン表記で記載されていても右側から結合されます。 つまり、左側のパラメータはスキップされます。 従って、 *0:0:2*、 *0:2*、 *2* の表記は全て同様の意味を示します。 
+When *n* units are defined via Options.UnitOfLength, but fewer parameters are given using the colon notation, the parameters are right-associative, meaning, the parameters on the left are those which are skipped. Therefore, each of the following lengths are equivalent: *0:0:2*, *0:2*, and *2*.
 
-##### ● コマンド
+##### ● Commands
 
-引数のないコマンド:
-
-{{% command %}}  
-*コマンド名*  
-{{% /command %}}
-
-引数のあるコマンド:
+Commands without arguments:
 
 {{% command %}}  
-*コマンド名* *引数<sub>1</sub>*;*引数<sub>2</sub>*;*引数<sub>3</sub>*;...;*引数<sub>n</sub>*  
-*コマンド名*(*引数<sub>1</sub>*;*引数<sub>2</sub>*;*引数<sub>3</sub>*;...;*引数<sub>n</sub>*)  
+*NameOfTheCommand*  
 {{% /command %}}
 
-インデックスと引数を両方伴うコマンド:
+Commands with arguments:
 
 {{% command %}}  
-*コマンド名*(*インデックス<sub>1</sub>*;*インデックス<sub>2</sub>*;...;*インデックス<sub>m</sub>*) *引数<sub>1</sub>*;*引数<sub>2</sub>*;*引数<sub>3</sub>*;...;*引数<sub>n</sub>*  
-*コマンド名*(*インデックス<sub>1</sub>*;*インデックス<sub>2</sub>*;...;*インデックス<sub>m</sub>*).*サフックス* *引数<sub>1</sub>*;*引数<sub>2</sub>*;*引数<sub>3</sub>*;...;*引数<sub>n</sub>*  
-*コマンド名*(*インデックス<sub>1</sub>*;*インデックス<sub>2</sub>*;...;*インデックス<sub>m</sub>*).*サフィックス*(*引数<sub>1</sub>*;*引数<sub>2</sub>*;*引数<sub>3</sub>*;...;*引数<sub>n</sub>*)  
+*NameOfTheCommand* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
+*NameOfTheCommand*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
 {{% /command %}}
 
-ルール:
-
-*コマンド名* は大文字と小文字を区別しません。 インデックスと引数はセミコロン (U+003B)で分割されます。 *コマンド名* とインデックス、引数の周囲にあるホワイトスペースは無視されます。 カッコに囲まれているホワイトスペースも同様に無視されます。
-
-インデックスを用いた場合、 開きカッコ (U+0028) と閉じカッコ (U+0029)で囲まれている必要があります。 最低一つの引数、もしくは *サフィックス* がインデックスを用いる場合必須となります。
-
-引数のエンコード方法は2種類のバリエーションがあります。 $-ディレクティブ ($Chr, $Rnd, $Sub, ...)を除き、 自由にバリアントを選択できます。 バリアント 1: 最初の引数は、少なくともコマンドから一つのスペース (U+0020) で、コマンド、インデックスもしくは *サフィックス* で区切られます。  バリアント 2: 引数は、開き括弧 (U+0028) と閉じ括弧 (U+0029) に囲まれます。 後者の場合、 *サフィックス* は インデックスと接続して用いる場合には必須です。 括弧に囲まれる其々のホワイトスペースは無視されます。
-
-一部のコマンドにおいて、 *サフィックス* は、引数のエンコードに用いるスタイルに関係なく必須であることに注意して下さい。 その場合 *サフィックス* は **太字** で記述され、 オプションの場合は <font color="gray">灰色</font> になります。
-
-##### ●  **With** ステートメント
+Commands with indices and arguments:
 
 {{% command %}}  
-With *プレフィックス*  
+*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*) *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
+*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
+*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
 {{% /command %}}
 
-このステートメントの後、ピリオド (U+002E) で始まるすべてのコマンドは、 *プレフィックス*が付加されます。 例:
+Rules:
+
+*NameOfTheCommand* is case-insensitive. Indices and arguments are separated by semicolons (U+003B). White spaces around *NameOfTheCommand* and any of the indices and arguments are ignored. White spaces surrounding any of the parentheses are also ignored.
+
+If indices are used, these are enclosed by opening parentheses (U+0028) and closing parentheses (U+0029). At least one argument, or a *Suffix* is mandatory when using indices.
+
+There are two variations on how to encode arguments. Except for the $-directives ($Chr, $Rnd, $Sub, ...), you can freely choose which variant to use. Variant 1: The first argument is separated from the command, indices or *Suffix* by at least one space (U+0020). Variant two: The arguments are enclosed by opening parentheses (U+0028) and closing parentheses (U+0029). In the latter case, *Suffix* is mandatory when used in conjunction with indices. White spaces surrounding any of the parentheses are ignored.
+
+Please note that in some commands, *Suffix* is mandatory regardless of the style you use to encode arguments. In the following, *Suffix* will be **bolded** when it is mandatory, and <font color="gray">grayed</font> when it is optional.
+
+##### ● The **With** statement
+
+{{% command %}}  
+With *Prefix*  
+{{% /command %}}
+
+All subsequent commands that start with a period (U+002E) are prepended by *Prefix*. For example:
 
 {{% code %}}  
 With Route  
@@ -122,88 +122,88 @@ With Route
 .Timetable 1157_M  
 {{% /code %}}
 
-上記の例は以下と同じ意味をなします:
+Is equivalent to:
 
 {{% code %}}  
 Route.Gauge 1435  
 Route.Timetable 1157_M  
 {{% /code %}}
 
-## <a name="preprocessing"></a>■ 3. 前処理
+## <a name="preprocessing"></a>■ 3. Preprocessing
 
-ルートファイルのコマンドが実際に解釈される前には、 式は事前に処理されます。 最初に行われる処理は、 $-ディレクティブに対応する表現に置き換えます。 $Chr 、 $Rnd 、 $Sub ディレクティブは入れ子にすることができますが、 他方で $Include 、 $If 、 $Else 、 $EndIf は別のディレクティブにさらに入れ子にすることはできません。
+Before any of the commands in the route file are actually interpreted, the expressions are preprocessed. The first thing done is to replace any occurrences of the $-directives within an expression from right to left. The $Chr, $Rnd and $Sub directives may be nested in any way, while $Include, $If, $Else and $EndIf must not appear inside another directive.
 
 {{% warning-nontitle %}}
 
-$-ディレクティブの文法は自由には選べず、以下に示す形で従わなければなりません。
+The syntax for the $-directives cannot be freely chosen, but must adhere to the forms presented below.
 
 {{% /warning-nontitle %}}
 
 ---
 
 {{% command %}}  
-$Include(*ファイルパス*)  
-$Include(*ファイルパス*:*距離程のオフセット*)  
-$Include(*ファイルパス<sub>1</sub>*; *確率<sub>1</sub>*; *ファイルパス<sub>2</sub>*; *確率<sub>2</sub>*; ...)  
+$Include(*File*)  
+$Include(*File*:*TrackPositionOffset*)  
+$Include(*File<sub>1</sub>*; *Weight<sub>1</sub>*; *File<sub>2</sub>*; *Weight<sub>2</sub>*; ...)  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***ファイルパス<sub>i</sub>***: メインとなるルートファイル (CSV/RW) と同一のルートファイル形式を持つ、単一のファイルのパス付きファイル名。
-***確率<sub>i</sub>***: 正の浮動小数点数で、対応するファイルがインクルードされる確率を示します。  
+***File<sub>i</sub>***: A file to include of the same format (CSV/RW) as the main file.  
+***Weight<sub>i</sub>***: A positive floating-point number giving a probability weight for the corresponding file.  
 {{% /command-arguments %}}
 
-このディレクティブは、対応する確率に基づいて指定されたファイルからランダムに選択して、そのファイルの中身を指定されたメインファイルに含めます。 選ばれたファイルの中身は $Include ディレクティブの位置に差し替えられますので、それはすなわち例えば距離程と直前に使われたWithステートメントに注意を払わなければならないことを意味します。 引数処理において一番最後の確率が省略された場合、1として扱われます。
+This directive chooses randomly from the specified files based on their associated probabilities and includes the content from one selected file into the main file. The content is copied into the place of the $Include directive, meaning that you need to take care of track positions and the last used With statement, for example. If the last weight in the argument sequence is omitted, it is treated as 1.
 
-$Include ディレクティブは、大きなファイルを小さなファイルに分割したり、 共通のセクションのコードを複数のルートで共有したり、 大きなコードブロックからランダムに選択させたりするのに役立ちます。  インクルードされたファイルの中に更にファイルがインクルードされる場合がありますが、 それらが循環依存関係になっていないかどうかを確認し、注意する必要があります。  例えばファイル A が ファイル B をインクルードしている場合、 ファイル B がファイル A をインクルードしてしまっている場合などです。 (必要な場合を除き)インクルードファイルには.csvとは異なる拡張子を用いてユーザーが誤ってメインメニューから選択できないように考慮しておく必要があります。
+The $Include directive is useful for splitting up a large file into smaller files, for sharing common sections of code between multiple routes, and for choosing randomly from a larger block of code. Please note that the included files may themselves include other files, but you need to make sure that there are no circular dependencies, e.g. file A including file B, and file B including file A, etc. You should use a file extension different from .csv for included files so that users cannot accidentally select them in the main menu (except where this is desired).
 
-*ファイル<sub>i</sub>* の後に :*TrackPositionOffset* が続く場合、 インクルードされるファイル内のすべての式は指定された距離程が  **メートル単位** でオフセットされます。 例えば、 $Include(stations.include:2000) は、part.includeがインクルードされる前に、ファイルに含まれるすべての距離程が2000メートル前方にシフトされます。 重要で理解しておかなければならないポイントとして、 "距離程" は$-ディレクティブが処理されるまでは実際に理解されないため、インクルードされるファイル内のすべての式は インクルードされた後実際の距離程に後にオフセットさせるためのフラグを内部的に立てるだけであることに注意して下さい。 即ちこれが意味する所として、インクルードされたファイル内に 1$Rnd(2;8)00 のような記述があったとして、まだ実際のオフセット後の距離程が形成されていない段階であっても、それらは正しくオフセットされます。
+If any of the *File<sub>i</sub>* is followed by :*TrackPositionOffset*, then all expressions in the included file are offset by the specified track position **in meters**. For example, $Include(stations.include:2000) shifts all track positions in the part.include file by 2000 meters before including them. It is important to understand that "track positions" are not actually understood until after the $-directives have been processed, so all expressions in the included file are simply flagged to be offset later should they form track positions then. This means that if the included file contains expressions such as 1$Rnd(2;8)00, these are offset, too, even though at this stage, they do not form track positions yet.
 
 {{% warning-nontitle %}}
 
-距離程のオフセット機能は release 1.2.11 以降に対応します。
+The track position offset feature is only available in the development release 1.2.11 and above.
 
 {{% /warning-nontitle %}}
 
 ---
 
 {{% command %}}  
-$Chr(*アスキーコード番号*)  
+$Chr(*Ascii*)  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***アスキーコード番号***:  20 から 127までの整数値、もしくは 10、13のいずれかの整数値で、 ASCIIコード表の同じ番号に対応します。
+***Ascii***: An integer in the range from 20 to 127, or 10 or 13, corresponding to an ASCII character of the same code.  
 {{% /command-arguments %}}
 
-このディレクティブは *アスキーコード番号* で示される番号に対応するASCII 文字コードの文字へ置き換えます。 これは構文規則に用いる記号などを含めたりする場合や、除去したい場合に有用です。 関連するASCII文字のリスト:
+This directive is replaced by the ASCII character represented by *Ascii*. This is useful if you want to include characters that are part of syntax rules or would be stripped away. A list of relevant characters:
 
 {{% table %}}
 
-| ASCIIコード番号 | 意味             | 文字 |
+| Code | Meaning             | Character |
 | ---- | ------------------- | --------- |
-| 10   | 改行             | *newline* |
-| 13   | 改行             | *newline* |
-| 20   | スペース               | *space*   |
-| 40   | 開き括弧 | (         |
-| 41   | 閉じ括弧 | )         |
-| 44   | カンマ               | ,         |
-| 59   | セミコロン           | ;         |
+| 10   | Newline             | *newline* |
+| 13   | Newline             | *newline* |
+| 20   | Space               | *space*   |
+| 40   | Opening parentheses | (         |
+| 41   | Closing parentheses | )         |
+| 44   | Comma               | ,         |
+| 59   | Semicolon           | ;         |
 
 {{% /table %}}
 
-$Chr(13)$Chr(10) のシーケンスは単一の改行として扱われます。 $Chr(59) が挿入された場合、 それが使用されている場所に応じてコメントの開始、もしくは引数の区切り文字として解釈されます。
+The sequence $Chr(13)$Chr(10) is handled as a single newline. Inserting $Chr(59) can be interpreted as a comment starter or as an argument separator, depending on where it is used.
 
 ---
 
 {{% command %}}  
-$Rnd(*下限の数値*; *上限の数値*)  
+$Rnd(*Start*; *End*)  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***下限の数値***: 乱数の数値の下限を表す整数値
-***上限の数値***: 乱数の上限を表す整数値
+***Start***: An integer representing the lower bound.  
+***End***: An integer representing the upper bound.  
 {{% /command-arguments %}}
 
-このディレクティブは *下限の数値* から *上限の数値* までのランダムな整数値を置き換えます。 これは例えば路線にランダム性を持たせたい時に有用です。
+This directive is replaced by a random integer in the range from *Start* to *End*. It is useful to add randomness to a route.
 
 {{% code "*Example for the use of the $Rnd directive:*" %}}  
 10$Rnd(3;5)0, Track.FreeObj 0; 1  
@@ -218,35 +218,35 @@ $Rnd(*下限の数値*; *上限の数値*)
 ---
 
 {{% command %}}  
-$Sub(*インデックス*) = *表現*  
+$Sub(*Index*) = *Expression*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***インデックス***: 変数のインデックスを表す負でない整数.  
-***表現***: 変数に格納される内容.  
+***Index***: A non-negative integer representing the index of a variable.  
+***Expression***: The expression to store in the variable.  
 {{% /command-arguments %}}
 
-このディレクティブは単一の式としてのみ表示されます。 *インデックス* で割り当てられた場所へ、 *表現* の内容で置き換えるために使用されます。 すべての割当が完了すると、 $Sub ディレクティブは空の文字列に置き換えられます。 $Rnd ディレクティブで生成された乱数値を変化させずに共用したい場合、それを保存したいときに有用です。 例については次の $Sub(*インデックス*) ディレクティブを参照して下さい。
+This directive should only appear as a single expression. It is used to assign *Expression* to a variable identified by *Index*. The whole $Sub directive is replaced by an empty string once the assignment is done. It is useful for storing values obtained by the $Rnd directive in order to reuse the same randomly-generated value. See the following definition of the $Sub(*Index*) directive for examples.
 
 {{% warning %}}
 
-#### 実装にあたってのメモ
+#### Implementation note
 
-数値以外の文字列を格納することも可能ですが、 コンマを含める際に $Chr(44) を用いてもステートメントの区切りとして機能させることはできません。 ですが、 最初の文字として $Chr(59) 含めさせて、コメントとして機能させることは可能です。 条件式に用いる場合には、 $Include もしくは $If を用いる必要があります。
+While it is also possible to store non-numeric strings, it is not possible to include commas via $Chr(44) and have them work as a statement separator. However, it is possible to store a semicolon as the first character via $Chr(59) and have it work as a comment. For conditional expressions, you should use $Include or $If, though.
 
 {{% /warning %}}
 
 ---
 
 {{% command %}}  
-$Sub(*インデックス*)  
+$Sub(*Index*)  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***インデックス***: 呼び出される変数のインデックスを表す負でない整数。 
+***Index***: A non-negative integer representing the index of the variable to retrieve.  
 {{% /command-arguments %}}
 
-このディレクティブは、 変数*インデックス*に格納されている内容に置き換えます。 変数は置き換えられる前に予め設定されていなければなりません。
+This directive is replaced by the content of the variable *Index*. The variable must have been assigned prior to retrieving it.
 
 {{% code "*Example for the use of the $Sub(Index)=Value and $Sub(Index) directives:*" %}}  
 $Sub(0) = $Rnd(3; 5)  
@@ -255,19 +255,19 @@ $Sub(0) = $Rnd(3; 5)
 1040, Track.FreeObj $Sub(0); 47  
 {{% /code %}}
 
-先の例では、3つ全ての Track.FreeObj コマンドにおいて、生成された乱数値は全て同じ数値が用いられ、FreeOBJのオブジェクトが同じレール上に配置されることが保証されます。 もし其々のFreeOBJの命令で其々 $Rnd(3;5) ディレクティブを指定した場合、 各オブジェクトはそれぞれ毎回、別のレール上に配置される可能性があります。
+In the previous example, all three Track.FreeObj commands are guaranteed to use the same randomly-generated value in order to place a free object on the same rail. If you inserted the $Rnd(3;5) directive in each of the three lines individually, the objects could be placed on different rails each time.
 
 ---
 
 {{% command %}}  
-$If(*状態*)  
+$If(*Condition*)  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***状態***: ゼロの場合は **false** 、それ以外の場合は **true** に相当する数値を表します。
+***Condition***: A number that represents **false** if zero, and **true** otherwise.  
 {{% /command-arguments %}}
 
-$If ディレクティブは、 状態が true (もしくは非ゼロの数値) と評価されたときのみ、後続の式を処理します。  $If の後に続く式の最後には、 $EndIf を記述しなければなりません。 オプションで、 $If と $EndIf の間に $Else ディレクティブを記述することができます。
+The $If directive allows to only process subsequent expressions if the specified condition evaluates to true (any non-zero number). $If must be followed by $EndIf in any subsequent expression. Optionally, an $Else directive may appear between $If and $EndIf.
 
 ---
 
@@ -275,7 +275,7 @@ $If ディレクティブは、 状態が true (もしくは非ゼロの数値) 
 $Else()  
 {{% /command %}}
 
-$Else ディレクティブは、 それに先行して記述された $If ディレクションで false (ゼロ) と 評価されたときのみ、後に続く処理を処理できます。
+The $Else directive allows to only process subsequent expressions if the condition in the preceding $If evaluated to false (zero).
 
 ---
 
@@ -283,7 +283,7 @@ $Else ディレクティブは、 それに先行して記述された $If デ�
 $EndIf()  
 {{% /command %}}
 
-$EndIf ディレクティブは、 その前に開始された $If ブロックの終了をマークするものです。
+The $EndIf directive marks the end of an $If block that was started previously.
 
 {{% code "*Example of $If, $Else and $EndIf*" %}}  
 $Sub(1) = 0  
@@ -302,11 +302,11 @@ With Track
 $If($Rnd(0;1)), .FreeObj 0; 4, $Else(), .FreeObj 0; 5, $EndIf()  
 {{% /code %}}
 
-$If ブロックは、入れ子処理をすることができます。 (最初の例のように)、もし $If/$Else/$EndIf をそれぞれ別の行に配置した場合、インデントを使用して可読性を改善させることができます。
+It is possible to nest $If blocks. If you place $If/$Else/$EndIf on separate lines, you may want to employ indentation to improve readability of the block structure (as in the first example).
 
 ---
 
-**最後に**、  $-ディレクティブの全ての処理を終えると、 ルートファイルにある全ての表現は、それに関連する距離程に従って自動的にソートされます。
+**Finally**, after the $-directives have been processed, all expressions in the route file are sorted according to their associated track positions.
 
 {{% code "*Example of a partial route file:*" %}}  
 1000, Track.FreeObj 0; 23  
@@ -329,9 +329,9 @@ Track.FreeObj 1; 42
 1050, Track.RailType 0; 1  
 {{% /code %}}
 
-## <a name="options"></a>■ 4. Options 名前空間
+## <a name="options"></a>■ 4. The Options namespace
 
-この名前空間におけるコマンドは、その他のコマンドの処理において路線ファイル全体に渡って影響を与えるオプションを提供します。 他の名前空間でコマンドを用いる前に、この名前区間のコマンドを予め実行しておく必要があります。
+Commands from this namespace provide generic options that affect the way other commands are processed. You should make use of commands from this namespace before making use of commands from other namespaces.
 
 ---
 
@@ -340,12 +340,12 @@ Track.FreeObj 1; 42
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FactorInMeters<sub>i</sub>***: 其々のユニットの長さの単位を表す浮動小数点数 *FactorInMeters1* の初期値は1で、それ以外は全て0です。
+***FactorInMeters<sub>i</sub>***: A floating-point number representing how many meters the desired unit has. The default value is 1 for *FactorInMeters1*, and 0 for all others.  
 {{% /command-arguments %}}
 
-このコマンドを用いることで、他のコマンドで用いる長さの単位を指定できます。 汎用のユニット単位を *Part<sub>1</sub>*:*Part<sub>2</sub>*:...:*Part<sub>n</sub>* と入力すると、 其々の *Part<sub>i</sub>* は *FactorInMeters<sub>i</sub>* に準ずる距離程に乗算され、 そののち全ての実体の距離程をメートル単位で生成します。 理想は Options.BlockLength を使用して、ブロック長を使用する単位の整数倍に設定すべきです。
+This command can be used to specify the unit of length to be used in other commands. When entering a generic track position of the form *Part<sub>1</sub>*:*Part<sub>2</sub>*:...:*Part<sub>n</sub>*, each of the *Part<sub>i</sub>* will be multiplied with the corresponding *FactorInMeters<sub>i</sub>*, then all of these products are added to form a single track position represented in meters. Ideally, you should set the block length to an integer multiple of any of the units you use via Options.BlockLength.
 
-単位の変換例:
+Examples of conversion factors:
 
 {{% table %}}
 

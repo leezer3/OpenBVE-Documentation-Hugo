@@ -1,256 +1,256 @@
 ---
-title: El formato de objeto **.animated**
-linktitle: El objeto ANIMADO
+title: The **.animated** object format
+linktitle: The ANIMATED object
 weight: 3
 ---
 
-## ■ Contenidos
+## ■ Contents
 
 {{% contents %}}
 
-- [1. Vista general](#overview)
-- [2. Secciones](#description)
+- [1. Overview](#overview)
+- [2. Sections](#description)
 - [3. List of infix notation operators](#operators)
-- [4. Lista de funciones](#functions)
-- [5. Lista de variables](#variables)
-- [6. Rendimiento](#performance)
-- [7. Sugerencias](#tips)
-- [8. Ejemplo de funciones](#examples)
-- [9. Gramática formal](#grammar)
+- [4. List of functions](#functions)
+- [5. List of variables](#variables)
+- [6. Performance](#performance)
+- [7. Tips](#tips)
+- [8. Example functions](#examples)
+- [9. Formal Grammar](#grammar)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Vista general
+## <a name="overview"></a>■ 1. Overview
 
-El formato ANIMADO de objeto es un formato contenido habilitandote de referir otros objetos (B3D/CSV/X) y de aplicar animación en ellos. Esto tambien permite agrupar otros objetos (incluyendo otros objetos ANIMADOS) sin animarlos.
+The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
 
-Los objetos animados también pueden ser usados en rutas CSV/RW (a menos que este explicita mente deshabilitado por algunos comandos), así como los objetos externos del tren por *extensions.cfg*, y así como la cabina 3D por el archivo *panel.animated*.
+Animated objects can be used in CSV/RW routes (unless explicitly disallowed by some commands), as train exterior objects via the *extensions.cfg*, and as 3D cabs via the *panel.animated* file.
 
-##### ● Bases
+##### ● Basics
 
-La animación es realizada por las siguientes directrices:
+Animation is performed via the following primitives:
 
-- Cambios de estado - básicamente habilitando de cambiar entre diferentes objetos en cualquier tiempo.
-- Traslación - moviendo objetos en tres direcciones independientes
-- Rotación - rotando objetos sobre los tres ejes independientes
-- Saltos de textura - habilitando el salto de coordenadas de textura en objetos en dos direcciones independientes
+- State changes - basically allowing to switch between different objects at any time
+- Translation - moving objects in three independent directions
+- Rotation - rotating objects around three independent axes
+- Texture shifts - allowing to shift the texture coordinates of objects in two independent directions
 
-##### ● Una pequeña formalidad
+##### ● A little formality
 
-El archivo es un texto plano codificado en cualquier arbitrario [codificación] ({{< ref "/information/encodings/_index.md" >}}), Sin embargo, UTF-8 con un byte de orden marca es la opción preferida. El [modelo de análisis]({{< ref "/information/numberformats/_index.md" >}}) para números es **Strict**. El nombre de archivo es arbitrario, pero debe tener la extensión **.animated**. El archivo es interpretado por cada linea, desde arriba hasta abajo.
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file name is arbitrary, but must have the extension **.animated**. The file is interpreted on a per-line basis, from top to bottom.
 
-## <a name="description"></a>■ 2. Secciones
+## <a name="description"></a>■ 2. Sections
 
-##### ● La sección [Include]
+##### ● The [Include] section
 
-Puedes usar la sección [Include] solo para incluir otros objetos, pero sin animarlos. Esto te permite de usar el archivo de objetos ANIMADOS como un contenedor de grupo de otros objetos. Puede haber cualquier cantidad de secciones [Include] dentro del archivo.
+You can use the [Include] section to just include other objects, but without animating them. This allows you to use the ANIMATED object file as a container to group other objects. There can be any number of [Include] sections within the file.
 
 {{% command %}}  
 [Include]  
 {{% /command %}}  
-Esto inicia la sección.
+This starts the section.
 
 {{% command %}}  
-*NombreArchivo<sub>0</sub>*  
-*NombreArchivo<sub>1</sub>*  
-*NombreArchivo<sub>2</sub>*  
+*FileName<sub>0</sub>*  
+*FileName<sub>1</sub>*  
+*FileName<sub>2</sub>*  
 ...  
 {{% /command %}}  
-Defina una serie de objetos B3D/CSV/X/ANIMATED que deben ser incluidas como son.
+Defines a series of B3D/CSV/X/ANIMATED objects that should be included as-is.
 
 {{% command %}}  
 **Position = X, Y, Z**  
 {{% /command %}}  
-Esto defina la posición de los objetos, basicamente te permite de separarlos con respecto al resto de los archivos de objeto ANIMADOS.
+This defines the position of the objects, basically allowing you to offset them with respect to the rest of the ANIMATED object file.
 
 ------
 
-##### ● La sección [Object]
+##### ● The [Object] section
 
-Puedes usar la sección [Object] para crear una sola animación. Esto requiere de configurar un estado a través de los parámetros de *Estados*, y de usar cualquier combinación de funciones que desees, lo cual provee control sobre la animación. Puede haber cualquier cantidad de secciones [Object] dentro del archivo.
+You can use the [Object] section to create a single animation. This requires to set up at least one state via the *States* parameter, and to use any combination of functions you want, which provide control over the animation. There can be any number of [Object] sections within the file.
 
 {{% command %}}  
 [Object]  
 {{% /command %}}  
-Esto inicia la sección.
+This starts the section.
 
 {{% command %}}  
 **Position = X, Y, Z**  
 {{% /command %}}  
-Defina la posición del objeto. Esto básicamente corresponde a un comando TranslateALL en el archivo CSV/B3D respectivamente, pero es realizado después de que cualquiera de las funciones es realizada. Por ejemplo, si deseas usar rotación, entonces ten en consideración que la rotación es efectuada sobre el origen (0,0,0). El comando *Posición* permite de re-posicionar el objeto después de que la rotación es realizada.
+Defines the position of the object. This basically corresponds to a final TranslateAll command in the respective CSV/B3D file, but is performed after any of the functions are performed. For example, if you want to use rotation, then keep in mind that rotation is done around the origin (0,0,0). The *Position* command allows you to reposition the object after the rotation is performed.
 
 {{% command %}}  
-**States = Archivo<sub>0</sub>, Archivo<sub>1</sub>, ..., Archivo<sub>n-1</sub>**  
+**States = File<sub>0</sub>, File<sub>1</sub>, ..., File<sub>n-1</sub>**  
 {{% /command %}}  
-Carga *n* objetos de extensión CSV/B3D/X. Por favor tenga en cuenta que el primer archivo indicado posee estado de indice 0. Usa múltiples archivos solo si deseas usar el cambio de estados.
+Loads *n* objects of CSV/B3D/X extension. Please note that the first file indicated has state index 0. Use multiple files only if you want to use state changes.
 
 {{% command %}}  
 **StateFunction = Formula**  
 {{% /command %}}  
-Esto defina la función para cambiar de estado. El resultado de la fórmula *Formula* es redondeado al entero mas cercano. Si el entero esta entre 0 y *n*-1, donde *n* es el numero de estados definido por los *Estados*, el estado respectivo es mostrado , de otra manera, ningún objeto es mostrado. Puedes hacer uso del ultimo si deseas que sea un objeto de encendido/apagado con un solo estado.
+This defines the function for state changes. The result of the *Formula* is rounded toward the nearest integer. If that integer is between 0 and *n*-1, where *n* is the number of states as defined via *States*, the respective state is shown, otherwise, no object is shown. You can make use of the latter if you want an object to toggle on/off with only one state.
 
 {{% command %}}  
 **TranslateXDirection = X, Y, Z**  
 **TranslateYDirection = X, Y, Z**  
 **TranslateZDirection = X, Y, Z**  
 {{% /command %}}  
-Esto defina la dirección para la función *TranslateXFunction*, *TranslateYFunction* y *TranslateZFunction*, respectivamente. Las direcciones predeterminadas son:
+These define the directions for the *TranslateXFunction*, *TranslateYFunction* and *TranslateZFunction*, respectively. The default directions are:
 
 *TranslateXDirection = 1, 0, 0*  
 *TranslateYDirection = 0, 1, 0*  
 *TranslateZDirection = 0, 0, 1*
 
-Esto significa que la función TranslateXFunction se moverá hacia la derecha predeterminado,  TranslateYFunction hacia arriba y TranslateZFunction hacia adelante, también es por eso que TranslateXFunction y así sucesivamente llevan sus nombres. Si usted define otras direcciones, entonces simplemente piensa que las tres funciones y sus direcciones asociadas como tres maneras independientes para si mover el objeto en esa dirección
+This means that TranslateXFunction will move right by default, TranslateYFunction up and TranslateZFunction forward, which is also why TranslateXFunction and so on bear their names. If you define other directions, then simply think of the three functions and associated directions as three independent ways to move the object in that direction.
 
 {{% command %}}  
 **TranslateXFunction = Formula**  
 **TranslateYFunction = Formula**  
 **TranslateZFunction = Formula**  
 {{% /command %}}  
-Esto defina la función que moverá el objeto en la dirección respectiva. La *Formula* necesita retornar la cantidad de metros a mover desde la posición inicial. Los parámetros *X*, *Y* y *Z* en la respectiva dirección son multiplicados por el resultado de la *Formula*, así que puedes por ejemplo multiplicar la formula por 2 o la dirección por 2 si es que deseas doblar la velocidad del movimiento
+These define the functions to move the object into the respective direction. The *Formula* needs to return the amount of meters to move from the initial position. The *X*, *Y* and *Z* parameters in the respective direction are multiplied by the result of *Formula*, so you could for example either multiple the formula by 2 or the direction by 2 if you want to double the speed of movement.
 
 {{% command %}}  
 **RotateXDirection = X, Y, Z**  
 **RotateYDirection = X, Y, Z**  
 **RotateZDirection = X, Y, Z**  
 {{% /command %}}  
-Esto defina la dirección para la función *RotateXFunction*, *RotateYFunction* y *RotateZFunction*, respectivamente. Las direcciones predeterminadas son:
+These define the directions for the *RotateXFunction*, *RotateYFunction* and *RotateZFunction*, respectively. The default directions are:
 
 *RotateXDirection = 1, 0, 0*  
 *RotateYDirection = 0, 1, 0*  
 *RotateZDirection = 0, 0, 1*
 
-Esto significa que la función RotateXFunction rotará sobre el eje X predeterminadamente, RotateYFunction sobre el eje Y, y RotateZFunction sobre el eje Z, también es por eso que RotateXFunction y asi sucesivamente llevan sus nombres. Si usted define otras direcciones, entonces simplemente piense de que estas tres funciones y sus direcciones asociadas como tres maneras independientes para asi rotar el objeto.
+This means that RotateXFunction will rotate around the x-axis by default, RotateYFunction around the Y-axis, and RotateZFunction around the z-axis, which is also why RotateXFunction and so on bear their names. If you define other directions, then simply think of the three functions and associated directions as three independent ways to rotate the object.
 
 {{% command %}}  
 **RotateXFunction = Formula**  
 **RotateYFunction = Formula**  
 **RotateZFunction = Formula**  
 {{% /command%}}  
-Esto defina la función para rotar a lo largo de la dirección respectiva en orden contra-reloj. La *Formula* necesita regresar el ángulo por el cual rotar en radianes. El orden que estas rotaciones son ejecutadas es: RotateXFunction (primero), RotateYFunction (después) and RotateZFunction (último). Si usted usa más de una función de rotación al momento, ten en mente este orden. De ser necesario, reescribe las direcciones predeterminadas para las rotaciones si necesitas un orden distinto.
+These define the functions to rotate along the respective direction in counter-clockwise order. The *Formula* needs to return the angle by which to rotate in radians. The order in which the rotations are performed is: RotateXFunction (first), RotateYFunction (then) and RotateZFunction (last). If you use more than one rotation function at a time, bear this order in mind. If necessary, overwrite the default directions for the rotations if you need a different order.
 
 {{% command %}}  
 **RotateXDamping = NaturalFrequency, DampingRatio**  
 **RotateYDamping = NaturalFrequency, DampingRatio**  
 **RotateZDamping = NaturalFrequency, DampingRatio**  
 {{% /command %}}  
-Esto defina la amortiguación para la función correspondiente. Si no es usado, la amortiguación no será ejecutada. *NaturalFrequency* es un valor no negativo correspondiente a la frecuencia angular del supuesta oscilación sin amortiguación en radianes por segundo. *DampingRatio* es un valor no negativo indicando el tipo de amortiguación. Valores entre 0 y 1 representa baja amortiguación, 1 representa amortiguación crítica, y valores superiores a 1 representan sobre-amortiguación
+These define damping for the corresponding functions. If not used, damping will not be performed. *NaturalFrequency* is a non-negative value corresponding to the angular frequency of an assumed undamped oscillator in radians per second. *DampingRatio* is a non-negative value indicating the type of damping. Values between 0 and 1 represent under-damping, 1 represents critical damping, and values above 1 represent over-damping.
 
 {{% command %}}  
 **TextureShiftXDirection = X, Y**  
 **TextureShiftYDirection = X, Y**  
 {{% /command %}}  
-Esto defina las direcciones para la función *TextureShiftXFunction* y*TextureShiftYFunction*, respectivamente. Las direcciones por defecto son:
+These define the directions for the *TextureShiftXFunction* and *TextureShiftYFunction*, respectively. The default directions are:
 
 *TextureShiftXDirection = 1, 0*  
 *TextureShiftYDirection = 0, 1*
 
-Esto significa que TextureShiftXFunction cambiará la textura a la derecha por defecto, y TextureShiftYFunction hacia abajo, también es por eso que TextureShiftXFunction y así sucesivamente llevan sus nombres. Si usted defina otras direcciones, entonces simplemente piense que estas dos funciones y sus direcciones asociadas como dos maneras independientes de cambiar las texturas en los objetos.
+This means that TextureShiftXFunction will shift the texture right by default, and TextureShiftYFunction down, which is also why TextureShiftXFunction and so on bear their names. If you define other directions, then simply think of the two functions and associated directions as two independent ways to shift textures on the objects.
 
 {{% command %}}  
 **TextureShiftXFunction = Formula**  
 **TextureShiftYFunction = Formula**  
 {{% /command %}}  
-Esto defina las funciones para cambiar las texturas en la dirección respectiva. La textura es cambiada por el valor retornado de *Formula* en coordenadas de textura. La parte entra del resultado es ignorada, y la parte fraccional de 0.5 representa mover la textura a la mitad. El comando SetTextureCoordinate en el objeto defina las coordenadas, que son después agregadas en el resultado de estas formulas.
+These define the functions to shift the texture in the respective direction. The texture is shifted by the return value of *Formula* in texture coordinates. The integer part of the result is ignored, and a fractional part of 0.5 represents moving the texture half way. The SetTextureCoordinate commands in the object file define the coordinates, which are then added the outcome of these formulas.
 
 {{% command %}}  
 **TrackFollowerFunction = Formula**  
 {{% /command %}}  
-Esto defina la función el cual mueve un objecto a lo largo de la vía de **Rail 0**. La *Formula* debe retornar la distancia en metros, para así el objeto sea movido, respetando las curvas y los cambios de altura de **Rail 0**
+This defines the function which moves an object along the path of **Rail 0**. *Formula* must return a distance in meters, for which the object is then moved, respecting the curves and height changes of **Rail 0**.
 
 {{% command %}}  
-**TextureOverride = Valor**  
+**TextureOverride = Value**  
 {{% /command %}}  
-*Valor* = **Timetable**: Todas las caras mostrarán la imagen del itinerario configuradas por las rutas CSV/RW.  
-*Valor* = **None**: Las texturas originales se mostrarán en las caras (conducta predeterminada).
+*Value* = **Timetable**: All faces will show the timetable bitmap as set up by CSV/RW routes.  
+*Value* = **None**: The original textures will be displayed on the faces (default behavior).
 
 {{% command %}}  
-**RefreshRate = Segundos**  
+**RefreshRate = Seconds**  
 {{% /command %}}  
-Esto defina la mínima cantidad de tiempo que necesita transcurrir para que la función sea actualizada. Un valor de 0 obliga a la función a ser actualizada cada cuadro por segundo. Por favor tenga en cuenta que los objetos fuera del rango visual puedan ser actualizados menos frecuentemente sin importar este parámetro. Usa RefreshRate cuando no necesites una animación suave (en orden de optimizar los recursos), o cuando deliberadamente quieras que el objeto este actualizado con un intervalo personalizado.
+This defines the minimum amount of time that needs to pass before the functions are updated. A value of 0 forces the functions to be updated every frame. Please note that objects outside of the visual range might be updated less frequently regardless of this parameter. Use RefreshRate when you don't need a perfectly smooth animation (in order to optimize performance), or when you deliberately want the object to be only updated in fixed intervals.
 
 ------
 
 {{% warning %}}
 
-#### Nota de compatibilidad con openBVE 2
+#### openBVE 2 compatibility note
 
-Durante el desarrolo de openBVE (v0.9) y durante el desarrollo del formato de objeto animado, hay algunos comandos en existencia que terminan en *RPN*, asi como *TranslateXFunctionRPN*. Estos comandos nunca se han hecho en cualquier lanzamiento oficial (v1.0) y nunca fueron pensados en ser usados fuera del entorno de desarrollo. Mientras estos siguen aún disponibles sin documentación, serán quitados en openBVE 2. Si estas usando algunos de estos comandos, por favor deshagase de ellos lo mas posible.
+During the development of openBVE (v0.9) and during the development of the animated object format, there were certain commands in existance ending in *RPN*, such as *TranslateXFunctionRPN*. These commands never made it into any official release (v1.0) and were thus never meant to be used outside of development environments. While they are still available undocumentedly, they will be removed for openBVE 2. If you are using these commands, please get rid of them as soon as possible.
 
 {{% /warning %}}
 
 ------
 
-##### ● Sobre las formulas
+##### ● About the formulas
 
-Primero que todo, la notación aritmética, lo que puedes teclear dentro del parámetro *Formula*, es convertido en una notación funcional. Por cada notación aritmética, hay una notación funcional correspondiente. Algunas funciones no tienen un operador aritmético y solo pueden ser teclados en notación funcional. Para los operadores, la precedencia juega un rol importante. Puedes usar paréntesis para sobreponer el orden de precedencia así como generalmente en una fórmula matemática. Los nombres de las funciones no distinguen entre mayúsculas y minúsculas.
+First of all, infix notation, which is what you can enter for *Formula*, is converted into functional notation. Thus for every infix notation, there is a corresponding functional notation. Some functions do not have an infix operator and can thus only be entered in functional notation. For operators, precedence plays an important role. You can use parantheses to override the order of precedence just as in any usual mathematical formula. Names of functions are case-insensitive.
 
 {{% warning-nontitle %}}
 
-Por favor tenga en cuenta que el resultado de cualquier operación matemática o función pudiera ser infinito, intermediado o no real, 0 es retornado. Un error de desborde no puede ser prevenido, Así que debes tomar en cuenta esto.
+Please note that if the result of any mathematical operation or function would be infinity, indeterminate or non-real, 0 is returned. Numeric overflow is not prevented, so you need to take that into account yourself.
 
 {{% /warning-nontitle %}}
 
-## <a name="operators"></a>■ 3. Lista de operadores aritméticos de notación
+## <a name="operators"></a>■ 3. List of infix notation operators
 
-##### ● Aritmética básica
+##### ● Basic arithmetics
 
 {{% table %}}
 
-| Aritmética   | Funcionalidad       | Descripción               |
+| Infix   | Functional       | Description               |
 | :------ | :--------------- | :------------------------ |
-| `a + b` | `Suma[a,b, ...]` | Representa adición       |
-| `a - b` | `Sustraer[a,b]`  | Representa sustracción    |
-| `-a`    | `Menos[a]`       | Convierte a negativo el número        |
-| `a * b` | `Por[a,b,...]` | Representa multiplicación |
-| `a / b` | `Dividir[a,b]`    | Representa división       |
+| `a + b` | `Plus[a,b, ...]` | Represents addition       |
+| `a - b` | `Subtract[a,b]`  | Represents subtraction    |
+| `-a`    | `Minus[a]`       | Negates the number        |
+| `a * b` | `Times[a,b,...]` | Represents multiplication |
+| `a / b` | `Divide[a,b]`    | Represents division       |
 
 {{% /table %}}
 
-##### ● Comparaciones
+##### ● Comparisons
 
-Todas las comparaciones devuelven 1 para verdadero y 0 para falso.
+All comparisons return 1 for true and 0 for false.
 
 {{% table %}}
 
-| Aritmética    | Funcionalidad          | Descripción                                     |
+| Infix    | Functional          | Description                                     |
 | :------- | ------------------- | ----------------------------------------------- |
-| `a == b` | `Igual[a,b]`        | Verdadero (1) si *a* es igual a *b*                      |
-| `a != b` | `Noigual[a,b]`      | Verdadero (1) si *a* no es igual a *b*              |
-| `a < b`  | `Menor[a,b]`         | Verdadero (1) si *a* es menor que *b*                |
-| `a > b`  | `Mayor[a,b]`      | Verdadero (1) si *a* es mayor que *b*             |
-| `a <= b` | `MenorIgual[a,b]`    | Verdadero (1) si *a* es menor o igual que *b*    |
-| `a >= b` | `MayorIgual[a,b]` | Verdadero (1) si *a* es mayor o igual que *b* |
+| `a == b` | `Equal[a,b]`        | True (1) if *a* equals *b*                      |
+| `a != b` | `Unequal[a,b]`      | True (1) if *a* does not equal *b*              |
+| `a < b`  | `Less[a,b]`         | True (1) if *a* is less than *b*                |
+| `a > b`  | `Greater[a,b]`      | True (1) if *a* is greater than *b*             |
+| `a <= b` | `LessEqual[a,b]`    | True (1) if *a* is less than or equal to *b*    |
+| `a >= b` | `GreaterEqual[a,b]` | True (1) if *a* is greater than or equal to *b* |
 
 {{% table %}}
 
-##### ● Operadores lógicos
+##### ● Logical operations
 
-Todos los operadores tratan 0 como falso y cualquier otro valor como verdadero, y retornan 1 por verdadero y 0 por falso.
+All operations treat 0 as false and any other value as true, and return 1 for true and 0 for false.
 
 {{% table %}}
 
-| Aritmética          | Funcionalidad | Descripción                            |
+| Infix          | Functional | Description                            |
 | :------------- | ---------- | -------------------------------------- |
-| `!a`           | `No[a]`   | Verdadero (1) si *a* es falso               |
-| `a & b`        | `Y[a,b]` | Verdadero (1) si ambos *a* y *b* son verdad  |
-| `a` &#124; `b` | `O[a,b]`  | Verdadero (1) si cualquiera de *a* o *b* es verdad |
-| `a ^ b`        | `Oexclusivo[a,b]` | True (1) si cualquiera *a* o *b* es verdad  |
+| `!a`           | `Not[a]`   | True (1) if *a* is false               |
+| `a & b`        | `And[a,b]` | True (1) if both *a* and *b* are true  |
+| `a` &#124; `b` | `Or[a,b]`  | True (1) if any of *a* or *b* are true |
+| `a ^ b`        | `Xor[a,b]` | True (1) if either *a* or *b* is true  |
 
 {{% /table %}}
 
-##### ● Operador de precedencia
+##### ● Operator precedence
 
-Desde la alta prioridad a la baja. Los operadores de la misma precedencia son evaluados de izquierda a derecha en orden en que aparezcan en la formula.
+From highest precedence to lowest. Operators of same precedence are evaluated left to right in the order in they occur in the formula.
 
 {{% table-nonheader %}}
 
 | `a[...]`                         |
 | -------------------------------- |
-| `-` (Menos)                      |
+| `-` (Minus)                      |
 | `/`                              |
 | `*`                              |
-| `+`, `-` (Sustracción)              |
+| `+`, `-` (Subtract)              |
 | `==`, `!=`, `<`, `>`, `<=`, `>=` |
 | `!`                              |
 | `&`                              |
@@ -263,100 +263,100 @@ Desde la alta prioridad a la baja. Los operadores de la misma precedencia son ev
 
 {{% warning-nontitle %}}
 
-Por favor tenga en cuenta que algunas combinaciones de prefijo y operadores aritméticos no son reconocidos. Por ejemplo  `a*-b` no es aceptado. Use en vez `a*(-b)` o `-a*b`.
+Please note that some combinations of prefix and infix operators are not recognized. For example `a*-b` is not accepted. Use `a*(-b)` or `-a*b` instead.
 
 {{% /warning-nontitle %}}
 
-## <a name="functions"></a>■ 4. Lista de funciones
+## <a name="functions"></a>■ 4. List of functions
 
-##### ● Aritmética básica
+##### ● Basic arithmetics
 
 {{% table %}}
 
-| Función         | Descripción                                                  |
+| Function         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
-| `Reciprocal[x]`  | Retorna la reciprocidad, igual a 1/*x*                       |
-| `Power[a,b,...]` | Retorna *a* elevado a la *b* <sup>ava </sup>potencia. *b* debe ser un número no negativo. Para consistencia,  Power[0,*b*] siempre reotrna 1, incluso en el caso degenerado de Power[0,0], y *a* comenzando en negativo siempre retorna 0. Agregar más argumentos creará una cadena. Power[a,b,c] retornará *a* <sup>*b*<sup>*c*</sup></sup>. |
+| `Reciprocal[x]`  | Returns the reciprocal, equal to 1/*x*                       |
+| `Power[a,b,...]` | Returns *a* raised to the *b*<sup>th</sup> power. *b* must be a non-negative number. For consistency, Power[0,*b*] always returns 1, even in the degenerate case Power[0,0], and *a* being negative always returns 0. Adding more arguments will create a chain. Power[a,b,c] will return *a*<sup>*b*<sup>*c*</sup></sup>. |
 
 {{% /table %}}
 
-#####  ● Funciones numéricas
+#####  ● Numeric functions
 
 {{% table %}}
 
-| Función                      | Descripción                                                  |
+| Function                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `Quotient[a,b]`               | Divide *a* entre *b* y redondea el resultado hacia abajo, igual a `Floor[a/b]`. |
-| `Mod[a,b]`                    | Retorna el residuo al dividir *a* entre *b*, igual a `a-b*Floor[a/b]`. |
-| `Min[a,b,...]`                | Retorna el menor de los términos.                           |
-| `Max[a,b,...]`                | Retorna el mayor de los términos.                            |
-| `Abs[x]`                      | Retorna el valor absoluto.                                  |
-| `Sign[x]`                     | Retorna el signo de *x*, el cual puede ser -1, 0 or 1.         |
-| `Floor[x]`                    | Redondea hacia abajo al entero más cercano.                          |
-| `Ceiling[x]`                  | Redondea hacia arriba al entero más cercano.                            |
-| `Round[x]`                    | Redondea al entero mas cercano. Números terminando en decimal .5 son redondeados hacia el entero más cercano. |
-| `random[Minimum, Maximum]`    | Retorna un nuevo número de coma flotante entre *Mínimo* y *Máximo*. |
-| `randomInt[Minimum, Maximum]` | Retorna un nuevo número entero entre *Mínimo* y *Máximo*. |
+| `Quotient[a,b]`               | Divides *a* by *b* and rounds the result down, equal to `Floor[a/b]`. |
+| `Mod[a,b]`                    | Returns the remainder of dividing *a* by *b*, equal to `a-b*Floor[a/b]`. |
+| `Min[a,b,...]`                | Returns the smallest of the terms.                           |
+| `Max[a,b,...]`                | Returns the largest of the terms.                            |
+| `Abs[x]`                      | Returns the absolute value.                                  |
+| `Sign[x]`                     | Returns the sign of *x*, which is either -1, 0 or 1.         |
+| `Floor[x]`                    | Rounds down to the nearest integer.                          |
+| `Ceiling[x]`                  | Rounds up to the nearest integer.                            |
+| `Round[x]`                    | Rounds to the nearest integer. Numbers ending in .5 are rounded to the nearest even integer. |
+| `random[Minimum, Maximum]`    | Returns a new random floating-point number between *Minimum* and *Maximum*. |
+| `randomInt[Minimum, Maximum]` | Returns a new random integer between *Minimum* and *Maximum*. |
 
 {{% /table %}}
 
-##### ● Funciones elementales
+##### ● Elementary functions
 
 {{% table %}}
 
-| Función    | Descripción                                                  |
+| Function    | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
-| `Exp[x]`    | La función exponencial, o *e* de la *x*<sup>ava</sup>potencia. |
-| `Log[x]`    | La función logarítmica, con base *e*.                          |
-| `Sqrt[x]`   | La raíz cuadrada.                                             |
-| `Sin[x]`    | Seno (en radianes).                                 |
-| `Cos[x]`    | Coseno (en radianes)                               |
-| `Tan[x]`    | La tangente (en radianes).                              |
-| `ArcTan[x]` | La tangente inversa - Cotangente (en radianes)                     |
+| `Exp[x]`    | The exponential function, or *e* to the *x*<sup>th</sup> power. |
+| `Log[x]`    | The natural logarithm, to base *e*.                          |
+| `Sqrt[x]`   | The square root.                                             |
+| `Sin[x]`    | The sine (input in radians).                                 |
+| `Cos[x]`    | The cosine (input in radians).                               |
+| `Tan[x]`    | The tangent (input in radians).                              |
+| `ArcTan[x]` | The inverse tangent (output in radians).                     |
 
 {{% /table %}}
 
-##### ● Condicionales
+##### ● Conditionals
 
 {{% table %}}
 
-| Función                        | Descripción                                                  |
+| Function                        | Description                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
-| `If[cond,truevalue,falsevalue]` | Si *condición* es != 0, retorna *valorverdadero*, en caso contrario *valorfalso* |
+| `If[cond,truevalue,falsevalue]` | If *cond* is != 0, returns *truevalue*, otherwise *falsevalue* |
 
 {{% /table %}}
 
-## <a name="variables"></a>■ 5. Lista de variables
+## <a name="variables"></a>■ 5. List of variables
 
-##### ● Primitivas
+##### ● Primitives
 
 {{% table %}}
 
-| Variable       | Descripción                                                  |
+| Variable       | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
-| `value`        | El valor retornado por la función en su ultima evaluación. Al comienzo de la simulación, esto es 0. |
-| `delta`        | La diferencia desde la ultima evaluación de la función en segundos. Por favor tenga en cuenta que no hay tiempo garantizado desde que transcurre entre los llamados de función sucesivos. |
-| `currentState` | Retorna el estado actual numérico del objeto.           |
+| `value`        | The value returned by the function in the last evaluation. At the beginning of the simulation, this is 0. |
+| `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
+| `currentState` | Returns the current numerical state of the object.           |
 
 {{% /table %}}
 
-##### ● Tiempo y camara
+##### ● Time and camera
 
 {{% table %}}
 
-| Variable         | Descripción                                                  |
+| Variable         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
-| `time`           | El tiempo actual del juego medido en segundos desde la media noche del primer día. |
-| `cameraDistance` | Una distancia cartesiana no negativa medida desde el objeto a la cámara en metros. |
-| `cameraMode`     | Retorna 0 si la cámara es actualmente en cabina 2D o 3D, 1 en caso contrario. |
+| `time`           | The current in-game time measured in seconds since midnight of the first day. |
+| `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
+| `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
 
 {{% /table %}}
 
-##### ● Trenes
+##### ● Trains
 
-Generalmente, objetos adjuntados a un tren particular o coche retorna valores para los trenes y cobhes, a menos que sean estados. Para objetos de escenario, la referencia es el coche del conductor del tren más cercano ( no necesariamente el tren del jugador).
+Generally, objects attached to a particular train and car return values for that train and car, unless stated otherwise. For scenery objects, the reference is the driver's car of the nearest train (not necessarily the player's train).
 
-En algunas de las siguientes variables *IndiceCoche* tiene el siguiente significado: 0 si el 1<sup>er</sup>coche desde el frente,1 es el 2<sup>do</sup>coche del frente, etc., mientras que -1 es el 1<sup>er</sup>carro desde la parte posterior, -2 es el 2<sup>do</sup>carro desde la parte posterior, etc. En general, los indices de los coches desde -*coches* a *coches*-1 representa los coches existentes, donde *coches* es el numero de carros que el tren tiene, mientras los valores fuera de este rango representan coches no existentes. Así como los trenes tienen al menos un coche, indices -1 y 0 están garantizados en existir en cualquier tren.
+In some of the following variables, *carIndex* has the following meaning: 0 is the 1<sup>st</sup> car from the front, 1 is the 2<sup>nd</sup> car from the front, etc., while -1 is the 1<sup>st</sup> car from the rear, -2 is the 2<sup>nd</sup> car from the rear, etc. In general, car indices from -*cars* to *cars*-1 represent existing cars, where *cars* is the number of cars the train has, while values outside of this range represent non-existing cars. As all trains have at least 1 car, indices -1 and 0 are guaranteed to exist for any train.
 
 ##### ● Trains (general)
 

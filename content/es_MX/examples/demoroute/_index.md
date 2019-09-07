@@ -7,7 +7,7 @@ weight: 1
 ## ■ Vista general
 
 
-La **Ruta de Demostración de Objetos Animados** es una ruta minimalista con la intención de demostrar los formatos de ruta CSV y RW, y , lo más importante, el uso de objetos animados.
+La **Ruta de Demostración de Objetos Animados** es una ruta minimalista con la intención de demostrar los formatos de ruta CSV y RW, y lo más importante, el uso de objetos animados.
 
 Lo que esta ruta es:
 
@@ -16,7 +16,7 @@ Lo que esta ruta es:
 | <font color="Green">✓</font> | Un ejemplo para demostrar a los desarrolladores como crear una ruta CSV y RW |
 | ---------------------------- | ------------------------------------------------------------- |
 | <font color="Green">✓</font> | Un ejemplo para demostrar a los desarrolladores como crear objetos animados  |
-| <font color="Green">✓</font> | Una forma para los usuarios se sientan inspirados por la sensación de ambientes no estáticos.  |
+| <font color="Green">✓</font> | Una forma para que los usuarios se sientan inspirados por la sensación de ambientes no estáticos.  |
 
 {{% /table-nonheader %}}
 
@@ -52,4 +52,4 @@ El tren predeterminado sugerido para esta ruta es el  **113-1000atccab**, el cua
 
 <http://bve.jpn.org/jr113.html>
 
-Los sistemas incorporados ATS y ATC son utilizados en esta ruta, los cuales estan explicados en <a href="https://openbve-project.net/play-japanese/">Cómo conducir - Una visión general rápida de controles, ATS/ATC, señales y indicadores </a> guía.
+Los sistemas de seguridad incorporados ATS y ATC son utilizados en esta ruta, los cuales están explicados en <a href="https://openbve-project.net/play-japanese/">Cómo conducir - Una visión general rápida de controles, ATS/ATC, señales y indicadores </a> guía.

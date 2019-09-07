@@ -47,9 +47,9 @@ Existen dos métodos de análisis para los números: **Strict** y **Loose** . El
 -987  
 {{% /code %}}
 
-## <a name="floating"></a>■ 3. Números de punto flotante
+## <a name="floating"></a>■ 3. Números de coma flotante
 
-**Strict:** Permitido si cualquier secuencia o al menos un dígito en decimal en el rango del 0 al 9 (U+0030 - U+0039), opcionalmente intermediado por exactamente un separador decimal en forma de coma (U+002E), opcionalmente como prefijo por un símbolo negativo (U+002D). La cadena resultante de la secuencia puede incluir antes o después espacios en blanco.
+**Strict:** Permitido si cualquier secuencia o al menos un dígito en decimal en el rango del 0 al 9 (U+0030 - U+0039), opcionalmente intermediado por exactamente un separador decimal en forma de punto (U+002E), opcionalmente como prefijo por un símbolo negativo (U+002D). La cadena resultante de la secuencia puede incluir antes o después espacios en blanco.
 
 {{% code "*Examples for Strict floating-point numbers:*" %}}  
 123  
