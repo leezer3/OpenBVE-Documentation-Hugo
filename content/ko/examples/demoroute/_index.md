@@ -1,21 +1,21 @@
 ---
-title: Demonstration route
-linktitle: Demonstration route
+title: 시연 루트
+linktitle: 시연 루트
 weight: 1
 ---
 
-## ■ Overview
+## ■개요
 
 
-The **Animated Object Demonstration Route** is a minimalistic route intended to demonstrate the CSV and RW route formats, and, most importantly, the use of animated objects.
+**Animated Object Demonstration Route**(애니메이티드 오브젝트 시연 루트)는 CSV, RW 루트 형식과 애니메이티드 오브젝트의 사용을 설명하기 위한 간단한 루트입니다.
 
-What this route is:
+이 루트는 무엇인가요?:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | An example to show developers how to create a CSV or RW route |
+| <font color="Green">✓</font> | 개발자에게 CSV 또는 RW 경로를 만드는 방법을 보여주는 예시 |
 | ---------------------------- | ------------------------------------------------------------- |
-| <font color="Green">✓</font> | An example to show developers how to create animated objects  |
+| <font color="Green">✓</font> | 애니메이션 개체를 만드는 방법을 개발자에게 보여주는 예시  |
 | <font color="Green">✓</font> | A way for users to be inspired by the feeling of a non-static environment  |
 
 {{% /table-nonheader %}}

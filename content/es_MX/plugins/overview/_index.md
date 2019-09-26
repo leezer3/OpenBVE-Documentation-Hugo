@@ -1,6 +1,6 @@
 ---
 title: .NET assembly plugins
-linktitle: Overview
+linktitle: Vista general
 weight: 1
 ---
 

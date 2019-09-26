@@ -8,7 +8,7 @@ weight: 4
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Syntax](#syntax)
 - [3. The This section](#this)
 - [4. The PilotLamp section](#pilotlamp)
@@ -21,7 +21,7 @@ weight: 4
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
 The panel2.cfg file allows to create 2D panels by defining which elements to use, like lamps, needles, etc., what they are intended to display and where they are to be placed.
 

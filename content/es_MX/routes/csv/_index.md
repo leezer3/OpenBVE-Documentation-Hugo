@@ -10,7 +10,7 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Syntax](#syntax)
 - [3. Preprocessing](#preprocessing)
 - [4. The Options namespace](#options)
@@ -31,7 +31,7 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
 A CSV route allows to create a route in a text file.
 

@@ -1,9 +1,9 @@
 ---
-title: Cubes and cylinders
+title: Cubos y cilindros
 hidden: true
 ---
 
-## ■ The Cube command
+## ■ El comando Cube
 
 The Cube command in B3D and CSV objects is equivalent to a series of Vertex/AddVertex and Face/AddFace commands.
 

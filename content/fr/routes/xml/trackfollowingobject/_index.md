@@ -113,7 +113,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 **\<AppearanceStartPosition>** *Position* **\</AppearanceStartPosition>**  
 {{% /command %}}
 
-**Position** sets the in-game distance at which the object starts appearing. The object will appear when the player's camera position passes this point. The unit is **meter**.
+**Position** sets the in-game distance at which the object starts appearing. The object will appear when the player's train passes this point. The unit is **meter**.
 
 *Note:* If this parameter is omitted, the object will emerge from the start of the game.
 

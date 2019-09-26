@@ -1,6 +1,6 @@
 ---
-title: Differences compared to BVE Trainsim
-linktitle: Vs. BVE Trainsim
+title: BVE Trainsim 대비 차이점
+linktitle: 대. BVE Trainsim
 weight: 9
 ---
 

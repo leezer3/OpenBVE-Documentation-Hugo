@@ -358,7 +358,7 @@ Generalmente, objetos adjuntados a un tren particular o coche retorna valores pa
 
 En algunas de las siguientes variables *IndiceCoche* tiene el siguiente significado: 0 si el 1<sup>er</sup>coche desde el frente,1 es el 2<sup>do</sup>coche del frente, etc., mientras que -1 es el 1<sup>er</sup>carro desde la parte posterior, -2 es el 2<sup>do</sup>carro desde la parte posterior, etc. En general, los indices de los coches desde -*coches* a *coches*-1 representa los coches existentes, donde *coches* es el numero de carros que el tren tiene, mientras los valores fuera de este rango representan coches no existentes. Así como los trenes tienen al menos un coche, indices -1 y 0 están garantizados en existir en cualquier tren.
 
-##### ● Traines (generalidades)
+##### ● Trenes (generalidades)
 
 {{% table %}}
 

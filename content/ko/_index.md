@@ -1,17 +1,17 @@
 ---
-title: Developing for openBVE
-linktitle: Home
+title: openBVE 개발
+linktitle: 홈
 ---
 
-Please select a topic from the menu on the left side.
-
----
-
-Examples may be found in the 'Examples' folder.
+왼쪽 메뉴에서 주제를 선택하세요.
 
 ---
 
-Please note that some of these pages are still under construction. This applies to the following pages:
+예시는 'Examples'폴더에서 찾을 수 있습니다.
 
-- The X object - 1% complete
-- The CSV route - 98% complete
+---
+
+일부 페이지는 아직 제작 중인 점에 대해 유의하세요. 해당 페이지: 
+
+- X 오브젝트 - 1% 완료
+- CSV 루트 - 98% 완료

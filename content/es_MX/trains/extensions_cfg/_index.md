@@ -8,7 +8,7 @@ weight: 3
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Syntax](#syntax)
 - [3. The Car*i* section](#car)
 - [4. The Coupler*i* section](#coupler)
@@ -16,7 +16,7 @@ weight: 3
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
 The extensions.cfg file allows to define properties for individual cars, like length, axle positions and exterior objects.
 

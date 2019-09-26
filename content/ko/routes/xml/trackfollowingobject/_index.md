@@ -1,20 +1,20 @@
 ---
-title: Track Following Object
-linktitle: Track Following Object
+title: 추적 개체
+linktitle: 추적 개체
 weight: 5
 ---
 
-This page explains the principle and implementation of the XML-based Track Following Object, which is supported in openBVE v1.6.0 or later.
+이 페이지는 openBVE v1.6.0 이상에서 지원되는 XML 기반의 추적 개체의 원리와 구현을 설명합니다.
 
-## ■ Basic Principles
+## ■ 기본 원리
 
-openBVE can freely run a Track Following Object on other tracks.
+openBVE 에서는 다른 트랙에서 트랙을 따라가는 객체를 자유롭게 설정할 수 있습니다.
 
-In order to do this, it is necessary to setup each object that you want to run using Track Following Object XML files. An example is shown below.
+이를 위해서는 추적 개체의 XML 파일을 사용하여 실행할 각 개체에 대해 설정해야 합니다. 예시는 아래와 같습니다.
 
-In this example the object runs as follows.
+이 예시에서의 개체는 다음과 같이 실행됩니다.
 
-0. It is displayed when the in-game time 00:01:00 has elapsed and the object exists within 50 m to 100 m of the player's camera position in game. It becomes invisible after 5 minutes have elapsed since being displayed. The appearance is defined in extensions.cfg in 7-car formation.
+0. 게임 내에서 1분이 경과하여 게임 중 플레이어의 카메라 위치로부터 50 m에서 100 m 이내에 개체가 존재할 때 표시됩니다. 개체가 표시된 후 5분이 경과하면 보이지 않게 됩니다. 개체의 외관은 extension.cfg에 작성된 내용을 따릅니다.
 1. The in-game distance is 200 m and the right door is opened for 20 seconds and then the object accelerates to 30 km/h at an acceleration of 1.71km/h/s on **Rail2**.
 2. It travels at 60 km/h on **Rail2** for 400 m.
 3. The object decelerates to 30km/h at 1.71 km/h/s on **Rail2**, when it reaches a distance of 1000 m within the game, it stops and opens the doors on both sides. After stopping for 10 seconds, it accelerates in reverse to 30 km/h with an acceleration of 1.71 km/h/s on Rail1.
@@ -113,7 +113,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 **\<AppearanceStartPosition>** *Position* **\</AppearanceStartPosition>**  
 {{% /command %}}
 
-**Position** sets the in-game distance at which the object starts appearing. The object will appear when the player's camera position passes this point. The unit is **meter**.
+**Position** sets the in-game distance at which the object starts appearing. The object will appear when the player's train passes this point. The unit is **meter**.
 
 *Note:* If this parameter is omitted, the object will emerge from the start of the game.
 

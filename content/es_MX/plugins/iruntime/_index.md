@@ -1,24 +1,24 @@
 ---
-title: Train plugin API (IRuntime)
+title: Plugin de Tren API (IRuntime)
 hidden: true
 ---
 
 This is the documentation for train plugins. In order to create a train plugin, implement the IRuntime interface from the OpenBveApi.Runtime namespace. In the following, you will find a description of how this interface works.
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Function calls](#functions)
-- [3. Playing sounds](#sound)
-- [4. Supporting the AI](#ai)
+- [1. Vista general](#overview)
+- [2. Llamados de función](#functions)
+- [3. Reproduciendo sonidos](#sound)
+- [4. Soportando la IA](#ai)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ Overview
+## <a name="overview"></a>■ Vista general
 
-The following functions are called in this order when the plugin is loaded:
+Las siguientes funciones son llamadas en este orden cuando el plugin ha ha sido cargado:
 
 - Load
 - SetVehicleSpecs
@@ -28,7 +28,7 @@ The following functions are called in this order when the plugin is loaded:
 - SetReverser
 - SetSignal
 
-The following functions can be called at any time:
+Las siguientes funciones pueden ser llamadas en cualquier tiempo:
 
 - SetPower
 - SetBrake
@@ -41,62 +41,62 @@ The following functions can be called at any time:
 - SetBeacon
 - PerformAI
 
-The following function is called when the plugin is unloaded:
+Las siguientes funciones son llamadas cuando el plugin es deshabilitado:
 
 - Unload
 
-#####  <a name="functions"></a>● Function calls
+#####  <a name="functions"></a>● Llamados a las funciones
 
-The following is a list of all function calls along with explanations on their behavior.
+La siguiente es una lista de todos los llamados de función a lo largo con explicaciones en su conducta.
 
 ---
 
 **bool Load(LoadProperties properties)**
 
-This function is the first to be called after the plugin has been loaded. When this function triggers inside the plugin, a matching call to *Unload* will be made when the plugin is unloaded.
+Esta función es la primera en ser llamada antes que el plugin ha sido cargado. Cuando esta función se dispara dentro del plugin, una llamada similar a *Unload* sera efectuada cuando el plugin se descargue.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
-| LoadProperties | properties | The properties supplied to the plugin on loading. |
+| LoadProperties | properties | Las propiedades suministradas al plugin cuando este cargandose |
 | -------------- | ---------- | ------------------------------------------------- |
 |                |            |                                                   |
 
 {{% /table-nonheader %}}
 
-LoadProperties (class):
+LoadProperties (clase):
 
 {{% table-nonheader %}}
 
-| string            | PluginFolder  | Gets the absolute path to the plugin folder.           |
+| string            | PluginFolder  | Obtiene el directorio absoluto de la carpeta del plugin.           |
 | ----------------- | ------------- | ------------------------------------------------------ |
-| string            | TrainFolder   | Gets the absolute path to the train folder.            |
-| int[]             | Panel         | Gets or sets the array of panel variables.             |
-| PlaySoundDelegate | PlaySound     | Gets the callback function for playing sounds.         |
-| AISupport         | AISupport     | The extent to which the plugin supports the AI.        |
-| string            | FailureReason | Gets or sets the reason why the plugin failed loading. |
+| string            | TrainFolder   | Obtiene el directorio absoluto de la carpeta del tren.            |
+| int[]             | Panel         | Obtiene o otorga el arreglo de las variables de panel.             |
+| PlaySoundDelegate | PlaySound     | Obtiene la función de llamado para reproducir sonidos.         |
+| AISupport         | AISupport     | La extensión para así el plugin soporte la IA.        |
+| string            | FailureReason | Obtiene o otorga la razón por la cual el plugin ha fallado al cargar. |
 
 {{% /table-nonheader %}}
 
-PlaySound (function):  
-See the section on [playing sounds](#sound).
+PlaySound (función):  
+Ve la sección en [playing sounds](#sound).
 
-AISupport (enumeration):
+AISupport (enumeración):
 
 {{% table-nonheader %}}
 
-| AISupport.None  | 0    | The plugin does not support the AI. Calls to PerformAI will not be made. Non-player trains will not use the plugin. |
+| AISupport.None  | 0    | El plugin no soporta la IA. El llamado a PerformAI no se efectuará. La inteligencia artificial del tren no usará el plugin. |
 | --------------- | ---- | ------------------------------------------------------------ |
-| AISupport.Basic | 1    | The plugin complements the built-in AI by performing only functions specific to the plugin. |
+| AISupport.Basic | 1    | El plugin complementa la inteligencia artificial del juego ejecutando solo funciones especificas al plugin. |
 
 {{% /table-nonheader %}}
 
-Return value:
+Valor de retorno:
 
 {{% table-nonheader %}}
 
-| bool | Whether the plugin was loaded successfully. |
+| bool | Cuando el plugin ha sido cargado satisfactoriamente. |
 | ---- | ------------------------------------------- |
 |      |                                             |
 

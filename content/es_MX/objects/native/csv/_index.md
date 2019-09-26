@@ -1,16 +1,16 @@
 ---
-title: The **.csv** object format
-linktitle: The CSV object
+title: El formato de objeto **.csv**
+linktitle: El objeto CSV
 weight: 2
 ---
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Available commands](#commands)
+- [1. Vista general](#overview)
+- [2. Sintaxis](#syntax)
+- [3. Comandos disponibles](#commands)
   - [CreateMeshBuilder](#createmeshbuilder)
   - [AddVertex](#addvertex)
   - [AddFace](#addface)
@@ -31,7 +31,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
 A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
@@ -39,7 +39,7 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxis
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
@@ -53,7 +53,7 @@ Arguments may also be omitted by leaving the text at each of the *Argumenti* bla
 
 You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. Comandos disponibles
 
 <a name="createmeshbuilder"></a>
 
@@ -89,7 +89,7 @@ The normal is the direction perpendicular to the face at a particular point. If 
 <a name="addface"></a>
 
 {{% command %}}  
-**AddFace**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>max</sub>*  
+**AddFace**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>máximo</sub>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -103,7 +103,7 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 <a name="addface2"></a>
 
 {{% command %}}  
-**AddFace2**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>max</sub>*  
+**AddFace2**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>máximo</sub>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -157,7 +157,7 @@ The number of vertices *n* will usually suffice to be 6 or 8 when only small rad
 
 {{% notice %}}
 
-#### Cylinder representation
+#### Representación del cilindro
 
 The Cylinder command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cylinder command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
@@ -169,7 +169,7 @@ The Cylinder command is equivalent to a series of AddVertex and AddFace commands
 <font color=#555555>GenerateNormals</font>  
 {{% /command %}}
 
-*<font color=#555555>This command is ignored by openBVE.</font>*
+*<font color=#555555>Este comando es ignorado por openBVE.</font>*
 
 ------
 
@@ -210,8 +210,8 @@ The **Scale** command scales all vertices that have been created so far in the C
 <a name="rotate"></a>
 
 {{% command %}}  
-**Rotate**, *X*, *Y*, *Z*, *Angle*  
-**RotateAll**, *X*, *Y*, *Z*, *Angle*  
+**Rotate**, *X*, *Y*, *Z*, *Ángulo*  
+**RotateAll**, *X*, *Y*, *Z*, *Ángulo*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -273,7 +273,7 @@ The **MirrorAll** command not only affects the vertices generated in the current
 <a name="setcolor"></a>
 
 {{% command %}}  
-**SetColor**, *Red*, *Green*, *Blue*, *Alpha*  
+**SetColor**, *Rojo*, *Verde*, *Azul*, *Alfa*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -290,7 +290,7 @@ This command sets the color for all faces that were already created in the curre
 <a name="setemissivecolor"></a>
 
 {{% command %}}  
-**SetEmissiveColor**, *Red*, *Green*, *Blue*  
+**SetEmissiveColor**, *Rojo*, *Verde*, *Azul*  
 {{% /command%}}
 
 {{% command-arguments %}}  
@@ -361,7 +361,7 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 <a name="setdecaltransparentcolor"></a>
 
 {{% command %}}  
-**SetDecalTransparentColor**, *Red*, *Green*, *Blue*  
+**SetDecalTransparentColor**, *Rojo*, *Verde*, *Azul*  
 {{% /command %}}
 
 {{% command-arguments %}}  
