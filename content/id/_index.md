@@ -1,17 +1,17 @@
 ---
-title: Developing for openBVE
-linktitle: Home
+title: Mengembangkan openBVE
+linktitle: Beranda
 ---
 
-Please select a topic from the menu on the left side.
-
----
-
-Examples may be found in the 'Examples' folder.
+Pilih topik dari menu yang ada di sebelah kiri.
 
 ---
 
-Please note that some of these pages are still under construction. This applies to the following pages:
+Sampel tersedia di folder 'Sampel'
 
-- The X object - 1% complete
-- The CSV route - 98% complete
+---
+
+Beberapa halaman masih dalam masa pembuatan:
+
+- Objek X - 1% selesai
+- Rute CSV - 98% selesai
