@@ -1,7 +1,7 @@
 ---
-title: The **train.xml** file format
-linktitle: The train.xml file
+title: File **train.xml** 
+linktitle: File train.xml 
 weight: 2
 ---
 
-Under construction
+Dalam proses pembuatan.
