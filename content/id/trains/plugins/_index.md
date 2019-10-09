@@ -1,17 +1,17 @@
 ---
-title: Train plugins
+title: Plugin kereta
 weight: 9
 ---
-Train plugins allow to change the runtime behavior of trains to some degree. Things you can do include displaying custom indicators in the panels, playing custom sounds and overriding the handles the driver originally set. Plugins can be used to simulate safety equipment such as ATS or ATC, among other things.
+Plugin kereta berfungsi untuk menambahkan atau mengubah settingan kereta dari default / standarnya di openBVE. Misalnya untuk menambahkan indikator baru pada panel, menambahkan suara sendiri dan mengganti sistem kemudi, atau membuat sistem keamanan ATS, ATC, dan sebagainya.
 
-## ■ Available forms of plugins
+## ■ Jenis plugin yang tersedia
 
 [**.NET assemblies:**]({{< ref "/plugins/overview/_index.md" >}})  
-This is the only officially endorsed form of plugin. The plugins are .NET assemblies and should be designed to be cross-platform-compatible without recompilation. You can choose from a variety of programming languages, including C# and Visual Basic .NET, among many others that target the .NET Framework.
+Tipe ini adalah plugin yang paling cocok dan kompatibel. Dapat dibuat dari aplikasi yang mendukung .NET dan harus dapat digunakan oleh berbagai OS. Anda dapat menggunakan berbagai bahasa pemrograman, termasuk C# atay Visual Basic .NET.
 
 [**Win32 DLLs:**]({{< ref "/trains/plugins/legacy/_index.md" >}})  
-This form of plugin is retained for backward compatibility with BVE Trainsim, but is no longer officially endorsed because these plugins can only run on Microsoft Windows. They are usually developed in C/C++. Given the cross-platform alternative, please develop .NET assemblies from now on.
+Tipe ini sudah tidak disarankan lagi karena hanya dapat digunakan oleh OS Windows, dan banyak yang hanya kompatibel dengan BVE Trainsim. Biasanya memakai bahasa pemrograman C/C++. Supaya dapat digunakan oleh berbagai OS, silakan gunakan format .NET.
 
-## ■ Setting up a train to using a plugin
+## ■ Menambahkan plugin ke dalam kereta
 
-You will need to ship the plugin somewhere in your train folder and configure the path to your plugin inside the [ats.cfg]({{< ref "/trains/ats_cfg/_index.md" >}}) file. Please note that for .NET assembly train plugins, you should **not** ship OpenBveApi.dll along with your plugin.
+Anda harus menyimpan plugin di dalam folder kereta, kemudian masukkan nama plugin di dalam file [ats.cfg]({{< ref "/trains/ats_cfg/_index.md" >}}). Jika anda menggunakan plugin .NET,  **jangan pernah** menggabungkan plugin anda dengan OpenBveApi.dll.
