@@ -1,29 +1,29 @@
 ---
-title: Differences compared to BVE Trainsim
+title: Perbedaan dengan BVE Trainsim
 linktitle: Vs. BVE Trainsim
 weight: 9
 ---
 
-This page lists **incompatible** differences between openBVE and BVE Trainsim regarding the file formats, i.e. features of content developed for BVE Trainsim that is interpreted differently in openBVE with an incompatible outcome. As of the moment, only one such incompatibility is known.
+Bagian ini menjelaskan hal yang **tidak bisa dipakai** di openBVE, karena perintah dari BVE Trainsim memiliki fungsi yang berbeda dengan openBVE, atau hal lainnya. Sampai saat ini, baru hal-hal berikut yang diketahui tidak bisa digunakan.
 
-Please note that for all incompatible differences that are mentioned on this page, the resolution is the same: It is considered to be more important to provide stable and consistent features in openBVE than to make backward-incompatible changes between versions just to increase similarity to BVE Trainsim. All differences depicted on this page will thus be permanent.
+Semua perbedaan yang tidak kompatibel yang disebutkan di halaman ini, mempunyai tujuan yang sama: Untuk menyediakan fitur yang stabil dan konsisten di openBVE daripada membuat perubahan yang tidak kompatibel hanya supaya bisa dipakai di BVE Trainsim. Semua perbedaan yang dijelaskan pada halaman ini akan bersifat permanen.
 
-## ■ The Track.Signal command  (CSV and RW routes)
+## ■ Track.Signal  (CSV and RW routes)
 
-The Track.Signal command (alternatively: Track.Sig) is used to create a default Japanese-style signal in CSV routes (alternative spellings are used in RW routes).
+Perintah Track.Signal (atau Track.Sig) dipakai untuk membuat sinyal tipe Jepang di rute CSV  (bentuk penulisan berbeda digunakan di rute RW)
 
-In openBVE, the Track.Signal command takes the following arguments:
+Di openBVE, Track.Signal ditulis sebagai berikut:
 
 {{% command %}}  
 **Track.Signal** *Aspects*; *~~Unused~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
 {{% /command %}}
 
-In BVE Trainsim, the Track.Signal command takes the following arguments:
+Di BVE Trainsim, Track.Signal ditulis sebagai berikut:
 
 {{% command %}}  
 **Track.Signal** *Aspects*; *Label*; *X*; *Y*; <u>*Type*</u>  
 {{% /command %}}
 
-The *Label* parameter in BVE Trainsim is a textual description of the signal which serves no function in openBVE (thus termed *Unused* in the documentation).
+*Label* pada BVE Trainsim adalah deskripsi sinyal yang tidak berfungsi apa-apa di openBVE (di tutorial ini, ditulis *unused*).
 
-BVE Trainsim features a *Type* argument which can take values 1, 2 or 3. It is used to denote different types of signals, e.g. home signal vs. departure signal. By mere accident, this argument was never included in openBVE, while subsequently, the need arose to include *Yaw*, *Pitch* and *Roll* arguments to provide for more control over a signal head's orientation. Consequently, BVE Trainsim's *Type* and openBVE's *Yaw* argument incompatibly overlap. If a route created for BVE Trainsim includes the *Type* argument, it will be (mis)interpreted as a yaw of up to 3 degrees in openBVE. Usually, this small angle should not produce noticable differences, especially given that the parameter is not often used anyway.
+BVE Trainsim menggunakan *Type* yang bisa diganti menjadi 1, 2, atau 3. Digunakan untuk menentukan tipe sinya, seperti sinyal masuk atau sinyal muka. Type ini tidak bisa digunakan di openBVE karena ada perintah *Yaw*, *Pitch* , dan *Roll* yang dipakai untuk membuat objek bisa diatur lebih beragam. Jika ada perintah BVE Trainsim *Type* tertulis di openBVE, maka isi *Type* akan salah diartikan sebagai *Yaw*.
