@@ -45,3 +45,11 @@ weight = 6
 contentDir = "content/ko"
 languageName = "한국어"
 weight = 7
+[languages.hu]
+contentDir = "content/hu"
+languageName = "Magyar"
+weight = 8
+[languages.id]
+contentDir = "content/id"
+languageName = "Indonesian"
+weight = 9
