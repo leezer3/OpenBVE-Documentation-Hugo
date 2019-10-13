@@ -13,4 +13,4 @@ Silakan lihat info lebih lanjut tentang [train.dat]({{< ref "/trains/train_dat/_
 
 ## ■ Catatan
 
-Pilihan *BrakeNotches* yang ada di bagian *Handle* termasuk dengan rem ikat / rem tahan. Artinya, jumlah tuas rem aslinya pada game akan lebih sedikit 1 tingkat daripada yang tertulis di *BrakeNotches* apabila rangkaian memiliki rem ikat atau rem tahan.
+Pilihan *BrakeNotches* yang ada di bagian *Handle* termasuk dengan rem ikat / rem tahan. Artinya, jumlah tuas rem aslinya pada game (selain rem ikat / rem tahan) akan lebih sedikit 1 tingkat daripada yang tertulis di *BrakeNotches* apabila rangkaian memiliki rem ikat atau rem tahan.

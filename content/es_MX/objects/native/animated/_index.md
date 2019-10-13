@@ -171,86 +171,204 @@ Esto defina la mínima cantidad de tiempo que necesita transcurrir para que la f
 
 ------
 
+##### ● The [Sound] section
+
+You can use the [Sound] section to add standalone sound effects to animated objects.
+
+{{% command %}}  
+[Sound]  
+{{% /command %}}  
+This starts the section.
+
+{{% command %}}  
+**FileName = File**
+{{% /command %}}  
+This loads the sound effect to play.
+
+{{% command %}}  
+**Position = X, Y, Z**  
+{{% /command %}}  
+Defines the position of the sound, relative to the center of the animated file.
+
+{{% command %}}  
+**Volume = Value**  
+{{% /command %}}  
+
+This defines the initial volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
+
+{{% command %}}  
+**Pitch = Value**  
+{{% /command %}}  
+
+This defines the initial pitch of the sound at the source position. A value of **1.0** represents the nominal unchanged pitch of the sound file.
+
+{{% command %}}  
+**Radius = Value**  
+{{% /command %}}  
+
+This defines the radius in meters from it's source at which the sound effect plays at full volume. The default value is **30**.
+
+{{% command %}}  
+**VolumeFunction = Formula**  
+{{% /command %}}  
+This defines the function which controls the volume of the sound. *Formula* must return a number representing the desired volume, where **1.0** represents the nomimal unchanged volume of the sound file.
+
+{{% command %}}  
+**PitchFunction = Formula**  
+{{% /command %}}  
+This defines the function which controls the pitch of the sound. *Formula* must return a number representing the desired pitch, where **1.0** represents the nomimal unchanged pitch of the sound file.
+
+{{% command %}}  
+**TrackFollowerFunction = Formula**  
+{{% /command %}}  
+This defines the function which moves the source of the sound along the path of **Rail 0**. *Formula* must return a distance in meters, for which the object is then moved, respecting the curves and height changes of **Rail 0**.
+
+------
+
+##### ● The [StateChangeSound] section
+
+You can use the [StateChangeSound] section to attach sound effects to the preceeding [Object] section.
+
+{{% command %}}  
+[StateChangeSound]  
+{{% /command %}}  
+This starts the section- Must immediately follow an [Object] section.
+
+{{% command %}}  
+**FileName = File**
+{{% /command %}}  
+This loads the sound effect to play for all state changes. Alternatively, **FileNames** may be used, which is described below:
+
+{{% command %}}  
+**FileNames = File<sub>0</sub>, File<sub>1</sub>, ..., File<sub>n-1</sub>**  
+{{% /command %}}  
+Loads a list of *n* sounds, which correspond to the states in the [Object] section above.
+If a state is to have no sound effect, the list entry should be left blank.
+
+{{% command %}}  
+**Position = X, Y, Z**  
+{{% /command %}}  
+Defines the position of the sound, relative to the center of the animated file.
+
+{{% command %}}  
+**Volume = Value**  
+{{% /command %}}  
+
+This defines the volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
+
+{{% command %}}  
+**Pitch = Value**  
+{{% /command %}}  
+
+This defines the pitch of the sound at the source position. A value of **1.0** represents the nominal unchanged pitch of the sound file.
+
+{{% command %}}  
+**Radius = Value**  
+{{% /command %}}  
+
+This defines the radius in meters from it's source at which the sound effect plays at full volume. The default value is **30**.
+
+{{% command %}}  
+**PlayOnShow = Value**  
+{{% /command %}}  
+
+*Value* = **0**: The sound effect will not be played.
+*Value* = **1**: The sound effect will be played.
+
+This defines whether the sound effect defined above should be played when a the relevant state is shown. 
+
+{{% command %}}  
+**PlayOnHide = Value**  
+{{% /command %}}  
+
+
+*Value* = **0**: The sound effect will not be played.
+*Value* = **1**: The sound effect will be played.
+
+This defines whether the sound effect defined above should be played when the relevant state is hidden.
+
+------
+
 {{% warning %}}
 
-#### Nota de compatibilidad con openBVE 2
+#### openBVE 2 compatibility note
 
-Durante el desarrolo de openBVE (v0.9) y durante el desarrollo del formato de objeto animado, hay algunos comandos en existencia que terminan en *RPN*, asi como *TranslateXFunctionRPN*. Estos comandos nunca se han hecho en cualquier lanzamiento oficial (v1.0) y nunca fueron pensados en ser usados fuera del entorno de desarrollo. Mientras estos siguen aún disponibles sin documentación, serán quitados en openBVE 2. Si estas usando algunos de estos comandos, por favor deshagase de ellos lo mas posible.
+During the development of openBVE (v0.9) and during the development of the animated object format, there were certain commands in existance ending in *RPN*, such as *TranslateXFunctionRPN*. These commands never made it into any official release (v1.0) and were thus never meant to be used outside of development environments. While they are still available undocumentedly, they will be removed for openBVE 2. If you are using these commands, please get rid of them as soon as possible.
 
 {{% /warning %}}
 
 ------
 
-##### ● Sobre las formulas
+##### ● About the formulas
 
-Primero que todo, la notación aritmética, lo que puedes teclear dentro del parámetro *Formula*, es convertido en una notación funcional. Por cada notación aritmética, hay una notación funcional correspondiente. Algunas funciones no tienen un operador aritmético y solo pueden ser teclados en notación funcional. Para los operadores, la precedencia juega un rol importante. Puedes usar paréntesis para sobreponer el orden de precedencia así como generalmente en una fórmula matemática. Los nombres de las funciones no distinguen entre mayúsculas y minúsculas.
+First of all, infix notation, which is what you can enter for *Formula*, is converted into functional notation. Thus for every infix notation, there is a corresponding functional notation. Some functions do not have an infix operator and can thus only be entered in functional notation. For operators, precedence plays an important role. You can use parantheses to override the order of precedence just as in any usual mathematical formula. Names of functions are case-insensitive.
 
 {{% warning-nontitle %}}
 
-Por favor tenga en cuenta que el resultado de cualquier operación matemática o función pudiera ser infinito, intermediado o no real, 0 es retornado. Un error de desborde no puede ser prevenido, Así que debes tomar en cuenta esto.
+Please note that if the result of any mathematical operation or function would be infinity, indeterminate or non-real, 0 is returned. Numeric overflow is not prevented, so you need to take that into account yourself.
 
 {{% /warning-nontitle %}}
 
-## <a name="operators"></a>■ 3. Lista de operadores aritméticos de notación
+## <a name="operators"></a>■ 3. List of infix notation operators
 
-##### ● Aritmética básica
+##### ● Basic arithmetics
 
 {{% table %}}
 
-| Aritmética   | Funcionalidad       | Descripción               |
+| Infix   | Functional       | Description               |
 | :------ | :--------------- | :------------------------ |
-| `a + b` | `Suma[a,b, ...]` | Representa adición       |
-| `a - b` | `Sustraer[a,b]`  | Representa sustracción    |
-| `-a`    | `Menos[a]`       | Convierte a negativo el número        |
-| `a * b` | `Por[a,b,...]` | Representa multiplicación |
-| `a / b` | `Dividir[a,b]`    | Representa división       |
+| `a + b` | `Plus[a,b, ...]` | Represents addition       |
+| `a - b` | `Subtract[a,b]`  | Represents subtraction    |
+| `-a`    | `Minus[a]`       | Negates the number        |
+| `a * b` | `Times[a,b,...]` | Represents multiplication |
+| `a / b` | `Divide[a,b]`    | Represents division       |
 
 {{% /table %}}
 
-##### ● Comparaciones
+##### ● Comparisons
 
-Todas las comparaciones devuelven 1 para verdadero y 0 para falso.
+All comparisons return 1 for true and 0 for false.
 
 {{% table %}}
 
-| Aritmética    | Funcionalidad          | Descripción                                     |
+| Infix    | Functional          | Description                                     |
 | :------- | ------------------- | ----------------------------------------------- |
-| `a == b` | `Igual[a,b]`        | Verdadero (1) si *a* es igual a *b*                      |
-| `a != b` | `Noigual[a,b]`      | Verdadero (1) si *a* no es igual a *b*              |
-| `a < b`  | `Menor[a,b]`         | Verdadero (1) si *a* es menor que *b*                |
-| `a > b`  | `Mayor[a,b]`      | Verdadero (1) si *a* es mayor que *b*             |
-| `a <= b` | `MenorIgual[a,b]`    | Verdadero (1) si *a* es menor o igual que *b*    |
-| `a >= b` | `MayorIgual[a,b]` | Verdadero (1) si *a* es mayor o igual que *b* |
+| `a == b` | `Equal[a,b]`        | True (1) if *a* equals *b*                      |
+| `a != b` | `Unequal[a,b]`      | True (1) if *a* does not equal *b*              |
+| `a < b`  | `Less[a,b]`         | True (1) if *a* is less than *b*                |
+| `a > b`  | `Greater[a,b]`      | True (1) if *a* is greater than *b*             |
+| `a <= b` | `LessEqual[a,b]`    | True (1) if *a* is less than or equal to *b*    |
+| `a >= b` | `GreaterEqual[a,b]` | True (1) if *a* is greater than or equal to *b* |
 
 {{% table %}}
 
-##### ● Operadores lógicos
+##### ● Logical operations
 
-Todos los operadores tratan 0 como falso y cualquier otro valor como verdadero, y retornan 1 por verdadero y 0 por falso.
+All operations treat 0 as false and any other value as true, and return 1 for true and 0 for false.
 
 {{% table %}}
 
-| Aritmética          | Funcionalidad | Descripción                            |
+| Infix          | Functional | Description                            |
 | :------------- | ---------- | -------------------------------------- |
-| `!a`           | `No[a]`   | Verdadero (1) si *a* es falso               |
-| `a & b`        | `Y[a,b]` | Verdadero (1) si ambos *a* y *b* son verdad  |
-| `a` &#124; `b` | `O[a,b]`  | Verdadero (1) si cualquiera de *a* o *b* es verdad |
-| `a ^ b`        | `Oexclusivo[a,b]` | True (1) si cualquiera *a* o *b* es verdad  |
+| `!a`           | `Not[a]`   | True (1) if *a* is false               |
+| `a & b`        | `And[a,b]` | True (1) if both *a* and *b* are true  |
+| `a` &#124; `b` | `Or[a,b]`  | True (1) if any of *a* or *b* are true |
+| `a ^ b`        | `Xor[a,b]` | True (1) if either *a* or *b* is true  |
 
 {{% /table %}}
 
-##### ● Operador de precedencia
+##### ● Operator precedence
 
-Desde la alta prioridad a la baja. Los operadores de la misma precedencia son evaluados de izquierda a derecha en orden en que aparezcan en la formula.
+From highest precedence to lowest. Operators of same precedence are evaluated left to right in the order in they occur in the formula.
 
 {{% table-nonheader %}}
 
 | `a[...]`                         |
 | -------------------------------- |
-| `-` (Menos)                      |
+| `-` (Minus)                      |
 | `/`                              |
 | `*`                              |
-| `+`, `-` (Sustracción)              |
+| `+`, `-` (Subtract)              |
 | `==`, `!=`, `<`, `>`, `<=`, `>=` |
 | `!`                              |
 | `&`                              |
@@ -263,328 +381,328 @@ Desde la alta prioridad a la baja. Los operadores de la misma precedencia son ev
 
 {{% warning-nontitle %}}
 
-Por favor tenga en cuenta que algunas combinaciones de prefijo y operadores aritméticos no son reconocidos. Por ejemplo  `a*-b` no es aceptado. Use en vez `a*(-b)` o `-a*b`.
+Please note that some combinations of prefix and infix operators are not recognized. For example `a*-b` is not accepted. Use `a*(-b)` or `-a*b` instead.
 
 {{% /warning-nontitle %}}
 
-## <a name="functions"></a>■ 4. Lista de funciones
+## <a name="functions"></a>■ 4. List of functions
 
-##### ● Aritmética básica
+##### ● Basic arithmetics
 
 {{% table %}}
 
-| Función         | Descripción                                                  |
+| Function         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
-| `Reciprocal[x]`  | Retorna la reciprocidad, igual a 1/*x*                       |
-| `Power[a,b,...]` | Retorna *a* elevado a la *b* <sup>ava </sup>potencia. *b* debe ser un número no negativo. Para consistencia,  Power[0,*b*] siempre reotrna 1, incluso en el caso degenerado de Power[0,0], y *a* comenzando en negativo siempre retorna 0. Agregar más argumentos creará una cadena. Power[a,b,c] retornará *a* <sup>*b*<sup>*c*</sup></sup>. |
+| `Reciprocal[x]`  | Returns the reciprocal, equal to 1/*x*                       |
+| `Power[a,b,...]` | Returns *a* raised to the *b*<sup>th</sup> power. *b* must be a non-negative number. For consistency, Power[0,*b*] always returns 1, even in the degenerate case Power[0,0], and *a* being negative always returns 0. Adding more arguments will create a chain. Power[a,b,c] will return *a*<sup>*b*<sup>*c*</sup></sup>. |
 
 {{% /table %}}
 
-#####  ● Funciones numéricas
+#####  ● Numeric functions
 
 {{% table %}}
 
-| Función                      | Descripción                                                  |
+| Function                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `Quotient[a,b]`               | Divide *a* entre *b* y redondea el resultado hacia abajo, igual a `Floor[a/b]`. |
-| `Mod[a,b]`                    | Retorna el residuo al dividir *a* entre *b*, igual a `a-b*Floor[a/b]`. |
-| `Min[a,b,...]`                | Retorna el menor de los términos.                           |
-| `Max[a,b,...]`                | Retorna el mayor de los términos.                            |
-| `Abs[x]`                      | Retorna el valor absoluto.                                  |
-| `Sign[x]`                     | Retorna el signo de *x*, el cual puede ser -1, 0 or 1.         |
-| `Floor[x]`                    | Redondea hacia abajo al entero más cercano.                          |
-| `Ceiling[x]`                  | Redondea hacia arriba al entero más cercano.                            |
-| `Round[x]`                    | Redondea al entero mas cercano. Números terminando en decimal .5 son redondeados hacia el entero más cercano. |
-| `random[Minimum, Maximum]`    | Retorna un nuevo número de coma flotante entre *Mínimo* y *Máximo*. |
-| `randomInt[Minimum, Maximum]` | Retorna un nuevo número entero entre *Mínimo* y *Máximo*. |
+| `Quotient[a,b]`               | Divides *a* by *b* and rounds the result down, equal to `Floor[a/b]`. |
+| `Mod[a,b]`                    | Returns the remainder of dividing *a* by *b*, equal to `a-b*Floor[a/b]`. |
+| `Min[a,b,...]`                | Returns the smallest of the terms.                           |
+| `Max[a,b,...]`                | Returns the largest of the terms.                            |
+| `Abs[x]`                      | Returns the absolute value.                                  |
+| `Sign[x]`                     | Returns the sign of *x*, which is either -1, 0 or 1.         |
+| `Floor[x]`                    | Rounds down to the nearest integer.                          |
+| `Ceiling[x]`                  | Rounds up to the nearest integer.                            |
+| `Round[x]`                    | Rounds to the nearest integer. Numbers ending in .5 are rounded to the nearest even integer. |
+| `random[Minimum, Maximum]`    | Returns a new random floating-point number between *Minimum* and *Maximum*. |
+| `randomInt[Minimum, Maximum]` | Returns a new random integer between *Minimum* and *Maximum*. |
 
 {{% /table %}}
 
-##### ● Funciones elementales
+##### ● Elementary functions
 
 {{% table %}}
 
-| Función    | Descripción                                                  |
+| Function    | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
-| `Exp[x]`    | La función exponencial, o *e* de la *x*<sup>ava</sup>potencia. |
-| `Log[x]`    | La función logarítmica, con base *e*.                          |
-| `Sqrt[x]`   | La raíz cuadrada.                                             |
-| `Sin[x]`    | Seno (en radianes).                                 |
-| `Cos[x]`    | Coseno (en radianes)                               |
-| `Tan[x]`    | La tangente (en radianes).                              |
-| `ArcTan[x]` | La tangente inversa - Cotangente (en radianes)                     |
+| `Exp[x]`    | The exponential function, or *e* to the *x*<sup>th</sup> power. |
+| `Log[x]`    | The natural logarithm, to base *e*.                          |
+| `Sqrt[x]`   | The square root.                                             |
+| `Sin[x]`    | The sine (input in radians).                                 |
+| `Cos[x]`    | The cosine (input in radians).                               |
+| `Tan[x]`    | The tangent (input in radians).                              |
+| `ArcTan[x]` | The inverse tangent (output in radians).                     |
 
 {{% /table %}}
 
-##### ● Condicionales
+##### ● Conditionals
 
 {{% table %}}
 
-| Función                        | Descripción                                                  |
+| Function                        | Description                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
-| `If[cond,truevalue,falsevalue]` | Si *condición* es != 0, retorna *valorverdadero*, en caso contrario *valorfalso* |
+| `If[cond,truevalue,falsevalue]` | If *cond* is != 0, returns *truevalue*, otherwise *falsevalue* |
 
 {{% /table %}}
 
-## <a name="variables"></a>■ 5. Lista de variables
+## <a name="variables"></a>■ 5. List of variables
 
-##### ● Primitivas
+##### ● Primitives
 
 {{% table %}}
 
-| Variable       | Descripción                                                  |
+| Variable       | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
-| `value`        | El valor retornado por la función en su ultima evaluación. Al comienzo de la simulación, esto es 0. |
-| `delta`        | La diferencia desde la ultima evaluación de la función en segundos. Por favor tenga en cuenta que no hay tiempo garantizado desde que transcurre entre los llamados de función sucesivos. |
-| `currentState` | Retorna el estado actual numérico del objeto.           |
+| `value`        | The value returned by the function in the last evaluation. At the beginning of the simulation, this is 0. |
+| `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
+| `currentState` | Returns the current numerical state of the object.           |
 
 {{% /table %}}
 
-##### ● Tiempo y camara
+##### ● Time and camera
 
 {{% table %}}
 
-| Variable         | Descripción                                                  |
+| Variable         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
-| `time`           | El tiempo actual del juego medido en segundos desde la media noche del primer día. |
-| `cameraDistance` | Una distancia cartesiana no negativa medida desde el objeto a la cámara en metros. |
-| `cameraMode`     | Retorna 0 si la cámara es actualmente en cabina 2D o 3D, 1 en caso contrario. |
+| `time`           | The current in-game time measured in seconds since midnight of the first day. |
+| `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
+| `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
 
 {{% /table %}}
 
-##### ● Trenes
+##### ● Trains
 
-Generalmente, objetos adjuntados a un tren particular o coche retorna valores para los trenes y cobhes, a menos que sean estados. Para objetos de escenario, la referencia es el coche del conductor del tren más cercano ( no necesariamente el tren del jugador).
+Generally, objects attached to a particular train and car return values for that train and car, unless stated otherwise. For scenery objects, the reference is the driver's car of the nearest train (not necessarily the player's train).
 
-En algunas de las siguientes variables *IndiceCoche* tiene el siguiente significado: 0 si el 1<sup>er</sup>coche desde el frente,1 es el 2<sup>do</sup>coche del frente, etc., mientras que -1 es el 1<sup>er</sup>carro desde la parte posterior, -2 es el 2<sup>do</sup>carro desde la parte posterior, etc. En general, los indices de los coches desde -*coches* a *coches*-1 representa los coches existentes, donde *coches* es el numero de carros que el tren tiene, mientras los valores fuera de este rango representan coches no existentes. Así como los trenes tienen al menos un coche, indices -1 y 0 están garantizados en existir en cualquier tren.
+In some of the following variables, *carIndex* has the following meaning: 0 is the 1<sup>st</sup> car from the front, 1 is the 2<sup>nd</sup> car from the front, etc., while -1 is the 1<sup>st</sup> car from the rear, -2 is the 2<sup>nd</sup> car from the rear, etc. In general, car indices from -*cars* to *cars*-1 represent existing cars, where *cars* is the number of cars the train has, while values outside of this range represent non-existing cars. As all trains have at least 1 car, indices -1 and 0 are guaranteed to exist for any train.
 
-##### ● Trenes (generalidades)
+##### ● Trains (general)
 
 {{% table %}}
 
-| Variable                      | Descripción                                                  |
+| Variable                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `cars`                        | El número de coches que el tren posee.                            |
-| `speed`                       | La velocidad actual del coche en m/s. Es positivo cuando el tren viaja hacia adelante, y negativa cuando el tren viaja hacia atrás. |
-| `speed[carIndex]`             | La velocidad actual del coche número *carIndex* en m/s. Es positivo cuando el tren viaja hacia adelante, y negativa cuando el tren viaja hacia atrás. |
-| `speedometer`                 | La velocidad percibida del actual coche en m/s así como esto pudiera aparecer un velocímetro en patinaje de ruedas y bloqueo de ruedas. |
-| `speedometer[carIndex]`       | La velocidad percibida del coche de indice *carIndex* en m/s así como esto pudiera aparecer un velocímetro en patinaje de ruedas y bloqueo de ruedas. |
-| `acceleration`                | La aceleración del coche actual en m/s².          |
-| `acceleration[carIndex]`      | La aceleración actual del coche número *carIndex* en m/s².       |
-| `accelerationMotor`           | La aceleración actual la cual el motor del primer coche genera en m/s². |
-| `accelerationMotor[carIndex]` | La aceleración actual la cual el motor del coche número *carIndex* genera en m/s². |
-| `distance`                    | Una distancia cartesiana no negativa medida desde el objeto al coche más cercano en metros. Solamente es usado por objetos de escenario. |
-| `distance[carIndex]`          | La distancia cartesiana no negativa medida desde el objeto al coche número *carIndex* en metros, ó 0 si el coche no existe. Solamente es usado por objetos de escenario. |
-| `trackDistance`               | La distancia de la vía desde el objeto al extremo más cercano del tren mas próximo en metros. Es positivo cuando el tren esta en frente del objeto, y negativo cuando esta por detrás, y cero cuando el objeto esta entre los extremos del tren. |
-| `trackDistance[carIndex]`     | La distancia de la vía desde el objeto al coche número *carIndex* del tren mas próximo en metros. Es positivo cuando el centro del coche esté en frente del objeto, y negativo cuando esta por detrás, Retorna 0 si el coche no existe. Solamente es usado por objetos de escenario. |
-| `destination`                 | La configuración actual del destino del tren (Es configurado por *Track.Destination* ó la interfaz del plugin) |
-| `distanceNextStation`         | La distancia en metros para la siguiente estación. |
-| `distanceStation[stationIndex]`| La distancia en metros a la estación con indice *stationIndex* |
-| `stopsNextStation`            | Indica si el tren hace parada en la próxima estación. |
-| `stopsStation[stationIndex]`  | Indica que el tren se detiene en la estación con indice *stationIndex* |
-| `nextStation`                 | El indice de la siguiente estación. |
-| `nextStationStop`             | El indice de la siguiente estación donde el tren debe hacer parada. |
+| `cars`                        | The number of cars the train has.                            |
+| `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
+| `speed[carIndex]`             | The signed actual speed of the car *carIndex* in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
+| `speedometer`                 | The signed perceived speed of the current car in m/s as it would appear to a speedometer on wheel slip and wheel lock. |
+| `speedometer[carIndex]`       | The signed perceived speed of the car *carIndex* in m/s as it would appear to a speedometer on wheel slip and wheel lock. |
+| `acceleration`                | The actual acceleration of the current car in m/s².          |
+| `acceleration[carIndex]`      | The actual acceleration of the car *carIndex* in m/s².       |
+| `accelerationMotor`           | The acceleration which the motor of the first motor car currently generates in m/s². |
+| `accelerationMotor[carIndex]` | The acceleration which the motor of the car *carIndex* currently generates in m/s². |
+| `distance`                    | The non-negative cartesian distance measured from the object to the closest car in meters. Only meaningful for scenery objects. |
+| `distance[carIndex]`          | The non-negative cartesian distance measured from the object to the car *carIndex* in meters, or 0 if the car does not exist. Only meaningful for scenery objects. |
+| `trackDistance`               | The signed track distance measured from the object to the closest end of the nearest train in meters. Is positive when the train is in front of the object, negative when behind, and zero when the object lies between the ends of the train. |
+| `trackDistance[carIndex]`     | The signed track distance measured from the object to the car *carIndex* of the nearest train in meters. Is positive when the center of the car is in front of the object, and negative if behind. Returns 0 if the car does not exist. Only meaningful for scenery objects. |
+| `destination`                 | The currently set destination for this train. (Set via *Track.Destination* or the plugin interface) |
+| `distanceNextStation`         | The distance in m to the next station. |
+| `distanceStation[stationIndex]`| The distance in m to the station with *stationIndex* |
+| `stopsNextStation`            | Whether the train stops at the next station. |
+| `stopsStation[stationIndex]`  | Whether the train stops at the station with *stationIndex* |
+| `nextStation`                 | The index of the next station. |
+| `nextStationStop`             | The index of the next station where the train must stop. |
 
 {{% /table %}}
 
-##### ● Trenes (freno)
+##### ● Trains (brake)
 
 {{% table %}}
 
-| Variable                       | Descripción                                                  |
+| Variable                       | Description                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
-| `mainReservoir`                | La presión actual de la reserva principal del coche, medido en Pascal. |
-| `mainReservoir[carIndex]`      | La presión actual de la reserva principal del coche de indice numero *carIndex*, medido en Pascal. |
-| `emergencyReservoir`           | La presión actual de reserva de emergencia en este coche, medido en Pascal. |
-| `emergencyReservoir[carIndex]` | La presión actual del reserva de emergencia en el coche de indice número *carIndex*, medido en Pascal. |
-| `brakePipe`                    | La presión actual de la tubería de freno en este coche, medido en Pascal. |
-| `brakePipe[carIndex]`          | La presión actual de la tubería de freno en este coche de indice número *carIndex*, medido en Pascal. |
-| `brakeCylinder`                | La presión actual del cilindro de freno en este coche, medido en Pascal. |
-| `brakeCylinder[carIndex]`      | La presión actual del cilindro de freno en este coche de indice número *carIndex*, medido en Pascal. |
-| `straightAirPipe`              | La presión actual de la tubería de aire recto en este coche, medido en Pascal. |
-| `straightAirPipe[carIndex]`    | La presión actual de la tubería de aire recto en este coche de índice número *carIndex*, medido en Pascal. |
+| `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
+| `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
+| `emergencyReservoir`           | The current pressure in the emergency reservoir in this car, measured in Pa. |
+| `emergencyReservoir[carIndex]` | The current pressure in the emergency reservoir in car *carIndex*, measured in Pa. |
+| `brakePipe`                    | The current pressure in the brake pipe in this car, measured in Pa. |
+| `brakePipe[carIndex]`          | The current pressure in the brake pipe in car *carIndex*, measured in Pa. |
+| `brakeCylinder`                | The current pressure in the brake cylinder in this car, measured in Pa. |
+| `brakeCylinder[carIndex]`      | The current pressure in the brake cylinder in car *carIndex*, measured in Pa. |
+| `straightAirPipe`              | The current pressure in the straight air pipe in this car, measured in Pa. |
+| `straightAirPipe[carIndex]`    | The current pressure in the straight air pipe in car *carIndex*, measured in Pa. |
 
 {{% /table %}}
 
-##### ● Trenes (puertas)
+##### ● Trains (doors)
 
 {{% table %}}
 
-| Variable                     | Descripción                                                  |
+| Variable                     | Description                                                  |
 | ---------------------------- | ------------------------------------------------------------ |
-| `doors`                      | El estado de las puertas. Retorna 0 si esta totalmente cerrada, 1 si esta totalmente abierta, o cualquier otro estado intermedio, las puertas están parciales en un estado abierto. |
-| `doors[carIndex]`            | El estado de las puertas del coche de indice número *carIndex*. Retorna 0 si esta totalmente cerrada, 1 si esta totalmente abierta, o cualquier otro estado intermedio, las puertas están parciales en un estado abierto. |
-| `leftDoors`                  | El estado de las puertas del lado izquierdo. Retorna 0 si esta totalmente cerrada, 1 si esta totalmente abierta, o cualquier otro estado intermedio, las puertas están parciales en un estado abierto. |
-| `leftDoors[carIndex]`        | El estado de las puertas del lado izquierdo del coche de indice número *carIndex*. Retorna un valor entre 0 y 1, en un estado parcial de puertas que están en un estado de apertura, o -1 si el coche no existe. |
-| `rightDoors`                 | El estado de las puertas del lado derecho. Retorna 0 si esta totalmente cerrada, 1 si esta totalmente abierta, o cualquier otro estado intermedio, las puertas están parciales en un estado abierto. |
-| `rightDoors[carIndex]`       | El estado de las puertas del lado derecho del coche de indice número *carIndex*. Retorna un valor entre 0 y 1, en un estado parcial de puertas que están en un estado de apertura, o -1 si el coche no existe. |
-| `leftDoorsTarget`            | El estado de destino anticipado de las puertas izquierdas. Retorna cualquiera 0 (cerrado) ó 1 (abierto). |
-| `leftDoorsTarget[carIndex]`  | El estado de destino anticipado de las puertas izquierdas del coche de indice número *carIndex*. Retorna cualquiera 0 (cerrado) ó 1 (abierto). |
-| `rightDoorsTarget`           | El estado de destino anticipado de las puertas derechas. Retorna cualquiera 0 (cerrado) ó 1 (abierto). |
-| `rightDoorsTarget[carIndex]` | El estado de destino anticipado de las puertas derechas del coche de indice número *carIndex*. Retorna cualquiera 0 (cerrado) ó 1 (abierto). |
-| `leftDoorsButton`            | El estado del botón de la puerta izquierda. Retorna cualquiera 0 (liberado) o 1 (presionado). |
-| `rightDoorsButton`           | El estado del botón de la puerta derecha. Retorna cualquiera 0 (liberado) o 1 (presionado). |
-| `pilotLamp`                  | El estado de la lampara piloto (Puertas cerradas y listo para iniciar). Retorna cualquiera 0 (apagado) o 1 (encendido). |
+| `doors`                      | The state of the doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
+| `doors[carIndex]`            | The state of the doors of car *carIndex*. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
+| `leftDoors`                  | The state of the left doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
+| `leftDoors[carIndex]`        | The state of the left doors of car *carIndex*. Returns a value between 0 and 1, biasing doors that are in a more open state, or -1 if the car does not exist. |
+| `rightDoors`                 | The state of the right doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
+| `rightDoors[carIndex]`       | The state of the right doors of car *carIndex*. Returns a value between 0 and 1, biasing doors that are in a more open state, or -1 if the car does not exist. |
+| `leftDoorsTarget`            | The anticipated target state of the left doors. Returns either 0 (closed) or 1 (opened). |
+| `leftDoorsTarget[carIndex]`  | The anticipated target state of the left doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
+| `rightDoorsTarget`           | The anticipated target state of the right doors. Returns either 0 (closed) or 1 (opened). |
+| `rightDoorsTarget[carIndex]` | The anticipated target state of the right doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
+| `leftDoorsButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
+| `rightDoorsButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
+| `pilotLamp`                  | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 
 {{% /table %}}
 
-##### ● Trenes (otros)
+##### ● Trains (miscellaneous)
 
 {{% table %}}
 
-| Variable                         | Descripción                                                  |
+| Variable                         | Description                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
-| `reverserNotch`                  | El estado de inversor de marcha, el cual puede ser -1 (hacia atrás), 0 (neutro), o adelante (1). |
-| `powerNotch`                     | El la posición de la palanca de tracción, por ejemplo, 0 para N, 1 para P1, 2 para P2, 3 para P3, etc. |
-| `powerNotches`                   | La cantidad de posiciones de palanca de tracción que el tren tiene.                   |
-| `brakeNotch`                     | La posición actual de la posición de la palanca de freno. <br />● Para trenes sin freno de aire automático: 0 para N, 1 para B1, 2 para B2, 3 para B3, etc.<br />● Para trenes con freno de aire automático: 0  para REL, 1 para LAP y 2 para SRV. |
-| `brakeNotches`                   | La cantidad de posiciones de palanca de freno que el tren posee. Para trenes con freno automático de aire, esto retorna 2. |
-| `brakeNotchLinear`               | La combinación de la palanca de freno, freno presionado y freno de emergencia.<br />● Para trenes sin freno de aire automático y sin freno presionado: 0 para N, 1 para B1, 2 para B2, 3 para B3, etc., hasta *BrakeNotches*+1 para EMG.<br />● Para trenes sin freno de aire automático pero con freno presionado: 0 for N, 1 para HLD, 2 para B1, 3 para B2, 4 para B3, etc., hasta *BrakeNotches*+2 para EMG.<br />● Para trenes con freno de aire automático: 0 para REL, 1 para LAP, 2 para SRV o 3 para EMG. |
-| `brakeNotchesLinear`             | El valor mas alto retornado por *brakeNotchesLinear*.<br />● Para trenes sin freno de aire automático y sin freno presionado, esto es *BrakeNotches*+1.<br />● Para trenes sin freno de aire automático pero con freno presionado, esto es *BrakeNotches*+2.<br />● Para trenes con freno de aire automático, esto retorna 3. |
-| `locoBrake`                      | La posición actual del freno de locomotora.                                |
-| `locoBrakeNotches`               | La cantidad de posiciones de freno de locomotora que el tren tiene.              |
-| `emergencyBrake`                 | Cuando el freno de emergencia es activado (1) o no (0). |
-| `hasAirBrake`                    | Cuando el tren tiene freno de aire automático (1) o no (0). |
-| `holdBrake`                      | Cuando el freno presionado este activo (1) o no (0).   |
-| `hasHoldBrake`                   | Cuando el tren posee freno presionado (1) o no (0).           |
-| `constSpeed`                     | Cuando el sistema de velocidad constante esta activo (1) o no (0). |
-| `hasConstSpeed`                  | Cuando el tren posee sistema de velocidad constante (1) o no (0).   |
-| `hasPlugin`                      | Cuando el tren usa plugin (1) o no (0).              |
-| `pluginState[i]`                 | El estado de la i<sup>ava</sup> variable del plugin, retornando un entero dependiendo del plugin. Es lo mismo para ats*i* en el panel2.cfg. |
-| `FrontAxleCurveRadius[carIndex]` | Retorna el radio de curva del eje frontal del coche de indice número *carIndex*. |
-| `RearAxleCurveRadius[carIndex]`  | Retorna el radio de curva del eje posterior del coche de indice número *carIndex*. |
-| `CurveCant[carIndex]`            | Retorna el valor del peralte del coche de indice número *carIndex*.                   |
-| `Pitch[carIndex]`                | Retorna el valor de la diferencia de elevación para el coche de indice número *carIndex*..                  |
-| `Odometer`                       | Retorna un numero representando la distancia en metros viajadas por el coche actual. |
-| `Odometer[carIndex]`             | Retorna un numero representando la distancia en metros viajadas por el coche de indice número *carIndex*. |
-| `Klaxon`                         | Retorna la bocina actual que esta reproduciendo (cualquiera) de las siguientes: (0) Ninguna bocina se esta reproduciendo (1) La bocina principal esta reproduciéndose (2) La bocina secundaria esta reproduciéndose (3) La bocina musical esta reproduciéndose. *Nota*: Si múltiples bocinas se encuentran reproduciéndose, el valor mas bajo será retornado. |
-| `PrimaryKlaxon`                  | Retorna 1 si la bocina primaria esta reproduciéndose, 0 en caso contrario. |
-| `SecondaryKlaxon`                | Retorna 1 si la bocina secundaria esta reproduciéndose, 0 en caso contrario. |
-| `MusicKlaxon`                    | Retorna 1 si la bocina musical esta reproduciéndose, 0 en caso contrario. |
-| `passAlarm`                      | Cuando la alarma de rebase de estación ha sido activada. Retorna 0 (inactivo) o 1 (activo). |
-| `stationAdjustAlarm`             | Cuando la alarma de ajuste de estación ha sido activada. Retorna 0 (inactivo) o 1 (activo). |
+| `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
+| `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
+| `powerNotches`                   | The amount of power notches the train has.                   |
+| `brakeNotch`                     | The current brake notch.<br />● For trains without the automatic air brake: 0 for N, 1 for B1, 2 for B2, 3 for B3, etc.<br />● For trains with the automatic air brake: 0 for REL, 1 for LAP and 2 for SRV. |
+| `brakeNotches`                   | The amount of brake notches the train has. For trains with the automatic air brake, this returns 2. |
+| `brakeNotchLinear`               | A combination of brake notch, hold brake and emergency brake.<br />● For trains without the automatic air brake and without hold brake: 0 for N, 1 for B1, 2 for B2, 3 for B3, etc., up to *BrakeNotches*+1 for EMG.<br />● For trains without the automatic air brake but with hold brake: 0 for N, 1 for HLD, 2 for B1, 3 for B2, 4 for B3, etc., up to *BrakeNotches*+2 for EMG.<br />● For trains with the automatic air brake: 0 for REL, 1 for LAP, 2 for SRV or 3 for EMG. |
+| `brakeNotchesLinear`             | The highest value returned by *brakeNotchesLinear*.<br />● For trains without the automatic air brake and without hold brake, this is *BrakeNotches*+1.<br />● For trains without the automatic air brake but with hold brake, this is *BrakeNotches*+2.<br />● For trains with the automatic air brake, this returns 3. |
+| `locoBrake`                      | The current Loco Brake notch.                                |
+| `locoBrakeNotches`               | The amount of Loco Brake notches the train has.              |
+| `emergencyBrake`                 | Whether the emergency brake is currently active (1) or not (0). |
+| `hasAirBrake`                    | Whether the train has the automatic air brake (1) or not (0). |
+| `holdBrake`                      | Whether the hold brake is currently active (1) or not (0).   |
+| `hasHoldBrake`                   | Whether the train has a hold brake (1) or not (0).           |
+| `constSpeed`                     | Whether the const speed system is currently active (1) or not (0). |
+| `hasConstSpeed`                  | Whether the train has a const speed system (1) or not (0).   |
+| `hasPlugin`                      | Whether the train uses a plugin (1) or not (0).              |
+| `pluginState[i]`                 | The state of the i<sup>th</sup> plugin variable, returning an integer depending on the plugin. Is the same as ats*i* in the panel2.cfg. |
+| `FrontAxleCurveRadius[carIndex]` | Returns the curve radius at the front axle position of car *carIndex*. |
+| `RearAxleCurveRadius[carIndex]`  | Returns the curve radius at the rear axle position of car *carIndex*. |
+| `CurveCant[carIndex]`            | Returns the cant value for car *carIndex*.                   |
+| `Pitch[carIndex]`                | Returns the pitch value for car *carIndex*.                  |
+| `Odometer`                       | Returns a signed number representing the distance in meters travelled by the current car. |
+| `Odometer[carIndex]`             | Returns a signed number representing the distance in meters travelled by car *carIndex*. |
+| `Klaxon`                         | Returns the currently playing horn (if any) as follows: (0) No horns are playing (1) The primary horn is playing (2) The secondary horn is playing (3) The music horn is playing. *Note* If multiple horns are playing, the lowest value will be returned. |
+| `PrimaryKlaxon`                  | Returns 1 if the primary horn is currently playing, 0 otherwise. |
+| `SecondaryKlaxon`                | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
+| `MusicKlaxon`                    | Returns 1 if the music horn is currently playing, 0 otherwise. |
+| `passAlarm`                      | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+| `stationAdjustAlarm`             | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 
 {{% /table %}}
 
-Si *pluginState[i]* es usado con el sistema de seguridad ATS y ATC, el siguiente mapa de opciones para *i* puede ser aplicado:
+If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the following mappings for *i* apply:
 
 {{% table %}}
 
-| *i*  | Español             | 日本語 (Japonés)       | Valores de retorno                                |      | pluginState[271] | Significado           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
-| 256  | ATS                 | ATS          | 0 (apagado) o 1 (encendido)                         |      | 0                | ATC no disponible |
-| 257  | ATS RUN             | ATS 作動     | 0 (apagado), 1 (encendido) o 2 (parpadeando)           |      | 1                | 0 km/h            |
-| 258  | ATS RUN             | ATS 作動     | 0 (apagado / sin parpadear), 1 (encendido / parpadeando) |      | 2                | 15 km/h           |
-| 259  | P POWER             | P 電源       | 0 (apagado) o 1 (encendido)                         |      | 3                | 25 km/h           |
-| 260  | PTN APPROACH        | パターン接近 | 0 (apagado) o 1 (encendido)                         |      | 4                | 45 km/h           |
-| 261  | FRENO LIBERADO       | ブレーキ開放 | 0 (apagado) o 1 (encendido)                         |      | 5                | 55 km/h           |
-| 262  | FRENO APLICADO         | ブレーキ動作 | 0 (apagado) o 1 (encendido)                         |      | 6                | 65 km/h           |
-| 263  | ATS P               | ATS-P        | 0 (apagado) o 1 (encendido)                         |      | 7                | 75 km/h           |
-| 264  | FALLA             | 故障         | 0 (apagado) o 1 (encendido)                         |      | 8                | 90 km/h           |
-| 265  | ATC                 | ATC          | 0 (apagado) o 1 (encendido)                         |      | 9                | 100 km/h          |
-| 266  | ATC ENCENDIDO           | ATC 電源     | 0 (apagado) o 1 (encendido)                         |      | 10               | 110 km/h          |
-| 267  | ATC SERVICIO             | ATC 常用     | 0 (apagado) o 1 (encendido)                         |      | 11               | 120 km/h          |
-| 268  | ATC EMERGENCIA             | ATC 非常     | 0 (apagado) o 1 (encendido)                         |      | 12               | ATS esta activo     |
-| 269  | VELOCIDAD CONSTANTE         | 定速         | 0 (apagado) o 1 (encendido)                         |      |                  |                   |
-| 270  | EB                  | EB           | 0 (apagado) o 1 (encendido)                         |      |                  |                   |
-| 271  | Indicador de velocidad del ATC |              | 0 - 12, ver tabla a la derecha               |      |                  |                   |
+| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
+| 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
+| 258  | ATS RUN             | ATS 作動     | 0 (unlit / non-flashing), 1 (lit / flashing) |      | 2                | 15 km/h           |
+| 259  | P POWER             | P 電源       | 0 (unlit) or 1 (lit)                         |      | 3                | 25 km/h           |
+| 260  | PTN APPROACH        | パターン接近 | 0 (unlit) or 1 (lit)                         |      | 4                | 45 km/h           |
+| 261  | BRAKE RELEASE       | ブレーキ開放 | 0 (unlit) or 1 (lit)                         |      | 5                | 55 km/h           |
+| 262  | BRAKE APPLY         | ブレーキ動作 | 0 (unlit) or 1 (lit)                         |      | 6                | 65 km/h           |
+| 263  | ATS P               | ATS-P        | 0 (unlit) or 1 (lit)                         |      | 7                | 75 km/h           |
+| 264  | FAILURE             | 故障         | 0 (unlit) or 1 (lit)                         |      | 8                | 90 km/h           |
+| 265  | ATC                 | ATC          | 0 (unlit) or 1 (lit)                         |      | 9                | 100 km/h          |
+| 266  | ATC POWER           | ATC 電源     | 0 (unlit) or 1 (lit)                         |      | 10               | 110 km/h          |
+| 267  | ATC SRV             | ATC 常用     | 0 (unlit) or 1 (lit)                         |      | 11               | 120 km/h          |
+| 268  | ATC EMG             | ATC 非常     | 0 (unlit) or 1 (lit)                         |      | 12               | ATS is active     |
+| 269  | CONST SPEED         | 定速         | 0 (unlit) or 1 (lit)                         |      |                  |                   |
+| 270  | EB                  | EB           | 0 (unlit) or 1 (lit)                         |      |                  |                   |
+| 271  | ATC speed indicator |              | 0 - 12, see table on the right               |      |                  |                   |
 
 {{% /table %}}
 
-##### ● Secciones (señalización)
+##### ● Sections (signalling)
 
-El contexto sección es definido cuando el objeto es posicionado usando Track.SigF.
+The section context is defined when the object is placed using Track.SigF.
 
 {{% table %}}
 
-| Variable  | Descripción                                                  |
+| Variable  | Description                                                  |
 | --------- | ------------------------------------------------------------ |
-| `section` | El valor de la sección aspecto que se nuestra.<br />*si esta variable es usada fuera de un contexto de Track.Sifg, la conducta actual es indefinida y sujeto a cambios.* |
+| `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 
 {{% /table %}}
 
-## <a name="performance"></a>■ 6. Rendimiento
+## <a name="performance"></a>■ 6. Performance
 
-Existen ciertos tipos de animaciones los cuales son menos costosos, y otros que son mas. También, los objetos adyacentes juegan un papel importante . Si quieres diseñar objetos animados con un mejor rendimiento posible **para versiones futuras de openBVE**, échale un vistazo a la siguiente tabla de rendimiento:
+There are certain kinds of animation which are less expensive, and others which are more. Also, the underlying object plays a significant role. If you want to design your animated objects with as best performance as possible **for future releases of openBVE**, take a look at the following performance table:
 
 {{% table %}}
 
-| Animación      | Objeto                          | Rendimiento |
+| Animation      | Object                          | Performance |
 | -------------- | ------------------------------- | ----------- |
-| Cambios de estado  | Solo posee caras opacas           | Bien        |
-| Cambios de estado  | Tiene parcialmente caras transparentes | Moderado    |
-| Traslación    | Solo posee caras opacas           | Bien        |
-| Traslación    | Tiene parcialmente caras transparentes | Moderado    |
-| Rotación       | Solo posee caras opacas           | Bien        |
-| Rotación       | Tiene parcialmente caras transparentes | Mal         |
-| Saltos de textura | Solo tiene caras opacas           | Mal         |
-| Saltos de textura | Tiene parcialmente caras transparentes | Mal         |
+| State changes  | Has only opaque faces           | Good        |
+| State changes  | Has partially transparent faces | Moderate    |
+| Translation    | Has only opaque faces           | Good        |
+| Translation    | Has partially transparent faces | Moderate    |
+| Rotation       | Has only opaque faces           | Good        |
+| Rotation       | Has partially transparent faces | Bad         |
+| Texture shifts | Has only opaque faces           | Bad         |
+| Texture shifts | Has partially transparent faces | Bad         |
 
 {{% /table %}}
 
-El rendimiento por lo general es mejor si el resultado de la función cambia sin frecuencia. Así que, incluso si habilitas el parámetro *RefreshRate* a cero, el rendimiento por lo general mejorará si el resultado de su formula es constante sobre largos periodos de tiempo. De otra manera, si cambia cada cuadro por segundo, el rendimiento por lo general empeorará.
+Performance is generally better if the result of a function only infrequently changes. So, even if you set the *RefreshRate* parameter to zero, performance is generally better if the outcome of your formula is constant over longer periods of time. On the other hand, if it changes every frame, performance is generally worse.
 
-Generalmente, debes evitar usar animaciones con caras parcialmente transparentes y enfocarte en caras opacas cuando sea posible. Tambien, intenta evitar los saltos de textura, y considera usar el cambio de estado o traslación donde sea posible.
+Generally, you should avoid using animation with partially transparent faces and stick to opaque faces when possible. Also, try to avoid texture shifts, and consider using state changes or translation where possible.
 
-## <a name="tips"></a>■ 7. Sugerencias
+## <a name="tips"></a>■ 7. Tips
 
-- Generalmente hablando, trata de mantener la complejidad de las funciones lo mas bajo posible. Esto no es el aspecto más critico, aunque, la mayoría del impacto del rendimiento resultará cuando se aplique resultados a una función, por ejemplo. rotar el objeto, y no evaluando la función.
-- Usa el parámetro RefreshRate cuando sea posible para así optimizar el rendimiento. Usualmente, puedes usar este parámetro cuando no necesites una animación suave, o cuando deliberadamente necesites que estas funciones solo se actualicen en intervalos.
-- No uses estas funciones cuando siempre evalúas la misma constante. Por ejemplo, no uses RotateXFunction = 3.14159, gira el objeto adyacente en el CSV/B3D/X directamente.
-- Cambios de estado son un método muy barato cuando el estado no cambia entre dos ejecuciones por el StateFunction. Si un cambio ocurre, esto es una operación relativamente costosa.
-- Trata de optimizar las operaciones condicionales *if* . Especialmente trata de evitar la anidación de funciones *if*. De vez en cuando, hay una solución matemática elegante.
-- Ciertas funciones, por ejemplo. Exp, Sin, Cos, etc. son relativamente costosas. Úsalas solo cuando sean absolutamente necesarias para un efecto. No incluyas operaciones innecesarias. Por ejemplo, el resultado de StateFunction es automáticamente redondeado hacia el entero más cercano, así que no apliques una función Round adicional explícito.
-- Cuando trabajas con objetos del coche, ten en mente que algunas variables tienen un indice de coche opcional (CarIndex). Debes usar este indice si necesitas consultar el estado de un coche en particular ( es decir, no necesariamente el único objeto que puede ser adjuntado).  Si, necesitas hacer una consulta el valor de un coche en particular del objeto que se plantea adjuntar, usa la variable sin el indice. Para objetos de escenario, por lo general no debes usar los indices del coche ya sea porque no puedes estar seguros de cuantos coches posee el tren consultado.
+- Generally speaking, try to keep the complexity of functions as low as possible. This is not the most critical aspect, though, as most of the performance impact will result from applying the results of a function, e.g. rotating the object, and not evaluating the function.
+- Use the RefreshRate parameter when possible to optimize performance. Usually, you can use this parameter when you don't need a smooth animation, or when you deliberately want the functions to only update in intervals.
+- Don't use functions which always evaluate to the same constant. For example, don't use RotateXFunction = 3.14159, but rotate the underlying CSV/B3D/X object directly.
+- State changes are very cheap as long as the state doesn't actually change in between two executions of the StateFunction. If a change occurs, this is a relatively expensive operation, though.
+- Try to optimize out *if* conditions. Especially try to avoid nested *if* functions. Often, there is an elegant mathematical solution.
+- Certain functions, e.g. Exp, Sin, Cos, etc., are relatively expensive. Use them only if absolutely necessary for an effect. Don't include unnecessary operations. For example, the result of StateFunction is automatically rounded toward the nearest integer, so don't apply an additional explicit Round.
+- When working with car objects, bear in mind that some variables have an optional car index. You should use this index if you want to query the state of a particular car (that is, not necessarily the one the object is attached to). If, however, you just want to query the value of the particular car the object is attached to, use the variable without the index. For scenery objects, you should not generally use car indices as you can't be sure how many cars the queried train has.
 
-## <a name="examples"></a>■ 8. Funciones de ejemplo
+## <a name="examples"></a>■ 8. Example functions
 
-##### ● Luz parpadeante
+##### ● Blinking light
 
 {{% code "*Template for a blinking light:*" %}}  
 States = OBJECT0, OBJECT1  
 StateFunction = value == 0  
-RefreshRate = SEGUNDOS  
+RefreshRate = SECONDS  
 {{% /code %}}
 
-##### ● Rotación de rueda
+##### ● Rotating wheel
 
 {{% code "*Template for the code used in an exterior car object:*" %}}  
 States = OBJECT  
-RotateXFunction = value + delta * speedometer / RADIO_DE_LA_RUEDA 
+RotateXFunction = value + delta * speedometer / RADIUS_OF_THE_WHEEL  
 {{% /code %}}
 
-##### ● Ciclo a través de una lista de objetos
+##### ● Cycling through a list of objects
 
 {{% code "*Template for objects that are to be cycled through:*"%}}  
-States = OBJECTO0, OBJECTO1, OBJECTO2, ...  
-StateFunction = mod[value + 1, CANTIDAD_DE_OBJETOS]  
-RefreshRate = TIEMPO_POR_OBJETO  
+States = OBJECT0, OBJECT1, OBJECT2, ...  
+StateFunction = mod[value + 1, AMOUNT_OF_OBJECTS]  
+RefreshRate = TIME_PER_OBJECT  
 {{% /code %}}
 
-##### ● Señal (3-aspectos) para Track.Section(0; 2; 4)
+##### ● Signal (3-aspect) for Track.Section(0; 2; 4)
 
 {{% code %}}  
-States = OBJETO_ROJO, OBJETO_AMARILLO, OBJETO_VERDE  
+States = RED_OBJECT, YELLOW_OBJECT, GREEN_OBJECT  
 StateFunction = section / 2  
 {{% /code %}}
 
-##### ● Emplear un retardo en señales de aproximación controlada.
+##### ● Employing an approach-controlled delay in signals
 
-Si deseas crear una señal que mantiene su comienzo en rojo hasta que el tren se acerca en cierta distancia, entonces usa un contador hacia abajo después que cambia su aspecto a verde, por favor, consulte a [este post](http://openbve.freeforums.org/delay-in-approach-controlled-signals-t1195.html#p5378) en el foro para una explicación detallada. Una vez que entiendas el concepto, puedes usar este código de plantilla:
+If you want to create a signal that keeps being red until the train approaches it to some distance, then counts down a timer before it changes aspect to green, please refer to [this post](http://openbve.freeforums.org/delay-in-approach-controlled-signals-t1195.html#p5378) on the forum for a detailed explanation. Once you understand the concepts, you can use this code template:
 
 {{% code "*Template for an approach-controlled delay in a signal with two aspects:*" %}}  
-States = OBJETO_ROJO,OBJETO_VERDE
-StateFunction = if[trackDistance>DISTANCIA | section==0, 0, min[value + 0.5*delta/RETRASO, 1]]  
+States = RED_OBJECT, GREEN_OBJECT  
+StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta/DELAY, 1]]  
 {{% /code %}}
 
 {{% code "*Template for an approach-controlled delay in a signal with any number of aspects:*" %}}  
-States = OBJETO_ROJO, ..., OBJETO_VERDE
-StateFunction = if[trackDistance>DISTANCIA | section==0, 0, if[value<0.5, value + 0.5*value/RETRASO, section]]  
+States = RED_OBJECT, ..., GREEN_OBJECT  
+StateFunction = if[trackDistance>DISTANCE | section==0, 0, if[value<0.5, value + 0.5*value/DELAY, section]]  
 {{% /code %}}
 
-## <a name="grammar"></a>■ 9. Gramática formal
+## <a name="grammar"></a>■ 9. Formal Grammar
 
-La gramática formal del lenguaje puede no coincidir perfectamente con la implementación incluida en openBVE. Un ejemplo es a*-b el cual es válido bajo la gramática pero el analizador lo rechaza.
+The formal grammar for the language may not match up perfectly with the implimentation included in OpenBVE. An example is a*-b which is valid under the grammar but the parser rejects it.
 
 {{% code %}}  
 &lt;expression>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::=  &lt;xor_expression> "" &lt;expression>     | &lt;xor_expression>  

@@ -1,5 +1,5 @@
 ---
-title: The **.animated** object format
+title: Objek **.animated**
 linktitle: The ANIMATED object
 weight: 3
 ---
@@ -31,7 +31,7 @@ Animated objects can be used in CSV/RW routes (unless explicitly disallowed by s
 Animation is performed via the following primitives:
 
 - State changes - basically allowing to switch between different objects at any time
-- Translation - moving objects in three independent directions
+- Translasi - menggeserkan objek ke 3 arah yang berbeda
 - Rotation - rotating objects around three independent axes
 - Texture shifts - allowing to shift the texture coordinates of objects in two independent directions
 
@@ -168,6 +168,124 @@ This defines the function which moves an object along the path of **Rail 0**. *F
 **RefreshRate = Seconds**  
 {{% /command %}}  
 This defines the minimum amount of time that needs to pass before the functions are updated. A value of 0 forces the functions to be updated every frame. Please note that objects outside of the visual range might be updated less frequently regardless of this parameter. Use RefreshRate when you don't need a perfectly smooth animation (in order to optimize performance), or when you deliberately want the object to be only updated in fixed intervals.
+
+------
+
+##### ● The [Sound] section
+
+You can use the [Sound] section to add standalone sound effects to animated objects.
+
+{{% command %}}  
+[Sound]  
+{{% /command %}}  
+This starts the section.
+
+{{% command %}}  
+**FileName = File**
+{{% /command %}}  
+This loads the sound effect to play.
+
+{{% command %}}  
+**Position = X, Y, Z**  
+{{% /command %}}  
+Defines the position of the sound, relative to the center of the animated file.
+
+{{% command %}}  
+**Volume = Value**  
+{{% /command %}}  
+
+This defines the initial volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
+
+{{% command %}}  
+**Pitch = Value**  
+{{% /command %}}  
+
+This defines the initial pitch of the sound at the source position. A value of **1.0** represents the nominal unchanged pitch of the sound file.
+
+{{% command %}}  
+**Radius = Value**  
+{{% /command %}}  
+
+This defines the radius in meters from it's source at which the sound effect plays at full volume. The default value is **30**.
+
+{{% command %}}  
+**VolumeFunction = Formula**  
+{{% /command %}}  
+This defines the function which controls the volume of the sound. *Formula* must return a number representing the desired volume, where **1.0** represents the nomimal unchanged volume of the sound file.
+
+{{% command %}}  
+**PitchFunction = Formula**  
+{{% /command %}}  
+This defines the function which controls the pitch of the sound. *Formula* must return a number representing the desired pitch, where **1.0** represents the nomimal unchanged pitch of the sound file.
+
+{{% command %}}  
+**TrackFollowerFunction = Formula**  
+{{% /command %}}  
+This defines the function which moves the source of the sound along the path of **Rail 0**. *Formula* must return a distance in meters, for which the object is then moved, respecting the curves and height changes of **Rail 0**.
+
+------
+
+##### ● The [StateChangeSound] section
+
+You can use the [StateChangeSound] section to attach sound effects to the preceeding [Object] section.
+
+{{% command %}}  
+[StateChangeSound]  
+{{% /command %}}  
+This starts the section- Must immediately follow an [Object] section.
+
+{{% command %}}  
+**FileName = File**
+{{% /command %}}  
+This loads the sound effect to play for all state changes. Alternatively, **FileNames** may be used, which is described below:
+
+{{% command %}}  
+**FileNames = File<sub>0</sub>, File<sub>1</sub>, ..., File<sub>n-1</sub>**  
+{{% /command %}}  
+Loads a list of *n* sounds, which correspond to the states in the [Object] section above.
+If a state is to have no sound effect, the list entry should be left blank.
+
+{{% command %}}  
+**Position = X, Y, Z**  
+{{% /command %}}  
+Defines the position of the sound, relative to the center of the animated file.
+
+{{% command %}}  
+**Volume = Value**  
+{{% /command %}}  
+
+This defines the volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
+
+{{% command %}}  
+**Pitch = Value**  
+{{% /command %}}  
+
+This defines the pitch of the sound at the source position. A value of **1.0** represents the nominal unchanged pitch of the sound file.
+
+{{% command %}}  
+**Radius = Value**  
+{{% /command %}}  
+
+This defines the radius in meters from it's source at which the sound effect plays at full volume. The default value is **30**.
+
+{{% command %}}  
+**PlayOnShow = Value**  
+{{% /command %}}  
+
+*Value* = **0**: The sound effect will not be played.
+*Value* = **1**: The sound effect will be played.
+
+This defines whether the sound effect defined above should be played when a the relevant state is shown. 
+
+{{% command %}}  
+**PlayOnHide = Value**  
+{{% /command %}}  
+
+
+*Value* = **0**: The sound effect will not be played.
+*Value* = **1**: The sound effect will be played.
+
+This defines whether the sound effect defined above should be played when the relevant state is hidden.
 
 ------
 

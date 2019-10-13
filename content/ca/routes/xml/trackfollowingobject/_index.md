@@ -100,7 +100,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ## ■ Definition attribute
 
 {{% command %}}  
-**\<AppearanceTime>** *Time* **\</AppearanceTime>**  
+**\<AppearanceTime>** *Temps* **\</AppearanceTime>**  
 {{% /command %}}
 
 **Time** sets the time when the object appears in the game.
@@ -110,7 +110,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<AppearanceStartPosition>** *Position* **\</AppearanceStartPosition>**  
+**\<AppearanceStartPosition>** *Posició* **\</AppearanceStartPosition>**  
 {{% /command %}}
 
 **Position** sets the in-game distance at which the object starts appearing. The object will appear when the player's train passes this point. The unit is **meter**.
@@ -120,7 +120,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<AppearanceEndPosition>** *Position* **\</AppearanceEndPosition>**  
+**\<AppearanceEndPosition>** *Posició* **\</AppearanceEndPosition>**  
 {{% /command %}}
 
 **Position** sets the in-game distance at the end point where the object appears. The object will be hidden when the player's camera position passes this point. It must also be greater than the value specified for **\<AppearanceStartPosition>**. The unit is **meter**.
@@ -130,7 +130,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<LeaveTime>** *Time* **\</LeaveTime>**  
+**\<LeaveTime>** *Temps* **\</LeaveTime>**  
 {{% /command %}}
 
 **Time** sets the duration from when the object appears in the game until it disappears. The object will not be visible after this time. This value is not an in-game time.
@@ -148,7 +148,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ## ■ Stop attribute
 
 {{% command %}}  
-**\<Decelerate>** *Value* **\</Decelerate>**  
+**\<Decelerate>** *Valor* **\</Decelerate>**  
 {{% /command %}}
 
 **Value** sets the deceleration of the object. The unit is **km/h/s**.
@@ -156,7 +156,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<StopPosition>** *Position* **\</StopPosition>**  
+**\<StopPosition>** *Posició* **\</StopPosition>**  
 {{% /command %}}
 
 **Position** sets the in-game distance where the object stops. The unit is **meter**.
@@ -164,7 +164,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<Doors>** *Value* **\</Doors>**  
+**\<Doors>** *Valor* **\</Doors>**  
 {{% /command %}}
 
 **Value** sets the open door of the object. The valid values are:
@@ -177,7 +177,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<StopTime>** *Time* **\</StopTime>**  
+**\<StopTime>** *Temps* **\</StopTime>**  
 {{% /command %}}
 
 **Time** sets the duration of the stop of the object. This value is not an in-game time.
@@ -185,7 +185,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<Accelerate>** *Value* **\</Accelerate>**  
+**\<Accelerate>** *Valor* **\</Accelerate>**  
 {{% /command %}}
 
 **Value** sets the acceleration of the object. The unit is **km/h/s**.
@@ -193,7 +193,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<TargetSpeed>** *Value* **\</TargetSpeed>**  
+**\<TargetSpeed>** *Valor* **\</TargetSpeed>**  
 {{% /command %}}
 
 **Value** sets the speed after the acceleration of the object. The unit is **km/h**.
@@ -201,10 +201,10 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<Direction>** *Value* **\</Direction>**  
+**\<Direction>** *Valor* **\</Direction>**  
 {{% /command %}}
 
-**Value** sets the direction of travel of the object. Valid values are as follows.
+**Valor** defineix la direcció de desplaçament de l'objecte. Són vàlids els valors següents.
 
 - **F** o **1** : L'objecte es mourà cap endavant.
 - **R** o **-1** : L'objecte es mourà cap enrere.

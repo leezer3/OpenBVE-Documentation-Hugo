@@ -1,11 +1,11 @@
 ---
-title: Character encodings
+title: Enkoding karakter
 weight: 1
 ---
 
-<font color="Gray">This page describes what character encodings are and how they should be used.</font>
+<font color="Gray">Bagian ini menjelaskan tentang enkoding karakter dan cara penggunaannya.</font>
 
-■ Overview
+■ Penjelasan
 ------
 
 A character encoding is a way to translate characters into bytes that can be stored on the hard drive. In the beginnings, one byte (256 states) was used to encode one character. As different writing systems around the world have different requirements for characters to be encoded, there are a lot of different encodings in use throughout the world. Problematically, if the encoding of a text file is not known in advance, misinterpreting the encoding can result in mojibake (meaningless sequence of characters).
@@ -16,7 +16,7 @@ Example of a Japanese text encoded in Shift_JIS (requires appropriate fonts avai
 ひらがなカタカナ漢字  
 {{% /code %}}
 
-The byte sequence generated from the previous example in Shift_JIS:
+Dari contoh Shift_JIS sebelumnya jika diubah ke byte sequence:
 
 {{% code %}}  
 82 D0 82 E7 82 AA 82 C8 83 4A 83 5E 83 4A 83 69 8A BF 8E 9A  
@@ -34,7 +34,7 @@ While Unicode is wide-spread today, there are still some issues. First of all, U
 
 Route and train files are usually, for compatibility reasons, allowed to be encoded in any arbitrary encoding. As the encoding is not known in advance, the user will need to select the correct encoding for the route and the train in the settings tab in the main menu. Of course this is a nuisance and should be avoided somehow.
 
-## ■ The Byte Order Mark
+## ■ Byte Order Mark
 
 UTF-16 descends from a character encoding (UTC-2) which always used two bytes to encode one character. As such, the order of those two bytes matters. In order to know in which order the bytes appear, a so-called byte order mark is frequently prepended to the text, usually automatically and transparently by the text editor. The byte order mark provides decoders a means of detecting in which byte order the file was saved in. Additionally, the byte order mark provides a fairly safe way of detecting that the text file is saved in Unicode in the first place.
 
@@ -48,7 +48,7 @@ Technically, the byte order mark is the first bytes of a particular text file. T
 
 {{% table %}}
 
-| Encoding               | Hexadecimal representation |
+| Enkoding               | Representasi Hexadecimal |
 | ---------------------- | -------------------------- |
 | UTF-8                  | EF BB BF                   |
 | UTF-16 (big endian)    | FE FF                      |

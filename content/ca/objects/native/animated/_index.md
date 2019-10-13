@@ -171,6 +171,124 @@ This defines the minimum amount of time that needs to pass before the functions 
 
 ------
 
+##### ● The [Sound] section
+
+You can use the [Sound] section to add standalone sound effects to animated objects.
+
+{{% command %}}  
+[Sound]  
+{{% /command %}}  
+This starts the section.
+
+{{% command %}}  
+**FileName = File**
+{{% /command %}}  
+This loads the sound effect to play.
+
+{{% command %}}  
+**Position = X, Y, Z**  
+{{% /command %}}  
+Defines the position of the sound, relative to the center of the animated file.
+
+{{% command %}}  
+**Volume = Value**  
+{{% /command %}}  
+
+This defines the initial volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
+
+{{% command %}}  
+**Pitch = Value**  
+{{% /command %}}  
+
+This defines the initial pitch of the sound at the source position. A value of **1.0** represents the nominal unchanged pitch of the sound file.
+
+{{% command %}}  
+**Radius = Value**  
+{{% /command %}}  
+
+This defines the radius in meters from it's source at which the sound effect plays at full volume. The default value is **30**.
+
+{{% command %}}  
+**VolumeFunction = Formula**  
+{{% /command %}}  
+This defines the function which controls the volume of the sound. *Formula* must return a number representing the desired volume, where **1.0** represents the nomimal unchanged volume of the sound file.
+
+{{% command %}}  
+**PitchFunction = Formula**  
+{{% /command %}}  
+This defines the function which controls the pitch of the sound. *Formula* must return a number representing the desired pitch, where **1.0** represents the nomimal unchanged pitch of the sound file.
+
+{{% command %}}  
+**TrackFollowerFunction = Formula**  
+{{% /command %}}  
+This defines the function which moves the source of the sound along the path of **Rail 0**. *Formula* must return a distance in meters, for which the object is then moved, respecting the curves and height changes of **Rail 0**.
+
+------
+
+##### ● The [StateChangeSound] section
+
+You can use the [StateChangeSound] section to attach sound effects to the preceeding [Object] section.
+
+{{% command %}}  
+[StateChangeSound]  
+{{% /command %}}  
+This starts the section- Must immediately follow an [Object] section.
+
+{{% command %}}  
+**FileName = File**
+{{% /command %}}  
+This loads the sound effect to play for all state changes. Alternatively, **FileNames** may be used, which is described below:
+
+{{% command %}}  
+**FileNames = File<sub>0</sub>, File<sub>1</sub>, ..., File<sub>n-1</sub>**  
+{{% /command %}}  
+Loads a list of *n* sounds, which correspond to the states in the [Object] section above.
+If a state is to have no sound effect, the list entry should be left blank.
+
+{{% command %}}  
+**Position = X, Y, Z**  
+{{% /command %}}  
+Defines the position of the sound, relative to the center of the animated file.
+
+{{% command %}}  
+**Volume = Value**  
+{{% /command %}}  
+
+This defines the volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
+
+{{% command %}}  
+**Pitch = Value**  
+{{% /command %}}  
+
+This defines the pitch of the sound at the source position. A value of **1.0** represents the nominal unchanged pitch of the sound file.
+
+{{% command %}}  
+**Radius = Value**  
+{{% /command %}}  
+
+This defines the radius in meters from it's source at which the sound effect plays at full volume. The default value is **30**.
+
+{{% command %}}  
+**PlayOnShow = Value**  
+{{% /command %}}  
+
+*Value* = **0**: The sound effect will not be played.
+*Value* = **1**: The sound effect will be played.
+
+This defines whether the sound effect defined above should be played when a the relevant state is shown. 
+
+{{% command %}}  
+**PlayOnHide = Value**  
+{{% /command %}}  
+
+
+*Value* = **0**: The sound effect will not be played.
+*Value* = **1**: The sound effect will be played.
+
+This defines whether the sound effect defined above should be played when the relevant state is hidden.
+
+------
+
 {{% warning %}}
 
 #### openBVE 2 compatibility note
@@ -197,7 +315,7 @@ Please note that if the result of any mathematical operation or function would b
 
 {{% table %}}
 
-| Infix   | Functional       | Descripció               |
+| Infix   | Functional       | Description               |
 | :------ | :--------------- | :------------------------ |
 | `a + b` | `Plus[a,b, ...]` | Represents addition       |
 | `a - b` | `Subtract[a,b]`  | Represents subtraction    |
@@ -207,13 +325,13 @@ Please note that if the result of any mathematical operation or function would b
 
 {{% /table %}}
 
-##### ● Comparacions
+##### ● Comparisons
 
 All comparisons return 1 for true and 0 for false.
 
 {{% table %}}
 
-| Infix    | Functional          | Descripció                                     |
+| Infix    | Functional          | Description                                     |
 | :------- | ------------------- | ----------------------------------------------- |
 | `a == b` | `Equal[a,b]`        | True (1) if *a* equals *b*                      |
 | `a != b` | `Unequal[a,b]`      | True (1) if *a* does not equal *b*              |
@@ -224,13 +342,13 @@ All comparisons return 1 for true and 0 for false.
 
 {{% table %}}
 
-##### ● Operacions lògiques
+##### ● Logical operations
 
 All operations treat 0 as false and any other value as true, and return 1 for true and 0 for false.
 
 {{% table %}}
 
-| Infix          | Functional | Descripció                            |
+| Infix          | Functional | Description                            |
 | :------------- | ---------- | -------------------------------------- |
 | `!a`           | `Not[a]`   | True (1) if *a* is false               |
 | `a & b`        | `And[a,b]` | True (1) if both *a* and *b* are true  |
@@ -267,13 +385,13 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% /warning-nontitle %}}
 
-## <a name="functions"></a>■ 4. Llista de funcions
+## <a name="functions"></a>■ 4. List of functions
 
 ##### ● Basic arithmetics
 
 {{% table %}}
 
-| Funció         | Descripció                                                  |
+| Function         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `Reciprocal[x]`  | Returns the reciprocal, equal to 1/*x*                       |
 | `Power[a,b,...]` | Returns *a* raised to the *b*<sup>th</sup> power. *b* must be a non-negative number. For consistency, Power[0,*b*] always returns 1, even in the degenerate case Power[0,0], and *a* being negative always returns 0. Adding more arguments will create a chain. Power[a,b,c] will return *a*<sup>*b*<sup>*c*</sup></sup>. |
@@ -284,7 +402,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% table %}}
 
-| Funció                      | Descripció                                                  |
+| Function                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
 | `Quotient[a,b]`               | Divides *a* by *b* and rounds the result down, equal to `Floor[a/b]`. |
 | `Mod[a,b]`                    | Returns the remainder of dividing *a* by *b*, equal to `a-b*Floor[a/b]`. |
@@ -304,7 +422,7 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% table %}}
 
-| Funció    | Descripció                                                  |
+| Function    | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
 | `Exp[x]`    | The exponential function, or *e* to the *x*<sup>th</sup> power. |
 | `Log[x]`    | The natural logarithm, to base *e*.                          |
@@ -320,19 +438,19 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% table %}}
 
-| Funció                        | Descripció                                                  |
+| Function                        | Description                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
 | `If[cond,truevalue,falsevalue]` | If *cond* is != 0, returns *truevalue*, otherwise *falsevalue* |
 
 {{% /table %}}
 
-## <a name="variables"></a>■ 5. Llista de variables
+## <a name="variables"></a>■ 5. List of variables
 
 ##### ● Primitives
 
 {{% table %}}
 
-| Variable       | Descripció                                                  |
+| Variable       | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
 | `value`        | The value returned by the function in the last evaluation. At the beginning of the simulation, this is 0. |
 | `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
@@ -340,11 +458,11 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% /table %}}
 
-##### ● Temps i càmera
+##### ● Time and camera
 
 {{% table %}}
 
-| Variable         | Descripció                                                  |
+| Variable         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `time`           | The current in-game time measured in seconds since midnight of the first day. |
 | `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
@@ -352,17 +470,17 @@ Please note that some combinations of prefix and infix operators are not recogni
 
 {{% /table %}}
 
-##### ● Trens
+##### ● Trains
 
 Generally, objects attached to a particular train and car return values for that train and car, unless stated otherwise. For scenery objects, the reference is the driver's car of the nearest train (not necessarily the player's train).
 
 In some of the following variables, *carIndex* has the following meaning: 0 is the 1<sup>st</sup> car from the front, 1 is the 2<sup>nd</sup> car from the front, etc., while -1 is the 1<sup>st</sup> car from the rear, -2 is the 2<sup>nd</sup> car from the rear, etc. In general, car indices from -*cars* to *cars*-1 represent existing cars, where *cars* is the number of cars the train has, while values outside of this range represent non-existing cars. As all trains have at least 1 car, indices -1 and 0 are guaranteed to exist for any train.
 
-##### ● Trens (general)
+##### ● Trains (general)
 
 {{% table %}}
 
-| Variable                      | Descripció                                                  |
+| Variable                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
 | `cars`                        | The number of cars the train has.                            |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
@@ -391,7 +509,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table %}}
 
-| Variable                       | Descripció                                                  |
+| Variable                       | Description                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
@@ -406,11 +524,11 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% /table %}}
 
-##### ● Trens (portes)
+##### ● Trains (doors)
 
 {{% table %}}
 
-| Variable                     | Descripció                                                  |
+| Variable                     | Description                                                  |
 | ---------------------------- | ------------------------------------------------------------ |
 | `doors`                      | The state of the doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
 | `doors[carIndex]`            | The state of the doors of car *carIndex*. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |

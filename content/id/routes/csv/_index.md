@@ -1,39 +1,39 @@
 ---
-title: The **.csv** route format
-linktitle: The CSV route
+title: File rute **.csv**
+linktitle: Rute CSV
 weight: 1
 ---
 
-➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
+➟ [Rangkuman skrip]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ Contents
+## ■ Isi konten
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Preprocessing](#preprocessing)
-- [4. The Options namespace](#options)
-- [5. The Route namespace](#route)
-- [6. The Train namespace](#train)
-- [7. The Structure namespace](#structure)
-- [8. The Texture namespace](#texture)
-- [9. The Cycle namespace](#cycle)
-- [10. The Signal namespace](#signal)
-- [11. The Track namespace](#track)
-  - [11.1. Rails](#track_rails)
-  - [11.2. Geometry](#track_geometry)
-  - [11.3. Objects](#track_objects)
-  - [11.4. Stations](#track_stations)
-  - [11.5. Signalling and speed limits](#track_signalling)
-  - [11.6. Safety systems](#track_safety)
-  - [11.7. Miscellaneous](#track_misc)
+- [1. Pengenalan](#overview)
+- [2. Format penulisan](#syntax)
+- [3. Perintah unik](#preprocessing)
+- [4. Bagian Options](#options)
+- [5. Bagian Route](#route)
+- [6. Bagian Train](#train)
+- [7. Bagian Structure](#structure)
+- [8. Bagian Texture](#texture)
+- [9. Bagian Cycle](#cycle)
+- [10. Bagian Signal](#signal)
+- [11. Bagian Track](#track)
+  - [11.1 Rel](#track_rails)
+  - [11.2. Geometri](#track_geometry)
+  - [11.3. Objek](#track_objects)
+  - [11.4. Stasiun](#track_stations)
+  - [11.5. Persinyalan dan batas kecepatan](#track_signalling)
+  - [11.6. Sistem keamanan](#track_safety)
+  - [11.7. Lainnya](#track_misc)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Pengenalan
 
-A CSV route allows to create a route in a text file.
+File rute CSV berfungsi membuat sebuah rute dari rangkaian teks.
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose** (unless otherwise stated), however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside any folder whose current or parent folder includes the *Railway* and *Train* folders. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom, where each line is split into expressions, which are interpreted from left to right.
 

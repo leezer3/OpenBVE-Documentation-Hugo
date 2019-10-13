@@ -1,23 +1,23 @@
 ---
-title: Number formats
+title: Format angka
 weight: 2
 ---
 
 <font color="Gray">This page describes which number formats are encountered in the various route and train files and how to adhere to them.</font>
 
-## ■ Contents
+## ■ Isi konten
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Penjelasan](#overview)
 - [2. Integers](#integers)
 - [3. Floating-point numbers](#floating)
-- [4. Times](#times)
-- [5. Color values](#colors)
+- [4. Waktu](#times)
+- [5. Nilai warna](#colors)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
 Within the route and train files, you will encounter numbers like integers or floating-point numbers all the time, occasionally also others. These numbers are required to adhere to a certain format, which is described in the following sections.
 
@@ -73,7 +73,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 987  
 {{% /code %}}
 
-## <a name="times"></a>■ 4. Times
+## <a name="times"></a>■ 4. Waktu
 
 **Legacy:** Permitted is any of the following sequences:
 
@@ -98,7 +98,7 @@ If minutes or seconds are not indicated, they are assumed to be zero. You can us
 24.0215  
 {{% /code %}}
 
-## <a name="colors"></a>■ 5. Color values
+## <a name="colors"></a>■ 5. Nilai warna
 
 **Hexcolor:** A six-digit hexadecimal number is preceded by a number sign character (U+0023). An individual hexadecimal digit can be comprised of the decimal digits from 0 to 9 (U+0030 - U+0039), the lowercase letters from a to f (U+0061 - U+0066) and the uppercase letters from A to F (U+0041 - U+0046).The hexcolor has the following form:
 
@@ -111,12 +111,12 @@ In this sequence, RR represents the red component, GG the green component an
 Commonly used colors (to indicate transparency) include:
 
 {{% code %}}  
-<font color="Black">#000000 (black)</font>  
-<font color="Red">#FF0000 (red)</font>  
-<font color="Green">#00FF00 (green)</font>  
-<font color="Blue">#0000FF (blue)</font>  
+<font color="Black">#000000 (hitam)</font>  
+<font color="Red">#FF0000 (merah)</font>  
+<font color="Green">#00FF00 (hijau)</font>  
+<font color="Blue">#0000FF (biru)</font>  
 <font color="Cyan">#00FFFF (cyan)</font>  
 <font color="Magenta">#FF00FF (magenta)</font>  
-<font color="Yellow">#FFFF00 (yellow)</font>  
-<font color="White">#FFFFFF (white)</font>  
+<font color="Yellow">#FFFF00 (kuning)</font>  
+<font color="White">#FFFFFF (putih)</font>  
 {{% /code %}}

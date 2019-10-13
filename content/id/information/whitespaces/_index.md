@@ -1,13 +1,13 @@
 ---
-title: White Spaces
+title: Spasi
 weight: 3
 ---
-<font color="Gray">This page describes what white spaces are.</font> 
+<font color="Gray">Bagian ini menjelaskan tentang spasi kosong.</font> 
 
 White spaces are characters which leave an invisible space between characters. The various file formats usually ignore white spaces to parts when parsing an expression.
 
 {{% code "*Example expression:*" %}}  
-&nbsp;&nbsp;&nbsp;&nbsp;some text  
+&nbsp;&nbsp;&nbsp;&nbsp;teks  
 {{% /code %}}
 
 This example expression contains three spaces at the beginning, which might be ignored by any of the file parsers. Whether or not the parser ignores white spaces is mentioned in the documentation for the respective file format.
@@ -41,4 +41,4 @@ This example expression contains three spaces at the beginning, which might be i
 - **U+205F** (MEDIUM MATHEMATICAL SPACE)
 - **U+3000** (IDEOGRAPHIC SPACE)
 
-For further information, consult Unicode at http://www.unicode.org.
+Info lebih lanjut tentang Unicode dapat dibuka di http://www.unicode.org.

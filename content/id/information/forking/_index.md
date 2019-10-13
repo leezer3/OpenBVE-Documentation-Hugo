@@ -1,10 +1,10 @@
 ---
-title: Forking guidelines
+title: Panduan Forking
 weight: 8
 ---
 {{% information %}}
 
-#### Q: What is a fork?
+#### ?: Apa itu fork?
 
 **A:** If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program.
 
@@ -23,22 +23,22 @@ weight: 8
 
 If you are planning on creating a fork of openBVE or one of its tools, these are a set of guidelines (not requirements) that you are encouraged to follow.
 
-## ■ Rename the project
+## ■ Ganti nama project
 
 You should give your project a distinct title and should generally also replace the logos. Just changing the version number does not constitute as giving your fork a distinct title. You should in fact rename it.
 
 Your fork should have a title distinct from **openBVE** and all possible spelling variations thereof. If you fail to give your fork a distinct name, users would be unable to distinguish between the fork and the original, leading to a lot of confusion.
 
-## ■ Remove references to the homepage
+## ■ Menghapus referensi ke homepage
 
 You should generally remove the references to the openBVE homepage and the version checking mechanism from the main menu.
 
 This does not mean that you are discouraged to mention openBVE or its origin, but that you should make sure that users don't mistake this homepage as the origin of your fork.
 
-## ■ There is no official support for forks
+## ■ Tidak ada support resmi untuk fork
 
 For any fork, regardless of how small the change, the openBVE forum is not the place to discuss it. While you can make a single announcement, you will have to find your own place if you want to further discuss your fork or want to offer support for it.
 
-## ■ The future of openBVE
+## ■ Masa depan openBVE
 
 Eventually, there will be a successor to openBVE, and with it, an easier means to integrate new functionality in the form of plugins. You may want to wait until that time, or be prepared to later port your fork to become a regular add-on.

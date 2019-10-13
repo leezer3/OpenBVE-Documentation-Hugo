@@ -5,4 +5,4 @@ hidden: true
 
 ![construction_64](/images/construction_64.png)
 
-Halaman ini dalam konstruksi.
+Halaman ini dalam proses pembuatan.
