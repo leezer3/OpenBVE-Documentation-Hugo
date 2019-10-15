@@ -1,31 +1,31 @@
 ---
-title: Number formats
+title: 数値の形式
 weight: 2
 ---
 
-<font color="Gray">This page describes which number formats are encountered in the various route and train files and how to adhere to them.</font>
+<font color="Gray">このページでは、様々なルートファイルと車両ファイルで使用する数値形式と、それらに準拠する方法について説明します。</font>
 
-## ■ Contents
+## 目次
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Integers](#integers)
-- [3. Floating-point numbers](#floating)
-- [4. Times](#times)
-- [5. Color values](#colors)
+- [1. 概要](#overview)
+- [2. 整数型](#integers)
+- [3. 浮動小数点型](#floating)
+- [4. 時刻形式](#times)
+- [5. 色表現](#colors)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概要
 
-Within the route and train files, you will encounter numbers like integers or floating-point numbers all the time, occasionally also others. These numbers are required to adhere to a certain format, which is described in the following sections.
+ルートファイルと車両ファイル内では、常に整数や浮動小数点数などの数値を使用しますが、場合によっては他の数値も使用します。 これらは、次章で説明する特定の形式に従うことが必要です。
 
-There are two parsing methods for numbers: **Strict** and **Loose**. The Strict method is a very tight specification which does not leave space for making typographic mistakes. This method is used in all new file formats. The Loose method is a legacy parsing model required for compatibility with older material. The different files as presented on the *Developing for openBVE* pages indicate which model is being used. Note that whenever a *Loose* model is permitted, you can also use the *Strict* formats as *Strict* forms a subset of *Loose*.
+数値の解析方法には、**Strict**および**Loose**の2つがあります。 Strictメソッドは非常に厳密な仕様であり、印刷上のミスを犯すスペースがありません。 このメソッドは、すべての新しいファイル形式で使用されます。 Looseメソッドは、古いリリースとの互換性を保持するために必要な、レガシー解析モデルです。 *Developing for openBVE*ページに記載されているさまざまなファイルは、使用されているモデルを示しています。 *Loose*モデルが許可されている場合は、*Strict*が*Loose*のサブセットを形成するため、*Strict*形式も使用できることに注意してください。
 
-## <a name="integers"></a>■ 2. Integers
+## <a name="integers"></a>■ 2. 整数型
 
-**Strict:** Permitted is any sequence of at least one decimal digit in the range from 0 to 9 (U+0030 - U+0039), optionally prepended by a negative sign (U+002D). The resulting character sequence may include leading or trailing white spaces.
+**Strict:**使用できるのは、0から9 (U+0030 - U+0039) の範囲の少なくとも1つの10進数の任意の数列であり、オプションで負符号 (U+002D) が前に付加されます。 結果の文字列には、先頭または末尾の空白が含まれる場合があります。
 
 {{% code "*Examples for Strict integers:*" %}}  
 0  
@@ -33,7 +33,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -98  
 {{% /code %}}
 
-**Loose:** All white spaces are removed from the character sequence first. Then, the remaining character sequence (*abcde*) is interpreted according to the *Strict* model. If this fails to create a valid number, the last character is dropped from the sequence (*abcd*) and then, the sequence is tested again. This continues until a valid number is produced or until no character remains, after which the character sequence is determined to be an invalid number. 
+**Loose:**最初に、すべての空白が文字列から削除されます。 次に、残りの文字列 (*abcde*) が*Strict*モデルに従って解釈されます。 ここで、有効な番号の作成に失敗した場合、最後の文字が文字列から削除され (*abcd*)、その後、文字列が再度テストされます。 これは、有効な数字が生成されるか、文字がなくなるまで続き、最終的に、文字列が無効な数字であると判断されます。
 
 {{% code "*Examples for Loose integers:*" %}}  
 123  
@@ -47,9 +47,9 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -987  
 {{% /code %}}
 
-## <a name="floating"></a>■ 3. Floating-point numbers
+## <a name="floating"></a>■ 3. 浮動小数点型
 
-**Strict:** Permitted is any sequence of at least one decimal digit in the range from 0 to 9 (U+0030 - U+0039), optionally interleaved by exactly one decimal separator in form of the period (U+002E), optionally prepended by a negative sign (U+002D). The resulting character sequence may include leading or trailing white spaces.
+**Strict:**使用できるのは、0〜9の範囲の少なくとも1つの10進数 (U+0030 - U+0039) の任意の数列です。オプションで、ピリオド (U+002E) の形式で1つの小数点記号を挿入します。オプションで負符号 (U+002D) を前に付けます。 結果の文字列には、先頭または末尾の空白が含まれる場合があります。
 
 {{% code "*Examples for Strict floating-point numbers:*" %}}  
 123  
@@ -61,7 +61,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -123.456  
 {{% /code %}} 
 
-**Loose:** All white spaces are removed from the character sequence first. Then, the remaining character sequence (*abcde*) is interpreted according to the *Strict* model. If this fails to create a valid number, the last character is dropped from the sequence (*abcd*) and then, the sequence is tested again. This continues until a valid number is produced or until no character remains, after which the character sequence is determined to be an invalid number. 
+**Loose:**最初に、すべての空白が文字列から削除されます。 次に、残りの文字列 (*abcde*) が*Strict*モデルに従って解釈されます。 ここで、有効な番号の作成に失敗した場合、最後の文字が文字列から削除され (*abcd*)、その後、文字列が再度テストされます。 これは、有効な数字が生成されるか、文字がなくなるまで続き、最終的に、文字列が無効な数字であると判断されます。
 
 {{% code "*Examples for Loose floating-point numbers:*" %}}  
 -123 . 456  
@@ -73,9 +73,9 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 987  
 {{% /code %}}
 
-## <a name="times"></a>■ 4. Times
+## <a name="times"></a>■ 4. 時刻形式
 
-**Legacy:** Permitted is any of the following sequences:
+**Legacy:** 次のいずれの形式も使用することができます:
 
 {{% code %}}  
 *hhh*__.__*mmss*  
@@ -85,30 +85,30 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 *hhh*  
 {{% /code %}}
 
-In these sequences, *hhh* denotes any sequence of at least one decimal digit to indicate the hour, *mm* denotes the two-digit minute part, *m* denotes a one-digit minute part, *ss* denotes a two-digit second part, *s* denotes a one-digit second part, and the character to separate the hours from the minutes is the period (U+002E). All digits need to be characters from 0 to 9 (U+0030 - U+0039). Leading or trailing white spaces are ignored. The total time is determined via the following formula, resulting in seconds since midnight:
+上記に示した文字列では、*hhh*は時間を示す少なくとも1つの10進数字列を示します。*mm*は2桁の分部分を示し、*m*は1桁の分部分を示します。*ss*は2桁の秒の部分を示し 、* s *は1桁の秒の部分を示します。時間と分を区切る文字はピリオド (U+002E) です。 すべての数字は、0〜9の文字 (U+0030 - U+0039) である必要があります。 先頭や末尾の空白は無視されます。 合計時間は次の式で決定され、0時ちょうどからの秒数になります。
 
 {{% function "*Seconds since midnight for a given time:*" %}}  
 3600**hhh* + 60*mm + *ss*  
 {{% /function %}}
 
-If minutes or seconds are not indicated, they are assumed to be zero. You can use any non-negative hour, including values greater than or equal to 24. If, for example, a station arrival time is 23:59:00 (day 1), and the arrival time of the following station is 00:02:15 (day 2), then use the following sequences to represent these times in order to ensure a chronological order:
+分または秒が指定されていない場合、ゼロと見なされます。 また、24以上の値を含む、負でない任意の時間も使用できます。たとえば、駅の到着時間が23:59:00 (1日目) で、次の駅の到着時間が00:02:15 (2日目) である場合 、次の文字列を使用してこれらの時間を表し、時系列順を確保します。
 
 {{% code "*Examples for times:*" %}}  
 23.5900  
 24.0215  
 {{% /code %}}
 
-## <a name="colors"></a>■ 5. Color values
+## <a name="colors"></a>■ 5. 色表現
 
-**Hexcolor:** A six-digit hexadecimal number is preceded by a number sign character (U+0023). An individual hexadecimal digit can be comprised of the decimal digits from 0 to 9 (U+0030 - U+0039), the lowercase letters from a to f (U+0061 - U+0066) and the uppercase letters from A to F (U+0041 - U+0046).The hexcolor has the following form:
+**Hexcolor:** 6桁の16進数の前にはシャープ記号 (U+0023) が付きます。個々の16進数は、0 - 9 (U+0030 - U+0039) の10進数、a - fの小文字 (U+0061 - U+0066)、およびA〜Fの大文字 (U+0041 - U+0046)  で構成されます。hexcolorの形式は次のとおりです:
 
 {{% code %}}  
 \#*RRGGBB*  
 {{% /code %}}
 
-In this sequence, RR represents the red component, GG the green component and BB the blue component. Each component ranges from 00 to FF (0 - 255), where 00 represents no contribution for that channel and FF full contribution.
+上記において、 RR は赤色要素を表し、 GG は緑色要素を、そして BB は青色要素を表します。各要素の範囲は00からFF (0 - 255) です。00ではその色成分がなく、FFではその色成分が最大限入っていることを表します。
 
-Commonly used colors (to indicate transparency) include:
+一般的に使用される色 (透明性を示す) には以下が含まれます。
 
 {{% code %}}  
 <font color="Black">#000000 (black)</font>  
