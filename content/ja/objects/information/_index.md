@@ -8,22 +8,22 @@ weight: 3
 
 ## ■ コマンド
 
-- In Face (B3D) or AddFace (CSV) commands, vertices need to be given in order of adjacency. Complex polygons, meaning self-intersecting polygons, will lead to erratic results.
-- The current implementation of openBVE produces incorrect illumination on the back face of faces created by Face2 (B3D) or AddFace2 (CSV). This behavior might change in future versions of openBVE so that both sides are correctly illuminated.
+- Face (B3D)またはAddFace (CSV)コマンドでは、隣接する順に頂点を指定する必要があります。自己交差するポリゴンなどの複雑なポリゴンは、不安定な結果につながります。
+- 現在のopenBVEの実装では、Face2(B3D)またはAddFace2(CSV)によって作成された面の背面に誤った照明が生成されます。 この動作は、openBVEの将来のバージョンで変更され、両側が正しく照明されるようになる可能性があります。
 
-## ■ Geometry
+## ■ 形状
 
-- Avoid overly complex geometry where the end results are hardly noticable. Avoid using Cube and Cylinder commands (B3D/CSV) if parts of the cube/cylinder will not be visible. Do not create cylinder caps unless they are likely to be visible.
-- To get smoothly curved objects, use custom normals with fewer faces instead of no custom normals with many faces.
+- 最終的にはほとんど目立たないような過度に複雑な形状は避けましょう。 キューブ/シリンダーの一部が表示されない場合、CubeおよびCylinderコマンド(B3D / CSV)の使用は避けましょう。 シリンダーキャップが見えない限り、それを作成しないでください。
+- 滑らかに湾曲した形状を作成するには、多くの面を持つカスタム法線ではなく、面の少ないカスタム法線を使用します。
 
-## ■ Textures
+## ■ テクスチャ
 
-- Try to create textures that wrap around objects by using texture coordinates appropriately. This will reduce or eliminate the need to change the texture when rendering, which is expensive.
-- Use only textures which are of power-of-two size, e.g. whose sides are of length 1, 2, 4, 8, 16, 32, etc. Textures do not need to be square, though.
+- テクスチャ座標を適切に使用して、オブジェクトを包むテクスチャを作成してください。 これにより、コストのかかるレンダリング時のテクスチャ変更の必要性が、軽減または排除されます。
+- 1、2、4、8、16、32をはじめとする、2のべき乗の辺の長さを持つテクスチャのみを使用してください。 ただし、テクスチャは正方形である必要はありません。
 
-## ■ Transparency
+## ■ 透過
 
-- For best visual quality, every transparency has its overhead. Avoid using transparency at all if there are alternatives of similar implementational and geometric complexity.
-- Use color-key transparency whenever possible. Avoid using alpha channels in textures or using Color (B3D) or SetColor (CSV) commands with an alpha setting at all costs.
-- When it is necessary to use alpha, bear in mind that depth sorting will be used to determine the rendering order. There is no perfect real-time depth sorting algorithm, thus artifacts cannot be completely avoided.
-- When using alpha, keep polygons parallel to each other, which will always render correctly. The worst case scenario is perpendicular faces. When such faces overlap on-screen, the rendering order might be erratic. Use perpendicular alpha faces only if they are unlikely to overlap on-screen.
+- 最高の視覚品質を得るために使用する、すべての透過処理にはオーバーヘッドがあります。 同様の結果をもたらす複雑な実装や複雑な形状での代替が効く場合は、透過を使用しないでください。
+- 可能な限り、カラーキーの透明度設定を使用してください。 テクスチャでアルファチャンネルを使用したり、Colorコマンド(B3D)またはSetColorコマンド(CSV)で透過設定を使用したりすることは避けてください。
+- アルファチャンネルを使用する必要がある場合、深度の並べ替えを使用してレンダリング順序を決定することに注意してください。 完全なリアルタイム深度ソートアルゴリズムはないため、劣化を完全に回避することはできません。
+- アルファチャンネルを使用する場合、ポリゴンを互いに平行に保つと、常に正しくレンダリングされます。 最悪のシナリオは、垂直面です。 そのような面が画面上で重なると、レンダリング順序が不安定になる場合があります。 垂直なアルファチャンネル付きの面は、画面上で重なる可能性が低い場合にのみ使用してください。
