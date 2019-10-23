@@ -1,5 +1,5 @@
 ---
-title: The **.csv** object format - Quick reference
+title: "**.csv** オブジェクト形式 - クイックリファレンス"
 hidden: true
 ---
 
