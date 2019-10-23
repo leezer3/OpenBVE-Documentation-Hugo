@@ -1,5 +1,5 @@
 ---
-title: The **.b3d** object format - Quick reference
+title: "**.b3d** オブジェクト形式 - クイックリファレンス"
 hidden: true
 ---
 
