@@ -19,7 +19,7 @@ Supported route file formats:
 - CSV
 - RW
 
-This tool does not support the plugin API yet. This means that only the built-in texture formats (BMP, PNG, GIF, JPG, TIF) and the built-in sound formats (WAV) are supported.
+Alat ini tidak bisa membuka plugin API saat ini. Artinya, hanya texture standar (BMP, PNG, GIF, JPG, TIF) dan audio standar (WAV) yang bisa dibuka.
 
 ## ■ Changelog
 
@@ -27,12 +27,12 @@ Please also see the changelog of the main program.
 
 ##### ● Version 1.4.4.0 (2016-01-30)
 
-- Added support for antialiasing and anisotropic filtering.
+- Tersedia pilihan anti aliasing dan filter anisotropis.
 - Added support for different window sizes. 
 
 ##### ● Version 1.3.2.0 (2011-11-30)
 
-- Added support for managed content package references.
+- Menambahkan support untuk tutorial paket konten manajer.
 
 ##### ● Version 1.2.11.0 (2011-01-07)
 
@@ -48,15 +48,15 @@ Please also see the changelog of the main program.
 
 ##### ● Version 1.2.5.1 (2010-02-14)
 
-- You can now enter a track position using the number keys and jump to that position.
+- Sekarang anda bisa menambahkan posisi jalur dengan memasukkan angka dan pindah langsung ke posisi yang sudah ditulis.
 
-##### ● Version 1.2.5.0 (2010-01-24)
+##### ● Versi 1.2.5.0 (2010-01-24)
 
 - Removed the dependency on specific versions of the Tao.OpenAL, Tao.OpenGL and Tao.SDL libraries, which could cause problems in recent Linux distributions.
 
-##### ● Version 1.2.3.0 (2009-11-14)
+##### ● Versi 1.2.3.0 (2009-11-14)
 
-- When loading a route via command line arguments, the wrong background image could show at the initial track position.
+- Saat membaca rute dari perintah yang ada, gambar background yang salah akan muncul pada beberapa posisi trek.
 
 ##### ● Version 1.2.0.0 (2009-07-26)
 
@@ -68,9 +68,9 @@ Please also see the changelog of the main program.
 
 ##### ● Version 1.0.7.1 (2009-06-14)
 
-- Support for new parameters in *ArrivalTime* in Track.Sta and Track.Station commands.
+- Pilihan *WaktuTiba* pada perintah Track.Sta dan Track.Station tersedia.
 - Support for custom normals in AddVertex and Vertex commands (objects).
-- Support for the Shear and ShearAll commands (objects).  
+- Perintah Shear dan ShearAll untuk objek tersedia.
 - As for responsiveness, complex objects are not optimized any longer in order to improve loading times.
 
 ##### ● Version 1.0.6.0 (2009-05-24)

@@ -1654,6 +1654,8 @@ This command can only be used at the beginning of a block.
 **T:**_time_: This is the terminal station. If *ForcedRedSignal* is set to 1, the departure signal will still switch to green before the specified time as if this was a regular station.  
 **C**: This is a station at which to "change ends". See the description below.  
 **C:**_time_: This is a station at which to "change ends". Changing ends will take place at the specified time unless *StopDuration* interferes. See the description below.  
+**J:**_index_: This is a station at which the train is "jumped" to the station specified by *index*. See the description below.  
+**J:**_index:**Time**_: This is a station at which the train is "jumped" to the specified by *index*. Jumping will take place at the specified time unless *StopDuration* interfers. See the description below.  
 {{% /command-arguments %}}
 
 ▸ Available options for *PassAlarm*:
@@ -1688,7 +1690,11 @@ This command can only be used at the beginning of a block.
 
 This command initializes a new station. It should be placed at the beginning of the station platform. In order to finalize the creation of a station, use the Track.Stop command to place stop points following this command. All following Track.Stop commands will be associated to this station. At least one Track.Stop command must follow if trains are expected to stop at this station.
 
+**Special Features:**
+
 Stations can be marked as "changing ends" in the departure time. At such stations, when the departure time has been reached, the train will automatically jump to the next station. This feature is intended to fake a reverse of traveling direction without the need to jump to stations manually from the menu.
+
+Similarly, stations can be marked as a "jump point" in the departure time. At such stations, when the departure time has been reached, the train will automatically jump to the specified station index.
 
 {{% warning-nontitle %}}
 

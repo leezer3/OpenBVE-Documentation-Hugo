@@ -10,7 +10,7 @@ openBVEは、Wavefront .objオブジェクト形式の一部をサポートし�
 
 以下は、サポートされていない機能の完全なリストです。
 
-- Animation
-- Lighting
-- Custom shaders
-- Reflection / luminosity
+- アニメーション
+- ライティング
+- カスタムシェーダー
+- 反射/光度
