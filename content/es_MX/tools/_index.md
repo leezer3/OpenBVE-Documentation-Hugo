@@ -1,5 +1,5 @@
 ---
-title: Tools
+title: Herramientas
 weight: 7
-layout: hidden
+layout: oculto
 ---
