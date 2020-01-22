@@ -145,6 +145,14 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 
 **Path** sets the relative path to the directory containing the object's train.dat, sound.cfg and extensions.cfg.
 
+*Note:* If a train folder is intended solely for AI use, then the **train.dat** file may be renamed **train.ai**
+
+{{% command %}}  
+**\<Reversed>** *true* **\</Reversed>**  
+{{% /command %}}
+
+If this attribute is set to **true**  then the consist of the train will be reversed.
+
 ## ■ Stop attribute
 
 {{% command %}}  

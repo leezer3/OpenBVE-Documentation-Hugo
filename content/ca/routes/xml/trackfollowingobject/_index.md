@@ -145,10 +145,18 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 
 **Path** sets the relative path to the directory containing the object's train.dat, sound.cfg and extensions.cfg.
 
+*Note:* If a train folder is intended solely for AI use, then the **train.dat** file may be renamed **train.ai**
+
+{{% command %}}  
+**\<Reversed>** *true* **\</Reversed>**  
+{{% /command %}}
+
+If this attribute is set to **true**  then the consist of the train will be reversed.
+
 ## ■ Stop attribute
 
 {{% command %}}  
-**\<Decelerate>** *Valor* **\</Decelerate>**  
+**\<Decelerate>** *Value* **\</Decelerate>**  
 {{% /command %}}
 
 **Value** sets the deceleration of the object. The unit is **km/h/s**.
@@ -156,7 +164,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<StopPosition>** *Posició* **\</StopPosition>**  
+**\<StopPosition>** *Position* **\</StopPosition>**  
 {{% /command %}}
 
 **Position** sets the in-game distance where the object stops. The unit is **meter**.
@@ -164,20 +172,20 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<Doors>** *Valor* **\</Doors>**  
+**\<Doors>** *Value* **\</Doors>**  
 {{% /command %}}
 
 **Value** sets the open door of the object. The valid values are:
 
-- **L** o **-1**: S'obren les portes del costat esquerre.
-- **N** o **0**: No s'obren les portes.
-- **R** o **1**: S'obren les portes del costat dret.
-- **B**: S'obren les portes de tots dos costats.
+- **L** or **-1**: The left door opens.
+- **N** or **0**: Neither door opens.
+- **R** or **1**: The right door opens.
+- **B**: Both doors open.
 
 ------
 
 {{% command %}}  
-**\<StopTime>** *Temps* **\</StopTime>**  
+**\<StopTime>** *Time* **\</StopTime>**  
 {{% /command %}}
 
 **Time** sets the duration of the stop of the object. This value is not an in-game time.
@@ -185,7 +193,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<Accelerate>** *Valor* **\</Accelerate>**  
+**\<Accelerate>** *Value* **\</Accelerate>**  
 {{% /command %}}
 
 **Value** sets the acceleration of the object. The unit is **km/h/s**.
@@ -193,7 +201,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<TargetSpeed>** *Valor* **\</TargetSpeed>**  
+**\<TargetSpeed>** *Value* **\</TargetSpeed>**  
 {{% /command %}}
 
 **Value** sets the speed after the acceleration of the object. The unit is **km/h**.
@@ -201,13 +209,13 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 ------
 
 {{% command %}}  
-**\<Direction>** *Valor* **\</Direction>**  
+**\<Direction>** *Value* **\</Direction>**  
 {{% /command %}}
 
-**Valor** defineix la direcció de desplaçament de l'objecte. Són vàlids els valors següents.
+**Value** sets the direction of travel of the object. Valid values are as follows.
 
-- **F** o **1** : L'objecte es mourà cap endavant.
-- **R** o **-1** : L'objecte es mourà cap enrere.
+- **F** or **1** : The object will move forward.
+- **R** or **-1** : The object goes backward.
 
 ------
 

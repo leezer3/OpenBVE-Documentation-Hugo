@@ -1,37 +1,37 @@
 ---
-title: The **panel2.cfg** file format
-linktitle: The panel2.cfg file
+title: "**panel2.cfg** ファイルフォーマット"
+linktitle: panel2.cfg ファイル
 weight: 4
 ---
 
-## ■ Contents
+## ■ 内容
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. The This section](#this)
-- [4. The PilotLamp section](#pilotlamp)
-- [5. The Needle section](#needle)
-- [6. The DigitalNumber section](#digitalnumber)
-- [7. The DigitalGauge section](#digitalgauge)
-- [8. The LinearGauge section](#lineargauge)
-- [9. The Timetable section](#timetable)
-- [10. Available subjects](#subjects)
+- [1. 概要](#overview)
+- [2. 文法](#syntax)
+- [3. This セクション](#this)
+- [4. PilotLamp セクション](#pilotlamp)
+- [5. Needle セクション](#needle)
+- [6. DigitalNumber セクション](#digitalnumber)
+- [7. DigitalGauge セクション](#digitalgauge)
+- [8. LinearGauge セクション](#lineargauge)
+- [9. Timetable セクション](#timetable)
+- [10. 使用可能なコマンド](#subjects)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概要
 
-The panel2.cfg file allows to create 2D panels by defining which elements to use, like lamps, needles, etc., what they are intended to display and where they are to be placed.
+panel2.cfg ファイルは lampやneedle等、運転台パネルを使用するための要素について表示、配置などの場所を定義することにより、2D運転台パネルを作成できます。
 
-The panel2.cfg file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside the train folder and is expected to be named **panel2.cfg**. The file is interpreted on a per-line basis, from top to bottom.
+panel2.cfg ファイルは任意のエンコードで記述されたプレーンテキストですが [encoding]({{< ref "/information/encodings/_index.md" >}}), 、好ましい選択としてはバイトオーダー付きのUTF-8です。 The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) に用いる数字は **ルーズ**ですが、 それでも出力にあたっては *厳密な* 出力をすることが望ましいです。 このファイルは必ずTrainフォルダー内に配置する必要があり、 **panel2.cfg**という名前にする必要があります。 ファイルは各行ごとに上から下に解釈されます。
 
 {{% notice %}}
 
-#### Layers
+#### レイヤー
 
-All elements in the panel are associated layers. The layer is described as an integer, where small values represent the background and high numbers the foreground. When placing elements, you should make sure that no overlapping elements share the same layer number. The background image of the panel is always associated layer number 0, so elements on top of it should start with layer number 1 or higher. If you want to place elements behind the panel background image, you can likewise use negative numbers to represent these layers.
+パネル内の全ての要素はレイヤーに紐づけされています。 レイヤーは整数で記述されます。 小さな値はより背景寄りに、大きな値は前景寄りに配置されます。 要素を配置する際は、同じレイヤー番号に重複しないよう留意する必要があります。 パネルの背景イメージは常にレイヤー番号0に関連付けられているため、その上に配置する要素はつねにレイヤー番号1以上で始まる必要があります。パネルの背景画像の更に背後に要素を配置する場合は、同様に負の数を使用して、此等のレイヤーを表すことが出来ます。
 
 {{% /notice %}}
 
@@ -39,45 +39,45 @@ All elements in the panel are associated layers. The layer is described as an in
 
 {{% notice %}}
 
-#### Daytime and nighttime images
+#### Daytime と nighttime イメージ
 
-For all elements that take a texture, you can specify distinct daytime and nighttime textures. Depending on the lighting conditions and additional route instructions, openBVE will display any intermediate blend between the daytime and nighttime textures. If no nighttime textures are used, the daytime images will be darkened to simulate corresponding nighttime images.
+テクスチャを取得する全ての要素に対して、昼間と夜間用の異なるテクスチャを指定できます。照明の条件と追加の路線データからの命令に応じて、OpenBVEは昼間と夜間のテクスチャの中間的なブレンドの結果を表示します。夜間のテクスチャを使用しない場合は、対応する夜間の画像をシミュレートするために、昼間の画像が暗くなります。
 
 {{% /notice %}}
 
-➟ [See also the quick reference for the panel2.cfg...]({{< ref "/trains/panel2_cfg_quick/_index.md" >}})
+➟ [ panel2.cfgのクイックリファレンスも参照して下さい...]({{< ref "/trains/panel2_cfg_quick/_index.md" >}})
 
 {{% notice %}}
 
-#### Overlay and Lighting
+#### 重なりとライティング
 
-The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light.
+運転台パネルのデータはオーバーレイとしてレンダリングされます。これは、運転台画像が常に風景のオブジェクトの手前に表示されることを意味します。この方法では、雨、壁、その他の遮るオブジェクト運転台画像内で誤ってレンダリングされることはありません。 周囲の明るさは運転台に反映されますが、運転台は常に白色光を反射しているように見えます。
 
 {{% /notice %}}
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 文法
 
-Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
+ファイル内の各行は空(または空白)飲みにすることが出来、またその行は無視され、新しいセクションの開始をマークするか、セクション内にキーと値のペアを含めることが出来ます。全てのキーと値のペアは、最後に開かれたセクションと関連付けされます。
 
-A new section is opened by starting the line with an opening bracket (U+005B) and ending it with a closing bracket (U+005D). The text in-between the brackets indicates the name of the section and is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as at the beginning and the end of the name of the section. Thus, the beginning of the section has the following form:
+新しいセクションを開くには、行を開始ブラケット (U+005B) で開始し、終了ブラケット (U+005D)で終了します。 カッコ内のテキストはセクション名を示し、大文字と小文字を区別しません。 行の最初と最後の空白、及びセクション名の最初と最後の空白は無視されます。従って、セクションの先頭は次の形式になります:
 
 {{% command %}}  
 [NameOfTheSection]  
 {{% /command %}}
 
-A key-value pair is indicated by giving the key, an equals sign (U+003D) and then the value. The key is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as in front and after the equals sign. Alternatively, white spaces surrounding the key and the value are ignored. Thus, a key-value pair as the following form:
+キーと値のペアは、キー、等号 (U+003D)、そして値を与えることで示されます。 キーは大文字と小文字を区別しません。 行頭と末尾、及び等号の前後の空白は無視され、または、キーと値を囲む空白は無視されます。 従って、キーと値のペアは次のような書式をとります:
 
 {{% command %}}  
 NameOfTheKey = Value  
 {{% /command %}}
 
-Some values are further split into multiple parts, separated by commas (U+002C).
+一部の値は、カンマで区切られた複数の部分にさらに分割されます (U+002C)。
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+コメントは行末のどこでも使用可能です。 コメントはセミコロン (U+003B)で始まります。 コメントは存在する場合、処理される前に全ての行から削除されます。
 
-## <a name="this"></a>■ 3. The This section
+## <a name="this"></a>■ 3. This セクション
 
-The This section defines the background image to use for the panel and which resolution the panel has. Only one This section may be used within the file.
+This セクションはパネルの背景イメージを用いる為の定義や、解像度を定義します。このセクションは、ファイル内で一度だけ使用できます。
 
 ------
 
@@ -85,7 +85,7 @@ The This section defines the background image to use for the panel and which res
 [This]  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -94,7 +94,7 @@ Resolution = *Value*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: A floating-point number representing the width measured on the panel background image that corresponds to the width of the screen for the default camera position, alignment and zoom.  
+***Value***: Thisセクションで示されたパネルの背景画像で、測定された幅を示す浮動小数点数で、デフォルトの画面の幅、カメラ位置、位置合わせ、ズームに用います。
 {{% /command-arguments %}}
 
 ------
@@ -104,7 +104,7 @@ Left = *Value*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: A floating-point representing which x-coordinate in the panel background corresponds to the farthest point to which can be scrolled left. The point is not required to lie within the bounds of the background image.  
+***Value***: パネルの背景の、どのX座標が左にスクロールさせることができる最も遠い点に対応するかを示す浮動小数点数。 座標の点は背景画像の座標の範囲内である必要はありません。
 {{% /command-arguments %}}
 
 ------
@@ -114,7 +114,7 @@ Right = *Value*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: A floating-point representing which x-coordinate in the panel background corresponds to the farthest point to which can be scrolled right. The point is not required to lie within the bounds of the background image.  
+***Value***: パネルの背景の、どのX座標が右にスクロールさせることができる最も遠い点に対応するかを示す浮動小数点数。 座標の点は背景画像の座標の範囲内である必要はありません。
 {{% /command-arguments %}}
 
 ------
@@ -124,7 +124,7 @@ Top = *Value*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: A floating-point representing which y-coordinate in the panel background corresponds to the farthest point to which can be scrolled up. The point is not required to lie within the bounds of the background image.  
+***Value***: パネルの背景の、どのY座標が上にスクロールさせることができる最も遠い点に対応するかを示す浮動小数点数。 座標の点は背景画像の座標の範囲内である必要はありません。  
 {{% /command-arguments %}}
 
 ------
@@ -134,7 +134,7 @@ Bottom = *Value*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: A floating-point representing which y-coordinate in the panel background corresponds to the farthest point to which can be scrolled down. The point is not required to lie within the bounds of the background image.  
+***Value***: パネルの背景の、どのY座標が下にスクロールさせることができる最も遠い点に対応するかを示す浮動小数点数。 座標の点は背景画像の座標の範囲内である必要はありません。 
 {{% /command-arguments %}}
 
 ------
@@ -144,7 +144,7 @@ DaytimeImage = *FileName*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FileName***: The image file to use as the daytime version of the panel background image, relative to the train folder. If not specified, no background image will be shown.  
+***FileName***: train フォルダに関連して、パネルの日中用の画像として使用するためのイメージファイル。 指定していない場合、背景画像は表示されません。 
 {{% /command-arguments %}}
 
 ------
@@ -154,7 +154,7 @@ NighttimeImage = *FileName*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FileName***: The image file to use as the nighttime version of the panel background image, relative to the train folder. If specified, the daytime version must also be specified. Otherwise, no nighttime version will be available.  
+***FileName***: train フォルダに関連して、パネルの夜間用の画像として使用するためのイメージファイル。 指定する場合は、昼間用のバージョンも指定する必要があります。それ以外の場合は夜間バージョンを使用することは出来ません。
 {{% /command-arguments %}}
 
 ------
@@ -164,7 +164,7 @@ TransparentColor = *HexColor*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***HexColor***: A [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}}) representing the exact color in both the *DaytimeImage* and *NighttimeImage* files which corresponds to a transparent pixel. The default value is #0000FF.  
+***HexColor***: A [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}})  *DaytimeImage* および *NighttimeImage* ファイルの双方に、透明ピクセルに対応する正確な色を定義します。 デフォルト値は #0000FF です。
 {{% /command-arguments %}}
 
 ------
@@ -174,11 +174,11 @@ Center = *X*, *Y*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***X***: A floating-point number representing the x-coordinate of the panel background image that corresponds to the center of the screen.  
-***Y***: A floating-point number representing the y-coordinate of the panel background image that corresponds to the center of the screen.  
+***X***: パネルの背景イメージの中心に対応するX座標を示す浮動小数点数
+***Y***: パネルの背景イメージの中心に対応するY座標を示す浮動小数点数  
 {{% /command-arguments %}}
 
-Defines which pixel in the background image corresponds to the center of the screen for the default camera position. The relation between *Center* and *Origin* influences the yaw and pitch of the cab alignment.
+背景画像のどのピクセルがデフォルトのカメラ位置の消失点に対応するかを定義します。これは、2本のレールが直線の線路上で水平線に収束するポイントです。 *Center* と *Origin* の関係は、運転台の位置合わせの yaw と pitch に影響します。
 
 ------
 
@@ -187,27 +187,27 @@ Origin = *X*, *Y*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***X***: A floating-point number representing the x-coordinate of the panel background image that corresponds to the vanishing point.  
-***Y***: A floating-point number representing the y-coordinate of the panel background image that corresponds to the vanishing point.  
+***X***: 消失点に対応する、パネルの背景イメージのX座標を示す浮動小数点数。 
+***Y***: 消失点に対応する、パネルの背景イメージのY座標を示す浮動小数点数。 
 {{% /command-arguments %}}
 
-Defines which pixel in the background image corresponds to the vanishing point for the default camera position. This is the point to which the two rails converge at the horizon on a straight piece of track. The relation between *Center* and *Origin* influences the yaw and pitch of the cab alignment.
+背景画像のどのピクセルがデフォルトのカメラ位置の消失点に対応するかを定義します。これは、2本のレールが直線の線路上で水平線に収束するポイントです。 *Center* と *Origin* の関係性は、運転台パネルの yaw と pitch に影響します。
 
 ![illustration_center_origin](/images/illustration_center_origin.png)
 
 {{% notice %}}
 
-#### When camera restriction affects the default camera setup
+#### カメラの制限がデフォルトのカメラ設定に影響する場合
 
-Camera restriction is the built-in functionality to limit the camera view inside cabs created by the panel2.cfg to the rectangle as specified via *Left*, *Right*, *Top* and *Bottom*. If your setup of *Center*and *Resolution* would force the camera to show parts that are outside of that specified region even with the default camera settings, the camera position will be altered to guarantee that the view stays inside the cab region. In order to verify that your *Center* and *Origin* setup is unaffected by this, disable camera restriction by hitting the CAMERA_RESTRICTION key (default: CTRL+R) and then reset the camera by hitting the CAMERA_RESET key (default: num 5). The *Center* and *Origin* values will now be exactly as scripted, thereby revealing possible problems in the relations of *Resolution*, *Left*, *Right*, *Top*, *Bottom*, *Center* and *Origin*.
+カメラの制限は、Panel2.cfgで作成された運転台データ内のカメラの見え方を、 *Left*、 *Right*、 *Top*、*Bottom*で指定された長方形に制限する機能です。 *Center* と *Resolution* の設定により、デフォルトのカメラ設定でも、指定された領域外のパーツがカメラに表示された場合でも、カメラの位置が変更されて、ビューが運転台パネルの範囲内に表示されることが保証されます。 *Center* と *Origin* の設定がこの影響を受けないことを確認するには、 CAMERA_RESTRICTION キー (デフォルト: CTRL+R) を押してカメラの制限を無効にし、CAMERA_RESET キー (デフォルト: num 5) を押して、カメラをリセットします。それにより*Center* と *Origin* の値は 記述されたとおりの挙動をし、 *Resolution*、 *Left*、 *Right*、 *Top*、 *Bottom*、*Center*、*Origin*の関係で考えられる問題を明確にすることが出来ます。
 
 {{% /notice %}}
 
-## <a name="pilotlamp"></a>■ 4. The PilotLamp section
+## <a name="pilotlamp"></a>■ 4. PilotLampセクション
 
-The PilotLamp section creates an indicator that can be made visible or invisible. You can use as many of these sections as required.
+PilotLamp せくしょんでは、表示または非表示にできるインジケーターを作成できます。此等のセクションは、必要な数だけ使用することが出来ます。
 
-The *DaytimeImage* is required to be specified if you make use of the PilotLamp section. The *Subject* used needs to return 1 if the PilotLamp is to be made visible, otherwise it will be invisible.
+PilotLampセクションを使用する場合は、 *DaytimeImage* を指定する必要があります。 PilotLampを表示させたい場合は *Subject* は1を返す必要があります。そうでない場合は非表示になります。
 
 ------
 
@@ -215,7 +215,7 @@ The *DaytimeImage* is required to be specified if you make use of the PilotLamp 
 [PilotLamp]  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -224,7 +224,7 @@ Subject = *Subject*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
+***Subject***: [available subjects](#subjects)の内のいずれか一つを指定します。 デフォルトのsubjectは **true** です。  
 {{% /command-arguments %}}
 
 ------
@@ -234,8 +234,8 @@ Location = *Left*, *Top*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Left***: A floating-point number representing the x-coordinate at which the left of the image is inserted. The default value is 0.  
-***Top***: A floating-point number representing the y-coordinate at which the top of the image is inserted. The default value is 0.  
+***Left***: 画面の左端が挿入されるX座標を示す浮動小数点数。デフォルトは値は0です。  
+***Top***: 画面の上端が挿入されるY座標を示す浮動小数点数。デフォルトは値は0です。   
 {{% /command-arguments %}}
 
 ------
@@ -245,7 +245,7 @@ DaytimeImage = *FileName*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FileName***: The image file to use as the daytime version of the indicator image, relative to the train folder. ***Is required to be specified.***  
+***FileName***: Trainフォルダと関連して、インジケーターのイメージの日中バージョンとして使用するイメージファイル。 ***必ず指定する必要があります。***  
 {{% /command-arguments %}}
 
 ------
@@ -255,7 +255,7 @@ NighttimeImage = *FileName*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FileName***: The image file to use as the nighttime version of the indicator image, relative to the train folder. If not specified, no nighttime version will be available.  
+***FileName***: Trainフォルダーに関連して、インジケーターのイメージの夜間バージョンとして使用するイメージファイル。指定していない場合、夜間バージョンは使用できません。  
 {{% /command-arguments %}}
 
 ------
@@ -265,7 +265,7 @@ TransparentColor = *HexColor*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***HexColor***: A [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}}) representing the exact color in both the *DaytimeImage* and *NighttimeImage* files which corresponds to a transparent pixel. The default value is #0000FF.  
+***HexColor***: [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}})  *DaytimeImage* と *NighttimeImage* ファイルの双方で、透明ピクセルに対応する正確な色を表します。デフォルト値は #0000FF です。  
 {{% /command-arguments %}}
 
 ------
@@ -275,14 +275,14 @@ Layer = *LayerIndex*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
+***LayerIndex***: 重なり合うレイヤー要素の中で、個々の要素を一意に定義する整数。 小さい数字は背景側を示し、大きい数字は前景側を示します。 各要素は重なり合わない限り同じ *LayerIndex* を使用できます。 デフォルト値は0です。 
 {{% /command-arguments %}}
 
-## <a name="needle"></a>■ 5. The Needle section
+## <a name="needle"></a>■ 5. Needle セクション
 
-The Needle section creates a rotating element, or needle. You can use as many of these sections as required.
+Needle セクションは、 回転する要素、または針を作成します。 此等のセクションは必要な数だけ使用できます。
 
-The image used for the Needle, defined by *DaytimeImage* (required) or *NighttimeImage* (optional), will be rotated around a defined *Origin* and optionally scaled if *Radius* is used. The needle depicted in the image should be pointing up.
+Needleにはイメージを用い、*DaytimeImage* (必須) or *NighttimeImage* (オプション), は *Origin* で定義された中心により回転し、  *Radius* が定義されている場合オプションで拡大縮小されます。 描かれている針の画像は上を向いている必要があります。
 
 ------
 
@@ -290,7 +290,7 @@ The image used for the Needle, defined by *DaytimeImage* (required) or *Nighttim
 [Needle]  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -299,7 +299,7 @@ Subject = *Subject*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
+***Subject***: [available subjects](#subjects) で定義されているものの一つを指定します。デフォルトのサブジェクトは **true** です。  
 {{% /command-arguments %}}
 
 ------

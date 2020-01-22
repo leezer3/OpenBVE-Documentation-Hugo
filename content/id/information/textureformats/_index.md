@@ -4,22 +4,22 @@ linktitle: Format gambar skin / tekstur
 weight: 4
 ---
 
-This is a list of officially supported texture formats. Generally, the PNG format is the preferred choice due to its lossless compression.
+Berikut ini adalah list format yang bisa dipakai untuk skin. Biasanya gambar PNG dipakai karena ukurannya yang kecil.
 
 {{% table %}}
 
-| Format      | Ekstensi yang dapat dipakai | Remarks                                                      |
+| Format      | Ekstensi yang dapat dipakai | Catatan                                                      |
 | ----------- | ----------------------- | ------------------------------------------------------------ |
-| PNG         | .png                    | Preferred. Please be aware of the fact that using alpha channels significantly reduces performance when used in scenery objects and train exteriors. |
+| PNG         | .png                    | Disarankan. Sebaiknya kurangi penggunaan Alpha (transparan) karena bisa membuat performa PC menurun. |
 | Windows BMP | .bmp                    | Tidak disarankan karena size terlalu besar.                      |
-| JPEG        | .jpg, .jpeg             | Not recommended due to lossy compression (unless not noticable even on large magnification). |
-| GIF         | .gif                    | Not recommended due to reduced color depth (unless sufficient for the image). |
+| JPEG        | .jpg, .jpeg             | Tidak disarankan karena format kompresi yang buruk. |
+| GIF         | .gif                    | Tidak disarankan karena komposisi warna yang sedikit. |
 
 {{% /table %}}
 
 ##### ● Size gambar texture
 
-The widths and heights of textures should be a power of two, e.g. 1, 2, 4, 8, 16, 32, 64, 128, 256, and so on. While this is not a requirement, having textures whose sizes are not power-of-two increases loading times, increases storage requirements and introduces blurriness, because these textures have to be converted to a power-of-two size by openBVE.
+Jumlah panjang dan lebar pixel gambar sebaiknya adalah hasil angka pangkat dua. Contohnya 1, 2, 4, 8, 16, 32, 64, 128, 256, dan seterusnya. Jika menggunakan angka lain, dapat membuat waktu loading lebih lama, dan bisa jadi blur.
 
 ##### ● Optimalisasi PNG file
 
