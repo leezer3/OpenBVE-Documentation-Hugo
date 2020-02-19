@@ -359,29 +359,32 @@ All operations treat 0 as false and any other value as true, and return 1 for tr
 
 ##### ● Operator precedence
 
-From highest precedence to lowest. Operators of same precedence are evaluated left to right in the order in they occur in the formula.
+From highest precedence to lowest. Operators of same precedence are evaluated either left to right or right to left, depending on if they share a precedence with another operator.
 
-{{% table-nonheader %}}
+{{% table %}}
 
-| `a[...]`                         |
-| -------------------------------- |
-| `-` (Minus)                      |
-| `/`                              |
-| `*`                              |
-| `+`, `-` (Subtract)              |
-| `==`, `!=`, `<`, `>`, `<=`, `>=` |
-| `!`                              |
-| `&`                              |
-| `^`                              |
-| &#124;                           |
+| Operator                         | Associativity | Unparenthesized | Equivilant      |
+| -------------------------------- |---------------|-----------------|-----------------|
+| `a[...]`                         | unary         | &nbsp;          | &nbsp;          |
+| `-` (Minus)                      | unary         | &nbsp;          | &nbsp;          |
+| `/`                              | right-to-left | 1 / 2 / 3       | (1 / (2 / 3))   |
+| `*`                              | right-to-left | 1 * 2 * 3       | (1 * (2 * 3))   |
+| `+`, `-` (Subtract)              | left-to-right | 1 + 2 + 3       | ((1 + 2) + 3)   |
+| `==`, `!=`, `<`, `>`, `<=`, `>=` | left-to-right | 1 <= 2 <= 3     | ((1 <= 2) <= 3) |
+| `!`                              | unary         | &nbsp;          | &nbsp;          |
+| `&`                              | right-to-left | 1 & 2 & 3       | (1 & (2 & 3))   |
+| `^`                              | right-to-left | 1 ^ 2 ^ 3       | (1 ^ (2 ^ 3))   |
+| &#124;                           | right-to-left | 1 &#124; 2 &#124; 3       | (1 &#124; (2 &#124; 3))   |
 
-{{% /table-nonheader %}}
+{{% /table %}}
 
 <br>
 
 {{% warning-nontitle %}}
 
-Please note that some combinations of prefix and infix operators are not recognized. For example `a*-b` is not accepted. Use `a*(-b)` or `-a*b` instead.
+The logical not and multiplication operator are not at the same precedence level as a lot of other languages. For example `!a + !b` is `!(!a + !(b))` **not** `(!a) + (!b)` as expected, similarly `1 * 2 / 3` is `1 * (2 / 3)` **not** `(1 * 2) / 3`
+
+Please also note that some combinations of prefix and infix operators are not recognised. For example `a*-b` is not accepted. Use `a*(-b)` or `-a*b` instead.
 
 {{% /warning-nontitle %}}
 
@@ -705,14 +708,14 @@ StateFunction = if[trackDistance>DISTANCE | section==0, 0, if[value<0.5, value +
 The formal grammar for the language may not match up perfectly with the implimentation included in OpenBVE. An example is a*-b which is valid under the grammar but the parser rejects it.
 
 {{% code %}}  
-&lt;expression>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::=  &lt;xor_expression> "" &lt;expression>     | &lt;xor_expression>  
-&lt;xor_expression>&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;or_expression>  "^" &lt;xor_expression> | &lt;or_expression>  
-&lt;or_expression>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;not_expression> "|" &lt;or_expression>  | &lt;not_expression>   
+&lt;expression>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::=  &lt;xor_expression> "&amp;" &lt;expression> &nbsp;&nbsp;&nbsp;&nbsp;| &lt;xor_expression>  
+&lt;xor_expression>&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;or_expression>&nbsp;&nbsp;"^" &lt;xor_expression> | &lt;or_expression>  
+&lt;or_expression>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;not_expression> "|" &lt;or_expression>&nbsp;&nbsp;| &lt;not_expression>   
 <br/>&lt;not_expression>&nbsp;&nbsp;&nbsp;&nbsp;::= "!" &lt;equal_expression> | &lt;equal_expression>  
-<br/>&lt;equal_expression>&nbsp;&nbsp;::= &lt;plus_expression> "==" &lt;equal_expression> | &lt;plus_expression> "!=" &lt;equal_expression> |  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plus_expression> ">"  &nbsp;&lt;equal_expression> | &lt;plus_expression> "&lt;"  &nbsp;&lt;equal_expression> |  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plus_expression> "&lt;=" &lt;equal_expression> | &lt;plus_expression> "&lt;=" &lt;equal_expression> | &lt;plus_expression>  
-<br/>&lt;plus_expression>&nbsp;&nbsp;&nbsp;::= &lt;times_expression> "+" &lt;plus_expression> &nbsp;| &lt;times_expression> "-" &lt;plus_expression> &nbsp;| &lt;times_expression>  
+<br/>&lt;equal_expression>&nbsp;&nbsp;::= &lt;plus_expression> ("==" &lt;plus_expression>)* | &lt;plus_expression> ("!=" &lt;plus_expression>)`*`</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plus_expression> (">"&nbsp; &lt;plus_expression>)`*` | &lt;plus_expression> ("&lt;"&nbsp; &lt;plus_expression>)`*` | <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plus_expression> ("&lt;=" &lt;plus_expression>)`*` | &lt;plus_expression> ("&lt;=" &lt;plus_expression>)`*` | &lt;plus_expression><br/>
+<br/>&lt;plus_expression>&nbsp;&nbsp;&nbsp;::= &lt;times_expression> ("+" &lt;times_expression>)`*`&nbsp; | &lt;times_expression> ("-" &lt;times_expression>)`*` | &lt;times_expression><br/>
 <br/>&lt;times_expression>&nbsp;&nbsp;::= &lt;divide_expression> "\*" &lt;times_expression>  | &lt;divide_expression>  
 &lt;divide_expression> ::= &lt;minus_expression>  "/" &lt;divide_expression> | &lt;minus_expression>  
 <br/>&lt;minus_expression>&nbsp;&nbsp;::= "-" &lt;function_call> | &lt;function_call>  
@@ -724,5 +727,5 @@ The formal grammar for the language may not match up perfectly with the implimen
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" |  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" |  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"  
-&lt;digit>&nbsp;&nbsp;::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"  
+&lt;digit>&nbsp;&nbsp;::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
 {{% /code %}}
