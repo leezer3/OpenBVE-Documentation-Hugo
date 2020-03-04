@@ -206,7 +206,7 @@ Played in a continuous loop whilst the music horn is active.
 
 ------
 
-##### ● [Horn]
+##### ● [Door]
 
 {{% command %}}  
 Open Left = *FileName*  
