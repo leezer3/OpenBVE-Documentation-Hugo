@@ -1,6 +1,6 @@
 ---
-title: Desarrollando trenes - Vista general
-linktitle: Vista general
+title: "Desarrollando trenes - Vista general"
+linktitle: "Vista general"
 weight: 1
 ---
 

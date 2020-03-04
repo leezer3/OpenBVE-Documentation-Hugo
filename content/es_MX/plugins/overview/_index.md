@@ -1,6 +1,6 @@
 ---
-title: .NET assembly plugins
-linktitle: Vista general
+title: ".NET assembly plugins"
+linktitle: "Vista general"
 weight: 1
 ---
 

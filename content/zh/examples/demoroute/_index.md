@@ -1,6 +1,6 @@
 ---
-title: Demonstration route
-linktitle: Demonstration route
+title: "Demonstration route"
+linktitle: "Demonstration route"
 weight: 1
 ---
 

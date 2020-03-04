@@ -1,6 +1,6 @@
 ---
 title: "**train.dat** 形式"
-linktitle: train.datファイル
+linktitle: "train.datファイル"
 weight: 2
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Rute percobaan
-linktitle: Rute percobaan
+title: "Rute percobaan"
+linktitle: "Rute percobaan"
 weight: 1
 ---
 

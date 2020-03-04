@@ -1,5 +1,5 @@
 ---
-title: The **panel2.cfg** file format - Quick reference
+title: "The **panel2.cfg** file format - Quick reference"
 hidden: true
 ---
 

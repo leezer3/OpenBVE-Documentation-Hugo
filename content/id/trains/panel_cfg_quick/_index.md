@@ -1,5 +1,5 @@
 ---
-title: Rangkuman perintah file **panel.cfg**
+title: "Rangkuman perintah file **panel.cfg**"
 hidden: true
 ---
 

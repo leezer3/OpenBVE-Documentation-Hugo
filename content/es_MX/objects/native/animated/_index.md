@@ -1,6 +1,6 @@
 ---
-title: El formato de objeto **.animated**
-linktitle: El objeto ANIMADO
+title: "El formato de objeto **.animated**"
+linktitle: "El objeto ANIMADO"
 weight: 3
 ---
 

@@ -1,5 +1,5 @@
 ---
 weight: 2
 hidden: true
-layout: hidden
+layout: "hidden"
 ---

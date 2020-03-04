@@ -1,6 +1,6 @@
 ---
-title: Format suara yang didukung
-linktitle: Format suara
+title: "Format suara yang didukung"
+linktitle: "Format suara"
 weight: 5
 ---
 

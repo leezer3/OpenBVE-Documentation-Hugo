@@ -1,6 +1,6 @@
 ---
-title: Supported sound formats
-linktitle: Sound formats
+title: "Supported sound formats"
+linktitle: "Sound formats"
 weight: 5
 ---
 

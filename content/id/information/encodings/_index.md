@@ -1,5 +1,5 @@
 ---
-title: Enkoding karakter
+title: "Enkoding karakter"
 weight: 1
 ---
 

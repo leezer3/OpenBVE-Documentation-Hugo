@@ -1,6 +1,6 @@
 ---
-title: Diferencias comparadas con el simulador de trenes BVE
-linktitle: Vs. simulador de trenes BVE Trainsim
+title: "Diferencias comparadas con el simulador de trenes BVE"
+linktitle: "Vs. simulador de trenes BVE Trainsim"
 weight: 9
 ---
 

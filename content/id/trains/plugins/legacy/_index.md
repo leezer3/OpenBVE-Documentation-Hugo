@@ -1,5 +1,5 @@
 ---
-title: Win32 train plugins
+title: "Win32 train plugins"
 hidden: true
 ---
 

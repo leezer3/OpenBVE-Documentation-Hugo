@@ -1,5 +1,5 @@
 ---
-title: Espacios en blanco
+title: "Espacios en blanco"
 weight: 3
 ---
 <font color="Gray">Esta página describe lo que son los espacios en blanco.</font>

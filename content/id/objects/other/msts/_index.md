@@ -1,6 +1,6 @@
 ---
-title: Format objek MSTS **.s**
-linktitle: Microsoft Train Simulator (.s)
+title: "Format objek MSTS **.s**"
+linktitle: "Microsoft Train Simulator (.s)"
 weight: 3
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Menggunakan mic
-linktitle: Menggunakan mic
+title: "Menggunakan mic"
+linktitle: "Menggunakan mic"
 weight: 2
 ---
 

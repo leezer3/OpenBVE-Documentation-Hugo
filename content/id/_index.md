@@ -1,6 +1,6 @@
 ---
-title: Mengembangkan openBVE
-linktitle: Beranda
+title: "Mengembangkan openBVE"
+linktitle: "Beranda"
 ---
 
 Pilih topik dari menu yang ada di sebelah kiri.

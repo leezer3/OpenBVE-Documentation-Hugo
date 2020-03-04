@@ -1,6 +1,6 @@
 ---
 title: "**.b3d** オブジェクト データ形式"
-linktitle: B3D オブジェクト
+linktitle: "B3D オブジェクト"
 weight: 1
 ---
 

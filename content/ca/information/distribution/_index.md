@@ -1,6 +1,6 @@
 ---
-title: Distribució de continguts creats per a l'OpenBVE
-linktitle: Distribució de continguts
+title: "Distribució de continguts creats per a l'OpenBVE"
+linktitle: "Distribució de continguts"
 weight: 7
 ---
 

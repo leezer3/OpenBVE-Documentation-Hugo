@@ -1,6 +1,6 @@
 ---
-title: Playing Sounds from a Microphone Input
-linktitle: Playing Sounds from a Microphone Input
+title: "Playing Sounds from a Microphone Input"
+linktitle: "Playing Sounds from a Microphone Input"
 weight: 2
 ---
 

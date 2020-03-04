@@ -1,5 +1,5 @@
 ---
-title: Otros Ejemplos
+title: "Otros Ejemplos"
 weight: 8
-layout: oculto
+layout: "oculto"
 ---

@@ -1,6 +1,6 @@
 ---
-title: El formato de archivo **ats.cfg**
-linktitle: El archivo ats.cfg
+title: "El formato de archivo **ats.cfg**"
+linktitle: "El archivo ats.cfg"
 weight: 8
 ---
 

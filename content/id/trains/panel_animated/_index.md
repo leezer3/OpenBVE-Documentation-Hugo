@@ -1,6 +1,6 @@
 ---
-title: File **panel.animated**
-linktitle: File panel.animated
+title: "File **panel.animated**"
+linktitle: "File panel.animated"
 weight: 5
 ---
 

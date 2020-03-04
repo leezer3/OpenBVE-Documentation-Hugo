@@ -1,6 +1,6 @@
 ---
-title: Desarrollando contenido para OpenBVE
-linktitle: Inicio
+title: "Desarrollando contenido para OpenBVE"
+linktitle: "Inicio"
 ---
 
 Seleccione un tema del menú del lado izquierdo

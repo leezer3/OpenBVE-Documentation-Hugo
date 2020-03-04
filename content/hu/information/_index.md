@@ -1,5 +1,5 @@
 ---
-title: Information
+title: "Information"
 weight: 6
-layout: hidden
+layout: "hidden"
 ---

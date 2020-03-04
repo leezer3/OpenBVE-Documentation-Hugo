@@ -1,6 +1,6 @@
 ---
-title: .NET assembly plugins
-linktitle: Descripció
+title: ".NET assembly plugins"
+linktitle: "Descripció"
 weight: 1
 ---
 

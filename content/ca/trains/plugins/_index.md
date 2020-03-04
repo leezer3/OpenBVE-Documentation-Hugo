@@ -1,5 +1,5 @@
 ---
-title: Extensions de trens
+title: "Extensions de trens"
 weight: 9
 ---
 Train plugins allow to change the runtime behavior of trains to some degree. Things you can do include displaying custom indicators in the panels, playing custom sounds and overriding the handles the driver originally set. Plugins can be used to simulate safety equipment such as ATS or ATC, among other things.

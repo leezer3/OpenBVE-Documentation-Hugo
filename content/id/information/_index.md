@@ -1,5 +1,5 @@
 ---
-title: Informasi
+title: "Informasi"
 weight: 6
-layout: Tersembunyi
+layout: "Tersembunyi"
 ---

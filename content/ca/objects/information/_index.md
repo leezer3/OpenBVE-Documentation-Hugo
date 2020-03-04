@@ -1,6 +1,6 @@
 ---
-title: Informació i consells per a la creació d'objectes
-linktitle: Informació i consells
+title: "Informació i consells per a la creació d'objectes"
+linktitle: "Informació i consells"
 weight: 3
 ---
 

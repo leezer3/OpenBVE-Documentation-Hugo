@@ -1,5 +1,5 @@
 ---
-title: Train Editor
+title: "Train Editor"
 weight: 4
 ---
 

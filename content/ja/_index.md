@@ -1,6 +1,6 @@
 ---
-title: openBVE デベロッパーズマニュアル
-linktitle: ホーム
+title: "openBVE デベロッパーズマニュアル"
+linktitle: "ホーム"
 ---
 
 左側にあるメニューの中から、トピックを選択してください。

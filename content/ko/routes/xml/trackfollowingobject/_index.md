@@ -1,6 +1,6 @@
 ---
-title: 추적 개체
-linktitle: 추적 개체
+title: "추적 개체"
+linktitle: "추적 개체"
 weight: 5
 ---
 

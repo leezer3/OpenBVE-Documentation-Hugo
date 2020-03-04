@@ -1,6 +1,6 @@
 ---
-title: The **sound.cfg** file format
-linktitle: The sound.cfg file
+title: "The **sound.cfg** file format"
+linktitle: "The sound.cfg file"
 weight: 7
 ---
 
@@ -206,7 +206,7 @@ Played in a continuous loop whilst the music horn is active.
 
 ------
 
-##### ● [Horn]
+##### ● [Door]
 
 {{% command %}}  
 Open Left = *FileName*  

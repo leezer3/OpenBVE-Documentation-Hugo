@@ -1,5 +1,5 @@
 ---
-title: Formats propis
+title: "Formats propis"
 weight: 1
-layout: hidden
+layout: "hidden"
 ---

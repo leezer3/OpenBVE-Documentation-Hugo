@@ -1,5 +1,5 @@
 ---
-title: Character encodings
+title: "Character encodings"
 weight: 1
 ---
 

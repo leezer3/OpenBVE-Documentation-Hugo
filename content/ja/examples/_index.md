@@ -1,5 +1,5 @@
 ---
-title: 追加の例
+title: "追加の例"
 weight: 8
-layout: hidden
+layout: "hidden"
 ---

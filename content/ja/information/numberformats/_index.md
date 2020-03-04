@@ -1,5 +1,5 @@
 ---
-title: 数値の形式
+title: "数値の形式"
 weight: 2
 ---
 

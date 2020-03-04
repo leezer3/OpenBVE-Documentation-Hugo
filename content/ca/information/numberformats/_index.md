@@ -1,5 +1,5 @@
 ---
-title: Number formats
+title: "Number formats"
 weight: 2
 ---
 

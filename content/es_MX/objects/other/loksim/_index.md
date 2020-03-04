@@ -1,6 +1,6 @@
 ---
-title: El formato de objeto Loksim3D **.l3dobj**
-linktitle: Loksim3D (.l3dobj)
+title: "El formato de objeto Loksim3D **.l3dobj**"
+linktitle: "Loksim3D (.l3dobj)"
 weight: 1
 ---
 

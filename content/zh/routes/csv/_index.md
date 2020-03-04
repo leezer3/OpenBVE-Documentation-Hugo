@@ -1,6 +1,6 @@
 ---
 title: "**CSV**线路格式"
-linktitle: CSV线路
+linktitle: "CSV线路"
 weight: 1
 ---
 
@@ -123,7 +123,7 @@ With Route
 .Timetable 1157_M  
 {{% /code %}}
 
-Is equivalent to:
+相当于
 
 {{% code %}}  
 Route.Gauge 1435  
@@ -352,11 +352,11 @@ Examples of conversion factors:
 
 | Desired unit | Conversion factor |
 | ------------ | ----------------- |
-| mile         | 1609.344          |
+| 英里         | 1609.344          |
 | chain        | 20.1168           |
-| meter        | 1                 |
+| 米        | 1                 |
 | yard         | 0.9144            |
-| foot         | 0.3048            |
+| 尺         | 0.3048            |
 
 {{% /table %}}
 

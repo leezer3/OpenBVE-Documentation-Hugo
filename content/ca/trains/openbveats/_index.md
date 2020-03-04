@@ -1,6 +1,6 @@
 ---
-title: Extensió OpenBveAts
-linktitle: Extensió OpenBveAts
+title: "Extensió OpenBveAts"
+linktitle: "Extensió OpenBveAts"
 weight: 8
 ---
 

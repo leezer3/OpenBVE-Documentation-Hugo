@@ -1,5 +1,5 @@
 ---
-title: Train plugin API (IRuntime)
+title: "Train plugin API (IRuntime)"
 hidden: true
 ---
 

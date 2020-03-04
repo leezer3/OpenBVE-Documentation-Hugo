@@ -1,6 +1,6 @@
 ---
-title: File objek Loksim 3D ( **.l3dobj** )
-linktitle: Loksim3D (.l3dobj)
+title: "File objek Loksim 3D ( **.l3dobj** )"
+linktitle: "Loksim3D (.l3dobj)"
 weight: 1
 ---
 

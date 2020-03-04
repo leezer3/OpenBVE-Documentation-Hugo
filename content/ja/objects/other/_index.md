@@ -1,5 +1,5 @@
 ---
-title: その他のフォーマット
+title: "その他のフォーマット"
 weight: 2
-layout: hidden
+layout: "hidden"
 ---

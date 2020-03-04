@@ -1,6 +1,6 @@
 ---
-title: Información y sugerencias para la creación de objeto
-linktitle: Información y sugerencias
+title: "Información y sugerencias para la creación de objeto"
+linktitle: "Información y sugerencias"
 weight: 3
 ---
 

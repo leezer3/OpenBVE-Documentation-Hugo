@@ -1,6 +1,6 @@
 ---
-title: 시연 루트
-linktitle: 시연 루트
+title: "시연 루트"
+linktitle: "시연 루트"
 weight: 1
 ---
 

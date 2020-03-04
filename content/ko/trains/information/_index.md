@@ -1,6 +1,6 @@
 ---
-title: Information and tips for train creation
-linktitle: Information and tips
+title: "Information and tips for train creation"
+linktitle: "Information and tips"
 weight: 10
 ---
 This page presents information developers need to be aware of and general tips for object creation.

@@ -1,5 +1,5 @@
 ---
-title: Espais en blanc
+title: "Espais en blanc"
 weight: 3
 ---
 <font color="Gray">Aquesta pàgina descriu què són els espais en blanc.</font>

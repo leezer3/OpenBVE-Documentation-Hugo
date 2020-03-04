@@ -1,6 +1,6 @@
 ---
-title: Informació i consells per a la creació de trens
-linktitle: Informació i consells
+title: "Informació i consells per a la creació de trens"
+linktitle: "Informació i consells"
 weight: 10
 ---
 Aquesta pàgina presenta informació que cal saber per al desenvolupament i consells generals per a la creació d'objectes.

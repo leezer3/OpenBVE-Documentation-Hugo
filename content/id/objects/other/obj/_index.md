@@ -1,6 +1,6 @@
 ---
-title: Format objek Wavefront **.obj**
-linktitle: Wavefront (.obj)
+title: "Format objek Wavefront **.obj**"
+linktitle: "Wavefront (.obj)"
 weight: 4
 ---
 

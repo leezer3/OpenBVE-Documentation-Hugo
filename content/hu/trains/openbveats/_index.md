@@ -1,6 +1,6 @@
 ---
-title: The OpenBveAts Plugin
-linktitle: The OpenBveAts Plugin
+title: "The OpenBveAts Plugin"
+linktitle: "The OpenBveAts Plugin"
 weight: 8
 ---
 

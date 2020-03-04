@@ -1,5 +1,5 @@
 ---
-title: Información
+title: "Información"
 weight: 6
-layout: oculto
+layout: "oculto"
 ---

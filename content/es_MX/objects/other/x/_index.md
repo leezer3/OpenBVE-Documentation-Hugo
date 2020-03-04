@@ -1,6 +1,6 @@
 ---
-title: El formato de objeto **.x**
-linktitle: Microsoft DirectX (.x)
+title: "El formato de objeto **.x**"
+linktitle: "Microsoft DirectX (.x)"
 weight: 2
 ---
 

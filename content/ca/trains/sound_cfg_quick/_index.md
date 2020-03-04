@@ -1,5 +1,5 @@
 ---
-title: The **sound.cfg** file format - Quick reference
+title: "The **sound.cfg** file format - Quick reference"
 hidden: true
 ---
 

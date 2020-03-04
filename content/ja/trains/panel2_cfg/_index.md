@@ -1,6 +1,6 @@
 ---
 title: "**panel2.cfg** ファイルフォーマット"
-linktitle: panel2.cfg ファイル
+linktitle: "panel2.cfg ファイル"
 weight: 4
 ---
 

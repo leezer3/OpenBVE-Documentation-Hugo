@@ -1,6 +1,6 @@
 ---
-title: El formato de archivo **train.xml**
-linktitle: El archivo train.xml
+title: "El formato de archivo **train.xml**"
+linktitle: "El archivo train.xml"
 weight: 2
 ---
 

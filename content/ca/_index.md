@@ -1,6 +1,6 @@
 ---
-title: Creació de continguts per a l'OpenBVE
-linktitle: Inici
+title: "Creació de continguts per a l'OpenBVE"
+linktitle: "Inici"
 ---
 
 Seleccioneu un tema al menú a l'esquerra.

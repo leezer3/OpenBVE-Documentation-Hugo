@@ -1,6 +1,6 @@
 ---
-title: Objek **.animated**
-linktitle: The ANIMATED object
+title: "Objek **.animated**"
+linktitle: "The ANIMATED object"
 weight: 3
 ---
 

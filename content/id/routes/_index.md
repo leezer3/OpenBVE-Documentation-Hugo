@@ -1,5 +1,5 @@
 ---
-title: Rute
+title: "Rute"
 weight: 3
-layout: Tersembunyi
+layout: "Tersembunyi"
 ---

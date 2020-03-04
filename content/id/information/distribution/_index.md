@@ -1,6 +1,6 @@
 ---
-title: Share add-on openBVE
-linktitle: Membagikan add-ons
+title: "Share add-on openBVE"
+linktitle: "Membagikan add-ons"
 weight: 7
 ---
 

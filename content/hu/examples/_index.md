@@ -1,5 +1,5 @@
 ---
-title: Further Examples
+title: "Further Examples"
 weight: 8
-layout: hidden
+layout: "hidden"
 ---

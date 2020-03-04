@@ -1,5 +1,5 @@
 ---
-title: El formato de archivo **sound.cfg** - Referencia rápida
+title: "El formato de archivo **sound.cfg** - Referencia rápida"
 hidden: true
 ---
 

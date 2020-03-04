@@ -1,5 +1,5 @@
 ---
-title: Format lainnya
+title: "Format lainnya"
 weight: 2
-layout: Tersembunyi
+layout: "Tersembunyi"
 ---

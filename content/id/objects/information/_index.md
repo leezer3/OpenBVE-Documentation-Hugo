@@ -1,6 +1,6 @@
 ---
-title: Info dan tips membuat objek
-linktitle: Info dan tips
+title: "Info dan tips membuat objek"
+linktitle: "Info dan tips"
 weight: 3
 ---
 

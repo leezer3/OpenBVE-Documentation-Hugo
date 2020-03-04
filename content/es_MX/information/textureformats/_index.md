@@ -1,6 +1,6 @@
 ---
-title: Formatos de textura soportados
-linktitle: Formatos de textura
+title: "Formatos de textura soportados"
+linktitle: "Formatos de textura"
 weight: 4
 ---
 

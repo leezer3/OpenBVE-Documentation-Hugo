@@ -1,6 +1,6 @@
 ---
-title: Format gambar yang didukung
-linktitle: Format gambar skin / tekstur
+title: "Format gambar yang didukung"
+linktitle: "Format gambar skin / tekstur"
 weight: 4
 ---
 

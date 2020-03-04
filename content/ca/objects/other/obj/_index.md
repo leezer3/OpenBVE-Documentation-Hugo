@@ -1,6 +1,6 @@
 ---
-title: The Wavefront **.obj** object format
-linktitle: Wavefront (.obj)
+title: "The Wavefront **.obj** object format"
+linktitle: "Wavefront (.obj)"
 weight: 4
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Info dan tips untuk membuat kereta
-linktitle: Info dan tips
+title: "Info dan tips untuk membuat kereta"
+linktitle: "Info dan tips"
 weight: 10
 ---
 Bagian ini memberikan informasi tentang hal hal yang harus diperhatikan untuk membuat objek

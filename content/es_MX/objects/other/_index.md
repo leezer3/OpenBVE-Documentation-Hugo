@@ -1,5 +1,5 @@
 ---
-title: Otros formatos
+title: "Otros formatos"
 weight: 2
-layout: oculto
+layout: "oculto"
 ---

@@ -1,5 +1,5 @@
 ---
-title: ツール群
+title: "ツール群"
 weight: 7
-layout: hidden
+layout: "hidden"
 ---

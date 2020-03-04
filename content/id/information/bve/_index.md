@@ -1,6 +1,6 @@
 ---
-title: Perbedaan dengan BVE Trainsim
-linktitle: Vs. BVE Trainsim
+title: "Perbedaan dengan BVE Trainsim"
+linktitle: "Vs. BVE Trainsim"
 weight: 9
 ---
 

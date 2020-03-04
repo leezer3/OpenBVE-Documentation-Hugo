@@ -1,5 +1,5 @@
 ---
-title: Tools
+title: "Tools"
 weight: 7
-layout: hidden
+layout: "hidden"
 ---

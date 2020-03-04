@@ -1,6 +1,6 @@
 ---
-title: openBVE 개발
-linktitle: 홈
+title: "openBVE 개발"
+linktitle: "홈"
 ---
 
 왼쪽 메뉴에서 주제를 선택하세요.

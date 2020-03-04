@@ -1,5 +1,5 @@
 ---
-title: Format angka
+title: "Format angka"
 weight: 2
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Plugin
+title: "Plugin"
 weight: 5
-layout: Tersembunyi
+layout: "Tersembunyi"
 ---

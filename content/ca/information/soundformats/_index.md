@@ -1,6 +1,6 @@
 ---
-title: Formats de so compatibles
-linktitle: Formats de so
+title: "Formats de so compatibles"
+linktitle: "Formats de so"
 weight: 5
 ---
 

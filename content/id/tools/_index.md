@@ -1,5 +1,5 @@
 ---
-title: Alat
+title: "Alat"
 weight: 7
-layout: Tersembunyi
+layout: "Tersembunyi"
 ---

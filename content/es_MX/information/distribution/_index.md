@@ -1,6 +1,6 @@
 ---
-title: Distribuyendo contenido creado para openBVE
-linktitle: Distribuyendo contenido
+title: "Distribuyendo contenido creado para openBVE"
+linktitle: "Distribuyendo contenido"
 weight: 7
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Objectes
+title: "Objectes"
 weight: 2
-layout: hidden
+layout: "hidden"
 ---

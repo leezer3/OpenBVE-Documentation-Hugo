@@ -1,6 +1,6 @@
 ---
-title: Formats de textura compatibles
-linktitle: Formats de textura
+title: "Formats de textura compatibles"
+linktitle: "Formats de textura"
 weight: 4
 ---
 

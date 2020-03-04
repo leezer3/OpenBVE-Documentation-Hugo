@@ -1,5 +1,5 @@
 ---
-title: Cubes and cylinders
+title: "Cubes and cylinders"
 hidden: true
 ---
 

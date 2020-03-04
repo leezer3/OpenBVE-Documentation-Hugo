@@ -1,6 +1,6 @@
 ---
-title: Wavefront **.obj** オブジェクト形式
-linktitle: Wavefront (.obj)
+title: "Wavefront **.obj** オブジェクト形式"
+linktitle: "Wavefront (.obj)"
 weight: 4
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Plugins
+title: "Plugins"
 weight: 5
-layout: hidden
+layout: "hidden"
 ---

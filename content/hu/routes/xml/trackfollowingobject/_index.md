@@ -1,6 +1,6 @@
 ---
-title: Track Following Object
-linktitle: Track Following Object
+title: "Track Following Object"
+linktitle: "Track Following Object"
 weight: 5
 ---
 

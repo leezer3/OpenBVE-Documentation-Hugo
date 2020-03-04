@@ -1,5 +1,5 @@
 ---
-title: Spasi
+title: "Spasi"
 weight: 3
 ---
 <font color="Gray">Bagian ini menjelaskan tentang spasi kosong.</font> 

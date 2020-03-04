@@ -1,6 +1,6 @@
 ---
-title: File format **extensions.cfg**
-linktitle: File **Extensions.cfg**
+title: "File format **extensions.cfg**"
+linktitle: "File **Extensions.cfg**"
 weight: 3
 ---
 

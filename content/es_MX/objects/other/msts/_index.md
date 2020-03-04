@@ -1,6 +1,6 @@
 ---
-title: El formato de objeto Microsoft Train Simulator **.s**
-linktitle: Microsoft Train Simulator (.s)
+title: "El formato de objeto Microsoft Train Simulator **.s**"
+linktitle: "Microsoft Train Simulator (.s)"
 weight: 3
 ---
 

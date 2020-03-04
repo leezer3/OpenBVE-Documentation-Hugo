@@ -1,6 +1,6 @@
 ---
-title: Développer pour openBVE
-linktitle: Accueil
+title: "Développer pour openBVE"
+linktitle: "Accueil"
 ---
 
 Veuillez sélectionner un sujet dans le menu de gauche.

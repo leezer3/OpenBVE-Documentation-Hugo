@@ -1,6 +1,6 @@
 ---
-title: Loksim3D **.l3dobj** オブジェクト形式
-linktitle: Loksim3D (.l3dobj)
+title: "Loksim3D **.l3dobj** オブジェクト形式"
+linktitle: "Loksim3D (.l3dobj)"
 weight: 1
 ---
 

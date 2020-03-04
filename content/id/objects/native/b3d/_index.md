@@ -1,6 +1,6 @@
 ---
-title: Objek format **.b3d**
-linktitle: Objek B3D
+title: "Objek format **.b3d**"
+linktitle: "Objek B3D"
 weight: 1
 ---
 

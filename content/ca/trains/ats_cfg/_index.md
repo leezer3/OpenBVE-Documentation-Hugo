@@ -1,6 +1,6 @@
 ---
-title: Format de fitxer **ats.cfg**
-linktitle: Fitxer ats.cfg
+title: "Format de fitxer **ats.cfg**"
+linktitle: "Fitxer ats.cfg"
 weight: 8
 ---
 

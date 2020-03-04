@@ -1,5 +1,5 @@
 ---
-title: Peron, atap, dan tebing
+title: "Peron, atap, dan tebing"
 hidden: true
 ---
 

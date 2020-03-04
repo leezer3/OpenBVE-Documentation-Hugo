@@ -1,5 +1,5 @@
 ---
-title: White Spaces
+title: "White Spaces"
 weight: 3
 ---
 <font color="Gray">This page describes what white spaces are.</font> 

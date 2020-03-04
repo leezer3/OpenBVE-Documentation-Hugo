@@ -1,6 +1,6 @@
 ---
-title: El formato de archivo **panel.animated**
-linktitle: El archivo panel.animated
+title: "El formato de archivo **panel.animated**"
+linktitle: "El archivo panel.animated"
 weight: 5
 ---
 

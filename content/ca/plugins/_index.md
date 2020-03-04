@@ -1,5 +1,5 @@
 ---
-title: Extensions
+title: "Extensions"
 weight: 5
-layout: hidden
+layout: "hidden"
 ---

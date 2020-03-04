@@ -1,6 +1,6 @@
 ---
-title: Format de fitxer **sound.cfg**
-linktitle: Fitxer sound.cfg
+title: "Format de fitxer **sound.cfg**"
+linktitle: "Fitxer sound.cfg"
 weight: 7
 ---
 
@@ -206,7 +206,7 @@ Played in a continuous loop whilst the music horn is active.
 
 ------
 
-##### ● [Horn]
+##### ● [Door]
 
 {{% command %}}  
 Open Left = *FileName*  

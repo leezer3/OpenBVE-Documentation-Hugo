@@ -1,5 +1,5 @@
 ---
-title: Default sounds
+title: "Default sounds"
 weight: 6
 ---
 

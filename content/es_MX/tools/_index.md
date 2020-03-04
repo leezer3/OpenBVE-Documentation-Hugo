@@ -1,5 +1,5 @@
 ---
-title: Herramientas
+title: "Herramientas"
 weight: 7
-layout: oculto
+layout: "oculto"
 ---

@@ -1,5 +1,5 @@
 ---
-title: Format d'objecte **.b3d** - Referència ràpida
+title: "Format d'objecte **.b3d** - Referència ràpida"
 hidden: true
 ---
 

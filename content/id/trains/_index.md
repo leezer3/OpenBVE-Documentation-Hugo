@@ -1,5 +1,5 @@
 ---
-title: Kereta
+title: "Kereta"
 weight: 4
-layout: Tersmbunyi
+layout: "Tersmbunyi"
 ---

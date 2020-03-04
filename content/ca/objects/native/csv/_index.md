@@ -1,6 +1,6 @@
 ---
-title: The **.csv** object format
-linktitle: The CSV object
+title: "The **.csv** object format"
+linktitle: "The CSV object"
 weight: 2
 ---
 

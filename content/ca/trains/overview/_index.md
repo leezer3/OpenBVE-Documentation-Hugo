@@ -1,6 +1,6 @@
 ---
-title: Developing trains - Overview
-linktitle: Descripció
+title: "Developing trains - Overview"
+linktitle: "Descripció"
 weight: 1
 ---
 

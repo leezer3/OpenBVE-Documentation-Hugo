@@ -1,5 +1,5 @@
 ---
-title: Standards
+title: "Standards"
 weight: 6
 ---
 

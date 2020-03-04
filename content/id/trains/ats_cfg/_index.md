@@ -1,6 +1,6 @@
 ---
-title: File **ats.cfg**
-linktitle: File ats.cfg
+title: "File **ats.cfg**"
+linktitle: "File ats.cfg"
 weight: 8
 ---
 

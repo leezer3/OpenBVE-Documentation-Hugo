@@ -1,5 +1,5 @@
 ---
-title: Cubs i cilindres
+title: "Cubs i cilindres"
 hidden: true
 ---
 
