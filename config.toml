@@ -16,10 +16,11 @@ disableKinds = ["page", "404", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
   hrefTargetBlank = true
   extensions = ["laxHtmlBlocks"]
 
+# Add languages in alphabetical order by language code.
 [languages]
 [languages.ca]
 contentDir = "content/ca"
-languageName = "Català"
+languageName = "Catalan"
 weight = 1
 [languages.en]
 contentDir = "content/en"
@@ -27,29 +28,37 @@ languageName = "English"
 weight = 2
 [languages.es_MX]
 contentDir = "content/es_MX"
-languageName = "Mexican Spanish"
+languageName = "Spanish (Mexico)"
 weight = 3
 [languages.fr]
 contentDir = "content/fr"
 languageName = "French"
 weight = 4
-[languages.ja]
-contentDir = "content/ja"
-languageName = "日本語"
-weight = 5
-[languages.zh]
-contentDir = "content/zh"
-languageName = "Chinese"
-weight = 6
-[languages.ko]
-contentDir = "content/ko"
-languageName = "한국어"
-weight = 7
 [languages.hu]
 contentDir = "content/hu"
-languageName = "Magyar"
-weight = 8
+languageName = "Hungarian"
+weight = 5
 [languages.id]
 contentDir = "content/id"
 languageName = "Indonesian"
+weight = 6
+[languages.ja]
+contentDir = "content/ja"
+languageName = "Japanese"
+weight = 7
+[languages.ko]
+contentDir = "content/ko"
+languageName = "Korean"
+weight = 8
+[languages.zh]
+contentDir = "content/zh"
+languageName = "Chinese"
 weight = 9
+[languages.zh_CN]
+contentDir = "content/zh_CN"
+languageName = "Chinese (China)"
+weight = 10
+[languages.zh_HK]
+contentDir = "content/zh_HK"
+languageName = "Chinese (Hong Kong)"
+weight = 11
