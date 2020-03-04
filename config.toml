@@ -17,6 +17,8 @@ disableKinds = ["page", "404", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
   extensions = ["laxHtmlBlocks"]
 
 # Add languages in alphabetical order by language code.
+# Link sub-codes of the language code with underscore.
+# Write the language name in that language.
 [languages]
 [languages.ca]
 contentDir = "content/ca"
