@@ -40,7 +40,7 @@ UTF-16 源于一个使用两个字节来编码一个字符的编码方式 (UTC-2
 
 虽然并不必须也不被官方推荐，UTF-8也常使用字节序。因为UTF-8并不需要区分字节的顺序，这里字节顺序标记的意义是明显地说明该文件以UTF-8编码存储。
 
-As said, while Unicode allows to encode virtually all characters used in all writing systems around the world, it does not necessarily make working with text files easier if the encoding to be used was not agreed on.
+如前所述，虽然Unicode允许对世界上所有书写系统中使用的几乎所有字符进行编码，但如果对要使用的编码没有达成一致，则不一定使处理文本文件变得更容易。
 
 Using a byte order mark provides openBVE the ability to automatically detect the encoding for each individual file. If you have a good text editor, you will not only be able to select the encoding manually, but also if you want to save with a byte order mark or not. Notepad (Windows) always saves with a byte order mark if UTF-8 is selected as the character encoding upon saving the file, to make an acceptable example.
 
