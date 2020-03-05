@@ -32,7 +32,7 @@ weight: 1
 
 虽然Unicode时至今日已被广泛采用，用起来还是会有些问题。首先，Unicode其实并不是一种字符编码，而Unicode转换格式(UTF)才是真正编码文字的方式。常用的转换格式为UTF-16和UTF-8。
 
-Route and train files are usually, for compatibility reasons, allowed to be encoded in any arbitrary encoding. As the encoding is not known in advance, the user will need to select the correct encoding for the route and the train in the settings tab in the main menu. Of course this is a nuisance and should be avoided somehow.
+路线和列车文件，由于历史兼容性原因，可以以任何字符编码存储。由于无法预先知晓相应的编码，就需要玩家对此一技术知识有所了解，并在游戏菜单中人工选择正确的字符编码。这显然很麻烦，因此必须避免使用Unicode以外的字符编码。
 
 ## ■ The Byte Order Mark
 
