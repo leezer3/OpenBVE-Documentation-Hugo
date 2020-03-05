@@ -58,9 +58,9 @@ languageName = "中文"
 weight = 9
 [languages.zh_CN]
 contentDir = "content/zh_CN"
-languageName = "简体中文 (中国)"
+languageName = "中文 (大陆简体)"
 weight = 10
 [languages.zh_HK]
 contentDir = "content/zh_HK"
-languageName = "繁體中文 (香港特別行政區)"
+languageName = "中文 (港澳繁體)"
 weight = 11
