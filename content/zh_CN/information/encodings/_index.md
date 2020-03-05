@@ -36,7 +36,7 @@ weight: 1
 
 ## ■ 字节顺序记号 (BOM)
 
-UTF-16 descends from a character encoding (UTC-2) which always used two bytes to encode one character. As such, the order of those two bytes matters. In order to know in which order the bytes appear, a so-called byte order mark is frequently prepended to the text, usually automatically and transparently by the text editor. The byte order mark provides decoders a means of detecting in which byte order the file was saved in. Additionally, the byte order mark provides a fairly safe way of detecting that the text file is saved in Unicode in the first place.
+UTF-16 源于一个使用两个字节来编码一个字符的编码方式 (UTC-2)，因此知道这两个字节存储的顺序就十分重要。为了便于判断顺序，许多文本编辑器会默认自动在文字前端添加字节顺序记号。这一记号可让解码器了解文件以何种顺序储存，还可提供一个较为不易误判的判定文字是否是以Unicode编码的方式。
 
 While not technically necessary, the byte order mark is also frequently used for UTF-8. As UTF-8 does not have a byte order issue, the sole purpose of using a byte order mark with UTF-8 is to provide a means to flagging the file as being encoded in UTF-8.
 
