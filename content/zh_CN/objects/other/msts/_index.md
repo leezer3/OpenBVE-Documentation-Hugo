@@ -1,18 +1,18 @@
 ---
-title: "The Microsoft Train Simulator **.s** object format"
-linktitle: "Microsoft Train Simulator (.s)"
+title: "微软模拟火车 **.s** 物件格式"
+linktitle: "微软模拟火车 (.s)"
 weight: 3
 ---
 
 ![construction_64](/images/construction_64.png)
 
-openBVE supports a subset of the Microsoft Train Simulator .s object format. 
+openBVE支持一部分微软模拟火车的 .s 模型格式。
 
-Both the compressed binary, and the uncompressed textual variants are supported. 
+压缩的二进制和未压缩的文本变都是支持的。
 
-The following is a non-exhaustive list of unsupported functions:
+不支持的功能包括但不限于：
 
-- Animation
-- Lighting
-- Custom shaders
-- Reflection / luminosity
+- 动画
+- 光照
+- 自定义着色器
+- 反射与发光
