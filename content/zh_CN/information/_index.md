@@ -1,5 +1,5 @@
 ---
-title: "资料"
+title: "参考资料"
 weight: 6
 layout: "hidden"
 ---
