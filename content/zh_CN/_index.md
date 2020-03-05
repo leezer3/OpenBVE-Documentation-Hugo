@@ -1,17 +1,17 @@
 ---
-title: "Developing for openBVE"
-linktitle: "Home"
+title: "openBVE 开发文档"
+linktitle: "主页"
 ---
 
-Please select a topic from the menu on the left side.
-
----
-
-Examples may be found in the 'Examples' folder.
+请从左侧选单中选择所需栏目。
 
 ---
 
-Please note that some of these pages are still under construction. This applies to the following pages:
+在 "Examples" 文件夹中可找到示例文件。
 
-- The X object - 1% complete
-- The CSV route - 98% complete
+---
+
+请注意以下页面的文档尚未编写完成：
+
+- X 物件格式 - 完成 1%
+- CSV 线路格式 - 完成 98%
