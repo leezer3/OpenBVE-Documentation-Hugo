@@ -58,4 +58,4 @@ UTF-16 源于一个使用两个字节来编码一个字符的编码方式 (UTC-2
 
 {{% /table %}}
 
-You are encouraged to always save text files in one of those encodings with a byte order mark in order for openBVE to automatically detect the encoding used.
+openBVE鼓励您总是以带字节序的Unicode字符编码保存文件，以便自动识别。译者推荐您使用带BOM的UTF-8。
