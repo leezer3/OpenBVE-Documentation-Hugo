@@ -54,7 +54,7 @@ UTF-16 源于一个使用两个字节来编码一个字符的编码方式 (UTC-2
 | UTF-16 (大字节序)    | FE FF                      |
 | UTF-16 (小字节序) | FF FE                      |
 | UTF-32 (大字节序)    | 00 00 FE FF                |
-| UTF-32 (little endian) | FF FE 00 00                |
+| UTF-32 (小字节序) | FF FE 00 00                |
 
 {{% /table %}}
 
