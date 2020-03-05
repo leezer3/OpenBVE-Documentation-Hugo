@@ -48,7 +48,7 @@ UTF-16 源于一个使用两个字节来编码一个字符的编码方式 (UTC-2
 
 {{% table %}}
 
-| Encoding               | Hexadecimal representation |
+| 字符编码               | Hexadecimal representation |
 | ---------------------- | -------------------------- |
 | UTF-8                  | EF BB BF                   |
 | UTF-16 (big endian)    | FE FF                      |
