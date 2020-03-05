@@ -34,7 +34,7 @@ weight: 1
 
 路线和列车文件，由于历史兼容性原因，可以以任何字符编码存储。由于无法预先知晓相应的编码，就需要玩家对此一技术知识有所了解，并在游戏菜单中人工选择正确的字符编码。这显然很麻烦，因此必须避免使用Unicode以外的字符编码。
 
-## ■ The Byte Order Mark
+## ■ 字节顺序记号 (BOM)
 
 UTF-16 descends from a character encoding (UTC-2) which always used two bytes to encode one character. As such, the order of those two bytes matters. In order to know in which order the bytes appear, a so-called byte order mark is frequently prepended to the text, usually automatically and transparently by the text editor. The byte order mark provides decoders a means of detecting in which byte order the file was saved in. Additionally, the byte order mark provides a fairly safe way of detecting that the text file is saved in Unicode in the first place.
 
