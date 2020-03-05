@@ -44,7 +44,7 @@ UTF-16 源于一个使用两个字节来编码一个字符的编码方式 (UTC-2
 
 使用字节顺序标记使openBVE能够自动检测每个单独文件的编码。如果你用了个不错的文本编辑器，你不仅可以手动选择编码，还可选择是否添加字节顺序标记。记事本（Windows中的）在以UTF-8编码保存文件时总是添加字节顺序标记，这也是个可接受的例子。
 
-Technically, the byte order mark is the first bytes of a particular text file. The byte order marks which can be automatically detected by openBVE are:
+下面就是技术内容了。从技术层面来说，字节顺序标记是一个文件最前端的几个字节。openBVE能够自动检测的字节顺序标记为：
 
 {{% table %}}
 
