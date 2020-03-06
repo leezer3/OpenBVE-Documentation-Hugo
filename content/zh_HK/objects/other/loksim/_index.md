@@ -8,4 +8,4 @@ weight: 1
 
 支援Loksim3D物件格式，包括單個.l3dobj文件同.l3dgrp分組（呢啲都係類似.animated嘅檔案）
 
-Most features other than animations are supported.
+除咗動畫之外, 差唔多所有功能都支援
