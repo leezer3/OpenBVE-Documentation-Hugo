@@ -2082,7 +2082,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 **0**：当这个应答器的类型是*0*或*1*时，车载信号设备将转到ATS-SN模式；当这个应答器的类型是*3*或*4*时，车载信号设备将转到ATS-P模式。  
 {{% /command-arguments %}}
 
-This command places a transponder, usually for the built-in safety systems ATS-SN or ATS-P. For more information about these systems and their transponders, see [the user's documentation about ATS](http://openbve-project.net/play-japanese/).
+该指令放置一个为内置的ATS-SN或ATS-P信号系统使用的有源应答器。请参见[ATS系统用户指南](http://openbve-project.net/play-japanese/)来了解ATS系统和它的应答器的工作原理。
 
 It should be noted that custom safety system plugins also receive data from these transponders as Track.Transponder(*Type*) is roughly equivalent to Track.Beacon(*Type*). Please see [the page about beacon standards]({{< ref "/information/standards/_index.md" >}}) for more information.
 
