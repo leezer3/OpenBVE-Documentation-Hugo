@@ -2213,9 +2213,9 @@ With Track
 **Track.Marker** *文件*; <font color="green">*持续距离*</font> 
 {{% /command %}} 
 
-{{% command-arguments %}}    
-***FileName***: The file name for the marker image, relative to the **Object** folder.    
-***<font color="green">Distance</font>***: A non-zero floating-point number indicating the length for which the marker image is displayed, **by default** measured in **meters**.    
+{{% command-arguments %}} 
+***文件***：相对于**Object**文件夹的标识图片路径。   
+<font color="green">***持续距离***</font>：一个非零浮点数，代表标识图片持续显示的距离。**默认的**单位是**米**。   
 {{% /command-arguments %}}
 
 ▸ Behavior for *Distance*:
