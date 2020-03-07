@@ -2078,8 +2078,8 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ▸ *自动系统切换*的可选项：
 
 {{% command-arguments %}}    
-**-1**: The transponder does not switch the train between ATS-SN and ATS-P.    
-**0**: The transponder automatically switches the train to ATS-SN for transponder types *0* and *1*, and to ATS-P for types *3* and *4*.    
+**-1**：这个应答器并不要求车载信号设备切换模式。   
+**0**：当这个应答器的类型是*0*或*1*时，车载信号设备将转到ATS-SN模式；当这个应答器的类型是*3*或*4*时，车载信号设备将转到ATS-P模式。  
 {{% /command-arguments %}}
 
 This command places a transponder, usually for the built-in safety systems ATS-SN or ATS-P. For more information about these systems and their transponders, see [the user's documentation about ATS](http://openbve-project.net/play-japanese/).
