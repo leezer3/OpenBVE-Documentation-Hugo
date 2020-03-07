@@ -1996,7 +1996,7 @@ With Track
 1000, Track.Signal -4;;-3;-1    
 {{% /code %}}
 
-Track.Signal is similar to using Track.Section and Track.SigF in one command.
+Track.Signal和把Track.Section以及Track.SigF一起用有点像。
 
 ------
 
