@@ -15,7 +15,7 @@ Track.Signal 指令被用来在CSV线路中放置默认日式信号机。(在RW�
 在openBVE中，这一指令接受以下参数：
 
 {{% command %}}  
-**Track.Signal** *模式*; *~~未使用~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
+**Track.Signal** *模式*; *~~未使用~~*; *X*; *Y*; <u>*偏转角*</u>; *俯仰角*; *侧倾角*  
 {{% /command %}}
 
 但在BVETs中，这一指令接受的是以下参数：
