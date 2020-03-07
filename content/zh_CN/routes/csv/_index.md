@@ -134,7 +134,7 @@ Route.Timetable 1157_M
 
 ## <a name="preprocessing"></a>■ 3. 预处理
 
-Before any of the commands in the route file are actually interpreted, the expressions are preprocessed. The first thing done is to replace any occurrences of the $-directives within an expression from right to left. The $Chr, $Rnd and $Sub directives may be nested in any way, while $Include, $If, $Else and $EndIf must not appear inside another directive.
+在游戏开始解析线路文件之前，预处理指令将会被预先处理替换。预处理器会按照正常顺序分析这些以$开头的预处理命令。$Chr、$Rnd和$Sub指令可以随便嵌套，$If、$Else和$EndIf不能出现在另一个指令的括号里。
 
 {{% warning-nontitle %}}
 
