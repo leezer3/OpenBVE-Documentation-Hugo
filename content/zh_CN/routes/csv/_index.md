@@ -2289,7 +2289,7 @@ With Track
 {{% /command-arguments %}}
 
 
-This command creates a point of interest which the user can jump to by pressing the CAMERA_POI_PREVIOUS (NUM 1) or CAMERA_POI_NEXT (NUM 7) keys. The camera will be placed at the specified location with the specified orientation. If *Text* is non-empty, a message will appear briefly showing the text.
+这条指令创建一个用户可以使用CAMERA_POI_PREVIOUS（小键盘1）或CAMERA_POI_NEXT（小键盘7）跳转的一系列在轨道旁边的可能比较有意思的观察点。摄像机会被按照指定的方向放在指定的位置。如果设置了*文字描述*，在跳转时它会被显示，让玩家更好的了解这里是哪儿，为什么这里有意思。
 
 ------
 
