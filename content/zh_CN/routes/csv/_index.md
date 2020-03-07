@@ -1853,9 +1853,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.Limit** *<font color="blue">Speed</font>*; *Post*; *Cource*    
-{{% /command %}}
+{{% command %}} 
+**Track.Limit** <font color="blue">*限速*</font>; *标牌位置*; *方向*   
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***<font color="blue">Speed</font>***: A positive floating-point number representing the speed, **by default** measured in **km/h**, or 0 to indicate no speed restriction. The default value is 0.    
