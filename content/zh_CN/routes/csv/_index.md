@@ -2000,9 +2000,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ------
 
-{{% command %}}    
-**Track.Relay** *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*    
-{{% /command %}}
+{{% command %}} 
+**Track.Relay** <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.    
