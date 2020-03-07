@@ -2209,9 +2209,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.Marker** *FileName*; *<font color="green">Distance</font>*    
-{{% /command %}}
+{{% command %}} 
+**Track.Marker** *文件*; <font color="green">*持续距离*</font> 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***FileName***: The file name for the marker image, relative to the **Object** folder.    
