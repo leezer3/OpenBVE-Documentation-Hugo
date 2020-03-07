@@ -2034,7 +2034,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
 {{% /command-arguments %}}
 
-This command places a beacon (transponder). The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command. When the train passes the beacon, the type of beacon and various data will be transmitted to the train, including the state of the referenced section.
+该指令放置一个有源应答器。使用的模型需要通过Structure.Beacon(*BeaconStructureIndex*)预先加载。当列车通过它时，它会把类型、关联区间的信号状态、还有一堆其它信息全部发给车载信号系统接收器。
 
 It should be noted that the built-in safety systems also receive data from these beacons as Track.Beacon(*Type*) is roughly equivalent to Track.Transponder(*Type*). Please see [the page about beacon standards]({{< ref "/information/standards/_index.md" >}}) for more information.
 
