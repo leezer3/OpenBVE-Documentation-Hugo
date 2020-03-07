@@ -2070,9 +2070,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ▸ *关联信号机*的可选项：
 
 {{% command-arguments %}}    
-**0**: The upcoming signal is referenced.    
-**1**: The signal immediately behind the upcoming signal is referenced.    
-**n**: The *n*'th signal behind the upcoming signal is referenced.    
+**0**：这个应答器传递它前方第一个信号机的状态。   
+**1**：这个应答器传递它前方第二个信号机的状态。   
+**n**：以此类推，这个应答器传递它前方信号机后面的第*n*个信号机的状态。   
 {{% /command-arguments %}}
 
 ▸ *自动系统切换*的可选项：
