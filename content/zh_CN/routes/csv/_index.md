@@ -2012,7 +2012,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
 {{% /command-arguments %}}
 
-This commands creates a default Japanese repeating signal. The repeating signal repeats the state of the upcoming signal. Setting *X* to zero does not create a repeating signal, but forces the command to be ignored. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 and attaches a default signal post.
+该指令创建一个默认的日式中继信号机。这个信号机一般放在弯道等直线能见度不好的地方，显示与前方下一个信号机相同的信号状态，来让列车驾驶提前注意。如果将*水平位置*设为0（信号机怎么会搁在轨道正中间呢，是不？），将不会放置信号机，只会设置自动闭塞区间，这和Track.Section的行为有点类似。如果将*水平位置*设为非零，且*垂直位置*设为负值（信号机怎么会遁地呢，是不？），这个值会被重设为4.8米，并在后方放置一个默认的架线杆，来代表有个杆的信号机。 
 
 ##### <a name="track_safety"></a>● 11.6. Safety systems
 
