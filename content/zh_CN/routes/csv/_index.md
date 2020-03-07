@@ -2036,7 +2036,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 该指令放置一个有源应答器。使用的模型需要通过Structure.Beacon(*BeaconStructureIndex*)预先加载。当列车通过它时，它会把类型、关联区间的信号状态、还有一堆其它信息全部发给车载信号系统接收器。
 
-It should be noted that the built-in safety systems also receive data from these beacons as Track.Beacon(*Type*) is roughly equivalent to Track.Transponder(*Type*). Please see [the page about beacon standards]({{< ref "/information/standards/_index.md" >}}) for more information.
+需要注意，由于Track.Beacon(*类型*)和Track.Transponder(*类型*)是大致相同的，游戏内置的车载信号系统也会接收Track.Beacon的发信。所以，如果要自行编写ats.dll插件，请尽量避开游戏内置车载信号系统已经使用的标号，避免误发信息，造成混乱。详情参见[应答器类型标准]({{< ref "/information/standards/_index.md" >}})。 
 
 ------
 
