@@ -2146,9 +2146,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ------
 
-{{% command %}}    
-**Track.Back** *BackgroundTextureIndex*    
-{{% /command %}}
+{{% command %}} 
+**Track.Back** *背景材质编号* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***BackgroundTextureIndex***: A non-negative integer representing the background image to be displayed as defined via Texture.Background(*BackgroundTextureIndex*).    
