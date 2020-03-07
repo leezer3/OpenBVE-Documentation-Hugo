@@ -2244,9 +2244,9 @@ With Track
 {{% /command %}} 
 
 {{% command-arguments %}}    
-***Text***: The marker text to display. (No special characters supported).    
-***<font color="green">Distance</font>***: A non-zero floating-point number indicating the length for which the text is displayed, **by default** measured in **meters**.    
-***FontColor***: The font color for this marker text    
+***文字***：要显示的标识文字。（不支持特殊字符）   
+<font color="green">***持续距离***</font>：一个非零浮点数，代表标识文字持续显示的距离。**默认的**单位是**米**.   
+***字体颜色***：标识文字显示时的字体颜色。  
 {{% /command-arguments %}}
 
 ▸ Behavior for *Distance*:
