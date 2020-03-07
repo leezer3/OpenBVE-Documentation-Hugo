@@ -2194,9 +2194,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 **Track.Brightness** *亮度值* 
 {{% /command %}} 
 
-{{% command-arguments %}}    
-***Value***: A non-negative integer within the range from 0 to 255. The default value is 255.    
-{{% /command-arguments %}}
+{{% command-arguments %}} 
+***亮度值***：一个位于0~255之间的整数。默认值是255。 
+{{% /command-arguments %}} 
 
 This command marks a point which affects the brightness in the cab. *Value* is measured from 0 (dark) to 255 (light), and is linearly interpolated between successive Track.Brightness commands for any given point on the track. This command should be used for tunnels, bridges, station roofs, or anything else that would affect the brightness as perceived inside the cab.
 
