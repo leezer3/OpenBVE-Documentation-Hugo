@@ -1996,7 +1996,7 @@ With Track
 1000, Track.Signal -4;;-3;-1    
 {{% /code %}}
 
-Track.Signal和把Track.Section以及Track.SigF一起用有点像。
+Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.Signal更方便，不过，使用Track.Section和Track.SigF可以允许放置自定义信号机，并控制设定更多的参数。
 
 ------
 
