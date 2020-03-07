@@ -2293,9 +2293,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.PreTrain** *Time*    
-{{% /command %}}
+{{% command %}} 
+**Track.PreTrain** *通过时间* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***Time***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) at which the pretrain is at this track position.    
