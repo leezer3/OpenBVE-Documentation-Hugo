@@ -2023,15 +2023,15 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 {{% /command %}} 
 
 {{% command-arguments %}}    
-***Type***: A non-negative integer representing the type of the beacon to be transmitted to the train.    
-***BeaconStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Beacon, or -1 to not place any object.    
-***Section***: An integer representing the section to which the beacon is attached, namely 0 for the current section, 1 for the upcoming section, 2 for the section behind that, etc., or -1 for the next red section.    
-***Data***: An integer representing arbitrary data specific to the beacon type to be transmitted to the train.    
-***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.    
-***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.    
-***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.    
-***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.    
-***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.    
+***类型***：一个非负整数，指定这个应答器的类型，会随着数据一起发给车载信号系统。   
+***轨旁无线电应答器模型***：一个非负整数，指定一个已经由Structure.Beacon载入的模型。输入-1代表不放置模型。   
+***相对关联区间***：一个非负整数，指定这个信号机要显示哪一个自动闭塞区间的信号状态。0代表指令执行位置所在的区间，1代表这个区间前方的下一个区间，2代表再前面一个区间，以此类推。输入-1代表下一个红灯所在的区间。   
+***数据***：一个整数，代表特定于要发送给列车车载信号系统的应答器类型的任意数据。译注：openBVE的应答机会在发送信号状态的同时也发送这个附加数据。具体使用就要看ats.dll插件如何编程了。   
+**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
+**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。  
+***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
+***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
+***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
 {{% /command-arguments %}}
 
 This command places a beacon (transponder). The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command. When the train passes the beacon, the type of beacon and various data will be transmitted to the train, including the state of the referenced section.
