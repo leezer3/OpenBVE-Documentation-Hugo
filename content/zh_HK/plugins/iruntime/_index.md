@@ -1,5 +1,5 @@
 ---
-title: "Train plugin API (IRuntime)"
+title: "列車插件應用程式介面(IRuntime)"
 hidden: true
 ---
 
@@ -11,7 +11,7 @@ This is the documentation for train plugins. In order to create a train plugin, 
 
 - [1. Overview](#overview)
 - [2. Function calls](#functions)
-- [3. Playing sounds](#sound)
+- [3. 播放聲音](#sound)
 - [4. Supporting the AI](#ai)
 
 {{% /contents %}}

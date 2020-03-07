@@ -1,6 +1,6 @@
 ---
-title: "**.csv** route格式"
-linktitle: "CSV route"
+title: "**.csv** 路線格式"
+linktitle: "CSV 路線"
 weight: 1
 ---
 
@@ -33,33 +33,34 @@ weight: 1
 
 ## <a name="overview"></a>■ 1. 縂概
 
-一個CSV格式嘅route可以被建立成一個文本檔案。
+一個CSV格式嘅路線可以由文本檔案建立成路線。
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose** (unless otherwise stated), however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside any folder whose current or parent folder includes the *Railway* and *Train* folders. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom, where each line is split into expressions, which are interpreted from left to right.
+呢個檔案係純文本，並且可以用任意[字符編碼]（{{< ref "/information/encodings/_index.md" >}}），但係，我哋推薦作者用UTF-8編碼格式。解析數字數據時，使用[解析方法]（{{< ref "/information/numberformats/_index.md" >}}）係非常**寬鬆**嘅（特別指出嘅地方除外），我哋推薦呢個文件一般嚟講可以放喺 *LegacyContent* 文件夾（或一個內部包含* Railway *同* Train *目錄嘅文件夾）下嘅任何地方。文件名可以隨意，但擴展名(file extension)一定要係**。csv **。路線文件被從頭到尾逐行解析，每行被分割並被從左到右解析。
 
-The route file consists of a series of commands to define the objects which are used throughout the route (Structure namespace). Additional properties for the route, for the default train to be used and for the background images to be used can also be defined. At last, the route file will contain instructions from the Track namespace. Here, track positions (usually in meters) are used to define when the track should curve, when stations are to be placed, when a wall should start and end, and so on. Generally speaking, instructions from the Track namespace should be used after using instructions from any of the other namespaces.
+路線文件包括一系列指令, 用黎導入線路中用到的模型(Structure)結構命名空間 * 有 D 唔嚴謹地說, 在 csv 路線中同 "章節" "部分" 差不多。 ), 線路的屬性信息 (說明線路使用默認既列車同背景等信息), 文件的其餘部分係 track (軌道) 命名空間 (唔係好嚴謹咁講, 意思和段落差不多) 係一部分中, 主軌道位置 (一般以米為單位) 被用來描述軌道喺邊度轉彎, 車站嘅位置喺邊, 牆壁應當喺邊度開始、邊收檔, 以此類推。 講得明少少, track (軌道) 命名空間的指令是要放在最後嘅。
 
 The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "routes/xml/trackfollowingobject/_index.md" >}}).
 
 Geometrically, you can curve and pitch the implicit rail 0, while all other rails are defined relative to rail 0 and follow rail 0 into curves and pitch changes. Unless overridden, the file format is built around a fixed block size of 25 meters length, and it is only possible for certain commands to be used on 25 meter block boundaries. The placement of objects always assumes a non-curved coordinate system which connects blocks linearly.
 
-➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
+➟ [仲可以查閱呢份 csv 格式嘅快速參考手冊。]
+({{< ref "/routes/csv_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 句法
 
 For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
 
-{{% command %}}  
-*Expression<sub>1</sub>*, *Expression<sub>2</sub>*, *Expression<sub>3</sub>*, ..., *Expression<sub>n</sub>*  
+{{% command %}}
+*表達式內容<sub>1</sub>*,* 表達式內容<sub>2</sub>*,* 表達式內容<sub>3</sub>*, ..., *表達式內容<sub>n</sub>*
 {{% /command %}}
 
 In turn, each expression can be of any of the following forms:
 
-##### ● Comments
+##### ● 註釋
 
 A comment is completely ignored by the parser. To form a comment, the expression must begin with a semicolon (U+003B).
 
-##### ● Track positions and lengths
+##### ● 軌道位置同長度
 
 {{% command %}}  
 *Position*  
@@ -75,12 +76,12 @@ Wherever arguments in commands represent lengths, they can also be entered using
 
 When *n* units are defined via Options.UnitOfLength, but fewer parameters are given using the colon notation, the parameters are right-associative, meaning, the parameters on the left are those which are skipped. Therefore, each of the following lengths are equivalent: *0:0:2*, *0:2*, and *2*.
 
-##### ● Commands
+##### ● 指令
 
 Commands without arguments:
 
-{{% command %}}  
-*NameOfTheCommand*  
+{{% command %}}
+*指令嘅名稱*
 {{% /command %}}
 
 Commands with arguments:
@@ -108,10 +109,10 @@ There are two variations on how to encode arguments. Except for the $-directives
 
 Please note that in some commands, *Suffix* is mandatory regardless of the style you use to encode arguments. In the following, *Suffix* will be **bolded** when it is mandatory, and <font color="gray">grayed</font> when it is optional.
 
-##### ● The **With** statement
+##### **With** 語法
 
-{{% command %}}  
-With *Prefix*  
+{{% command %}}
+With *字首*
 {{% /command %}}
 
 All subsequent commands that start with a period (U+002E) are prepended by *Prefix*. For example:
@@ -178,15 +179,15 @@ This directive is replaced by the ASCII character represented by *Ascii*. This i
 
 {{% table %}}
 
-| Code | Meaning             | Character |
+| 編號 | 意思             | Character |
 | ---- | ------------------- | --------- |
-| 10   | Newline             | *newline* |
-| 13   | Newline             | *newline* |
-| 20   | Space               | *space*   |
+| 10   | 新一行             | *newline* |
+| 13   | 新一行             | *newline* |
+| 20   | 空格               | *space*   |
 | 40   | Opening parentheses | (         |
 | 41   | Closing parentheses | )         |
-| 44   | Comma               | ,         |
-| 59   | Semicolon           | ;         |
+| 44   | 逗號               | ,         |
+| 59   | 分號           | ;         |
 
 {{% /table %}}
 
@@ -349,13 +350,13 @@ Examples of conversion factors:
 
 {{% table %}}
 
-| Desired unit | Conversion factor |
+| 所需單位 | 轉換係數 |
 | ------------ | ----------------- |
-| mile         | 1609.344          |
-| chain        | 20.1168           |
-| meter        | 1                 |
-| yard         | 0.9144            |
-| foot         | 0.3048            |
+| 英里         | 1609.344          |
+| 引        | 20.1168           |
+| 米        | 1                 |
+| 市丈         | 0.9144            |
+| 英尺         | 0.3048            |
 
 {{% /table %}}
 
@@ -571,7 +572,7 @@ You need to use $Chr directives if you want to include newlines, commas and the 
 
 {{% note %}}
 
-Train.Gauge is the same as Route.Gauge.
+Train.Gauge 係同 Route.Gauge 一樣
 
 {{% /note %}}
 
@@ -596,8 +597,8 @@ Use this command to associate speed limits to signal aspects. Aspect 0 represent
 | 1       | <font color="#FFC000">●●</font>                              | 25 km/h     |
 | 2       | <font color="#FFC000">●</font>                               | 55 km/h     |
 | 3       | <font color="#00C000">●</font><font color="#FFC000">●</font> | 75 km/h     |
-| 4       | <font color="#00C000">●</font>                               | *unlimited* |
-| 5       | <font color="#00C000">●●</font>                              | *unlimited* |
+| 4       | <font color="#00C000">●</font>                               | *無限* |
+| 5       | <font color="#00C000">●●</font>                              | *無限* |
 
 {{% /table %}}
 
@@ -615,7 +616,7 @@ This command creates one or more preceding or following trains. These other trai
 
 {{% note %}}
 
-Route.RunInterval is the same as Train.Interval.
+Route.RunInterval 係同 Train.Interval 一樣
 
 {{% /note %}}
 
@@ -800,7 +801,7 @@ This command allows the route developer to place the initial camera in one of th
 **<font color=#555555>Route.DeveloperID</font>**  
 {{% /command %}}
 
-<font color=#555555>This command is ignored by openBVE.</font>
+<font color=#555555>呢個命令係會比OpenBVE忽略</font>
 
 ## <a name="train"></a>■ 6. The Train namespace
 
@@ -882,7 +883,7 @@ Use this command to load nighttime versions of the timetable. Which timetable in
 
 {{% note %}}
 
-Train.Gauge is the same as Route.Gauge.
+Train.Gauge 係同 Route.Gauge 一樣
 
 {{% /note %}}
 
@@ -898,7 +899,7 @@ Train.Gauge is the same as Route.Gauge.
 
 {{% note %}}
 
-Train.ValueInSeconds is the same as Route.RunInterval.
+Train.ValueInSeconds 係同 Route.RunInterval 一樣
 
 {{% /note %}}
 
@@ -920,7 +921,7 @@ This command defines the maximum speed limit the preceding trains may travel at.
 **<font color=#555555>Train.Acceleration</font>**  
 {{% /command %}}
 
-<font color=#555555>This command is ignored by openBVE.</font>
+<font color=#555555>呢個命令係會比OpenBVE忽略</font>
 
 ---
 
@@ -928,7 +929,7 @@ This command defines the maximum speed limit the preceding trains may travel at.
 **<font color=#555555>Train.Station</font>**  
 {{% /command %}}
 
-<font color=#555555>This command is ignored by openBVE.</font>
+<font color=#555555>呢個命令係會比OpenBVE忽略</font>
 
 ## <a name="structure"></a>■ 7. The Structure namespace
 

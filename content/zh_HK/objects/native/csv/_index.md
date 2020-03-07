@@ -39,7 +39,7 @@ weight: 2
 
 ➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 句法
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
@@ -169,7 +169,7 @@ The Cylinder command is equivalent to a series of AddVertex and AddFace commands
 <font color=#555555>GenerateNormals</font>  
 {{% /command %}}
 
-*<font color=#555555>This command is ignored by openBVE.</font>*
+*<font color=#555555>呢個命令係會比OpenBVE忽略</font>*
 
 ------
 

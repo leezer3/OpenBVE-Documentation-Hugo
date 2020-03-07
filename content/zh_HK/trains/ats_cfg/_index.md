@@ -1,6 +1,6 @@
 ---
-title: "The **ats.cfg** file format"
-linktitle: "The ats.cfg file"
+title: "**ats.cfg** 檔案格式"
+linktitle: "**ats.cfg** 檔案"
 weight: 8
 ---
 
