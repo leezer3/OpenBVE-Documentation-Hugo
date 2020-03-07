@@ -2018,9 +2018,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ------
 
-{{% command %}}    
-**Track.Beacon** *Type*; *BeaconStructureIndex*; *Section*; *Data*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*    
-{{% /command %}}
+{{% command %}} 
+**Track.Beacon** *类型*; *轨旁无线电应答器模型*; *相对关联区间*; *数据*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***Type***: A non-negative integer representing the type of the beacon to be transmitted to the train.    
