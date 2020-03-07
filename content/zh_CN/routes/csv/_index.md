@@ -2229,9 +2229,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.Marker** *FileName.xml*    
-{{% /command %}}
+{{% command %}} 
+**Track.Marker** *XML文件* 
+{{% /command %}} 
 
 A *Track.Marker* command, linking to a single XML file is also supported. These allow more control over markers than is available in the routefile commands.
 
