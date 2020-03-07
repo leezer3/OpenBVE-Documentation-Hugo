@@ -2180,7 +2180,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 雾效果影响物体绘制的颜色。在起始近距离以内的物体颜色保持原样，在终止远距离外的物体颜色和雾颜色完全相同，在两个位置中间的物体颜色是线性平滑渐变的。雾也会影响背景图像。不论实际情况如何，在计算时背景图像都会被假定距离摄像机600米远。 
 
-Depending on Options.FogBehavior, there are two options how this command affects fog from this point on. In block-wise mode, the current fog blends from the beginning of this block to the new settings at the end of this block. The new setting is kept for following blocks. This is the default behavior. In interpolation mode, each Track.Fog command defines a control point for fog, where all of the settings (distances and colors) are interpolated linearly between the control points.
+根据Options.FogBehavior的设定，雾的处理方式会有所不同。详情见上。  In block-wise mode, the current fog blends from the beginning of this block to the new settings at the end of this block. The new setting is kept for following blocks. This is the default behavior. In interpolation mode, each Track.Fog command defines a control point for fog, where all of the settings (distances and colors) are interpolated linearly between the control points.
 
 {{% warning-nontitle %}}
 
