@@ -2100,9 +2100,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ------
 
-{{% command %}}    
-**Track.AtsP**    
-{{% /command %}}
+{{% command %}} 
+**Track.AtsP** 
+{{% /command %}} 
 
 This command places a pattern renewal transponder for the built-in safety system ATS-P, referencing the upcoming signal, and automatically switching to ATS-P. The command is equivalent to **Track.Tr 3;0;0**. See there for more information.
 
