@@ -2164,9 +2164,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ------
 
-{{% command %}}    
-**Track.Fog** *<font color="green">StartingDistance</font>*; *<font color="green">EndingDistance</font>*; *RedValue*; *GreenValue*; *BlueValue*    
-{{% /command %}}
+{{% command %}} 
+**Track.Fog** <font color="green">*起始近距离*</font>; <font color="green">*终止远距离*</font>; *红色分量*; *绿色分量*; *蓝色分量* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***<font color="green">StartingDistance</font>***: A floating-point number indicating the start of fog, **by default** measured in **meters**. The default value is 0.    
