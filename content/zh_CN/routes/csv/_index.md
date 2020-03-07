@@ -2169,11 +2169,11 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 {{% /command %}} 
 
 {{% command-arguments %}}    
-***<font color="green">StartingDistance</font>***: A floating-point number indicating the start of fog, **by default** measured in **meters**. The default value is 0.    
-***<font color="green">EndingDistance</font>***: A floating-point number indicating the end of fog, **by default** measured in **meters**. The default value is 0.    
-***RedValue***: An integer ranging from 0 to 255 representing the red component of the fog. The default value is 128.    
-***GreenValue***: An integer ranging from 0 to 255 representing the green component of the fog. The default value is 128.    
-***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the fog. The default value is 128.    
+**<font color="green">*起始近距离*</font>**：一个浮点数，指示雾的起始位置距离摄像机的距离。**默认的**单位是**米**。默认值是0。 
+**<font color="green">*终止远距离*</font>**：一个浮点数，指示雾的终止位置距离摄像机的距离。**默认的**单位是**米**。默认值是0。 
+***红色分量***：一个0~255之间的整数，表示雾颜色的红色值。默认值是128。 
+***绿色分量***：一个0~255之间的整数，表示雾颜色的绿色值。默认值是128。 
+***蓝色分量***：一个0~255之间的整数，表示雾颜色的蓝色值。默认值是128。
 {{% /command-arguments %}}
 
 This command defines the fog from this point on, or deactivates fog. If fog is to be enabled, *StartingDistance* must be less than *EndingDistance*. If fog is to be disabled, *StartingDistance* must be greater than or equal to *EndingDistance*.
