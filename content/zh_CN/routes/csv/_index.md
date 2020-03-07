@@ -1897,7 +1897,7 @@ With Track
 
 {{% notice %}}
 
-#### Default versus simplified section behavior
+#### 默认和简化的两种区间设定方法
 
 There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
 
