@@ -2128,7 +2128,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 当一个点限速(*类型*为0)被插入在要应用的地方，ATS-P会提前了解这个限速的位置，并提前减速列车使列车通过这一点时速度正好在限速之下。一旦列车通过限速点，速度限制就不再有效，列车将会重新加速。 
 
-A permanent speed restriction (*Type*=1) is to be inserted at the point where the speed restriction should apply, however, ATS-P does not know about this limit in advance and will only brake the train from that point on. For a higher degree of realism, insert permanent speed restrictions at the same point as ATS-P transponders. A permanent speed restriction, as the name suggests, is remembered by ATS-P and is only released by a subsequent permanent speed restriction.
+当一个段限速(*类型*为1)被插入在应用的地方，ATS-P不会提前了解这个限速的位置，只会从这个位置开始减速列车。为了尽量真实，请把限速设定和ATS-P发信器放在一起。段限速则会被ATS-P记忆并保持，并且直到下一个段限速重新设定才会解除。 
 
 ------
 
