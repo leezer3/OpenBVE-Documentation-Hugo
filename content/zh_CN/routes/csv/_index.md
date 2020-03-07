@@ -2190,9 +2190,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ------
 
-{{% command %}}    
-**Track.Brightness** *Value*    
-{{% /command %}}
+{{% command %}} 
+**Track.Brightness** *亮度值* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***Value***: A non-negative integer within the range from 0 to 255. The default value is 255.    
