@@ -2142,7 +2142,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 该指令设定一个段限速，等同于**Track.Pattern 1;_速度_**。 
 
-##### <a name="track_misc"></a>● 11.7. Miscellaneous
+##### <a name="track_misc"></a>● 11.7. 杂项
 
 ------
 
