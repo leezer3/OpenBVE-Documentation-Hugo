@@ -1893,7 +1893,7 @@ With Track
 **状态*<sub>i</sub>***：一个非负整数，指示该自动闭塞区段传递给信号机的一个状态。 
 {{% /command-arguments %}} 
 
-This command starts a section, the functional part of signalling, to be used in conjunction with Track.SigF, which creates a visual representation of a section (a signal). The *a<sub>i</sub>* parameters specify the aspects the section can bear. An aspect of 0 corresponds to a red section which must not be passed by a train. The *a<sub>0</sub>* term is mandatory.
+该指令开始一个自动闭塞区间。这是真正设置自动闭塞系统使其工作的指令，一般和放置显示自动闭塞系统状态的信号机的Track.SigF指令一起使用。*状态<sub>i</sub>*指定区段传递给信号机的一个信号状态。状态0代表不可有列车通过的红灯，越大的值代表前方清空的区间越多，代表列车可以以更快的速度通过。必须指定*状态<sub>0</sub>*。 
 
 {{% notice %}}
 
