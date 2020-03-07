@@ -1906,7 +1906,7 @@ openBVE提供两种对*状态<sub>i</sub>*参数的不同解读方式。可以�
 **Default behavior:**    
 The *a<sub>i</sub>* terms specify the aspect the section should bear depending on how many sections ahead are clear until a red one is encountered. The order of the terms is relevant. The same aspect may occur multiple times.
 
-▸ Meanings of the *a<sub>i</sub>* terms:
+▸ *状态<sub>i</sub>*的意义：
 
 {{% command-arguments %}}    
 **a<sub>0</sub>**: The aspect to show when this section is occupied by a train or otherwise hold at red.    
