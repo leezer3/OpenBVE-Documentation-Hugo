@@ -2323,9 +2323,9 @@ With Track
 {{% /command %}} 
 
 {{% command-arguments %}}    
-***FileName***: The file name for the sound to play, relative to the **Sound** folder.    
-***<font color="green">X</font>***: A floating-point number representing the horizontal offset from rail 0, **by default** measured in **meters**. Negative values indicate left, positive ones right.    
-***<font color="green">Y</font>***: A floating-point number representing the vertical offset from rail 0, **by default** measured in **meters**. Negative values indicate below, positive ones above.    
+***文件***：相对于**Sound**文件夹的要播放的声音的路径。   
+**<font color="green">*水平位置*</font>**：声源距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
+**<font color="green">*垂直位置*</font>**：声源距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。 
 {{% /command-arguments %}}
 
 This command places an environmental sound effect at the specified location. The sound will play in a loop for the duration of the simulation and employs the doppler effect. (Note: All sounds in openBVE employ the doppler effect.)
