@@ -2124,7 +2124,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 **1**：段限速（永久限速、路段限速）。
 {{% /command-arguments %}}
 
-This command defines a speed restriction for the built-in safety system ATS-P.
+该指令为内置的ATS-P系统设定一个限速，使它自动控制速度，防止列车超速。 
 
 A temporary speed restriction (*Type*=0) is to be inserted at the point where the speed restriction should apply. ATS-P will know about this speed restriction in advance and will brake the train so that the train meets the speed restriction at that point. Once the point is passed, the speed restriction no longer applies.
 
