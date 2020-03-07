@@ -2357,4 +2357,4 @@ With Track
 ***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
 {{% /command-arguments %}}
 
-This command places a special beacon, which sets the destination variable, available for use by plugins and animated objects. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.
+这条指令设定一个特殊的无源应答机，设定列车的目的地属性变量，并影响支持这个功能的车载信号系统插件和动画外饰物体。要使用的模型需先通过Structure.Beacon(*BeaconStructureIndex*)载入。
