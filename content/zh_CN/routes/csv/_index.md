@@ -2086,7 +2086,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 需要注意，由于Track.Beacon(*类型*)和Track.Transponder(*类型*)是大致相同的，游戏内置的车载信号系统也会接收Track.Beacon的发信。所以，如果要自行编写ats.dll插件，请尽量避开游戏内置车载信号系统已经使用的标号，避免误发信息，造成混乱。详情参见[应答器类型标准]({{< ref "/information/standards/_index.md" >}})。 
 
-➟ [Go here to find out more about ATS-SN and ATS-P.](https://openbve-project.net/play-japanese/#3-ats-sn)
+➟ [此处了解更多关于ATS-SN和ATS-P的信息](https://openbve-project.net/play-japanese/#3-ats-sn)
 
 ➟ [There is a tutorial available for the proper use of ATS-SN and ATS-P in route files, including all of the five transponders.]({{< ref "/routes/tutorial_ats/_index.md" >}})
 
