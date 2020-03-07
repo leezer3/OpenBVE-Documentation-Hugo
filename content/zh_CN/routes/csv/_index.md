@@ -2056,7 +2056,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
 {{% /command-arguments %}}
 
-▸ Options for *Type*:
+▸ *类型*的可选项：
 
 {{% command-arguments %}}    
 ![illustration_transponders](/images/illustration_transponders.png)    
