@@ -2336,7 +2336,7 @@ With Track
 **Track.Buffer**    
 {{%/command %}}
 
-This command places a bumper. The train can collide with the bumper in both the forward and backward directions. Place this command at the beginning and the end of the route. An object is not automatically created, so use Track.FreeObj to create a visual representation of the bumper if necessary.
+该指令创建一个不可见的缓冲器，用来停住列车。列车可以从从前后双向撞上它。在线路的开始和结束处都放上这个指令，以防止天杀的熊玩家驾驶列车出图然后还灌水发帖。该指令并不会放置可见的物体，所以如果必要，使用Track.FreeObj放置一个可见的实际代表物体。
 
 ------
 
