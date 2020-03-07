@@ -1976,14 +1976,14 @@ With Track
 
 {{% command-arguments %}}    
 [![illustration_signals_small](/images/illustration_signals_small.png)](/images/illustration_signals_large.png)    
-**2**: A two-aspect (type A) signal having aspects <font color="#C00000">●</font>red and <font color="#FFC000">●</font>yellow.    
-**-2**: A two-aspect (type B) signal having aspects <font color="#C00000">●</font>red and <font color="#00C000">●</font>green.    
-**3**: A three-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.    
-**4**: A four-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.    
-**-4**: A four-aspect (type B) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●●</font>yellow-green and <font color="#00C000">●</font>green.    
-**5**: A five-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green and <font color="#00C000">●</font>green.    
-**-5**: A five-aspect (type B) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green, <font color="#00C000">●</font>green and <font color="#00C000">●●</font>green-green.    
-**6**: A six-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green, <font color="#00C000">●</font>green and <font color="#00C000">●●</font>green-green.    
+**2**：一个A型两灯式信号机，有<font color="#C00000">●</font>红和<font color="#FFC000">●</font>黄两种状态。   
+**-2**：一个B型两灯式信号机，有<font color="#C00000">●</font>红和<font color="#00C000">●</font>绿两种状态。   
+**3**：一个三灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●</font>黄和<font color="#00C000">●</font>绿三种状态。   
+**4**：一个A型四灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄和<font color="#00C000">●</font>绿四种状态。   
+**-4**：一个B型四灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●</font>黄、<font color="#00C000">●●</font>黄绿和<font color="#00C000">●</font>绿四种状态。   
+**5**：一个A型五灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄、<font color="#00C000">●</font><font color="#FFC000">●</font>黄绿和<font color="#00C000">●</font>绿五种状态。   
+**-5**：一个B型五灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●</font>黄、<font color="#00C000">●</font><font color="#FFC000">●</font>黄绿、<font color="#00C000">●</font>绿和<font color="#00C000">●●</font>双绿五种状态。   
+**6**：一个六灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄、<font color="#00C000">●</font><font color="#FFC000">●</font>黄绿、<font color="#00C000">●</font>绿和<font color="#00C000">●●</font>双绿六种状态。  
 {{% /command-arguments %}}
 
 该指令在设置自动闭塞区间的同时放置一个信号机。可以指定*状态类型*来选择创建任何一种默认日式信号机。如果将*水平位置*设为0（信号机怎么会搁在轨道正中间呢，是不？），将不会放置信号机，只会设置自动闭塞区间，这和Track.Section的行为有点类似。如果将*水平位置*设为非零，且*垂直位置*设为负值（信号机怎么会遁地呢，是不？），这个值会被重设为4.8米，并在后方放置一个默认的架线杆，来代表有个杆的信号机。 
