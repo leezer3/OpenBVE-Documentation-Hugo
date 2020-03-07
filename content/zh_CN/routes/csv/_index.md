@@ -2060,11 +2060,11 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 {{% command-arguments %}}    
 ![illustration_transponders](/images/illustration_transponders.png)    
-**0**: An S-type transponder used by ATS-S. Usually placed 600m in front of a signal.    
-**1**: An SN-type transponder used by ATS-SN. Usually placed 20m in front of a signal.    
-**2**: An accidental departure transponder. Usually placed shortly behind a station stop.    
-**3**: An ATS-P pattern renewal transponder. Usually placed 600m, 280m, 180m, 130m, 85m or 50m in front of a signal, depending on the circumstances.    
-**4**: An ATS-P immediate stop transponder. Usually placed either 25m or 30m in front of a signal, depending on the circumstances.    
+**0**：一个ATS-S的S 型发信器，一般放在信号机前600米。   
+**1**：一个ATS-S的SN型发信器。一般放在信号机前20米。   
+**2**：一个误发车防止型发信器，一般放在车站停站点后。   
+**3**：一个ATS-P的更新发信器，一般根据轨道限速等情况放在信号机前600m、280m、180m、130m、85m和50m处。   
+**4**：一个ATS-P的停止发信器，一般根据轨道限速等情况放在信号机前25m或30m处。  
 {{% /command-arguments %}}
 
 ▸ Options for *Signal*:
