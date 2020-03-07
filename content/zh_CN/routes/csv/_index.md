@@ -2140,7 +2140,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 **<font color="blue">*速度*</font>**：一个非负浮点数，指定这里的段限速。**默认的**单位是**km/h**。 
 {{% /command-arguments %}} 
 
-This command is equivalent to **Track.Pattern 1;_Speed_**. See there for more information. 
+该指令设定一个段限速，等同于**Track.Pattern 1;_速度_**。 
 
 ##### <a name="track_misc"></a>● 11.7. Miscellaneous
 
