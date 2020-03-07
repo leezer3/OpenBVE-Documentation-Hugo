@@ -1899,7 +1899,7 @@ With Track
 
 #### 默认和简化的两种区间设定方法
 
-There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
+openBVE提供两种对*状态<sub>i</sub>*参数的不同解读方式。可以通过Options.SectionBehavior来选择要使用哪种方式。下面简单介绍一下两种方式都是如何定义的。
 
 {{% /notice %}}
 
