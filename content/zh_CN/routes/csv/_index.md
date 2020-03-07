@@ -1857,10 +1857,10 @@ With Track
 **Track.Limit** <font color="blue">*限速*</font>; *标牌位置*; *方向*   
 {{% /command %}} 
 
-{{% command-arguments %}}    
-***<font color="blue">Speed</font>***: A positive floating-point number representing the speed, **by default** measured in **km/h**, or 0 to indicate no speed restriction. The default value is 0.    
-***Post***: The side on which to place a default Japanese-style speed limit post. The default value is 0.    
-***Cource***: The directional indication. The default value is 0.    
+{{% command-arguments %}} 
+**<font color="blue">*限速*</font>**：一个正浮点数，代表速度。** 默认的**单位是**km/h**。0代表解除限速。默认值是0。   
+***标牌位置***：放置一个默认日式限速标牌的位置。默认值是0。   
+***方向***：在道岔限速情况下，标识限速起效的方向。  
 {{% /command-arguments %}}
 
 ![illustration_limit](/images/illustration_limit.png)
