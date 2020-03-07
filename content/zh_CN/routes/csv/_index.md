@@ -1986,7 +1986,7 @@ With Track
 **6**: A six-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green, <font color="#00C000">●</font>green and <font color="#00C000">●●</font>green-green.    
 {{% /command-arguments %}}
 
-This command creates a functional signal. You can choose from the available options for *Aspect* to create any of the default Japanese signals. Setting *X* to 0 creates a functional but invisible signal similar to Track.Section. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 meters and attaches a default signal post.
+该指令在设置自动闭塞区间的同时放置一个信号机。可以指定*状态类型*来选择创建任何一种默认日式信号机。如果将*水平位置*设为0（信号机怎么会搁在轨道正中间呢，是不？），将不会放置信号机，只会设置自动闭塞区间，这和Track.Section的行为有点类似。如果将*水平位置*设为非零，且*垂直位置*设为负值（信号机怎么会遁地呢，是不？），这个值会被重设为4.8米，并在后方放置一个默认的架线杆，来代表有个杆的信号机。 
 
 {{% code "*Example of a four-aspect type B signal without a post at x=-3 and y=5:*" %}}    
 1000, Track.Signal -4;;-3;5    
