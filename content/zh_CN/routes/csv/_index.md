@@ -2233,7 +2233,7 @@ With Track
 **Track.Marker** *XML文件* 
 {{% /command %}} 
 
-A *Track.Marker* command, linking to a single XML file is also supported. These allow more control over markers than is available in the routefile commands.
+也可以使用一个使用XML文件的*Track.Marker*指令。 这提供比起原来的标识图片来说更加复杂可控的行为。 
 
 These are fully described on the [the XML Markers page...]({{< ref "/routes/xml/route_marker/_index.md" >}})
 
