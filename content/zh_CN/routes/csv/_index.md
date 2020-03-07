@@ -2225,7 +2225,7 @@ With Track
 *正值*：图片从指令执行位置前*持续距离*米开始显示，并正好在指令执行位置结束。  
 {{% /command-arguments %}}
 
-This command shows a so-called marker image, which is displayed in the top-right corner of the screen. You can use these images for advisory or informational purposes. The RGB color of 64,64,64 inside the image is made transparent.
+这条指令显示一个所谓的标识图片在屏幕的右上角。可以把它用来传递建议或信息。图片中颜色是 [64,64,64]，即#404040的像素点会被绘制为透明的。 
 
 ------
 
