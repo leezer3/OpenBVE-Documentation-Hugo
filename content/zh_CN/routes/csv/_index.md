@@ -1909,10 +1909,10 @@ The *a<sub>i</sub>* terms specify the aspect the section should bear depending o
 ▸ *状态<sub>i</sub>*的意义：
 
 {{% command-arguments %}}    
-**a<sub>0</sub>**: The aspect to show when this section is occupied by a train or otherwise hold at red.    
-**a<sub>1</sub>**: The aspect to show when this section is clear, but the immediately following section is red.    
-**a<sub>2</sub>**: The aspect to show when this section and the following section are clear, but the one immediately following the latter one is red.    
-**a<sub>n</sub>**: The aspect to show when *n* sections are clear before a red one is encountered.    
+**状态<sub>0</sub>**：当该区间内已经有列车，或因为停车站ForceRedSignal的缘故被保持在红灯时的信号状态。   
+**状态<sub>1</sub>**：当前区间已经清空，但前面的下一个区间有列车时的信号状态。   
+**状态<sub>2</sub>**：当前区间已经被清空，下一个区间也已经被清空，但是再下一个区间里就有列车了时的信号状态。   
+**状态<sub>n</sub>**：以此类推，当前方有*n*个区间清空时的信号状态。     
 {{% /command-arguments %}}
 
 In the case more sections ahead are clear than indicated by the *a<sub>i</sub>* terms, the section will bear the aspect of *a<sub>n</sub>*.
