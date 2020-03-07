@@ -2305,9 +2305,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.Announce** *FileName*; *<font color="blue">Speed</font>*    
-{{% /command %}}
+{{% command %}} 
+**Track.Announce** *文件*; <font color="blue">*参考速度*</font> 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***FileName***: The file name for the sound to play, relative to the **Sound** folder.    
