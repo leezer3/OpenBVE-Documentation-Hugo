@@ -1963,13 +1963,13 @@ With Track
 {{% /command %}}
 
 {{% command-arguments %}}    
-***Type***: The number of aspects for this signal. The default value is -2.    
-***Unused***: *This argument is not used by openBVE.*    
-***<font color="green">X</font>***: The X-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.    
-***<font color="green">Y</font>***: The Y-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.    
-***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.    
-***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.    
-***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.    
+ ***状态类型***：信号机的种类。默认值是2。   
+***此处留空***：*BVETs2按照这个参数在信号机下放置一个小文字标签。openBVE并没有这个功能，所以并不使用这个参数。请留空。*   
+**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
+**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。   
+***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
+***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
+***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
 {{% /command-arguments %}}
 
 ▸ Options for *Type*:
