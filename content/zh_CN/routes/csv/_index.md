@@ -2178,7 +2178,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 该指令可以启用、更新或停用雾效果。如果需要启用雾，*起始近距离*必须小于*终止远距离*。如果需要停用雾，只需将*起始近距离*设得大于等于*终止远距离*。 
 
-Fog affects the coloring of objects. Objects before the starting distance appear as-is, objects after the ending distance appear in the fog color, and objects in-between blend linearly between those. The background image is affected by fog as well. For the fog calculations, the background image is assumed to be at 600 meters distance from the camera, regardless of the actual viewing distance.
+雾效果影响物体绘制的颜色。在起始近距离以内的物体颜色保持原样，在终止远距离外的物体颜色和雾颜色完全相同，在两个位置中间的物体颜色是线性平滑渐变的。雾也会影响背景图像。不论实际情况如何，在计算时背景图像都会被假定距离摄像机600米远。 
 
 Depending on Options.FogBehavior, there are two options how this command affects fog from this point on. In block-wise mode, the current fog blends from the beginning of this block to the new settings at the end of this block. The new setting is kept for following blocks. This is the default behavior. In interpolation mode, each Track.Fog command defines a control point for fog, where all of the settings (distances and colors) are interpolated linearly between the control points.
 
