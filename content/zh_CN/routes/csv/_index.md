@@ -2252,8 +2252,8 @@ With Track
 ▸ *持续距离*的意义：
 
 {{% command-arguments %}}    
-*negative value*: The marker image starts to display at the Track.Marker command, and ends -*Distance* meters after the Track.Marker command.    
-*positive value*: The marker image starts to display *Distance* meters before the Track.Marker command, and ends at the Track.Marker command.    
+*负值*：图片从指令执行位置开始显示，并持续显示(－*持续距离*)米。   
+*正值*：图片从指令执行位置前*持续距离*米开始显示，并正好在指令执行位置结束。  
 {{% /command-arguments %}}
 
 ▸ Available options for *FontColor*:
