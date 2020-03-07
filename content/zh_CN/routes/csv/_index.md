@@ -1889,9 +1889,9 @@ With Track
 **Track.Section** *状态<sub>0</sub>*; *状态<sub>1</sub>*; *状态<sub>2</sub>*; ...; *状态<sub>n</sub>* 
 {{% /command %}} 
 
-{{% command-arguments %}}    
-***a<sub>i</sub>***: A non-negative number specifying one of the section's aspects.    
-{{% /command-arguments %}}
+{{% command-arguments %}} 
+**状态*<sub>i</sub>***：一个非负整数，指示该自动闭塞区段传递给信号机的一个状态。 
+{{% /command-arguments %}} 
 
 This command starts a section, the functional part of signalling, to be used in conjunction with Track.SigF, which creates a visual representation of a section (a signal). The *a<sub>i</sub>* parameters specify the aspects the section can bear. An aspect of 0 corresponds to a red section which must not be passed by a train. The *a<sub>0</sub>* term is mandatory.
 
