@@ -2235,7 +2235,7 @@ With Track
 
 也可以使用一个使用XML文件的*Track.Marker*指令。 这提供比起原来的标识图片来说更加复杂可控的行为。 
 
-These are fully described on the [the XML Markers page...]({{< ref "/routes/xml/route_marker/_index.md" >}})
+请参见 [XML标记指南]({{< ref "/routes/xml/route_marker/_index.md" >}})
 
 ------
 
