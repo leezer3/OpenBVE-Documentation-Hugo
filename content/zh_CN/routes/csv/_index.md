@@ -1868,9 +1868,9 @@ With Track
 ▸ Options for *Post*:
 
 {{% command-arguments %}}    
-**-1**: The post is placed on the left side of the track.    
-**0**: No post will be placed.    
-**1**: The post is placed on the right side of the track.    
+**-1**：标牌放在轨道左侧。   
+**0**：不放置默认标牌。   
+**1**：标牌放在轨道右侧。  
 {{% /command-arguments %}}
 
 ▸ Options for *Cource*:
