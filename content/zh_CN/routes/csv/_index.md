@@ -1946,7 +1946,7 @@ With Track
 
 在没有自定义相应的Signal(*信号机编号*)的情况下，可以使用这些默认的日式信号机： 
 
-▸ Default signals for *SignalIndex*:
+▸ *信号机编号*的默认信号模型：
 
 {{% command-arguments %}}    
 **3**: A three-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.    
