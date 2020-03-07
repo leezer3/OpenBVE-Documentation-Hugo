@@ -2126,7 +2126,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 该指令为内置的ATS-P系统设定一个限速，使它自动控制速度，防止列车超速。 
 
-A temporary speed restriction (*Type*=0) is to be inserted at the point where the speed restriction should apply. ATS-P will know about this speed restriction in advance and will brake the train so that the train meets the speed restriction at that point. Once the point is passed, the speed restriction no longer applies.
+当一个点限速(*类型*为0)被插入在要应用的地方，ATS-P会提前了解这个限速的位置，并提前减速列车使列车通过这一点时速度正好在限速之下。一旦列车通过限速点，速度限制就不再有效，列车将会重新加速。 
 
 A permanent speed restriction (*Type*=1) is to be inserted at the point where the speed restriction should apply, however, ATS-P does not know about this limit in advance and will only brake the train from that point on. For a higher degree of realism, insert permanent speed restrictions at the same point as ATS-P transponders. A permanent speed restriction, as the name suggests, is remembered by ATS-P and is only released by a subsequent permanent speed restriction.
 
