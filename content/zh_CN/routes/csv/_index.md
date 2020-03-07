@@ -2314,7 +2314,7 @@ With Track
 <font color="blue">***参考速度***</font>：如果该声音的播放速度会随列车速度改变，输入该声音录制时列车的行驶速度作为参考。如果该声音的播放速度不随列车速度改变，输入0或留空。
 {{% /command-arguments %}}
 
-This command plays an announcement or other kind of sound in the cab once the player's train crosses the point where this command is used. If *Speed* is set to 0 (default), the sound is played as-is. If a *Speed* is given though, the sound plays at is original pitch at the specified speed, and is pitch-modulated proportionally for other speeds, useful for custom flange sounds, pointwork sounds, etc.
+该指令在玩家驾驶的列车通过该点时在驾驶台中播放一个声音。如果*参考速度*被设为0（默认），声音被原样播放（例如车内广播）。如果给出了*参考速度*，声音在列车速度等于参考速度时原调播放，在其他速度情况下按速度变调（例如自定义的轮缘摩擦声、道岔撞击声）。 
 
 ------
 
