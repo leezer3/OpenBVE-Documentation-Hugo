@@ -2176,7 +2176,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ***蓝色分量***：一个0~255之间的整数，表示雾颜色的蓝色值。默认值是128。
 {{% /command-arguments %}}
 
-This command defines the fog from this point on, or deactivates fog. If fog is to be enabled, *StartingDistance* must be less than *EndingDistance*. If fog is to be disabled, *StartingDistance* must be greater than or equal to *EndingDistance*.
+该指令可以启用、更新或停用雾效果。如果需要启用雾，*起始近距离*必须小于*终止远距离*。如果需要停用雾，只需将*起始近距离*设得大于等于*终止远距离*。 
 
 Fog affects the coloring of objects. Objects before the starting distance appear as-is, objects after the ending distance appear in the fog color, and objects in-between blend linearly between those. The background image is affected by fog as well. For the fog calculations, the background image is assumed to be at 600 meters distance from the camera, regardless of the actual viewing distance.
 
