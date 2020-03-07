@@ -2120,8 +2120,8 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ▸ *类型*的可选项：
 
 {{% command-arguments %}}    
-**0**: A temporary speed restriction.    
-**1**: A permanent speed restriction.    
+**0**：点限速（临时限速、道岔限速）。 
+**1**：段限速（永久限速、路段限速）。
 {{% /command-arguments %}}
 
 This command defines a speed restriction for the built-in safety system ATS-P.
