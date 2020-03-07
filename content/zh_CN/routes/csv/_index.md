@@ -2117,7 +2117,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 **<font color="blue">*速度*</font>**：一个非负浮点数，指定这里的限速。**默认的**单位是**km/h**。
 {{% /command-arguments %}}
 
-▸ Options for *Type*:
+▸ *类型*的可选项：
 
 {{% command-arguments %}}    
 **0**: A temporary speed restriction.    
