@@ -2218,7 +2218,7 @@ With Track
 <font color="green">***持续距离***</font>：一个非零浮点数，代表标识图片持续显示的距离。**默认的**单位是**米**。   
 {{% /command-arguments %}}
 
-▸ Behavior for *Distance*:
+▸ *持续距离*的意义：
 
 {{% command-arguments %}}    
 *negative value*: The marker image starts to display at the Track.Marker command, and ends -*Distance* meters after the Track.Marker command.    
