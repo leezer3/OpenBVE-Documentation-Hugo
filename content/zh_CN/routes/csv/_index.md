@@ -2154,7 +2154,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ***背景材质编号***：一个非负整数，指定一个已经通过Texture.Background(*背景材质编号*)载入的背景材质。 
 {{% /command-arguments %}} 
 
-This command defines which background image to show from now on.
+该指令指定从当前位置开始要显示的背景材质。 
 
 {{% warning-nontitle %}}
 
