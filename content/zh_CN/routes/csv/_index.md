@@ -1865,7 +1865,7 @@ With Track
 
 ![_限速示意图](/images/illustration_limit.png)
 
-▸ Options for *Post*:
+▸ *标牌位置*的可选项：
 
 {{% command-arguments %}}    
 **-1**：标牌放在轨道左侧。   
