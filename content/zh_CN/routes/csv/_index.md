@@ -2278,15 +2278,16 @@ With Track
 **Track.POI** *轨道编号*; *水平位置*; *垂直位置*; *偏转角*; *俯仰角*; *侧倾角*; *文字描述*
 {{% /command %}}
 
-{{% command-arguments %}}    
-***RailIndex***: A non-negative integer representing the rail for the point of interest.    
-***<font color="green">X</font>***: A floating-point number representing the horizontal offset from the rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.    
-***<font color="green">Y</font>***: A floating-point number representing the vertical offset from the rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.    
-***Yaw***: The angle in degrees by which the view is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.    
-***Pitch***: The angle in degrees by which the view is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.    
-***Roll***: The angle in degrees by which the view is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.    
-***Text***: A textual representation of the point of interest.    
+{{% command-arguments %}} 
+***轨道编号***：一个非负整数，代表这个兴趣点所在的轨道。   
+**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
+**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。  
+***偏转角***：相机在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
+***俯仰角***：相机在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
+***侧倾角***：相机在XY平面上转动的角度（相对于后方顺时针）。默认值是0。   
+***文字描述***：一行描述这个兴趣点的文字。   
 {{% /command-arguments %}}
+
 
 This command creates a point of interest which the user can jump to by pressing the CAMERA_POI_PREVIOUS (NUM 1) or CAMERA_POI_NEXT (NUM 7) keys. The camera will be placed at the specified location with the specified orientation. If *Text* is non-empty, a message will appear briefly showing the text.
 
