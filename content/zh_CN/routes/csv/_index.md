@@ -2132,9 +2132,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ------
 
-{{% command %}}    
-**Track.PLimit** *<font color="blue">Speed</font>*    
-{{% /command %}}
+{{% command %}} 
+**Track.PLimit** <font color="blue">*速度*</font> 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***<font color="blue">Speed</font>***: A positive floating-point number representing the permanent speed restriction for ATS-P, **by default** measured in **km/h**.    
