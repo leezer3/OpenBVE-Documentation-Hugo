@@ -2256,7 +2256,7 @@ With Track
 *正值*：图片从指令执行位置前*持续距离*米开始显示，并正好在指令执行位置结束。  
 {{% /command-arguments %}}
 
-▸ Available options for *FontColor*:
+▸ *字体颜色*的可选项：
 
 {{% command-arguments %}}    
 *1*: Black.    
