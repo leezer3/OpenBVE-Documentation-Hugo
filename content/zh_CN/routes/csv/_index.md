@@ -2067,7 +2067,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 **4**：一个ATS-P的停止发信器，一般根据轨道限速等情况放在信号机前25m或30m处。  
 {{% /command-arguments %}}
 
-▸ Options for *Signal*:
+▸ *关联信号机*的可选项：
 
 {{% command-arguments %}}    
 **0**: The upcoming signal is referenced.    
