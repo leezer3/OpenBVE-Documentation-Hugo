@@ -2328,7 +2328,7 @@ With Track
 **<font color="green">*垂直位置*</font>**：声源距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。 
 {{% /command-arguments %}}
 
-This command places an environmental sound effect at the specified location. The sound will play in a loop for the duration of the simulation and employs the doppler effect. (Note: All sounds in openBVE employ the doppler effect.)
+这条指令在对应位置放置一个环境声音（例如平交道口警报器）。这个声音会被无限重复播放，并具有真实的多普勒效果。（请注意：openBVE中的所有声音都有多普勒效果） 
 
 ------
 
