@@ -1972,7 +1972,7 @@ With Track
 ***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
 {{% /command-arguments %}}
 
-▸ Options for *Type*:
+▸ *状态类型*的可选项：
 
 {{% command-arguments %}}    
 [![illustration_signals_small](/images/illustration_signals_small.png)](/images/illustration_signals_large.png)    
