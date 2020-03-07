@@ -2269,7 +2269,7 @@ With Track
 *8*：少女粉。  
 {{% /command-arguments %}}
 
-This command creates a simple textual marker, which is added to the list of messages in the upper left-hand corner of the screen.
+这条指令创建一个简单的文字标识，和其他信息一样显示在屏幕左上角。
 
 ------
 
