@@ -1944,7 +1944,7 @@ With Track
 
 该指令放置一个信号机，显示一个由Track.Section指令设定的自动闭塞区间的信号状态。如果将*垂直位置*设为负值（信号机怎么会遁地呢，是不？），这个值会被重设为4.8米，并在后方放置一个默认的架线杆，来代表有个杆的信号机（如果认为默认架线杆太丑或高度有问题，也可以通过在自定义信号机模型里面给它手动加个杆来达到这个效果）。另参见Track.Section。 
 
-If no object has been defined by Signal(*SignalIndex*), one of the default Japanese signals is used:
+在没有自定义相应的Signal(*信号机编号*)的情况下，可以使用这些默认的日式信号机： 
 
 ▸ Default signals for *SignalIndex*:
 
