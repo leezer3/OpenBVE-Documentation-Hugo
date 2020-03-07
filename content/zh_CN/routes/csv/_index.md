@@ -1881,7 +1881,7 @@ With Track
 **1**：该标牌表示通过道岔进入右侧轨道时的限速。  
 {{% /command-arguments %}}
 
-This command defines the new speed limit from this point on. If the new speed limit is lower than the current speed limit, the new speed limit will take effect immediately. If the speed limit is higher than the current speed limit, the new speed limit will take effect only once the whole train has passed this point. By setting *Speed* to `0`, the speed restriction is released. By setting *Post* to either `-1` or `1`, a default Japanese-style speed post is placed at the respective side of the track. Setting *Course* to either `-1` or `1` includes a directional indication, which is usually used at railroad switches to indicate that the speed limit only applies if the respective direction is being taken. If *Speed* is set to `0`, the setting of *Course* has no effect.
+该指令设定从该点开始的速度限制。如果新限速低于原限速，限速将立刻起效；如果新限速高于原限速，限速会在整列列车全部通过标牌之后起效。将*限速*设为`0`将解除限速。将*标牌位置* 设为`-1`或`1`会在轨道的对应一侧放置一个默认的日式限速标牌。将*方向*设为`-1`或`1`会给标牌加上方向显示，用来指示该标牌与道岔方向的关系。*速度*设为`0`的解除限速标牌从来都不会有*方向*显示。 
 
 ------
 
