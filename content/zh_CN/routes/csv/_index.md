@@ -2318,9 +2318,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.Doppler** *FileName*; *<font color="green">X</font>*; *<font color="green">Y</font>*    
-{{% /command %}}
+{{% command %}} 
+**Track.Doppler** *文件*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font> 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***FileName***: The file name for the sound to play, relative to the **Sound** folder.    
