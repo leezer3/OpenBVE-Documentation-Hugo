@@ -2340,9 +2340,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.Destination** *Type*; *BeaconStructureIndex*; *NextDestination*; *PreviousDestination*; *TriggerOnce*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*    
-{{% /command %}}
+{{% command %}} 
+**Track.Destination** *筛选类型*; *轨旁无线电应答器模型*; *正向通过目的地*; *反向通过目的地*; *单次触发*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***Type***: Defines the types of trains for which this destination setter applies: *-1* for AI trains only, *0* for all trains and *1* for the player train only.    
