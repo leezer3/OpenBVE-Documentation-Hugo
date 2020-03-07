@@ -2075,7 +2075,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 **n**: The *n*'th signal behind the upcoming signal is referenced.    
 {{% /command-arguments %}}
 
-▸ Options for *SwitchSystem*:
+▸ *自动系统切换*的可选项：
 
 {{% command-arguments %}}    
 **-1**: The transponder does not switch the train between ATS-SN and ATS-P.    
