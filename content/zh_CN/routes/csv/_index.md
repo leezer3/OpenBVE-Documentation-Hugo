@@ -2239,9 +2239,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.TextMarker** *Text*; *<font color="green">Distance</font>*; *FontColor*    
-{{% /command %}}
+{{% command %}} 
+**Track.TextMarker** *文字*; <font color="green">*持续距离*</font>; *字体颜色* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***Text***: The marker text to display. (No special characters supported).    
