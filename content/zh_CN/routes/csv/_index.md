@@ -1873,7 +1873,7 @@ With Track
 **1**：标牌放在轨道右侧。  
 {{% /command-arguments %}}
 
-▸ Options for *Cource*:
+▸ *方向*的可选项：
 
 {{% command-arguments %}}    
 **-1**: The post applies for a left-bound track.    
