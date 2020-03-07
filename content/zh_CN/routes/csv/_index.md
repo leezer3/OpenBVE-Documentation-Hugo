@@ -1927,9 +1927,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.SigF** *SignalIndex*; *Section*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*    
-{{% /command %}}
+{{% command %}} 
+**Track.SigF** *信号机编号*; *相对关联区间*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***SignalIndex***: A non-negative integer representing the signal to be placed as defined via Signal(*SignalIndex*).Load.    
