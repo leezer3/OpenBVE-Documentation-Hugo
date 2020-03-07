@@ -2297,9 +2297,9 @@ With Track
 **Track.PreTrain** *通过时间* 
 {{% /command %}} 
 
-{{% command-arguments %}}    
-***Time***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) at which the pretrain is at this track position.    
-{{% /command-arguments %}}
+{{% command-arguments %}} 
+***通过时间***：先行列车需要在这个轨道位置的[时间]({{< ref "/information/numberformats/_index.md#times" >}})。 
+{{% /command-arguments %}} 
 
 This commands creates a position-time-association for an invisible preceding train in order to influence signalling. Contrary to a real preceding train as created by Route.RunInterval, the invisible preceding train created by Track.PreTrain is a way of scripting where the invisible preceding train is at any given time. The position-time-associations must be in increasing order, that is, at a later track position, the associated time must also be later. Before the first scripted time, the invisible preceding train resides at the first scripted position. In-between the first and last scripted time, the invisible preceding train moves (linearly) between the scripted points. After the last scripted time, the invisible preceding train is removed and thus clears signalling.
 
