@@ -1918,7 +1918,7 @@ The *a<sub>i</sub>* terms specify the aspect the section should bear depending o
 如果前方有比*<sub>n</sub>*个还要多的清空的区间，最后一个状态*<sub>n</sub>*状态会被传给信号机。 
 
 **简化解读方式：**   
-*状态<sub>i</sub>*指定这个信号区段会传达给信号机的所有状态。当前方有x个被清空的区间时，被传达给信号机的信号状态就是所有*状态<sub>i</sub>*状态从小到大排的第x个。如果*x*比*状态<sub>i</sub>*状态的总数还要多，最大的一个*状态<sub>i</sub>*状态会被传给信号机。状态的顺序无关紧要，重复出现的值只会被留下一个。 
+*状态<sub>i</sub>*指定这个信号区段会传达给信号机的所有状态。当前方有x个被清空的区间时，被传达给信号机的信号状态就是所有*状态<sub>i</sub>*状态从小到大排的第x个。如果*x*比*状态<sub>i</sub>*状态的总数还要多，最大的一个*状态<sub>i</sub>*状态会被传给信号机。状态的顺序无关紧要，重复出现的值只会被留下一个。 译注：我是没感觉这怎么简化了……
 
 {{% code "*Example of a Track.Section command in conjunction with a Track.SigF command:*" %}}    
 With Track    
