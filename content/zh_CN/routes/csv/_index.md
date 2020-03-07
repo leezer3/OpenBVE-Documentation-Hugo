@@ -2259,14 +2259,14 @@ With Track
 ▸ *字体颜色*的可选项：
 
 {{% command-arguments %}}    
-*1*: Black.    
-*2*: Gray.    
-*3*: White.    
-*4*: Red.    
-*5*: Orange.    
-*6*: Green.    
-*7*: Blue.    
-*8*: Magenta.    
+*1*：高端黑。   
+*2*：隐喻灰。   
+*3*：纯洁白。   
+*4*：姨妈红。   
+*5*：阳光橙。   
+*6*：原谅绿。   
+*7*：深邃蓝。   
+*8*：少女粉。  
 {{% /command-arguments %}}
 
 This command creates a simple textual marker, which is added to the list of messages in the upper left-hand corner of the screen.
