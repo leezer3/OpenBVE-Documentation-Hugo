@@ -2108,9 +2108,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ------
 
-{{% command %}}    
-**Track.Pattern** *Type*; *<font color="blue">Speed</font>*    
-{{% /command %}}
+{{% command %}} 
+**Track.Pattern** *类型*; <font color="blue">*速度*</font> 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***Type***: The type of speed restriction.    
