@@ -52,15 +52,11 @@ weight = 7
 contentDir = "content/ko"
 languageName = "한국어"
 weight = 8
-[languages.zh]
-contentDir = "content/zh"
-languageName = "中文"
-weight = 9
 [languages.zh_CN]
 contentDir = "content/zh_CN"
 languageName = "中文 (大陆简体)"
-weight = 10
+weight = 9
 [languages.zh_HK]
 contentDir = "content/zh_HK"
 languageName = "中文 (港澳繁體)"
-weight = 11
+weight = 10
