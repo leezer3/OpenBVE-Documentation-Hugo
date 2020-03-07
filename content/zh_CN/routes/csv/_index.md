@@ -2274,8 +2274,8 @@ With Track
 ------
 
 {{% command %}}    
-**Track.PointOfInterest** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*; *Text*    
-**Track.POI** *RailIndex*; *X*; *Y*; *Yaw*; *Pitch*; *Roll*; *Text*    
+**Track.PointOfInterest** *轨道编号*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*; *文字描述*   
+**Track.POI** *轨道编号*; *水平位置*; *垂直位置*; *偏转角*; *俯仰角*; *侧倾角*; *文字描述*
 {{% /command %}}
 
 {{% command-arguments %}}    
