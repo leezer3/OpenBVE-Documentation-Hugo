@@ -1915,7 +1915,7 @@ The *a<sub>i</sub>* terms specify the aspect the section should bear depending o
 **状态<sub>n</sub>**：以此类推，当前方有*n*个区间清空时的信号状态。     
 {{% /command-arguments %}}
 
-In the case more sections ahead are clear than indicated by the *a<sub>i</sub>* terms, the section will bear the aspect of *a<sub>n</sub>*.
+如果前方有比*<sub>n</sub>*个还要多的清空的区间，最后一个状态*<sub>n</sub>*状态会被传给信号机。 
 
 **Simplified behavior:**    
 The *a<sub>i</sub>* terms specify the repertoire of aspects the section can have. A section will bear the smallest of the *a<sub>i</sub>* which is greater than the current aspect of the upcoming section. If no such *a<sub>i</sub>* exists, the section will bear the aspect of *an*. The order of the *a<sub>i</sub>* is irrelevant. If the same aspect occurs multiple times, this has no effect.
