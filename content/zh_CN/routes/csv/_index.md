@@ -43,11 +43,9 @@ CSV格式线路是以纯文本形式编辑的线路。
 
 可以几何意义上地弯曲和抬升默认的主轨道，而其他轨道都是相对于主轨道定义的，并随主轨道弯曲起伏。除非特别修改定义，线路中每25米划分为一个区间块，特定的命令只有在区间块的边界位置（整25米位置）才能发挥作用。物体的放置（尤其是在弯道上）总是基于一个坐标系，它的轴并不随轨道弯曲，而是直直地指向邻近的下一个区间块。  
 
-有点不严谨地说，在CSV线路中和“章节”“部分”差不多。
+➟ [还可查阅这份CSV格式的快速参考手册...]({{< ref "/routes/csv_quick/_index.md" >}})
 
-## ➟ [还可查阅这份CSV格式的快速参考手册...]({{< ref "/routes/csv_quick/_index.md" >}})
-
-<a name="syntax"></a>■ 2. 语法
+## <a name="syntax"></a>■ 2. 语法
 
 对于线路文件中的每一行，在开头和结尾的[空格]({{< ref "/information/whitespaces/_index.md" >}})会被统统忽略。然后，每一行指令都会按逗号(U+002C，英文半角的那个)分割。于是，每一行都会被看作这样一个格式：
 
@@ -55,13 +53,13 @@ CSV格式线路是以纯文本形式编辑的线路。
 *表达式<sub>1</sub>*, *表达式<sub>2</sub>*, *表达式<sub>3</sub>*, ..., *表达式<sub>n</sub>*  
 {{% /command %}}
 
-##### 表达式内容主要有以下类别：
+表达式内容主要有以下类别：
 
-● 注释
+##### ● 注释
 
-##### 注释就是给人看的，游戏完全不管的。以分号(U+003B，英文半角的那个)开头的表达式都会被视为注释。
+注释就是给人看的，游戏完全不管的。以分号(U+003B，英文半角的那个)开头的表达式都会被视为注释。
 
-● 主轨道位置
+##### ● 主轨道位置
 
 {{% command %}}
 *位置数字*
@@ -75,9 +73,9 @@ CSV格式线路是以纯文本形式编辑的线路。
 
 在任何参数中使用距离的命令中，这个冒号表示法就可以被使用，到时我们会用<font color="green">绿色</font>标出这种情况。
 
-##### 当*n*个单位系数被使用Options.UnitOfLength定义，但是使用冒号表示法时输入的部分却少了，那么这些系数将会被向右匹配，在左边的会被忽略。因此，这几种表示方法是等效的：*0:0:2*，*0:2*，和*2*.
+当*n*个单位系数被使用Options.UnitOfLength定义，但是使用冒号表示法时输入的部分却少了，那么这些系数将会被向右匹配，在左边的会被忽略。因此，这几种表示方法是等效的：*0:0:2*，*0:2*，和*2*.
 
-● 指令
+##### ● 指令
 
 没有参数的指令：
 
@@ -111,9 +109,9 @@ CSV格式线路是以纯文本形式编辑的线路。
 第二种方法：参数被成对括号(U+0028，英文半角在键盘9上面的那个)和(U+0029，英文半角在键盘0上面的那个)括起来。
 在第二种方法中，当使用编号时就必须使用*后缀*。在参数周围的空格都会被忽略。
 
-##### 请注意在有些指令中，不管是用哪种表示方法，*后缀*都是必需的。在接下来的文档中，必需的*后缀*将被**加粗**，对于第一种方法加不加均可的后缀将被使用<font color="gray">灰色</font>表示。
+请注意在有些指令中，不管是用哪种表示方法，*后缀*都是必需的。在接下来的文档中，必需的*后缀*将被**加粗**，对于第一种方法加不加均可的后缀将被使用<font color="gray">灰色</font>表示。
 
-● **With** 语句
+##### ● **With** 语句
 
 {{% command %}}  
 With *命名空间前缀*  
@@ -129,12 +127,12 @@ With Route
 
 和这个是等效的：
 
-## {{% code %}}  
+{{% code %}}  
 Route.Gauge 1435  
 Route.Timetable 1157_M  
 {{% /code %}}
 
-<a name="preprocessing"></a>■ 3. 预处理
+## <a name="preprocessing"></a>■ 3. 预处理
 
 Before any of the commands in the route file are actually interpreted, the expressions are preprocessed. The first thing done is to replace any occurrences of the $-directives within an expression from right to left. The $Chr, $Rnd and $Sub directives may be nested in any way, while $Include, $If, $Else and $EndIf must not appear inside another directive.
 
@@ -181,17 +179,17 @@ $Chr(*Ascii编号*)
 
 这个指令会在原位插入一个对应*Ascii码*的字符。如果想要在某个地方放置一个字符却又不想破坏指令语法结构（比如站名里开头带空格、带括号逗号分号等，如果不这样加入就会被游戏误读），可以使用这个指令。有关的字符有：
 
-| {{% table %}} | Ascii码             | 含义 |
-| ---- | ------------------- | --------- |
-| 10   | 对应字符             | 换行 (CR) |
-| 13   | *newline*             | 换行 (LF) |
-| 20   | *newline*               | 空格   |
-| 40   | *space* | 括号         |
-| 41   | ( | 回括号         |
-| 44   | )               | 逗号         |
-| 59   | ,           | 分号         |
+{{% table %}}
 
-;
+| Ascii码 | 含义             | 对应字符 |
+| ---- | ------------------- | --------- |
+| 10   | 换行 (CR)             | *newline* |
+| 13   | 换行 (LF)             | *newline* |
+| 20   | 空格               | *space*   |
+| 40   | 括号 | (         |
+| 41   | 回括号 | )         |
+| 44   | 逗号               | ,         |
+| 59   | 分号           | ;         |
 
 {{% /table %}}
 
@@ -234,9 +232,9 @@ $Sub(*编号*) = *表达式*
 
 这个指令只应该单独出现，它将会把*表达式*的值赋给编号为*编号*的这个变量。它不在原位插入任何内容。可以把一个随机数存起来然后以后多次使用（比如说放置几棵到一条随机但是却相同的轨道的排成一排的树）。下面关于 $Sub(*编号*) 的介绍处有几个使用实例。
 
-#### {{% warning %}}
+{{% warning %}}
 
-程序实现备注
+#### 程序实现备注
 
 虽然变量中也可以存储非数字的内容，还是不能把逗号通过$Chr(44)存进去然后希望它在使用时会起分隔符的作用。但是，可以把分号通过$Chr(59)存进去然后把它调用时放在开头使那一行成为注释。不过因为可以使用$Include和$If来进行条件判断，所以并没有必要这么干。
 
@@ -329,7 +327,7 @@ Track.FreeObj 1; 42
 Track.FreeObj 1; 42  
 {{% /code %}}
 
-## 最后被按照顺序重新排序:
+最后被按照顺序重新排序:
 {{% code "*Sorting by associated track positions:*" %}}  
 1000, Track.FreeObj 0; 23  
 1030, Track.Rail 1; 4  
@@ -337,7 +335,7 @@ Track.FreeObj 1; 42
 1050, Track.RailType 0; 1  
 {{% /code %}}
 
-<a name="options"></a>■ 4. Options (选项) 命名空间
+## <a name="options"></a>■ 4. Options (选项) 命名空间
 
 这个命名空间里的指令设置一些基本设置，并影响其他指令的实际处理效果。所以应当在开始编写写其他指令之前先使用这些指令把设置都调整妥当。
 
@@ -355,15 +353,15 @@ Track.FreeObj 1; 42
 
 换算系数的几个示例：
 
-| {{% table %}} | 单位 |
-| ------------ | ----------------- |
-| 换算系数         | 1609.344          |
-| 哩/英里        | 20.1168           |
-| 冈特测链        | 1                 |
-| 米/公尺         | 0.9144            |
-| 码         | 0.3048            |
+{{% table %}}
 
-呎/英尺
+| 单位 | 换算系数 |
+| ------------ | ----------------- |
+| 哩/英里         | 1609.344          |
+| 冈特测链        | 20.1168           |
+| 米/公尺        | 1                 |
+| 码         | 0.9144            |
+| 呎/英尺         | 0.3048            |
 
 {{% /table %}}
 
@@ -381,13 +379,13 @@ Track.FreeObj 1; 42
 
 这个指令可以被用来改变其他指令使用的速度单位。换算系数的几个示例：
 
-| {{% table %}}    | 单位 |
-| --------------- | ----------------- |
-| 换算系数   | 3.6               |
-| 米每秒      | 1.609344          |
-| 英里每时 | 1                 |
+{{% table %}}
 
-千米每时
+| 单位    | 换算系数 |
+| --------------- | ----------------- |
+| 米每秒   | 3.6               |
+| 英里每时      | 1.609344          |
+| 千米每时 | 1                 |
 
 {{% /table %}}
 
@@ -502,12 +500,12 @@ Track.FreeObj 1; 42
 
 ▸ *模式*的可选项：
 
-## {{% command-arguments %}}
+{{% command-arguments %}}
 **0**: 不启用兼容模式。
 **1**: 启用兼容模式。
 {{% /command-arguments %}}
 
-<a name="route"></a>■ 5. Route (路线) 命名空间
+## <a name="route"></a>■ 5. Route (路线) 命名空间
 
 这个命名空间里的指令设置一些线路的基本信息。
 
@@ -596,16 +594,16 @@ Route.Gauge和Train.Gauge作用相同。
 
 用这个指令来设定信号状态所允许的最大通过速度。状态0代表前方没有区间空闲（红灯），1代表1个区间空闲，以此类推。默认值（根据默认的日式信号系统设置）是：
 
-| {{% table %}} | *状态编号*                                                       | 显示       |
-| ------- | ------------------------------------------------------------ | ----------- |
-| 0       | 允许速度                               | <font color="#C00000">●</font>      |
-| 1       | 0 km/h                              | <font color="#FFC000">●●</font>     |
-| 2       | 25 km/h                               | <font color="#FFC000">●</font>     |
-| 3       | 55 km/h | <font color="#00C000">●</font><font color="#FFC000">●</font>     |
-| 4       | 75 km/h                               | <font color="#00C000">●</font> |
-| 5       | *没有限制*                              | <font color="#00C000">●●</font> |
+{{% table %}}
 
-*没有限制*
+| *状态编号* | 显示                                                       | 允许速度       |
+| ------- | ------------------------------------------------------------ | ----------- |
+| 0       | <font color="#C00000">●</font>                               | 0 km/h      |
+| 1       | <font color="#FFC000">●●</font>                              | 25 km/h     |
+| 2       | <font color="#FFC000">●</font>                               | 55 km/h     |
+| 3       | <font color="#00C000">●</font><font color="#FFC000">●</font> | 75 km/h     |
+| 4       | <font color="#00C000">●</font>                               | *没有限制* |
+| 5       | <font color="#00C000">●●</font>                              | *没有限制* |
 
 {{% /table %}}
 
@@ -722,9 +720,9 @@ Route.RunInterval和Train.Interval作用相同。
 
 该指令可以被用来替代*Route.AmbientLight*，*Route.DirectionalLight*和*Route.LightDirection*。
 
-[它允许根据时间改变光照，具体细节在这一页上说明：]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
+它允许根据时间改变光照，具体细节在这一页上说明：
 
-动态光照系统
+[动态光照系统]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
 
 ---
 
@@ -818,9 +816,9 @@ phi = 0
 **<font color=#555555>Route.DeveloperID</font>**
 {{% /command %}}
 
-## <font color=#555555>该指令只被BVE4等使用，openBVE忽略这一指令。</font>
+<font color=#555555>该指令只被BVE4等使用，openBVE忽略这一指令。</font>
 
-<a name="train"></a>■ 6. Train (列车) 命名空间
+## <a name="train"></a>■ 6. Train (列车) 命名空间
 
 这个命名空间里的指令指定线路使用的列车。
 
@@ -946,9 +944,9 @@ Train.Gauge和Route.Gauge作用相同。
 **<font color=#555555>Train.Station</font>**  
 {{% /command %}}
 
-## <font color=#555555>该指令已过时。OpenBVE忽略该指令。</font>
+<font color=#555555>该指令已过时。OpenBVE忽略该指令。</font>
 
-<a name="structure"></a>■ 7. Structure (结构) 命名空间
+## <a name="structure"></a>■ 7. Structure (结构) 命名空间
 
 这个命名空间里的指令用来载入在后面的其他指令中要用到的物体模型。总体来说，像Track.Rail、Track.FreeObj之类的命令通过*结构编号*来指定要使用的物体。这个*结构编号*对于这个指令是特定的，所以应当先载入要使用的模型。要使用哪个指令，要使用哪个模型，就把它们载入，不需要的就不用载入。
 
@@ -960,28 +958,28 @@ Train.Gauge和Route.Gauge作用相同。
 
 *结构编号*是一个非负整数。*文件名*是一个相对于**Object**文件夹的路径，指向要加载的模型文件。*类型*是以下几种之一：
 
-| {{% table %}} | *类型*:                                                      |
-| ---------- | ------------------------------------------------------------ |
-| 简介     | Ground           |
-| 用于Cycle.Ground和Track.Ground的地面模型。       | Rail |
-| 用于Track.Rail、Track.RailStart和Track.RailType的轨道模型。      | WallL                         |
-| 用于Track.Wall指令的左侧墙壁模型。      | WallR                        |
-| 用于Track.Wall指令的右侧墙壁模型。      | DikeL                         |
-| 用于Track.Dike指令的左侧路堤模型。      | DikeR                        |
-| 用于Track.Dike指令的右侧路堤模型。      | FormL                 |
-| 用于Track.Form指令的站台左边缘地面模型。      | FormR                |
-| 用于Track.Form指令的站台右边缘地面模型。     | FormCL |
-| 用于Track.Form指令的可以被变换拉伸的站台左边缘地面模型。<font color="red">不支持ANIMATED格式带动画物体。</font>     | FormCR |
-| 用于Track.Form指令的可以被变换拉伸的站台右边缘地面模型。<font color="red">不支持ANIMATED格式带动画物体。</font>      | RoofL                      |
-| 用于Track.Form指令的站台左边缘顶棚模型。      | RoofR                     |
-| 用于Track.Form指令的站台右边缘顶棚模型。     | RoofCL |
-| 用于Track.Form指令的可以被变换拉伸的站台左边缘顶棚模型。 <font color="red">不支持ANIMATED格式带动画物体。</font>     | RoofCR |
-| 用于Track.Form指令的可以被变换拉伸的站台右边缘顶棚模型。 <font color="red">不支持ANIMATED格式带动画物体。</font>     | CrackL |
-| 用于Track.Crack指令的填充轨道间间隙的可以被变换拉伸的左侧地面模型。<font color="red">不支持ANIMATED格式带动画物体。</font>     | CrackR |
-| 用于Track.Crack指令的填充轨道间间隙的可以被变换拉伸的右侧地面模型。 <font color="red">不支持ANIMATED格式带动画物体。</font>    | FreeObj                           |
-| 用于Track.FreeObj指令在轨道旁放置的外景物体模型。     | Beacon                            |
+{{% table %}}
 
-用于Track.Beacon指令的轨旁无线电应答器模型。
+| *类型*: | 简介                                                      |
+| ---------- | ------------------------------------------------------------ |
+| Ground     | 用于Cycle.Ground和Track.Ground的地面模型。           |
+| Rail       | 用于Track.Rail、Track.RailStart和Track.RailType的轨道模型。 |
+| WallL      | 用于Track.Wall指令的左侧墙壁模型。                         |
+| WallR      | 用于Track.Wall指令的右侧墙壁模型。                        |
+| DikeL      | 用于Track.Dike指令的左侧路堤模型。                         |
+| DikeR      | 用于Track.Dike指令的右侧路堤模型。                        |
+| FormL      | 用于Track.Form指令的站台左边缘地面模型。                 |
+| FormR      | 用于Track.Form指令的站台右边缘地面模型。                |
+| FormCL     | 用于Track.Form指令的可以被变换拉伸的站台左边缘地面模型。<font color="red">不支持ANIMATED格式带动画物体。</font> |
+| FormCR     | 用于Track.Form指令的可以被变换拉伸的站台右边缘地面模型。<font color="red">不支持ANIMATED格式带动画物体。</font> |
+| RoofL      | 用于Track.Form指令的站台左边缘顶棚模型。                      |
+| RoofR      | 用于Track.Form指令的站台右边缘顶棚模型。                     |
+| RoofCL     | 用于Track.Form指令的可以被变换拉伸的站台左边缘顶棚模型。 <font color="red">不支持ANIMATED格式带动画物体。</font> |
+| RoofCR     | 用于Track.Form指令的可以被变换拉伸的站台右边缘顶棚模型。 <font color="red">不支持ANIMATED格式带动画物体。</font> |
+| CrackL     | 用于Track.Crack指令的填充轨道间间隙的可以被变换拉伸的左侧地面模型。<font color="red">不支持ANIMATED格式带动画物体。</font> |
+| CrackR     | 用于Track.Crack指令的填充轨道间间隙的可以被变换拉伸的右侧地面模型。 <font color="red">不支持ANIMATED格式带动画物体。</font> |
+| FreeObj    | 用于Track.FreeObj指令在轨道旁放置的外景物体模型。                           |
+| Beacon     | 用于Track.Beacon指令的轨旁无线电应答器模型。                            |
 
 {{% /table %}}
 
@@ -1001,9 +999,9 @@ Train.Gauge和Route.Gauge作用相同。
 ***文件名***：一个相对于**Object**文件夹的路径，指向要加载的模型文件。
 {{% /command-arguments %}}
 
-## 特别提示：除FreeObj之外的物体都是在区间块的开始位置被放置的，因此这些模型在建模时尺寸应当保证整个物体头尾的Z坐标伸展区域（放置时朝轨道前方的方向即Z轴正方向）在0~*区间块长度*（默认值为25m）之间（这样保证正好盖住整个区间块，否则出现空隙或相互重叠）。在Track命名空间中对应命令处有更详细的解释。
+特别提示：除FreeObj之外的物体都是在区间块的开始位置被放置的，因此这些模型在建模时尺寸应当保证整个物体头尾的Z坐标伸展区域（放置时朝轨道前方的方向即Z轴正方向）在0~*区间块长度*（默认值为25m）之间（这样保证正好盖住整个区间块，否则出现空隙或相互重叠）。在Track命名空间中对应命令处有更详细的解释。
 
-<a name="texture"></a>■ 8. Texture (材质) 命名空间
+## <a name="texture"></a>■ 8. Texture (材质) 命名空间
 
 这个命名空间中的指令指定要使用的天空背景图像和它对齐的方式。
 
@@ -1017,9 +1015,9 @@ Train.Gauge和Route.Gauge作用相同。
 
 除非主轨道位置开头的Track.Back指令应用了一张不同的背景图，Texture.Background(0)的图像会在线路的开头被默认使用。
 
-[也可以使用***动态或基于模型的***背景。这个页面详细描述了如何使用这一功能：]({{< ref "/routes/xml/dynamicbackground/_index.md" >}})
+也可以使用***动态或基于模型的***背景。这个页面详细描述了如何使用这一功能：
 
-动态和基于模型的背景
+[动态和基于模型的背景]({{< ref "/routes/xml/dynamicbackground/_index.md" >}})
 
 ---
 
@@ -1076,9 +1074,9 @@ Train.Gauge和Route.Gauge作用相同。
 
 如使用动态或基于模型的背景，这项设置不起作用。
 
-## {{% /note %}}
+{{% /note %}}
 
-<a name="cycle"></a>■ 9. Cycle (循环) 命名空间
+## <a name="cycle"></a>■ 9. Cycle (循环) 命名空间
 
 {{% command %}}
 **Cycle.Ground(_地面模型编号_)<font color="gray">.Params</font> _地面模型编号<sub>0</sub>_; _地面模型编号<sub>1</sub>_; _地面模型编号<sub>2</sub>_; ...; _地面模型编号<sub>n-1</sub>_**
@@ -1122,14 +1120,14 @@ With Track
 ; and so on...  
 {{% /code %}}
 
-## {{% code "&nbsp;" %}}  
+{{% code "&nbsp;" %}}  
 With Cycle  
 .Ground(0) 0; 1; 2  
 With Track  
 0, .Ground 0  
 {{% /code %}}
 
-<a name="signal"></a>■ 10. Signal (信号) 命名空间
+## <a name="signal"></a>■ 10. Signal (信号) 命名空间
 
 这个命名空间内的指令用来加载自定义信号机。
 
@@ -1174,11 +1172,11 @@ _基座模型文件_**<font color="red">n</font>.bmp**
 
 发光模型材质的处理方法真的值得特别注意。发光模型材质是按照以下的步骤预处理的：
 
-| {{% table %}}                                                       | A                                                       | B                                                       | C                                                       | D                                                       | E                                                       |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| F | ![illustration_glow_1](/images/illustration_glow_1.png) | ![illustration_glow_2](/images/illustration_glow_2.png) | ![illustration_glow_3](/images/illustration_glow_3.png) | ![illustration_glow_4](/images/illustration_glow_4.png) | ![illustration_glow_5](/images/illustration_glow_5.png) |
+{{% table %}}
 
-![illustration_glow_6](/images/illustration_glow_6.png)
+| A                                                       | B                                                       | C                                                       | D                                                       | E                                                       | F                                                       |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| ![illustration_glow_1](/images/illustration_glow_1.png) | ![illustration_glow_2](/images/illustration_glow_2.png) | ![illustration_glow_3](/images/illustration_glow_3.png) | ![illustration_glow_4](/images/illustration_glow_4.png) | ![illustration_glow_5](/images/illustration_glow_5.png) | ![illustration_glow_6](/images/illustration_glow_6.png) |
 
 {{% /table %}}
 
@@ -1186,21 +1184,21 @@ _基座模型文件_**<font color="red">n</font>.bmp**
 
 当openBVE加载这个发光材质时，它会把所有纯黑颜色都换成纯白颜色，变成 (B) 的样子。之后，图像会被反色 (C)，然后进行180°的色调偏移 (D) 。比起 (B) 来说，这使整幅图像的亮度反转，即满饱和的颜色不会被改变（例如中心），亮颜色（例如图形外框）将会变暗，反之亦然。然后，将会进行亮度校正使暗部更暗 (E)，最后再稍稍加上一点模糊效果 (F)。
 
-## 结果所得到的材质是被叠加混合的。这意味着不是直接在屏幕上覆盖性地绘制材质，而是将材质的颜色以RGB通道值相加的方法叠加在屏幕像素上。加上黑色不会改变原有颜色，而加上完全饱和的颜色就会覆盖原有颜色。例如，加上白色就会得到白色。在设计材质时，请牢记这个处理过程，并遵循它的逆规则。一定要设计出 (A) 或 (B) 这样的图像。
+结果所得到的材质是被叠加混合的。这意味着不是直接在屏幕上覆盖性地绘制材质，而是将材质的颜色以RGB通道值相加的方法叠加在屏幕像素上。加上黑色不会改变原有颜色，而加上完全饱和的颜色就会覆盖原有颜色。例如，加上白色就会得到白色。在设计材质时，请牢记这个处理过程，并遵循它的逆规则。一定要设计出 (A) 或 (B) 这样的图像。
 
-<a name="track"></a>■ 11. Track (轨道) 命名空间
+## <a name="track"></a>■ 11. Track (轨道) 命名空间
 
 这个命名空间中的指令定义了轨道的布局。这个命名空间内的指令应该出现在所有其他指令之后，一般位于线路文件的最后部分，且代码量基本都要远超其他部分。
 
-#### {{% notice %}}
+{{% notice %}}
 
-使用主轨道位置
+#### 使用主轨道位置
 
 Track命名空间内的所有指令都需要和一个主轨道位置联系起来，这表示该指令执行的位置。一旦出现一个主轨道位置表达式，它后面的Track指令都会在这个位置执行，直到一个新的主轨道位置表达式指定一个新的位置。在主轨道位置表达式出现前写出的Track指令默认会在0位置执行。由于指令会被自动地排序和执行，所以并不一定需要把主轨道位置按照固定顺序写（虽然按照顺序写可以使结构更加清晰）。虽然主轨道位置可以是任意非负浮点数，有一些指令是**只可以在区间块开始位置（默认为25m的整倍数位置）**被使用的。默认情况下这意味着它们必须被放在0、25、50、75、100、125、以此类推的位置上。下面有这个特别限制的指令都会被标注出来。
 
-##### {{% /notice %}}
+{{% /notice %}}
 
-<a name="track_rails"></a>● 11.1. 轨道
+##### <a name="track_rails"></a>● 11.1. 轨道
 
 ---
 
@@ -1250,9 +1248,9 @@ Track命名空间内的所有指令都需要和一个主轨道位置联系起来
 
 {{% /warning-nontitle %}}
 
-#### {{% notice %}}
+{{% notice %}}
 
-对比Track.RailStart和Track.Rail
+#### 对比Track.RailStart和Track.Rail
 
 这两个都可以用来开始一条轨道。但是当使用Track.RailStart时，openBVE将会检查这个*编号*是否已被占用。所以，使用Track.RailStart来开始轨道是更为明确的，且可以避免由于失误造成的bug。译注：可惜很无奈Hmmsim并不支持Track.RailStart，所以要用Hmmsim的话没得选。
 
@@ -1335,9 +1333,9 @@ With Track
 ***附着系数***：一个非负整数，代表轨道的附着系数（数值越大，能产生越大的静摩擦力，车轮越不易打滑），单位是%。默认值是100。 
 {{% /command-arguments %}}
 
-##### 该指令设定之后轨道的附着系数。这会影响车轮打滑等物理计算。作为参考，干燥轨面大约是135，湿滑轨面大约是70，降雪轨面大约是50。如果附着系数是0，意味着轨面完全理想光滑，列车车轮将一直打滑，根本不可能移动。
+该指令设定之后轨道的附着系数。这会影响车轮打滑等物理计算。作为参考，干燥轨面大约是135，湿滑轨面大约是70，降雪轨面大约是50。如果附着系数是0，意味着轨面完全理想光滑，列车车轮将一直打滑，根本不可能移动。
 
-<a name="track_geometry"></a>● 11.2. 几何变换
+##### <a name="track_geometry"></a>● 11.2. 几何变换
 
 ---
 
@@ -1439,9 +1437,9 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 
 该指令只能在区间块开始位置使用。
 
-##### {{% /warning-nontitle %}}
+{{% /warning-nontitle %}}
 
-<a name="track_objects"></a>● 11.3. 物件
+##### <a name="track_objects"></a>● 11.3. 物件
 
 ------
 
@@ -1626,9 +1624,9 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 
 该指令只能在区间块开始位置使用。
 
-##### {{% /warning-nontitle %}}
+{{% /warning-nontitle %}}
 
-<a name="track_stations"></a>● 11.4. 车站
+##### <a name="track_stations"></a>● 11.4. 车站
 
 ------
 
@@ -1772,15 +1770,15 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 该指令早已过时，请不要使用该指令（它连开门方向都指定不了）——请使用包含更多选项的Track.Sta代替它。
 该指令创建一个新站。对于它没有提供的参数，默认采用以下值：
 
-| {{% table-nonheader %}}      | *停车铃*                  |
-| ---------------- | ----------------------------- |
-| 0 （不提醒）          | *开门方向* |
-| B （开两侧门）   | *到达广播*                    |
-| 不播放   | 15                            |
-| *停车时间* | 100                           |
-| *乘车率* | *时刻表编号*                  |
+{{% table-nonheader %}}
 
-不更改
+| *停车铃*      | 0 （不提醒）                  |
+| ---------------- | ----------------------------- |
+| *开门方向*          | B （开两侧门） |
+| *到达广播*   | 不播放                    |
+| *停车时间*   | 15                            |
+| *乘车率* | 100                           |
+| *时刻表编号* | 不更改                  |
 
 {{% /table-nonheader %}}
 
@@ -1847,11 +1845,11 @@ With Track
 **R**: 将原样无变形地使用FormR, FormCR 与 RoofR物件。
 {{% /command-arguments %}}
 
-
-##### **注意:**
+**注意:**
 如果 *轨道编号<sub>1</sub>* 处于 *轨道编号<sub>2</sub>* 的**左侧**（即：其X坐标更小），则使用Structure.FormL, Structure.FormCL 与 Structure.RoofL定义的物件，否则使用FormR, FormCR与RoofR。
 
-<a name="track_signalling"></a>● 11.5. 信号与限速
+
+##### <a name="track_signalling"></a>● 11.5. 信号与限速
 
 ------
 
@@ -1897,9 +1895,9 @@ This command defines the new speed limit from this point on. If the new speed li
 
 This command starts a section, the functional part of signalling, to be used in conjunction with Track.SigF, which creates a visual representation of a section (a signal). The *a<sub>i</sub>* parameters specify the aspects the section can bear. An aspect of 0 corresponds to a red section which must not be passed by a train. The *a<sub>0</sub>* term is mandatory.
 
-#### {{% notice %}}
+{{% notice %}}
 
-Default versus simplified section behavior
+#### Default versus simplified section behavior
 
 There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
 
@@ -2013,9 +2011,9 @@ Track.Signal is similar to using Track.Section and Track.SigF in one command.
 ***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
 {{% /command-arguments %}}
 
-##### This commands creates a default Japanese repeating signal. The repeating signal repeats the state of the upcoming signal. Setting *X* to zero does not create a repeating signal, but forces the command to be ignored. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 and attaches a default signal post.
+This commands creates a default Japanese repeating signal. The repeating signal repeats the state of the upcoming signal. Setting *X* to zero does not create a repeating signal, but forces the command to be ignored. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 and attaches a default signal post.
 
-<a name="track_safety"></a>● 11.6. Safety systems
+##### <a name="track_safety"></a>● 11.6. Safety systems
 
 ------
 
@@ -2141,9 +2139,9 @@ A permanent speed restriction (*Type*=1) is to be inserted at the point where th
 ***<font color="blue">Speed</font>***: A positive floating-point number representing the permanent speed restriction for ATS-P, **by default** measured in **km/h**.  
 {{% /command-arguments %}}
 
-##### This command is equivalent to **Track.Pattern 1;_Speed_**. See there for more information. 
+This command is equivalent to **Track.Pattern 1;_Speed_**. See there for more information. 
 
-<a name="track_misc"></a>● 11.7. Miscellaneous
+##### <a name="track_misc"></a>● 11.7. Miscellaneous
 
 ------
 
@@ -2356,3 +2354,5 @@ This command places a bumper. The train can collide with the bumper in both the 
 ***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
 ***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
 {{% /command-arguments %}}
+
+This command places a special beacon, which sets the destination variable, available for use by plugins and animated objects. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.
