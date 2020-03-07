@@ -2084,7 +2084,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 该指令放置一个为内置的ATS-SN或ATS-P信号系统使用的有源应答器。请参见[ATS系统用户指南](http://openbve-project.net/play-japanese/)来了解ATS系统和它的应答器的工作原理。
 
-It should be noted that custom safety system plugins also receive data from these transponders as Track.Transponder(*Type*) is roughly equivalent to Track.Beacon(*Type*). Please see [the page about beacon standards]({{< ref "/information/standards/_index.md" >}}) for more information.
+需要注意，由于Track.Beacon(*类型*)和Track.Transponder(*类型*)是大致相同的，游戏内置的车载信号系统也会接收Track.Beacon的发信。所以，如果要自行编写ats.dll插件，请尽量避开游戏内置车载信号系统已经使用的标号，避免误发信息，造成混乱。详情参见[应答器类型标准]({{< ref "/information/standards/_index.md" >}})。 
 
 ➟ [Go here to find out more about ATS-SN and ATS-P.](https://openbve-project.net/play-japanese/#3-ats-sn)
 
