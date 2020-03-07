@@ -2310,8 +2310,8 @@ With Track
 {{% /command %}} 
 
 {{% command-arguments %}}    
-***FileName***: The file name for the sound to play, relative to the **Sound** folder.    
-***<font color="blue">Speed</font>***: The reference speed in km/h for speed-dependant sounds, or 0 to play the sound speed-independently. The default value is 0.    
+***文件***：相对于**Sound**文件夹的要播放的声音的路径。 
+<font color="blue">***参考速度***</font>：如果该声音的播放速度会随列车速度改变，输入该声音录制时列车的行驶速度作为参考。如果该声音的播放速度不随列车速度改变，输入0。
 {{% /command-arguments %}}
 
 This command plays an announcement or other kind of sound in the cab once the player's train crosses the point where this command is used. If *Speed* is set to 0 (default), the sound is played as-is. If a *Speed* is given though, the sound plays at is original pitch at the specified speed, and is pitch-modulated proportionally for other speeds, useful for custom flange sounds, pointwork sounds, etc.
