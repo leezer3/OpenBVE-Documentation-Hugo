@@ -1958,7 +1958,7 @@ With Track
 ------
 
 {{% command %}}    
-**Track.Signal** *状态类型*; *<font color="gray">此处留空</font>*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*   
+**Track.Signal** *状态类型*; *<font color="gray">此处留空</font>*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*     
 **Track.Sig** *状态类型*; *<font color="gray">此处留空</font>*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*    
 {{% /command %}}
 
