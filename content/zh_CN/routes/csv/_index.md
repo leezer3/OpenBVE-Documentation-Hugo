@@ -2088,7 +2088,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ➟ [此处了解更多关于ATS-SN和ATS-P的信息](https://openbve-project.net/play-japanese/#3-ats-sn)
 
-➟ [There is a tutorial available for the proper use of ATS-SN and ATS-P in route files, including all of the five transponders.]({{< ref "/routes/tutorial_ats/_index.md" >}})
+➟ [这是一篇讲到如何在开发过程中使用这五种应答器来正确设置日式ATS-SN与ATS-P信号系统的教程]({{< ref "/routes/tutorial_ats/_index.md" >}})
 
 ------
 
