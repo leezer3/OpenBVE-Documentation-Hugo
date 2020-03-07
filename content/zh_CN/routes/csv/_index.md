@@ -1885,9 +1885,9 @@ With Track
 
 ------
 
-{{% command %}}    
-**Track.Section** *a<sub>0</sub>*; *a<sub>1</sub>*; *a<sub>2</sub>*; ...; *a<sub>n</sub>*    
-{{% /command %}}
+{{% command %}} 
+**Track.Section** *状态<sub>0</sub>*; *状态<sub>1</sub>*; *状态<sub>2</sub>*; ...; *状态<sub>n</sub>* 
+{{% /command %}} 
 
 {{% command-arguments %}}    
 ***a<sub>i</sub>***: A non-negative number specifying one of the section's aspects.    
