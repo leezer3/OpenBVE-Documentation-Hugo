@@ -1949,10 +1949,10 @@ With Track
 ▸ *信号机编号*的默认信号模型：
 
 {{% command-arguments %}}    
-**3**: A three-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.    
-**4**: A four-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.    
-**5**: A five-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green and <font color="#00C000">●</font>green.    
-**6**: A repeating signal equivalent to that created by Track.Relay.    
+**3**：一个三灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●</font>黄和<font color="#00C000">●</font>绿三种状态。   
+**4**：一个A型四灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄和<font color="#00C000">●</font>绿四种状态。   
+**5**：一个A型五灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄、<font color="#00C000">●</font><font color="#FFC000">●</font>黄绿和<font color="#00C000">●</font>绿五种状态。   
+**6**：一个和Track.Relay指令创建的一样的中继信号机。  
 {{% /command-arguments %}}
 
 ------
