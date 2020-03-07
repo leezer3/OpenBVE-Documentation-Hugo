@@ -2041,7 +2041,6 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ------
 
 {{% command %}}    
-{{% command %}} 
 **Track.Transponder** *类型*; *关联信号机*; *自动系统切换*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*   
 **Track.Tr** *类型*; *关联信号机*; *自动系统切换*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*  
 {{% /command %}}
