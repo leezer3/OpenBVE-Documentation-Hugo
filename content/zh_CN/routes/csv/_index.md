@@ -2198,7 +2198,7 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 ***亮度值***：一个位于0~255之间的整数。默认值是255。 
 {{% /command-arguments %}} 
 
-This command marks a point which affects the brightness in the cab. *Value* is measured from 0 (dark) to 255 (light), and is linearly interpolated between successive Track.Brightness commands for any given point on the track. This command should be used for tunnels, bridges, station roofs, or anything else that would affect the brightness as perceived inside the cab.
+该指令控制驾驶台的照明亮度情况。*亮度值*按照0（黑暗）到255（明亮）测算，并在连续的Track.Brightness指令之间平滑渐变。只要是会影响驾驶室内的亮度的地方（例如隧道、桥梁、车站顶棚、等等，尤其注意隧道灯和顶棚房梁的处理，虽然十分繁琐，但是能大大提高真实度），都应该使用这条指令来进行微调。 
 
 {{% code "*Example:*" %}}    
 With Track    
