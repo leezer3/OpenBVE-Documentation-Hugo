@@ -2092,9 +2092,9 @@ Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.
 
 ------
 
-{{% command %}}    
-**Track.AtsSn**    
-{{% /command %}}
+{{% command %}} 
+**Track.AtsSn** 
+{{% /command %}} 
 
 This command places an S-type transponder for the built-in safety system ATS-SN, referencing the upcoming signal, and automatically switching to ATS-SN. The command is equivalent to **Track.Tr 0;0;0**. See there for more information.
 
