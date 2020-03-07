@@ -1903,8 +1903,8 @@ openBVE提供两种对*状态<sub>i</sub>*参数的不同解读方式。可以�
 
 {{% /notice %}}
 
-**Default behavior:**    
-The *a<sub>i</sub>* terms specify the aspect the section should bear depending on how many sections ahead are clear until a red one is encountered. The order of the terms is relevant. The same aspect may occur multiple times.
+**默认解读方式：** 
+*状态<sub>i</sub>*指定当前方有i个区间清空（无车）时应该传达给信号机的信号状态。状态被按照书写顺序读入和匹配。但是，如果需要信号机在多种情况下显示相同信息，是可以给多种情况设定相同的信号状态的。
 
 ▸ *状态<sub>i</sub>*的意义：
 
