@@ -1863,7 +1863,7 @@ With Track
 ***方向***：在道岔限速情况下，标识限速起效的方向。  
 {{% /command-arguments %}}
 
-![illustration_limit](/images/illustration_limit.png)
+![_限速示意图](/images/illustration_limit.png)
 
 ▸ Options for *Post*:
 
