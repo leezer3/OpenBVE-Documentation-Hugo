@@ -2345,16 +2345,16 @@ With Track
 {{% /command %}} 
 
 {{% command-arguments %}}    
-***Type***: Defines the types of trains for which this destination setter applies: *-1* for AI trains only, *0* for all trains and *1* for the player train only.    
-***BeaconStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Beacon, or -1 to not place any object.    
-***NextDestination***: An integer representing the destination value set when passing over this beacon in a forwards direction, or *-1* to disable.    
-***PreviousDestination***: An integer representing the destination value set when passing over this beacon in a reverse direction, or *-1* to disable.    
-***TriggerOnce***: If set to *0*, this beacon will be triggered by all valid trains which pass over it. If set to *1*, it will be triggered by the first valid train only.    
-***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.    
-***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.    
-***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.    
-***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.    
-***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.    
+***筛选类型***：筛选这个应答机对于哪些列车有效。*-1*代表只应用于AI列车，*0*代表应用于所有列车，*1*代表只应用于玩家列车。   
+***轨旁无线电应答器模型***：一个非负整数，指定一个已经被Structure.Beacon载入的模型。输入-1代表不放置物体。   
+***正向通过目的地***：一个整数，代表当列车正向通过时要改变为的目的地显示索引值。*-1*代表不改变。   
+***反向通过目的地***：一个整数，代表当列车反向通过时要改变为的目的地显示索引值。*-1*代表不改变。   
+***单次触发***：如果设为*0*，这个应答机会向每一列车发送。如果设为*1*，只会发送给通过它的第一列列车。   
+**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。     
+**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。     
+***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
+***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
+***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
 {{% /command-arguments %}}
 
 This command places a special beacon, which sets the destination variable, available for use by plugins and animated objects. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.
