@@ -2249,7 +2249,7 @@ With Track
 ***字体颜色***：标识文字显示时的字体颜色。  
 {{% /command-arguments %}}
 
-▸ Behavior for *Distance*:
+▸ *持续距离*的意义：
 
 {{% command-arguments %}}    
 *negative value*: The marker image starts to display at the Track.Marker command, and ends -*Distance* meters after the Track.Marker command.    
