@@ -1932,14 +1932,14 @@ With Track
 **Track.SigF** *信号机编号*; *相对关联区间*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角* 
 {{% /command %}} 
 
-{{% command-arguments %}}    
-***SignalIndex***: A non-negative integer representing the signal to be placed as defined via Signal(*SignalIndex*).Load.    
-***Section***: A non-negative integer representing the section this signal is attached to, with 0 being the current section, 1 the upcoming section, 2 the section after that, and so on.    
-***<font color="green">X</font>***: The X-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.    
-***<font color="green">Y</font>***: The Y-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.    
-***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.    
-***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.    
-***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.    
+{{% command-arguments %}} 
+***信号机编号***：一个非负整数，指定一个通过Signal(*信号机编号*).Load加载的自定义信号机。   
+***相对关联区间***：一个非负整数，指定这个信号机要显示哪一个自动闭塞区间的信号状态。0代表指令执行位置所在的区间，1代表这个区间前方的下一个区间，2代表再前面一个区间，以此类推。   
+**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
+**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。这个距离是直线距离，在弯道处并不随轨道弯曲。   
+***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
+***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
+***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
 {{% /command-arguments %}}
 
 This command creates a non-function signal, that is, a visual representation of a section as defined via Track.Section. Setting *Y* to a negative number resets the y-coordinate to 4.8 meters and attaches a default signal post. Also see Track.Section.
