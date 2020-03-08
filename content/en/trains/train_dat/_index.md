@@ -1017,15 +1017,15 @@ These sections define which sounds to play at a given speed for the electric mot
 
 The #MOTOR_P1 and #MOTOR_P2 sections define two independent sounds that can be played at a given time for the electric motor. The #MOTOR_B1 and #MOTOR_B2 sections define two independent sounds that can be played at a given time for the electric brake.
 
-Each section starts with a corresponding #MOTOR_*Xi* line:
+Each section starts with a corresponding #MOTOR\_*Xi* line:
 
 {{% command %}}  
-#MOTOR_*Xi*  
+#MOTOR\_*Xi*  
 {{% /command %}}
 
 The following entries define the sounds that are to be played at multiples of 0.2 km/h. The first entry corresponds to a speed of 0 km/h, the second entry to a speed of 0.2 km/h, the third entry to a speed of 0.4 km/h, and so on. There can be as many entries as desired. For example, with 800 entries, the 800<sup>th</sup> entry corresponds to a speed of 159.8 km/h. If the train travels at a higher speed than corresponding to the last entry, this last entry also takes effect for all higher speeds.
 
-An entry inside any of the #MOTOR_*Xi* sections has the following form:
+An entry inside any of the #MOTOR\_*Xi* sections has the following form:
 
 {{% command %}}  
 *SoundIndex*, *Pitch*, *Volume*  

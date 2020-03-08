@@ -937,7 +937,7 @@ The commands in the Structure namespace define which objects to use in other com
 The general syntax for commands in the Structure namespace is:
 
 {{% command %}}  
-**Structure._Command_(_StructureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Structure.Command**(_StructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 *StructureIndex* is a non-negative integer. *FileName* is the object file to load, relative to the **Object** folder. *Command* is any of the following commands:
@@ -974,7 +974,7 @@ Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, 
 Additionally, there is the Structure.Pole command, which has a slightly different syntax:
 
 {{% command %}}  
-**Structure.Pole(_NumberOfAdditionalRails_; _PoleStructureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1006,7 +1006,7 @@ As an alternative ***Dynamic or Object*** based backgrounds may be used. The imp
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Texture.Background**(_BackgroundTextureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1024,7 +1024,7 @@ If a dynamic or object based background is to be used, this must instead point t
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_).X** *RepetitionCount*  
+**Texture.Background**(_BackgroundTextureIndex_)**.X** *RepetitionCount*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1040,7 +1040,7 @@ Ignored if using a dynamic or object based background.
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_).Aspect** *Mode*  
+**Texture.Background**(_BackgroundTextureIndex_)**.Aspect** *Mode*  
 {{% /command %}}
 
 {{% command-arguments %}}  
