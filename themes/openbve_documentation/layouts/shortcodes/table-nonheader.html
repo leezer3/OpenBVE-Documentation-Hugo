@@ -1,2 +1,4 @@
-{{ $v := replace .Inner "<table>" "<table class='type1'>" }}
-{{ replace $v "<td></td>" "" | markdownify }}
+{{ $x := .Inner | markdownify }}
+{{ $y := replace $x "<table>" "<table class='type1'>" }}
+{{ $z := replace $y "<td></td>" "" }}
+{{ $z | safeHTML }}

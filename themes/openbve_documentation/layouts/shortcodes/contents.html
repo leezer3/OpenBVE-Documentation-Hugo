@@ -1,1 +1,3 @@
-{{ replace .Inner "<ul>" "<ul class='contents'>" | markdownify }}
+{{ $x := .Inner | markdownify }}
+{{ $y := replace $x "<ul>" "<ul class='contents'>" }}
+{{ $y | safeHTML }}
