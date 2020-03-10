@@ -137,7 +137,9 @@ weight: 5
 
 ## ■列车属性
 
-{{% command %}}** \ <Directory> ** *路径* ** \ </Directory> **{{% /command %}}
+{{% command %}}
+**\<Directory>** *路径* **\</Directory>**
+{{% /command %}}
 
 ** Path **设置包含对象的train.dat，sound.cfg和extensions.cfg的目录的相对路径。
 
