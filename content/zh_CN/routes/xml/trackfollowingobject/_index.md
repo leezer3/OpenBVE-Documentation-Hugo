@@ -206,7 +206,9 @@ weight: 5
 
 ------
 
-{{% command %}}** \ <Direction> ** *值* ** \ </Direction> **{{% /command %}}
+{{% command %}}
+**\<Direction>** *行进方向* **\</Direction>**
+{{% /command %}}
 
 **值**设置对象的行进方向。 有效值如下。
 
