@@ -217,6 +217,8 @@ weight: 5
 
 ------
 
-{{% command %}}**\<Rail>** *铁路指数* **\</Rail>** {{% /command %}}
+{{% command %}}
+**\<Rail>** *轨道编号* **\</Rail>**
+{{% /command %}}
 
 ** RailIndex **设置对象运行所在的轨道。 必须通过路线文件的** Track.Rail **命令先定义这一条轨道。
