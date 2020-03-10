@@ -109,7 +109,9 @@ weight: 5
 
 ------
 
-{{% command %}}** \ <AppearanceStartPosition> ** *位置* ** \ </AppearanceStartPosition> **{{% /command %}}
+{{% command %}}
+**\<AppearanceStartPosition>** *位置* **\</AppearanceStartPosition>**
+{{% /command %}}
 
 **位置**设置物体开始出现在游戏中的距离。 当玩家的火车经过此点时，该对象将出现。 单位是**米**。
 
