@@ -99,7 +99,9 @@ weight: 5
 
 ## ■定义属性
 
-{{% command %}}** \ <AppearanceTime> ** *时间* ** \ </AppearanceTime> **{{% /command %}}
+{{% command %}}
+ **\<AppearanceTime>** *时间* **\</AppearanceTime>**
+{{% /command %}}
 
 ** 时间 ** 设置对象出现在游戏中的时间。
 
