@@ -39,75 +39,75 @@ weight: 1
 
 路線文件包括一系列指令, 用黎導入線路中用到的模型(Structure)結構命名空間 * 有 D 唔嚴謹地說, 在 csv 路線中同 "章節" "部分" 差不多。 ), 線路的屬性信息 (說明線路使用默認既列車同背景等信息), 文件的其餘部分係 track (軌道) 命名空間 (唔係好嚴謹咁講, 意思和段落差不多) 係一部分中, 主軌道位置 (一般以米為單位) 被用來描述軌道喺邊度轉彎, 車站嘅位置喺邊, 牆壁應當喺邊度開始、邊收檔, 以此類推。 講得明少少, track (軌道) 命名空間的指令是要放在最後嘅。
 
-The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "routes/xml/trackfollowingobject/_index.md" >}}).
+The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}).
 
-Geometrically, you can curve and pitch the implicit rail 0, while all other rails are defined relative to rail 0 and follow rail 0 into curves and pitch changes. Unless overridden, the file format is built around a fixed block size of 25 meters length, and it is only possible for certain commands to be used on 25 meter block boundaries. The placement of objects always assumes a non-curved coordinate system which connects blocks linearly.
+可以幾何意義上咁曲同抬升默認的主軌道, 而其他軌道都系相對于主軌道定義的, 並隨主軌道曲起伏。 除非特別修改定義, 線路中每25米劃分為一個區間蚊, 特定的命令只有在區間蚊嘅邊界位置 (成25米位置) 才能發揮作用。 物體嘅放置 (尤其是在彎道上) 成日基於一個坐標係, 它的軸並不隨軌道彎曲, 而是掂掂地指向鄰近嘅下一個區間蚊。
 
 ➟ [仲可以查閱呢份 csv 格式嘅快速參考手冊。]
 ({{< ref "/routes/csv_quick/_index.md" >}})
 
 ## <a name="syntax"></a>■ 2. 句法
 
-For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
+對於線路文件中每一行, 係開頭同結尾嘅 [空格] ({{< ref "/information/whitespaces/_index.md" >}}) 會被統統忽略。 然後, 每行指令都會㩒逗號 (U+002C, 英文半角) 分割。 于是, 每行都會被看作這樣一個格式:
 
 {{% command %}}
 *表達式內容<sub>1</sub>*,* 表達式內容<sub>2</sub>*,* 表達式內容<sub>3</sub>*, ..., *表達式內容<sub>n</sub>*
 {{% /command %}}
 
-In turn, each expression can be of any of the following forms:
+表達式內容主要有以下類別：
 
 ##### ● 註釋
 
-A comment is completely ignored by the parser. To form a comment, the expression must begin with a semicolon (U+003B).
+遊戲會忽略註釋。以分號(U+003B，英文半角)開頭嘅表達式都會被視為註釋。
 
 ##### ● 軌道位置同長度
 
-{{% command %}}  
-*Position*  
-{{% /command %}}  
-A non-negative [strict]({{< ref "/information/numberformats/_index.md" >}}) floating-point number corresponding to a track position. All subsequent commands from the Track namespace are associated to this track position.
+{{% command %}}
+*位置* 
+{{% /command %}}
+一個非負的 [嚴格格式]({{< ref "/information/numberformats/_index.md" >}}) 浮點數，代表一個主軌道位置。隨後嘅指令都將以此位置作為基準點。
 
-{{% command %}}  
-*Part<sub>1</sub>*:*Part<sub>2</sub>*:...:*Part<sub>n</sub>*  
-{{% /command %}}  
-This is a more complex way of specifying track positions for use in conjunction with Options.UnitOfLength. Each of the *Part<sub>i</sub>* is a [strict]({{< ref "/information/numberformats/_index.md" >}}) floating-point number. *Part<sub>1</sub>* will be multiplied with *Factor<sub>1</sub>*, *Part<sub>2</sub>* with *Factor<sub>2</sub>*, and so on, then all products are added together to form the final track position. This track position must be non-negative. The parts are separated by colons (U+003A). Please consult Options.UnitOfLength for further information on how to define the factors.
+{{% command %}}
+*部分<sub>1</sub>*:*部分<sub>2</sub>*:...:*部分<sub>n</sub>* 
+{{% /command %}}
+係一個配合 options.unitoflength 的更加複雜嘅距離指定格式, 可用于非公制計量單位。 每一個 * 部分<sub>i</sub>* 都係 [嚴格格式] ({{< ref "/information/numberformats/_index.md" >}}) 的浮點數。 * 部分<sub>1</sub>* 會比搭返 * 係數 <sub>1</sub> *, * 部分<sub>2</sub>* 搭返 * 係數 <sub>2</sub> *, 以此類推, 以此類推, 真正嘅主軌道位置係所有積的和。 呢個結果一定是非負嘅。 各部分被冒號 (U+003A, 英文半角嗰個) 分隔。 如果想了解如何設定系數, 請參見 Options.UnitOflength 節。
 
-Wherever arguments in commands represent lengths, they can also be entered using the colon notation. These cases are highlighted in <font color="green">green</font> in the following.
+喺任何參數中使用距離的命令中，呢個冒號表示法就可以被使用，到時我哋會用<font color="green">綠色</font>標出呢種情況。
 
-When *n* units are defined via Options.UnitOfLength, but fewer parameters are given using the colon notation, the parameters are right-associative, meaning, the parameters on the left are those which are skipped. Therefore, each of the following lengths are equivalent: *0:0:2*, *0:2*, and *2*.
+當 *n* 個單位系數被使用 Options.UnitOflength 定義, 但係使用冒號表示法時輸入的部分卻少咗, 咁呢啲系數將會被嚮右匹配, 在左邊的會被忽略。 因此, 幾種表示方法係等傚嘅: *0:0:2*,*0:2*, 同 *2*.
 
 ##### ● 指令
 
-Commands without arguments:
+冇參數嘅指令：
 
 {{% command %}}
 *指令嘅名稱*
 {{% /command %}}
 
-Commands with arguments:
+含有參數嘅指令：
 
-{{% command %}}  
-*NameOfTheCommand* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
-*NameOfTheCommand*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
+{{% command %}}
+*指令名稱* *參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>* *指令名稱*(*參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>*) 
 {{% /command %}}
 
-Commands with indices and arguments:
+有參數仲有後綴同編號的指令：
 
-{{% command %}}  
-*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*) *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
-*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
-*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
+{{% command %}}
+*指令名稱*(*編號<sub>1</sub>*;*編號<sub>2</sub>*;...;*編號<sub>m</sub>*) *參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>* *指令名稱*(*編號<sub>1</sub>*;*編號<sub>2</sub>*;...;*編號<sub>m</sub>*).*後綴* *參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub> * *指令名稱*(*編號<sub>1</sub>*;*編號<sub>2</sub>*;...;*編號<sub>m</sub>*).*後綴*(*參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>*)
 {{% /command %}}
 
-Rules:
+規則：
 
-*NameOfTheCommand* is case-insensitive. Indices and arguments are separated by semicolons (U+003B). White spaces around *NameOfTheCommand* and any of the indices and arguments are ignored. White spaces surrounding any of the parentheses are also ignored.
+*指令名稱* 係大小寫都可以嘅。 編號和參數被分號 (U+003B, 英文半角) 隔開。 *指令名稱*、編號和參數都喺周圍嘅空格都係被忽略嘅, 括號周圍嘅空格都係被忽略的。
 
-If indices are used, these are enclosed by opening parentheses (U+0028) and closing parentheses (U+0029). At least one argument, or a *Suffix* is mandatory when using indices.
+如果要使用編碼, 它必須被成對括號 (U+0028, 英文半角, 鍵盤9上面嗰個) 和 (u+0029, 英文半角, 鍵盤0上面嗰個) 括起來。 在使用編碼時至少要提供一個參數和一個 *后缀*。
 
-There are two variations on how to encode arguments. Except for the $-directives ($Chr, $Rnd, $Sub, ...), you can freely choose which variant to use. Variant 1: The first argument is separated from the command, indices or *Suffix* by at least one space (U+0020). Variant two: The arguments are enclosed by opening parentheses (U+0028) and closing parentheses (U+0029). In the latter case, *Suffix* is mandatory when used in conjunction with indices. White spaces surrounding any of the parentheses are ignored.
+有兩個使用參數嘅方法變種, 除了 $ 開頭嘅預處理指令 ($chr, $rnd, $sub,...) 之外, 可以按照個人喜好二選一。
+第 1 種方法: 參數被至少一個空格 (U+0020, 平時用嗰個) 和編碼、指令嘅大名與及 * 后缀 * 分開。
+第 2 種方法: 參數被成對括號 (U+0028, 英文半角喺鍵盤9上面嗰個) 和 (U+0029, 英文半角喺鍵盤0上面嗰個) 括起來。
+系第二種方法中, 當使用編碼時就必須使用 * 后缀 *。 在參數周圍嘅空格都會被忽略。
 
-Please note that in some commands, *Suffix* is mandatory regardless of the style you use to encode arguments. In the following, *Suffix* will be **bolded** when it is mandatory, and <font color="gray">grayed</font> when it is optional.
+請注意在有些指令中, 不管係用邊種表示方法, *后缀* 都係必需嘅。 在接下來的文檔中, 必需嘅 *后缀* 將被 **加粗**, 對於第一種方法加唔加均可嘅后缀將被使用<font color="gray">灰色</font>表示。
 
 ##### **With** 語法
 
@@ -123,7 +123,7 @@ With Route
 .Timetable 1157_M  
 {{% /code %}}
 
-Is equivalent to:
+相當於
 
 {{% code %}}  
 Route.Gauge 1435  
@@ -132,66 +132,66 @@ Route.Timetable 1157_M
 
 ## <a name="preprocessing"></a>■ 3. Preprocessing
 
-Before any of the commands in the route file are actually interpreted, the expressions are preprocessed. The first thing done is to replace any occurrences of the $-directives within an expression from right to left. The $Chr, $Rnd and $Sub directives may be nested in any way, while $Include, $If, $Else and $EndIf must not appear inside another directive.
+喺遊戲開始解析線路文件之前, 預處理指令將會被處理定替換。 預処理器會按照正常柯打分析呢啲以 $ 開頭嘅預処理命令。 $chr、$rnd 和 $sub 指令可以由嵌套, $if、$else 和 $endif 不能出現在另一個指令嘅括號入面。
 
 {{% warning-nontitle %}}
 
-The syntax for the $-directives cannot be freely chosen, but must adhere to the forms presented below.
+預處理指令的語法不可以隨意使用, 必須以下面畀出嘅形式出現。
+
+{{% /warning-nontitle %}}
+
+---
+
+{{% command %}}
+$Include(*文件*)
+$Include(*文件*:*主軌道位置偏移量*)
+$Include(*文件<sub>1</sub>*; *權值<sub>1</sub>*; *文件<sub>2</sub>*; *權值<sub>2</sub>*; ...)
+{{% /command %}}
+
+{{% command-arguments %}}
+***文件 <sub>i</sub>***: 要被導入本線路嘅另一個文件(CSV/RW)。
+***權值 <sub>i</sub>***: 一個正浮點數, 表示對應嘅呢個文件被使用的可能性大小。 數越大, 呢個文件就越可能被隨機選中。
+{{% /command-arguments %}}
+
+該指令按照權值隨機選出一個線路文件, 再將其內容導入本線路中。 因為該文件內容會比唔加修改直接在該指令的位置插入, 可能需要照顧吓 with 指令等, 唔好畀佢哋出現衝突。 如果參數中最後一個文件冇畀出權值, 它會被按1處理。
+
+$include 指令喺幾個線路有大量重複內容時好有用, 可以單獨存入另一個文件只重複內容, 然後在主文檔中導入它, 以方便編碼。 呢個指令都可以被用來隨機選取線路代碼。 請注意導入的文件中都可以包含 $include 指令來引用更多嘅文件, 但係應該避免循環引用, 例如 A 導入 B 而 B 又導入 A。 要導入嗰個文件不應該使用. csv 作為格式擴展名 (或者用. include 係個方便區分好主意), 不然玩家可能會一不小心從主餐牌揀咗呢個 "唔完全嘅線路文件" 然後發現冇辦法加载 (除非嗰個文件本身就係一個單獨的線路, 跟住本來就想讓玩家加载它)。
+
+如果任何一個 * 文件<sub>i</sub>* 被一個: * 主軌道位置偏移量 * 后缀, 嗰個文件中所有主軌道位置表達式都會被按照呢個量 ** 以米做單位 ** 偏移。 例如, $include (stations.include:2000) 會將 stations.include 文件中嘅所有內容系插入前都向前偏移2000米。 需要注意這些主軌道位置表達式係喺所有嘅預処理命令都被執行完先會畀做偏移處理。 意味着似 "1$rnd (2;8) 00" 這樣的主軌道位置表達式即管喺預処理前都唔係一個主軌道距離表達式, 但是它的隨機結果照樣會被進行偏移處理。
+
+{{% warning-nontitle %}}
+
+只有OpenBVE1.2.11版以上支持“主軌道位置偏移量”。
 
 {{% /warning-nontitle %}}
 
 ---
 
 {{% command %}}  
-$Include(*File*)  
-$Include(*File*:*TrackPositionOffset*)  
-$Include(*File<sub>1</sub>*; *Weight<sub>1</sub>*; *File<sub>2</sub>*; *Weight<sub>2</sub>*; ...)  
+$Chr(*Ascii編號*)
 {{% /command %}}
 
-{{% command-arguments %}}  
-***File<sub>i</sub>***: A file to include of the same format (CSV/RW) as the main file.  
-***Weight<sub>i</sub>***: A positive floating-point number giving a probability weight for the corresponding file.  
+{{% command-arguments %}}
+***ASCII 編碼 ***: 一個在10~13 或20~127 範圍內的數, 代表一個擁有對應 ASCII 碼的字符。
 {{% /command-arguments %}}
 
-This directive chooses randomly from the specified files based on their associated probabilities and includes the content from one selected file into the main file. The content is copied into the place of the $Include directive, meaning that you need to take care of track positions and the last used With statement, for example. If the last weight in the argument sequence is omitted, it is treated as 1.
-
-The $Include directive is useful for splitting up a large file into smaller files, for sharing common sections of code between multiple routes, and for choosing randomly from a larger block of code. Please note that the included files may themselves include other files, but you need to make sure that there are no circular dependencies, e.g. file A including file B, and file B including file A, etc. You should use a file extension different from .csv for included files so that users cannot accidentally select them in the main menu (except where this is desired).
-
-If any of the *File<sub>i</sub>* is followed by :*TrackPositionOffset*, then all expressions in the included file are offset by the specified track position **in meters**. For example, $Include(stations.include:2000) shifts all track positions in the part.include file by 2000 meters before including them. It is important to understand that "track positions" are not actually understood until after the $-directives have been processed, so all expressions in the included file are simply flagged to be offset later should they form track positions then. This means that if the included file contains expressions such as 1$Rnd(2;8)00, these are offset, too, even though at this stage, they do not form track positions yet.
-
-{{% warning-nontitle %}}
-
-The track position offset feature is only available in the development release 1.2.11 and above.
-
-{{% /warning-nontitle %}}
-
----
-
-{{% command %}}  
-$Chr(*Ascii*)  
-{{% /command %}}
-
-{{% command-arguments %}}  
-***Ascii***: An integer in the range from 20 to 127, or 10 or 13, corresponding to an ASCII character of the same code.  
-{{% /command-arguments %}}
-
-This directive is replaced by the ASCII character represented by *Ascii*. This is useful if you want to include characters that are part of syntax rules or would be stripped away. A list of relevant characters:
+這個指令會喺原位插入一個對應 *ascii 碼* 的字符。 如果想喺某個地方放置一個字符卻又唔想破壞指令語法結構 (比如企名入面開頭帶空格、帶括號逗號分號等, 如果唔咁加入就會被遊戲誤讀), 可以使用這個指令。 有關的字符有:
 
 {{% table %}}
 
-| 編號 | 意思             | Character |
+| 編號 | 意思             | 字符 |
 | ---- | ------------------- | --------- |
 | 10   | 新一行             | *newline* |
 | 13   | 新一行             | *newline* |
 | 20   | 空格               | *space*   |
-| 40   | Opening parentheses | (         |
-| 41   | Closing parentheses | )         |
+| 40   | 開括號 | (         |
+| 41   | 閂括號 | )         |
 | 44   | 逗號               | ,         |
 | 59   | 分號           | ;         |
 
 {{% /table %}}
 
-The sequence $Chr(13)$Chr(10) is handled as a single newline. Inserting $Chr(59) can be interpreted as a comment starter or as an argument separator, depending on where it is used.
+"$Chr(13)$Chr(10)"代表一次換行。插入$Chr(59)可能基於佢嘅位置被解釋為註釋開始或指令參數分隔符。
 
 ---
 
@@ -199,12 +199,12 @@ The sequence $Chr(13)$Chr(10) is handled as a single newline. Inserting $Chr(59)
 $Rnd(*Start*; *End*)  
 {{% /command %}}
 
-{{% command-arguments %}}  
-***Start***: An integer representing the lower bound.  
-***End***: An integer representing the upper bound.  
+{{% command-arguments %}}
+***最小值 ***: 一個整數, 代表隨機數可以取的最小值。
+***最大值 ***: 一個整數, 代表隨機數可以改嘅最大值。
 {{% /command-arguments %}}
 
-This directive is replaced by a random integer in the range from *Start* to *End*. It is useful to add randomness to a route.
+這個指令會喺原位插入一個位於 *最小值* 和 *最大值* 之間嘅隨機整數。 可以用呢個嚟畀線路添加一些隨機性。
 
 {{% code "*Example for the use of the $Rnd directive:*" %}}  
 10$Rnd(3;5)0, Track.FreeObj 0; 1  
@@ -218,36 +218,36 @@ This directive is replaced by a random integer in the range from *Start* to *End
 
 ---
 
-{{% command %}}  
-$Sub(*Index*) = *Expression*  
+{{% command %}}
+$Sub(*編號*) = *表達式*
 {{% /command %}}
 
-{{% command-arguments %}}  
-***Index***: A non-negative integer representing the index of a variable.  
-***Expression***: The expression to store in the variable.  
+{{% command-arguments %}}
+***編號***: 一個非負整數, 代表要儲埋嘅變量編號。 
+***表達式***: 要存進這個變量的數字的值。 
 {{% /command-arguments %}}
 
-This directive should only appear as a single expression. It is used to assign *Expression* to a variable identified by *Index*. The whole $Sub directive is replaced by an empty string once the assignment is done. It is useful for storing values obtained by the $Rnd directive in order to reuse the same randomly-generated value. See the following definition of the $Sub(*Index*) directive for examples.
+呢個指令只應該單獨出現, 它將會把 * 表達式 * 嘅值賦給編號為 * 編號 * 嘅呢個變量。 佢不在原位插入任何內容。 可以將一個隨機數存起來然後之後多次使用。 下面關於 $sub (*編號*) 的介紹處有幾個使用實例。
 
 {{% warning %}}
 
-#### Implementation note
+#### 程序實現備註
 
-While it is also possible to store non-numeric strings, it is not possible to include commas via $Chr(44) and have them work as a statement separator. However, it is possible to store a semicolon as the first character via $Chr(59) and have it work as a comment. For conditional expressions, you should use $Include or $If, though.
+雖然變量中都可以儲埋非數字的內容, 還是不能把逗號通過 $chr (44) 存返入去然後希望它在使用時會起分隔符嘅作用。 但是, 可以透過 $chr 啲分號 (59) 存返入去然後將調用時放佢喺開頭令一行成為註釋。 不過因為可以使用 $include 和 $if 嚟進行條件判斷, 所以並無必要噉做。
 
 {{% /warning %}}
 
 ---
 
 {{% command %}}  
-$Sub(*Index*)  
+$Sub(*編號*)  
 {{% /command %}}
 
-{{% command-arguments %}}  
-***Index***: A non-negative integer representing the index of the variable to retrieve.  
+{{% command-arguments %}}
+***編號***：一個非負整數，代表要讀出的變量編號。
 {{% /command-arguments %}}
 
-This directive is replaced by the content of the variable *Index*. The variable must have been assigned prior to retrieving it.
+這個指令會喺原位插入編號為 * 編號 * 的變量的內容。 在讀取前呢個變量必須先被賦值。
 
 {{% code "*Example for the use of the $Sub(Index)=Value and $Sub(Index) directives:*" %}}  
 $Sub(0) = $Rnd(3; 5)  
@@ -256,19 +256,19 @@ $Sub(0) = $Rnd(3; 5)
 1040, Track.FreeObj $Sub(0); 47  
 {{% /code %}}
 
-In the previous example, all three Track.FreeObj commands are guaranteed to use the same randomly-generated value in order to place a free object on the same rail. If you inserted the $Rnd(3;5) directive in each of the three lines individually, the objects could be placed on different rails each time.
+在這個例子中, 三個 track.freeobj 指令都使用同樣嘅隨機數值, 所以三個物體會被擺喺同一條隨機嘅軌道邊。 如果使用三個 $rnd (3;5) 而唔係 $sub, 三個物體可能被單獨放在不同的軌道邊
 
 ---
 
 {{% command %}}  
-$If(*Condition*)  
+$If(*條件*)  
 {{% /command %}}
 
-{{% command-arguments %}}  
-***Condition***: A number that represents **false** if zero, and **true** otherwise.  
+{{% command-arguments %}}
+***條件***: 一個數值。 如果佢等於 0, 則代表 **唔成立** 嘅情況。 如果佢唔等於 0, 則代表 **成立** 嘅情況。
 {{% /command-arguments %}}
 
-The $If directive allows to only process subsequent expressions if the specified condition evaluates to true (any non-zero number). $If must be followed by $EndIf in any subsequent expression. Optionally, an $Else directive may appear between $If and $EndIf.
+$if (如果...... 那麼) 指令讓遊戲只喺呢個條件成立, 即為非零值時才解析下面嘅線路指令。 $if 嘅後面必須有一個 $endif。 在 $if 和 $endif 之間都可以加個 $else 嚟表示條件係唔成立既時候要解析的指令。
 
 ---
 
@@ -276,7 +276,7 @@ The $If directive allows to only process subsequent expressions if the specified
 $Else()  
 {{% /command %}}
 
-The $Else directive allows to only process subsequent expressions if the condition in the preceding $If evaluated to false (zero).
+$Else (否則) 指令只喺前面嘅 $If 嘅條件係唔成立既時候先解析下面嘅線路指令。
 
 ---
 
@@ -284,7 +284,7 @@ The $Else directive allows to only process subsequent expressions if the conditi
 $EndIf()  
 {{% /command %}}
 
-The $EndIf directive marks the end of an $If block that was started previously.
+$EndIf 指令標識前面的 $If 指令的影響範圍到此結束。
 
 {{% code "*Example of $If, $Else and $EndIf*" %}}  
 $Sub(1) = 0  
@@ -303,11 +303,11 @@ With Track
 $If($Rnd(0;1)), .FreeObj 0; 4, $Else(), .FreeObj 0; 5, $EndIf()  
 {{% /code %}}
 
-It is possible to nest $If blocks. If you place $If/$Else/$EndIf on separate lines, you may want to employ indentation to improve readability of the block structure (as in the first example).
+可以嵌套 $If 指令。 如果將 $If/$Else/$EndIf 擺喺唔同嘅幾行度, 可以更清晰地表示張結構並令它更易讀 (例如第一個例子)。
 
 ---
 
-**Finally**, after the $-directives have been processed, all expressions in the route file are sorted according to their associated track positions.
+**最後**, 當預處理結束, 線路中嘅所有指令都會被按照軌道位置重新排序。
 
 {{% code "*Example of a partial route file:*" %}}  
 1000, Track.FreeObj 0; 23  
@@ -330,9 +330,9 @@ Track.FreeObj 1; 42
 1050, Track.RailType 0; 1  
 {{% /code %}}
 
-## <a name="options"></a>■ 4. The Options namespace
+## <a name="options"></a>■ 4. Options 命名空間
 
-Commands from this namespace provide generic options that affect the way other commands are processed. You should make use of commands from this namespace before making use of commands from other namespaces.
+這個命名空間入面嘅指令設置一些基本設置, 並影響其他指令既實際處理效果。 所以應當在開始編寫寫其他指令之前使用這些指令都較只設置先掂。
 
 ---
 
@@ -341,12 +341,12 @@ Commands from this namespace provide generic options that affect the way other c
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FactorInMeters<sub>i</sub>***: A floating-point number representing how many meters the desired unit has. The default value is 1 for *FactorInMeters1*, and 0 for all others.  
+***同米嘅換算系數 <sub>i</sub>***: 一個浮點數, 表示一個單位等於幾多米。 * 同米嘅換算系數 1 * 的默認值係 1, 其他的默認值都係0。
 {{% /command-arguments %}}
 
-This command can be used to specify the unit of length to be used in other commands. When entering a generic track position of the form *Part<sub>1</sub>*:*Part<sub>2</sub>*:...:*Part<sub>n</sub>*, each of the *Part<sub>i</sub>* will be multiplied with the corresponding *FactorInMeters<sub>i</sub>*, then all of these products are added to form a single track position represented in meters. Ideally, you should set the block length to an integer multiple of any of the units you use via Options.BlockLength.
+這個指令可以被用來改變其他指令使用的長度單位。 當同形如 * 部分<sub>1</sub>*:* 部分<sub>2</sub>*:...:* 部分<sub>n</sub>* 的主軌道位置一起使用時, * 部分<sub>i</sub>* 會比搭返 * 系數 <sub>i</sub>*, 以此類推, 真正嘅主軌道位置係所有積的和。 更改了長度單位時, 你都應同時使用 Options.BlockLength 將區間蚊長度也設為相應單位。
 
-Examples of conversion factors:
+換算系數的幾個示例:
 
 {{% table %}}
 
@@ -360,12 +360,12 @@ Examples of conversion factors:
 
 {{% /table %}}
 
-In the following, all arguments of all commands are highlighted in <font color="green">green</font> whenever they are affected by Options.UnitOfLength.
+在下面的示例中, 會被 Options.UnitOfLength 影響嘅指令參數會被用<font color="green">綠色</font>表示。
 
 ---
 
-{{% command %}}  
-**Options.UnitOfSpeed** *FactorInKmph*  
+{{% command %}}
+**Options.UnitOfSpeed** *與千米每時的換算係數*
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -514,8 +514,8 @@ Commands from this namespace define general properties of the route.
 ***Text***: The route comments which appear in the route selection dialog.  
 {{% /command-arguments %}}
 
-{{% warning-nontitle %}}  
-You need to use $Chr directives if you want to include newlines, commas and the like in the text.  
+{{% warning-nontitle %}}
+如果需要插入換行、逗號之類的字符，必須使用$Chr。
 {{% /warning-nontitle %}}
 
 ---
@@ -538,8 +538,8 @@ You need to use $Chr directives if you want to include newlines, commas and the 
 ***Text***: The text which appears at the top of the default timetable.  
 {{% /command-arguments %}}
 
-{{% warning-nontitle %}}  
-You need to use $Chr directives if you want to include newlines, commas and the like in the text.  
+{{% warning-nontitle %}}
+如果需要插入換行、逗號之類的字符，必須使用$Chr。
 {{% /warning-nontitle %}}
 
 ---
@@ -938,7 +938,7 @@ The commands in the Structure namespace define which objects to use in other com
 The general syntax for commands in the Structure namespace is:
 
 {{% command %}}  
-**Structure._Command_(_StructureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Structure.Command**(_StructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 *StructureIndex* is a non-negative integer. *FileName* is the object file to load, relative to the **Object** folder. *Command* is any of the following commands:
@@ -975,7 +975,7 @@ Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, 
 Additionally, there is the Structure.Pole command, which has a slightly different syntax:
 
 {{% command %}}  
-**Structure.Pole(_NumberOfAdditionalRails_; _PoleStructureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1007,7 +1007,7 @@ As an alternative ***Dynamic or Object*** based backgrounds may be used. The imp
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Texture.Background**(_BackgroundTextureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1025,7 +1025,7 @@ If a dynamic or object based background is to be used, this must instead point t
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_).X** *RepetitionCount*  
+**Texture.Background**(_BackgroundTextureIndex_)**.X** *RepetitionCount*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1041,7 +1041,7 @@ Ignored if using a dynamic or object based background.
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_).Aspect** *Mode*  
+**Texture.Background**(_BackgroundTextureIndex_)**.Aspect** *Mode*  
 {{% /command %}}
 
 {{% command-arguments %}}  

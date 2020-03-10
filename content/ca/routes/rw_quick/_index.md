@@ -16,12 +16,12 @@ hidden: true
 *<font color="green">Number<sub>1</sub></font>* : *<font color="green">Number<sub>2</sub></font>* : *...* : *<font color="green">Number<sub>n</sub></font>*
 
 <font color="red">Preprocessing directives</font>  
-__$Include(__*File<sub>1</sub>*; *Weight<sub>1</sub>*; *File<sub>2</sub>*; *Weight<sub>2</sub>*; ...__)__  
-__$Chr(__*AsciiCode*__)__  
-__$Rnd(__*Minimum***;** *Maximum*__)__  
-__$Sub(__*VariableIndex*__)__ = *Value*  
-__$Sub(__*VariableIndex*__)__  
-__$If(__*Condition*__)__  
+**$Include**(*File<sub>1</sub>*; *Weight<sub>1</sub>*; *File<sub>2</sub>*; *Weight<sub>2</sub>*; ...)  
+**$Chr**(*AsciiCode*)  
+**$Rnd**(*Minimum*; *Maximum*)  
+**$Sub**(*VariableIndex*) = *Value*  
+**$Sub**(*VariableIndex*)  
+**$If**(*Condition*)  
 **$ElseIf**()  
 **$EndIf**()
 
@@ -40,7 +40,7 @@ __$If(__*Condition*__)__
 **Timetable** = *Text*  
 **Change** = <font color="gray">{</font> **-1** = service brakes (ATS) <font color="gray">|</font> **0** = emergency brakes (no ATS) <font color="gray">|</font> **1** = service brakes (ATS) <font color="gray">}</font>  
 **Gauge** = *ValueInMillimeters*  
-__Route.Signal(__*Aspect*__)__ = <font color="blue">*Speed*</font>  
+**Route.Signal**(*Aspect*) = <font color="blue">*Speed*</font>  
 **RunInterval** = *Interval<sub>0</sub>*; *Interval<sub>1</sub>*; ...; *Interval<sub>n-1</sub>*  
 **AccelerationDueToGravity** = *Value*  
 **Elevation** = *<font color="green">Height</font>*  
@@ -52,38 +52,38 @@ __Route.Signal(__*Aspect*__)__ = <font color="blue">*Speed*</font>
 
 <font color="red">[Train]</font>  
 **Folder** = *FolderName*  
-__Run(__*RailTypeIndex*__)__ = *RunSoundIndex*  
-__Rail(__*RailTypeIndex*__)__ = *RunSoundIndex*  
-__Flange(__*RailTypeIndex*__)__ = *FlangeSoundIndex*  
-__Timetable(__*TimetableIndex*__).Day__ = *FileName*  
-__Timetable(__*TimetableIndex*__).Night__ = *FileName*  
+**Run**(*RailTypeIndex*) = *RunSoundIndex*  
+**Rail**(*RailTypeIndex*) = *RunSoundIndex*  
+**Flange**(*RailTypeIndex*) = *FlangeSoundIndex*  
+**Timetable**(*TimetableIndex*)**.Day** = *FileName*  
+**Timetable**(*TimetableIndex*)**.Night** = *FileName*  
 **Gauge** = *ValueInMillimeters*  
 **Interval** = *Interval<sub>0</sub>*; *Interval<sub>1</sub>*; ...; *Interval<sub>n-1</sub>*  
 **Velocity** = *<font color="blue">Speed</font>*
 
 <font color="red">[Object]</font>  
-__Rail(__*RailStructureIndex*__)__ = *FileName*  
-__Beacon(__*BeaconStructureIndex*__)__ = *FileName*  
-__Pole(__*NumberOfAdditionalRails*__;__ *PoleStructureIndex*__)__ = *FileName*  
-__Ground(__*GroundStructureIndex*__)__ = *FileName*  
-__WallL(__*WallStructureIndex*__)__ = *FileName*  
-__WallR(__*WallStructureIndex*__)__ = *FileName*  
-__DikeL(__*DikeStructureIndex*__)__ = *FileName*  
-__DikeR(__*DikeStructureIndex*__)__ = *FileName*  
-__FormL(__*FormStructureIndex*__)__ = *FileName*  
-__FormR(__*FormStructureIndex*__)__ = *FileName*  
-__FormCL(__*FormStructureIndex*__)__ = *FileName*  
-__FormCR(__*FormStructureIndex*__)__ = *FileName*  
-__RoofL(__*RoofStructureIndex*__)__ = *FileName*  
-__RoofR(__*RoofStructureIndex*__)__ = *FileName*  
-__RoofCL(__*RoofStructureIndex*__)__ = *FileName*  
-__RoofCR(__*RoofStructureIndex*__)__ = *FileName*  
-__CrackL(__*CrackStructureIndex*__)__ = *FileName*  
-__CrackR(__*CrackStructureIndex*__)__ = *FileName*  
-__FreeObj(__*FreeObjStructureIndex*__)__ = *FileName*  
-__Back(__*BackgroundTextureIndex*__)__ = *FileName*  
-__Back(__*BackgroundTextureIndex*__).X__ = *RepetitionCount*  
-__Back(__*BackgroundTextureIndex*__).Aspect__ <font color="gray">{</font> **0** = fixed height <font color="gray">|</font> **1** = keep aspect ratio <font color="gray">}</font>
+**Rail**(*RailStructureIndex*) = *FileName*  
+**Beacon**(*BeaconStructureIndex*) = *FileName*  
+**Pole**(*NumberOfAdditionalRails*; *PoleStructureIndex*) = *FileName*  
+**Ground**(*GroundStructureIndex*) = *FileName*  
+**WallL**(*WallStructureIndex*) = *FileName*  
+**WallR**(*WallStructureIndex*) = *FileName*  
+**DikeL**(*DikeStructureIndex*) = *FileName*  
+**DikeR**(*DikeStructureIndex*) = *FileName*  
+**FormL**(*FormStructureIndex*) = *FileName*  
+**FormR**(*FormStructureIndex*) = *FileName*  
+**FormCL**(*FormStructureIndex*) = *FileName*  
+**FormCR**(*FormStructureIndex*) = *FileName*  
+**RoofL**(*RoofStructureIndex*) = *FileName*  
+**RoofR**(*RoofStructureIndex*) = *FileName*  
+**RoofCL**(*RoofStructureIndex*) = *FileName*  
+**RoofCR**(*RoofStructureIndex*) = *FileName*  
+**CrackL**(*CrackStructureIndex*) = *FileName*  
+**CrackR**(*CrackStructureIndex*) = *FileName*  
+**FreeObj**(*FreeObjStructureIndex*) = *FileName*  
+**Back**(*BackgroundTextureIndex*) = *FileName*  
+**Back**(*BackgroundTextureIndex*)**.X** = *RepetitionCount*  
+**Back**(*BackgroundTextureIndex*)**.Aspect** <font color="gray">{</font> **0** = fixed height <font color="gray">|</font> **1** = keep aspect ratio <font color="gray">}</font>
 
 <font color="red">[Cycle]</font>  
 *GroundStructureIndex* = *GroundStructureIndex<sub>1</sub>*; *GroundStructureIndex<sub>2</sub>*; *...*; *GroundStructureIndex<sub>n</sub>*  

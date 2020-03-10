@@ -1,8 +1,8 @@
 ---
-title: "Forking guidelines"
+title: "分叉准则"
 weight: 8
 ---
-{{% information %}}
+1{{% information %}}
 
 #### Q: What is a fork?
 

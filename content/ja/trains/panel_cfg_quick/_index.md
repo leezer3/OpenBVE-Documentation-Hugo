@@ -18,7 +18,7 @@ hidden: true
 **Radius** = ValueInPixels  
 **Background** = FileName  
 **Cover** = FileName  
-**Unit** = { **0** = **kpa** | **1** = **kgf/cm2** }  
+**Unit** = { **0** = kpa | **1** = kgf/cm2 }  
 **Minimum** = PressureValue  
 **Maximum** = PressureValue  
 **Angle** = ValueInDegrees
@@ -39,7 +39,7 @@ hidden: true
 **Number** = FileName  
 **Corner** = Left, Top  
 **Size** = Width, Height  
-**Unit** = { **0** = **km/h** | **1** = **mph** | **2** = **m/s** }
+**Unit** = { **0** = km/h | **1** = mph | **2** = m/s }
 
 <font color="red">[PilotLamp]</font>  
 **TurnOn** = FileName  

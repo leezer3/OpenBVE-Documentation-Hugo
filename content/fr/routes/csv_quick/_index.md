@@ -18,12 +18,12 @@ hidden: true
 *<font color="green">Number<sub>1</sub></font>* : *<font color="green">Number<sub>2</sub></font>* : *...* : *<font color="green">Number<sub>n</sub></font>*
 
 <font color="red">Preprocessing directives</font>  
-__$Include(__*File<sub>1</sub>*; *Weight<sub>1</sub>*; *File<sub>2</sub>*; *Weight<sub>2</sub>*; ...__)__  
-__$Chr(__*AsciiCode*__)__  
-__$Rnd(__*Minimum***;** *Maximum*__)__  
-__$Sub(__*VariableIndex*__)__ = *Value*  
-__$Sub(__*VariableIndex*__)__  
-__$If(__*Condition*__)__  
+**$Include**(*File<sub>1</sub>*; *Weight<sub>1</sub>*; *File<sub>2</sub>*; *Weight<sub>2</sub>*; ...)  
+**$Chr**(*AsciiCode*)  
+**$Rnd**(*Minimum*; *Maximum*)  
+**$Sub**(*VariableIndex*) = *Value*  
+**$Sub**(*VariableIndex*)  
+**$If**(*Condition*)  
 **$ElseIf**()  
 **$EndIf**()
 
@@ -44,7 +44,7 @@ __$If(__*Condition*__)__
 **Route.Timetable** *Text*  
 **Route.Change** <font color="gray">{</font> **-1** = service brakes (ATS) <font color="gray">|</font> **0** = emergency brakes (no ATS) <font color="gray">|</font> **1** = service brakes (ATS) <font color="gray">}</font>  
 **Route.Gauge** *ValueInMillimeters*  
-__Route.Signal(__*Aspect*__)__<font color="gray">.Set</font> <font color="blue">*Speed*</font>  
+**Route.Signal**(*Aspect*)<font color="gray">.Set</font> <font color="blue">*Speed*</font>  
 **Route.RunInterval** *Interval<sub>0</sub>*; *Interval<sub>1</sub>*; ...; *Interval<sub>n-1</sub>*  
 **Route.AccelerationDueToGravity** *Value*  
 **Route.Elevation** *<font color="green">Height</font>*  
@@ -61,48 +61,48 @@ __Route.Signal(__*Aspect*__)__<font color="gray">.Set</font> <font color="blue">
 <font color="red">Train namespace</font>  
 **Train.Folder** *FolderName*  
 **Train.File** *FolderName*  
-__Train.Run(__*RailTypeIndex*__)__<font color="gray">.Set</font> *RunSoundIndex*  
-__Train.Rail(__*RailTypeIndex*__)__<font color="gray">.Set</font> *RunSoundIndex*  
-__Train.Flange(__*RailTypeIndex*__)__<font color="gray">.Set</font> *FlangeSoundIndex*  
-__Train.Timetable(__*TimetableIndex*__).Day__<font color="gray">.Load</font> *FileName*  
-__Train.Timetable(__*TimetableIndex*__).Night__<font color="gray">.Load</font> *FileName*  
+**Train.Run**(*RailTypeIndex*)<font color="gray">.Set</font> *RunSoundIndex*  
+**Train.Rail**(*RailTypeIndex*)<font color="gray">.Set</font> *RunSoundIndex*  
+**Train.Flange**(*RailTypeIndex*)<font color="gray">.Set</font> *FlangeSoundIndex*  
+**Train.Timetable**(*TimetableIndex*)**.Day**<font color="gray">.Load</font> *FileName*  
+**Train.Timetable**(*TimetableIndex*)**.Night**<font color="gray">.Load</font> *FileName*  
 **Train.Gauge** *ValueInMillimeters*  
 **Train.Interval** *Interval<sub>0</sub>*; *Interval<sub>1</sub>*; ...; *Interval<sub>n-1</sub>*  
 **Train.Velocity** *<font color="blue">Speed</font>*
 
 <font color="red">Structure namespace</font>  
-__Structure.Rail(__*RailStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.Ground(__*GroundStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.WallL(__*WallStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.WallR(__*WallStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.DikeL(__*DikeStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.DikeR(__*DikeStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.FormL(__*FormStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.FormR(__*FormStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.FormCL(__*FormStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.FormCR(__*FormStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.RoofL(__*RoofStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.RoofR(__*RoofStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.RoofCL(__*RoofStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.RoofCR(__*RoofStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.CrackL(__*CrackStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.CrackR(__*CrackStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.FreeObj(__*FreeObjStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.Beacon(__*BeaconStructureIndex*__)__<font color="gray">.Load</font> *FileName*  
-__Structure.Pole(__*NumberOfAdditionalRails*__;__ *PoleStructureIndex*__)__<font color="gray">.Load</font> *FileName*
+**Structure.Rail**(*RailStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.Ground**(*GroundStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.WallL**(*WallStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.WallR**(*WallStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.DikeL**(*DikeStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.DikeR**(*DikeStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.FormL**(*FormStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.FormR**(*FormStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.FormCL**(*FormStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.FormCR**(*FormStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.RoofL**(*RoofStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.RoofR**(*RoofStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.RoofCL**(*RoofStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.RoofCR**(*RoofStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.CrackL**(*CrackStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.CrackR**(*CrackStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.FreeObj**(*FreeObjStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.Beacon**(*BeaconStructureIndex*)<font color="gray">.Load</font> *FileName*  
+**Structure.Pole**(*NumberOfAdditionalRails*; *PoleStructureIndex*)<font color="gray">.Load</font> *FileName*
 
 <font color="red">Texture namespace</font>  
-__Texture.Background(__*BackgroundTextureIndex*__)__<font color="gray">.Load</font> *FileName* 
-__Texture.Background(__*BackgroundTextureIndex*__).X__ *RepetitionCount*  
-__Texture.Background(__*BackgroundTextureIndex*__).Aspect__ <font color="gray">{</font> **0** = fixed height <font color="gray">|</font> **1** = keep aspect ratio <font color="gray">}</font>
+**Texture.Background**(*BackgroundTextureIndex*)<font color="gray">.Load</font> *FileName*  
+**Texture.Background**(*BackgroundTextureIndex*)**.X** *RepetitionCount*  
+**Texture.Background**(*BackgroundTextureIndex*)**.Aspect** <font color="gray">{</font> **0** = fixed height <font color="gray">|</font> **1** = keep aspect ratio <font color="gray">}</font>
 
 <font color="red">Cycle namespace</font>  
-__Cycle.Ground(__*GroundStructureIndex*__)__<font color="gray">.Params</font> *GroundStructureIndex<sub>1</sub>*; *GroundStructureIndex<sub>2</sub>*; *...*; *GroundStructureIndex<sub>n</sub>*  
-__Cycle.Rail(__*RailStructureIndex*__)__<font color="gray">.Params</font> *RailStructureIndex<sub>1</sub>*; *RailStructureIndex<sub>2</sub>*; *...*; *RailStructureIndex<sub>n</sub>*
+**Cycle.Ground**(*GroundStructureIndex*)<font color="gray">.Params</font> *GroundStructureIndex<sub>1</sub>*; *GroundStructureIndex<sub>2</sub>*; *...*; *GroundStructureIndex<sub>n</sub>*  
+**Cycle.Rail**(*RailStructureIndex*)<font color="gray">.Params</font> *RailStructureIndex<sub>1</sub>*; *RailStructureIndex<sub>2</sub>*; *...*; *RailStructureIndex<sub>n</sub>*
 
 <font color="red">Signal namespace</font>  
-__Signal(__*SignalIndex*__)__<font color="gray">.Load</font> *AnimatedObjectFile*  
-__Signal(__*SignalIndex*__)__<font color="gray">.Load</font> *SignalFileWithoutExtension*; *GlowFileWithoutExtension*
+**Signal**(*SignalIndex*)<font color="gray">.Load</font> *AnimatedObjectFile*  
+**Signal**(*SignalIndex*)<font color="gray">.Load</font> *SignalFileWithoutExtension*; *GlowFileWithoutExtension*
 
 <font color="red">Track namespace</font>  
 *Rails:*  

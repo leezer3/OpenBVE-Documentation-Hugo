@@ -39,7 +39,7 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 The route file consists of a series of commands to define the objects which are used throughout the route (Structure namespace). Additional properties for the route, for the default train to be used and for the background images to be used can also be defined. At last, the route file will contain instructions from the Track namespace. Here, track positions (usually in meters) are used to define when the track should curve, when stations are to be placed, when a wall should start and end, and so on. Generally speaking, instructions from the Track namespace should be used after using instructions from any of the other namespaces.
 
-The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "routes/xml/trackfollowingobject/_index.md" >}}).
+The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}).
 
 Geometrically, you can curve and pitch the implicit rail 0, while all other rails are defined relative to rail 0 and follow rail 0 into curves and pitch changes. Unless overridden, the file format is built around a fixed block size of 25 meters length, and it is only possible for certain commands to be used on 25 meter block boundaries. The placement of objects always assumes a non-curved coordinate system which connects blocks linearly.
 
@@ -937,7 +937,7 @@ The commands in the Structure namespace define which objects to use in other com
 The general syntax for commands in the Structure namespace is:
 
 {{% command %}}  
-**Structure._Command_(_StructureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Structure.Command**(_StructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 *StructureIndex* is a non-negative integer. *FileName* is the object file to load, relative to the **Object** folder. *Command* is any of the following commands:
@@ -974,7 +974,7 @@ Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, 
 Additionally, there is the Structure.Pole command, which has a slightly different syntax:
 
 {{% command %}}  
-**Structure.Pole(_NumberOfAdditionalRails_; _PoleStructureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1006,7 +1006,7 @@ As an alternative ***Dynamic or Object*** based backgrounds may be used. The imp
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Texture.Background**(_BackgroundTextureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1024,7 +1024,7 @@ If a dynamic or object based background is to be used, this must instead point t
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_).X** *RepetitionCount*  
+**Texture.Background**(_BackgroundTextureIndex_)**.X** *RepetitionCount*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1040,7 +1040,7 @@ Ignored if using a dynamic or object based background.
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_).Aspect** *Mode*  
+**Texture.Background**(_BackgroundTextureIndex_)**.Aspect** *Mode*  
 {{% /command %}}
 
 {{% command-arguments %}}  

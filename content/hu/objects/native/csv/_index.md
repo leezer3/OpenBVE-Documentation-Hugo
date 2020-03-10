@@ -1,16 +1,16 @@
 ---
-title: "The **.csv** object format"
-linktitle: "The CSV object"
+title: "A **. Csv ** objektum formátum"
+linktitle: "A CSV objektum"
 weight: 2
 ---
 
-## ■ Contents
+## ■ Tartalom
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Available commands](#commands)
+- [1. Áttekintés](#overview)
+- [2. Szintaxis](#syntax)
+- [3. Rendelkezésre álló parancsok](#commands)
   - [CreateMeshBuilder](#createmeshbuilder)
   - [AddVertex](#addvertex)
   - [AddFace](#addface)
@@ -31,17 +31,17 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Áttekintés
 
-A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
+A CSV objektum lehetővé teszi egyetlen objektum létrehozását szöveges utasítások segítségével. Az objektum felhasználható útvonalakon vagy vonatokon. A fájl által leírt objektum tetszőleges számú sokszöget tartalmazhat. A fájlformátum lehetővé teszi, hogy több sokszöget csoportosítson a CreateMeshBuilder szakaszokban, ahol az egyes szakaszokban létrehozott összes sokszöghez olyan attribútumokat rendelnek, mint a szín vagy a textúra. Ez lehetővé teszi számos poligon létrehozását ugyanabban a CreateMeshBuilder szakaszban, amelyek közös attribútumokkal rendelkeznek. Ebben a formátumban a sokszöget arcnak nevezzük.
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom.
+A fájl egy egyszerű szöveges fájl, amely tetszőleges [kódolásban] van kódolva ({{< ref "/information/encodings/_index.md" >}}), azonban az UTF-8 bájtos megjelöléssel az előnyben részesített választás. A [elemző modell] ({{< ref "/information/numberformats/_index.md" >}}) a számokhoz ** laza **, mindazonáltal a * szigorú * kimenet előállítását javasoljuk. A fájlnév tetszőleges, de a **. Csv ** kiterjesztésűnek kell lennie. A fájlt soronként értelmezik, fentről lefelé.
 
-➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
+Lásd [lásd a CSV formátum gyors útmutatóját is ...] ({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
 ## <a name="syntax"></a>■ 2. Syntax
 
-Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
+A fájl minden sorát felosztjuk egy parancs nevére és argumentumára. Az összes parancs szintaxisa megegyezik:
 
 {{% command %}}  
 **NameOfTheCommand**, *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*  

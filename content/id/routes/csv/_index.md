@@ -39,7 +39,7 @@ File ini berisi teks yang ditulis dalam 1 enkoding [encoding]({{< ref "/informat
 
 File rute terdiri dari berbagai perintah untuk menentukan posisi objek yang dipakai dalam rute (Bagian Structure). Tambahan info rute, rangkaian standar, dan gambar latar juga ditentukan di sini. Terakhir, file rute memuat instruksi untuk bagian trek kereta. Di sini, posisi trek atau jalur (biasanya dalam meter) dipakai untuk menentukan di mana rel harus berbelok, posisi stasiun, mulainya rel lain, dan sebagainya. Biasanya, bagian Track ditulis di paling ahkir setelah bagian lain selesai ditulis.
 
-Perintah rail 0 (rel yang akan dilewati kereta player) tidak bisa dimulai dan diakhiri (RailStart / Railend). Rail 0 tersedia dari ujung awal sampai akhir rute. Rail 0 dan rel ian tidak hanya berfungsi menampilkan objek secara visual, tapi digunakan juga untuk  [Track Following Object]({{< ref "routes/xml/trackfollowingobject/_index.md" >}}).
+The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}).
 
 Anda bisa membuat rail 0 berbelok, menanjak, atau menurun, sementara rail lainnya akan mengikuti belokan dan ketinggian rail 0. Di sini, beberapa perintah hanya tersedia di setiap blok, dimana per blok biasanya berjarak 25m. penempatan objek juga selalu mengikuti posisi rel.
 
@@ -937,7 +937,7 @@ The commands in the Structure namespace define which objects to use in other com
 The general syntax for commands in the Structure namespace is:
 
 {{% command %}}  
-**Structure._Command_(_StructureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Structure.Command**(_StructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 *StructureIndex* is a non-negative integer. *FileName* is the object file to load, relative to the **Object** folder. *Command* is any of the following commands:
@@ -974,7 +974,7 @@ Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, 
 Additionally, there is the Structure.Pole command, which has a slightly different syntax:
 
 {{% command %}}  
-**Structure.Pole(_NumberOfAdditionalRails_; _PoleStructureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1006,7 +1006,7 @@ As an alternative ***Dynamic or Object*** based backgrounds may be used. The imp
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_)**<font color="gray">.Load</font> *FileName*  
+**Texture.Background**(_BackgroundTextureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1024,7 +1024,7 @@ If a dynamic or object based background is to be used, this must instead point t
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_).X** *RepetitionCount*  
+**Texture.Background**(_BackgroundTextureIndex_)**.X** *RepetitionCount*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1040,7 +1040,7 @@ Ignored if using a dynamic or object based background.
 ---
 
 {{% command %}}  
-**Texture.Background(_BackgroundTextureIndex_).Aspect** *Mode*  
+**Texture.Background**(_BackgroundTextureIndex_)**.Aspect** *Mode*  
 {{% /command %}}
 
 {{% command-arguments %}}  

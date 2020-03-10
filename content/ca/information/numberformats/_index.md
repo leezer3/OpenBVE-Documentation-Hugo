@@ -88,7 +88,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 In these sequences, *hhh* denotes any sequence of at least one decimal digit to indicate the hour, *mm* denotes the two-digit minute part, *m* denotes a one-digit minute part, *ss* denotes a two-digit second part, *s* denotes a one-digit second part, and the character to separate the hours from the minutes is the period (U+002E). All digits need to be characters from 0 to 9 (U+0030 - U+0039). Leading or trailing white spaces are ignored. The total time is determined via the following formula, resulting in seconds since midnight:
 
 {{% function "*Seconds since midnight for a given time:*" %}}  
-3600**hhh* + 60*mm + *ss*  
+3600\**hhh* + 60\**mm* + *ss*  
 {{% /function %}}
 
 If minutes or seconds are not indicated, they are assumed to be zero. You can use any non-negative hour, including values greater than or equal to 24. If, for example, a station arrival time is 23:59:00 (day 1), and the arrival time of the following station is 00:02:15 (day 2), then use the following sequences to represent these times in order to ensure a chronological order:

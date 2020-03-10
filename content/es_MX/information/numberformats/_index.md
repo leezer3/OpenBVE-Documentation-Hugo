@@ -88,7 +88,7 @@ Existen dos métodos de análisis para los números: **Strict** y **Loose** . El
 En estas secuencias, *hhh* denota cualquier secuencia de al menos un dígito decimal para indicar la hora, *mm* denota la parte minuto con dos dígitos *m* denota un dígito de minuto *ss* denota la parte de segundos con dos dígitos, *s* denota la parte segundo con un dígito, y el carácter para separar las horas de los minutos es una coma (U+002E). Todos los dígitos necesitan ser caracteres desde el 0 al 9 (U+0030 - U+0039). Espacios en blanco al comienzo o al final son ignorados. El tiempo total es determinado por la siguiente formula, resultado en segundos desde la media noche: 
 
 {{% function "*Seconds since midnight for a given time:*" %}}  
-3600**hhh* + 60*mm + *ss*  
+3600\**hhh* + 60\**mm* + *ss*  
 {{% /function %}}
 
 Si los minutos o segundos no están indicados, estos se asumen que son iguales a cero. Usted puede usar cualquier hora que no sea negativa, incluyendo valores mayores o iguales que 24. Si por ejemplo, el tiempo de llegada de una estación es a las 23:59:00 (día 1), y el tiempo de llegada de la siguiente estación es 00:02:15 (día 2), entonces usa la siguientes secuencias para representar estos tiempos en orden para asegurar un orden cronológico:
