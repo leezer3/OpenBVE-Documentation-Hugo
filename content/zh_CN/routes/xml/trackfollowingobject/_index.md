@@ -182,7 +182,9 @@ weight: 5
 
 ------
 
-{{% command %}}**\<StopTime>** *时间* **\</StopTime>** {{% /command %}}
+{{% command %}}
+**\<StopTime>** *停车时间* **\</StopTime>**
+ {{% /command %}}
 
 ** 时间 **设置对象停止的持续时间。 此值不是游戏时间。
 
