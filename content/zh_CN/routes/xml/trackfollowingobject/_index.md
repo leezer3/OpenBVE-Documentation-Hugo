@@ -198,7 +198,9 @@ weight: 5
 
 ------
 
-{{% command %}}** \ <TargetSpeed> ** *值* ** \ </TargetSpeed> **{{% /command %}}
+{{% command %}}
+**\<TargetSpeed>** *目标速度* **\</TargetSpeed>**
+{{% /command %}}
 
 **值**设置对象加速后的速度。 单位是** km / h **。
 
