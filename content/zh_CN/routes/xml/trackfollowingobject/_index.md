@@ -127,7 +127,9 @@ weight: 5
 
 ------
 
-{{% command %}}**\<LeaveTime>** *时间* **\</LeaveTime>** {{% /command %}}
+{{% command %}}
+**\<LeaveTime>** *时间* **\</LeaveTime>**
+ {{% /command %}}
 
 **时间**设置从物体出现在游戏中到消失为止的持续时间。 此时间之后该对象将不可见。 此值不是游戏时间。
 
