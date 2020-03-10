@@ -153,7 +153,9 @@ weight: 5
 
 ## ■ Stop (停站) 属性
 
-{{% command %}}** \ <Decelerate> ** *值* ** \ </Decelerate> **{{% /command %}}
+{{% command %}}
+**\<Decelerate>** *值* **\</Decelerate>**
+{{% /command %}}
 
 **值**设置对象的减速度。 单位是** km / h / s **。
 
