@@ -10,11 +10,10 @@ uglyURLs = true
 disableKinds = ["page", "404", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
 
 [params]
-  logoimage = "/images/logo.png"
+logoimage = "/images/logo.png"
 
-[blackfriday]
-  hrefTargetBlank = true
-  extensions = ["laxHtmlBlocks"]
+[markup.goldmark.renderer]
+unsafe = true
 
 # Add languages in alphabetical order by language code.
 # Link sub-codes of the language code with underscore.

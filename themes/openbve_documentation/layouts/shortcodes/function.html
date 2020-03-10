@@ -1,20 +1,20 @@
 <table style="border: none;">
-  <tbody>
-  {{ with .Get 0 }}
-    <tr>
-      <td width="16" valign="top"></td>
-      <td>
-      {{ . | markdownify }}
-      </td>
-    </tr>
-  {{ end }}
-    <tr>
-       <td width="16" valign="top">ƒ</td>
-       <td bgcolor="#FFD8C0" style="border: 1px dotted;">
-         <font style="font-family: monospace;">
-         {{ replace .Inner "<p>" "<p style='display:inline;'>" | markdownify }}
-         </font>
-       </td>
-    </tr>
-  </tbody>
+<tbody>
+{{ with .Get 0 }}
+<tr>
+<td width="16" valign="top"></td>
+<td>
+{{ . | markdownify }}
+</td>
+</tr>
+{{ end }}
+<tr>
+<td width="16" valign="top">ƒ</td>
+<td bgcolor="#FFD8C0" style="border: 1px dotted;">
+<font style="font-family: monospace;">
+{{ .Inner | markdownify }}
+</font>
+</td>
+</tr>
+</tbody>
 </table>

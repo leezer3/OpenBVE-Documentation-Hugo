@@ -1,16 +1,16 @@
 <table style="border: none;">
-  <tbody>
-    <tr>
-       <td bgcolor="#D4D8FF" style="border: 1px dashed;">
-         <font style="font-family: monospace">
-         {{ replace .Inner "<p>" "<p style='display:inline;'>" | markdownify }}
-         </font>
-       </td>
-     {{ with .Get 0 }}
-       <td>
-       {{ . | markdownify }}
-       </td>
-     {{ end }}
-    </tr>
-  </tbody>
+<tbody>
+<tr>
+<td bgcolor="#D4D8FF" style="border: 1px dashed;">
+<font style="font-family: monospace">
+{{ .Inner | markdownify }}
+</font>
+</td>
+{{ with .Get 0 }}
+<td>
+{{ . | markdownify }}
+</td>
+{{ end }}
+</tr>
+</tbody>
 </table>

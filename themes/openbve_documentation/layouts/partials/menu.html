@@ -7,23 +7,23 @@
     </li>-->
     {{ $currentPage := . }}
     {{ range .Site.Sections }}
-    {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.URL}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
+    {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.RelPermalink}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
       {{ if .Sections }}
       <ul class="second">
         {{ range .Sections }}
-        {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.URL}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
+        {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.RelPermalink}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
           {{ if .Sections }}
           <ul class="third">
             {{ range .Sections }}
-            {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.URL}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
+            {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.RelPermalink}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
               {{ if .Sections }}
               <ul class="fourth">
                 {{ range .Sections }}
-                {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.URL}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
+                {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.RelPermalink}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
                   {{ if .Sections }}
                   <ul class="fifth">
                     {{ range .Sections }}
-                    {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.URL}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
+                    {{ if ne .Params.hidden true }}<li>{{ if ne (len .Content) 0 }}<a href="{{.RelPermalink}}">{{ .LinkTitle | markdownify }}</a>{{ else }}{{ .LinkTitle | markdownify }}{{ end }}{{ end }}
                     </li>
                     {{ end }}
                   </ul>

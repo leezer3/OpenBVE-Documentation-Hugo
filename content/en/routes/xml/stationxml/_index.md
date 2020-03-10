@@ -179,13 +179,13 @@ The following basic attributes are supported for this section:
 Alternatively, if you require a specific message when the player is early/ late, the following sub-attributes are supported:
 
 {{% command %}}  
-<font color="royalblue">**\<Early>** *Message* **\</Early>**</font>  
+**<font color="royalblue">\<Early></font>** *<font color="royalblue">Message</font>* **<font color="royalblue">\</Early></font>**  
 {{% /command %}}  
 {{% command %}}  
-<font color="royalblue">**\<OnTime>** *Message* **\</OnTime>**</font>  
+**<font color="royalblue">\<OnTime></font>** *<font color="royalblue">Message</font>* **<font color="royalblue">\</OnTime></font>**  
 {{% /command %}}  
 {{% command %}}  
-<font color="royalblue">**\<Late>** *Message* **\</Late>**</font>  
+**<font color="royalblue">\<Late></font>** *<font color="royalblue">Message</font>* **<font color="royalblue">\</Late></font>**  
 {{% /command %}}
 
 ------
@@ -199,13 +199,13 @@ Alternatively, if you require a specific message when the player is early/ late,
 Alternatively, if you require a specific probability when the player is early/ late, the following sub-attributes are supported:
 
 {{% command %}}  
-<font color="royalblue">**\<Early>** *Value* **\</Early>**</font>  
+**<font color="royalblue">\<Early></font>** *<font color="royalblue">Value</font>* **<font color="royalblue">\</Early></font>**  
 {{% /command %}}  
 {{% command %}}  
-<font color="royalblue">**\<OnTime>** *Value* **\</OnTime>**</font>  
+**<font color="royalblue">\<OnTime></font>** *<font color="royalblue">Value</font>* **<font color="royalblue">\</OnTime></font>**  
 {{% /command %}}  
 {{% command %}}  
-<font color="royalblue">**\<Late>** *Value* **\</Late>**</font>  
+**<font color="royalblue">\<Late></font>** *<font color="royalblue">Value</font>* **<font color="royalblue">\</Late></font>**  
 {{% /command %}}
 
 *Note:* If only one or two of the specific probabilities above are set, the others are assumed to have a zero-probability and thus will not trigger.
