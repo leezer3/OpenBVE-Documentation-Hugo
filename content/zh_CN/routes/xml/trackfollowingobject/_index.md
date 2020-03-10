@@ -141,7 +141,7 @@ weight: 5
 **\<Directory>** *路径* **\</Directory>**
 {{% /command %}}
 
-**Path** 设置包含对象的train.dat，sound.cfg和extensions.cfg的目录的相对路径。
+**Path** 设置包含物件列车的train.dat，sound.cfg和extensions.cfg的目录的相对路径。
 
 *注意：*如果列车文件夹仅供AI使用，则** train.dat **文件可以重命名为** train.ai **。
 
