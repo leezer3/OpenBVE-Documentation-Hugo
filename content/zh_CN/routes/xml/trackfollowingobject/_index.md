@@ -145,7 +145,9 @@ weight: 5
 
 *注意：* 如果列车文件夹仅供AI使用，则** train.dat **文件可以被命名为 **train.ai**。
 
-{{% command %}}**\<Reversed>** *正确* **\</Reversed>** {{% /command %}}
+{{% command %}}  
+**\<Reversed>** *true* **\</Reversed>**  
+{{% /command %}}
 
 如果将此属性设置为** true **，那么列车的组成将被反转。
 
