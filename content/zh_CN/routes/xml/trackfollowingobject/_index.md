@@ -151,7 +151,7 @@ weight: 5
 
 如果将此属性设置为** true **，那么列车的编组将被反转。
 
-## ■停止语法
+## ■ Stop (停站) 属性
 
 {{% command %}}** \ <Decelerate> ** *值* ** \ </Decelerate> **{{% /command %}}
 
