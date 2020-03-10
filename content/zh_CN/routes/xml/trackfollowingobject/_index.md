@@ -169,7 +169,9 @@ weight: 5
 
 ------
 
-{{% command %}}** \ <Doors> ** *值* ** \ </Doors> **{{% /command %}}
+{{% command %}}
+**\<Doors>** *开门方向* **\</Doors>**
+{{% /command %}}
 
 **值**设置对象的开门。 有效值为：
 
