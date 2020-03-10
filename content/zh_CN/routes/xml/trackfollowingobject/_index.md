@@ -121,7 +121,7 @@ weight: 5
 
 {{% command %}}** \ <AppearanceEndPosition> ** *位置* ** \ </AppearanceEndPosition> **{{% /command %}}
 
-**位置** 设置对象出现区域的终点的游戏内距离。当玩家的摄像机位置超过该点时，该对象将被隐藏。它也必须大于被 **\<AppearanceStartPosition>** 指定的值。单位是 **米** 。
+**位置** 设置物件出现区域的终点的游戏内距离。当玩家的摄像机位置超过该点时，该对象将被隐藏。它也必须大于被 **\<AppearanceStartPosition>** 指定的值。单位是 **米** 。
 
 *注意：*如果省略此参数，则该对象将从游戏开始时出现。
 
