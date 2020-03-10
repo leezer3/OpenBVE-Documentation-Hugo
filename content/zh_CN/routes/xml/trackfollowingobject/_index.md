@@ -190,7 +190,9 @@ weight: 5
 
 ------
 
-{{% command %}}** \ <Accelerate> ** *值* ** \ </Accelerate> **{{% /command %}}
+{{% command %}}
+**\<Accelerate>** *加速度* **\</Accelerate>**
+{{% /command %}}
 
 **值**设置对象的加速度。 单位是** km / h / s **。
 
