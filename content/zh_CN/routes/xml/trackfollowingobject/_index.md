@@ -161,7 +161,9 @@ weight: 5
 
 ------
 
-{{% command %}}** \ <StopPosition> ** *位置* ** \ </StopPosition> **{{% /command %}}
+{{% command %}}
+**\<StopPosition>** *位置* **\</StopPosition>**
+{{% /command %}}
 
 **位置**设置物体停止的游戏距离。单位是**米**。
 
