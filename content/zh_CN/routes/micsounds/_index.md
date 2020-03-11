@@ -1,26 +1,26 @@
 ---
-title: "Playing Sounds from a Microphone Input"
-linktitle: "Playing Sounds from a Microphone Input"
+title: "播放麦克风声音"
+linktitle: "播放麦克风声音"
 weight: 2
 ---
 
-openBVE 1.5.4.0 introduces the ability to play sounds from the microphone or line-in input to a specified position within the game world. 
+openBVE 1.5.4.0 添加了将从麦克风或声卡线路输入录制的声音在游戏世界中特定位置播放的特性。可以用来进行广播等。
 
 ---
 
 {{% command %}}  
-**Track.MicSound** *X* ; *Y* ; *ForwardsTolerance* ; *BackwardsTolerance*  
+**Track.MicSound** *X* ; *Y* ; *后方容差* ; *前方容差*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***X***: The X position of the sound.  
-***Y***: The Y position of the sound.  
-***ForwardsTolerance***: The distance in meters at which the sound becomes audible as the train approaches it's position.  
-***BackwardsTolerance***: The distance in meters at which the sound is inaudible after the train passes it's position.  
+***X***: 声音的水平位置。  
+***Y***: 声音的垂直位置。  
+***后方容差***: 当列车接近到这一距离时，声音就可听到。  
+***前方容差***: 当列车远离到这一距离时，声音就不再可听到。  
 {{% /command-arguments %}}
 
-__**Implementation Notes**__:
+__**程序实现备注**__:
 
-* Microphone input must be activated using the **PLAY_MIC_SOUNDS** key, which is assigned to **W** by default.
-* The microphone input will be routed to all **Track.MicSound** sound sources within the camera range.
-* Only the first available openAL microphone input is supported at present. 
+* 按下 **PLAY_MIC_SOUNDS** 按键才会打开麦克风的录音功能。这一按键默认是 **W** 。
+* 麦克风的录音将被转发到摄像机渲染距离中所有的 **Track.MicSound** 声源。
+* 现在只支持第一个 OpenAL 麦克风输入。
