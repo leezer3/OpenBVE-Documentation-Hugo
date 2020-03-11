@@ -1,25 +1,27 @@
 ---
-title: "Tutorial: Using ATC in a CSV route file"
-linktitle: "Tutorial: Using ATC"
+title: "教程：在CSV路线文件中使用ATC"
+linktitle: "ATC使用教程"
 weight: 5
 ---
 
-This tutorial is intended to guide you on how to properly set up the built-in Japanese safety system ATC in the case you want to make your route ready to use it. This page assumes that you are familiar with what ATC is. If not, please take a look at the following page first:
+本教程将带您正确地在您的路线上设置好游戏内置的日式ATC信号系统。您在阅读前应该先了解ATC究竟为何。如果您还不了解，请您先看此页：
 
-➟ [How to drive - A quick overview on controls, ATS/ATC, signals and signs](https://openbve-project.net/play-japanese/)
+➟ [信号、标牌、ATS与ATC速览](https://openbve-project.net/play-japanese/)
 
-## ■ Setting up a route for ATC
-First of all, ATC needs to be enabled on a per-station basis. For every station for which ATC is enabled, the track from the beginning of that station until the end of the next station is ATC-equipped. The end of the ATC-enabled track is known in advance by the system, and then train will thus be braked down in time to prevent over-travel.
+## ■ 在路线上安装ATC
+首先，ATC是按照车站为单位启用的。对于每一个被设置为启用ATC的车站，从该车站起始到下一站的末端的轨道都被视为安装了ATC。游戏系统会余弦知道ATC安装的轨道区域末端，并会自动在此之前刹停列车，以防止冲灯。
 
+这样启用一站到下一站的ATC：  
 {{% code "*In order to enable ATC:*" %}}  
 Track.Sta STATION; ; ; ; ; ; 1  
 {{% /code %}}
 
+这样停用一站到下一站的ATC：   
 {{% code "*In order to disable ATC:*" %}}  
 Track.Sta STATION; ; ; ; ; ; 0  
 {{% /code %}}
 
-In the following example, the track from station B until station C is ATC-equipped:
+在以下示例中，B站与C站之间的轨道是安装了ATC的：
 
 {{% code %}}  
 With Track  
@@ -35,23 +37,23 @@ With Track
 2520, .Stop  
 {{% /code %}}
 
-## ■ Signalling and ATC
+## ■ ATC与信号
 
-Technically, users may ignore any signals as long as the train operates in ATC. Of course you can demand otherwise on your route. In openBVE, instead of using signals, ATC receives the distance to the next train in blocks of 200m. Depending on the deceleration characteristics of the train, ATC then dictates a particular speed limit, which may be released at any time depending on the change of location of the preceding train. These 200m blocks are placed at track positions 0, 200, 400, 600, and so on.
+从技术层面上来说，只要列车运行在ATC系统下，就可以忽略任何的信号机显示。你当然也可以在你的线路中让玩家遵守信号。在openBVE中，ATC以200米长的闭塞区间来获取与前车之间的距离，而不通过信号机。ATC随后根据列车的制动特性确定一个限速，该限速也会根据前车位置的改变而解除。这些200米长的闭塞区间被放在主轨道位置0, 200, 400, 600上，以此类推。
 
-## ■ Speed limits and ATC
+## ■ ATC与限速
 
-When using the **Track.Limit** command, ATC knows the location of the immediately upcoming one in advance and automatically brakes the train before reaching that position. For example:
+当您使用 **Track.Limit** 指令设置了路线限速后，ATC就会自动了解前方的第一个限速，并在到达这一位置前提前减速。例如：
 
 {{% code %}}  
 100, .Limit 100  
-800, .Limit 40 ,; is known in advance from track position 100  
+800, .Limit 40 ,; 在列车运行到位置100时ATC就会考虑这一限速  
 {{% /code %}}
 
-There is a way, however, to prevent this behavior. As ATC only knows the immediately upcoming speed limit in advance, repeating the old speed limit in close proximity to the new speed limit makes ATC only brake as soon as the repeating speed limit is reached. For example:
+也有方法让ATC不提前减速。因为ATC只会考虑下一个限速，因此在接近新限速的位置重复一遍旧限速，就能让ATC在那个重复的位置才开始减速了。例如：
 
 {{% code %}}  
 100, .Limit 100  
 799, .Limit 100  
-800, .Limit 40 ,; is known in advance only from track position 799  
+800, .Limit 40 ,; ATC会在799才考虑这一限速  
 {{% /code %}}
