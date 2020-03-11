@@ -4,7 +4,7 @@ linktitle: "CSV 线路格式"
 weight: 1
 ---
 
-➟ [快速查阅...]({{< ref "/routes/csv_quick/_index.md" >}}) 
+➟ [速查目录...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
 ## ■ 内容目录
 
