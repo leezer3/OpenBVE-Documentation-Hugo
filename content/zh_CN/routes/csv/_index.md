@@ -10,16 +10,16 @@ weight: 1
 
 {{% contents %}}
 
-- [[1. 综述](#overview)  ](#overview)
-- [[2. 语法](#syntax)  ](#syntax)
-- [[3. 预处理](#preprocessing)  ](#preprocessing)
-- [[4. Options (配置) 命名空间](#options)  ](#options)
-- [[5. Route (路线) 命名空间](#route)  ](#route)
-- [[6. Train (列车) 命名空间](#train)  ](#train)
-- [[7. Structure (结构) 命名空间](#structure)  ](#structure)
-- [[8. Texture (材质) 命名空间](#texture)  ](#texture)
-- [[9. Cycle (循环) 命名空间](#cycle)  ](#cycle)
-- [[10. Signal (信号) 命名空间](#signal)  ](#signal)
+- [1. 综述](#overview)
+- [2. 语法](#syntax)
+- [3. 预处理](#preprocessing)
+- [4. Options (配置) 命名空间](#options)
+- [5. Route (路线) 命名空间](#route)
+- [6. Train (列车) 命名空间](#train)
+- [7. Structure (结构) 命名空间](#structure)
+- [8. Texture (材质) 命名空间](#texture)  ](#texture)
+- [9. Cycle (循环) 命名空间](#cycle)  ](#cycle)
+- [10. Signal (信号) 命名空间](#signal)
 - [11. Track (轨道) 命名空间](#track)
   - [11.1. 轨道](#track_rails)
   - [11.2. 几何变换](#track_geometry)
@@ -35,11 +35,11 @@ weight: 1
 
 CSV格式线路是以纯文本形式编辑的线路。
 
-线路文件是纯文本，且可以使用任意[字符编码]({{< ref "/information/encodings/_index.md" >}})，但是，我们推荐线路作者们使用UTF8-BOM编码格式。游戏在解析数字数据时，使用的[解析方法]({{< ref "/information/numberformats/_index.md" >}})是**宽松**的(特别指出处除外)，但是，我们推荐线路作者们*严格规范*地编写线路文件。 这个文件一般来说可以被放在*Train*或*Railway*文件夹下的任何地方。文件名可以随意，但扩展名必须是**.csv**。线路文件被从头到尾逐行解析，每行被分割并被从左到右解析。
+线路文件是纯文本，且可以使用任意[字符编码]({{< ref "/information/encodings/_index.md" >}})，但是，我们推荐线路作者们使用UTF8-BOM编码格式。游戏在解析数字数据时，使用的[解析方法]({{< ref "/information/numberformats/_index.md" >}})是**宽松**的(特别指出处除外)，但是，我们推荐线路作者们*严格规范*地编写线路文件。 这个文件一般来说可以被放在*Train*或*Railway*文件夹下的任何地方。文件名可以随意，但扩展名必须是 **.csv** 。线路文件被从头到尾逐行解析，每行被分割并被从左到右解析。
 
-线路文件包括一系列指令，用来导入线路中用到的模型（Structure（结构）命名空间*)，线路的属性信息（说明线路使用的默认列车和背景等信息），文件的其余部分是Track（轨道）命名空间* 在这一部分中，主轨道位置（一般以米为单位）被用来描述轨道在哪里转弯，车站的位置在哪里，墙壁应当在哪里开始、哪里结束，以此类推。说得明白一点儿，Track（轨道）命名空间的指令是要放在最后的。
+线路文件包括一系列指令，用来导入线路中用到的模型（Structure（结构）命名空间），线路的属性信息（说明线路使用的默认列车和背景等信息），文件的其余部分是Track（轨道）命名空间。在这一部分中，主轨道位置（一般以米为单位）被用来描述轨道在哪里转弯，车站的位置在哪里，墙壁应当在哪里开始、哪里结束，以此类推。说得明白一点儿，Track（轨道）命名空间的指令是要放在最后的。
 
-The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}).
+这个格式预设了一条游戏默认的主轨道（0号轨道），不可以指定它开始的位置，也不能结束它。和游戏中其他轨道不同的是，它从线路的开始一直延续到线路的终点，代表着玩家驾驶的列车行驶的轨道。除此之外，游戏中定义的其他轨道都是只供装饰，不能行驶的。不过可以使用 [轨道循迹物件]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}) 来让AI列车在其它轨道上行驶。
 
 可以几何意义上地弯曲和抬升默认的主轨道，而其他轨道都是相对于主轨道定义的，并随主轨道弯曲起伏。除非特别修改定义，线路中每25米划分为一个区间块，特定的命令只有在区间块的边界位置（整25米位置）才能发挥作用。物体的放置（尤其是在弯道上）总是基于一个坐标系，它的轴并不随轨道弯曲，而是直直地指向邻近的下一个区间块。  
 
@@ -704,7 +704,7 @@ Route.RunInterval和Train.Interval作用相同。
 
 {{% note %}}
 
-*注意：*如果开始时间没有用这一指令特意设定或设定的值不正确，游戏将自动采用第一站的到达时间。 
+如果开始时间没有用这一指令特意设定或设定的值不正确，游戏将自动采用第一站的到达时间。 
 
 {{% /note %}}
 
@@ -953,7 +953,7 @@ Train.Gauge和Route.Gauge作用相同。
 这个命名空间中的指令基本上都是以下这个结构：
 
 {{% command %}}  
-**Structure.Command**(_StructureIndex_)<font color="gray">.Load</font> *FileName*  
+**Structure.类型** (_结构编号_)<font color="gray">.Load</font> *文件名*  
 {{% /command %}}
 
 *结构编号*是一个非负整数。*文件名*是一个相对于**Object**文件夹的路径，指向要加载的模型文件。*类型*是以下几种之一：
@@ -990,7 +990,7 @@ Train.Gauge和Route.Gauge作用相同。
 还有一个特殊的Structure.Pole指令，用法稍有不同：
 
 {{% command %}}  
-**Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
+**Structure.Pole**( _额外轨道跨度值_ ; _架线柱模型编号_ )<font color="gray">.Load</font> *文件名*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1022,7 +1022,7 @@ Train.Gauge和Route.Gauge作用相同。
 ---
 
 {{% command %}}  
-**Texture.Background**(_BackgroundTextureIndex_)<font color="gray">.Load</font> *FileName*  
+**Texture.Background**( _背景材质编号_ )<font color="gray">.Load</font> *文件名*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1033,14 +1033,14 @@ Train.Gauge和Route.Gauge作用相同。
 
 {{% note %}}
 
-**注意：**如果要使用动态或基于模型的背景，请把它指向需要的XML配置文件。
+如果要使用动态或基于模型的背景，请把它指向需要的XML配置文件。
 
 {{% /note%}}
 
 ---
 
 {{% command %}}  
-**Texture.Background**(_BackgroundTextureIndex_)**.X** *RepetitionCount*  
+**Texture.Background**( _背景材质编号_ )**.X** *重复次数*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1056,7 +1056,7 @@ Train.Gauge和Route.Gauge作用相同。
 ---
 
 {{% command %}}  
-**Texture.Background**(_BackgroundTextureIndex_)**.Aspect** *Mode*  
+**Texture.Background**( _背景材质编号_ )**.Aspect** *模式*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1194,7 +1194,7 @@ _基座模型文件_**<font color="red">n</font>.bmp**
 
 #### 使用主轨道位置
 
-Track命名空间内的所有指令都需要和一个主轨道位置联系起来，这表示该指令执行的位置。一旦出现一个主轨道位置表达式，它后面的Track指令都会在这个位置执行，直到一个新的主轨道位置表达式指定一个新的位置。在主轨道位置表达式出现前写出的Track指令默认会在0位置执行。由于指令会被自动地排序和执行，所以并不一定需要把主轨道位置按照固定顺序写（虽然按照顺序写可以使结构更加清晰）。虽然主轨道位置可以是任意非负浮点数，有一些指令是**只可以在区间块开始位置（默认为25m的整倍数位置）**被使用的。默认情况下这意味着它们必须被放在0、25、50、75、100、125、以此类推的位置上。下面有这个特别限制的指令都会被标注出来。
+Track命名空间内的所有指令都需要和一个主轨道位置联系起来，这表示该指令执行的位置。一旦出现一个主轨道位置表达式，它后面的Track指令都会在这个位置执行，直到一个新的主轨道位置表达式指定一个新的位置。在主轨道位置表达式出现前写出的Track指令默认会在0位置执行。由于指令会被自动地排序和执行，所以并不一定需要把主轨道位置按照固定顺序写（虽然按照顺序写可以使结构更加清晰）。虽然主轨道位置可以是任意非负浮点数，有一些指令是 **只可以在区间块开始位置（默认为25m的整倍数位置）** 被使用的。默认情况下这意味着它们必须被放在0、25、50、75、100、125、以此类推的位置上。下面有这个特别限制的指令都会被标注出来。
 
 {{% /notice %}}
 
@@ -1682,10 +1682,10 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 ▸ *开门方向*的可选项：
 
 {{% command-arguments %}}  
-**L**或**-1**：开左侧门。  
-**N**或**0**：不开门。即列车只需要临时停车。  
-**R**或**1**：开右侧门。  
-**B**：开两侧门。  
+**L** 或 **-1** ：开左侧门。  
+**N** 或 **0** ：不开门。即列车只需要临时停车。  
+**R** 或 **1** ：开右侧门。  
+**B** ：开两侧门。  
 {{% /command-arguments %}}
 
 ▸ *强制红灯*的可选项：
@@ -1858,9 +1858,9 @@ With Track
 {{% /command %}} 
 
 {{% command-arguments %}} 
-**<font color="blue">*限速*</font>**：一个正浮点数，代表速度。** 默认的**单位是**km/h**。0代表解除限速。默认值是0。   
-***标牌位置***：放置一个默认日式限速标牌的位置。默认值是0。   
-***方向***：在道岔限速情况下，标识限速起效的方向。  
+**<font color="blue">*限速*</font>**：一个正浮点数，代表速度。 **默认的** 单位是 **km/h** 。0代表解除限速。默认值是0。   
+***标牌位置*** ：放置一个默认日式限速标牌的位置。默认值是0。   
+***方向*** ：在道岔限速情况下，标识限速起效的方向。  
 {{% /command-arguments %}}
 
 ![_限速示意图](/images/illustration_limit.png)
