@@ -117,7 +117,8 @@ CSV格式线路是以纯文本形式编辑的线路。
 With *命名空间前缀*    
 {{% /command %}}
 
-All subsequent commands that start with a period (U+002E) are prepended by *Prefix*. For example:
+不严谨地来说，在CSV路线中，“命名空间”的意思和“章节”、“部分”差不多。  
+其后所有直接以点号 (U+002E，英文半角) 开头的指令都被自动加上 *命名空间前缀* 。 例如：
 
 {{% code %}}    
 With Route    
