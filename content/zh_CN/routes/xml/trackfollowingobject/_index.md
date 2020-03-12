@@ -137,7 +137,7 @@ weight: 5
 
 *注意：* 如果省略此参数，则该物件将保持可见状态，直到游戏结束或被 **\<AppearanceEndPosition>** 隐藏为止
 
-## ■列车属性
+## ■ 列车属性
 
 {{% command %}}
 **\<Directory>** *路径* **\</Directory>**
