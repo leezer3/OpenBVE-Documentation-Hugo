@@ -152,7 +152,7 @@ $Include(*文件<sub>1</sub>*; *权值<sub>1</sub>*; *文件<sub>2</sub>*; *权�
 {{% /command %}}
 
 {{% command-arguments %}}    
-***文件<sub>i</sub>***: 要被导入本线路的另一个文件。   
+***文件<sub>i</sub>***: 要被导入本线路的另一个同格式线路文件 (CSV/RW)。   
 ***权值<sub>i</sub>***: 一个正浮点数，表示对应的这个文件被使用的可能性大小。数越大，这个文件就越可能被随机选中。    
 {{% /command-arguments %}}
 
