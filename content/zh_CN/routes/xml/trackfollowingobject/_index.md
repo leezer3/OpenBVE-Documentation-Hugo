@@ -97,7 +97,7 @@ weight: 5
 
 如您所见，该文件由一个 **\<Definition>** 部分，一个 **\<Car>** 部分和一个 **\<Stops>** 部分组成。  **\<Stops>** 部分由两个或多个 **\<Stop>** 部分组成。
 
-## ■定义属性
+## ■ 定义属性
 
 {{% command %}}
  **\<AppearanceTime>** *时间* **\</AppearanceTime>**
