@@ -69,7 +69,7 @@ CSV格式线路是以纯文本形式编辑的线路。
 {{% command %}}    
 *部分<sub>1</sub>*:*部分<sub>2</sub>*:...:*部分<sub>n</sub>*    
 {{% /command %}}      
-这是一个配合Options.UnitOfLength的更加复杂的距离指定格式，可用于非公制计量单位。每一个 *部分<sub>i</sub>* 都是 [严格格式]({{< ref "/information/numberformats/_index.md" >}}) 的浮点数。 *部分<sub>1</sub>* 会被乘上 *系数<sub>1</sub>*, *部分<sub>2</sub>* 乘上 *系数<sub>2</sub>*，以此类推，以此类推，真正的主轨道位置是所有积的和。这个结果必须是非负的。各部分被冒号(U+003A，英文半角的那个)分隔。如果想了解如何设定系数，请参见Options.UnitOfLength一节。
+这是一个配合Options.UnitOfLength的更加复杂的距离指定格式，可用于非公制计量单位。每一个 *部分<sub>i</sub>* 都是 [严格格式]({{< ref "/information/numberformats/_index.md" >}}) 的浮点数。 *部分<sub>1</sub>* 会被乘上 *系数<sub>1</sub>*, *部分<sub>2</sub>* 乘上 *系数<sub>2</sub>*，以此类推，真正的主轨道位置是所有积的和。这个结果必须是非负的。各部分被冒号(U+003A，英文半角)分隔。如果想了解如何设定系数，请参见Options.UnitOfLength一节。
 
 在任何参数中使用距离的命令中，这个冒号表示法就可以被使用，到时我们会用<font color="green">绿色</font>标出这种情况。
 
