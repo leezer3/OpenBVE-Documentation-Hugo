@@ -469,6 +469,10 @@ ol li {
     #language-menu {
         position: fixed;
         right: 10px;
+        left: 0;
+        top: 10px;
+        bottom: 10px;
+        overflow-y: scroll;
         display: block;
         float: right;
         text-align: right;
