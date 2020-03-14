@@ -481,14 +481,6 @@ ol li {
         float: right;
         text-align: right;
     }
-    .responsive-menu-fullscreen {
-        position: fixed;
-        right: 10px;
-        left: 0;
-        top: 10px;
-        bottom: 10px;
-        overflow-y: scroll;
-    }
     #container {
         margin-left: 0;
         padding-top: 3em;
