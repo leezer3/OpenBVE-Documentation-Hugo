@@ -469,13 +469,17 @@ ol li {
     #language-menu {
         position: fixed;
         right: 10px;
+        display: block;
+        float: right;
+        text-align: right;
+    }
+    .responsive-menu-fullscreen {
+        position: fixed;
+        right: 10px;
         left: 0;
         top: 10px;
         bottom: 10px;
         overflow-y: scroll;
-        display: block;
-        float: right;
-        text-align: right;
     }
     #container {
         margin-left: 0;
