@@ -1,54 +1,9 @@
 <div id="language-menu">
 <div class="menu-trigger responsive-show">
-    <script>
-        //Junk Code By zbx1425. https://zbx1425.tk
-        HTMLElement.prototype.toggleClass = function(toggle){
-            if (this.className.indexOf(toggle) !== -1){
-                var newClassName = "";
-                var classes = this.className.split(" ");
-                for(var i = 0; i < classes.length; i++)
-                    if(classes[i] !== toggle) newClassName += classes[i] + " ";
-                this.className = newClassName.trim();
-            } else {
-                this.className += " " + toggle;
-            }
-        }
-        function toggleMenu() {
-            var menus = document.getElementsByClassName("responsive-menu");
-            for (var i=0; i<menus.length; i++) menus[i].toggleClass("responsive-hidden");
-        }
-        function toggleLanguageMenu() {
-            document.getElementById("sidebar-language-menu").toggleClass("responsive-hidden");
-            document.getElementById("dropdown-menu").toggleClass("responsive-hidden");
-        }
-    </script>
     <button class="button" aria-haspopup="true" onclick="javascript:toggleMenu()">
       <span class="icon">
         <i class="fas fa-bars" aria-hidden="true"></i>
       </span>
     </button>
-</div>
-<div class="dropdown is-hoverable responsive-hidden">
-  <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" onclick="javascript:toggleLanguageMenu()">
-      <span>Language</span>
-      <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu responsive-hidden" id="dropdown-menu" role="menu">
-    <div class="dropdown-content">
-      <a href="{{ .RelPermalink }}" class="dropdown-item">
-        {{ .Language.LanguageName }}
-      </a>
-      {{ range .Translations }}
-      <hr class="dropdown-divider">
-      <a href="{{ .RelPermalink }}" class="dropdown-item">
-        {{ .Language.LanguageName }}
-      </a>
-      {{ end }}
-    </div>
-  </div>
 </div>
 </div>

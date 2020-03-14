@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/bulma.custom.css">
     <link rel="icon" href="{{ .Site.BaseURL }}/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    <meta name="langmeta-current" content="{{ .Lang }}" />
+    {{ range .Translations }}
+    <meta name="langmeta-translation" content="{{ .Lang }}" />{{ end }}
+    <script src="{{ .Site.BaseURL }}/script/script.js"></script>
     <script defer src="https://cdn.staticfile.org/font-awesome/5.3.1/js/all.js"></script>
     {{ hugo.Generator }}
 
@@ -20,13 +24,14 @@
           <img alt="Site logo" src="{{ .Site.BaseURL }}{{ .Site.Params.logoimage }}">
       </div>
       {{ end }}
-      <div class="menu-entries responsive-show sidebar-language-list">
+      <div class="menu-entries sidebar-language-list">
         <ul class="first" style="padding-bottom:10px">
-        <li style="color:black" onclick="javascript:toggleLanguageMenu()"><span class="icon">
+        <li style="color:black; cursor:pointer" onclick="javascript:toggleLanguageMenu()"><span class="icon">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
           </span>Language</li>
-        <ul class="third responsive-hidden" style="padding-top:0" id="sidebar-language-menu">
+        <ul class="third hidden" style="padding-top:0" id="sidebar-language-menu">
           <li><a href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
+          <hr style="margin:0.2em 0" />
           {{ range .Translations }}
           <li><a href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
           {{ end }}

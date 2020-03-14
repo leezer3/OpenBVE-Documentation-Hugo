@@ -74,14 +74,20 @@ a:visited {
   color: #004488;
 }
 
+a:hover,
+a.selected {
+  color: #4488cc;
+}
+
+
 #container a:link,
 #container a:active,
 #container a:visited {
   color: #0080FF;
 }
 
-a:hover,
-a.selected {
+#container a:hover,
+#container a.selected {
   color: #BBBBBB;
 }
 
@@ -168,7 +174,7 @@ hr {
   width: 240px;
   bottom: 0;
   left: 0;
-  overflow:scroll;
+  overflow-y:scroll;
 }
 
 #sidebar img {
@@ -449,13 +455,13 @@ ol li {
   margin-bottom: 0.5em;
 }
 
-.responsive-show {
+.responsive-show, .hidden {
     display: none;
 }
 
 .sidebar-language-list {
     width: 100%;
-    background-color: #cccccc;
+    background-color: #ffcccc;
     margin-top:1em;
 }
 
