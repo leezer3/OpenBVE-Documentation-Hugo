@@ -1,5 +1,5 @@
 <div id="language-menu">
-<div class="menu-trigger">
+<div class="menu-trigger responsive-show">
     <script>
         //Junk Code By zbx1425. https://zbx1425.tk
         HTMLElement.prototype.toggleClass = function(toggle){
@@ -8,18 +8,18 @@
                 var classes = this.className.split(" ");
                 for(var i = 0; i < classes.length; i++)
                     if(classes[i] !== toggle) newClassName += classes[i] + " ";
-                this.className = newClassName;
+                this.className = newClassName.trim();
             } else {
-                this.className += " "+toggle;
+                this.className += " " + toggle;
             }
         }
         function toggleMenu() {
             var menus = document.getElementsByClassName("responsive-menu");
-            for (var i=0; i<menus.length; i++) menus[i].toggleClass("responsive-menu-hidden");
+            for (var i=0; i<menus.length; i++) menus[i].toggleClass("responsive-hidden");
         }
         function toggleLanguageMenu() {
-            document.getElementById("language-menu").toggleClass("responsive-menu-fullscreen");
-            document.getElementById("dropdown-menu").toggleClass("responsive-menu-hidden");
+            document.getElementById("sidebar-language-menu").toggleClass("responsive-hidden");
+            document.getElementById("dropdown-menu").toggleClass("responsive-hidden");
         }
     </script>
     <button class="button" aria-haspopup="true" onclick="javascript:toggleMenu()">
@@ -28,7 +28,7 @@
       </span>
     </button>
 </div>
-<div class="dropdown is-hoverable responsive-menu responsive-menu-hidden">
+<div class="dropdown is-hoverable responsive-hidden">
   <div class="dropdown-trigger">
     <button class="button" aria-haspopup="true" onclick="javascript:toggleLanguageMenu()">
       <span>Language</span>
@@ -37,7 +37,7 @@
       </span>
     </button>
   </div>
-  <div class="dropdown-menu responsive-menu-hidden" id="dropdown-menu" role="menu">
+  <div class="dropdown-menu responsive-hidden" id="dropdown-menu" role="menu">
     <div class="dropdown-content">
       <a href="{{ .RelPermalink }}" class="dropdown-item">
         {{ .Language.LanguageName }}

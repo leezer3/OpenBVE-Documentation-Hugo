@@ -449,18 +449,26 @@ ol li {
   margin-bottom: 0.5em;
 }
 
-.menu-trigger {
+.responsive-show {
     display: none;
 }
 
+.sidebar-language-list {
+    width: 100%;
+    background-color: #cccccc;
+    margin-top:1em;
+}
+
 .menu-trigger button {
-    border-color: #747474 !important;
     width: 1.5em;
 }
 
 @media screen and (max-width: 800px){
-    .responsive-menu-hidden {
+    .responsive-hidden {
         display: none !important;
+    }
+    .responsive-show {
+        display: block;
     }
     .menu-trigger {
         display: block;
