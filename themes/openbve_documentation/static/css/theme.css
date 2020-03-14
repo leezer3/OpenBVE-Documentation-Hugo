@@ -71,6 +71,12 @@ a {
 a:link,
 a:active,
 a:visited {
+  color: #004488;
+}
+
+#container a:link,
+#container a:active,
+#container a:visited {
   color: #0080FF;
 }
 
@@ -284,6 +290,28 @@ div #warning p {
   background: #FF9999;
 }
 
+div #warning-nontitle span{
+  padding: 5px 10px;
+  display: table-cell;
+  font-size: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  background: #FF3333;
+  color: #222222;
+  font-weight: bold;
+}
+
+div #warning-nontitle p {
+  padding: 0;
+  padding-left: 1em;
+  display: table-cell;
+  width: 100%;
+  font-size: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  background: #FF9999;
+}
+
 div #note h4,
 div #note span {
   padding: 5px 10px;
@@ -419,4 +447,34 @@ ul.contents li:before {
 ol li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
+
+.menu-trigger {
+    display: none;
+}
+
+.menu-trigger button {
+    border-color: #747474 !important;
+    width: 1.5em;
+}
+
+@media screen and (max-width: 800px){
+    .responsive-menu-hidden {
+        display: none !important;
+    }
+    .menu-trigger {
+        display: block;
+        margin-bottom: 1em;
+    }
+    #language-menu {
+        position: fixed;
+        right: 10px;
+        display: block;
+        float: right;
+        text-align: right;
+    }
+    #container {
+        margin-left: 0;
+        padding-top: 3em;
+    }
 }

@@ -193,8 +193,8 @@
     text-align: left; }
   #language-menu .button {
     background-color: white;
-    border-color: #dbdbdb;
-    border-width: 1px;
+    border-color: #ff0000;
+    border-width: 2px;
     color: #363636;
     cursor: pointer;
     justify-content: center;
@@ -927,7 +927,7 @@
       top: auto; }
   #language-menu .dropdown-menu {
     display: none;
-    left: 0;
+    right: 0;
     min-width: 12rem;
     padding-top: 4px;
     position: absolute;
@@ -948,10 +948,9 @@
     position: relative; }
   #language-menu a.dropdown-item,
   #language-menu button.dropdown-item {
-    padding-right: 3rem;
+    padding-right: 0;
     text-align: left;
-    white-space: nowrap;
-    width: 100%; }
+    white-space: nowrap; }
     #language-menu a.dropdown-item:hover,
     #language-menu button.dropdown-item:hover {
       background-color: whitesmoke;
