@@ -57,7 +57,7 @@ function adaptClientLanguage() {
                 chosenLanguage = that;
             }
         }
-        location.href = location.href.replace(currentLanguage, chosenLanguage);
+        if (chosenLanguage != "") location.href = location.href.replace(currentLanguage, chosenLanguage);
     }
 }
 
