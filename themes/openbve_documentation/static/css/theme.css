@@ -437,7 +437,6 @@ ul li:before {
 
 ul li {
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
 }
 
 ul.contents {
@@ -455,40 +454,54 @@ ol li {
   margin-bottom: 0.5em;
 }
 
-.responsive-show, .hidden {
+
+
+.overflow-container {
+    overflow-x: auto;
+}
+
+.floating-action-button{
+    position:fixed;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    bottom:30px;
+    right:30px;
+    background-color:#ffa000;
+    color:#FFF;
+    border-radius:25px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+.hidden, .responsive-show {
     display: none;
 }
 
 .sidebar-language-list {
     width: 100%;
-    background-color: #ffcccc;
+    background-color: #ffd149;
     margin-top:1em;
 }
 
-.menu-trigger button {
-    width: 1.5em;
-}
-
-@media screen and (max-width: 800px){
-    .responsive-hidden {
+@media screen and (max-width: 1000px){
+    body {
+        margin: 0;
+        overflow-x: hidden;
+    }
+    .responsive-hide {
         display: none !important;
     }
     .responsive-show {
         display: block;
     }
-    .menu-trigger {
-        display: block;
-        margin-bottom: 1em;
+    #sidebar {
+        box-shadow: 4px 0px 3px #666;
     }
-    #language-menu {
-        position: fixed;
-        right: 10px;
-        display: block;
-        float: right;
-        text-align: right;
+    #site-logo {
+        width: 40%;
     }
     #container {
         margin-left: 0;
-        padding-top: 3em;
     }
 }

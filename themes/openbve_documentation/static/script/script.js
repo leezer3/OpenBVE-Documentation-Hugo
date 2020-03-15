@@ -1,15 +1,7 @@
 //Junk Code By zbx1425. https://zbx1425.tk
 
 HTMLElement.prototype.toggleClass = function(toggle){
-    if (this.className.indexOf(toggle) !== -1){
-        var newClassName = "";
-        var classes = this.className.split(" ");
-        for(var i = 0; i < classes.length; i++)
-            if(classes[i] !== toggle) newClassName += classes[i] + " ";
-        this.className = newClassName.trim();
-    } else {
-        this.className += " " + toggle;
-    }
+    
 }
 
 String.prototype.trimSlash = function(){
@@ -24,12 +16,26 @@ String.prototype.normalizeURL = function(){
 }
 
 function toggleMenu() {
-    var menus = document.getElementsByClassName("responsive-menu");
-    for (var i=0; i<menus.length; i++) menus[i].toggleClass("responsive-hidden");
+    var toggle = "responsive-hide";
+    var sideBar = document.getElementById("sidebar");
+    if (sideBar.className.indexOf(toggle) !== -1){
+        var newClassName = "";
+        var classes = sideBar.className.split(" ");
+        for(var i = 0; i < classes.length; i++)
+            if(classes[i] !== toggle) newClassName += classes[i] + " ";
+        $("#sidebar").width("0px");
+        sideBar.className = newClassName.trim();
+        $("#sidebar").animate({width:"240px"}, "fast");
+    } else {
+        $("#sidebar").animate({width:"0px"}, "fast", function() {
+            sideBar.className += " " + toggle;
+            $("#sidebar").width("240px");
+        });
+    }
 }
 
 function toggleLanguageMenu() {
-    document.getElementById("sidebar-language-menu").toggleClass("hidden");
+    $("#sidebar-language-menu").animate({height:"toggle"});
 }
 
 function adaptClientLanguage() {
