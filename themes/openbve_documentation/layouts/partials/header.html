@@ -29,7 +29,7 @@
         <li style="color:black; cursor:pointer" onclick="javascript:toggleLanguageMenu()"><span class="icon">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
           </span>Language</li>
-        <ul class="third hidden" style="padding-top:0" id="sidebar-language-menu">
+        <ul class="third" style="padding-top:0" id="sidebar-language-menu">
           <li><a href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
           <hr style="margin:0.2em 0" />
           {{ range .Translations }}

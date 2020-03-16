@@ -308,8 +308,7 @@ div #warning-nontitle span{
 }
 
 div #warning-nontitle p {
-  padding: 0;
-  padding-left: 1em;
+  padding: 0.3em 0.6em 0.3em 0.8em;
   display: table-cell;
   width: 100%;
   font-size: 1rem;
@@ -484,9 +483,8 @@ ol li {
     .overflow-container {
         overflow-x: auto;
     }
-    .overflow-container td{
-        /* white-space: nowrap; */
-        /* It does make things look good, but also make it difficult to read... */
+    .overflow-container code, .overflow-container font{
+        white-space: nowrap;
     }
     .responsive-table-2col td, .responsive-table-2col th {
         white-space: normal;

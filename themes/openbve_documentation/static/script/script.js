@@ -1,9 +1,5 @@
 //Junk Code By zbx1425. https://zbx1425.tk
 
-HTMLElement.prototype.toggleClass = function(toggle){
-    
-}
-
 String.prototype.trimSlash = function(){
     if (this.charAt(this.length-1)=='/'||this.charAt(this.length-1)=='\\')
         return this.substr(0, this.length-1);
@@ -68,3 +64,9 @@ function adaptClientLanguage() {
 }
 
 adaptClientLanguage();
+
+//In case jQuery failed to load, the language menu will be shown by default.
+//Which makes the site even compatible with Netscape Navigator 9.
+$(function(){
+    $("#sidebar-language-menu").hide();
+});
