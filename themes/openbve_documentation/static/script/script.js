@@ -59,7 +59,11 @@ function adaptClientLanguage() {
                 chosenLanguage = that;
             }
         }
-        if (chosenLanguage != "") location.href = location.href.replace(currentLanguage, chosenLanguage);
+        if (chosenLanguage != ""){
+            location.href = baseURL + 
+                location.href.replace(baseURL, "")
+                .replace(currentLanguage, chosenLanguage);
+        }
     }
 }
 
