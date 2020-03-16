@@ -38,7 +38,8 @@ function adaptClientLanguage() {
     var language = (navigator.languages ? navigator.languages[0]
         : (navigator.language || navigator.userLanguage)).replace("-","_").toLowerCase();
     var currentLanguage = document.getElementsByName("langmeta-current")[0].content.toLowerCase();
-    var baseURL = location.href.substr(0, location.href.indexOf(currentLanguage)).normalizeURL();
+    var baseURL = $('link[rel=icon]')[0].href;
+    baseURL = baseURL.substring(0, Math.max(baseURL.lastIndexOf("/"), baseURL.lastIndexOf("\\"))).normalizeURL();
     var referrer = document.referrer.normalizeURL();
     if (!referrer) {
         try {
@@ -59,7 +60,11 @@ function adaptClientLanguage() {
                 chosenLanguage = that;
             }
         }
-        if (chosenLanguage != "") location.href = location.href.replace(currentLanguage, chosenLanguage);
+        if (chosenLanguage != ""){
+            location.href = baseURL + 
+                location.href.replace(baseURL, "")
+                .replace(currentLanguage, chosenLanguage);
+        }
     }
 }
 
