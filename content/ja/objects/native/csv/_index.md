@@ -1,16 +1,16 @@
 ---
-title: "The **.csv** object format"
-linktitle: "The CSV object"
+title: "**。Csv **オブジェクト形式"
+linktitle: "CSVオブジェクト"
 weight: 2
 ---
 
-## ■ Contents
+## ■目次
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Available commands](#commands)
+- [1.概要](#overview)
+- [2.構文](#syntax)
+- [3.利用可能なコマンド](#commands)
   - [CreateMeshBuilder](#createmeshbuilder)
   - [AddVertex](#addvertex)
   - [AddFace](#addface)

@@ -340,7 +340,7 @@ All comparisons return 1 for true and 0 for false.
 | `a <= b` | `LessEqual[a,b]`    | True (1) if *a* is less than or equal to *b*    |
 | `a >= b` | `GreaterEqual[a,b]` | True (1) if *a* is greater than or equal to *b* |
 
-{{% table %}}
+{{% /table %}}
 
 ##### ● Logical operations
 
@@ -391,18 +391,18 @@ Please also note that some combinations of prefix and infix operators are not re
 
 ##### ● Basic arithmetics
 
-{{% table %}}
+{{% table-2col %}}
 
 | Function         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `Reciprocal[x]`  | Returns the reciprocal, equal to 1/*x*                       |
 | `Power[a,b,...]` | Returns *a* raised to the *b*<sup>th</sup> power. *b* must be a non-negative number. For consistency, Power[0,*b*] always returns 1, even in the degenerate case Power[0,0], and *a* being negative always returns 0. Adding more arguments will create a chain. Power[a,b,c] will return *a*<sup>*b*<sup>*c*</sup></sup>. |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 #####  ● Numeric functions
 
-{{% table %}}
+{{% table-2col %}}
 
 | Function                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
@@ -418,11 +418,11 @@ Please also note that some combinations of prefix and infix operators are not re
 | `random[Minimum, Maximum]`    | Returns a new random floating-point number between *Minimum* and *Maximum*. |
 | `randomInt[Minimum, Maximum]` | Returns a new random integer between *Minimum* and *Maximum*. |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 ##### ● Elementary functions
 
-{{% table %}}
+{{% table-2col %}}
 
 | Function    | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
@@ -434,23 +434,23 @@ Please also note that some combinations of prefix and infix operators are not re
 | `Tan[x]`    | The tangent (input in radians).                              |
 | `ArcTan[x]` | The inverse tangent (output in radians).                     |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 ##### ● Conditionals
 
-{{% table %}}
+{{% table-2col %}}
 
 | Function                        | Description                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
 | `If[cond,truevalue,falsevalue]` | If *cond* is != 0, returns *truevalue*, otherwise *falsevalue* |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 ## <a name="variables"></a>■ 5. List of variables
 
 ##### ● Primitives
 
-{{% table %}}
+{{% table-2col %}}
 
 | Variable       | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
@@ -458,11 +458,11 @@ Please also note that some combinations of prefix and infix operators are not re
 | `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
 | `currentState` | Returns the current numerical state of the object.           |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 ##### ● Time and camera
 
-{{% table %}}
+{{% table-2col %}}
 
 | Variable         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
@@ -470,7 +470,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
 | `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 ##### ● Trains
 
@@ -480,7 +480,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 ##### ● Trains (general)
 
-{{% table %}}
+{{% table-2col %}}
 
 | Variable                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
@@ -505,11 +505,11 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `nextStation`                 | The index of the next station. |
 | `nextStationStop`             | The index of the next station where the train must stop. |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 ##### ● Trains (brake)
 
-{{% table %}}
+{{% table-2col %}}
 
 | Variable                       | Description                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
@@ -524,11 +524,11 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `straightAirPipe`              | The current pressure in the straight air pipe in this car, measured in Pa. |
 | `straightAirPipe[carIndex]`    | The current pressure in the straight air pipe in car *carIndex*, measured in Pa. |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 ##### ● Trains (doors)
 
-{{% table %}}
+{{% table-2col %}}
 
 | Variable                     | Description                                                  |
 | ---------------------------- | ------------------------------------------------------------ |
@@ -546,11 +546,11 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `rightDoorsButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
 | `pilotLamp`                  | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 ##### ● Trains (miscellaneous)
 
-{{% table %}}
+{{% table-2col %}}
 
 | Variable                         | Description                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
@@ -584,7 +584,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `passAlarm`                      | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 | `stationAdjustAlarm`             | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the following mappings for *i* apply:
 
@@ -615,13 +615,13 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 The section context is defined when the object is placed using Track.SigF.
 
-{{% table %}}
+{{% table-2col %}}
 
 | Variable  | Description                                                  |
 | --------- | ------------------------------------------------------------ |
 | `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 
-{{% /table %}}
+{{% /table-2col %}}
 
 ## <a name="performance"></a>■ 6. Performance
 
