@@ -1,0 +1,6 @@
+<div class="overflow-container">
+{{ $x := .Inner | markdownify }}
+{{ $y := replace $x "<table>" "<table class='type0 responsive-table-2col'>" }}
+{{ $z := replace $y "<td></td>" "<td bgcolor='#D0D0D0'></td>" }}
+{{ $z | safeHTML }}
+</div>

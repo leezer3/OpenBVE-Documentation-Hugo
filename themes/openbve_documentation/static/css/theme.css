@@ -454,11 +454,7 @@ ol li {
   margin-bottom: 0.5em;
 }
 
-
-
-.overflow-container {
-    overflow-x: auto;
-}
+/* Responsive interface part by zbx1425. https://zbx1425.tk */
 
 .floating-action-button{
     position:fixed;
@@ -485,6 +481,24 @@ ol li {
 }
 
 @media screen and (max-width: 1000px){
+    .overflow-container {
+        overflow-x: auto;
+    }
+    .overflow-container td{
+        /* white-space: nowrap; */
+        /* It does make things look good, but also make it difficult to read... */
+    }
+    .responsive-table-2col td, .responsive-table-2col th {
+        white-space: normal;
+        display: block;
+        border: 0;
+    }
+    .responsive-table-2col tr {
+        border: 1px solid;
+    }
+    .responsive-table-2col td:nth-child(1) {
+        background: #D0D0D0;
+    }
     body {
         margin: 0;
         overflow-x: hidden;
