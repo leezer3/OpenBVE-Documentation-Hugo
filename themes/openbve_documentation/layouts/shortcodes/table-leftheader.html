@@ -1,3 +1,5 @@
+<div class="overflow-container">
 {{ $x := .Inner | markdownify }}
 {{ $y := replace $x "<table>" "<table class='type2'>" }}
 {{ $y | safeHTML }}
+</div>

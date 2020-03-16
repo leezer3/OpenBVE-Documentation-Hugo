@@ -4,27 +4,47 @@
     <meta charset="utf-8"/>
     <title>{{ .Site.Title | markdownify | plainify }}</title>
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/theme.css">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/bulma.custom.css">
     <link rel="icon" href="{{ .Site.BaseURL }}/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <meta name="langmeta-current" content="{{ .Lang }}" />
+    {{ range .Translations }}
+    <meta name="langmeta-translation" content="{{ .Lang }}" />{{ end }}
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ .Site.BaseURL }}/script/script.js"></script>
+    <script defer src="https://cdn.staticfile.org/font-awesome/5.3.1/js/all.js"></script>
     {{ hugo.Generator }}
 
   </head>
   <body>
 
-    <div id="sidebar">
+    <div id="sidebar" class="responsive-menu responsive-hide">
 
       {{ if isset .Site.Params "logoimage" }}
       <div id="site-logo">
           <img alt="Site logo" src="{{ .Site.BaseURL }}{{ .Site.Params.logoimage }}">
       </div>
       {{ end }}
+      <div class="menu-entries sidebar-language-list">
+        <ul class="first" style="padding-bottom:10px">
+        <li style="color:black; cursor:pointer" onclick="javascript:toggleLanguageMenu()"><span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>Language</li>
+        <ul class="third" style="padding-top:0" id="sidebar-language-menu">
+          <li><a href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
+          <hr style="margin:0.2em 0" />
+          {{ range .Translations }}
+          <li><a href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
+          {{ end }}
+        </ul>
+        </ul>
+      </div>
 
       {{ partial "menu.html" . }}
     </div>
 
-    {{ partial "language.html" . }}
+    <div class="floating-action-button responsive-show" role="button" onclick="javascript:toggleMenu()">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </div>
 
     <div id="container">
 

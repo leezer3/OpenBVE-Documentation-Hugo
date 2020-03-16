@@ -71,11 +71,23 @@ a {
 a:link,
 a:active,
 a:visited {
-  color: #0080FF;
+  color: #004488;
 }
 
 a:hover,
 a.selected {
+  color: #4488cc;
+}
+
+
+#container a:link,
+#container a:active,
+#container a:visited {
+  color: #0080FF;
+}
+
+#container a:hover,
+#container a.selected {
   color: #BBBBBB;
 }
 
@@ -162,7 +174,7 @@ hr {
   width: 240px;
   bottom: 0;
   left: 0;
-  overflow:scroll;
+  overflow-y:scroll;
 }
 
 #sidebar img {
@@ -278,6 +290,27 @@ div #warning h4:before {
 div #warning p {
   padding: 15px;
   display: block;
+  font-size: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  background: #FF9999;
+}
+
+div #warning-nontitle span{
+  padding: 5px 10px;
+  display: table-cell;
+  font-size: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  background: #FF3333;
+  color: #222222;
+  font-weight: bold;
+}
+
+div #warning-nontitle p {
+  padding: 0.3em 0.6em 0.3em 0.8em;
+  display: table-cell;
+  width: 100%;
   font-size: 1rem;
   margin-top: 0rem;
   margin-bottom: 0rem;
@@ -403,7 +436,6 @@ ul li:before {
 
 ul li {
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
 }
 
 ul.contents {
@@ -419,4 +451,69 @@ ul.contents li:before {
 ol li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
+
+/* Responsive interface part by zbx1425. https://zbx1425.tk */
+
+.floating-action-button{
+    position:fixed;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    bottom:30px;
+    right:30px;
+    background-color:#ffa000;
+    color:#FFF;
+    border-radius:25px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+.hidden, .responsive-show {
+    display: none;
+}
+
+.sidebar-language-list {
+    width: 100%;
+    background-color: #ffd149;
+    margin-top:1em;
+}
+
+@media screen and (max-width: 1000px){
+    .overflow-container {
+        overflow-x: auto;
+    }
+    .overflow-container code, .overflow-container font{
+        white-space: nowrap;
+    }
+    .responsive-table-2col td, .responsive-table-2col th {
+        white-space: normal;
+        display: block;
+        border: 0;
+    }
+    .responsive-table-2col tr {
+        border: 1px solid;
+    }
+    .responsive-table-2col td:nth-child(1) {
+        background: #D0D0D0;
+    }
+    body {
+        margin: 0;
+        overflow-x: hidden;
+    }
+    .responsive-hide {
+        display: none !important;
+    }
+    .responsive-show {
+        display: block;
+    }
+    #sidebar {
+        box-shadow: 4px 0px 3px #666;
+    }
+    #site-logo {
+        width: 40%;
+    }
+    #container {
+        margin-left: 0;
+    }
 }
