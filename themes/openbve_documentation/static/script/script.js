@@ -61,7 +61,6 @@ function adaptClientLanguage() {
             }
         }
         if (chosenLanguage != ""){
-            console.log(location.href.replace(baseURL, ""));
             location.href = baseURL + 
                 location.href.replace(baseURL, "")
                 .replace(currentLanguage, chosenLanguage);

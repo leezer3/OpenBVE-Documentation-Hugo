@@ -25,9 +25,9 @@ Train plugins allow to change the runtime behavior of trains to some degree. Thi
 
 All .NET assembly plugins are intended to run on all platforms without recompilation. In order to achieve this goal, you as the programmer have to follow a certain set of rules which will be explained right here from the start.
 
-##### ● Plugins should target the .NET Framework 2.0
+##### ● Plugins should target the .NET Framework 4.6.1
 
-A whole variety of new .NET Framework versions comes out every so often. In order for plugins to not have stricter requirements on external dependencies than openBVE itself, plugins should target the .NET Framework 2.0, not any later version. This means that users do not have to upgrade their .NET Framework just in order to run your plugin. It also helps ensuring that all plugins run both on Microsoft .NET as well as on Mono, which is used on Linux and Mac OS X primarily.
+A whole variety of new .NET Framework versions comes out every so often. In order for plugins to not have stricter requirements on external dependencies than openBVE itself, plugins should target the .NET Framework 4.6.1, not any later version. This means that users do not have to upgrade their .NET Framework just in order to run your plugin. It also helps ensuring that all plugins run both on Microsoft .NET as well as on Mono, which is used on Linux and Mac OS X primarily.
 
 This also means that you must not use CLI-specific features such as Mono.Simd, among other things.
 

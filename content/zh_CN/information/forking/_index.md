@@ -1,5 +1,5 @@
 ---
-title: "分叉准则"
+title: "复刻 (Fork) 准则"
 weight: 8
 ---
 1{{% information %}}

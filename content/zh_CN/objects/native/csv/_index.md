@@ -1,16 +1,16 @@
 ---
-title: "The **.csv** object format"
-linktitle: "The CSV object"
+title: "**。csv **对象格式"
+linktitle: "CSV对象物件"
 weight: 2
 ---
 
-## ■ Contents
+## ■ 内容目录
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Available commands](#commands)
+- [1.概述](#overview)
+- [2.语法](#syntax)
+- [3.预处理指令](#commands)
   - [CreateMeshBuilder](#createmeshbuilder)
   - [AddVertex](#addvertex)
   - [AddFace](#addface)
@@ -18,22 +18,22 @@ weight: 2
   - [Cube](#cube)
   - [Cylinder](#cylinder)
   - [Translate, TranslateAll](#translate)
-  - [Scale, ScaleAll](#scale)
-  - [Rotate, RotateAll](#rotate)
+  - [缩放，缩放全部](#scale)
+  - [旋转，旋转全部](#rotate)
   - [Shear, ShearAll](#shear)
-  - [Mirror, MirrorAll](#mirror)
-  - [SetColor](#setcolor)
-  - [SetEmissiveColor](#setemissivecolor)
-  - [SetBlendMode](#setblendmode)
-  - [LoadTexture](#loadtexture)
-  - [SetDecalTransparentColor](#setdecaltransparentcolor)
-  - [SetCoordinates](#settexturecoordinates)
+  - [镜面反转，镜面反转全部](#mirror)
+  - [设定颜色](#setcolor)
+  - [设置自发光颜色](#setemissivecolor)
+  - [设置混合模式](#setblendmode)
+  - [设置材质文件](#loadtexture)
+  - [设置透明色](#setdecaltransparentcolor)
+  - [设置材质坐标](#settexturecoordinates)
 
 {{% /contents %}}
 
 ## <a name="overview"></a>■ 1. Overview
 
-A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
+一个CSV对象允许使用文本指令创建单个对象。这个物体可以用在路线上，也可以用在列车中。文件描述的对象可以包含任意数量的单个多边形。文件格式允许在CreateMeshBuilder包含的部分中对多个多边形进行分组，其中颜色或纹理信息等属性被指定给在每个区域中创建的所有多边形。这允许在同一个CreateMeshBuilder区域中创建许多共享公共属性的多边形。在此文件格式中，多边形称为面。
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom.
 
