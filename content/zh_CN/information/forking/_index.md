@@ -4,9 +4,9 @@ weight: 8
 ---
 1{{% information %}}
 
-#### Q: What is a fork?
+#### 问：什么是复刻？
 
-**A:** If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program.
+** A：**如果您获取源代码并仅进行重新编译或对可移植性进行了其他操作，则可以对原始程序进行修改。 如果您从那里开始进行独立开发，那么您的项目将被称为原始程序的分支。
 
 {{% /information %}}
 
@@ -14,31 +14,31 @@ weight: 8
 
 {{% information %}}
 
-#### Q: When to make a fork?
+#### 问：何时制作复刻？
 
-**A:** If you are not satisfied with openBVE and cannot identify with the goals set forth for future versions of it, there might be no other way as to implement your desired features yourself.
+** A：**如果您对openBVE不满意，并且无法确定其未来版本的目标，那么可能没有其他方法可以自己实现所需的功能。
 
 {{% /information %}}
 
 
-If you are planning on creating a fork of openBVE or one of its tools, these are a set of guidelines (not requirements) that you are encouraged to follow.
+如果您打算创建openBVE的分支或其工具之一，则建议您遵循以下准则（而非要求）。
 
-## ■ Rename the project
+## ■重命名项目
 
-You should give your project a distinct title and should generally also replace the logos. Just changing the version number does not constitute as giving your fork a distinct title. You should in fact rename it.
+您应该给项目一个独特的标题，并且通常还应该替换徽标。 仅更改版本号并不构成为您的fork赋予不同的标题。 实际上，您应该重命名它。
 
-Your fork should have a title distinct from **openBVE** and all possible spelling variations thereof. If you fail to give your fork a distinct name, users would be unable to distinguish between the fork and the original, leading to a lot of confusion.
+您的fork的标题应与** openBVE **及其所有可能的拼写形式不同。 如果您无法给分叉起一个独特的名称，则用户将无法区分分叉和原始名称，从而引起很多混乱。
 
-## ■ Remove references to the homepage
+## ■删除对主页的引用
 
-You should generally remove the references to the openBVE homepage and the version checking mechanism from the main menu.
+通常，您应该从主菜单中删除对openBVE主页的引用以及版本检查机制。
 
-This does not mean that you are discouraged to mention openBVE or its origin, but that you should make sure that users don't mistake this homepage as the origin of your fork.
+这并不意味着不建议您提及openBVE或其来源，而是应确保用户不要将此主页误认为是fork的来源。
 
-## ■ There is no official support for forks
+## ■没有官方的fork支持
 
-For any fork, regardless of how small the change, the openBVE forum is not the place to discuss it. While you can make a single announcement, you will have to find your own place if you want to further discuss your fork or want to offer support for it.
+对于任何分支，无论更改有多小，openBVE论坛都不是讨论它的地方。 尽管可以发布一个公告，但是如果您想进一步讨论分叉或提供支持，则必须找到自己的位置。
 
-## ■ The future of openBVE
+## ■openBVE的未来
 
-Eventually, there will be a successor to openBVE, and with it, an easier means to integrate new functionality in the form of plugins. You may want to wait until that time, or be prepared to later port your fork to become a regular add-on.
+最终，将成为openBVE的后继者，并且有了它，以插件的形式集成新功能的简便方法。 您可能要等到那个时候，或者准备以后移植您的fork成为常规的附件。
