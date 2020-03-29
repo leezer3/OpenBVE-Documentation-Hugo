@@ -483,6 +483,23 @@ A positive floating-point number measured in **kilopascal** (kPa) indicating the
 
 ------
 
+#### Default flow rates for other brake system components
+
+When using a **train.dat** file the following default flow rates appply between the other components of the brake system:
+{{% table %}}
+
+|                     | Main Compressor | Equalizing Reservoir | Auxiliary Reservoir | Brake Pipe | Straight Air Pipe |
+| --------------------| --------------- |----------------------|---------------------|------------|-------------------|
+| Charge rate         | 5kPa /s         | 20kPa /s             | 200kPa /s           | 1000kPa /s |                   |
+| Normal flow rate    |                 | 5kPa /s              |                     | 1500kPa /s | 3000kPa /s        |
+| Emergency flow rate |                 | 25kPa /s             |                     | 5000kPa /s | 4000kPa /s        |
+| Release rate        |                 |                      |                     |            | 2000kPa /s        |
+
+{{% /table %}}
+
+Further control over these may be obtained by using the **train.xml** format.
+
+
 {{% notice %}}
 
 #### Brake cylinder and main reservoir
