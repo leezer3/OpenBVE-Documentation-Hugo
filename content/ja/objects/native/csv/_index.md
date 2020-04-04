@@ -1,5 +1,5 @@
 ---
-title: "**。Csv **オブジェクト形式"
+title: "**.csv **オブジェクト形式"
 linktitle: "CSVオブジェクト"
 weight: 2
 ---

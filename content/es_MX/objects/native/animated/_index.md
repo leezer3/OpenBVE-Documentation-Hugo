@@ -287,6 +287,12 @@ This defines whether the sound effect defined above should be played when a the 
 
 This defines whether the sound effect defined above should be played when the relevant state is hidden.
 
+{{% note %}}
+
+**PlayOnShow** and **PlayOnHide** will be ignored when using multiple state sounds.
+
+{{% /note %}}
+
 ------
 
 {{% warning %}}

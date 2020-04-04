@@ -266,94 +266,100 @@ ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他
 
 这定义了在隐藏相关状态时是否应播放上面定义的声音效果。
 
+{{% note %}}
+
+**PlayOnShow** and **PlayOnHide** will be ignored when using multiple state sounds.
+
+{{% /note %}}
+
 ------
 
 {{% warning %}}
 
-#### openBVE 2 兼容性注意事项
+#### openBVE 2 compatibility note
 
-在openBVE(v0.9)和动画模型格式的开发进程中，设计了几个名字以 *RPN* 结尾的指令，例如 *TranslateXFunctionRPN* 。这些指令早已过时，在正式版本(v1.0)中已被弃用，不应在开发环境外使用。虽然openBVE仍然保留了对这些指令的运行支持，但到了将来的openBVE 2就会被彻底删除。如果你还在用这几个指令，趁早扔了吧！
+During the development of openBVE (v0.9) and during the development of the animated object format, there were certain commands in existance ending in *RPN*, such as *TranslateXFunctionRPN*. These commands never made it into any official release (v1.0) and were thus never meant to be used outside of development environments. While they are still available undocumentedly, they will be removed for openBVE 2. If you are using these commands, please get rid of them as soon as possible.
 
 {{% /warning %}}
 
 ------
 
-##### ●关于公式
+##### ● About the formulas
 
-首先，您在 *式子* 中输入的中缀表示法，是被转换为函数来处理的。 因此，对于每个中缀符号，都有相应的函数。 某些函数没有中缀运算符，因此只能以函数符号输入。 对于运算符而言，优先级起着重要作用。 您可以像使用任何通常的数学公式一样，使用括号来指定优先级顺序。 函数名称不区分大小写。
+First of all, infix notation, which is what you can enter for *Formula*, is converted into functional notation. Thus for every infix notation, there is a corresponding functional notation. Some functions do not have an infix operator and can thus only be entered in functional notation. For operators, precedence plays an important role. You can use parantheses to override the order of precedence just as in any usual mathematical formula. Names of functions are case-insensitive.
 
 {{% warning-nontitle %}}
 
-请注意，如果任何数学运算或函数的结果为无穷大，无法确定或非实数，则返回0。 程序不会处理数字溢出，因此您需要自己考虑这一点。
+Please note that if the result of any mathematical operation or function would be infinity, indeterminate or non-real, 0 is returned. Numeric overflow is not prevented, so you need to take that into account yourself.
 
 {{% /warning-nontitle %}}
 
-## <a name="operators"></a>■3.中缀表示法运算符列表
+## <a name="operators"></a>■ 3. List of infix notation operators
 
-##### ●基本算术
+##### ● Basic arithmetics
 
 {{% table %}}
 
-| 中缀   | 功能       | 描述               |
+| Infix   | Functional       | Description               |
 | :------ | :--------------- | :------------------------ |
-| `a + b` | `Plus[a,b, ...]` | 代表加法       |
-| `a - b` | `Subtract[a,b]`  | 代表减法    |
-| `-a`    | `Minus[a]`       | 取相反数        |
-| `a * b` | `Times[a,b,...]` | 代表乘法 |
-| `a / b` | `Divide[a,b]`    | 代表除法       |
+| `a + b` | `Plus[a,b, ...]` | Represents addition       |
+| `a - b` | `Subtract[a,b]`  | Represents subtraction    |
+| `-a`    | `Minus[a]`       | Negates the number        |
+| `a * b` | `Times[a,b,...]` | Represents multiplication |
+| `a / b` | `Divide[a,b]`    | Represents division       |
 
 {{% /table %}}
 
-##### ●比较运算符
+##### ● Comparisons
 
-所有比较均返回1（真, True）和0（假, False）。
+All comparisons return 1 for true and 0 for false.
 
 {{% table %}}
 
-| 中缀    | 功能          | 描述                                     |
+| Infix    | Functional          | Description                                     |
 | :------- | ------------------- | ----------------------------------------------- |
-| `a == b` | `Equal[a,b]`        | 如果 *a* 等于 *b* 则为真（1）                      |
-| `a != b` | `Unequal[a,b]`      | 如果 *a* 不等于 *b* 则为真（1）              |
-| `a < b`  | `Less[a,b]`         | 如果 *a* 小于 *b* 则为真（1）                |
-| `a > b`  | `Greater[a,b]`      | 如果 *a* 大于 *b* 则为真（1）             |
-| `a <= b` | `LessEqual[a,b]`    | 如果 *a* 小于或等于 *b* ，则为真（1）    |
-| `a >= b` | `GreaterEqual[a,b]` | 如果 *a* 大于或等于 *b* ，则为真（1） |
+| `a == b` | `Equal[a,b]`        | True (1) if *a* equals *b*                      |
+| `a != b` | `Unequal[a,b]`      | True (1) if *a* does not equal *b*              |
+| `a < b`  | `Less[a,b]`         | True (1) if *a* is less than *b*                |
+| `a > b`  | `Greater[a,b]`      | True (1) if *a* is greater than *b*             |
+| `a <= b` | `LessEqual[a,b]`    | True (1) if *a* is less than or equal to *b*    |
+| `a >= b` | `GreaterEqual[a,b]` | True (1) if *a* is greater than or equal to *b* |
 
 {{% /table %}}
 
-##### ●逻辑运算
+##### ● Logical operations
 
-所有操作将0视为false，并将其他任何值视为true，然后返回1表示true，0表示false。
+All operations treat 0 as false and any other value as true, and return 1 for true and 0 for false.
 
 {{% table %}}
 
-| 中缀          | 功能 | 描述                            |
+| Infix          | Functional | Description                            |
 | :------------- | ---------- | -------------------------------------- |
-| `!a`           | `Not[a]`   | 如果 *a* 为假，则为真（1）               |
-| `a & b`        | `And[a,b]` | 如果 *a* 和 *b* 均为真，则为真（1）  |
-| `a` &#124; `b` | `Or[a,b]`  | 如果 *a* 或 *b* 中的任何一个为真，则为真（1） |
-| `a ^ b`        | `Xor[a,b]` | 如果 *a* 或 *b* 其中之一为真，则为真（1）  |
+| `!a`           | `Not[a]`   | True (1) if *a* is false               |
+| `a & b`        | `And[a,b]` | True (1) if both *a* and *b* are true  |
+| `a` &#124; `b` | `Or[a,b]`  | True (1) if any of *a* or *b* are true |
+| `a ^ b`        | `Xor[a,b]` | True (1) if either *a* or *b* is true  |
 
 {{% /table %}}
 
-##### ●运算符优先级
+##### ● Operator precedence
 
-从最高优先级到最低优先级。 优先级相同的运算符从左到右或从右到左评估，具体取决于它们是否与另一个运算符共享优先级。
+From highest precedence to lowest. Operators of same precedence are evaluated either left to right or right to left, depending on if they share a precedence with another operator.
 
 {{% table %}}
 
-| 运算符                         | 关联性 | 无括号 | 等效形式      |
+| Operator                         | Associativity | Unparenthesized | Equivilant      |
 | -------------------------------- |---------------|-----------------|-----------------|
-| `a[...]`                         | 一元         | &nbsp;          | &nbsp;          |
-| `-`（减号）                      | 一元         | &nbsp;          | &nbsp;          |
-| `/`                              | 从右到左 | 1 / 2 / 3       | (1 / (2 / 3))   |
-| `*`                              | 从右到左 | 1 * 2 * 3       | (1 * (2 * 3))   |
-| `+`，`-`（减）              | 从左到右 | 1 + 2 + 3       | ((1 + 2) + 3)   |
-| `==`, `!=`, `<`, `>`, `<=`, `>=` | 从左到右 | 1 <= 2 <= 3     | ((1 <= 2) <= 3) |
-| `!`                              | 一元         | &nbsp;          | &nbsp;          |
-| `&`                              | 从右到左 | 1 & 2 & 3       | (1 & (2 & 3))   |
-| `^`                              | 从右到左 | 1 ^ 2 ^ 3       | (1 ^ (2 ^ 3))   |
-| &#124;                           | 从右到左 | 1 &#124; 2 &#124; 3       | (1 &#124; (2 &#124; 3))   |
+| `a[...]`                         | unary         | &nbsp;          | &nbsp;          |
+| `-` (Minus)                      | unary         | &nbsp;          | &nbsp;          |
+| `/`                              | right-to-left | 1 / 2 / 3       | (1 / (2 / 3))   |
+| `*`                              | right-to-left | 1 * 2 * 3       | (1 * (2 * 3))   |
+| `+`, `-` (Subtract)              | left-to-right | 1 + 2 + 3       | ((1 + 2) + 3)   |
+| `==`, `!=`, `<`, `>`, `<=`, `>=` | left-to-right | 1 <= 2 <= 3     | ((1 <= 2) <= 3) |
+| `!`                              | unary         | &nbsp;          | &nbsp;          |
+| `&`                              | right-to-left | 1 & 2 & 3       | (1 & (2 & 3))   |
+| `^`                              | right-to-left | 1 ^ 2 ^ 3       | (1 ^ (2 ^ 3))   |
+| &#124;                           | right-to-left | 1 &#124; 2 &#124; 3       | (1 &#124; (2 &#124; 3))   |
 
 {{% /table %}}
 
