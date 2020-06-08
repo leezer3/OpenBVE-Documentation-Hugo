@@ -1,54 +1,54 @@
 ---
-title: "Character encodings"
+title: "字符編碼"
 weight: 1
 ---
 
-<font color="Gray">This page describes what character encodings are and how they should be used.</font>
+<font color="Gray">呢個頁面為您講解字符編碼係咩，同埋應該點樣運用正確的編碼。</font>
 
-■ Overview
+■ 總概
 ------
 
-A character encoding is a way to translate characters into bytes that can be stored on the hard drive. In the beginnings, one byte (256 states) was used to encode one character. As different writing systems around the world have different requirements for characters to be encoded, there are a lot of different encodings in use throughout the world. Problematically, if the encoding of a text file is not known in advance, misinterpreting the encoding can result in mojibake (meaningless sequence of characters).
+字符編碼指嘅係將文字翻譯成存儲到磁槃上的二進制代碼的方式。 在電腦最早被發明的時候, 文本中每個字符被一個字節表示, 但一個字節的數據量只能表示256種字符。 因此, 隨著全世界的人們開始使用電腦, 為咗畀當地嘅文字都可以儲埋去電腦度, 啲人發明咗好多種完全不同的字符編碼方式。 問題就在於此, 如果一段文字數據的編碼方式未俾過出定, 誤解了編碼就會導致亂碼字符出現。
 
-Example of a Japanese text encoded in Shift_JIS (requires appropriate fonts available):
+係一段日文文字, 以 Shift_JIS 編碼 (如無法顯示請安裝合適嘅日文字體)
 
 {{% code %}}  
 ひらがなカタカナ漢字  
 {{% /code %}}
 
-The byte sequence generated from the previous example in Shift_JIS:
+呢個係佢畀 Shift_JIS 方式編碼後產生嘅字節數據:
 
 {{% code %}}  
 82 D0 82 E7 82 AA 82 C8 83 4A 83 5E 83 4A 83 69 8A BF 8E 9A  
 {{% /code %}}
 
-What happens if the byte sequence is misinterpreted as being ISO 8859-1 (Latin-1) instead of Shift_JIS: 
+假如某程序唔知佢係由 Shift_JIS 編碼, 而誤用左 ISO 8859-1 (Latin-1) 字符編碼來解析佢:
 
 {{% code %}}  
 ‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš  
 {{% /code %}}
 
-Usually, one particular encoding only allows to use the writing system for which it was designed for. Unicode, a standard which covers basically all characters as used in writing systems throughout the world, provides a solution here.
+一般來說, 一種字符編碼方式設計時只囊括了特定一種書寫系統的字符, 十分不便。 因此, 人們發明了 Unicode, 即萬國碼, 一種幾乎囊括了全球所有書寫系統中字符的編碼方式, 來解決呢個問題。
 
-While Unicode is wide-spread today, there are still some issues. First of all, Unicode is not directly a character encoding. Instead, so-called Unicode Transformation Formats (UTF) provide the means to encode particular characters. Transformation formats frequently used are UTF-8 and UTF-16.
+雖然 Unicode 時至今日已經被廣泛採用, 用起來還是會有些問題。 首先, Unicode 其實並不昰一種字符編碼, 而 Unicode 轉換格式 (UTF) 才是真正編碼文字的方式。 常用嘅轉換格式為 UTF-16 同 UTF-8。
 
-Route and train files are usually, for compatibility reasons, allowed to be encoded in any arbitrary encoding. As the encoding is not known in advance, the user will need to select the correct encoding for the route and the train in the settings tab in the main menu. Of course this is a nuisance and should be avoided somehow.
+路線同列車文件, 由于歷史兼容性原因, 可以以任何字符編碼存儲。 由於無法知曉定相應嘅編碼, 就需要玩家對此技術知識有所瞭解, 並在遊戲菜單中人工選擇正確的字符編碼。 好麻煩, 因此必須避免使用 Unicode 以外的字符編碼。
 
-## ■ The Byte Order Mark
+## ■ 字節順序記號
 
-UTF-16 descends from a character encoding (UTC-2) which always used two bytes to encode one character. As such, the order of those two bytes matters. In order to know in which order the bytes appear, a so-called byte order mark is frequently prepended to the text, usually automatically and transparently by the text editor. The byte order mark provides decoders a means of detecting in which byte order the file was saved in. Additionally, the byte order mark provides a fairly safe way of detecting that the text file is saved in Unicode in the first place.
+UTF-16 源於一個使用兩個字節嚟編碼一個字符的編碼方式 (UTC-2), 因此知道兩個字節儲埋嘅柯打就好重要。 為了便於判斷順序, 好多文本編輯器會默認自動喺文字前端添加字節順序記號。 記號可令解碼器收到文件以何種順序儲存, 仲可提供一個較為不易誤判嘅判定文字是否係以 Unicode 編碼的方式。 話人话就係雖然字節順序標記在 UTF-8 入面唔一定都唔畀 Unicode 官方建議, 但寫 OpenBVE 路線時係建議加上緊嘅, 係為咗便於檢測編碼。
 
-While not technically necessary, the byte order mark is also frequently used for UTF-8. As UTF-8 does not have a byte order issue, the sole purpose of using a byte order mark with UTF-8 is to provide a means to flagging the file as being encoded in UTF-8.
+雖然並不一定都不被官方推薦, UTF-8 都經常使用字節序。 因為 UTF-8 並不需要區分字節既order, 呢度字節順序標記嘅意義係明顯地說明該文件以 UTF-8 編碼存儲。
 
-As said, while Unicode allows to encode virtually all characters used in all writing systems around the world, it does not necessarily make working with text files easier if the encoding to be used was not agreed on.
+如前所述, 雖然 Unicode 允許對世上所有書寫系統中使用的幾乎所有字符進行編碼, 但如果真要使用的編碼沒有達成一致, 則不一定令處理文本文件變得更容易。
 
-Using a byte order mark provides openBVE the ability to automatically detect the encoding for each individual file. If you have a good text editor, you will not only be able to select the encoding manually, but also if you want to save with a byte order mark or not. Notepad (Windows) always saves with a byte order mark if UTF-8 is selected as the character encoding upon saving the file, to make an acceptable example.
+使用字節順序標記使 OpenBVE 能夠自動檢測每個單獨文檔的編碼。 如果你用咗個唔錯嘅文本編輯器, 你不僅可以手動選擇編碼, 仲可選擇是否添加字節順序標記。 記事簿 (Windows 中) 以緊 UTF-8 編碼保存文件時成日添加字節順序標記, 也是一個可接受嘅例子。
 
-Technically, the byte order mark is the first bytes of a particular text file. The byte order marks which can be automatically detected by openBVE are:
+下面就係技術內容了。 從技術層面來說, 字節順序標記係一個文件最前端的幾個字節。 openbve 能夠自動檢測字節既順序標記為:
 
 {{% table %}}
 
-| Encoding               | Hexadecimal representation |
+| 編碼               | 十六進制值 |
 | ---------------------- | -------------------------- |
 | UTF-8                  | EF BB BF                   |
 | UTF-16 (big endian)    | FE FF                      |
@@ -58,4 +58,4 @@ Technically, the byte order mark is the first bytes of a particular text file. T
 
 {{% /table %}}
 
-You are encouraged to always save text files in one of those encodings with a byte order mark in order for openBVE to automatically detect the encoding used.
+OpenBVE 鼓勵您總是以帶字節序嘅 Unicode 字符編碼保存文件, 以便自動識別。 譯者推薦您使用帶 BOM 的 UTF-8。
