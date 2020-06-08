@@ -1,5 +1,5 @@
 ---
-title: "更有深度嘅實例"
+title: "詳細示例"
 weight: 8
 layout: "hidden"
 ---
