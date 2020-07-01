@@ -1698,7 +1698,7 @@ Similarly, stations can be marked as a "jump point" in the departure time. At su
 
 {{% warning-nontitle %}}
 
-The "changing ends" feature is only available in the development release 1.2.11 and above.
+The first occuring station in a route may not be of the Terminal type.
 
 {{% /warning-nontitle %}}
 
@@ -1773,7 +1773,7 @@ Stations can be marked as "changing ends" in the departure time. At such station
 
 {{% warning-nontitle %}}
 
-The "changing ends" feature is only available in the development release 1.2.11 and above.
+The first occuring station in a route may not be of the Terminal type.
 
 {{% /warning-nontitle %}}
 

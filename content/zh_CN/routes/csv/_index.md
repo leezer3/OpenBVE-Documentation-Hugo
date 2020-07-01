@@ -1713,7 +1713,7 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 
 {{% warning-nontitle %}}
 
-只有1.2.11版以上支持换端车站。
+The first occuring station in a route may not be of the Terminal type.
 
 {{% /warning-nontitle %}}
 
@@ -1789,7 +1789,7 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 
 {{% warning-nontitle %}}
 
-只有1.2.11版以上支持换端车站。
+The first occuring station in a route may not be of the Terminal type.
 
 {{% /warning-nontitle %}}
 
