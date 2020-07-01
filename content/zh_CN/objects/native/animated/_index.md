@@ -268,7 +268,7 @@ ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他
 
 {{% note %}}
 
-**PlayOnShow** and **PlayOnHide** will be ignored when using multiple state sounds.
+当使用多种状态声音时，** PlayOnShow **和** PlayOnHide **将被忽略。
 
 {{% /note %}}
 
@@ -276,50 +276,50 @@ ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他
 
 {{% warning %}}
 
-#### openBVE 2 compatibility note
+#### openBVE 2兼容性说明
 
-During the development of openBVE (v0.9) and during the development of the animated object format, there were certain commands in existance ending in *RPN*, such as *TranslateXFunctionRPN*. These commands never made it into any official release (v1.0) and were thus never meant to be used outside of development environments. While they are still available undocumentedly, they will be removed for openBVE 2. If you are using these commands, please get rid of them as soon as possible.
+在openBVE（v0.9）的开发过程中以及动画对象格式的开发过程中，存在以* RPN *结尾的某些命令，例如* TranslateXFunctionRPN *。 这些命令从未将其放入任何正式版本（v1.0）中，因此决不打算在开发环境之外使用。 尽管它们仍然可以无证地使用，但是它们将被openBVE 2删除。如果您正在使用这些命令，请尽快将其删除。
 
 {{% /warning %}}
 
 ------
 
-##### ● About the formulas
+##### ●关于代码
 
-First of all, infix notation, which is what you can enter for *Formula*, is converted into functional notation. Thus for every infix notation, there is a corresponding functional notation. Some functions do not have an infix operator and can thus only be entered in functional notation. For operators, precedence plays an important role. You can use parantheses to override the order of precedence just as in any usual mathematical formula. Names of functions are case-insensitive.
+首先，您在 *式子* 中输入的中缀表示法，是被转换为函数来处理的。 因此，对于每个中缀符号，都有相应的函数。 某些函数没有中缀运算符，因此只能以函数符号输入。 对于运算符而言，优先级起着重要作用。 您可以像使用任何通常的数学公式一样，使用括号来指定优先级顺序。 函数名称不区分大小写。
 
 {{% warning-nontitle %}}
 
-Please note that if the result of any mathematical operation or function would be infinity, indeterminate or non-real, 0 is returned. Numeric overflow is not prevented, so you need to take that into account yourself.
+请注意，如果任何数学运算或函数的结果为无穷大，不确定或非实数，则返回0。 不会处理数字的溢出，因此您需要自己考虑这一点。
 
 {{% /warning-nontitle %}}
 
-## <a name="operators"></a>■ 3. List of infix notation operators
+## <a name="operators"></a>■3.中缀符号运算符列表
 
-##### ● Basic arithmetics
+##### ●基本算术
 
 {{% table %}}
 
-| Infix   | Functional       | Description               |
+| 中缀   | 功能       | 描述               |
 | :------ | :--------------- | :------------------------ |
-| `a + b` | `Plus[a,b, ...]` | Represents addition       |
-| `a - b` | `Subtract[a,b]`  | Represents subtraction    |
-| `-a`    | `Minus[a]`       | Negates the number        |
-| `a * b` | `Times[a,b,...]` | Represents multiplication |
-| `a / b` | `Divide[a,b]`    | Represents division       |
+| `a + b` | `Plus[a,b, ...]` | 代表加法       |
+| `a - b` | `Subtract[a,b]`  | 代表减法    |
+| `-a`    | `Minus[a]`       | 取相反数        |
+| `a * b` | `Times[a,b,...]` | 代表乘法 |
+| `a / b` | `Divide[a,b]`    | 代表除法       |
 
 {{% /table %}}
 
-##### ● Comparisons
+##### ●比较运算符
 
-All comparisons return 1 for true and 0 for false.
+所有比较均返回1（真, True）和0（假, False）。
 
 {{% table %}}
 
-| Infix    | Functional          | Description                                     |
+| 中缀    | 功能          | 描述                                     |
 | :------- | ------------------- | ----------------------------------------------- |
-| `a == b` | `Equal[a,b]`        | True (1) if *a* equals *b*                      |
-| `a != b` | `Unequal[a,b]`      | True (1) if *a* does not equal *b*              |
+| `a == b` | `Equal[a,b]`        | 如果 *a* 等于 *b* 则为真（1）                      |
+| `a != b` | `Unequal[a,b]`      | 如果 *a* 不等于 *b* 则为真（1）              |
 | `a < b`  | `Less[a,b]`         | True (1) if *a* is less than *b*                |
 | `a > b`  | `Greater[a,b]`      | True (1) if *a* is greater than *b*             |
 | `a <= b` | `LessEqual[a,b]`    | True (1) if *a* is less than or equal to *b*    |
@@ -489,6 +489,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `stopsStation[stationIndex]`  | Whether the train stops at the station with *stationIndex* |
 | `nextStation`                 | The index of the next station. |
 | `nextStationStop`             | The index of the next station where the train must stop. |
+| `terminalStation`             | The index of the terminal station for this train. |
 
 {{% /table-2col %}}
 

@@ -1,15 +1,16 @@
 ---
-title: "Tutorial: Using ATC in a CSV route file"
-linktitle: "Tutorial: Using ATC"
+title: "教學：喺CSV路線文件中使用ATC"
+linktitle: "教學：使用ATC"
 weight: 5
 ---
 
-This tutorial is intended to guide you on how to properly set up the built-in Japanese safety system ATC in the case you want to make your route ready to use it. This page assumes that you are familiar with what ATC is. If not, please take a look at the following page first:
+呢個教學將帶您正確咁喺您嘅路線上設置好遊戲內置嘅日式ATC信號系統。閱讀前應該先了解ATC係咩。否則的話，請您先看此頁：
 
-➟ [How to drive - A quick overview on controls, ATS/ATC, signals and signs](https://openbve-project.net/play-japanese/)
+➟ [信號、標牌、ATS與ATC速覽]
+(https://openbve-project.net/play-japanese/)
 
-## ■ Setting up a route for ATC
-First of all, ATC needs to be enabled on a per-station basis. For every station for which ATC is enabled, the track from the beginning of that station until the end of the next station is ATC-equipped. The end of the ATC-enabled track is known in advance by the system, and then train will thus be braked down in time to prevent over-travel.
+## ■ 喺路線上安裝ATC
+首先，ATC係按照車站為單位啟用的。對於每一個被設置為啟用ATC嘅車站，從果個車站起到下一站嘅末端的軌道都被視為安裝了ATC。遊戲會餘弦知道ATC安裝的軌道區域末端，並會自動在此之前剎停列車，以防止衝燈。
 
 {{% code "*In order to enable ATC:*" %}}  
 Track.Sta STATION; ; ; ; ; ; 1  

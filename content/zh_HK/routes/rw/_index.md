@@ -1,10 +1,10 @@
 ---
-title: "The **.rw** route format"
-linktitle: "The RW route"
+title: "**.rw** 路線格式"
+linktitle: "RW 路線"
 weight: 3
 ---
 
-The RW route format is functionally equivalent to the CSV route format, but differs in syntax, structure and choice of words. Given that the RW route format is not frequently used any longer, it is recommended to use the CSV route format instead.
+RW路線格式嘅功能同CSV差唔多, 但使用唔同嘅句法, 結構同指令名稱。因RW路線格式已經唔再常用, 建議使用CSV路線格式。
 
 There is no full documentation on RW routes, only the quick reference which illustrates the available commands and syntax:
 
@@ -14,7 +14,7 @@ Please refer to the documentation for CSV routes for the behavior of the various
 
 ------
 
-**Behavioral differences between CSV and RW**
+**RW同CSV唔同嘅特性**
 
 In RW, comments starting with a semicolon can only be used at the end of a line inside the [Railway] section. Outside of the [Railway] section, comments must appear on their own line.
 

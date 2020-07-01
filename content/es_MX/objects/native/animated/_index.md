@@ -510,6 +510,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `stopsStation[stationIndex]`  | Whether the train stops at the station with *stationIndex* |
 | `nextStation`                 | The index of the next station. |
 | `nextStationStop`             | The index of the next station where the train must stop. |
+| `terminalStation`             | The index of the terminal station for this train. |
 
 {{% /table-2col %}}
 

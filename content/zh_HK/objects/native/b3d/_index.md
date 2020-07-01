@@ -1,16 +1,16 @@
 ---
-title: "The **.b3d** object format"
-linktitle: "The B3D object"
+title: "**.b3d**物件格式"
+linktitle: "B3D 物件"
 weight: 1
 ---
 
-## ■ Contents
+## 目錄
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Available commands](#commands)
+- [1.總概](#overview)
+- [2. 句法](#syntax)
+- [3.可用命令](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
   - [Vertex](#addvertex)
   - [Face](#addface)
@@ -31,7 +31,7 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 總概
 
 A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
 
@@ -169,7 +169,7 @@ The Cylinder command is equivalent to a series of Vertex and Face commands, whic
 <font color=#555555>Texture</font>
 {{% /command %}}
 
-*<font color=#555555>This command is ignored by openBVE.</font>*
+*<font color=#555555>呢個命令係會比OpenBVE忽略</font>*
 
 ----------
 
@@ -358,7 +358,7 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 <a name="setdecaltransparentcolor"></a>
 
 {{% command %}}
-**Transparent** *Red*, *Green*, *Blue*
+**Transparent** *紅*, *綠*, *藍*
 {{% /command %}}
 
 {{% command-arguments %}}

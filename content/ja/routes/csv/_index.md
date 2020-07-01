@@ -39,7 +39,7 @@ CSVルートは、テキストファイルに記述することで路線デー�
 
 ルートファイルは、(Structure 名前空間)で定義された一連の命令セットにより、ルートデータ内で一貫して共通で利用されます 。 路線データ向けの追加のプロパティ、路線側が定義した既定の列車、沿線の背景のイメージファイルも同様に定義することができます。 最後に、ルートファイルは Track 名前空間でのコマンドにより指示します。 ここでは、 線路の座標 (殆どの場合、単位はメートル) を指定することにより、線路をカーブさせるタイミングや駅を設置したり、 壁や土手などを開始したり終わらせたりします。一般的には、 Track 名前空間はその他の名前空間を予め記述し、定義した後に記述する必要があります。
 
-The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}).
+このフォーマットには、暗黙の規定として明示的に開始、または終了することが出来ない rail 0 があり、 それは路線の始端から終端まで常に存在します。 そしてそれはプレイヤーが走行するレールを示します。 rail 0 とその他の レールは 視覚的表示に用いられるだけでなく、 同様に [Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}) にも用いられます。
 
 幾何学的に、カーブや勾配は暗黙の ｒａｉｌ ０ に対して作用しますが、 その他のすべてのレールは rail 0 に相対的に連動して定義され、 rail 0 のカーブや勾配に従って追従します。 オーバーライドされない限りファイルフォーマットではブロック長は25mの固定長で構築され、 特定のコマンドは25mのブロック単位でしか用いることができません。 オブジェクトの配置は、常に直線的に接続する非曲線座標系を想定しています。
 
@@ -349,7 +349,7 @@ Track.FreeObj 1; 42
 
 {{% table %}}
 
-| Desired unit | Conversion factor |
+| 希望するユニットの単位 | 閑散係数 |
 | ------------ | ----------------- |
 | mile         | 1609.344          |
 | chain        | 20.1168           |
@@ -359,7 +359,7 @@ Track.FreeObj 1; 42
 
 {{% /table %}}
 
-In the following, all arguments of all commands are highlighted in <font color="green">green</font> whenever they are affected by Options.UnitOfLength.
+以下においては、 Options.UnitOfLengthの影響を受ける時はいつも、全てのコマンドの全ての引数は <font color="green">緑</font> にハイライトされます。
 
 ---
 
@@ -368,14 +368,14 @@ In the following, all arguments of all commands are highlighted in <font color="
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FactorInKmph***: A floating-point number representing how many kilometers per hour the desired unit has. The default value is 1.  
+***FactorInKmph***: 希望のユニットが持つ、一時間あたりのキロメートルの数を表す浮動小数点数。 デフォルト値は 1 です。  
 {{% /command-arguments %}}
 
-This command can be used to specify the unit of speed to be used in other commands. Examples of conversion factors:
+このコマンドは他のコマンドで使用する速度の単位をを指定して使用することが出来ます。閑散係数の例:
 
 {{% table %}}
 
-| Desired unit    | Conversion factor |
+| 希望の単位    | 換算係数 |
 | --------------- | ----------------- |
 | meters/second   | 3.6               |
 | miles/hour      | 1.609344          |
@@ -383,7 +383,7 @@ This command can be used to specify the unit of speed to be used in other comman
 
 {{% /table %}}
 
-In the following, all arguments of all commands are highlighted in <font color="blue">blue</font> whenever they are affected by Options.UnitOfSpeed.
+以下においては、 Options.UnitOfLengthの影響を受ける時はいつも、全てのコマンドの全ての引数は <font color="blue">青</font> にハイライトされます。
 
 ---
 
@@ -392,10 +392,10 @@ In the following, all arguments of all commands are highlighted in <font color="
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Length***: A positive floating-point number representing the length of a block, **by default** measured in **meters**. The default is 25 meters.  
+***Length***: ブロック長を表す正の浮動小数点数。 **by default** デフォルトの単位は **メートル** です。 デフォルト値は 25 メートルです。  
 {{% /command-arguments %}}
 
-This command can be used to specify the length of a block. This is an overall setting and cannot be changed in the middle of the route. *Length* is only expressed in the unit specified by Options.UnitOfLength if Options.UnitOfLength is used before Options.BlockLength.
+このコマンドを用いることで、ブロック長を指定できます。 これは路線全体の設定であり、途中で変更をすることは出来ません。 *Length* は、 Options.UnitOfLength が Options.BlockLength より前で使用されている場合、 Options.UnitOfLength で指定された単位でのみ表されます。
 
 ---
 
@@ -404,14 +404,14 @@ This command can be used to specify the length of a block. This is an overall se
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Mode***: The mode determining how objects appear and disappear. The default value is 0 (legacy).  
+***Mode***: オブジェクトの表示方法と非表示の方法を決定するモード。デフォルト値は0 (レガシー)です。  
 {{% /command-arguments %}}
 
-▸ Available options for *Mode*:
+▸  *Mode* で使用可能なオプション:
 
 {{% command-arguments %}}  
-**0**: Legacy: An object is made invisible as soon as the end of the block which it resides in has been passed by the camera. This does not work well when turning the camera around. Self-intersecting track (e.g. loops) is not possible.  
-**1**: Track-based: An object is made invisible as soon as its end has been passed by the camera. This is measured in track positions. Self-intersecting track (e.g. loops) is not possible.  
+**0**: レガシーモード: オブジェクトが存在するブロックの最後の座標がカメラによって通過するとすぐに、オブジェクトが非表示になります。 これは、カメラを回転させるとうまく機能しません。 自己交差トラック (ループなど) は出来ません。  
+**1**: 線路ベース: カメラがオブジェクトの終わりを通過するとすぐに、オブジェクトは非表示になります。 これは線路の位置ベースで測定されます。 自己交差トラック (ループなど) は出来ません。  
 {{% /command-arguments %}}
 
 ---
@@ -421,10 +421,10 @@ This command can be used to specify the length of a block. This is an overall se
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Mode***: The mode determining how the Track.Section command is processed. The default value is 0 (default)  
+***Mode***: Track.Section コマンドの処理方法を決定するモード。デフォルト値は0 (デフォルト) です。  
 {{% /command-arguments %}}
 
-▸ Available options for *Mode*:
+▸ *Mode* で使用可能なオプション:
 
 {{% command-arguments %}}  
 **0**: Default: In Track.Section *Aspect<sub>0</sub>*; *Aspect<sub>1</sub>*; ...; *Aspect<sub>n</sub>*, any of the *Aspect<sub>i</sub>* refer to the aspect the section should have if *i* following sections are clear.  
@@ -441,7 +441,7 @@ This command can be used to specify the length of a block. This is an overall se
 ***Mode***: The mode determining how cant in the Track.Curve command is processed. The default is 0 (unsigned).  
 {{% /command-arguments %}}
 
-▸ Available options for *Mode*:
+▸ *Mode* で使用可能なオプション:
 
 {{% command-arguments %}}  
 **0**: Unsigned: The *CantInMillimeters* parameter in Track.Curve is unsigned, i.e. the sign is ignored and the superelevation is always towards the curve center (inward). Cant cannot be applied on straight track.  
@@ -455,14 +455,14 @@ This command can be used to specify the length of a block. This is an overall se
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Mode***: The mode determining how the Track.Fog command is processed. The default value is 0 (Block-based).  
+***Mode***: Track.Fog コマンドの処理方法を決定するモード。デフォルト値は0 (ブロックベース) です。  
 {{% /command-arguments %}}
 
-▸ Available options for *Mode*:
+▸ *Mode* で使用可能なオプション:
 
 {{% command-arguments %}}  
-**0**: Block-based: Fog color and ranges are interpolated from the beginning of the block where Track.Fog is used with the old settings to the end of the block with the new settings.  
-**1**: Interpolated: Fog color and ranges are interpolated between adjacent Track.Fog commands. This behavior mimicks Track.Brightness.  
+**0**: ブロックベース: 霧の色と範囲は Track.Fog が古い設定で使用されているブロックの最初から、新しい設定のブロックの最後まで補完されます。  
+**1**: 補間: 霧の色と範囲は、隣接する Track.Fog コマンドの間で補間されます。 この動作は Track.Brightness を模倣しています。  
 {{% /command-arguments %}}
 
 ---
@@ -472,14 +472,14 @@ This command can be used to specify the length of a block. This is an overall se
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Mode***: The mode determining how transparencies are processed in BVE2/ BVE4 objects which use a restricted color pallet. This may be used on a per-route basis to override the value set in 'Options'.  
+***Mode***: カラーパレットの制限がある場合のBVE2/4のオブジェクトでの透明度の処理方法を決定するモード。 これは 'Options' で設定された値を上書きするために路線ごとに使用できます。  
 {{% /command-arguments %}}
 
-▸ Available options for *Mode*:
+▸ *Mode* で使用可能なオプション:
 
 {{% command-arguments %}}  
-**0**: Off: Colors are matched specifically. If the specified transparent color does not exist within the color pallet, no transparency will be added.  
-**1**: On: Fuzzy matching. If the texture uses a restricted color pallet, the transparent color will be clamped to the nearest available color in the pallet.  
+**0**: Off: 指定の色と明示的に一致させます。 指定された透明色がカラーパレット内に存在しない場合、透明度は追加されません。  
+**1**: On: ファジー選択。. テクスチャが制限されたカラーパレットを使用している場合、透明色はパレットで最も近い使用可能な色に自動的に設定されます。  
 {{% /command-arguments %}}
 
 ---
@@ -489,19 +489,19 @@ This command can be used to specify the length of a block. This is an overall se
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Mode***: The mode determining whether various hacks are applied in order to fix BVE2 / BVE4 content. This may be used on a per-route basis to override the value set in 'Options'.  
+***Mode***: BVE2/4の路線データを修正するための様々な'ハック'が適用されるかどうかを指定するモード。 これは 'Options' で設定された値を上書きするために路線ごとに使用できます。  
 {{% /command-arguments %}}
 
-▸ Available options for *Mode*:
+▸ *Mode* で使用可能なオプション:
 
 {{% command-arguments %}}  
-**0**: Off: Hacks are disabled.  
-**1**: On: Hacks are enabled.  
+**0**: Off: 'ハック' を無効にします。  
+**1**: On: 'ハック' を有効にします。  
 {{% /command-arguments %}}
 
-## <a name="route"></a>■ 5. The Route namespace
+## <a name="route"></a>■ 5. Route 名前空間
 
-Commands from this namespace define general properties of the route.
+この名前空間のコマンドは、路線の一般的なプロパティを定義します。
 
 ---
 
@@ -510,11 +510,11 @@ Commands from this namespace define general properties of the route.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Text***: The route comments which appear in the route selection dialog.  
+***Text***: メインメニューのダイアログで路線が選択された時に表示されるコメント。  
 {{% /command-arguments %}}
 
 {{% warning-nontitle %}}  
-You need to use $Chr directives if you want to include newlines, commas and the like in the text.  
+テキストに改行やコンマ等を含めたい場合は $Chr ディレクティブを使用する必要があります。  
 {{% /warning-nontitle %}}
 
 ---
@@ -524,7 +524,7 @@ You need to use $Chr directives if you want to include newlines, commas and the 
 {{% /command %}}
 
 {{% command-arguments %}}  
-***File***: The file name of the image which appears in the route selection dialog, relative to the route's folder.  
+***File***: メインメニューの路線選択ダイアログで路線が選択された時に表示される画像。 路線フォルダを基準としたファイルのパス。  
 {{% /command-arguments %}}
 
 ---
@@ -534,11 +534,11 @@ You need to use $Chr directives if you want to include newlines, commas and the 
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Text***: The text which appears at the top of the default timetable.  
+***Text***: デフォルトの時刻表の上部に表示されるテキスト。  
 {{% /command-arguments %}}
 
 {{% warning-nontitle %}}  
-You need to use $Chr directives if you want to include newlines, commas and the like in the text.  
+テキストに改行やコンマ等を含めたい場合は $Chr ディレクティブを使用する必要があります。  
 {{% /warning-nontitle %}}
 
 ---
@@ -548,15 +548,15 @@ You need to use $Chr directives if you want to include newlines, commas and the 
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Mode***: The mode for the train's safety system to start in. The default value is implementation-specific.  
+***Mode***: 路線の開始時に列車の保安装置を起動させるモード。デフォルトは実装固有です。  
 {{% /command-arguments %}}
 
-▸ Available options for *Mode*:
+▸ *Mode* で使用可能なオプション:
 
 {{% command-arguments %}}  
-**-1**: The safety system is **activated** and the *service* brakes are applied.  
-**0**: The safety system is **activated** and the **emergency** brakes are applied.  
-**1**: The safety system is *deactivated* and the **emergency** brakes are applied.  
+**-1**: 保安装置を **有効** にし、かつ *常用最大* ブレーキが適用されます。  
+**0**: 保安装置を **有効** にし、かつ **非常** ブレーキが適用されます。  
+**1**: 保安装置を *無効* にし、かつ **非常** ブレーキが適用されます。  
 {{% /command-arguments %}}
 
 ---
@@ -566,12 +566,12 @@ You need to use $Chr directives if you want to include newlines, commas and the 
 {{% /command %}}
 
 {{% command-arguments %}}  
-***ValueInMillimeters***: A floating-point number representing the rail gauge, measured in **millimeters** (0.001 meters). The default value is 1435.  
+***ValueInMillimeters***: **ミリメートル** (0.001 meters)単位の、線路の幅を設定します。 デフォルト値は 1435です。  
 {{% /command-arguments %}}
 
 {{% note %}}
 
-Train.Gauge is the same as Route.Gauge.
+Train.Gauge は Route.Gauge と同じ意味を持ちます。
 
 {{% /note %}}
 
@@ -582,22 +582,22 @@ Train.Gauge is the same as Route.Gauge.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***AspectIndex***: A non-negative integer representing the signal aspect. The aspect 0 corresponds to red.  
-***<font color="blue">Speed</font>***: A non-negative floating-point number representing the allowed speed for this aspect, **by default** measured in **kilometers per hour** (km/h).  
+***AspectIndex***: 信号が指し示す状態「アスペクト」を表す、負でない整数。 アスペクト 0 は赤を示します。  
+***<font color="blue">Speed</font>***: 対応するアスペクトが許容する速度を定義する浮動小数点数。 **デフォルト** の単位は **キロメートル毎時** (km/h) です。  
 {{% /command-arguments %}}
 
-Use this command to associate speed limits to signal aspects. Aspect 0 represents a red signal, higher values represent more permissive aspects. The default values (for the included Japanese signals) are: 
+このコマンドを使用して、速度制限を信号の現示「アスペクト」に関連付けます。 アスペクト 0 は赤信号を示し、 値が大きいほど速度の許容度が高いことを表します。デフォルトの値(日本の信号システム)は次のとおりです: 
 
 {{% table %}}
 
-| *Index* | Aspect                                                       | Speed       |
+| *インデックス番号* | アスペクト                                                       | 速度       |
 | ------- | ------------------------------------------------------------ | ----------- |
 | 0       | <font color="#C00000">●</font>                               | 0 km/h      |
 | 1       | <font color="#FFC000">●●</font>                              | 25 km/h     |
 | 2       | <font color="#FFC000">●</font>                               | 55 km/h     |
 | 3       | <font color="#00C000">●</font><font color="#FFC000">●</font> | 75 km/h     |
-| 4       | <font color="#00C000">●</font>                               | *unlimited* |
-| 5       | <font color="#00C000">●●</font>                              | *unlimited* |
+| 4       | <font color="#00C000">●</font>                               | *無制限* |
+| 5       | <font color="#00C000">●●</font>                              | *無制限* |
 
 {{% /table %}}
 
@@ -608,14 +608,14 @@ Use this command to associate speed limits to signal aspects. Aspect 0 represent
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Interval<sub>i</sub>***: A floating-point number representing the time interval between the player's train's timetable and that of another train to be created, measured in **seconds**. Positive values indicate an earlier train, negative numbers a later train.  
+***Interval<sub>i</sub>***: 運転する列車の時刻表とは別に作成される、別の列車の時刻表との間の時間間隔を表す浮動小数点数。 **秒** で表します。 正の値は運転する列車の前方の列車を示し、負の値は後方を示します。  
 {{% /command-arguments %}}
 
-This command creates one or more preceding or following trains. These other trains are visible, fully operational, and use the same train as the player has. The other trains follow the same schedule as the player does, but are offset in time by *Intervali*. Via the Track.Sta command, you can also define stations where only the player or only the other trains should stop. Follow-up trains only appear once the section they are placed in has been cleared by other trains, but the player's train is introduced regardless of the current signalling section's state. Therefore, you should make sure that other trains have cleared the area where the player's train will appear when the scenario begins.
+このコマンドは、一つ以上の運転する列車の前後の列車を生成します。此等の列車は路線に表示され、完全に機能し、運転する列車と同じ外観を使用します。 他の列車は運転する列車と同じ時刻表に従いますが、 *Interval* によって時間的にオフセットされます。 Track.Sta コマンドにより、運転する列車のみ、または前後を走る列車のみが停止する駅を定義することが出来ます。 後続の列車は配置されたセクションが他の列車によってクリアされた後にのみ表示されますが、運転する列車は現在の信号セクションの状態に関係なく設置されます。 従って、路線の開始時に運転する列車が表示されるセクションを前後の列車がクリアしていることを確認する必要があります。
 
 {{% note %}}
 
-Route.RunInterval is the same as Train.Interval.
+Route.RunInterval は Train.Interval と同じ意味を持ちます。
 
 {{% /note %}}
 
@@ -626,7 +626,7 @@ Route.RunInterval is the same as Train.Interval.
 {{% /command %}}
 
 {{% command-arguments %}}  
-**Value**: A positive floating-point number representing the acceleration due to gravity in **meters per second squared** (m/s²). The default value is 9.80665.  
+**Value**: **メートル毎秒の二乗** (m/s²) で重力による加速度を表す正の浮動小数点数。 デフォルト値は 9.80665 です。  
 {{% /command-arguments %}}
 
 ---
@@ -636,7 +636,7 @@ Route.RunInterval is the same as Train.Interval.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***<font color="green">Height</font>***: A floating-point number representing the initial height above sea level, **by default** measured in **meters** (m). The default value is 0.  
+***<font color="green">Height</font>***:  **メートル** (m) で表される、海抜の初期の高さを表す浮動小数点数。  **デフォルト値** は0です。   
 {{% /command-arguments %}}
 
 ---
@@ -646,7 +646,7 @@ Route.RunInterval is the same as Train.Interval.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: A floating-point number representing the initial temperature in **Celsius**. The default value is 20.  
+***Value***:  **摂氏** の初期の温度を表す浮動小数点数。 デフォルト値は20です。  
 {{% /command-arguments %}}
 
 ---
@@ -656,7 +656,7 @@ Route.RunInterval is the same as Train.Interval.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***ValueInKPa***: A positive floating-point number representing the initial air pressure in **kPa** (1000 Pascal). The default value is 101.325.  
+***ValueInKPa***:  **kPa** (1000 パスカル)の初期気圧を表す正の浮動小数点数。 デフォルト値は 101.325 です。  
 {{% /command-arguments %}}
 
 ---
@@ -666,10 +666,10 @@ Route.RunInterval is the same as Train.Interval.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Unit***: The textual units in which speed-related messages are to be displayed.    ***ConversionFactor***: The conversion factor between km/h and your custom unit of speed. For mph, this is 0.621371.  
+***Unit***: 速度関連のメッセージが表示されるテキストの単位。 ***ConversionFactor***: km/hに対するカスタム速度単位の間の変換係数。 mph の場合は 0.621371 になります。  
 {{% /command-arguments %}}
 
-This command allows speed related messages (overspeed etc.) to be displayed in a custom unit, for example mph.
+このコマンドを使用すると、速度に関連するメッセージが表示された際(速度超過など)、カスタム速度単位、 mph等で表示することが出来ます。
 
 ---
 
@@ -678,10 +678,10 @@ This command allows speed related messages (overspeed etc.) to be displayed in a
 {{% /command %}}
 
 {{% command-arguments %}}    
-***Image***: A path to a supported image file.  
+***Image***: サポートされている画像ファイルへのパス  
 {{% /command-arguments %}}
 
-This command allows a custom image to be set as the loading screen background.
+このコマンドを使用すると、カスタム画像をロード画面の背景として使用することが出来ます。
 
 ---
 
@@ -690,14 +690,14 @@ This command allows a custom image to be set as the loading screen background.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Time***: The time at which the simulation is to start.  
+***Time***: シミュレーションを開始する時刻  
 {{% /command-arguments %}}
 
-This command allows the start time of the simulation to be set.
+このコマンドを使用すると、シミュレーションの開始時刻を設定することが出来ます。
 
 {{% note %}}
 
-If this is not set or is invalid, the simulation will start at the arrival time set at the first station.
+この値が設定されていないか無効な場合、シミュレーションは始発駅に設定された到着時間に開始されます。
 
 {{% /note %}}
 
@@ -708,14 +708,14 @@ If this is not set or is invalid, the simulation will start at the arrival time 
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Dynamic.XML***: A path to a Dynamic Lighting definition XML file.  
+***Dynamic.XML***: ダイナミックライティングが定義されたXMLファイルへのパス  
 {{% /command-arguments %}}
 
-This command may be used as an alternative to the *Route.AmbientLight* , *Route.DirectionalLight* and *Route.LightDirection* commands.
+このコマンドは、 *Route.AmbientLight* 、 *Route.DirectionalLight* および *Route.LightDirection* コマンドの代わりとして使用できます。
 
-It allows the lighting to be varied using a time-based model, and is described fully on the following page:
+これを用いることで、時間ベースのモデルを使用して照明を変化させることが出来ます。次のページで詳しく説明しています。
 
-[Dynamic Lighting]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
+[ダイナミックライティング]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
 
 ---
 
@@ -724,12 +724,12 @@ It allows the lighting to be varied using a time-based model, and is described f
 {{% /command %}}
 
 {{% command-arguments %}}  
-***RedValue***: An integer ranging from 0 to 255 representing the red component of the ambient light. The default value is 160.  
-***GreenValue***: An integer ranging from 0 to 255 representing the green component of the ambient light. The default value is 160.   
-***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the ambient light. The default value is 160.  
+***RedValue***: 環境光の赤の要素を表す0から255までの範囲の整数。 デフォルト値は 160 です。  
+***GreenValue***: 環境光の緑の要素を表す0から255までの範囲の整数。 デフォルト値は 160 です。   
+***BlueValue***: 環境光の青の要素を表す0から255までの範囲の整数。 デフォルト値は 160 です。  
 {{% /command-arguments %}}
 
-This command defines the ambient light color to be used. All polygons in the scene are illuminated by the ambient light regardless of the light direction.
+このコマンドは、使用する環境光の色を定義します。 3D空間内の全てのポリゴンは、ライトの方向に関係なく、 環境光によって照らされます。
 
 ---
 
@@ -738,12 +738,12 @@ This command defines the ambient light color to be used. All polygons in the sce
 {{% /command %}}
 
 {{% command-arguments %}}  
-***RedValue***: An integer ranging from 0 to 255 representing the red component of the directional light. The default value is 160.  
-***GreenValue***: An integer ranging from 0 to 255 representing the green component of the directional light. The default value is 160.  
-***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the directional light. The default value is 160.  
+***RedValue***: 指向性ライトの赤の要素を表す0から255までの範囲の整数。 デフォルト値は160です。  
+***GreenValue***: 指向性ライトの緑の要素を表す0から255までの範囲の整数。 デフォルト値は160です。  
+***BlueValue***: 指向性ライトの緑の要素を表す0から255までの範囲の整数。 デフォルト値は160です。  
 {{% /command-arguments %}}
 
-This command defines the directional light to be used. The polygons in the scene are only fully illuminated by the directional light if the light direction points at the front faces. If pointing at back faces, no light is contributed. *Route.LightDirection* should be set to specify the light direction.
+このコマンドは、使用する指向性ライトを定義します。 3D空間内のポリゴンは、ライトの方向が前面に差している場合にのみ、指向性ライトによって完全に照らされます。 背面に差している場合、指向性ライトは効果を与えません。 *Route.LightDirection* を設定して、光の方向を指定する必要があります。
 
 ---
 
@@ -752,11 +752,11 @@ This command defines the directional light to be used. The polygons in the scene
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Theta***: A floating-point number representing the angle in **degrees** which controls the pitch of the light direction. The default value is 60.  
-***Phi***: A floating-point number representing the angle in **degrees** which controls the planar rotation of the light direction. The default value is about -26.57.  
+***Theta***: ライトの方向のピッチを制御する **度** の角度を表す浮動小数点数。 デフォルト値は 60 です。  
+***Phi***: ライトの方向の回転の面の **度** の角度を表す浮動小数点数。 デフォルト値は -26.57 です。  
 {{% /command-arguments %}}
 
-This command defines the initial light direction for track position 0. This is the direction the light shines at, meaning the opposite direction the sun is located at. First, *Theta* determines the pitch. A value of 90 represents a downward direction, while a value of -90 represents an upward direction. With those extremes, the value of *Phi* is irrelevant. A value of 0 for *Theta* represents a forward direction originating at the horizon behind. Once the pitch is defined by *Theta*, *Phi* determines the rotation in the plane. A value of 0 does not rotate, a value of 90 rotates the direction to the right and a value of -90 rotates to the left. A backward direction can be both obtained by setting *Theta* and *Phi* to 180 and 0 or to 0 and 180, respectively. Values in-between allow for more precise control of the exact light direction.
+このコマンドは、 自線の距離程0における初期の光の方向を定義します。 これは光が当たる方向で、 太陽が位置する方向とは反対の方向であることを意味します。 まず最初に、 *Theta* がピッチを決定します。 90 は下の方向を示し、 -90 は上方向を示します。 此等の値が極端な場合、 *Phi* の値は無関係になります。 *Theta* の値が0の時、後ろの水平線から始まる順方向を示します。  ピッチが *Theta* によって決定されると、 *Phi* が平面の回転を決定します。 値が0のときは回転せず、 90 の時は右方向に回転し、 -90 の時は左方向に回転します。 *Theta* と *Phi* を 180 と 0 、または 0 と 180 に設定することで、 逆方向を両方とも取得できます。 中間の値を取ることで、正確な光の方向をより正確に制御できます。
 
 ![illustration_light_direction](/images/illustration_light_direction.png)
 

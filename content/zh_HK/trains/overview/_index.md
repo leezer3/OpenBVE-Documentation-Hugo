@@ -1,6 +1,6 @@
 ---
-title: "Developing trains - Overview"
-linktitle: "Overview"
+title: "開發列車 - 總概"
+linktitle: "總概"
 weight: 1
 ---
 
@@ -22,7 +22,7 @@ This file allows to create a limited 2D cab. If present in the train folder, thi
 [**panel.cfg:**]({{<ref "/trains/panel_cfg/_index.md">}})  
 This file is outdated, and allows to create a limited 2D cab. It has been fully superseded by the panel2.cfg file, which should be used instead.
 
-## ■ Sounds
+## ■ 聲音
 
 [**Default sounds:**]({{<ref "/trains/default_sounds/_index.md">}})  
 If no *sound.cfg* is present, these are the default sound files that are being looked for in the train folder.
@@ -30,7 +30,7 @@ If no *sound.cfg* is present, these are the default sound files that are being l
 [**sound.cfg:**]({{<ref "/trains/sound_cfg/_index.md">}})  
 This defines the names of the sound files to use. The file is required if plugin-specific sounds are to be made available.
 
-## ■ Safety systems
+## ■ 安全系統
 
 [**Built-in systems:**]({{<ref "/trains/openbveats/_index.md">}})  
 The built-in safety systems ATS-SN, ATS-P and ATC are only used if no *ats.cfg* file is present, and if the *train.dat* is configured to define which of these systems should be available.

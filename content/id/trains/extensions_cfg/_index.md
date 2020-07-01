@@ -25,11 +25,11 @@ Isi file ini bisa menggunakan semua tipe [encoding]({{< ref "/information/encodi
 
 ##### ● Bagian Car
 
-All cars in the extensions.cfg are enumerated from 0 (front car) to *n*-1 (rear car), where *n* is the number of cars the train has in total, according to the [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) file. For example, on a train with 10 cars, the front car has index 0 and the rear car index 9.
+Semua kereta di extensions.cfg diberi nomor mulai dari 0 (kereta paling depan) sampai *n*-1 (kereta paling belakang), *n* adalah jumlah total semua kereta dalam satu rangkaian, berdasarkan apa yang ada di  [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) . Contohnya, pada rangkaian dengan total 10 kereta, kereta paling depan mempunyai nomor 0 dan paling belakangnya 9.
 
 ##### ● Bagian Coupler
 
-A coupler in this document refers to the space between neighboring cars. All couplers in the extensions.cfg are enumerated from 0 (front-most coupler) to *n*-2 (rear-most coupler), where *n* is the number of cars the train has in total, according to the [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) file. Coupler index *i* corresponds to the coupler between the cars with indices *i* and *i+1*, so the coupler between the first two cars (0 and 1) in the train has index 0. Likewise, if a train has 10 cars, the coupler between the last two cars (8 and 9) would have index 8.
+Bagian Coupler dalam file ini menentukan jarak antar kereta. Semua perangkai di extensions.cfg diberi nomor dari 0 (perangkai paling depan) sampai dengan *n*-2 (perangkai paling belakang), *n* adalah total kereta dalam rangkaian yg ditentukan dari  [train.dat]({{< ref "/trains/train_dat/_index.md" >}}). Nomor perangkai *i* adalah perangkai yang ada di antara kereta *i* dan *i+1* , jadi perangkai yang ada di 2 kereta pertama (antara car0 dan car1) adalah coupler0. Misalnya, jika pada rangkaian 10 kereta, coupler yang ada di antara 2 kereta terakhir (car8 dan car9) adalah coupler 8.
 
 ## <a name="syntax"></a>■ 2. Format penulisan
 

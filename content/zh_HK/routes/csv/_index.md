@@ -35,11 +35,11 @@ weight: 1
 
 一個CSV格式嘅路線可以由文本檔案建立成路線。
 
-呢個檔案係純文本，並且可以用任意[字符編碼]（{{< ref "/information/encodings/_index.md" >}}），但係，我哋推薦作者用UTF-8編碼格式。解析數字數據時，使用[解析方法]（{{< ref "/information/numberformats/_index.md" >}}）係非常**寬鬆**嘅（特別指出嘅地方除外），我哋推薦呢個文件一般嚟講可以放喺 *LegacyContent* 文件夾（或一個內部包含* Railway *同* Train *目錄嘅文件夾）下嘅任何地方。文件名可以隨意，但擴展名(file extension)一定要係**。csv **。路線文件被從頭到尾逐行解析，每行被分割並被從左到右解析。
+呢個檔案係純文本，並且可以用任意[字符編碼]（{{< ref "/information/encodings/_index.md" >}}），但係，我哋推薦作者用UTF-8編碼格式。解析數字數據時，使用[解析方法]（{{< ref "/information/numberformats/_index.md" >}}）係非常**寬鬆**嘅（特別指出嘅地方除外），我哋推薦呢個文件一般嚟講可以放喺 *LegacyContent* 文件夾（或一個內部包含* Railway *同* Train *目錄嘅文件夾）下嘅任何地方。文件名可以隨意，但擴展名(file extension)一定要係**.csv **。路線文件被從頭到尾逐行解析，每行被分割並被從左到右解析。
 
 路線文件包括一系列指令, 用黎導入線路中用到的模型(Structure)結構命名空間 * 有 D 唔嚴謹地說, 在 csv 路線中同 "章節" "部分" 差不多。 ), 線路的屬性信息 (說明線路使用默認既列車同背景等信息), 文件的其餘部分係 track (軌道) 命名空間 (唔係好嚴謹咁講, 意思和段落差不多) 係一部分中, 主軌道位置 (一般以米為單位) 被用來描述軌道喺邊度轉彎, 車站嘅位置喺邊, 牆壁應當喺邊度開始、邊收檔, 以此類推。 講得明少少, track (軌道) 命名空間的指令是要放在最後嘅。
 
-The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}).
+呢個格式默認咗一條遊戲默認的主軌道 (0号軌道), 唔可以指定它開始的位置, 都唔可以完佢。 遊戲中其他軌道同唔同嘅係, 佢由線路嘅開始一直延續到線路的終點, 代表住玩家駕駛嘅列車行駛的軌道。 除此之外, 遊戲中定義的其他軌道都係只供裝飾, 不能行駛嘅。 不過可以使用 [軌道循跡對象]{{< ref "/routes/xml/trackfollowingobject/_index.md" >}} 嚟俾 AI 列車喺其它軌道上行駛。
 
 可以幾何意義上咁曲同抬升默認的主軌道, 而其他軌道都系相對于主軌道定義的, 並隨主軌道曲起伏。 除非特別修改定義, 線路中每25米劃分為一個區間蚊, 特定的命令只有在區間蚊嘅邊界位置 (成25米位置) 才能發揮作用。 物體嘅放置 (尤其是在彎道上) 成日基於一個坐標係, 它的軸並不隨軌道彎曲, 而是掂掂地指向鄰近嘅下一個區間蚊。
 
@@ -368,85 +368,85 @@ Track.FreeObj 1; 42
 **Options.UnitOfSpeed** *與千米每時的換算係數*
 {{% /command %}}
 
-{{% command-arguments %}}  
-***FactorInKmph***: A floating-point number representing how many kilometers per hour the desired unit has. The default value is 1.  
+{{% command-arguments %}}
+***FactorInKmph***同千米每时嘅換算系數: 一個浮點數, 表示一個單位等於幾多千米每时。 默認值是1。
 {{% /command-arguments %}}
 
-This command can be used to specify the unit of speed to be used in other commands. Examples of conversion factors:
+這個指令可以被用來改變其他指令使用嘅速度單位。 換算系數的幾個示例:
 
 {{% table %}}
 
-| Desired unit    | Conversion factor |
+| 單位    | 換算係數 |
 | --------------- | ----------------- |
-| meters/second   | 3.6               |
-| miles/hour      | 1.609344          |
-| kilometers/hour | 1                 |
+| 米每秒   | 3.6               |
+| 英里每小時      | 1.609344          |
+| 千米每小時 | 1                 |
 
 {{% /table %}}
 
-In the following, all arguments of all commands are highlighted in <font color="blue">blue</font> whenever they are affected by Options.UnitOfSpeed.
+在下面的示例中, 會被 Options.UnitOfSpeed 影響嘅指令參數會被用<font color="blue">藍色</font>表示。
 
 ---
 
-{{% command %}}  
-**Options.BlockLength** *<font color="green">Length</font>*  
+{{% command %}}
+**Options.BlockLength** *<font color="green">長度</font>*
 {{% /command %}}
 
-{{% command-arguments %}}  
-***Length***: A positive floating-point number representing the length of a block, **by default** measured in **meters**. The default is 25 meters.  
+{{% command-arguments %}}
+***長度***: 一個正浮點數, 表示區間蚊嘅長度, **默認** 嘅單位係 **米**。 默認值係25米。
 {{% /command-arguments %}}
 
-This command can be used to specify the length of a block. This is an overall setting and cannot be changed in the middle of the route. *Length* is only expressed in the unit specified by Options.UnitOfLength if Options.UnitOfLength is used before Options.BlockLength.
+此指令可以設置隔蚊嘅長度。 係一個全局設置, 一旦設置, 唔可以來回更改。 如果在此指令之前調用了選項. 單位長度, *長度* 將使用選項. 單位長度作為單位。
 
 ---
 
-{{% command %}}  
-**Options.ObjectVisibility** *Mode*  
+{{% command %}}
+**Options.ObjectVisibility** *模式*
 {{% /command %}}
 
-{{% command-arguments %}}  
-***Mode***: The mode determining how objects appear and disappear. The default value is 0 (legacy).  
+{{% command-arguments %}}
+***模式***: 遊戲判斷一個物體是否可視採用的算法。 默認值係 0 (原版)。
 {{% /command-arguments %}}
 
-▸ Available options for *Mode*:
+▸ *模式* 嘅選項:
 
-{{% command-arguments %}}  
-**0**: Legacy: An object is made invisible as soon as the end of the block which it resides in has been passed by the camera. This does not work well when turning the camera around. Self-intersecting track (e.g. loops) is not possible.  
-**1**: Track-based: An object is made invisible as soon as its end has been passed by the camera. This is measured in track positions. Self-intersecting track (e.g. loops) is not possible.  
-{{% /command-arguments %}}
-
----
-
-{{% command %}}  
-**Options.SectionBehavior** *Mode*  
-{{% /command %}}
-
-{{% command-arguments %}}  
-***Mode***: The mode determining how the Track.Section command is processed. The default value is 0 (default)  
-{{% /command-arguments %}}
-
-▸ Available options for *Mode*:
-
-{{% command-arguments %}}  
-**0**: Default: In Track.Section *Aspect<sub>0</sub>*; *Aspect<sub>1</sub>*; ...; *Aspect<sub>n</sub>*, any of the *Aspect<sub>i</sub>* refer to the aspect the section should have if *i* following sections are clear.  
-**1**: Simplified: In Track.Section *Aspect<sub>0</sub>*; *Aspect<sub>1</sub>*; ...; *Aspect<sub>n</sub>*, the section bears the smallest aspect which is higher than that of the following section.  
+{{% command-arguments %}}
+**0**: 原版: 當該物體所在的區間舊已經被玩家通過, 遊戲就認為呢個物體不再可見, 都唔再加载顯示呢個物體。 遊戲不會顯示任何玩家後方嘅物體。 在朝前睇時唔會有任何問題, 但當向後看時所有物體都會消失, 且沒有任何途徑可解決。 自相交的軌道 (例如環綫) 唔會畀正確顯示。 該設置會造成唔正確且無法解決的視覺效果, 保留且默認採取該設置只係為咗兼容一些老線路。 請唔好喺新線路中採用這個設置。
+**1**: 基於軌道: 遊戲仍然會加载列車後方可視範圍內嘅物體。 係按照軌道位置計算嘅。 可惜自相交的軌道 (例如環綫) 都係唔會俾正確顯示。 推薦添加這個設置。
 {{% /command-arguments %}}
 
 ---
 
-{{% command %}}  
-**Options.CantBehavior** *Mode*  
+{{% command %}}
+**Options.SectionBehavior** *模式* 
 {{% /command %}}
 
-{{% command-arguments %}}  
-***Mode***: The mode determining how cant in the Track.Curve command is processed. The default is 0 (unsigned).  
+{{% command-arguments %}}
+***模式***:track.section 指令應當被如何理解。 默認值係 0 (默認)。
 {{% /command-arguments %}}
 
-▸ Available options for *Mode*:
+▸ *模式* 嘅選項:
 
-{{% command-arguments %}}  
-**0**: Unsigned: The *CantInMillimeters* parameter in Track.Curve is unsigned, i.e. the sign is ignored and the superelevation is always towards the curve center (inward). Cant cannot be applied on straight track.  
-**1**: Signed: The *CantInMillimeters* parameter in Track.Curve is signed, i.e. negative values bank outward and positive ones inward on curved track. Cant can be applied on straight track, where negative values bank toward the left and positive ones toward the right.  
+{{% command-arguments %}}
+**0**: 默認: track.section * 緊狀態 <sub>0</sub>*; * 狀態 <sub>1</sub>*; ...; * 狀態<sub>n</sub>* 中, 任何一個 * 狀態<sub>i</sub>* 都代表當一個閉塞區間的前方有 *i* 個閉塞區間清空時要傳達畀信號機嘅信號狀態。
+**1**: 簡化: track.section * 緊狀態 <sub>0</sub>*; * 狀態 <sub>1</sub>*; ...; * 狀態<sub>n</sub>* 中, 每個閉塞區間的信號狀態都係比佢前面一個閉塞區間嘅狀態值要高嘅最小值。
+{{% /command-arguments %}}
+
+---
+
+{{% command %}}
+**Options.CantBehavior** *模式* 
+{{% /command %}}
+
+{{% command-arguments %}}
+***模式***:Track.Curve 指令應當被如何理解。 默認值係 0 (忽略符號)
+{{% /command-arguments %}}
+
+▸ *模式* 嘅選項:
+
+{{% command-arguments %}}
+**0**: 忽略符號: Track.Curve 中 *cantinmillimeters* 參數係冇符號嘅, 符號會被忽略, 軌道總是會向彎道中心傾斜嚟提供彎道嚮心力。 軌道唔會喺直路段斜。
+**1**: 保留符號: Track.Curve 中 *cantinmillimeters* 參數是有符號嘅, 正值會使軌道向彎道中心傾斜, 負值會使軌道向彎道外側傾斜。 軌道會喺直路段斜, 正值使軌道右傾, 負值使軌道左傾。
 {{% /command-arguments %}}
 
 ---
