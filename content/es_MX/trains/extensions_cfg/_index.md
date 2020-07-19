@@ -131,6 +131,19 @@ With this setting, you can enable or disable loading sway for a specific car in 
 
 ------
 
+{{% command %}}  
+**VisibleFromInterior** = *Value*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Value***: Either **True** or **False** to indicate whether this remains visible from an interior view of the driver car.
+{{% /command-arguments %}}
+
+With this setting, you can control which cars remain visible from the cab, for example if your cab is not in the front car of the train.
+*Note:* This does not apply to the current driver car.
+
+------
+
 {{% code "*Example of a Cari section:*" %}}  
 [Car0]  
 Object = locomotive.b3d  

@@ -126,6 +126,19 @@ Dengan pengaturan ini, kereta bisa diatur apakah akan bergoyang saat naik turun 
 
 ------
 
+{{% command %}}  
+**VisibleFromInterior** = *Value*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Value***: Either **True** or **False** to indicate whether this remains visible from an interior view of the driver car.
+{{% /command-arguments %}}
+
+With this setting, you can control which cars remain visible from the cab, for example if your cab is not in the front car of the train.
+*Note:* This does not apply to the current driver car.
+
+------
+
 {{% code "*Example of a Cari section:*" %}}  
 [Car0]  
 Object = locomotive.b3d  
@@ -134,9 +147,9 @@ Axles = -6, 6
 Reversed = False  
 {{% /code %}}
 
-## <a name="coupler"></a>■ 4. Bagian Coupler*i* 
+## <a name="coupler"></a>■ 4. The Coupler*i* section
 
-Bagian Coupler*i* menentukan info sambungan kereta di posisi yang ditentukan.
+The Coupler*i* section allows to define properties specific to a certain coupler.
 
 ------
 
@@ -153,8 +166,8 @@ This starts the section for coupler *i*, which is an integer between 0 and *n*-2
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Minimum***: Jarak minimum antar gerbong.  
-***Maximum***: Jarak maksimum antar gerbong. 
+***Minimum***: A floating-point number indicating the minimum allowed distance between the cars.  
+***Maximum***: A floating-point number indicating the maximum allowed distance between the cars.  
 {{% /command-arguments %}}
 
 This key-value pair defines the lowest and highest allowed distances between the cars, resembling a buffer and chain coupler. The condition *Minimum* ≤ *Maximum* must hold.
@@ -166,7 +179,7 @@ This key-value pair defines the lowest and highest allowed distances between the
 Distances = 0.30, 0.35  
 {{% /code %}}
 
-## <a name="exterior"></a>■ 5. Bagian Exterior (Sudah tidak dipakai)
+## <a name="exterior"></a>■ 5. The Exterior section (outdated)
 
 The Exterior section provides an easy way of adding exterior objects to the particular train. For more control on the setting of axle positions and individual car lengths, the Car*i* section has been introduced and should be used instead.
 
@@ -176,7 +189,7 @@ The Exterior section provides an easy way of adding exterior objects to the part
 **[Exterior]**  
 {{% /command %}}
 
-Perintah ini memulai bagian exterior
+This starts the Exterior section.
 
 ------
 
