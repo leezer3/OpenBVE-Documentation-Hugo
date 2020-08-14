@@ -144,7 +144,7 @@ Cube命令相当于一系列的AddVertex和AddFace命令，会影响顶点索引
 <a name="cylinder"></a>
 
 {{% command %}} 
-**Cylinder** , *n* , *上底半径* , *下底半径* , *高 * 
+**Cylinder** , *n* , *上底半径* , *下底半径* , *高* 
 {{% /command %}} 
 
 {{% command-arguments %}} 
