@@ -179,14 +179,14 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 <a name="translate"></a>
 
 {{% command %}} 
-**Translate** , *X* , *Y* , *Z* 
+**Translate** , *X* , *Y* , *Z*   
 **TranslateAll** , *X* , *Y* , *Z* 
 {{% /command %}} 
 
 {{% command-arguments %}} 
-***X*** ：一个表示顶点在x轴上移动距离的浮点数，以 **米** 为单位。负值向左平移，正值向右平移。默认值为0。 
-***Y*** ：一个表示顶点在y轴上移动距离的浮点数，以 **米** 为单位。负值向下平移，正值向上平移。默认值为0。 
-***Z*** ：一个表示顶点在z轴上移动距离的浮点数，以 **米** 为单位。负值向后平移，正值向前平移。默认值为0。 
+***X*** ：一个表示顶点在x轴上移动距离的浮点数，以 **米** 为单位。负值向左平移，正值向右平移。默认值为0。   
+***Y*** ：一个表示顶点在y轴上移动距离的浮点数，以 **米** 为单位。负值向下平移，正值向上平移。默认值为0。   
+***Z*** ：一个表示顶点在z轴上移动距离的浮点数，以 **米** 为单位。负值向后平移，正值向前平移。默认值为0。   
 {{% /command-arguments %}} 
 
 **Translate** 命令将移动从CreateMeshBuilder到Translate之间创建的所有顶点，且后续顶点不受影响。您可以在CreateMeshBuilder部分中根据需要使用不限数量的Translate命令。 **TranslateAll** 不仅影响当前CreateMeshBuilder部分中创建的顶点，还会影响到之前所有CreateMeshBuilder部分中创建的顶点，这对于在文件末尾插入来平移整个物件很有用。
