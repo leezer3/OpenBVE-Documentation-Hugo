@@ -213,8 +213,8 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 <a name="rotate"></a>
 
 {{% command %}} 
-**Rotate** , *X* , *Y* , *Z* , *角度 * 
-**RotateAll** , *X* , *Y* , *Z* , *角度 * 
+**Rotate** , *X* , *Y* , *Z* , *角度*   
+**RotateAll** , *X* , *Y* , *Z* , *角度* 
 {{% /command %}}
 
 {{% command-arguments %}} 
