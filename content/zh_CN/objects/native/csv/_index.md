@@ -269,7 +269,7 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 ***Z*** ：决定z轴是否被镜像。默认值为0（否）。 
 {{% /command-arguments %}} 
 
-**Mirror** 命令将镜像从CreateMeshBuilder到Mirror之间创建的所有顶点，且后续顶点不受影响。 镜像的方向通过 *X * ， *Y * 和 *Z * 值指定。您可以在CreateMeshBuilder部分中根据需要使用任意数量的Mirror命令。
+**Mirror** 命令将镜像从CreateMeshBuilder到Mirror之间创建的所有顶点，且后续顶点不受影响。 镜像的方向通过 *X* ， *Y* 和 *Z* 值指定。您可以在CreateMeshBuilder部分中根据需要使用任意数量的Mirror命令。
 
  **MirrorAll** 不仅影响当前CreateMeshBuilder部分中创建的顶点，还会影响到之前所有CreateMeshBuilder部分中创建的顶点，这对于在文件末尾插入来镜像整个物件很有用。 
 
