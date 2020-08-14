@@ -320,14 +320,14 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 ***光衰减模式*** ：将要使用的光衰减模式，默认为四次倒数。 
 {{% /command-arguments %}} 
 
-▸ *混色模式 * 命令中的可用选项： 
+▸ *混色模式* 命令中的可用选项： 
 
 {{% command-arguments %}}
 **Normal（正常）** ：正常渲染物体。 
 **Additive（叠加）** ：叠加渲染物体。 
 {{% /command-arguments %}}
 
-▸ *光衰减模式 * 命令中的可用选项：
+▸ *光衰减模式* 命令中的可用选项：
 
 **DivideExponent2（平方倒数）** ：光的强度通过函数 *x* <sup>2</sup> / ( *x* <sup>2</sup> + *发光半距离* <sup>2</sup>) 来决定，其中 *x* 是视点到物体的距离，以米为单位。 
 **DivideExponent4（四次倒数）** ：光的强度通过函数 *x* <sup>4</sup> / ( *x* <sup>4</sup> + *发光半距离* <sup>4</sup>) 来决定，其中 *x* 是视点到物体的距离，以米为单位。 
