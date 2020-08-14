@@ -223,7 +223,7 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 ***Z*** ：旋转轴的Z方向。负值指向后方，正值指向前方。默认值为0。 
 {{% /command-arguments %}}
 
-**Rotate** 命令将旋转从CreateMeshBuilder到Rotate之间创建的所有顶点，且后续顶点不受影响。旋转轴通过 *X * ， *Y * 和 *Z * 值指定。旋转将发生在垂直于该轴的平面中。该轴的零向量被视为（1,0,0），所有其他方向都被折算成单位向量。
+**Rotate** 命令将旋转从CreateMeshBuilder到Rotate之间创建的所有顶点，且后续顶点不受影响。旋转轴通过 *X* ， *Y* 和 *Z* 值指定。旋转将发生在垂直于该轴的平面中。该轴的零向量被视为（1,0,0），所有其他方向都被折算成单位向量。
 
 您可以在CreateMeshBuilder部分中根据需要使用尽可能多的Rotate命令。 **RotateAll** 不仅影响当前CreateMeshBuilder部分中创建的顶点，还会影响到之前所有CreateMeshBuilder部分中创建的顶点，这对于在文件末尾插入来旋转整个物件很有用。 
 
@@ -234,7 +234,7 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 <a name="shear"></a>
 
 {{% command %}} 
-**Shear** , *dX* , *dY* , *dZ* , *sX* , *sY* , *sZ* , *r* 
+**Shear** , *dX* , *dY* , *dZ* , *sX* , *sY* , *sZ* , *r*   
 **ShearAll** , *dX* , *dY* , *dZ* , *sX* , *sY* , *sZ* , *r* 
 {{% /command %}} 
 
