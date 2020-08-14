@@ -259,7 +259,7 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 <a name="mirror"></a>
 
 {{% command %}} 
-**Mirror** , *X* , *Y* , *Z* 
+**Mirror** , *X* , *Y* , *Z*   
 **MirrorAll** , *X* , *Y* , *Z* 
 {{% /command %}} 
 
