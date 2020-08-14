@@ -264,8 +264,8 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 {{% /command %}} 
 
 {{% command-arguments %}} 
-***X*** ：决定x轴是否被镜像。默认值为0（否）。 
-***Y*** ：决定y轴是否被镜像。默认值为0（否）。 
+***X*** ：决定x轴是否被镜像。默认值为0（否）。   
+***Y*** ：决定y轴是否被镜像。默认值为0（否）。   
 ***Z*** ：决定z轴是否被镜像。默认值为0（否）。 
 {{% /command-arguments %}} 
 
