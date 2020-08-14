@@ -120,7 +120,7 @@ weight: 2
 <a name="cube"></a>
 
 {{% command %}} 
-**Cube** , *半宽* , *半高* , *半深 * 
+**Cube** , *半宽* , *半高* , *半深* 
 {{% /command %}} 
 
 {{% command-arguments %}} 
