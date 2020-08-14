@@ -351,7 +351,7 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 {{% /command %}} 
 
 {{% command-arguments %}} 
-***日间材质*** ：将要加载的日间材质的文件路径，相对于CSV文件所在目录。 
+***日间材质*** ：将要加载的日间材质的文件路径，相对于CSV文件所在目录。   
 ***夜间材质*** ：将要加载的夜间材质的文件路径，相对于CSV文件所在目录。 
 {{% /command-arguments %}} 
 
