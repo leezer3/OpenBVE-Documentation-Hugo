@@ -245,7 +245,7 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 ***sX*** ：向量S的x坐标，默认为0。 
 ***sY*** ：向量S的y坐标，默认为0。 
 ***sZ*** ：向量S的z坐标，默认为0。 
-***r*** ：表示取代载体的比例。默认为0。 
+***r*** ：表示矢量移位的比例。默认为0。 
 {{% /command-arguments %}} 
 
 **Shear** 命令为当前CreateMeshBuilder部分中到目前为止创建的所有顶点执行[剪切映射](http://en.wikipedia.org/wiki/Shear_mapping)。 **ShearAll** 不仅影响当前CreateMeshBuilder部分中创建的顶点，还会影响到之前所有CreateMeshBuilder部分中创建的顶点，这对于在文件末尾插入来剪切整个物件很有用。 
