@@ -196,7 +196,7 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 <a name="scale"></a>
 
 {{% command %}} 
-**Scale** , *X* , *Y* , *Z* 
+**Scale** , *X* , *Y* , *Z*   
 **ScaleAll** , *X* , *Y* , *Z* 
 {{% /command %}} 
 
