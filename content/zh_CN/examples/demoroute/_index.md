@@ -1,55 +1,55 @@
 ---
-title: "Demonstration route"
-linktitle: "Demonstration route"
+title: "示范路线"
+linktitle: "示范路线"
 weight: 1
 ---
 
-## ■ Overview
+## ■概述
 
 
-The **Animated Object Demonstration Route** is a minimalistic route intended to demonstrate the CSV and RW route formats, and, most importantly, the use of animated objects.
+**动画物件演示路线**是一条简单路线，旨在演示CSV和RW路线格式，以及特别是演示动画物件的使用。
 
-What this route is:
+这条路线是：
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | An example to show developers how to create a CSV or RW route |
+| <font color="Green">✓</font> | 向开发人员展示如何创建CSV或RW路线的示例 |
 | ---------------------------- | ------------------------------------------------------------- |
-| <font color="Green">✓</font> | An example to show developers how to create animated objects  |
-| <font color="Green">✓</font> | A way for users to be inspired by the feeling of a non-static environment  |
+| <font color="Green">✓</font> | 向开发人员展示如何创建动画物件的示例  |
+| <font color="Green">✓</font> | 一种让用户体会到不再静态的环境之美感的方法  |
 
 {{% /table-nonheader %}}
 
-What this route is not:
+这条路线不是：
 
 {{% table-nonheader %}}
 
-| <font color="Red">✗</font>  | A serious openBVE add-on - just something for developers to study |
+| <font color="Red">✗</font>  | 一个严肃精良的openBVE路线 - 只是个让开发者学习的东西 |
 | --------------------------- | ------------------------------------------------------------- |
-| <font color="Red">✗</font>  | A rendition of any real route.  |
-| <font color="Red">✗</font>  | A high quality example of a route  |
+| <font color="Red">✗</font>  | 任何真实路线的重现。  |
+| <font color="Red">✗</font>  | 路线的高质量示例  |
 
 {{% /table-nonheader %}}
 
-Key features of this route:
+这条路线的主要特点：
 
-* Animated destination indicators and analog clock at a station.
-* Animated semaphore and blinking light signals.
-* Animated crossing gate and moving cars.
-* Animated escalator and flying airplane.
+* 车站里有会动的目的地指示器和指针式时钟。
+* 动画信号灯和闪烁的灯光信号。
+* 有动画的平交道口和汽车。
+* 有动画的自动扶梯和会飞的飞机。
 
-## ■ Download
+## ■ 下载
 
-This route may be downloaded in openBVE package format here:
+本路线可在此处下载，它是个openBVE扩展包格式文件：
 
 <http://openbve-project.net/files/DemoRoute1.zip>
 
-## ■ Using the route
+## ■ 游玩此路线
 
-Select a train of your choice.
+按你的喜好配用列车。
 
-The default train suggested by this route is the **113-1000atccab**, which may be downloaded from the following page:
+本路线建议及默认的列车是 **113-1000atccab** ，可在此处下载：
 
 <http://bve.jpn.org/jr113.html>
 
-The built-in safety systems ATS and ATC are used on this route, which are explained in the <a href="https://openbve-project.net/play-japanese/">How to drive - A quick overview on controls, ATS/ATC, signals and signs</a> guide.
+路线使用了内置的 ATS 和 ATC 信号系统，其使用方法在 <a href="https://openbve-project.net/play-japanese/"> 此教程中 </a> 有解释。
