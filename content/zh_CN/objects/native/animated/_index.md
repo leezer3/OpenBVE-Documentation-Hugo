@@ -320,24 +320,24 @@ ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他
 | :------- | ------------------- | ----------------------------------------------- |
 | `a == b` | `Equal[a,b]`        | 如果 *a* 等于 *b* 则为真（1）                      |
 | `a != b` | `Unequal[a,b]`      | 如果 *a* 不等于 *b* 则为真（1）              |
-| `a < b`  | `Less[a,b]`         | True (1) if *a* is less than *b*                |
-| `a > b`  | `Greater[a,b]`      | True (1) if *a* is greater than *b*             |
-| `a <= b` | `LessEqual[a,b]`    | True (1) if *a* is less than or equal to *b*    |
-| `a >= b` | `GreaterEqual[a,b]` | True (1) if *a* is greater than or equal to *b* |
+| `a < b`  | `Less[a,b]`         | 如果* a *小于* b *为真（1）                |
+| `a > b`  | `Greater[a,b]`      | 如果* a *大于* b *为真（1）             |
+| `a <= b` | `LessEqual[a,b]`    | 如果* a *小于或等于* b *，则为真（1）    |
+| `a >= b` | `GreaterEqual[a,b]` | 如果* a *大于或等于* b *，则为真（1） |
 
 {{% /table %}}
 
-##### ● Logical operations
+##### ●逻辑运算
 
-All operations treat 0 as false and any other value as true, and return 1 for true and 0 for false.
+所有操作将0视为false，将其他任何值视为true，然后返回1表示true，0表示false。
 
 {{% table %}}
 
-| Infix          | Functional | Description                            |
+| 中缀          | 功能 | 描述                            |
 | :------------- | ---------- | -------------------------------------- |
-| `!a`           | `Not[a]`   | True (1) if *a* is false               |
-| `a & b`        | `And[a,b]` | True (1) if both *a* and *b* are true  |
-| `a` &#124; `b` | `Or[a,b]`  | True (1) if any of *a* or *b* are true |
+| `!a`           | `Not[a]`   | 如果 *a* 为假，则为真（1）               |
+| `a & b`        | `And[a,b]` | 如果 *a* 和 *b* 均为真，则为真（1）  |
+| `a` &#124; `b` | `Or[a,b]`  | 如果 *a* 或 *b* 中的任何一个为真，则为真（1） |
 | `a ^ b`        | `Xor[a,b]` | True (1) if either *a* or *b* is true  |
 
 {{% /table %}}
@@ -490,6 +490,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `nextStation`                 | The index of the next station. |
 | `nextStationStop`             | The index of the next station where the train must stop. |
 | `terminalStation`             | The index of the terminal station for this train. |
+| `timeTable`                   | Returns 1 if the timetable is currently set as visible, 0 otherwise. |
 
 {{% /table-2col %}}
 

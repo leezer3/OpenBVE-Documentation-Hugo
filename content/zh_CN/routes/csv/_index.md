@@ -1135,7 +1135,7 @@ With Track
 ---
 
 {{% command %}}  
-__Signal(__*信号机编号*__)__<font color="gray">.Load</font> *ANIMATED动画模型文件*  
+__Signal(__ *信号机编号* __)__<font color="gray">.Load</font> *ANIMATED动画模型文件*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1148,7 +1148,7 @@ __Signal(__*信号机编号*__)__<font color="gray">.Load</font> *ANIMATED动画
 ---
 
 {{% command %}}  
-__Signal(__*信号机编号*__)__<font color="gray">.Load</font> *不带扩展名的基座模型文件*; *不带扩展名的发光模型文件*  
+__Signal(__ *信号机编号* __)__<font color="gray">.Load</font> *不带扩展名的基座模型文件*; *不带扩展名的发光模型文件*  
 {{% /command %}}
 
 {{% command-arguments %}}  

@@ -1,6 +1,6 @@
 ---
-title: "Track Following Object"
-linktitle: "Track Following Object"
+title: "軌道跟隨物件 (TFO)"
+linktitle: "軌道跟隨物件"
 weight: 5
 ---
 
@@ -177,10 +177,10 @@ If this attribute is set to **true**  then the consist of the train will be reve
 
 **Value** sets the open door of the object. The valid values are:
 
-- **L** or **-1**: The left door opens.
-- **N** or **0**: Neither door opens.
-- **R** or **1**: The right door opens.
-- **B**: Both doors open.
+- **L** 或 **-1**: 左邊車門打開
+- **N** 或 **0**: 車門唔會打開
+- **R** 或 **1**: 右邊車門打開
+- **B**: 兩邊車門都會打開
 
 ------
 
@@ -214,8 +214,8 @@ If this attribute is set to **true**  then the consist of the train will be reve
 
 **Value** sets the direction of travel of the object. Valid values are as follows.
 
-- **F** or **1** : The object will move forward.
-- **R** or **-1** : The object goes backward.
+- **F** 或 **1**: 物件會向前移動
+- **R** 或 **-1**: 物件會向後移動
 
 ------
 

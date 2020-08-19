@@ -3,9 +3,9 @@ title: "列車插件應用程式介面(IRuntime)"
 hidden: true
 ---
 
-This is the documentation for train plugins. In order to create a train plugin, implement the IRuntime interface from the OpenBveApi.Runtime namespace. In the following, you will find a description of how this interface works.
+這是火車插件的文檔。 為了創建火車插件，請從OpenBveApi.Runtime命名空間實現IRuntime接口。 在下面，您將找到有關此界面如何工作的描述。
 
-## ■ Contents
+## 目錄
 
 {{% contents %}}
 
@@ -16,7 +16,7 @@ This is the documentation for train plugins. In order to create a train plugin, 
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ Overview
+## <a name="overview"></a>■ 總概
 
 The following functions are called in this order when the plugin is loaded:
 
