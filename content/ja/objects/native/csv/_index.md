@@ -374,6 +374,29 @@ This command sets the color used for screendoor transparency for all faces that 
 
 ------
 
+<a name="enablecrossfading"></a>
+
+{{% command %}}  
+**EnableCrossfading**, *value* 
+{{% /command %}}
+
+{{% command-arguments %}}  
+**value**: Either true to enable cross-fading, or false (default) to disable.
+{{% /command-arguments %}}
+
+This command controls the blending mode when both a daytime and a nighttime texture are specified.
+
+When this is set to **false** the behavior is as follows:
+1. The daytime texture is drawn.
+2. The opacity level for the nighttime texture is calculated from the __Track.Brightness__ value, where a value of **255** produces a fully opaque texture, and a value of **0** produces a fully transparent texture.
+3. The nighttime texture is drawn.
+
+When this is set to **true** the behaviour is as follows:
+
+The opacity level for each texture is blended proportionately, so that for example, a __Track.Brightness__ value of **128** would produce an (approximately) 50% blend of each texture and so-on.
+
+------
+
 <a name="settexturecoordinates"></a>
 
 {{% command %}}  

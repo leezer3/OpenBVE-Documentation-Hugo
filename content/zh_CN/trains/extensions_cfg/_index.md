@@ -1,24 +1,24 @@
 ---
-title: "The **extensions.cfg** file format"
-linktitle: "The extensions.cfg file"
+title: "**extensions.cfg** 文件格式"
+linktitle: "extensions.cfg 文件"
 weight: 3
 ---
 
-## ■ Contents
+## ■ 目录
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. The Car*i* section](#car)
-- [4. The Coupler*i* section](#coupler)
-- [5. The Exterior section (outdated)](#exterior)
+- [1. 概述](#overview)
+- [2. 语法](#syntax)
+- [3. Car*i* 部分](#car)
+- [4. Coupler*i* 部分](#coupler)
+- [5. Exterior 部分（过时的）](#exterior)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概述
 
-The extensions.cfg file allows to define properties for individual cars, like length, axle positions and exterior objects.
+extensions.cfg 文件允许为每节车厢设置独立特性。比如车长、车轴位置和外观。
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file is required to be located inside the train folder and is expected to be named **extensions.cfg**. The file is interpreted on a per-line basis, from top to bottom.
 

@@ -171,33 +171,33 @@ Esto defina la mínima cantidad de tiempo que necesita transcurrir para que la f
 
 ------
 
-##### ● The [Sound] section
+##### ● La sección [Sound] 
 
-You can use the [Sound] section to add standalone sound effects to animated objects.
+Puedes usar la sección [Sound] para agregar efectos de sonidos independientes a objetos animados.
 
 {{% command %}}  
 [Sound]  
 {{% /command %}}  
-This starts the section.
+Esto inicia la sección
 
 {{% command %}}  
 **FileName = File**
 {{% /command %}}  
-This loads the sound effect to play.
+Esto añade el efecto de sonido a ser reproducido.
 
 {{% command %}}  
-**Position = X, Y, Z**  
+**Posición = X, Y, Z**  
 {{% /command %}}  
-Defines the position of the sound, relative to the center of the animated file.
+Esto define la posición del sonido, relativo al centro del archivo animated.
 
 {{% command %}}  
-**Volume = Value**  
+**Volume = Valor**  
 {{% /command %}}  
 
-This defines the initial volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
+Esto define el volumen inicial del sonido a la posición de origen. A valor de **1.0** representa el volumen nominal sin cambio del archivo de sonido.
 
 {{% command %}}  
-**Pitch = Value**  
+**Pitch = Valor**  
 {{% /command %}}  
 
 This defines the initial pitch of the sound at the source position. A value of **1.0** represents the nominal unchanged pitch of the sound file.
@@ -251,7 +251,7 @@ If a state is to have no sound effect, the list entry should be left blank.
 Defines the position of the sound, relative to the center of the animated file.
 
 {{% command %}}  
-**Volume = Value**  
+**Volume = Valor**  
 {{% /command %}}  
 
 This defines the volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
@@ -357,7 +357,7 @@ All operations treat 0 as false and any other value as true, and return 1 for tr
 | Infix          | Functional | Description                            |
 | :------------- | ---------- | -------------------------------------- |
 | `!a`           | `Not[a]`   | True (1) if *a* is false               |
-| `a & b`        | `And[a,b]` | True (1) if both *a* and *b* are true  |
+| `a & b`        | `And[a,b]` | Verdadero (1) si ambos *a* y *b* son verdad  |
 | `a` &#124; `b` | `Or[a,b]`  | True (1) if any of *a* or *b* are true |
 | `a ^ b`        | `Xor[a,b]` | True (1) if either *a* or *b* is true  |
 
@@ -378,7 +378,7 @@ From highest precedence to lowest. Operators of same precedence are evaluated ei
 | `+`, `-` (Subtract)              | left-to-right | 1 + 2 + 3       | ((1 + 2) + 3)   |
 | `==`, `!=`, `<`, `>`, `<=`, `>=` | left-to-right | 1 <= 2 <= 3     | ((1 <= 2) <= 3) |
 | `!`                              | unary         | &nbsp;          | &nbsp;          |
-| `&`                              | right-to-left | 1 & 2 & 3       | (1 & (2 & 3))   |
+| `&`                              | derecha-a-izquierda | 1 & 2 & 3       | (1 & (2 & 3))   |
 | `^`                              | right-to-left | 1 ^ 2 ^ 3       | (1 ^ (2 ^ 3))   |
 | &#124;                           | right-to-left | 1 &#124; 2 &#124; 3       | (1 &#124; (2 &#124; 3))   |
 
@@ -434,7 +434,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | ----------- | ------------------------------------------------------------ |
 | `Exp[x]`    | The exponential function, or *e* to the *x*<sup>th</sup> power. |
 | `Log[x]`    | The natural logarithm, to base *e*.                          |
-| `Sqrt[x]`   | The square root.                                             |
+| `Sqrt[x]`   | La raíz cuadrada.                                             |
 | `Sin[x]`    | The sine (input in radians).                                 |
 | `Cos[x]`    | The cosine (input in radians).                               |
 | `Tan[x]`    | The tangent (input in radians).                              |
@@ -452,7 +452,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% /table-2col %}}
 
-## <a name="variables"></a>■ 5. List of variables
+## <a name="variables"></a>■ 5. Lista de variables
 
 ##### ● Primitives
 
@@ -461,7 +461,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | Variable       | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
 | `value`        | The value returned by the function in the last evaluation. At the beginning of the simulation, this is 0. |
-| `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
+| `delta`        | La diferencia de tiempo desde la última evaluación de la función en segundos. Por favor ten en cuenta que no hay tiempo garantizado desde que transcurre entre los llamados de función sucesivos. |
 | `currentState` | Returns the current numerical state of the object.           |
 
 {{% /table-2col %}}
@@ -482,7 +482,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 Generally, objects attached to a particular train and car return values for that train and car, unless stated otherwise. For scenery objects, the reference is the driver's car of the nearest train (not necessarily the player's train).
 
-In some of the following variables, *carIndex* has the following meaning: 0 is the 1<sup>st</sup> car from the front, 1 is the 2<sup>nd</sup> car from the front, etc., while -1 is the 1<sup>st</sup> car from the rear, -2 is the 2<sup>nd</sup> car from the rear, etc. In general, car indices from -*cars* to *cars*-1 represent existing cars, where *cars* is the number of cars the train has, while values outside of this range represent non-existing cars. As all trains have at least 1 car, indices -1 and 0 are guaranteed to exist for any train.
+En algunos casos de las siguientes variables , *carIndex* tiene el siguiente significado: 0 es el 1<sup>er</sup> carro  del frente, 1 es el 2<sup>do</sup> carro del frente, etc., mientras que -1 es el 1<sup>er</sup> carro desde la parte posterior, -2 es el 2<sup>do</sup> carro desde la parte posterior, etc. En general los indices de los carros desde -*cars* hasta *cars*-1 representan carros existentes, donde *cars* es el numero de carros que el tren posee, mientras que valores que estén fuera de este rango representan carros que no existen. Todos los trenes tienen al menos 1 carro, indices -1 y 0 están garantizados que existan para cualquier tren.
 
 ##### ● Trains (general)
 
@@ -490,7 +490,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 | Variable                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `cars`                        | The number of cars the train has.                            |
+| `cars`                        | El número de carros que el tren tiene.                            |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speed[carIndex]`             | The signed actual speed of the car *carIndex* in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speedometer`                 | The signed perceived speed of the current car in m/s as it would appear to a speedometer on wheel slip and wheel lock. |
@@ -515,7 +515,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% /table-2col %}}
 
-##### ● Trains (brake)
+##### ● Trenes (freno)
 
 {{% table-2col %}}
 
@@ -523,14 +523,14 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
-| `emergencyReservoir`           | The current pressure in the emergency reservoir in this car, measured in Pa. |
+| `emergencyReservoir`           | La presión actual de la reserva de emergencia en este carro, medido en Pa. |
 | `emergencyReservoir[carIndex]` | The current pressure in the emergency reservoir in car *carIndex*, measured in Pa. |
 | `brakePipe`                    | The current pressure in the brake pipe in this car, measured in Pa. |
 | `brakePipe[carIndex]`          | The current pressure in the brake pipe in car *carIndex*, measured in Pa. |
 | `brakeCylinder`                | The current pressure in the brake cylinder in this car, measured in Pa. |
 | `brakeCylinder[carIndex]`      | The current pressure in the brake cylinder in car *carIndex*, measured in Pa. |
 | `straightAirPipe`              | The current pressure in the straight air pipe in this car, measured in Pa. |
-| `straightAirPipe[carIndex]`    | The current pressure in the straight air pipe in car *carIndex*, measured in Pa. |
+| `straightAirPipe[carIndex]`    | La presión actual de la valvula directa de aire en el carro *carIndex*, medido en Pa. |
 
 {{% /table-2col %}}
 
@@ -560,7 +560,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                         | Description                                                  |
+| Variable                         | Descripción                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
 | `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
 | `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
@@ -598,9 +598,9 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
+| *i*  | English             | 日本語 - Japonés       | Return values                                |      | pluginState[271] | Significado           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
-| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
+| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC no disponible |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
 | 258  | ATS RUN             | ATS 作動     | 0 (unlit / non-flashing), 1 (lit / flashing) |      | 2                | 15 km/h           |
 | 259  | P POWER             | P 電源       | 0 (unlit) or 1 (lit)                         |      | 3                | 25 km/h           |
@@ -608,7 +608,7 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 | 261  | BRAKE RELEASE       | ブレーキ開放 | 0 (unlit) or 1 (lit)                         |      | 5                | 55 km/h           |
 | 262  | BRAKE APPLY         | ブレーキ動作 | 0 (unlit) or 1 (lit)                         |      | 6                | 65 km/h           |
 | 263  | ATS P               | ATS-P        | 0 (unlit) or 1 (lit)                         |      | 7                | 75 km/h           |
-| 264  | FAILURE             | 故障         | 0 (unlit) or 1 (lit)                         |      | 8                | 90 km/h           |
+| 264  | FALLA             | 故障         | 0 (unlit) or 1 (lit)                         |      | 8                | 90 km/h           |
 | 265  | ATC                 | ATC          | 0 (unlit) or 1 (lit)                         |      | 9                | 100 km/h          |
 | 266  | ATC POWER           | ATC 電源     | 0 (unlit) or 1 (lit)                         |      | 10               | 110 km/h          |
 | 267  | ATC SRV             | ATC 常用     | 0 (unlit) or 1 (lit)                         |      | 11               | 120 km/h          |

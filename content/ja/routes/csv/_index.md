@@ -776,7 +776,7 @@ theta = -y * pi/2
 phi = 0  
 {{% /function %}}
 
-In the formulas above, [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) represents the cosine, [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) the sine, [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) the inverse tangent, [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) the two-argument inverse tangent and [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) the square root. The formulas can be used to convert between spherical and cartesian coordinates if working with either one seems more intuitive than working with the other one. The formulas also serve as the official documentation on how the light direction is mathematically defined (using radians for the trigonometric functions).
+上記の数式では、 [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) はコサインを表し、 [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) は正弦、 [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) は逆正接、 [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) は2つの引数の逆正接、 [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) は平方根を表します。 どちらか一方を使用するほうが、もう一方を使用するよりも直感的に見える場合、数式を用いると、球座標とデカルト座標を変換することが出来ます。数式は、光の方向が数学的に定義される公式文書として機能します (ラジアンを三角関数として用いる場合)。
 
 ---
 
@@ -785,14 +785,14 @@ In the formulas above, [*cos(x)*](http://functions.wolfram.com/ElementaryFunctio
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: An integer defining the initial camera viewpoint mode. The following values are valid:  
-*0* : The camera will be placed in the cab. (Default)  
-*1* : The camera will be placed in 'Track Camera' mode.  
-*2* : The camera will be placed in 'Flyby Camera' mode.  
-*3* : The camera will be placed in 'Flyby Zooming Camera' mode.  
+***Value***: 初期のカメラ視点モードを定義する整数。以下の値が有効です:  
+*0* : カメラは運転台視点になります。 (デフォルト)  
+*1* : カメラは '車外カメラ' モードになります。  
+*2* : カメラは '路線カメラ' モードになります。  
+*3* : カメラは 'フライバイズームカメラ' モードになります。  
 {{% /command-arguments %}}
 
-This command allows the route developer to place the initial camera in one of the alternate camera modes.
+このコマンドを使用すると、路線作成者は初期カメラを代替のカメラモードの一つへ設定することが出来ます。
 
 ---
 
@@ -800,11 +800,11 @@ This command allows the route developer to place the initial camera in one of th
 **<font color=#555555>Route.DeveloperID</font>**  
 {{% /command %}}
 
-<font color=#555555>This command is ignored by openBVE.</font>
+<font color=#555555>このコマンドはOpenBVEによって無視されます。</font>
 
-## <a name="train"></a>■ 6. The Train namespace
+## <a name="train"></a>■ 6.  Train 名前空間
 
-Commands from this namespace define route-train associations. 
+この名前空間のコマンドは、路線と列車の関連付けを定義します。
 
 ---
 
@@ -814,7 +814,7 @@ Train.File *FolderName*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FolderName***: The folder name of the default train to use on this route.  
+***FolderName***: この路線で使用するデフォルトの車両のフォルダ名。  
 {{% /command-arguments %}}
 
 ---
@@ -825,11 +825,11 @@ Train.File *FolderName*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***RailTypeIndex***: A non-negative integer representing the rail type as defined via Structure.Rail and used via Track.RailType.  
-***RunSoundIndex***: A non-negative integer representing the train's run sound to associate to the rail type.  
+***RailTypeIndex***: Structure.Railで定義され、Track.RailTypeで使用される、レールの種類を表す非負の整数。
+***RunSoundIndex***: レールの種類に関連付ける、列車の走行音を表す非負の整数。
 {{% /command-arguments %}}
 
-The train developer provides a repertoire of different run sounds. Use this command to associate these run sounds to the rail types you use in your route. In order for the correct run sounds to be played on any of your rail types, you need to coordinate your efforts with the train developer. Please see the page about [standards]({{< ref "/information/standards/_index.md" >}}) for further information.
+列車の作成者は様々な走行音のレパートリーを提供します。 このコマンドを用いることで、それらの走行音を路線で使用するレールの種類に関連付けます。 どのレールでも正しい走行音を鳴らすには、列車の開発者と作業を調整する必要があります。詳細については [standards]({{< ref "/information/standards/_index.md" >}}) に関するページをご覧下さい。
 
 ---
 

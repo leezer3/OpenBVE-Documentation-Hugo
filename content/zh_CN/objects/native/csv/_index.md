@@ -377,18 +377,39 @@ Cylinder命令相当于一系列的AddVertex和AddFace命令，在同一CreateMe
 
 ------
 
+<a name="enablecrossfading"></a>
+
+{{% command %}}  
+**EnableCrossfading**, *value* 
+{{% /command %}}
+
+{{% command-arguments %}}  
+**value**: Either true to enable cross-fading, or false (default) to disable.
+{{% /command-arguments %}}
+
+This command controls the blending mode when both a daytime and a nighttime texture are specified.
+
+When this is set to **false** the behavior is as follows:
+1. The daytime texture is drawn.
+2. The opacity level for the nighttime texture is calculated from the __Track.Brightness__ value, where a value of **255** produces a fully opaque texture, and a value of **0** produces a fully transparent texture.
+3. The nighttime texture is drawn.
+
+When this is set to **true** the behaviour is as follows:
+
+The opacity level for each texture is blended proportionately, so that for example, a __Track.Brightness__ value of **128** would produce an (approximately) 50% blend of each texture and so-on.
+
+------
+
 <a name="settexturecoordinates"></a>
 
-{{% command %}} 
-**SetTextureCoordinates** , *顶点索引* , *水平偏移量(U)* , *垂直偏移量(V)* 
-{{% /command %}} 
+{{% command %}}  
+**SetTextureCoordinates**, *VertexIndex*, *X*, *Y*  
+{{% /command %}}
 
-{{% command-arguments %}} 
-***顶点索引*** ：这个材质坐标匹配的模型顶点。范围是0到 *n* -1， *n* 为 AddVertex指令创建的顶点数量。   
-***水平偏移量(U)*** ：这个材质坐标相对于模型左边缘的位置。一个0~1之间的数字，0代表最左边，1代表最右边。   
-***垂直偏移量(V)*** ：这个材质坐标相对于模型上边缘的位置。一个0~1之间的数字，0代表最上边，1代表最下边。 
-{{% /command-arguments %}} 
+{{% command-arguments %}}  
+***VertexIndex***: The vertex index the coordinate is referring to. Allowed values are 0 through *n*-1, where *n* is the number of AddVertex commands used.  
+***X***: The x-coordinate of the texture. Integer values correspond to the left/right edge of the texture. If only values between 0 and 1 are to be considered, 0 corresponds to the left and 1 to the right.  
+***Y***: The y-coordinate of the texture. Integer values correspond to the top/bottom edge of the texture. If only values between 0 and 1 are to be considered, 0 corresponds to the top and 1 to the bottom.  
+{{% /command-arguments %}}
 
-这条指令为 *顶点索引* 指定的顶点匹配一个材质坐标。由于这个索引是要匹配一个已经创建了的顶点的，所以这条指令要放在AddVertex指令的后面。 当 *U* 或 *V* 的值大于0小于1时，如下图所示（应该解释得很清楚了），当指定顶点上的 *U* 或 *V* 值大于1，材质横纵向无限平铺（就是无数张图片组成的一个格子状的二维平面），U值“2”对应在该平面中所有左起第二列图片的右边线，V值“5”对应在该平面中所有第五行图片的下边线，而“2,5”则对应该平面中第二列第五行的那张图片的右下角（也就是前面所述两条垂直直线的交点）。使用大于1的U和V值，您可以将材质以平铺的方式在面上重复多次地贴图。 
-
-![](https://s1.ax1x.com/2020/07/21/U5zEPx.png)
+This command associates a coordinate in the texture to the vertex specified by *VertexIndex*. The index corresponds to the order in which the vertices have been created by the AddVertex command, thus the Coordinates command needs to be stated after the corresponding AddVertex command. The *X* and *Y* values do not necessarily need to be in the range between 0 (left or top) to 1 (right or bottom), but can have any other value. It is assumed in this case that the texture is repeated on an infinite grid where integer values for *X* and *Y* correspond to the corners of the texture.

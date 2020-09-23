@@ -1,16 +1,16 @@
 ---
-title: "The **.b3d** object format"
-linktitle: "The B3D object"
+title: "**B3D** 物件格式"
+linktitle: "B3D 物件"
 weight: 1
 ---
 
-## ■ Contents
+## ■ 目录
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
-- [3. Available commands](#commands)
+- [1. 概述](#overview)
+- [2. 语法](#syntax)
+- [3. 可用指令](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
   - [Vertex](#addvertex)
   - [Face](#addface)
@@ -31,29 +31,29 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概述
 
-A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
+一个B3D文件允许使用纯文本命令来创造单个物件。该物件可以在线路或车辆中使用。文件所描述的物件可以包含任意数量的多边形。B3D格式允许在[MeshBuilder]部分中对多个多边形进行分组，并将颜色或纹理信息等属性分配给在每个部分中创建的多边形。这允许在同一个[MeshBuilder]当中创建多个多边形，这些多边形共享同一属性。多边形在这里称为面。 
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.b3d**. The file is interpreted on a per-line basis, from top to bottom.
+该文件是以任意[编码]({{< ref "/information/encodings/_index.md" >}})编码的纯文本文件，但是，带字节顺序标记的UTF-8是更好的选择。数字的[解析方式]({{< ref "/information/numberformats/_index.md" >}}) 是 **宽松的** ，尽管如此，编写时建议您必须写一些 *严格正确的* 数字。文件名是任意的，但必须有扩展名 **.b3d** 。该文件将从上到下逐行进行解析。
 
-➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
+→ [另请参阅B3D格式的快速参考...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 语法
 
-Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
+文件中的每一行都分为命令名称及其参数。所有命令的语法都是相同的： 
 
-{{% command %}}
-**NameOfTheCommand** *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*
-{{% /command %}}
+{{% command %}} 
+**命令名称** , *参数<sub>1</sub>* , *参数<sub>2</sub>* , *参数<sub>3</sub>* ，...， *参数<sub>n</sub>* 
+{{% /command %}} 
 
-*NameOfTheCommand* is case-insensitive. If there are arguments, *NameOfTheCommand* and *Argument1* are separated by at least one space space (U+0020). Arguments are separated by a comma (U+002C). [White spaces]({{< ref "/information/whitespaces/_index.md" >}}) around the arguments, and well as at the beginning and the end of the line, are ignored. Empty lines or lines solely consisting of white spaces are also ignored.
+*命令名称* 不区分大小写。如果有参数，则 *命令名称* 和 *参数1* 需使用至少一个空格（U+0020）来分隔。参数用逗号（U+002C）分隔。参数周围及行的开头与结尾的 [空格]({{< ref "/information/whitespaces/_index.md" >}}) 都会被忽略。仅由空格组成的行或空行也被忽略。
 
-Arguments may also be omitted by leaving the text at each of the *Argument<sub>i</sub>* blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands. Note however that the first argument may not be omitted if other arguments are provided.
+在 *参数<sub>i</sub>* 处留空，也可以省略该参数。在省略时会应用特定的默认值。所有默认值都在下方有列出。
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+您可以在一行的末尾添加注释。注释由分号（U+003B，英文半角）开始。所有注释在开始解析文件之前就将被自动排除。 
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. 可用指令
 
 <a name="createmeshbuilder"></a>
 
@@ -61,7 +61,7 @@ You can use comments anywhere at the end of a line. A comment is started by a se
 **[MeshBuilder]**
 {{% /command %}}
 
-This command marks the beginning of a new section of faces. It must precede any of the following commands. There might be as many [MeshBuilder] sections as desired in the object file. All subsequent commands will then relate to the last [MeshBuilder] section opened.
+这个命令标志着新一组面的开始。它必须位于以下任何命令之前。在文件中可以根据需要添加任意数量的该指令。后续的所有命令将与前一个[MeshBuilder]关联。
 
 ----------
 
@@ -71,16 +71,16 @@ This command marks the beginning of a new section of faces. It must precede any 
 **Vertex** *vX*, *vY*, *vZ*, *nX*, *nY*, *nZ*
 {{% /command %}}
 
-{{% command-arguments %}}
-***vX***: The x-coordinate for the vertex in meters. Negative values are left, positive ones right. The default value is 0.  
-***vY***: The y-coordinate for the vertex in meters. Negative values are down, positive ones up. The default value is 0.  
-***vZ***: The z-coordinate for the vertex in meters. Negative values are backward, positive ones forward. The default value is 0.  
-***nX***: The x-coordinate for the normal of this vertex. The default value is 0.  
-***nY***: The y-coordinate for the normal of this vertex. The default value is 0.  
-***nZ***: The z-coordinate for the normal of this vertex. The default value is 0.  
-{{% /command-arguments %}}
+{{% command-arguments %}} 
+***vX*** ：顶点的x坐标，以米为单位，负值向左，正值向右，默认值为0。   
+***vY*** ：顶点的y坐标，以米为单位，负值向下，正值向上，默认值为0。   
+***vZ*** ：顶点的z坐标，以米为单位，负值向后，正值向前，默认值为0。   
+***nX*** ：顶点法线的x坐标，默认值为0。   
+***nY*** ：顶点法线的y坐标，默认值为0。   
+***nZ*** ：顶点法线的z坐标，默认值为0。   
+{{% /command-arguments %}} 
 
-This command creates a new vertex which can then be used to create faces via the Face or Face2 commands. There can be as many Vertex commands as desired within a [MeshBuilder] section. However, the order of the vertices given is important for other commands. The first vertex given has index 0, and subsequent vertices have indices 1, 2, 3 and so on.
+这个命令将创建一个新顶点，然后可以将此顶点用于Face或Face2命令来创建面。在[MeshBuilder]部分中可以根据需要添加任意数量的该指令。但是，给出顶点的顺序对后续的命令很重要。给定的第一个顶点具有索引编号0，后续顶点具有索引1,2,3等等。 
 
 The normal is the direction perpendicular to the face at a particular point. If all vertices in a face have the same normal, the face will look flat. If used appropriately, you can give the illusion of a curved face by specifying different normals per vertex, but using the same normal on all vertices that share the same spatial coordinate - across multiple faces. If left all zero, the normal will be calculated automatically.
 
