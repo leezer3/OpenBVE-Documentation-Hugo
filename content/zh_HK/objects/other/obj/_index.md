@@ -1,16 +1,16 @@
 ---
-title: "The Wavefront **.obj** object format"
+title: "Wavefront **.obj** 物件格式"
 linktitle: "Wavefront (.obj)"
 weight: 4
 ---
 
 ![construction_64](/images/construction_64.png)
 
-openBVE supports a subset of the Wavefront .obj object format. 
+OpenBVE 支援一部份嘅 Wavefront .obj 物件格式
 
-The following is a non-exhaustive list of unsupported functions:
+以下係唔支援嘅功能嘅列表:
 
-- Animation
-- Lighting
-- Custom shaders
-- Reflection / luminosity
+- 動畫
+- 光暗
+- 自訂光影
+- 反射
