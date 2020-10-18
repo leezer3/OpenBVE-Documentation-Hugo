@@ -1,29 +1,31 @@
 ---
-title: "Information and tips for object creation"
-linktitle: "Information and tips"
+title: "關於物件製作的資料同提示。"
+linktitle: "參考資料同提示。"
 weight: 3
 ---
 
-This page presents information developers need to be aware of and general tips for object creation.
+本頁內容概括了開發者製作時需要了解的資料,以及物件製作的通用提示。
 
-## ■ Commands
+## ■ 指令
 
-- In Face (B3D) or AddFace (CSV) commands, vertices need to be given in order of adjacency. Complex polygons, meaning self-intersecting polygons, will lead to erratic results.
-- The current implementation of openBVE produces incorrect illumination on the back face of faces created by Face2 (B3D) or AddFace2 (CSV). This behavior might change in future versions of openBVE so that both sides are correctly illuminated.
+- 喺Face (B3D)或AddFace (CSV )指令中, 頂點必須以彼此相鄰嘅順序畀出。 複雜多邊形, 即自相交嘅多邊形, 無法被正確渲染。
+- 目前OpenBVE喺渲染由 Face2 (B3D) 或 AddFace2 (CSV)指令創建嘅雙向面嘅背面時會錯誤計算光照情況。 可能會在以後修復這問題,使兩邊的光照都能正確顯示。
 
-## ■ Geometry
+## ■ 幾何
 
-- Avoid overly complex geometry where the end results are hardly noticable. Avoid using Cube and Cylinder commands (B3D/CSV) if parts of the cube/cylinder will not be visible. Do not create cylinder caps unless they are likely to be visible.
-- To get smoothly curved objects, use custom normals with fewer faces instead of no custom normals with many faces.
+- 最終效果唔明顯嘅細節就唔好使用過於複雜嘅模型。 如果一個立方體或柱體嘅部分喺最終路線中見唔到嘅話, 建議唔好使用Cube或Cylinder指令(B3D/CSV)。 如果一個圓柱嘅頂面或底面喺最後係唔可見嘅, 就唔好畀呢個圓柱蓋上蓋。
+- 如果想要做平滑的曲面, 請在較少的面上自定義法線向量來模擬曲面效果, 而唔係用一大堆的嘅面。您應該用各種技巧嚟盡量減少Face數目, 以優化性能。
 
 ## 材質
 
-- Try to create textures that wrap around objects by using texture coordinates appropriately. This will reduce or eliminate the need to change the texture when rendering, which is expensive.
-- Use only textures which are of power-of-two size, e.g. whose sides are of length 1, 2, 4, 8, 16, 32, etc. Textures do not need to be square, though.
+- 請盡量將物件嘅各面都放到一張材質圖上, 然後用Texture Coordinate嚟將相應部分貼到相應表面上。 如果用好多圖, 渲染時就需要反覆加載材質, 造成lag情況。
+- 調較材質大小, 令其邊長像素值為2嘅整數次冪。 如 1, 2, 4, 8, 16, 32, 諸如此類。 不過材質只需要每邊嘅邊長都係一個成次冪即可, 並不需要係方嘅。 如果您嘅材質唔符合這要求, OpenBVE 加載路線時就要重新縮放材質, 令加載變慢。
 
 ## ■ 透明
 
-- For best visual quality, every transparency has its overhead. Avoid using transparency at all if there are alternatives of similar implementational and geometric complexity.
-- Use color-key transparency whenever possible. Avoid using alpha channels in textures or using Color (B3D) or SetColor (CSV) commands with an alpha setting at all costs.
-- When it is necessary to use alpha, bear in mind that depth sorting will be used to determine the rendering order. There is no perfect real-time depth sorting algorithm, thus artifacts cannot be completely avoided.
-- When using alpha, keep polygons parallel to each other, which will always render correctly. The worst case scenario is perpendicular faces. When such faces overlap on-screen, the rendering order might be erratic. Use perpendicular alpha faces only if they are unlikely to overlap on-screen.
+- 為咗獲得最佳嘅視覺效果, 渲染透明表面使用都唔細。 只要能透過類似嘅、唔太複雜嘅幾何建模嚟替代, 就盡量唔好使用透明面。
+
+- 如果要使用透明面, 就使用TransparentColor。 避免使用帶有Alpha透明的材質, 避免使用帶Alpha參數的Color (B3D) 或 SetColor (CSV) 創建半透明面。
+
+- 如果一定用到Alpha透明, 請記住有一種叫做深度排序算法嘅嘢用嚟決定面嘅渲染順序。 目前圖形學領域未有開發出完美嘅實時深度排序算法, 因此只要用咗Alpha透明, 就無法完全避免渲染錯誤。
+- 使用Alpha透明時, 盡量保持多邊形彼此平行, 咁樣就將始終正確咁渲染。 最弊嘅情況係Alpha透明面互相垂直。 當呢啲面喺屏幕上重疊時, 就好可能出現渲染錯誤。 所以請只喺它們唔太可能在屏幕上重疊時先使用Alpha透明面。
