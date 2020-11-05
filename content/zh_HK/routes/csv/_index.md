@@ -33,22 +33,22 @@ weight: 1
 
 ## <a name="overview"></a>■ 1. 縂概
 
-一個CSV格式嘅路線可以由文本檔案建立成路線。
+一個CSV格式的路線可以由文本檔案建立成路線。
 
-呢個檔案係純文本，並且可以用任意[字符編碼]（{{< ref "/information/encodings/_index.md" >}}），但係，我哋推薦作者用UTF-8編碼格式。解析數字數據時，使用[解析方法]（{{< ref "/information/numberformats/_index.md" >}}）係非常**寬鬆**嘅（特別指出嘅地方除外），我哋推薦呢個文件一般嚟講可以放喺 *LegacyContent* 文件夾（或一個內部包含* Railway *同* Train *目錄嘅文件夾）下嘅任何地方。文件名可以隨意，但擴展名(file extension)一定要係**.csv **。路線文件被從頭到尾逐行解析，每行被分割並被從左到右解析。
+這個檔案為純文本，並可以用任意[字符編碼]（{{< ref "/information/encodings/_index.md" >}}），但我們推薦作者用UTF-8編碼格式。解析數字數據時，使用[解析方法]（{{< ref "/information/numberformats/_index.md" >}}）是非常**寬鬆**的（特別指出的地方除外），我們推薦這個文件一般來說可以放在 *LegacyContent* 文件夾（或一個內部包含* Railway *同* Train *目錄的文件夾）下的任何地方。文件名可以隨意，但擴展名(file extension)一定要為 **.csv **。路線文件被從頭到尾逐行解析，每行被分割並被從左到右解析。
 
-路線文件包括一系列指令, 用黎導入線路中用到的模型(Structure)結構命名空間 * 有 D 唔嚴謹地說, 在 csv 路線中同 "章節" "部分" 差不多。 ), 線路的屬性信息 (說明線路使用默認既列車同背景等信息), 文件的其餘部分係 track (軌道) 命名空間 (唔係好嚴謹咁講, 意思和段落差不多) 係一部分中, 主軌道位置 (一般以米為單位) 被用來描述軌道喺邊度轉彎, 車站嘅位置喺邊, 牆壁應當喺邊度開始、邊收檔, 以此類推。 講得明少少, track (軌道) 命名空間的指令是要放在最後嘅。
+路線文件包括一系列指令, 用來導入線路中用到的模型(Structure)結構命名空間 * 有 D 不嚴謹地說, 在 csv 路線中同 "章節" "部分" 差不多。 ), 線路的屬性信息 (說明線路使用默認既列車同背景等信息), 文件的其餘部分係 track (軌道) 命名空間 (不係好嚴謹咁講, 意思和段落差不多) 係一部分中, 主軌道位置 (一般以米為單位) 被用來描述軌道在邊度轉彎, 車站的位置在邊, 牆壁應當在邊度開始、邊收檔, 以此類推。 講得明少少, track (軌道) 命名空間的指令是要放在最後的。
 
-呢個格式默認咗一條遊戲默認的主軌道 (0号軌道), 唔可以指定它開始的位置, 都唔可以完佢。 遊戲中其他軌道同唔同嘅係, 佢由線路嘅開始一直延續到線路的終點, 代表住玩家駕駛嘅列車行駛的軌道。 除此之外, 遊戲中定義的其他軌道都係只供裝飾, 不能行駛嘅。 不過可以使用 [軌道循跡對象]{{< ref "/routes/xml/trackfollowingobject/_index.md" >}} 嚟俾 AI 列車喺其它軌道上行駛。
+呢個格式默認了一條遊戲默認的主軌道 (0号軌道), 不可以指定它開始的位置, 都不可以完佢。 遊戲中其他軌道同不同的係, 佢由線路的開始一直延續到線路的終點, 代表住玩家駕駛的列車行駛的軌道。 除此之外, 遊戲中定義的其他軌道都係只供裝飾, 不能行駛的。 不過可以使用 [軌道循跡對象]{{< ref "/routes/xml/trackfollowingobject/_index.md" >}} 嚟俾 AI 列車在其它軌道上行駛。
 
-可以幾何意義上咁曲同抬升默認的主軌道, 而其他軌道都系相對于主軌道定義的, 並隨主軌道曲起伏。 除非特別修改定義, 線路中每25米劃分為一個區間蚊, 特定的命令只有在區間蚊嘅邊界位置 (成25米位置) 才能發揮作用。 物體嘅放置 (尤其是在彎道上) 成日基於一個坐標係, 它的軸並不隨軌道彎曲, 而是掂掂地指向鄰近嘅下一個區間蚊。
+可以幾何意義上咁曲同抬升默認的主軌道, 而其他軌道都系相對于主軌道定義的, 並隨主軌道曲起伏。 除非特別修改定義, 線路中每25米劃分為一個區間蚊, 特定的命令只有在區間蚊的邊界位置 (成25米位置) 才能發揮作用。 物體的放置 (尤其是在彎道上) 成日基於一個坐標係, 它的軸並不隨軌道彎曲, 而是掂掂地指向鄰近的下一個區間蚊。
 
-➟ [仲可以查閱呢份 csv 格式嘅快速參考手冊。]
+➟ [仲可以查閱呢份 csv 格式的快速參考手冊。]
 ({{< ref "/routes/csv_quick/_index.md" >}})
 
 ## <a name="syntax"></a>■ 2. 句法
 
-對於線路文件中每一行, 係開頭同結尾嘅 [空格] ({{< ref "/information/whitespaces/_index.md" >}}) 會被統統忽略。 然後, 每行指令都會㩒逗號 (U+002C, 英文半角) 分割。 于是, 每行都會被看作這樣一個格式:
+對於線路文件中每一行, 係開頭同結尾的 [空格] ({{< ref "/information/whitespaces/_index.md" >}}) 會被統統忽略。 然後, 每行指令都會㩒逗號 (U+002C, 英文半角) 分割。 于是, 每行都會被看作這樣一個格式:
 
 {{% command %}}
 *表達式內容<sub>1</sub>*,* 表達式內容<sub>2</sub>*,* 表達式內容<sub>3</sub>*, ..., *表達式內容<sub>n</sub>*
@@ -58,33 +58,33 @@ weight: 1
 
 ##### ● 註釋
 
-遊戲會忽略註釋。以分號(U+003B，英文半角)開頭嘅表達式都會被視為註釋。
+遊戲會忽略註釋。以分號(U+003B，英文半角)開頭的表達式都會被視為註釋。
 
 ##### ● 軌道位置同長度
 
 {{% command %}}
 *位置* 
 {{% /command %}}
-一個非負的 [嚴格格式]({{< ref "/information/numberformats/_index.md" >}}) 浮點數，代表一個主軌道位置。隨後嘅指令都將以此位置作為基準點。
+一個非負的 [嚴格格式]({{< ref "/information/numberformats/_index.md" >}}) 浮點數，代表一個主軌道位置。隨後的指令都將以此位置作為基準點。
 
 {{% command %}}
 *部分<sub>1</sub>*:*部分<sub>2</sub>*:...:*部分<sub>n</sub>* 
 {{% /command %}}
-係一個配合 options.unitoflength 的更加複雜嘅距離指定格式, 可用于非公制計量單位。 每一個 * 部分<sub>i</sub>* 都係 [嚴格格式] ({{< ref "/information/numberformats/_index.md" >}}) 的浮點數。 * 部分<sub>1</sub>* 會比搭返 * 係數 <sub>1</sub> *, * 部分<sub>2</sub>* 搭返 * 係數 <sub>2</sub> *, 以此類推, 以此類推, 真正嘅主軌道位置係所有積的和。 呢個結果一定是非負嘅。 各部分被冒號 (U+003A, 英文半角嗰個) 分隔。 如果想了解如何設定系數, 請參見 Options.UnitOflength 節。
+係一個配合 options.unitoflength 的更加複雜的距離指定格式, 可用于非公制計量單位。 每一個 * 部分<sub>i</sub>* 都係 [嚴格格式] ({{< ref "/information/numberformats/_index.md" >}}) 的浮點數。 * 部分<sub>1</sub>* 會比搭返 * 係數 <sub>1</sub> *, * 部分<sub>2</sub>* 搭返 * 係數 <sub>2</sub> *, 以此類推, 以此類推, 真正的主軌道位置係所有積的和。 呢個結果一定是非負的。 各部分被冒號 (U+003A, 英文半角嗰個) 分隔。 如果想了解如何設定系數, 請參見 Options.UnitOflength 節。
 
-喺任何參數中使用距離的命令中，呢個冒號表示法就可以被使用，到時我哋會用<font color="green">綠色</font>標出呢種情況。
+在任何參數中使用距離的命令中，呢個冒號表示法就可以被使用，到時我哋會用<font color="green">綠色</font>標出呢種情況。
 
-當 *n* 個單位系數被使用 Options.UnitOflength 定義, 但係使用冒號表示法時輸入的部分卻少咗, 咁呢啲系數將會被嚮右匹配, 在左邊的會被忽略。 因此, 幾種表示方法係等傚嘅: *0:0:2*,*0:2*, 同 *2*.
+當 *n* 個單位系數被使用 Options.UnitOflength 定義, 但係使用冒號表示法時輸入的部分卻少了, 咁呢啲系數將會被嚮右匹配, 在左邊的會被忽略。 因此, 幾種表示方法係等傚的: *0:0:2*,*0:2*, 同 *2*.
 
 ##### ● 指令
 
-冇參數嘅指令：
+冇參數的指令：
 
 {{% command %}}
-*指令嘅名稱*
+*指令的名稱*
 {{% /command %}}
 
-含有參數嘅指令：
+含有參數的指令：
 
 {{% command %}}
 *指令名稱* *參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>* *指令名稱*(*參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>*) 
@@ -98,16 +98,16 @@ weight: 1
 
 規則：
 
-*指令名稱* 係大小寫都可以嘅。 編號和參數被分號 (U+003B, 英文半角) 隔開。 *指令名稱*、編號和參數都喺周圍嘅空格都係被忽略嘅, 括號周圍嘅空格都係被忽略的。
+*指令名稱* 係大小寫都可以的。 編號和參數被分號 (U+003B, 英文半角) 隔開。 *指令名稱*、編號和參數都在周圍的空格都係被忽略的, 括號周圍的空格都係被忽略的。
 
 如果要使用編碼, 它必須被成對括號 (U+0028, 英文半角, 鍵盤9上面嗰個) 和 (u+0029, 英文半角, 鍵盤0上面嗰個) 括起來。 在使用編碼時至少要提供一個參數和一個 *后缀*。
 
-有兩個使用參數嘅方法變種, 除了 $ 開頭嘅預處理指令 ($chr, $rnd, $sub,...) 之外, 可以按照個人喜好二選一。
-第 1 種方法: 參數被至少一個空格 (U+0020, 平時用嗰個) 和編碼、指令嘅大名與及 * 后缀 * 分開。
-第 2 種方法: 參數被成對括號 (U+0028, 英文半角喺鍵盤9上面嗰個) 和 (U+0029, 英文半角喺鍵盤0上面嗰個) 括起來。
-系第二種方法中, 當使用編碼時就必須使用 * 后缀 *。 在參數周圍嘅空格都會被忽略。
+有兩個使用參數的方法變種, 除了 $ 開頭的預處理指令 ($chr, $rnd, $sub,...) 之外, 可以按照個人喜好二選一。
+第 1 種方法: 參數被至少一個空格 (U+0020, 平時用嗰個) 和編碼、指令的大名與及 * 后缀 * 分開。
+第 2 種方法: 參數被成對括號 (U+0028, 英文半角在鍵盤9上面嗰個) 和 (U+0029, 英文半角在鍵盤0上面嗰個) 括起來。
+系第二種方法中, 當使用編碼時就必須使用 * 后缀 *。 在參數周圍的空格都會被忽略。
 
-請注意在有些指令中, 不管係用邊種表示方法, *后缀* 都係必需嘅。 在接下來的文檔中, 必需嘅 *后缀* 將被 **加粗**, 對於第一種方法加唔加均可嘅后缀將被使用<font color="gray">灰色</font>表示。
+請注意在有些指令中, 不管係用邊種表示方法, *后缀* 都係必需的。 在接下來的文檔中, 必需的 *后缀* 將被 **加粗**, 對於第一種方法加不加均可的后缀將被使用<font color="gray">灰色</font>表示。
 
 ##### **With** 語法
 
@@ -132,11 +132,11 @@ Route.Timetable 1157_M
 
 ## <a name="preprocessing"></a>■ 3. Preprocessing
 
-喺遊戲開始解析線路文件之前, 預處理指令將會被處理定替換。 預処理器會按照正常柯打分析呢啲以 $ 開頭嘅預処理命令。 $chr、$rnd 和 $sub 指令可以由嵌套, $if、$else 和 $endif 不能出現在另一個指令嘅括號入面。
+在遊戲開始解析線路文件之前, 預處理指令將會被處理定替換。 預処理器會按照正常柯打分析呢啲以 $ 開頭的預処理命令。 $chr、$rnd 和 $sub 指令可以由嵌套, $if、$else 和 $endif 不能出現在另一個指令的括號入面。
 
 {{% warning-nontitle %}}
 
-預處理指令的語法不可以隨意使用, 必須以下面畀出嘅形式出現。
+預處理指令的語法不可以隨意使用, 必須以下面畀出的形式出現。
 
 {{% /warning-nontitle %}}
 
@@ -149,15 +149,15 @@ $Include(*文件<sub>1</sub>*; *權值<sub>1</sub>*; *文件<sub>2</sub>*; *權�
 {{% /command %}}
 
 {{% command-arguments %}}
-***文件 <sub>i</sub>***: 要被導入本線路嘅另一個文件(CSV/RW)。
-***權值 <sub>i</sub>***: 一個正浮點數, 表示對應嘅呢個文件被使用的可能性大小。 數越大, 呢個文件就越可能被隨機選中。
+***文件 <sub>i</sub>***: 要被導入本線路的另一個文件(CSV/RW)。
+***權值 <sub>i</sub>***: 一個正浮點數, 表示對應的呢個文件被使用的可能性大小。 數越大, 呢個文件就越可能被隨機選中。
 {{% /command-arguments %}}
 
-該指令按照權值隨機選出一個線路文件, 再將其內容導入本線路中。 因為該文件內容會比唔加修改直接在該指令的位置插入, 可能需要照顧吓 with 指令等, 唔好畀佢哋出現衝突。 如果參數中最後一個文件冇畀出權值, 它會被按1處理。
+該指令按照權值隨機選出一個線路文件, 再將其內容導入本線路中。 因為該文件內容會比不加修改直接在該指令的位置插入, 可能需要照顧吓 with 指令等, 不好畀佢哋出現衝突。 如果參數中最後一個文件冇畀出權值, 它會被按1處理。
 
-$include 指令喺幾個線路有大量重複內容時好有用, 可以單獨存入另一個文件只重複內容, 然後在主文檔中導入它, 以方便編碼。 呢個指令都可以被用來隨機選取線路代碼。 請注意導入的文件中都可以包含 $include 指令來引用更多嘅文件, 但係應該避免循環引用, 例如 A 導入 B 而 B 又導入 A。 要導入嗰個文件不應該使用. csv 作為格式擴展名 (或者用. include 係個方便區分好主意), 不然玩家可能會一不小心從主餐牌揀咗呢個 "唔完全嘅線路文件" 然後發現冇辦法加载 (除非嗰個文件本身就係一個單獨的線路, 跟住本來就想讓玩家加载它)。
+$include 指令在幾個線路有大量重複內容時好有用, 可以單獨存入另一個文件只重複內容, 然後在主文檔中導入它, 以方便編碼。 呢個指令都可以被用來隨機選取線路代碼。 請注意導入的文件中都可以包含 $include 指令來引用更多的文件, 但係應該避免循環引用, 例如 A 導入 B 而 B 又導入 A。 要導入嗰個文件不應該使用. csv 作為格式擴展名 (或者用. include 係個方便區分好主意), 不然玩家可能會一不小心從主餐牌揀了呢個 "不完全的線路文件" 然後發現冇辦法加载 (除非嗰個文件本身就係一個單獨的線路, 跟住本來就想讓玩家加载它)。
 
-如果任何一個 * 文件<sub>i</sub>* 被一個: * 主軌道位置偏移量 * 后缀, 嗰個文件中所有主軌道位置表達式都會被按照呢個量 ** 以米做單位 ** 偏移。 例如, $include (stations.include:2000) 會將 stations.include 文件中嘅所有內容系插入前都向前偏移2000米。 需要注意這些主軌道位置表達式係喺所有嘅預処理命令都被執行完先會畀做偏移處理。 意味着似 "1$rnd (2;8) 00" 這樣的主軌道位置表達式即管喺預処理前都唔係一個主軌道距離表達式, 但是它的隨機結果照樣會被進行偏移處理。
+如果任何一個 * 文件<sub>i</sub>* 被一個: * 主軌道位置偏移量 * 后缀, 嗰個文件中所有主軌道位置表達式都會被按照呢個量 ** 以米做單位 ** 偏移。 例如, $include (stations.include:2000) 會將 stations.include 文件中的所有內容系插入前都向前偏移2000米。 需要注意這些主軌道位置表達式係在所有的預処理命令都被執行完先會畀做偏移處理。 意味着似 "1$rnd (2;8) 00" 這樣的主軌道位置表達式即管在預処理前都不係一個主軌道距離表達式, 但是它的隨機結果照樣會被進行偏移處理。
 
 {{% warning-nontitle %}}
 
@@ -175,7 +175,7 @@ $Chr(*Ascii編號*)
 ***ASCII 編碼 ***: 一個在10~13 或20~127 範圍內的數, 代表一個擁有對應 ASCII 碼的字符。
 {{% /command-arguments %}}
 
-這個指令會喺原位插入一個對應 *ascii 碼* 的字符。 如果想喺某個地方放置一個字符卻又唔想破壞指令語法結構 (比如企名入面開頭帶空格、帶括號逗號分號等, 如果唔咁加入就會被遊戲誤讀), 可以使用這個指令。 有關的字符有:
+這個指令會在原位插入一個對應 *ascii 碼* 的字符。 如果想在某個地方放置一個字符卻又不想破壞指令語法結構 (比如企名入面開頭帶空格、帶括號逗號分號等, 如果不咁加入就會被遊戲誤讀), 可以使用這個指令。 有關的字符有:
 
 {{% table %}}
 
@@ -191,7 +191,7 @@ $Chr(*Ascii編號*)
 
 {{% /table %}}
 
-"$Chr(13)$Chr(10)"代表一次換行。插入$Chr(59)可能基於佢嘅位置被解釋為註釋開始或指令參數分隔符。
+"$Chr(13)$Chr(10)"代表一次換行。插入$Chr(59)可能基於佢的位置被解釋為註釋開始或指令參數分隔符。
 
 ---
 
@@ -201,10 +201,10 @@ $Rnd(*Start*; *End*)
 
 {{% command-arguments %}}
 ***最小值 ***: 一個整數, 代表隨機數可以取的最小值。
-***最大值 ***: 一個整數, 代表隨機數可以改嘅最大值。
+***最大值 ***: 一個整數, 代表隨機數可以改的最大值。
 {{% /command-arguments %}}
 
-這個指令會喺原位插入一個位於 *最小值* 和 *最大值* 之間嘅隨機整數。 可以用呢個嚟畀線路添加一些隨機性。
+這個指令會在原位插入一個位於 *最小值* 和 *最大值* 之間的隨機整數。 可以用呢個嚟畀線路添加一些隨機性。
 
 {{% code "*Example for the use of the $Rnd directive:*" %}}  
 10$Rnd(3;5)0, Track.FreeObj 0; 1  
@@ -223,17 +223,17 @@ $Sub(*編號*) = *表達式*
 {{% /command %}}
 
 {{% command-arguments %}}
-***編號***: 一個非負整數, 代表要儲埋嘅變量編號。 
+***編號***: 一個非負整數, 代表要儲埋的變量編號。 
 ***表達式***: 要存進這個變量的數字的值。 
 {{% /command-arguments %}}
 
-呢個指令只應該單獨出現, 它將會把 * 表達式 * 嘅值賦給編號為 * 編號 * 嘅呢個變量。 佢不在原位插入任何內容。 可以將一個隨機數存起來然後之後多次使用。 下面關於 $sub (*編號*) 的介紹處有幾個使用實例。
+呢個指令只應該單獨出現, 它將會把 * 表達式 * 的值賦給編號為 * 編號 * 的呢個變量。 佢不在原位插入任何內容。 可以將一個隨機數存起來然後之後多次使用。 下面關於 $sub (*編號*) 的介紹處有幾個使用實例。
 
 {{% warning %}}
 
 #### 程序實現備註
 
-雖然變量中都可以儲埋非數字的內容, 還是不能把逗號通過 $chr (44) 存返入去然後希望它在使用時會起分隔符嘅作用。 但是, 可以透過 $chr 啲分號 (59) 存返入去然後將調用時放佢喺開頭令一行成為註釋。 不過因為可以使用 $include 和 $if 嚟進行條件判斷, 所以並無必要噉做。
+雖然變量中都可以儲埋非數字的內容, 還是不能把逗號通過 $chr (44) 存返入去然後希望它在使用時會起分隔符的作用。 但是, 可以透過 $chr 啲分號 (59) 存返入去然後將調用時放佢在開頭令一行成為註釋。 不過因為可以使用 $include 和 $if 嚟進行條件判斷, 所以並無必要噉做。
 
 {{% /warning %}}
 
@@ -247,7 +247,7 @@ $Sub(*編號*)
 ***編號***：一個非負整數，代表要讀出的變量編號。
 {{% /command-arguments %}}
 
-這個指令會喺原位插入編號為 * 編號 * 的變量的內容。 在讀取前呢個變量必須先被賦值。
+這個指令會在原位插入編號為 * 編號 * 的變量的內容。 在讀取前呢個變量必須先被賦值。
 
 {{% code "*Example for the use of the $Sub(Index)=Value and $Sub(Index) directives:*" %}}  
 $Sub(0) = $Rnd(3; 5)  
@@ -256,7 +256,7 @@ $Sub(0) = $Rnd(3; 5)
 1040, Track.FreeObj $Sub(0); 47  
 {{% /code %}}
 
-在這個例子中, 三個 track.freeobj 指令都使用同樣嘅隨機數值, 所以三個物體會被擺喺同一條隨機嘅軌道邊。 如果使用三個 $rnd (3;5) 而唔係 $sub, 三個物體可能被單獨放在不同的軌道邊
+在這個例子中, 三個 track.freeobj 指令都使用同樣的隨機數值, 所以三個物體會被擺在同一條隨機的軌道邊。 如果使用三個 $rnd (3;5) 而不係 $sub, 三個物體可能被單獨放在不同的軌道邊
 
 ---
 
@@ -265,10 +265,10 @@ $If(*條件*)
 {{% /command %}}
 
 {{% command-arguments %}}
-***條件***: 一個數值。 如果佢等於 0, 則代表 **唔成立** 嘅情況。 如果佢唔等於 0, 則代表 **成立** 嘅情況。
+***條件***: 一個數值。 如果佢等於 0, 則代表 **不成立** 的情況。 如果佢不等於 0, 則代表 **成立** 的情況。
 {{% /command-arguments %}}
 
-$if (如果...... 那麼) 指令讓遊戲只喺呢個條件成立, 即為非零值時才解析下面嘅線路指令。 $if 嘅後面必須有一個 $endif。 在 $if 和 $endif 之間都可以加個 $else 嚟表示條件係唔成立既時候要解析的指令。
+$if (如果...... 那麼) 指令讓遊戲只在呢個條件成立, 即為非零值時才解析下面的線路指令。 $if 的後面必須有一個 $endif。 在 $if 和 $endif 之間都可以加個 $else 嚟表示條件係不成立既時候要解析的指令。
 
 ---
 
@@ -276,7 +276,7 @@ $if (如果...... 那麼) 指令讓遊戲只喺呢個條件成立, 即為非零�
 $Else()  
 {{% /command %}}
 
-$Else (否則) 指令只喺前面嘅 $If 嘅條件係唔成立既時候先解析下面嘅線路指令。
+$Else (否則) 指令只在前面的 $If 的條件係不成立既時候先解析下面的線路指令。
 
 ---
 
@@ -303,11 +303,11 @@ With Track
 $If($Rnd(0;1)), .FreeObj 0; 4, $Else(), .FreeObj 0; 5, $EndIf()  
 {{% /code %}}
 
-可以嵌套 $If 指令。 如果將 $If/$Else/$EndIf 擺喺唔同嘅幾行度, 可以更清晰地表示張結構並令它更易讀 (例如第一個例子)。
+可以嵌套 $If 指令。 如果將 $If/$Else/$EndIf 擺在不同的幾行度, 可以更清晰地表示張結構並令它更易讀 (例如第一個例子)。
 
 ---
 
-**最後**, 當預處理結束, 線路中嘅所有指令都會被按照軌道位置重新排序。
+**最後**, 當預處理結束, 線路中的所有指令都會被按照軌道位置重新排序。
 
 {{% code "*Example of a partial route file:*" %}}  
 1000, Track.FreeObj 0; 23  
@@ -332,7 +332,7 @@ Track.FreeObj 1; 42
 
 ## <a name="options"></a>■ 4. Options 命名空間
 
-這個命名空間入面嘅指令設置一些基本設置, 並影響其他指令既實際處理效果。 所以應當在開始編寫寫其他指令之前使用這些指令都較只設置先掂。
+這個命名空間入面的指令設置一些基本設置, 並影響其他指令既實際處理效果。 所以應當在開始編寫寫其他指令之前使用這些指令都較只設置先掂。
 
 ---
 
@@ -341,10 +341,10 @@ Track.FreeObj 1; 42
 {{% /command %}}
 
 {{% command-arguments %}}  
-***同米嘅換算系數 <sub>i</sub>***: 一個浮點數, 表示一個單位等於幾多米。 * 同米嘅換算系數 1 * 的默認值係 1, 其他的默認值都係0。
+***同米的換算系數 <sub>i</sub>***: 一個浮點數, 表示一個單位等於幾多米。 * 同米的換算系數 1 * 的默認值係 1, 其他的默認值都係0。
 {{% /command-arguments %}}
 
-這個指令可以被用來改變其他指令使用的長度單位。 當同形如 * 部分<sub>1</sub>*:* 部分<sub>2</sub>*:...:* 部分<sub>n</sub>* 的主軌道位置一起使用時, * 部分<sub>i</sub>* 會比搭返 * 系數 <sub>i</sub>*, 以此類推, 真正嘅主軌道位置係所有積的和。 更改了長度單位時, 你都應同時使用 Options.BlockLength 將區間蚊長度也設為相應單位。
+這個指令可以被用來改變其他指令使用的長度單位。 當同形如 * 部分<sub>1</sub>*:* 部分<sub>2</sub>*:...:* 部分<sub>n</sub>* 的主軌道位置一起使用時, * 部分<sub>i</sub>* 會比搭返 * 系數 <sub>i</sub>*, 以此類推, 真正的主軌道位置係所有積的和。 更改了長度單位時, 你都應同時使用 Options.BlockLength 將區間蚊長度也設為相應單位。
 
 換算系數的幾個示例:
 
@@ -360,7 +360,7 @@ Track.FreeObj 1; 42
 
 {{% /table %}}
 
-在下面的示例中, 會被 Options.UnitOfLength 影響嘅指令參數會被用<font color="green">綠色</font>表示。
+在下面的示例中, 會被 Options.UnitOfLength 影響的指令參數會被用<font color="green">綠色</font>表示。
 
 ---
 
@@ -369,10 +369,10 @@ Track.FreeObj 1; 42
 {{% /command %}}
 
 {{% command-arguments %}}
-***FactorInKmph***同千米每时嘅換算系數: 一個浮點數, 表示一個單位等於幾多千米每时。 默認值是1。
+***FactorInKmph***同千米每时的換算系數: 一個浮點數, 表示一個單位等於幾多千米每时。 默認值是1。
 {{% /command-arguments %}}
 
-這個指令可以被用來改變其他指令使用嘅速度單位。 換算系數的幾個示例:
+這個指令可以被用來改變其他指令使用的速度單位。 換算系數的幾個示例:
 
 {{% table %}}
 
@@ -384,7 +384,7 @@ Track.FreeObj 1; 42
 
 {{% /table %}}
 
-在下面的示例中, 會被 Options.UnitOfSpeed 影響嘅指令參數會被用<font color="blue">藍色</font>表示。
+在下面的示例中, 會被 Options.UnitOfSpeed 影響的指令參數會被用<font color="blue">藍色</font>表示。
 
 ---
 
@@ -393,10 +393,10 @@ Track.FreeObj 1; 42
 {{% /command %}}
 
 {{% command-arguments %}}
-***長度***: 一個正浮點數, 表示區間蚊嘅長度, **默認** 嘅單位係 **米**。 默認值係25米。
+***長度***: 一個正浮點數, 表示區間蚊的長度, **默認** 的單位係 **米**。 默認值係25米。
 {{% /command-arguments %}}
 
-此指令可以設置隔蚊嘅長度。 係一個全局設置, 一旦設置, 唔可以來回更改。 如果在此指令之前調用了選項. 單位長度, *長度* 將使用選項. 單位長度作為單位。
+此指令可以設置隔蚊的長度。 係一個全局設置, 一旦設置, 不可以來回更改。 如果在此指令之前調用了選項. 單位長度, *長度* 將使用選項. 單位長度作為單位。
 
 ---
 
@@ -408,11 +408,11 @@ Track.FreeObj 1; 42
 ***模式***: 遊戲判斷一個物體是否可視採用的算法。 默認值係 0 (原版)。
 {{% /command-arguments %}}
 
-▸ *模式* 嘅選項:
+▸ *模式* 的選項:
 
 {{% command-arguments %}}
-**0**: 原版: 當該物體所在的區間舊已經被玩家通過, 遊戲就認為呢個物體不再可見, 都唔再加载顯示呢個物體。 遊戲不會顯示任何玩家後方嘅物體。 在朝前睇時唔會有任何問題, 但當向後看時所有物體都會消失, 且沒有任何途徑可解決。 自相交的軌道 (例如環綫) 唔會畀正確顯示。 該設置會造成唔正確且無法解決的視覺效果, 保留且默認採取該設置只係為咗兼容一些老線路。 請唔好喺新線路中採用這個設置。
-**1**: 基於軌道: 遊戲仍然會加载列車後方可視範圍內嘅物體。 係按照軌道位置計算嘅。 可惜自相交的軌道 (例如環綫) 都係唔會俾正確顯示。 推薦添加這個設置。
+**0**: 原版: 當該物體所在的區間舊已經被玩家通過, 遊戲就認為呢個物體不再可見, 都不再加载顯示呢個物體。 遊戲不會顯示任何玩家後方的物體。 在朝前睇時不會有任何問題, 但當向後看時所有物體都會消失, 且沒有任何途徑可解決。 自相交的軌道 (例如環綫) 不會畀正確顯示。 該設置會造成不正確且無法解決的視覺效果, 保留且默認採取該設置只係為了兼容一些老線路。 請不好在新線路中採用這個設置。
+**1**: 基於軌道: 遊戲仍然會加载列車後方可視範圍內的物體。 係按照軌道位置計算的。 可惜自相交的軌道 (例如環綫) 都係不會俾正確顯示。 推薦添加這個設置。
 {{% /command-arguments %}}
 
 ---
@@ -425,11 +425,11 @@ Track.FreeObj 1; 42
 ***模式***:track.section 指令應當被如何理解。 默認值係 0 (默認)。
 {{% /command-arguments %}}
 
-▸ *模式* 嘅選項:
+▸ *模式* 的選項:
 
 {{% command-arguments %}}
-**0**: 默認: track.section * 緊狀態 <sub>0</sub>*; * 狀態 <sub>1</sub>*; ...; * 狀態<sub>n</sub>* 中, 任何一個 * 狀態<sub>i</sub>* 都代表當一個閉塞區間的前方有 *i* 個閉塞區間清空時要傳達畀信號機嘅信號狀態。
-**1**: 簡化: track.section * 緊狀態 <sub>0</sub>*; * 狀態 <sub>1</sub>*; ...; * 狀態<sub>n</sub>* 中, 每個閉塞區間的信號狀態都係比佢前面一個閉塞區間嘅狀態值要高嘅最小值。
+**0**: 默認: track.section * 緊狀態 <sub>0</sub>*; * 狀態 <sub>1</sub>*; ...; * 狀態<sub>n</sub>* 中, 任何一個 * 狀態<sub>i</sub>* 都代表當一個閉塞區間的前方有 *i* 個閉塞區間清空時要傳達畀信號機的信號狀態。
+**1**: 簡化: track.section * 緊狀態 <sub>0</sub>*; * 狀態 <sub>1</sub>*; ...; * 狀態<sub>n</sub>* 中, 每個閉塞區間的信號狀態都係比佢前面一個閉塞區間的狀態值要高的最小值。
 {{% /command-arguments %}}
 
 ---
@@ -442,11 +442,11 @@ Track.FreeObj 1; 42
 ***模式***:Track.Curve 指令應當被如何理解。 默認值係 0 (忽略符號)
 {{% /command-arguments %}}
 
-▸ *模式* 嘅選項:
+▸ *模式* 的選項:
 
 {{% command-arguments %}}
-**0**: 忽略符號: Track.Curve 中 *cantinmillimeters* 參數係冇符號嘅, 符號會被忽略, 軌道總是會向彎道中心傾斜嚟提供彎道嚮心力。 軌道唔會喺直路段斜。
-**1**: 保留符號: Track.Curve 中 *cantinmillimeters* 參數是有符號嘅, 正值會使軌道向彎道中心傾斜, 負值會使軌道向彎道外側傾斜。 軌道會喺直路段斜, 正值使軌道右傾, 負值使軌道左傾。
+**0**: 忽略符號: Track.Curve 中 *cantinmillimeters* 參數係冇符號的, 符號會被忽略, 軌道總是會向彎道中心傾斜嚟提供彎道嚮心力。 軌道不會在直路段斜。
+**1**: 保留符號: Track.Curve 中 *cantinmillimeters* 參數是有符號的, 正值會使軌道向彎道中心傾斜, 負值會使軌道向彎道外側傾斜。 軌道會在直路段斜, 正值使軌道右傾, 負值使軌道左傾。
 {{% /command-arguments %}}
 
 ---
@@ -459,7 +459,7 @@ Track.FreeObj 1; 42
 ***Mode***: The mode determining how the Track.Fog command is processed. The default value is 0 (Block-based).  
 {{% /command-arguments %}}
 
-▸ *模式* 嘅選項:
+▸ *模式* 的選項:
 
 {{% command-arguments %}}  
 **0**: Block-based: Fog color and ranges are interpolated from the beginning of the block where Track.Fog is used with the old settings to the end of the block with the new settings.  
@@ -476,7 +476,7 @@ Track.FreeObj 1; 42
 ***Mode***: The mode determining how transparencies are processed in BVE2/ BVE4 objects which use a restricted color pallet. This may be used on a per-route basis to override the value set in 'Options'.  
 {{% /command-arguments %}}
 
-▸ *模式* 嘅選項:
+▸ *模式* 的選項:
 
 {{% command-arguments %}}  
 **0**: Off: Colors are matched specifically. If the specified transparent color does not exist within the color pallet, no transparency will be added.  
@@ -493,7 +493,7 @@ Track.FreeObj 1; 42
 ***Mode***: The mode determining whether various hacks are applied in order to fix BVE2 / BVE4 content. This may be used on a per-route basis to override the value set in 'Options'.  
 {{% /command-arguments %}}
 
-▸ *模式* 嘅選項:
+▸ *模式* 的選項:
 
 {{% command-arguments %}}  
 **0**: Off: Hacks are disabled.  
@@ -552,7 +552,7 @@ Commands from this namespace define general properties of the route.
 ***Mode***: The mode for the train's safety system to start in. The default value is implementation-specific.  
 {{% /command-arguments %}}
 
-▸ *模式* 嘅選項:
+▸ *模式* 的選項:
 
 {{% command-arguments %}}  
 **-1**: The safety system is **activated** and the *service* brakes are applied.  
@@ -1634,7 +1634,7 @@ This command can only be used at the beginning of a block.
 ***TimetableIndex***: A non-negative integer representing the timetable to be shown from this station on as defined via Train.Timetable(*TimetableIndex*).  
 {{% /command-arguments %}}
 
-▸ *ArrivalTime* 嘅選項:
+▸ *ArrivalTime* 的選項:
 
 {{% command-arguments %}}  
 *time*: The train is expected to arrive at this particular time.  
@@ -1645,7 +1645,7 @@ This command can only be used at the beginning of a block.
 **S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
 {{% /command-arguments %}}
 
-▸ *DepartureTime* 嘅選項:
+▸ *DepartureTime* 的選項:
 
 {{% command-arguments %}}  
 *time*: The train is expected to depart at this particular time.  
@@ -1658,14 +1658,14 @@ This command can only be used at the beginning of a block.
 **J:**_index:**Time**_: This is a station at which the train is "jumped" to the specified by *index*. Jumping will take place at the specified time unless *StopDuration* interfers. See the description below.  
 {{% /command-arguments %}}
 
-▸ *PassAlarm* 嘅選項:
+▸ *PassAlarm* 的選項:
 
 {{% command-arguments %}}  
 **0**: The pass alarm device does not remind the driver of stopping at this station.  
 **1**: The pass alarm device reminds the driver of stopping at this station.  
 {{% /command-arguments %}}
 
-▸ *Doors* 嘅選項:
+▸ *Doors* 的選項:
 
 {{% command-arguments %}}  
 **L** or **-1**: The left doors are expected to open at this station.  
@@ -1674,14 +1674,14 @@ This command can only be used at the beginning of a block.
 **B**: Both the left and right doors are expected to open at this station.  
 {{% /command-arguments %}}
 
-▸ *ForcedRedSignal* 嘅選項:
+▸ *ForcedRedSignal* 的選項:
 
 {{% command-arguments %}}  
 **0**: Signals are unaffected by this station.  
 **1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
 {{% /command-arguments %}}
 
-▸ *System* 嘅選項:
+▸ *System* 的選項:
 
 {{% command-arguments %}}  
 **ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
@@ -1717,7 +1717,7 @@ The first occuring station in a route may not be of the Terminal type.
 ***DepartureSound***: The sound file to be played before departure (departure time minus sound duration minus door closing time), relative to the **Sound** folder.  
 {{% /command-arguments %}}
 
-▸ *ArrivalTime* 嘅選項:
+▸ *ArrivalTime* 的選項:
 
 {{% command-arguments %}}  
 *time*: The train is expected to arrive at this particular time.  
@@ -1728,7 +1728,7 @@ The first occuring station in a route may not be of the Terminal type.
 **S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
 {{% /command-arguments %}}
 
-▸ *DepartureTime* 嘅選項:
+▸ *DepartureTime* 的選項:
 
 {{% command-arguments %}}  
 *time*: The train is expected to depart at this particular time.  
@@ -1739,14 +1739,14 @@ The first occuring station in a route may not be of the Terminal type.
 **C:**_time_: This is a station at which to "change ends". Changing ends will take place at the specified time unless *StopDuration* interferes. See the description below.  
 {{% /command-arguments %}}
 
-▸ *ForcedRedSignal* 嘅選項:
+▸ *ForcedRedSignal* 的選項:
 
 {{% command-arguments %}}  
 **0**: Signals are unaffected by this station.  
 **1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
 {{% /command-arguments %}}
 
-▸ *System* 嘅選項:
+▸ *System* 的選項:
 
 {{% command-arguments %}}  
 **ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
@@ -1790,7 +1790,7 @@ The first occuring station in a route may not be of the Terminal type.
 ***Cars***: A non-negative integer indicating for how many cars this stop point applies, or 0 for all cars. The default value is 0.  
 {{% /command-arguments %}}
 
-▸ *Direction* 嘅選項:
+▸ *Direction* 的選項:
 
 {{% command-arguments %}}  
 **-1**: A stop post is created on the left side.  
@@ -1822,7 +1822,7 @@ With Track
 ***FormStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Form and Structure.FormC  
 {{% /command-arguments %}}
 
-▸ *RailIndex<sub>2</sub>* 嘅選項:
+▸ *RailIndex<sub>2</sub>* 的選項:
 
 {{% command-arguments %}}  
 **Any current RailIndex**: The form is deformed to meet the specified RailIndex.  
@@ -2241,7 +2241,7 @@ These are fully described on the [the XML Markers page...]({{< ref "/routes/xml/
 *positive value*: The marker image starts to display *Distance* meters before the Track.Marker command, and ends at the Track.Marker command.  
 {{% /command-arguments %}}
 
-▸ *FontColor* 嘅選項:
+▸ *FontColor* 的選項:
 
 {{% command-arguments %}}  
 *1*: Black.  
