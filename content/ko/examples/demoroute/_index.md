@@ -16,40 +16,40 @@ weight: 1
 | <font color="Green">✓</font> | 개발자에게 CSV 또는 RW 경로를 만드는 방법을 보여주는 예시 |
 | ---------------------------- | ------------------------------------------------------------- |
 | <font color="Green">✓</font> | 애니메이션 개체를 만드는 방법을 개발자에게 보여주는 예시  |
-| <font color="Green">✓</font> | A way for users to be inspired by the feeling of a non-static environment  |
+| <font color="Green">✓</font> | 사용자가 정적이 아닌 환경의 느낌에 영감을 받을 수 있는 방법  |
 
 {{% /table-nonheader %}}
 
-What this route is not:
+이 루트는 무엇이 아닌가요?
 
 {{% table-nonheader %}}
 
-| <font color="Red">✗</font>  | A serious openBVE add-on - just something for developers to study |
+| <font color="Red">✗</font>  | 진지한 openBVE 애드온 - 단지 개발자들의 학습을 위한 것 |
 | --------------------------- | ------------------------------------------------------------- |
-| <font color="Red">✗</font>  | A rendition of any real route.  |
-| <font color="Red">✗</font>  | A high quality example of a route  |
+| <font color="Red">✗</font>  | 실제로 있는 어떤 노선의 구현  |
+| <font color="Red">✗</font>  | 높은 퀄리티의 루트의 예시  |
 
 {{% /table-nonheader %}}
 
-Key features of this route:
+이 루트의 특징:
 
-* Animated destination indicators and analog clock at a station.
-* Animated semaphore and blinking light signals.
-* Animated crossing gate and moving cars.
-* Animated escalator and flying airplane.
+* 역에 있는 애니메이션화된 행선지시기와 아날로그 시계
+* 애니메이션화된 세마포르와 깜빡이는 신호기
+* 애니메이션화된 건널목과 움직이는 차들
+* 애니메이션화된 에스컬레이터와 비행기
 
-## ■ Download
+## ■ 다운로드
 
-This route may be downloaded in openBVE package format here:
+이 루트는 아래에서 openBVE 패키지 형식으로 다운받을 수 있습니다:
 
 <http://openbve-project.net/files/DemoRoute1.zip>
 
-## ■ Using the route
+## ■ 루트의 사용
 
-Select a train of your choice.
+원하는 열차를 선택하세요.
 
-The default train suggested by this route is the **113-1000atccab**, which may be downloaded from the following page:
+이 루트의 기본 열차는 아래의 페이지에서 다운받을 수 있는 **113-1000atccab**입니다:
 
 <http://bve.jpn.org/jr113.html>
 
-The built-in safety systems ATS and ATC are used on this route, which are explained in the <a href="https://openbve-project.net/play-japanese/">How to drive - A quick overview on controls, ATS/ATC, signals and signs</a> guide.
+이 루트에서는 기본으로 제공되는 <a href="https://openbve-project.net/play-japanese/">How to drive - A quick overview on controls, ATS/ATC, signals and signs</a> 가이드에서 설명한 ATS, ATC 안전 장치가 사용됩니다.
