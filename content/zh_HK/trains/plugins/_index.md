@@ -2,16 +2,16 @@
 title: "列車插件"
 weight: 9
 ---
-Train plugins allow to change the runtime behavior of trains to some degree. Things you can do include displaying custom indicators in the panels, playing custom sounds and overriding the handles the driver originally set. Plugins can be used to simulate safety equipment such as ATS or ATC, among other things.
+列車插件可更改列車運行時的行為。您可以在Panel上向顯示Custom Indicator，播放聲音並覆蓋司機設置的手柄。插件可模擬安全設備，例如ATS或ATC。
 
-## ■ Available forms of plugins
+## ■ 可用的插件形式
 
-[**.NET assemblies:**]({{< ref "/plugins/overview/_index.md" >}})  
-This is the only officially endorsed form of plugin. The plugins are .NET assemblies and should be designed to be cross-platform-compatible without recompilation. You can choose from a variety of programming languages, including C# and Visual Basic .NET, among many others that target the .NET Framework.
+[**.NET assemblies:**]({{< ref "/plugins/overview/_index.md" >}})
+這是唯一官方認可的插件形式。插件是.NET assemblies, 應兼容跨平台並無需重新編譯。您可以從多種編程語言中進行選擇，包括C#和Visual Basic .NET，以及許多其他.NET Framework的語言。
 
 [**Win32 DLLs:**]({{< ref "/trains/plugins/legacy/_index.md" >}})  
-This form of plugin is retained for backward compatibility with BVE Trainsim, but is no longer officially endorsed because these plugins can only run on Microsoft Windows. They are usually developed in C/C++. Given the cross-platform alternative, please develop .NET assemblies from now on.
+保留這種形式的插件是為了向BVE Trainsim兼容，但由於這些插件只能在Microsoft Windows系統上運行，因此不再認可。它們通常是由C / C ++開發的。考慮到跨平台的替代方案，由現在開始請使用.NET assemblies來開發。
 
-## ■ Setting up a train to using a plugin
+## ■ 設置使用插件的列車
 
-You will need to ship the plugin somewhere in your train folder and configure the path to your plugin inside the [ats.cfg]({{< ref "/trains/ats_cfg/_index.md" >}}) file. Please note that for .NET assembly train plugins, you should **not** ship OpenBveApi.dll along with your plugin.
+您將需要將插件運送到火車文件夾中的某個位置，並在[ats.cfg] ({{< ref "/trains/ats_cfg/_index.md" >}}) 文件中配置插件的路徑。.NET Assembly Train插件請注意，您 **不** 應該將OpenBveApi.dll與您的插件一起。
