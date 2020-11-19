@@ -4,52 +4,52 @@ linktitle: "路綫説明"
 weight: 1
 ---
 
-## 縂概
+## 總概
 
 
-**動畫物件示範路線**係一個簡約路線，用嚟演示CSV和RW路線格式，更重要嘅就係演示動畫物件的例子。
+**動態物件示範路線**係一個簡約路線，用來演示CSV和RW路線格式，更重要嘅係演示動態物件的例子。
 
-What this route is:
+這條路線是:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | An example to show developers how to create a CSV or RW route |
+| <font color="Green">✓</font> | 向開發者展示如何創建CSV或RW路線的示例 |
 | ---------------------------- | ------------------------------------------------------------- |
-| <font color="Green">✓</font> | An example to show developers how to create animated objects  |
-| <font color="Green">✓</font> | A way for users to be inspired by the feeling of a non-static environment  |
+| <font color="Green">✓</font> | 向開發者展示如何創建動態物件的示例  |
+| <font color="Green">✓</font> | 讓用戶從非靜態環境中獲得靈感  |
 
 {{% /table-nonheader %}}
 
-What this route is not:
+這條路線不是:
 
 {{% table-nonheader %}}
 
-| <font color="Red">✗</font>  | A serious openBVE add-on - just something for developers to study |
+| <font color="Red">✗</font>  | 一條高質素OpenBVE路線 - 只是讓開發者學習 |
 | --------------------------- | ------------------------------------------------------------- |
-| <font color="Red">✗</font>  | A rendition of any real route.  |
+| <font color="Red">✗</font>  | 任何真實路線的演繹。  |
 | <font color="Red">✗</font>  | 一個高質素嘅路線  |
 
 {{% /table-nonheader %}}
 
-Key features of this route:
+這條路線的主要特點：
 
-* Animated destination indicators and analog clock at a station.
-* Animated semaphore and blinking light signals.
-* Animated crossing gate and moving cars.
-* Animated escalator and flying airplane.
+* 車站的動畫目的地指示器和指針式時鐘。
+* 動態信號燈和閃爍的燈光信號。
+* 動畫大閘和可動的汽車。
+* 動畫自動扶梯和飛行中的飛機。
 
 ## 下載
 
-This route may be downloaded in openBVE package format here:
+此路由可以在此處以OpenBVE軟件包格式下載：
 
 <http://openbve-project.net/files/DemoRoute1.zip>
 
-## ■ Using the route
+## ■ 使用路線
 
-Select a train of your choice.
+選擇您想的列車。
 
-The default train suggested by this route is the **113-1000atccab**, which may be downloaded from the following page:
+此路線建議的列車是 ** 113-1000atccab ** , 可以從以下頁面下載:
 
 <http://bve.jpn.org/jr113.html>
 
-The built-in safety systems ATS and ATC are used on this route, which are explained in the <a href="https://openbve-project.net/play-japanese/">How to drive - A quick overview on controls, ATS/ATC, signals and signs</a> guide.
+在此路線上使用內置的安全系統ATS和ATC，在 <a href="https://openbve-project.net/play-japanese/">如何駕駛 - 控制指南，ATS/ATC信號和標誌</a> 中對此進行了說明。
