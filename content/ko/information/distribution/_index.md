@@ -14,11 +14,11 @@ Acceptable and not acceptable practices:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Save your text files as UTF-8.                               |
+| <font color="Green">✓</font> | 너의 텍스트 파일을 UTF-8로 저장한다.                               |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Green">✓</font> | Save your text files in any Unicode encoding with a byte order mark. |
-| <font color="Red">✗</font>   | Save your text files in any non-Unicode encoding.            |
-| <font color="Red">✗</font>   | Use different encodings for each file in a route or train.   |
+| <font color="Green">✓</font> | 너의 텍스트 파일을 바이트 순서 표식(BOM) 없는 어떠한 유니코드 인코딩으로 저장한다. |
+| <font color="Red">✗</font>   | 너의 텍스트 파일을 유니코드 인코딩이 아닌 것으로 저장한다.            |
+| <font color="Red">✗</font>   | 루트나 열차의 각각의 파일에 각기 다른 인코딩을 사용한다.   |
 
 {{% /table-nonheader %}}
 

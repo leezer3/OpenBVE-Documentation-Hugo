@@ -4,11 +4,11 @@ linktitle: "對比BVE Trainsim"
 weight: 9
 ---
 
-This page lists **incompatible** differences between openBVE and BVE Trainsim regarding the file formats, i.e. features of content developed for BVE Trainsim that is interpreted differently in openBVE with an incompatible outcome. As of the moment, only one such incompatibility is known.
+本頁列出了openBVE和BVE Trainsim之間在文件格式方面的**不兼容**差異，即為BVE Trainsim開發的內容的功能在openBVE中以不同的方式進行了解釋，結果不兼容。 目前，只有一種這樣的不兼容是已知的。
 
-Please note that for all incompatible differences that are mentioned on this page, the resolution is the same: It is considered to be more important to provide stable and consistent features in openBVE than to make backward-incompatible changes between versions just to increase similarity to BVE Trainsim. All differences depicted on this page will thus be permanent.
+請注意，對於此頁面上提到的所有不兼容差異，解決方案都是相同的：在openBVE中提供穩定和一致的功能比在版本之間進行向後不兼容的更改以增加與BVE的相似性更為重要。 Trainsim。 因此，此頁面上描述的所有差異都是永久性的。
 
-## ■ The Track.Signal command  (CSV and RW routes)
+## ■Track.Signal命令（CSV和RW線路）
 
 The Track.Signal command (alternatively: Track.Sig) is used to create a default Japanese-style signal in CSV routes (alternative spellings are used in RW routes).
 
@@ -18,7 +18,7 @@ In openBVE, the Track.Signal command takes the following arguments:
 **Track.Signal** *Aspects*; *~~Unused~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
 {{% /command %}}
 
-In BVE Trainsim, the Track.Signal command takes the following arguments:
+但喺BVE Trainsim中，Tack.Signal指令接受的嘅係以下參數：
 
 {{% command %}}  
 **Track.Signal** *Aspects*; *Label*; *X*; *Y*; <u>*Type*</u>  

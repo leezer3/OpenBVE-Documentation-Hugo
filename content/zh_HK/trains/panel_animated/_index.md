@@ -4,9 +4,9 @@ linktitle: "panel.animated 檔案"
 weight: 5
 ---
 
-If present in the train folder, this file defines a 3D cab.
+如果在列車文件夾中，此文件會定義3D駕駛室。
 
-The file is a normal [animated object file]({{< ref "/objects/native/animated/_index.md" >}}). The train body is assumed to be centered on the x- and z-axes, while a value of 0 on the y-axis corresponds to the top of the rails, just as with exterior train objects.
+該文件是正常的 [動態物件檔案]({{< ref "/objects/native/animated/_index.md" >}}). 假設列車主體位於x軸和z軸的中心，而y軸上的0值對應於鐵軌的頂部，就像外部列車對像一樣。
 
 The viewing point of the driver's eye is determined via the #CAB or #COCKPIT sections in the [train.dat]({{< ref "/trains/train_dat/_index.md#cab" >}}) (which measures the viewing point in millimeters from the front of the train).
 

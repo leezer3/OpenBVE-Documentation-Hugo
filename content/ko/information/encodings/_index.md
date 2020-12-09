@@ -1,28 +1,28 @@
 ---
-title: "Character encodings"
+title: "글자 인코딩"
 weight: 1
 ---
 
-<font color="Gray">This page describes what character encodings are and how they should be used.</font>
+<font color="Gray">이 페이지는 글자 인코딩이 무엇인지, 그리고 그것이 어떻게 사용되어야 하는지 설명합니다.</font>
 
-■ Overview
+■ 개요
 ------
 
 A character encoding is a way to translate characters into bytes that can be stored on the hard drive. In the beginnings, one byte (256 states) was used to encode one character. As different writing systems around the world have different requirements for characters to be encoded, there are a lot of different encodings in use throughout the world. Problematically, if the encoding of a text file is not known in advance, misinterpreting the encoding can result in mojibake (meaningless sequence of characters).
 
-Example of a Japanese text encoded in Shift_JIS (requires appropriate fonts available):
+Shift_JIS로 인코드된 일본어 글자 예시 (적절한 폰트를 사용할 수 있어야 합니다.):
 
 {{% code %}}  
 ひらがなカタカナ漢字  
 {{% /code %}}
 
-The byte sequence generated from the previous example in Shift_JIS:
+위의 Shift_JIS 예시에서 생성된 바이트 배열:
 
 {{% code %}}  
 82 D0 82 E7 82 AA 82 C8 83 4A 83 5E 83 4A 83 69 8A BF 8E 9A  
 {{% /code %}}
 
-What happens if the byte sequence is misinterpreted as being ISO 8859-1 (Latin-1) instead of Shift_JIS: 
+이 바이트 배열이 Shift_JIS가 아닌 ISO 8859-1 (Latin-1)로 잘못 디코드되었을 때 발생한 결과:
 
 {{% code %}}  
 ‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš  

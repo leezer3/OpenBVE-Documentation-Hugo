@@ -1,10 +1,10 @@
 ---
-title: "Forking guidelines"
+title: "フォークのガイドライン"
 weight: 8
 ---
 {{% information %}}
 
-#### Q: What is a fork?
+#### Q：フォークとは何ですか？
 
 **A:** If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program.
 

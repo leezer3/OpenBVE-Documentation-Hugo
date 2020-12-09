@@ -4,14 +4,14 @@ linktitle: "總概"
 weight: 1
 ---
 
-Trains consist of a series of individual configuration files accompanied by bitmaps and sounds. The following is an overview on which files are required and what they represent.
+車輛包含一系列獨立嘅配置文件、位圖和波形文件。 下方列出咗所有類型文件嘅概述及其作用。
 
-## ■ Characteristics
+## ■ 特性
 
 [**train.dat:**]({{<ref "/trains/train_dat/_index.md">}})  
-This is the core configuration file for the train's characteristics, and is mandatory.
+呢個係車輛特性嘅核心配置文件, 必須存在於車輛文件夾中。
 
-## ■ Panels
+## ■ 駕駛台
 
 [**panel.animated:**]({{<ref "/trains/panel_animated/_index.md">}})  
 This file allows to create a fully 3D cab. If present in the train folder, this file has precedence over the panel2.cfg and panel.cfg files.

@@ -1,39 +1,39 @@
 ---
-title: "The **.csv** route format"
-linktitle: "The CSV route"
+title: "**.csv** 루트 형식"
+linktitle: "CSV 루트"
 weight: 1
 ---
 
-➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
+➟ [빠른 참조...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ Contents
+## ■ 목차
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 개요](#overview)
 - [2. Syntax](#syntax)
 - [3. Preprocessing](#preprocessing)
-- [4. The Options namespace](#options)
-- [5. The Route namespace](#route)
-- [6. The Train namespace](#train)
-- [7. The Structure namespace](#structure)
-- [8. The Texture namespace](#texture)
-- [9. The Cycle namespace](#cycle)
-- [10. The Signal namespace](#signal)
-- [11. The Track namespace](#track)
-  - [11.1. Rails](#track_rails)
+- [4. Options 이름공간](#options)
+- [5. Route 이름공간](#route)
+- [6. Train 이름공간](#train)
+- [7. Structure 이름공간](#structure)
+- [8. Texture 이름공간](#texture)
+- [9. Cycle 이름공간](#cycle)
+- [10. Signal 이름공간](#signal)
+- [11. Track 이름공간](#track)
+  - [11.1. 선로](#track_rails)
   - [11.2. Geometry](#track_geometry)
   - [11.3. Objects](#track_objects)
-  - [11.4. Stations](#track_stations)
-  - [11.5. Signalling and speed limits](#track_signalling)
-  - [11.6. Safety systems](#track_safety)
+  - [11.4. 역](#track_stations)
+  - [11.5. 신호와 속도 제한](#track_signalling)
+  - [11.6. 안전 장치](#track_safety)
   - [11.7. Miscellaneous](#track_misc)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 개요
 
-A CSV route allows to create a route in a text file.
+CSV 루트는 텍스트 파일로 노선을 만들 수 있도록 해준다.
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose** (unless otherwise stated), however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside any folder whose current or parent folder includes the *Railway* and *Train* folders. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom, where each line is split into expressions, which are interpreted from left to right.
 
@@ -2341,3 +2341,22 @@ This command places a bumper. The train can collide with the bumper in both the 
 {{% /command-arguments %}}
 
 This command places a special beacon, which sets the destination variable, available for use by plugins and animated objects. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.
+
+------
+
+{{% command %}}  
+**Track.HornBlow** *Type*; *BeaconStructureIndex*; *TriggerOnce*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: Defines the type of horn to play: *0* for the primary horn, *1* for the secondary horn and *2* for the music horn.  
+***BeaconStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Beacon, or -1 to not place any object.  
+***TriggerOnce***: If set to *0*, this beacon will be triggered by all valid trains which pass over it. If set to *1*, it will be triggered by the first valid train only.  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
+
+This command places a special beacon, which commands an AI driver to play the horn. Both an AI controlled player train and pure AI trains will trigger this beacon, unless **TriggerOnce** is set. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.

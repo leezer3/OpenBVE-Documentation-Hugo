@@ -1,21 +1,21 @@
 ---
-title: "The **.csv** route format - Quick reference"
+title: "**.csv** 路線格式 - 快速参考"
 hidden: true
 ---
 
-**Notes:** 
+**注意:** 
 
-- Arguments highlighted in **<font color="green">green</font>** are affected by Options.UnitOfLength.
-- Arguments highlighted in **<font color="blue">blue</font>** are affected by Options.UnitOfSpeed.
+- 會被 Options.UnitOfLength 影響的指令參數會用 **<font color="green">綠色</font>** 表示。
+- 會被 Options.UnitOfSpeed 影響的指令參數會用 **<font color="blue">藍色</font>**  表示。
 - Optional suffixes are indicated in <font color="gray">gray</font>. Mandatory suffixes are **bolded**.
 - Syntax variations are not possible with the $-directives.
 - The statement separator is the , character.
 
 ---
 
-<font color="red">Track positions</font>  
-*<font color="green">Number</font>*  
-*<font color="green">Number<sub>1</sub></font>* : *<font color="green">Number<sub>2</sub></font>* : *...* : *<font color="green">Number<sub>n</sub></font>*
+<font color="red">軌道位置</font>  
+*<font color="green">數字</font>*  
+*<font color="green">數字<sub>1</sub></font>* : *<font color="green">數字<sub>2</sub></font>* : *...* : *<font color="green">數字<sub>n</sub></font>*
 
 <font color="red">Preprocessing directives</font>  
 **$Include**(*File<sub>1</sub>*; *Weight<sub>1</sub>*; *File<sub>2</sub>*; *Weight<sub>2</sub>*; ...)  

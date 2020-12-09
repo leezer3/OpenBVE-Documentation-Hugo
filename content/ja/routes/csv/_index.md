@@ -838,11 +838,11 @@ Train.File *FolderName*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***RailTypeIndex***: A non-negative integer representing the rail type as defined via Structure.Rail and used via Track.RailType.  
-***RunSoundIndex***: A non-negative integer representing the train's flange sound to associate to the rail type.  
+***RailTypeIndex***: Structure.Rail によって定義され、Track.RailTypeを通じて用いられる負でない整数 
+***RunSoundIndex***: レールの種類に関連付けれられる、列車のフランジ音を表す筆ない整数  
 {{% /command-arguments %}}
 
-The train developer provides a repertoire of different flange sounds. Use this command to associate these flange sounds to the rail types you use in your route. In order for the correct flange sounds to be played on any of your rail types, you need to coordinate your efforts with the train developer. Please see the page about [standards]({{< ref "/information/standards/_index.md" >}}) for further information.
+列車の開発者は様々なフランジ音を提供します。このコマンドを用いることで、此等のフランジ音を路線で使用するレールの種類に関連付けます。路線製作者が使用するレールの種類に対して正しいサウンドを再生させるためには、列車の開発者と協力して作業を調整する必要があります。 詳細については [standards]({{< ref "/information/standards/_index.md" >}}) を参照して下さい。
 
 ---
 
@@ -851,11 +851,11 @@ The train developer provides a repertoire of different flange sounds. Use this c
 {{% /command %}}
 
 {{% command-arguments %}}  
-***TimetableIndex***: A non-negative integer representing the timetable index.  
-***FileName***: The file name for the daytime version of the timetable, relative to the train's folder (1<sup>st</sup> choice), or relative to the **Object** folder (2<sup>nd</sup> choice).  
+***TimetableIndex***: 時刻表インデックス番号を表す、負でない整数  
+***FileName***:  列車のフォルダを基準にした (1<sup>番目の</sup> 選択肢)、若しくは **Object** フォルダを基準にした (2<sup>番目の</sup> 選択肢)、昼間の時刻表のファイル名  
 {{% /command-arguments %}}
 
-Use this command to load daytime versions of the timetable. Which timetable index to show starting with a particular station can be set in Track.Sta commands.
+このコマンドを使用して、時刻表の日中のバージョンをロードします。特定の駅から開始して表示する時刻表のインデックスは、Track.Staコマンドで設定できます。
 
 ---
 
@@ -864,11 +864,11 @@ Use this command to load daytime versions of the timetable. Which timetable inde
 {{% /command %}}
 
 {{% command-arguments %}}  
-***TimetableIndex***: A non-negative integer representing the timetable index.  
-***FileName***: The file name for the daytime version of the timetable, relative to the train's folder (1<sup>st</sup> choice), or relative to the **Object** folder (2<sup>nd</sup> choice).  
+***TimetableIndex***: 時刻表インデックス番号を表す、負でない整数  
+***FileName***: 列車のフォルダを基準とした (1<sup>番目の</sup> 選択肢)、若しくは **Object** フォルダを基準とした (2<sup>番目の</sup> 選択肢)、夜間の時刻表のファイル名  
 {{% /command-arguments %}}
 
-Use this command to load nighttime versions of the timetable. Which timetable index to show starting with a particular station can be set in Track.Sta commands.
+このコマンドを使用して、時刻表の夜間のバージョンをロードします。特定の駅から開始して表示する時刻表のインデックスは、Track.Staコマンドで設定できます。
 
 ---
 
@@ -877,12 +877,12 @@ Use this command to load nighttime versions of the timetable. Which timetable in
 {{% /command %}}
 
 {{% command-arguments %}}  
-***ValueInMillimeters***: A floating-point number representing the rail gauge, measured in **millimeters** (0.001 meters). The default value is 1435.  
+***ValueInMillimeters***: 軌間の幅を表す浮動小数点数。 **ミリメートル** (0.001 メートル) で表します。 デフォルトの数値は 1435 です。  
 {{% /command-arguments %}}
 
 {{% note %}}
 
-Train.Gauge is the same as Route.Gauge.
+Train.Gauge は Route.Gauge と同じ意味を持ちます。
 
 {{% /note %}}
 
@@ -893,12 +893,12 @@ Train.Gauge is the same as Route.Gauge.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***ValueInSeconds***: A floating-point number representing the time interval between the player's train and the preceding train, measured in **seconds**. The default value is 0.  
+***ValueInSeconds***: 運転する列車と先行列車の間の時間間隔を表す浮動小数点数。 **秒**で表します。 デフォルトの数値は 0 です。  
 {{% /command-arguments %}}
 
 {{% note %}}
 
-Train.ValueInSeconds is the same as Route.RunInterval.
+Train.ValueInSeconds は Route.RunInterval と同じ意味を持ちます。
 
 {{% /note %}}
 
@@ -909,10 +909,10 @@ Train.ValueInSeconds is the same as Route.RunInterval.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***<font color="blue">Speed</font>***: A positive floating-point number representing the maximum speed the preceding trains may travel at, **by default** measured in **kilometers per hour**, or 0 for infinite speed. The default value is 0.  
+***<font color="blue">Speed</font>***: 先行列車が移動できる最高速度を表す正の浮動小数点数。 **デフォルト** では **キロメートル/時**で表し、0は無限です。 デフォルト値は 0 です。 
 {{% /command-arguments %}}
 
-This command defines the maximum speed limit the preceding trains may travel at. The actual speed limit may be reduced by Track.Limit commands. The player's train is unaffected by this setting and may travel up to the limits defined by Track.Limit.
+このコマンドは、先行列車が移動できる最高速度制限を定義します。実際の制限速度はTrack.Limitによって下げることが出来ます。運転する列車はこの設定の影響を受けず、Track.Limitで定義された制限まで移動する可能性があります。
 
 ---
 
@@ -920,7 +920,7 @@ This command defines the maximum speed limit the preceding trains may travel at.
 **<font color=#555555>Train.Acceleration</font>**  
 {{% /command %}}
 
-<font color=#555555>This command is ignored by openBVE.</font>
+<font color=#555555>このコマンドはOpenBVEでは無視されます。</font>
 
 ---
 
@@ -928,74 +928,74 @@ This command defines the maximum speed limit the preceding trains may travel at.
 **<font color=#555555>Train.Station</font>**  
 {{% /command %}}
 
-<font color=#555555>This command is ignored by openBVE.</font>
+<font color=#555555>このコマンドはOpenBVEでは無視されます。</font>
 
-## <a name="structure"></a>■ 7. The Structure namespace
+## <a name="structure"></a>■ 7.  Structure 名前空間
 
-The commands in the Structure namespace define which objects to use in other commands. Generally, commands like Track.Rail, Track.FreeObj and so on create objects referenced by a *StructureIndex*. This *StructureIndex* is specific to that command, so you can define a set of objects specific to Track.Rail, Track.FreeObj and so on.
+Structure名前空間のコマンドは、他のコマンドで使用するオブジェクトを定義します。通常、Track.Rail、 Track.FreeObjなどのコマンドは、 *StructureIndex* によって参照されるオブジェクトを定義します。 この *StructureIndex* は、そのコマンドに固有であるため、 Track.Rail、Track.FreeObjなどに固有のオブジェクトのセットを定義できます。
 
-The general syntax for commands in the Structure namespace is:
+Structure名前空間のコマンドの一般的な構文は次のとおりです。:
 
 {{% command %}}  
 **Structure.Command**(_StructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
-*StructureIndex* is a non-negative integer. *FileName* is the object file to load, relative to the **Object** folder. *Command* is any of the following commands:
+*StructureIndex* は負でない整数。 *FileName* は読み込ませるオブジェクトファイル名で **Object** フォルダと連携します。 *Command* は以下のコマンドになります:
 
 {{% table %}}
 
 | *Command*: | Remarks                                                      |
 | ---------- | ------------------------------------------------------------ |
-| Ground     | Defines objects for Cycle.Ground and Track.Ground.           |
-| Rail       | Defines objects for Track.Rail, Track.RailStart and Track.RailType. |
-| WallL      | Defines left objects for Track.Wall.                         |
-| WallR      | Defines right objects for Track.Wall.                        |
-| DikeL      | Defines left objects for Track.Dike.                         |
-| DikeR      | Defines right objects for Track.Dike.                        |
-| FormL      | Defines left platforms edges for Track.Form.                 |
-| FormR      | Defines right platforms edges for Track.Form.                |
-| FormCL     | Defines transformable left platforms for Track.Form. <font color="red">No ANIMATED objects supported.</font> |
-| FormCR     | Defines transformable right platforms for Track.Form. <font color="red">No ANIMATED objects supported.</font> |
-| RoofL      | Defines left roof edges for Track.Form.                      |
-| RoofR      | Defines right roof edges for Track.Form.                     |
-| RoofCL     | Defines transformable left roofs for Track.Form. <font color="red">No ANIMATED objects supported.</font> |
-| RoofCR     | Defines transformable right roofs for Track.Form. <font color="red">No ANIMATED objects supported.</font> |
-| CrackL     | Defines transformable left objects for Track.Crack. <font color="red">No ANIMATED objects supported.</font> |
-| CrackR     | Defines transformable right objects for Track.Crack. <font color="red">No ANIMATED objects supported.</font> |
-| FreeObj    | Defines objects for Track.FreeObj.                           |
-| Beacon     | Defines objects for Track.Beacon.                            |
+| Ground     | Cycle.Ground 及び Track.Groundで用いるオブジェクトを定義します。           |
+| Rail       | Track.Rail、Track.RailStart 及び Track.RailType で用いるオブジェクトを定義します。 |
+| WallL      | Track.Wall の左側のオブジェクトを定義します。                         |
+| WallR      | Track.Wall の右側のオブジェクトを定義します。                        |
+| DikeL      | Track.Dike の左側のオブジェクトを定義します。                         |
+| DikeR      | Track.Dike の右側のオブジェクトを定義します。                        |
+| FormL      | Track.Form の左側の線路寄りのオブジェクトを定義します。                 |
+| FormR      | Track.Form の右側の線路寄りのオブジェクトを定義します。                |
+| FormCL     | 変形可能なTrack.Formの左側を定義します。 <font color="red">アニメーテッドオブジェクトはサポートされていません。</font> |
+| FormCR     | 変形可能なTrack.Formの右側を定義します。 <font color="red">アニメーテッドオブジェクトはサポートされていません。</font> |
+| RoofL      | Track.Formの左側の線路寄りの屋根のオブジェクトを定義します。                      |
+| RoofR      | Track.Formの右側の線路寄りの屋根のオブジェクトを定義します。                     |
+| RoofCL     | 変形可能なTrack.Formの左側の屋根のオブジェクトを定義します。 <font color="red">アニメーテッドオブジェクトはサポートされていません。</font> |
+| RoofCR     | 変形可能なTrack.Formの右側の屋根のオブジェクトを定義します。 <font color="red">アニメーテッドオブジェクトはサポートされていません。</font> |
+| CrackL     | 変形可能なTrack.Crackの左側のオブジェクトを定義します。 <font color="red">アニメーテッドオブジェクトはサポートされていません。</font> |
+| CrackR     | 変形可能なTrack.Crackの右側のオブジェクトを定義します。 <font color="red">アニメーテッドオブジェクトはサポートされていません。</font> |
+| FreeObj    | Track.FreeObj を定義します。                           |
+| Beacon     | Track.Beacon のオブジェクトを定義します。                            |
 
 {{% /table %}}
 
-Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, FormCR, RoofCL, RoofCR, CrackL and CrackR commands only accept B3D, CSV and X objects.
+通常、サポートされているオブジェクトの種類は B3D、 CSV、X及びANIMATEDです。 しかし、FormCL、FormCR、RoofCL、RoofCR、CrackL及びCrackRについては B3D、CSV及びXのみ受けいれます。
 
-➟ [More information about forms, roofs and cracks...]({{< ref "/routes/formroofcrack/_index.md" >}})
+➟ [form、roof 及び crackについての詳細情報はこちらを参照して下さい...]({{< ref "/routes/formroofcrack/_index.md" >}})
 
-Additionally, there is the Structure.Pole command, which has a slightly different syntax:
+付け加えると、少々異なる構文を持った Structure.Pole コマンドもあります:
 
 {{% command %}}  
 **Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***NumberOfAdditionalRails***: An non-negative integer representing the number of additional rails covered by the pole. 0 creates a pole for one rail, 1 for two rails, etc.  
-***PoleStructureIndex***: A non-negative integer representing the pole structure index.  
-***FileName***: The object file to load, relative to the **Object** folder.  
+***NumberOfAdditionalRails***: ポールで覆われる追加のレールを表す負でない整数。 例えば 0 は単線、 1 は複線用等です。  
+***PoleStructureIndex***: ポールのストラクチャのインデックス番号を表す負でない整数。  
+***FileName***: **Object** フォルダからの相対パスの、読み込ませるファイル名。  
 {{% /command-arguments %}}
 
-Please note that all objects but the FreeObj are inserted at the beginning of a block and should thus extend from 0 to *BlockLength* (by default 25m) on the z-axis. For further information on usage, see the respective commands from the Track namespace.
+FreeObjを除くすべてのオブジェクトはブロックの先頭に挿入されるため、z軸上で0から *ブロック長* (デフォルトは25m) まで拡張する必要がある事に注意して下さい。 使用法の詳細については Track 名前空間の其々のコマンドを参照して下さい。
 
-## <a name="texture"></a>■ 8. The Texture namespace
+## <a name="texture"></a>■ 8. Texture 名前空間
 
-Commands from this namespace define which background images to use and how they are aligned.
+この名前空間のコマンドは使用する背景画像と、それらの配置方法を定義します。
 
 ![illustration_background](/images/illustration_background.png)
 
-The background image is displayed as a cylindric wall around the camera whose start (viewed from above) is 60 degrees to the left of the initial forward direction (at the 10 o'clock position). From there, the background image wraps clock-wise around the cylinder with a repetition count specified via Texture.Background(*BackgroundTextureIndex*).X, which by default creates 6 repetitions in a full circle.
+背景画像は、カメラの周囲の円柱状の壁として表示され、この壁の開始点 (上から見た場合) は最初の前方方向から60度 ( 10 時の方向)です。 そこから、背景画像は Texture.Background(*BackgroundTextureIndex*).X を用いて覆うように時計回りに円筒状に繰り返し、デフォルトでは真円の中に6回繰り返されます。
 
-The upper 3/4 of the image is displayed above the horizon, while the lower 1/4 is displayed below the horizon. Via Texture.Background(*BackgroundTextureIndex*).Aspect, you can choose whether to have a fixed cylinder height or to preserve the aspect ratio of the texture. If the image should have a fixed height, the cylinder has a height of 1/2 its radius, which corresponds to about 20 degree inclination to the top of the image, and about -7 degrees to the bottom of the image. If the aspect ratio of the image is preserved, this takes not only the width and height of the image into account, but also the repetition count.
+画像の上部4分の3は地平線の上に表示され、下部4分の1は地平線の下に表示されます。 Texture.Background(*BackgroundTextureIndex*).Aspectを通じて、 円柱の高さを固定するか、テクスチャのアスペクト比を維持するかを選択できます。 画像の高さが固定されている必要がある場合、円柱の高さは半径の2分の1になります。これは、画像の上部に対して約20度、画像の下部に対して約-7度の傾斜に相当します。もし画像のアスペクト比が維持されている場合、これには画像の幅と高さだけでなく、繰り返しの回数も考慮されます。
 
-Regardless of the repetition count you chose, you should make sure that the left and right edges of the textures fit seamlessly together. Please also take into account that top and bottom caps are created which sample from the top and bottom 10% of the image. You should avoid mountain peaks and similar extremes in the top 10% of the image in order for such extremes to not leak into the top cap.
+選択した繰り返しの回数に関係なく、テクスチャの左端と右端がシームレスにフィットする事を確認する必要があります。 また、画像の上部と下部の10%からサンプリングする上部と下部の蓋が作成されることも考慮に入れて下さい。 山の頂上のような極端なものが上部の蓋に入り込まないようにするため、画像の上部10%の中に入り込まないように注意する必要があります。
 
 The image loaded into Texture.Background(0) is displayed at the beginning of the route, unless a Track.Back command at the beginning of the route requests a different image.
 
@@ -2341,3 +2341,22 @@ This command places a bumper. The train can collide with the bumper in both the 
 {{% /command-arguments %}}
 
 This command places a special beacon, which sets the destination variable, available for use by plugins and animated objects. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.
+
+------
+
+{{% command %}}  
+**Track.HornBlow** *Type*; *BeaconStructureIndex*; *TriggerOnce*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: Defines the type of horn to play: *0* for the primary horn, *1* for the secondary horn and *2* for the music horn.  
+***BeaconStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Beacon, or -1 to not place any object.  
+***TriggerOnce***: If set to *0*, this beacon will be triggered by all valid trains which pass over it. If set to *1*, it will be triggered by the first valid train only.  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
+
+This command places a special beacon, which commands an AI driver to play the horn. Both an AI controlled player train and pure AI trains will trigger this beacon, unless **TriggerOnce** is set. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.
