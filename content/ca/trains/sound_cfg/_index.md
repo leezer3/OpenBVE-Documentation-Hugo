@@ -356,6 +356,28 @@ Off = *FileName*
 {{% /command %}}  
 Played once when power is interrupted or resumed. There is a series of circumstances when that can happen, for example when moving from power notch zero to power notch one, or vice versa, assuming the reverser is non-neutral and the brakes are released. The safety systems can also interrupt power.
 
+##### ● [Windscreen]
+
+{{% command %}}  
+RainDrop = *FileName*  
+{{% /command %}}  
+Played when a rain drop hits the windscreen.
+
+{{% command %}}  
+WetWipe = *FileName*  
+{{% /command %}}  
+Played when the wiper moves with more than 20% of the available drops visible.
+
+{{% command %}}  
+DryWipe = *FileName*  
+{{% /command %}}  
+Played when the wiper moves with less than 20% of the available drops visible.
+
+{{% command %}}  
+Switch = *FileName*  
+{{% /command %}}  
+Played when the wiper switch is moved.
+
 ------
 
 ##### ● [Others]

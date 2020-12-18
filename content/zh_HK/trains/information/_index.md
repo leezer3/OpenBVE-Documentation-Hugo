@@ -1,11 +1,11 @@
 ---
-title: "Information and tips for train creation"
-linktitle: "Information and tips"
+title: "關於列車製作的資料和貼士"
+linktitle: "資料和貼士"
 weight: 10
 ---
-This page presents information developers need to be aware of and general tips for object creation.
+本頁內容概括了開發者製作時需要了解的資料,以及物件製作的通用提示。
 
-## ■ Exterior objects
+## ■ 車外物件
 
 - Exterior objects need to follow the same rules as any other object. See [Information and tips on object creation]({{< ref "/objects/information/_index.md" >}}).
 

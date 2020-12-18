@@ -1319,6 +1319,25 @@ This command sets the accuracy of the track from this point on. Values should be
 
 This command sets the adhesion of the track from this point on. As a reference, the value of 135 represents dry conditions, 85 represents frost and 50 represents snowy conditions. With a value of 0, the train will not be able to move at all. 
 
+---
+
+{{% command %}}  
+**Track.Rain** *Intensity*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Rate***: A non-negative floating-point number measured in percent representing the intensity of the current rainfall. The default value is 0.  
+{{% /command-arguments %}}
+
+This command sets the intensity of the current rainfall.
+
+{{% warning-nontitle %}}
+
+It is also possible to set the rain intensity using the legacy BVE4 beacon based method. If these commands are present in the route, all Rain commands will be ignored.
+
+{{% /warning-nontitle %}} 
+
+
 ##### <a name="track_geometry"></a>● 11.2. Geometry
 
 ---

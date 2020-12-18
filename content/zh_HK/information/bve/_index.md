@@ -10,15 +10,15 @@ weight: 9
 
 ## ■Track.Signal命令（CSV和RW線路）
 
-The Track.Signal command (alternatively: Track.Sig) is used to create a default Japanese-style signal in CSV routes (alternative spellings are used in RW routes).
+Track.Signal命令 ( 或: Track.Sig ) 是用於在CSV路線中創建 默認的日式信號 ( RW路由中使用替代拼寫 )。
 
-In openBVE, the Track.Signal command takes the following arguments:
+在OpenBVE中，Track.Signal命令採用以下參數：
 
 {{% command %}}  
-**Track.Signal** *Aspects*; *~~Unused~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
+**Track.Signal** *Aspects*; *~~沒用~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
 {{% /command %}}
 
-但喺BVE Trainsim中，Tack.Signal指令接受的嘅係以下參數：
+但在BVE Trainsim中，Track.Signal指令接受的是係以下參數：
 
 {{% command %}}  
 **Track.Signal** *Aspects*; *Label*; *X*; *Y*; <u>*Type*</u>  

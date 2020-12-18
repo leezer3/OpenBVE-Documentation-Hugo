@@ -1336,22 +1336,41 @@ With Track
 
 该指令设定之后轨道的附着系数。这会影响车轮打滑等物理计算。作为参考，干燥轨面大约是135，湿滑轨面大约是70，降雪轨面大约是50。如果附着系数是0，意味着轨面完全理想光滑，列车车轮将一直打滑，根本不可能移动。
 
-##### <a name="track_geometry"></a>● 11.2. 几何变换
+---
+
+{{% command %}}  
+**Track.Rain** *Intensity*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Rate***: A non-negative floating-point number measured in percent representing the intensity of the current rainfall. The default value is 0.  
+{{% /command-arguments %}}
+
+This command sets the intensity of the current rainfall.
+
+{{% warning-nontitle %}}
+
+It is also possible to set the rain intensity using the legacy BVE4 beacon based method. If these commands are present in the route, all Rain commands will be ignored.
+
+{{% /warning-nontitle %}} 
+
+
+##### <a name="track_geometry"></a>● 11.2. Geometry
 
 ---
 
 {{% command %}}  
-**Track.Pitch** *坡度*  
+**Track.Pitch** *Rate*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***坡度***：一个浮点数，单位是‰(千分之一)，代表轨道的坡度。默认值是0。   
+***Rate***: A floating-point number measured in per thousands representing the pitch of the track. The default value is 0.  
 {{% /command-arguments %}}
 
-该命令改变之后**所有**轨道的坡度。正值代表上坡，负值代表下坡。0代表平路。*坡度*可以根据在*水平距离*米内上升（下降为负）*垂直高度*米来计算：
+This command defines the pitch of all rails from this point on. Negative values indicate a downward gradient, positive ones an upward gradient. The value of 0 represents a level track. Rate can be calculated from a length difference X and a height difference Y in the following way:
 
-{{% function "*Rate expressed through X and Y:*" %}}    
-_坡度 = 1000 * 垂直高度 / 水平距离_    
+{{% function "*Rate expressed through X and Y:*" %}}  
+_Rate = 1000 * Y / X_  
 {{% /function %}}
 
 {{% warning-nontitle %}}
@@ -1363,142 +1382,123 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 ---
 
 {{% command %}}  
-**Track.Curve** <font color="green">*半径*</font>; *超高*  
+**Track.Curve** *<font color=green>Radius</font>*; *CantInMillimeters*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-**<font color="green">*半径*</font>**：一个浮点数，表示转弯的半径。**默认的**单位是**米**。默认值是0。  
-***超高***：一个浮点数，代表弯道的超高（外侧轨道比内侧轨道高出的高度，用来提供向心力），单位**一定**是**毫米**（千分之一米）。默认值是0。另参见Options.CantBehavior。  
+***<font color=green>Radius</font>***: A floating-point number representing the radius of the curve, **by default** measured in **meters**. The default value is 0.  
+***CantInMillimeters***: A floating-point number which represents the superelevation of a banked curve, **always** measured in **millimeters** (0.001 meters). The default value is 0. See also Options.CantBehavior.  
 {{% /command-arguments %}}
 
-该指令使所有轨道从这一位置开始转弯，并指定转弯的*半径*。正半径代表向右转弯，负半径代表向左转弯。0代表直道。*超高*以毫米指定弯道的超高。对于该数值正负值的含义，请参见Options.CantBehavior。如果它是0(默认)，*超高*的设定值将被取绝对值，并向弯道内侧倾斜，同时在直道上不采取超高；如果它是1，*超高*的符号将被考虑，正数向内倾斜，负数向外倾斜，同时在直道上也会采取超高，负值向左，正值向右。
+This command defines the radius of the curve for the player's rail from this point on. Negative values for *Radius* indicate a curve to the left, positive ones to the right. The value of 0 represents straight track. The *CantInMillimeters* parameter defines the cant (superelevation) in millimeters. If Options.CantBehavior is 0 (default), only the absolute value of *CantInMillimeters* is considered, and the superelevation is always towards the curve center (inward). Also, cant cannot be applied on straight track. If Options.CantBehavior is 1, *CantInMillimeters* is signed, i.e. negative values bank outward and positive ones inward on curved track. Also, cant can be applied on straight track, where negative values bank toward the left and positive ones toward the right.
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}} 
 
 ---
 
 {{% command %}}  
-**Track.Turn** *斜率*  
+**Track.Turn** *Ratio*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***斜率***：一个浮点数，表示弯折的斜率。 默认值是0。  
+***Rate***: A floating-point number representing a turn. The default value is 0.  
 {{% /command-arguments %}}
 
-该指令使轨道在指令插入位置做一个弯折。*斜率*可以根据在*纵向距离*米转向*横向距离*米来计算：
+This command creates a point-based turn at the point of insertion. *Ratio* indicates the ratio between the length difference *Z* and the horizontal offset *X* in the following way:
 
-{{% function %}}    
-*斜率 = 纵向距离 / 横向距离*  
+{{% function %}}  
+*Ratio = X / Z*  
 {{% /function %}}
 
-正值代表右转，负值代表左转，0代表直道。
+A negative ratio represents a turn to the left, a positive one to the right. The value of 0 represents a straight track.
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}
 
 {{% warning-nontitle %}}
 
-在创建弯道方面，该指令较为难用，且已过时。如要编辑弯道，可使用Track.Curve。
+This command is deprecated - use Track.Curve instead.
 
 {{% /warning-nontitle %}}    
 
 ---
 
 {{% command %}}  
-**Track.Height** <font color="green">*离地高度*</font>  
+**Track.Height** *<font color=green>Y</font>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-**<font color="green">*离地高度*</font>**：一个浮点数，表示主轨道在距离地面的高度。正值会将地面向下移动。**默认的**单位是**米**。   
+***<font color=green>Y</font>***: A floating-point number representing the height of the player's rail, **by default** measured in **meters**.  
 {{% /command-arguments %}}
 
-该指令告诉游戏在特定位置地面应当距离主轨道下方的距离。它影响通过Structure.Ground和Track.Ground载入和选定的地面模型的放置位置。由于默认的位置0代表轨道的上表面（我想您应该并不希望地面被糊在轨道上面而不是衬在下面），您应该把它设置为一个合适的正值。在相邻的Track.Height之间，高度值被平滑细分以使地面过渡平滑。 例如，以下两段代码是等效的：
+This command defines the height of the player's rail above the ground at the point of insertion. It influences the placement of the ground objects defined via Structure.Ground and changed via Track.Ground. The height is interpolated between adjacent Track.Height commands. For example, the following two codes produce equivalent results:
 
-{{% code "*Example of a Track.Height command interpolated at 25m boundaries:*" %}}    
-1000, Track.Height 1    
-1075, Track.Height 4    
+{{% code "*Example of a Track.Height command interpolated at 25m boundaries:*" %}}  
+1000, Track.Height 1  
+1075, Track.Height 4  
 {{% /code %}}
 
-{{% code "*Example of Track.Height explicitly set each 25m to produce the same result:*" %}}    
-1000, Track.Height 1    
-1025, Track.Height 2    
-1050, Track.Height 3    
-1075, Track.Height 4    
-{{% /code %}}  
-作为参考顺便提一句，有很多轨道模型都是0.3米高的。
+{{% code "*Example of Track.Height explicitly set each 25m to produce the same result:*" %}}  
+1000, Track.Height 1  
+1025, Track.Height 2  
+1050, Track.Height 3  
+1075, Track.Height 4  
+{{% /code %}}
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}
 
-##### <a name="track_objects"></a>● 11.3. 物件
+##### <a name="track_objects"></a>● 11.3. Objects
 
 ------
 
 {{% command %}}  
-**Track.FreeObj** *轨道编号*; *物体模型编号*; *水平位置*; *垂直位置*; *偏转角*; *俯仰角*; *侧倾角*  
+**Track.FreeObj** *RailIndex*; *FreeObjStructureIndex*; *X*; *Y*; *Yaw*; *Pitch*; *Roll*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***轨道编号***：一个非负整数，指定这个物体要被放在哪一条轨道旁。默认值是0.  
-***外景物体模型编号***：一个非负整数，指定要被放置的物体模型。默认值是0。  
-**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。  
-**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。  
-***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。  
-***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。  
-***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
+***RailIndex***: A non-negative integer representing the rail on which to place the object. The default value is 0.   
+***FreeObjStructureIndex***: A non-negative integer representing the object to place as defined via Structure.FreeObj. The default value is 0.  
+***<font color="green">X</font>***: The x-offset from the (straight) rail, **by default** measured in **meters**. Negative values represent the left, positive ones the right. The default value is 0.  
+***<font color="green">Y</font>***: The y-offset from the (straight) rail, **by default** measured in **meters**. Negative values represent below the top of the rails, positive ones above. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
 {{% /command-arguments %}}
 
-该指令在指定轨道旁放置一个“自由”的外景物体。在放置前需要先用*Structure.FreeObj*载入模型。
+This places a "free" object a single time on a specified rail. The object must have been loaded via Structure.FreeObj(*FreeObjStructureIndex*) prior to using this command. 
 
 ------
 
 {{% command %}}  
-**Track.Wall** *轨道编号*; *方向*; *墙壁模型编号*  
+**Track.Wall** *RailIndex*; *Direction*; *WallStructureIndex*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***轨道编号***：一个非负整数，指定要放置墙壁的轨道。  
-***方向***：指示要放置墙壁的方向。  
-***墙壁模型编号***：一个非负整数，指定要被放置的墙壁模型。默认值是0。  
+***RailIndex***: A non-negative integer representing the rail on which to start or update the wall. The default value is 0.  
+***Direction***: An integer indicating which wall to use as described below.  
+***WallStructureIndex***: A non-negative integer representing the object to place as defined via Structure.WallL and Structure.WallR. The default value is 0.  
 {{% /command-arguments %}}
 
-▸ *方向*的可选项：
+▸ Options for *Direction*:
 
 {{% command-arguments %}}  
-**-1**：放置左侧墙壁(WallL)。  
-**0**：放置双侧墙壁(WallL+WallR)。  
-**1**：放置右侧墙壁(WallR)。  
+**-1**: The WallL object (left wall) is used.  
+**0**: Both the WallL and WallR objects are used.  
+**1**: The WallR object (right wall) is used.  
 {{% /command-arguments %}}
 
-该指令开始或更新一条轨道两侧的墙壁。在放置前需要先用*Structure.WallL*以及*Structure.WallR*载入模型。直到使用Track.WallEnd结束墙壁，对应的墙壁模型会在每个区间块的开始处被不停放置。请注意墙壁是和轨道对应的，这意味着如果先前设定了墙壁，在结束轨道然后重新利用这一相同轨道编号时墙壁依然会被继续放置。
-
-{{% warning-nontitle %}}
-
-该指令只能在区间块开始位置使用。
-
-{{% /warning-nontitle %}}
-
-------
-
-{{% command %}}  
-**Track.WallEnd** *轨道编号*  
-{{% /command %}}
-
-{{% command-arguments %}}  
-***轨道编号***：一个非负整数，指定要停止放置墙壁的轨道。   
-{{% /command-arguments %}}
-
-该指令停止在一条轨道两侧放置墙壁模型。该指令从它的位置即刻生效。
+This starts or updates a wall on a specified rail. The object must have been loaded via Structure.WallL(*WallObjectIndex*) or Structure.WallR(*WallObjectIndex*) prior to using this command. The walls are placed at the beginning of every block until a corresponding Track.WallEnd ends the wall for this rail. Please note that walls are resurrected if a rail is ended via Track.RailEnd and then started again via Track.RailStart or Track.Rail unless the wall was also ended via Track.WallEnd.
 
 {{% warning-nontitle %}}
 
@@ -1509,24 +1509,42 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 ------
 
 {{% command %}}  
-**Track.Dike** *轨道编号*; *Direction*; *路堤模型编号*  
+**Track.WallEnd** *RailIndex*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***轨道编号***：一个非负整数，指定要放置路堤的轨道。默认值是0。  
-***方向***：指示要放置路堤的方向。  
-***路堤模型编号***：一个非负整数，指定要被放置的路堤模型。默认值是0。  
+***RailIndex***: A non-negative integer representing the rail on which to end an existing wall.  
 {{% /command-arguments %}}
 
-▸ *方向*的可选项：
+This ends an existing wall that was previously started via Track.Wall on a specified rail. The wall is not placed for the block in which this command is used.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+------
+
+{{% command %}}  
+**Track.Dike** *RailIndex*; *Direction*; *DikeStructureIndex*  
+{{% /command %}}
 
 {{% command-arguments %}}  
-**-1**：放置左侧路堤(DikeL)。  
-**0**：放置双侧路堤(DikeL+DikeR)。  
-**1**：放置右侧路堤(DikeR)。  
+***RailIndex***: A non-negative integer representing the rail on which to start or update the dike. The default value is 0.  
+***Direction***: An integer indicating which dike to use as described below.  
+***DikeStructureIndex***: A non-negative integer representing the object to place as defined via Structure.DikeL and Structure.DikeR. The default value is 0.  
 {{% /command-arguments %}}
 
-该指令开始或更新一条轨道两侧的路堤。在放置前需要先用*Structure.DikeL*以及*Structure.DikeR*载入模型。直到使用Track.DikeEnd结束路堤，对应的路堤模型会在每个区间块的开始处被不停放置。请注意路堤是和轨道对应的，这意味着如果先前设定了路堤，在结束轨道然后重新利用这一相同轨道编号时路堤依然会被继续放置。
+▸ Options for *Direction*:
+
+{{% command-arguments %}}  
+**-1**: The DikeL object (left dike) is used.  
+**0**: Both the DikeL and DikeR objects are used.  
+**1**: The DikeR object (right dike) is used.  
+{{% /command-arguments %}}
+
+This starts or updates a dike on a specified rail. The object must have been loaded via Structure.DikeL(*DikeObjectIndex*) or Structure.DikeR(*DikeObjectIndex*) prior to using this command. The dikes are placed at the beginning of every block until a corresponding Track.DikeEnd ends the dike for this rail. Please note that dikes are resurrected if a rail is ended via Track.RailEnd and then started again via Track.RailStart or Track.Rail unless the dike was also ended via Track.DikeEnd.
 
 {{% warning-nontitle %}}
 
@@ -1537,14 +1555,14 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 ------
 
 {{% command %}}  
-**Track.DikeEnd** *轨道编号*  
+**Track.DikeEnd** *RailIndex*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***轨道编号***：一个非负整数，指定要停止放置路堤的轨道。   
+***RailIndex***: A non-negative integer representing the rail on which to end an existing dike.  
 {{% /command-arguments %}}
 
-该指令停止在一条轨道两侧放置路堤模型。该指令从它的位置即刻生效。
+This ends an existing dike that was previously started via Track.Dike on a specified rail. The dike is not placed for the block in which this command is used.
 
 {{% warning-nontitle %}}
 
@@ -1555,18 +1573,18 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 ------
 
 {{% command %}}  
-**Track.Pole** *轨道编号*; *额外轨道跨度值*; *位置*; *间隔*; *架线柱模型编号*  
+**Track.Pole** *RailIndex*; *NumberOfAdditionalRails*; *Location*; *Interval*; *PoleStructureIndex*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***轨道编号***：一个非负整数，指定要放置架线柱的轨道。默认值是0。  
-***额外轨道跨度值***：一个非负整数，代表这个架线柱模型跨过的额外轨道数量。（即这个轨道，再加上 *额外轨道跨度值* 条轨道）0代表跨度为1组轨道的架线柱，1代表2组轨道，以此类推。默认值是0。  
-***位置***：指定以3.8米的倍数的放置位置的水平位置（详情见下）。当*额外轨道跨度值*为0时指定放置的方向。  
-***间隔***：一个*为区间块长度的倍数*的整数，指定每两个架线柱之间的距离。  
-***架线柱模型编号***：一个非负整数，指定要被放置的架线柱模型。默认值是0。  
+***RailIndex***: A non-negative integer representing the rail on which to start or update the pole. The default value is 0.  
+***NumberOfAdditionalRails***: A non-negative integer representing the amount of additional rails covered by this pole (i.e. this rail, plus *NumberOfAdditionalRails* rails). The default value is 0.  
+***Location***: If *NumberOfAdditionalRails* is 0, the side on which the pole is placed (see below), or the x-offset in multiples of 3.8 meters if *NumberOfAdditionalRails* is at least 1. The default value is 0.  
+***Interval***: An integer multiple of the block length specifying the interval in which poles are placed.  
+***PoleStructureIndex***: A non-negative integer representing the object to place as defined via Structure.Pole. The default value is 0.  
 {{% /command-arguments %}}
 
-该指令开始或更新一条轨道两侧的架线柱。在放置前需要先用Structure.Pole载入模型。架线柱被放在每一个轨道位置是*间隔*的**倍数**的区间块开始位置（这就是为什么可能发现指令的执行位置处并没有一个架线柱）。如果*额外轨道跨度值*是0，*位置*指定放置的方向。如果*位置*小于或等于0，模型被按原样放置（对应左侧架线柱）。如果*位置*大于0，模型会被在X轴向反转180°后放置（对应右侧架线柱）。如果*额外轨道跨度值*大于等于1，*位置*指定以3.8米的倍数的放置位置的水平位置。请注意架线柱是和轨道对应的，这意味着如果先前设定了架线柱，在结束轨道然后重新利用这一相同轨道编号时架线柱依然会被继续放置。
+This starts or updates a pole on a specified rail. The object must have been loaded via Structure.Pole(*NumberOfAdditionalRails*; *PoleStructureIndex*) prior to using this command. The poles are placed at the beginning of every block whose track positions are an integer multiple of the *Interval* (that is not necessarily at the same location this command is placed). If *NumberOfAdditionalRails* is 0, *Location*indicates the side of the rail on which the pole is placed. If *Location* is less than or equal to 0, the pole is placed as-is (corresponding to the left side). If *Location* is greater than 0, the object is mirrored on the x-axis and then placed (corresponding to the right side). If *NumberOfAdditionalRails* is greater than or equal to 1, *Location* specifies the x-offset in multiples of 3.8 meters. Please note that poles are resurrected if a rail is ended via Track.RailEnd and then started again via Track.RailStart or Track.Rail unless the pole was also ended via Track.PoleEnd.
 
 {{% warning-nontitle %}}
 
@@ -1577,139 +1595,141 @@ _坡度 = 1000 * 垂直高度 / 水平距离_
 ------
 
 {{% command %}}  
-**Track.PoleEnd** *轨道编号*  
+**Track.PoleEnd** *RailIndex*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***轨道编号***：一个非负整数，指定要停止放置架线柱的轨道。默认值是0。   
+***RailIndex***: A non-negative integer representing the rail on which to end an existing pole.  
 {{% /command-arguments %}}
 
-该指令停止在一条轨道两侧放置架线柱模型。该指令从它的位置即刻生效。
+This ends an existing pole that was previously started via Track.Pole on a specified rail. The pole is not placed for the block in which this command is used.
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}
 
 ------
 
 {{% command %}}  
-<font color="gray">**Track.Crack** *轨道编号<sub>1</sub>*; *轨道编号<sub>2</sub>*; *填充间隙地面模型编号*</font>  
+<font color="gray">**Track.Crack** *RailIndex<sub>1</sub>*; *RailIndex<sub>2</sub>*; *CrackStructureIndex*</font>  
 {{% /command %}}
 
-该指令将一个物件缩放拉伸，以填补轨道之间的空隙。
+This deforms a specified object to fill the space between two Rails.
 
 {{% command-arguments %}}  
-***轨道编号<sub>1</sub>***：一个非负整数，指定第一条轨道。  
-***轨道编号<sub>2</sub>***：一个非负整数，指定另一条轨道。  
-***填充间隙地面模型编号***：一个非负整数，指定要用来填充间隙的模型(Structure.Crack)。默认值是0。  
+***RailIndex<sub>1</sub>***: A non-negative integer representing the first RailIndex.  
+***RailIndex<sub>2</sub>***: A non-negative integer representing the second RailIndex.  
+***CrackStructureIndex***: A non-negative integer representing the object defined in Structure.Crack  
 {{% /command-arguments %}}
 
-**注意:**  
-如果 *轨道编号<sub>1</sub>* 处于 *轨道编号<sub>2</sub>* 的**左侧**（即：其X坐标更小），则使用Structure.CrackL定义的物件，否则使用CrackR。
+**Note:**
+If *RailIndex<sub>1</sub>* is to the **left** of *RailIndex<sub>2</sub>* (e.g. it's X-cordinate is smaller), then the object defined in Structure.CrackL will be used.  
+Otherwise, the objects defined in Structure.CrackR will be used.
 
 ------
 
 {{% command %}}  
-**Track.Ground** *地面模型编号*  
+**Track.Ground** *CycleIndex*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***地面模型编号***：一个非负整数，指定要被放置的地面模型(Structure.Ground/Cycle.Ground)。   
+***CycleIndex***: A non-negative integer representing the cycle of ground objects to place as defined via Structure.Ground or Cycle.Ground.  
 {{% /command-arguments %}}
 
-该指令设定从这一点开始被放置的地面模型。地面模型总是被放在主轨道下方的一段距离（由Track.Height指定）。如果能查找到定义为*地面模型编号*的循环模型(*Cycle.Ground*)，则优先使用；如果没有，则使用普通模型(*Structure.Ground*)。
+This defines which ground objects to place from this point on. Ground objects are always placed at the beginning of a block at a certain height below the player's rail (as defined via Track.Height). If no cycle was defined for *CycleIndex*, then the object loaded into Structure.Ground(*CycleIndex*) is placed. Otherwise, the cycle of ground objects as defined via Cycle.Ground(*CycleIndex*) is used.
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}
 
-##### <a name="track_stations"></a>● 11.4. 车站
+##### <a name="track_stations"></a>● 11.4. Stations
 
 ------
 
 {{% command %}}  
-**Track.Sta** *站名*; *到达时间*; *发车时间*; *停车铃*; *开门方向*; *强制红灯*; *信号系统*; *到达广播*; *停车时间*; *乘车率*; *发车广播*; *时刻表编号*  
+**Track.Sta** *Name*; *ArrivalTime*; *DepartureTime*; *PassAlarm*; *Doors*; *ForcedRedSignal*; *System*; *ArrivalSound*; *StopDuration*; *PassengerRatio*; *DepartureSound*; *TimetableIndex*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***站名***：该车站的站名。将会在时刻表和提示信息中显示，所以不应留空。  
-***到达时间***：玩家驾驶的列车应当到达此站的[时间]({{< ref "/information/numberformats/_index.md#times" >}})。可以使用特殊值表示额外信息——见下。  
-***发车时间***：玩家驾驶的列车应当从此站发车的[时间]({{< ref "/information/numberformats/_index.md#times" >}})。可以使用特殊值表示额外信息——见下。  
-***停车铃***：指示停车警铃设备（如果列车有安装）是否应该鸣响以提示列车驾驶在这站停车。默认值是0。  
-***开门方向***：指示列车应开启的车门方向。默认值是0。  
-***强制红灯***：指示是否应该将最后一个停车点后方的信号机（发车信号机）在玩家驾驶列车接近时设为红色。默认值是0。  
-***信号系统***：指示从此站到下一站之间的区间安装的列车信号系统。默认值是0。  
-***到达广播***：一个相对于**Sound**文件夹的路径，指向列车停站时播放的音频。  
-***停车时间***：一个正浮点数表示列车在车站的最小停车时间（包括开关门时间）。默认值是15。  
-***乘车率***：一个非负浮点数表示在该站列车上乘客的相对数量。作为参考，100差不多是正常载客量，而250则表示超载列车。输入值应当在0~250之间。默认值是100。  
-***发车广播***：一个相对于**Sound**文件夹的路径，指向在发车前（发车时间-关门时间-音频时长）要播放的音频。  
-***时刻表编号***：一个非负整数，指示一个由Train.Timetable(*时刻表编号*)指定的，从此站开始要显示的时刻表。默认保持上站设定。
-
-▸ *到达时间*的可选项：
-
-{{% command-arguments %}}  
-*[一个时间]*：所有列车都需要停车，玩家驾驶的列车需要在这个特定时间到达。  
-*[留空]*：所有列车都需要停车，但可以在任意时间到达。  
-**P**或**L**：所有列车都只需要通过这个车站。  
-**B**：玩家驾驶的列车只需要通过这个车站，而AI车需要停车。  
-**S**：玩家驾驶的列车需要停车，而AI车只需要通过。  
-**S:**_[一个时间]_：玩家驾驶的列车需要在这个特定时间到达停车，而AI车只需要通过。  
+***Name***: The name of the station. This is displayed in the timetable and in messages, so should not be omitted.  
+***ArrivalTime***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) the player's train is expected to arrive at this station. Special values may also appear - see below.  
+***DepartureTime***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) the player's train is expected to depart from this station. Special values may also appear - see below.  
+***PassAlarm***: Indicates whether the pass alarm device should remind the driver of stopping at this station. The default value is 0.  
+***Doors***: Indicates which doors should open at this station. The default value is 0.  
+***ForcedRedSignal***: Indicates whether the signal behind the last station stop should be red on a train approach. The default value is 0.  
+***System***: Indicates which built-in safety system should apply until the next station. The default value is 0.  
+***ArrivalSound***: The sound file to be played on arrival, relative to the **Sound** folder.  
+***StopDuration***: A positive floating-point number indicating the minimum stop duration in seconds, including door opening/closing times. The default value is 15.  
+***PassengerRatio***: A non-negative floating-point number indicating the relative amount of passengers in the train from this station on. As a reference, 100 represents a train with normal amount of passengers, while 250 represents an over-crowded train. Values in-between 0 and 250 should be used. The default value is 100.  
+***DepartureSound***: The sound file to be played before departure (departure time minus sound duration minus door closing time), relative to the **Sound** folder.  
+***TimetableIndex***: A non-negative integer representing the timetable to be shown from this station on as defined via Train.Timetable(*TimetableIndex*).  
 {{% /command-arguments %}}
 
-▸ *发车时间*的可选项：
+▸ Available options for *ArrivalTime*:
 
 {{% command-arguments %}}  
-*[一个时间]*：列车将会在这个时间之后发车。  
-*[留空]*：列车只要停足停车时间就可以发车。  
-**T**或**=**：这是终点站，列车不会发车。如果*强制红灯*被设定，发车信号机会被无限保持在红灯。  
-**T:**_[一个时间]_：这是终点站，列车不会发车。如果*强制红灯*被设定，发车信号机还是会在发车时间后转为绿灯。  
-**C**：这是一个“换端传送”车站。详情见下。  
-**C:**_[一个时间]_：这是一个“换端传送”车站，除非*停车时间*要求推迟发车，列车会在特定时间传送换端。详情见下。  
-**J:**_[车站编号]_：列车可以在该车站"跳转传送"到由*车站编号*指定的车站。详情见下。  
-**J:**_[车站编号]**[一个时间]**_：列车可以在该车站"跳转传送"到由*车站编号*指定的车站。除非*停车时间*要求推迟发车，列车将会在指定时间传送。详情见下。  
+*time*: The train is expected to arrive at this particular time.  
+*omitted*: The train may arrive at any time.  
+**P** or **L**: All trains are expected to pass this station.  
+**B**: The player's train is expected to pass this station, while all other trains are expected to stop.  
+**S**: The player's train is expected to stop at this station, while all other trains are expected to pass.  
+**S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
 {{% /command-arguments %}}
 
-▸ *停车铃*的可选项：
+▸ Available options for *DepartureTime*:
 
 {{% command-arguments %}}  
-**0**：停车铃不鸣响。  
-**1**：停车铃会鸣响来提醒列车驾驶在这站停车。  
+*time*: The train is expected to depart at this particular time.  
+*omitted*: The train may depart at any time.  
+**T** or **=**: This is the terminal station. If *ForcedRedSignal* is set to 1, the departure signal will be held at red indefinately.  
+**T:**_time_: This is the terminal station. If *ForcedRedSignal* is set to 1, the departure signal will still switch to green before the specified time as if this was a regular station.  
+**C**: This is a station at which to "change ends". See the description below.  
+**C:**_time_: This is a station at which to "change ends". Changing ends will take place at the specified time unless *StopDuration* interferes. See the description below.  
+**J:**_index_: This is a station at which the train is "jumped" to the station specified by *index*. See the description below.  
+**J:**_index:**Time**_: This is a station at which the train is "jumped" to the specified by *index*. Jumping will take place at the specified time unless *StopDuration* interfers. See the description below.  
 {{% /command-arguments %}}
 
-▸ *开门方向*的可选项：
+▸ Available options for *PassAlarm*:
 
 {{% command-arguments %}}  
-**L** 或 **-1** ：开左侧门。  
-**N** 或 **0** ：不开门。即列车只需要临时停车。  
-**R** 或 **1** ：开右侧门。  
-**B** ：开两侧门。  
+**0**: The pass alarm device does not remind the driver of stopping at this station.  
+**1**: The pass alarm device reminds the driver of stopping at this station.  
 {{% /command-arguments %}}
 
-▸ *强制红灯*的可选项：
+▸ Available options for *Doors*:
 
 {{% command-arguments %}}  
-**0**：该车站不影响信号灯。  
-**1**：在最后一个停止点后方的信号机（发车信号机）在列车完成停车动作并到达发车时间后才会变绿。  
+**L** or **-1**: The left doors are expected to open at this station.  
+**N** or **0**: No doors are expected to open at this station, i.e. the train should simply come to a hold.  
+**R** or **1**: The right doors are expected to open at this station.  
+**B**: Both the left and right doors are expected to open at this station.  
 {{% /command-arguments %}}
 
-▸ *信号系统*的可选项：（由于BVE是日本的模拟游戏所以原装只支持日式信号系统）
+▸ Available options for *ForcedRedSignal*:
 
 {{% command-arguments %}}  
-**ATS**或**0**：前方轨道未安装ATC，应切换至ATS。  
-**ATC**或**1**：前方轨道已安装ATC，应切换至ATC。  
+**0**: Signals are unaffected by this station.  
+**1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
 {{% /command-arguments %}}
 
-该指令设定一个新车站。在编写指令时，该指令应该被放置在车站站台的开始处。其后（到下一站之前）的所有Track.Stop指令都被视为和该站有关。如果该站需要停车，该指令后面应该有一个或多个Track.Stop指令指定车站的停车点，以完成车站的定义。
+▸ Available options for *System*:
 
-**特殊功能：**
+{{% command-arguments %}}  
+**ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
+**ATC** or **1**: ATC should be used from this station on. The following track is equipped with ATC.  
+{{% /command-arguments %}}
 
-车站可以被设为“换端车站”。在这样的车站，列车会在满足发车时间后自动被传送到下一站。这个特性可以用来假装列车折返，而不用人工打开菜单跳站。
+This command initializes a new station. It should be placed at the beginning of the station platform. In order to finalize the creation of a station, use the Track.Stop command to place stop points following this command. All following Track.Stop commands will be associated to this station. At least one Track.Stop command must follow if trains are expected to stop at this station.
 
-类似的，车站也可以被设定为”跳站传送“。在这些车站，当到达发车时间，列车就会被传送到指定编号的车站。这样就可以将列车传送到之前的车站，还可以此模拟环线。
+**Special Features:**
+
+Stations can be marked as "changing ends" in the departure time. At such stations, when the departure time has been reached, the train will automatically jump to the next station. This feature is intended to fake a reverse of traveling direction without the need to jump to stations manually from the menu.
+
+Similarly, stations can be marked as a "jump point" in the departure time. At such stations, when the departure time has been reached, the train will automatically jump to the specified station index.
 
 {{% warning-nontitle %}}
 
@@ -1720,72 +1740,71 @@ The first occuring station in a route may not be of the Terminal type.
 ------
 
 {{% command %}}  
-**Track.Station** *站名*; *到达时间*; *发车时间*; *强制红灯*; *信号系统*; *发车广播*  
+**Track.Station** *Name*; *ArrivalTime*; *DepartureTime*; *ForcedRedSignal*; *System*; *DepartureSound*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***站名***：该车站的站名。将会在时刻表和提示信息中显示，所以不应留空。  
-***到达时间***：玩家驾驶的列车应当到达此站的[时间]({{< ref "/information/numberformats/_index.md#times" >}})。可以使用特殊值表示额外信息——见下。  
-***发车时间***：玩家驾驶的列车应当从此站发车的[时间]({{< ref "/information/numberformats/_index.md#times" >}})。可以使用特殊值表示额外信息——见下。  
-***强制红灯***：指示是否应该将最后一个停车点后方的信号机（发车信号机）在玩家驾驶列车接近时设为红色。默认值是0。  
-***信号系统***：指示从此站到下一站之间的区间安装的列车信号系统。默认值是0。  
-***发车广播***：一个相对于**Sound**文件夹的路径，指向在发车前（发车时间-关门时间-音频时长）要播放的音频。  
+***Name***: The name of the station. This is displayed in the timetable and in messages, so should not be omitted.  
+***ArrivalTime***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) the player's train is expected to arrive at this station. Special values may also appear - see below.  
+***DepartureTime***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) the player's train is expected to depart from this station. Special values may also appear - see below.  
+***ForcedRedSignal***: Indicates whether the signal behind the last station stop should be red on a train approach. The default value is 0.  
+***System***: Indicates which built-in safety system should apply until the next station. The default value is 0.  
+***DepartureSound***: The sound file to be played before departure (departure time minus sound duration minus door closing time), relative to the **Sound** folder.  
 {{% /command-arguments %}}
 
-▸ *到达时间*的可选项：
+▸ Available options for *ArrivalTime*:
 
 {{% command-arguments %}}  
-*[一个时间]*：所有列车都需要停车，玩家驾驶的列车需要在这个特定时间到达。  
-*[留空]*：所有列车都需要停车，但可以在任意时间到达。  
-**P**或**L**：所有列车都只需要通过这个车站。  
-**B**：玩家驾驶的列车只需要通过这个车站，而AI车需要停车。  
-**S**：玩家驾驶的列车需要停车，而AI车只需要通过。  
-**S:**_[一个时间]_：玩家驾驶的列车需要在这个特定时间到达停车，而AI车只需要通过。  
+*time*: The train is expected to arrive at this particular time.  
+*omitted*: The train may arrive at any time.  
+**P** or **L**: All trains are expected to pass this station.  
+**B**: The player's train is expected to pass this station, while all other trains are expected to stop.  
+**S**: The player's train is expected to stop at this station, while all other trains are expected to pass.  
+**S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
 {{% /command-arguments %}}
 
-▸ *发车时间*的可选项：
+▸ Available options for *DepartureTime*:
 
 {{% command-arguments %}}  
-*[一个时间]*：列车将会在这个时间之后发车。  
-*[留空]*：列车只要停足停车时间就可以发车。  
-**T**或**=**：这是终点站，列车不会发车。如果*强制红灯*被设定，发车信号机会被无限保持在红灯。  
-**T:**_[一个时间]_：这是终点站，列车不会发车。如果*强制红灯*被设定，发车信号机还是会在发车时间后转为绿灯。  
-**C**：这是一个“换端传送”车站。详情见下。  
-**C:**_[一个时间]_：这是一个“换端传送”车站，除非*停车时间*要求推迟发车，列车会在特定时间传送换端。详情见下。  
+*time*: The train is expected to depart at this particular time.  
+*omitted*: The train may depart at any time.  
+**T** or **=**: This is the terminal station. If *ForcedRedSignal* is set to 1, the departure signal will be held at red indefinately.  
+**T:**_time_: This is the terminal station. If *ForcedRedSignal* is set to 1, the departure signal will still switch to green before the specified time as if this was a regular station.  
+**C**: This is a station at which to "change ends". See the description below.  
+**C:**_time_: This is a station at which to "change ends". Changing ends will take place at the specified time unless *StopDuration* interferes. See the description below.  
 {{% /command-arguments %}}
 
-▸ *强制红灯*的可选项：
+▸ Available options for *ForcedRedSignal*:
 
 {{% command-arguments %}}  
-**0**：该车站不影响信号灯。  
-**1**：在最后一个停止点后方的信号机（发车信号机）在列车完成停车动作并到达发车时间后才会变绿。  
+**0**: Signals are unaffected by this station.  
+**1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
 {{% /command-arguments %}}
 
-▸ *信号系统*的可选项：
+▸ Available options for *System*:
 
 {{% command-arguments %}}  
-**ATS**或**0**：前方轨道未安装ATC，应切换至ATS。  
-**ATC**或**1**：前方轨道已安装ATC，应切换至ATC。  
+**ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
+**ATC** or **1**: ATC should be used from this station on. The following track is equipped with ATC.  
 {{% /command-arguments %}}
 
-该指令早已过时，请不要使用该指令（它连开门方向都指定不了）——请使用包含更多选项的Track.Sta代替它。  
-该指令创建一个新站。对于它没有提供的参数，默认采用以下值：
+This command initializes a new station. Prefer using the Track.Sta command, which includes more options. For the options of Track.Sta which are not offered by Track.Station, the following values apply:
 
 {{% table-nonheader %}}
 
-| *停车铃*      | 0 （不提醒）                  |
+| *PassAlarm*      | 0 (not used)                  |
 | ---------------- | ----------------------------- |
-| *开门方向*          | B （开两侧门） |
-| *到达广播*   | 不播放                    |
-| *停车时间*   | 15                            |
-| *乘车率* | 100                           |
-| *时刻表编号* | 不更改                  |
+| *Doors*          | B (both doors must be opened) |
+| *ArrivalSound*   | Not played                    |
+| *StopDuration*   | 15                            |
+| *PassengerRatio* | 100                           |
+| *TimetableIndex* | Not affected                  |
 
 {{% /table-nonheader %}}
 
-该指令设定一个新车站。在编写指令时，该指令应该被放置在车站站台的开始处。其后（到下一站之前）的所有Track.Stop指令都被视为和该站有关。如果该站需要停车，该指令后面应该有一个或多个Track.Stop指令指定车站的停车点，以完成车站的定义。
+The command should be placed at the beginning of the station platform. In order to finalize the creation of a station, use the Track.Stop command to place stop points following this command. All following Track.Stop commands will be associated to this station. At least one Track.Stop command must follow if trains are expected to stop at this station.
 
-车站可以被设为“换端车站”。在这样的车站，列车会在满足发车时间后自动被传送到下一站。这个特性可以用来假装列车折返，而不用人工打开菜单跳站。
+Stations can be marked as "changing ends" in the departure time. At such stations, when the departure time has been reached, the train will automatically jump to the next station. This feature is intended to fake a reverse of traveling direction without the need to jump to stations manually from the menu.
 
 {{% warning-nontitle %}}
 
@@ -1796,569 +1815,568 @@ The first occuring station in a route may not be of the Terminal type.
 ------
 
 {{% command %}}  
-**Track.Stop** *标牌方向*; <font color="green">*后方容差*</font>; <font color="green">*前方容差*</font>; *编组数量*  
+**Track.Stop** *Direction*; *<font color="green">BackwardTolerance</font>*; *<font color="green">ForwardTolerance</font>*; *Cars*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***标牌方向***：放置一个默认（日式）停车位置指示牌的方向。  
-<font color="green">***后方容差***</font>：一个正浮点数，表示在停止位置后方的容差。**默认的**单位是**米**。默认值是5。  
-<font color="green">***前方容差***</font>：一个正浮点数，表示在停止位置前方的容差。**默认的**单位是**米**。默认值是5。  
-***编组数量***：一个非负整数，指示该位置适合的列车编组（节数）。0代表该位置适合所有列车编组。默认值是0。  
+***Direction***: On which side to place a default stop post. The default value is 0.  
+***<font color="green">BackwardTolerance</font>***: A positive floating-point number indicating the allowed tolerance in the backward direction, **by default** measured in **meters**. The default value is 5.  
+***<font color="green">ForwardTolerance</font>***: A positive floating-point number indicating the allowed tolerance in the forward direction, **by default** measured in **meters**. The default value is 5.  
+***Cars***: A non-negative integer indicating for how many cars this stop point applies, or 0 for all cars. The default value is 0.  
 {{% /command-arguments %}}
 
-▸ *方向*的可选项:
+▸ Available options for *Direction*:
 
 {{% command-arguments %}}  
-**-1**：在左侧放置指示牌。  
-**0**：不放置默认指示牌。  
-**1**：在右侧放置指示牌。  
+**-1**: A stop post is created on the left side.  
+**0**: No stop post is created.  
+**1**: A stop post is created on the right side.  
 {{% /command-arguments %}}
 
-该指令为上一个创建的车站添加停车点。如果有多个停车点，列车会停在设定的*编组数量*大于等于它的实际编组数量的第一个停车点。一个*编组数量*为0，代表允许所有编组列车停靠的停车点，在配合其他停车点放置时一般被放在最后。
+This command places a stop point for the last created station. If there is more than one stop defined for a station, a train is expected to stop at the first Track.Stop command for which *Cars* is greater than or equal to the number of cars the train has, where a value for *Cars* of 0 indicates a stop point regardless of the amount of cars to be used as the last stop point for a station.
 
-{{% code "*Example of a station with multiple stop points:*" %}}    
+{{% code "*Example of a station with multiple stop points:*" %}}  
 With Track  
-0100, .Sta 国际空间站  
-0178, .Stop 1;;;4 ,; 适合4编组及以下列车  
-0212, .Stop 1;;;6 ,; 适合5~6编组列车  
-0246, .Stop 1;;;8 ,; 适合7~8编组列车  
-0280, .Stop 1;;;0 ,; 适合9编组及以上列车  
+0100, .Sta STATION  
+0178, .Stop 1;;;4 ,; for 4 or less cars  
+0212, .Stop 1;;;6 ,; for 5 or 6 cars  
+0246, .Stop 1;;;8 ,; for 7 or 8 cars  
+0280, .Stop 1;;;0 ,; for 9 or more cars  
 {{% /code %}}
 
 ------
 
 {{% command %}}  
-<font color="gray">**Track.Form** *轨道编号<sub>1</sub>*; *轨道编号<sub>2</sub>*; *顶棚模型编号*; *站台模型编号*</font>  
+<font color="gray">**Track.Form** *RailIndex<sub>1</sub>*; *RailIndex<sub>2</sub>*; *RoofStructureIndex*; *FormStructureIndex*</font>  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***轨道编号<sub>1</sub>***：要创建站台的轨道。  
-***轨道编号<sub>2</sub>***：在创建岛式站台的情况下，输入另一侧轨道的编号；在创建侧式站台的情况下，输入L或R来指定站台创建在轨道左边还是右边。  
-***顶棚模型编号***：一个非负整数，指定要被放置的顶棚模型。   
-***站台模型编号***：一个非负整数，指定要被放置的站台模型。  
+***RailIndex<sub>1</sub>***: The RailIndex to which the platform is bound.  
+***RailIndex<sub>2</sub>***: The secondary RailIndex to which the platform will deform. Special values may also appear- see below.  
+***RoofStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Roof  
+***FormStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Form and Structure.FormC  
 {{% /command-arguments %}}
 
-▸ *轨道编号<sub>2</sub>* 的可选项：
+▸ Available options for *RailIndex<sub>2</sub>*:
 
-{{% command-arguments %}}    
-**任何已开始的轨道**：站台模型将被拉伸变形以形成贴合轨道的岛式站台。   
-**L**: 将原样无变形地使用FormL, FormCL 与 RoofL物件。    
-**R**: 将原样无变形地使用FormR, FormCR 与 RoofR物件。  
+{{% command-arguments %}}  
+**Any current RailIndex**: The form is deformed to meet the specified RailIndex.  
+**L**: The specified FormL, FormCL and RoofL objects are placed without deformation.  
+**R**: The specified FormR, FormCR and RoofR objects are placed without deformation.  
 {{% /command-arguments %}}
 
-**注意:**  
-如果 *轨道编号<sub>1</sub>* 处于 *轨道编号<sub>2</sub>* 的**左侧**（即：其X坐标更小），则使用Structure.FormL, Structure.FormCL 与 Structure.RoofL定义的物件，否则使用FormR, FormCR与RoofR。
+**Note:**
+If *RailIndex<sub>1</sub>* is to the **left** of *RailIndex<sub>2</sub>* (e.g. it's X-cordinate is smaller), then the objects defined in Structure.FormL, Structure.FormCL and Structure.RoofL will be used.  
+Otherwise, the objects defined in Structure.FormR, Structure.FormCL and Structure.RoofR will be used.
 
 
-##### <a name="track_signalling"></a>● 11.5. 信号与限速
+##### <a name="track_signalling"></a>● 11.5. Signalling and speed limits
 
 ------
 
-{{% command %}} 
-**Track.Limit** <font color="blue">*限速*</font>; *标牌位置*; *方向*   
-{{% /command %}} 
+{{% command %}}  
+**Track.Limit** *<font color="blue">Speed</font>*; *Post*; *Cource*  
+{{% /command %}}
 
-{{% command-arguments %}} 
-**<font color="blue">*限速*</font>**：一个正浮点数，代表速度。 **默认的** 单位是 **km/h** 。0代表解除限速。默认值是0。   
-***标牌位置*** ：放置一个默认日式限速标牌的位置。默认值是0。   
-***方向*** ：在道岔限速情况下，标识限速起效的方向。  
+{{% command-arguments %}}  
+***<font color="blue">Speed</font>***: A positive floating-point number representing the speed, **by default** measured in **km/h**, or 0 to indicate no speed restriction. The default value is 0.  
+***Post***: The side on which to place a default Japanese-style speed limit post. The default value is 0.  
+***Cource***: The directional indication. The default value is 0.  
 {{% /command-arguments %}}
 
-![_限速示意图](/images/illustration_limit.png)
+![illustration_limit](/images/illustration_limit.png)
 
-▸ *标牌位置*的可选项：
+▸ Options for *Post*:
 
-{{% command-arguments %}}    
-**-1**：标牌放在轨道左侧。   
-**0**：不放置默认标牌。   
-**1**：标牌放在轨道右侧。  
+{{% command-arguments %}}  
+**-1**: The post is placed on the left side of the track.  
+**0**: No post will be placed.  
+**1**: The post is placed on the right side of the track.  
 {{% /command-arguments %}}
 
-▸ *方向*的可选项：
+▸ Options for *Cource*:
 
-{{% command-arguments %}}    
-**-1**：该标牌表示通过道岔进入左侧轨道时的限速。   
-**0**：该标牌不表示道岔限速。   
-**1**：该标牌表示通过道岔进入右侧轨道时的限速。  
+{{% command-arguments %}}  
+**-1**: The post applies for a left-bound track.  
+**0**: The post does not indicate a particular direction.  
+**1**: The post applies for a right-bound track.  
 {{% /command-arguments %}}
 
-该指令设定从该点开始的速度限制。如果新限速低于原限速，限速将立刻起效；如果新限速高于原限速，限速会在整列列车全部通过标牌之后起效。将*限速*设为`0`将解除限速。将*标牌位置* 设为`-1`或`1`会在轨道的对应一侧放置一个默认的日式限速标牌。将*方向*设为`-1`或`1`会给标牌加上方向显示，用来指示该标牌与道岔方向的关系。*速度*设为`0`的解除限速标牌从来都不会有*方向*显示。 
+This command defines the new speed limit from this point on. If the new speed limit is lower than the current speed limit, the new speed limit will take effect immediately. If the speed limit is higher than the current speed limit, the new speed limit will take effect only once the whole train has passed this point. By setting *Speed* to `0`, the speed restriction is released. By setting *Post* to either `-1` or `1`, a default Japanese-style speed post is placed at the respective side of the track. Setting *Course* to either `-1` or `1` includes a directional indication, which is usually used at railroad switches to indicate that the speed limit only applies if the respective direction is being taken. If *Speed* is set to `0`, the setting of *Course* has no effect.
 
 ------
 
-{{% command %}} 
-**Track.Section** *状态<sub>0</sub>*; *状态<sub>1</sub>*; *状态<sub>2</sub>*; ...; *状态<sub>n</sub>* 
-{{% /command %}} 
+{{% command %}}  
+**Track.Section** *a<sub>0</sub>*; *a<sub>1</sub>*; *a<sub>2</sub>*; ...; *a<sub>n</sub>*  
+{{% /command %}}
 
-{{% command-arguments %}} 
-**状态*<sub>i</sub>***：一个非负整数，指示该自动闭塞区段传递给信号机的一个状态。 
-{{% /command-arguments %}} 
+{{% command-arguments %}}  
+***a<sub>i</sub>***: A non-negative number specifying one of the section's aspects.  
+{{% /command-arguments %}}
 
-该指令开始一个自动闭塞区间。这是真正设置自动闭塞系统使其工作的指令，一般和放置显示自动闭塞系统状态的信号机的Track.SigF指令一起使用。*状态<sub>i</sub>*指定区段传递给信号机的一个信号状态。状态0代表不可有列车通过的红灯，越大的值代表前方清空的区间越多，代表列车可以以更快的速度通过。必须指定*状态<sub>0</sub>*。 
+This command starts a section, the functional part of signalling, to be used in conjunction with Track.SigF, which creates a visual representation of a section (a signal). The *a<sub>i</sub>* parameters specify the aspects the section can bear. An aspect of 0 corresponds to a red section which must not be passed by a train. The *a<sub>0</sub>* term is mandatory.
 
 {{% notice %}}
 
-#### 默认和简化的两种区间设定方法
+#### Default versus simplified section behavior
 
-openBVE提供两种对*状态<sub>i</sub>*参数的不同解读方式。可以通过Options.SectionBehavior来选择要使用哪种方式。下面简单介绍一下两种方式都是如何定义的。
+There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
 
 {{% /notice %}}
 
-**默认解读方式：** 
-*状态<sub>i</sub>*指定当前方有i个区间清空（无车）时应该传达给信号机的信号状态。状态被按照书写顺序读入和匹配。但是，如果需要信号机在多种情况下显示相同信息，是可以给多种情况设定相同的信号状态的。
+**Default behavior:**  
+The *a<sub>i</sub>* terms specify the aspect the section should bear depending on how many sections ahead are clear until a red one is encountered. The order of the terms is relevant. The same aspect may occur multiple times.
 
-▸ *状态<sub>i</sub>*的意义：
+▸ Meanings of the *a<sub>i</sub>* terms:
 
-{{% command-arguments %}}    
-**状态<sub>0</sub>**：当该区间内已经有列车，或因为停车站ForceRedSignal的缘故被保持在红灯时的信号状态。   
-**状态<sub>1</sub>**：当前区间已经清空，但前面的下一个区间有列车时的信号状态。   
-**状态<sub>2</sub>**：当前区间已经被清空，下一个区间也已经被清空，但是再下一个区间里就有列车了时的信号状态。   
-**状态<sub>n</sub>**：以此类推，当前方有*n*个区间清空时的信号状态。     
+{{% command-arguments %}}  
+**a<sub>0</sub>**: The aspect to show when this section is occupied by a train or otherwise hold at red.  
+**a<sub>1</sub>**: The aspect to show when this section is clear, but the immediately following section is red.  
+**a<sub>2</sub>**: The aspect to show when this section and the following section are clear, but the one immediately following the latter one is red.  
+**a<sub>n</sub>**: The aspect to show when *n* sections are clear before a red one is encountered.  
 {{% /command-arguments %}}
 
-如果前方有比*<sub>n</sub>*个还要多的清空的区间，最后一个状态*<sub>n</sub>*状态会被传给信号机。 
+In the case more sections ahead are clear than indicated by the *a<sub>i</sub>* terms, the section will bear the aspect of *a<sub>n</sub>*.
 
-**简化解读方式：**   
-*状态<sub>i</sub>*指定这个信号区段会传达给信号机的所有状态。当前方有x个被清空的区间时，被传达给信号机的信号状态就是所有*状态<sub>i</sub>*状态从小到大排的第x个。如果*x*比*状态<sub>i</sub>*状态的总数还要多，最大的一个*状态<sub>i</sub>*状态会被传给信号机。状态的顺序无关紧要，重复出现的值只会被留下一个。 译注：我是没感觉这怎么简化了……
+**Simplified behavior:**  
+The *a<sub>i</sub>* terms specify the repertoire of aspects the section can have. A section will bear the smallest of the *a<sub>i</sub>* which is greater than the current aspect of the upcoming section. If no such *a<sub>i</sub>* exists, the section will bear the aspect of *an*. The order of the *a<sub>i</sub>* is irrelevant. If the same aspect occurs multiple times, this has no effect.
 
-这是Track.Section与Track.SigF一同使用的方法例子：  
-{{% code "*Example of a Track.Section command in conjunction with a Track.SigF command:*" %}}    
-With Track    
-1000, .Section 0;2;4, .SigF 3;0;-3;-1    
+{{% code "*Example of a Track.Section command in conjunction with a Track.SigF command:*" %}}  
+With Track  
+1000, .Section 0;2;4, .SigF 3;0;-3;-1  
 {{% /code %}}
 
 ------
 
-{{% command %}} 
-**Track.SigF** *信号机编号*; *相对关联区间*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角* 
-{{% /command %}} 
-
-{{% command-arguments %}} 
-***信号机编号***：一个非负整数，指定一个通过Signal(*信号机编号*).Load加载的自定义信号机。   
-***相对关联区间***：一个非负整数，指定这个信号机要显示哪一个自动闭塞区间的信号状态。0代表指令执行位置所在的区间，1代表这个区间前方的下一个区间，2代表再前面一个区间，以此类推。   
-**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
-**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。  
-***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
-***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
-***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
-{{% /command-arguments %}}
-
-该指令放置一个信号机，显示一个由Track.Section指令设定的自动闭塞区间的信号状态。如果将*垂直位置*设为负值（信号机怎么会遁地呢，是不？），这个值会被重设为4.8米，并在后方放置一个默认的架线杆，来代表有个杆的信号机（如果认为默认架线杆太丑或高度有问题，也可以通过在自定义信号机模型里面给它手动加个杆来达到这个效果）。另参见Track.Section。 
-
-在没有自定义相应的Signal(*信号机编号*)的情况下，可以使用这些默认的日式信号机： 
-
-▸ *信号机编号*的默认信号模型：
-
-{{% command-arguments %}}    
-**3**：一个三灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●</font>黄和<font color="#00C000">●</font>绿三种状态。   
-**4**：一个A型四灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄和<font color="#00C000">●</font>绿四种状态。   
-**5**：一个A型五灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄、<font color="#00C000">●</font><font color="#FFC000">●</font>黄绿和<font color="#00C000">●</font>绿五种状态。   
-**6**：一个和Track.Relay指令创建的一样的中继信号机。  
-{{% /command-arguments %}}
-
-------
-
-{{% command %}}    
-**Track.Signal** *状态类型*; *<font color="gray">此处留空</font>*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*     
-**Track.Sig** *状态类型*; *<font color="gray">此处留空</font>*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*    
+{{% command %}}  
+**Track.SigF** *SignalIndex*; *Section*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
 {{% /command %}}
 
-{{% command-arguments %}}    
- ***状态类型***：信号机的种类。默认值是2。   
-***此处留空***：*BVETs2按照这个参数在信号机下放置一个小文字标签。openBVE并没有这个功能，所以并不使用这个参数。请留空。*   
-**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
-**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。   
-***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
-***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
-***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
+{{% command-arguments %}}  
+***SignalIndex***: A non-negative integer representing the signal to be placed as defined via Signal(*SignalIndex*).Load.  
+***Section***: A non-negative integer representing the section this signal is attached to, with 0 being the current section, 1 the upcoming section, 2 the section after that, and so on.  
+***<font color="green">X</font>***: The X-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
 {{% /command-arguments %}}
 
-▸ *状态类型*的可选项：
+This command creates a non-function signal, that is, a visual representation of a section as defined via Track.Section. Setting *Y* to a negative number resets the y-coordinate to 4.8 meters and attaches a default signal post. Also see Track.Section.
 
-{{% command-arguments %}}    
-[![illustration_signals_small](/images/illustration_signals_small.png)](/images/illustration_signals_large.png)    
-**2**：一个A型两灯式信号机，有<font color="#C00000">●</font>红和<font color="#FFC000">●</font>黄两种状态。   
-**-2**：一个B型两灯式信号机，有<font color="#C00000">●</font>红和<font color="#00C000">●</font>绿两种状态。   
-**3**：一个三灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●</font>黄和<font color="#00C000">●</font>绿三种状态。   
-**4**：一个A型四灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄和<font color="#00C000">●</font>绿四种状态。   
-**-4**：一个B型四灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●</font>黄、<font color="#00C000">●●</font>黄绿和<font color="#00C000">●</font>绿四种状态。   
-**5**：一个A型五灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄、<font color="#00C000">●</font><font color="#FFC000">●</font>黄绿和<font color="#00C000">●</font>绿五种状态。   
-**-5**：一个B型五灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●</font>黄、<font color="#00C000">●</font><font color="#FFC000">●</font>黄绿、<font color="#00C000">●</font>绿和<font color="#00C000">●●</font>双绿五种状态。   
-**6**：一个六灯式信号机，有<font color="#C00000">●</font>红、<font color="#FFC000">●●</font>双黄、<font color="#FFC000">●</font>黄、<font color="#00C000">●</font><font color="#FFC000">●</font>黄绿、<font color="#00C000">●</font>绿和<font color="#00C000">●●</font>双绿六种状态。  
+If no object has been defined by Signal(*SignalIndex*), one of the default Japanese signals is used:
+
+▸ Default signals for *SignalIndex*:
+
+{{% command-arguments %}}  
+**3**: A three-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.  
+**4**: A four-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.  
+**5**: A five-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green and <font color="#00C000">●</font>green.  
+**6**: A repeating signal equivalent to that created by Track.Relay.  
 {{% /command-arguments %}}
-
-该指令在设置自动闭塞区间的同时放置一个信号机。可以指定*状态类型*来选择创建任何一种默认日式信号机。如果将*水平位置*设为0（信号机怎么会搁在轨道正中间呢，是不？），将不会放置信号机，只会设置自动闭塞区间，这和Track.Section的行为有点类似。如果将*水平位置*设为非零，且*垂直位置*设为负值（信号机怎么会遁地呢，是不？），这个值会被重设为4.8米，并在后方放置一个默认的架线杆，来代表有个杆的信号机。 
-
-{{% code "*Example of a four-aspect type B signal without a post at x=-3 and y=5:*" %}}    
-1000, Track.Signal -4;;-3;5    
-{{% /code %}}
-
-{{% code "*Example of a four-aspect type B signal including a post at x=-3 and y=4.8:*" %}}    
-1000, Track.Signal -4;;-3;-1    
-{{% /code %}}
-
-Track.Signal和把Track.Section以及Track.SigF一起用有点像。使用Track.Signal更方便，不过，使用Track.Section和Track.SigF可以允许放置自定义信号机，并控制设定更多的参数。
 
 ------
 
-{{% command %}} 
-**Track.Relay** <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角* 
-{{% /command %}} 
-
-{{% command-arguments %}} 
-**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
-**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。  
-***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
-***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
-***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
-{{% /command-arguments %}}
-
-该指令创建一个默认的日式中继信号机。这个信号机一般放在弯道等直线能见度不好的地方，显示与前方下一个信号机相同的信号状态，来让列车驾驶提前注意。如果将*水平位置*设为0（信号机怎么会搁在轨道正中间呢，是不？），将不会放置信号机，只会设置自动闭塞区间，这和Track.Section的行为有点类似。如果将*水平位置*设为非零，且*垂直位置*设为负值（信号机怎么会遁地呢，是不？），这个值会被重设为4.8米，并在后方放置一个默认的架线杆，来代表有个杆的信号机。 
-
-##### <a name="track_safety"></a>● 11.6. 车载信号系统
-
-------
-
-{{% command %}} 
-**Track.Beacon** *类型*; *轨旁无线电应答器模型*; *相对关联区间*; *数据*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角* 
-{{% /command %}} 
-
-{{% command-arguments %}}    
-***类型***：一个非负整数，指定这个应答器的类型，会随着数据一起发给车载信号系统。   
-***轨旁无线电应答器模型***：一个非负整数，指定一个已经由Structure.Beacon载入的模型。输入-1代表不放置模型。   
-***相对关联区间***：一个非负整数，指定这个信号机要显示哪一个自动闭塞区间的信号状态。0代表指令执行位置所在的区间，1代表这个区间前方的下一个区间，2代表再前面一个区间，以此类推。输入-1代表下一个红灯所在的区间。   
-***数据***：一个整数，代表特定于要发送给列车车载信号系统的应答器类型的任意数据。译注：openBVE的应答机会在发送信号状态的同时也发送这个附加数据。具体使用就要看ats.dll插件如何编程了。   
-**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
-**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。  
-***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
-***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
-***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
-{{% /command-arguments %}}
-
-该指令放置一个有源应答器。使用的模型需要通过Structure.Beacon(*BeaconStructureIndex*)预先加载。当列车通过它时，它会把类型、关联区间的信号状态、还有一堆其它信息全部发给车载信号系统接收器。
-
-需要注意，由于Track.Beacon(*类型*)和Track.Transponder(*类型*)是大致相同的，游戏内置的车载信号系统也会接收Track.Beacon的发信。所以，如果要自行编写ats.dll插件，请尽量避开游戏内置车载信号系统已经使用的标号，避免误发信息，造成混乱。详情参见[应答器类型标准]({{< ref "/information/standards/_index.md" >}})。 
-
-------
-
-{{% command %}}    
-**Track.Transponder** *类型*; *关联信号机*; *自动系统切换*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*   
-**Track.Tr** *类型*; *关联信号机*; *自动系统切换*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*  
+{{% command %}}  
+**Track.Signal** *Aspects*; *<font color="gray">Unused</font>*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*   
+**Track.Sig** *Aspects*; *<font color="gray">Unused</font>*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
 {{% /command %}}
 
-{{% command-arguments %}}    
-***类型***：这个应答器的类型。默认值是0。   
-***关联信号机***：这个应答器传递信息的相对来源。默认值是0。   
-***自动系统切换***：在安装了两种ATS类型系统的列车上，是否自动切换使用得ATS系统类型。   
-**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
-**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。  
-***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
-***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
-***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
+{{% command-arguments %}}  
+***Type***: The number of aspects for this signal. The default value is -2.  
+***Unused***: *This argument is not used by openBVE.*  
+***<font color="green">X</font>***: The X-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate to place the signal object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
 {{% /command-arguments %}}
 
-▸ *类型*的可选项：
+▸ Options for *Type*:
 
-{{% command-arguments %}}    
-![illustration_transponders](/images/illustration_transponders.png)    
-**0**：一个ATS-S的S 型发信器，一般放在信号机前600米。   
-**1**：一个ATS-S的SN型发信器。一般放在信号机前20米。   
-**2**：一个误发车防止型发信器，一般放在车站停站点后。   
-**3**：一个ATS-P的更新发信器，一般根据轨道限速等情况放在信号机前600m、280m、180m、130m、85m和50m处。   
-**4**：一个ATS-P的停止发信器，一般根据轨道限速等情况放在信号机前25m或30m处。  
+{{% command-arguments %}}  
+[![illustration_signals_small](/images/illustration_signals_small.png)](/images/illustration_signals_large.png)  
+**2**: A two-aspect (type A) signal having aspects <font color="#C00000">●</font>red and <font color="#FFC000">●</font>yellow.  
+**-2**: A two-aspect (type B) signal having aspects <font color="#C00000">●</font>red and <font color="#00C000">●</font>green.  
+**3**: A three-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.  
+**4**: A four-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow and <font color="#00C000">●</font>green.  
+**-4**: A four-aspect (type B) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●●</font>yellow-green and <font color="#00C000">●</font>green.  
+**5**: A five-aspect (type A) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green and <font color="#00C000">●</font>green.  
+**-5**: A five-aspect (type B) signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green, <font color="#00C000">●</font>green and <font color="#00C000">●●</font>green-green.  
+**6**: A six-aspect signal having aspects <font color="#C00000">●</font>red, <font color="#FFC000">●●</font>yellow-yellow, <font color="#FFC000">●</font>yellow, <font color="#FFC000">●</font><font color="#00C000">●</font>yellow-green, <font color="#00C000">●</font>green and <font color="#00C000">●●</font>green-green.  
 {{% /command-arguments %}}
 
-▸ *关联信号机*的可选项：
+This command creates a functional signal. You can choose from the available options for *Aspect* to create any of the default Japanese signals. Setting *X* to 0 creates a functional but invisible signal similar to Track.Section. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 meters and attaches a default signal post.
 
-{{% command-arguments %}}    
-**0**：这个应答器传递它前方第一个信号机的状态。   
-**1**：这个应答器传递它前方第二个信号机的状态。   
-**n**：以此类推，这个应答器传递它前方信号机后面的第*n*个信号机的状态。   
-{{% /command-arguments %}}
+{{% code "*Example of a four-aspect type B signal without a post at x=-3 and y=5:*" %}}  
+1000, Track.Signal -4;;-3;5  
+{{% /code %}}
 
-▸ *自动系统切换*的可选项：
+{{% code "*Example of a four-aspect type B signal including a post at x=-3 and y=4.8:*" %}}  
+1000, Track.Signal -4;;-3;-1  
+{{% /code %}}
 
-{{% command-arguments %}}    
-**-1**：这个应答器并不要求车载信号设备切换模式。   
-**0**：当这个应答器的类型是*0*或*1*时，车载信号设备将转到ATS-SN模式；当这个应答器的类型是*3*或*4*时，车载信号设备将转到ATS-P模式。  
-{{% /command-arguments %}}
-
-该指令放置一个为内置的ATS-SN或ATS-P信号系统使用的有源应答器。请参见[ATS系统用户指南](http://openbve-project.net/play-japanese/)来了解ATS系统和它的应答器的工作原理。
-
-需要注意，由于Track.Beacon(*类型*)和Track.Transponder(*类型*)是大致相同的，游戏内置的车载信号系统也会接收Track.Beacon的发信。所以，如果要自行编写ats.dll插件，请尽量避开游戏内置车载信号系统已经使用的标号，避免误发信息，造成混乱。详情参见[应答器类型标准]({{< ref "/information/standards/_index.md" >}})。 
-
-➟ [此处了解更多关于ATS-SN和ATS-P的信息](https://openbve-project.net/play-japanese/#3-ats-sn)
-
-➟ [这是一篇讲到如何在实际的路线开发过程中使用这五种应答器来正确设置日式ATS-SN与ATS-P信号系统的教程]({{< ref "/routes/tutorial_ats/_index.md" >}})
+Track.Signal is similar to using Track.Section and Track.SigF in one command.
 
 ------
 
-{{% command %}} 
-**Track.AtsSn** 
-{{% /command %}} 
+{{% command %}}  
+**Track.Relay** *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
 
-该指令放置一个ATS-S的S型发信器，关联前方第一个信号机，且自动切换系统。它等同于**Track.Tr 0;0;0**。 
-
-------
-
-{{% command %}} 
-**Track.AtsP** 
-{{% /command %}} 
-
-该指令放置一个ATS-P的更新发信器，关联前方第一个信号机，且自动切换系统。它等同于**Track.Tr 3;0;0**。 
-
-------
-
-{{% command %}} 
-**Track.Pattern** *类型*; <font color="blue">*速度*</font> 
-{{% /command %}} 
-
-{{% command-arguments %}}    
-***类型***：速度限制的类型。   
-**<font color="blue">*速度*</font>**：一个非负浮点数，指定这里的限速。**默认的**单位是**km/h**。  
+{{% command-arguments %}}  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
 {{% /command-arguments %}}
 
-▸ *类型*的可选项：
+This commands creates a default Japanese repeating signal. The repeating signal repeats the state of the upcoming signal. Setting *X* to zero does not create a repeating signal, but forces the command to be ignored. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 and attaches a default signal post.
 
-{{% command-arguments %}}    
-**0**：点限速（临时限速、道岔限速）。   
-**1**：段限速（永久限速、路段限速）。
+##### <a name="track_safety"></a>● 11.6. Safety systems
+
+------
+
+{{% command %}}  
+**Track.Beacon** *Type*; *BeaconStructureIndex*; *Section*; *Data*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: A non-negative integer representing the type of the beacon to be transmitted to the train.  
+***BeaconStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Beacon, or -1 to not place any object.  
+***Section***: An integer representing the section to which the beacon is attached, namely 0 for the current section, 1 for the upcoming section, 2 for the section behind that, etc., or -1 for the next red section.  
+***Data***: An integer representing arbitrary data specific to the beacon type to be transmitted to the train.  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
 {{% /command-arguments %}}
 
-该指令为内置的ATS-P系统设定一个限速，使它自动控制速度，防止列车超速。 
+This command places a beacon (transponder). The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command. When the train passes the beacon, the type of beacon and various data will be transmitted to the train, including the state of the referenced section.
 
-当一个点限速(*类型*为0)被插入在要应用的地方，ATS-P会提前了解这个限速的位置，并提前减速列车使列车通过这一点时速度正好在限速之下。一旦列车通过限速点，速度限制就不再有效，列车将会重新加速。 
-
-当一个段限速(*类型*为1)被插入在应用的地方，ATS-P不会提前了解这个限速的位置，只会从这个位置开始减速列车。为了尽量真实，请把限速设定和ATS-P发信器放在一起。段限速则会被ATS-P记忆并保持，并且直到下一个段限速重新设定才会解除。 
+It should be noted that the built-in safety systems also receive data from these beacons as Track.Beacon(*Type*) is roughly equivalent to Track.Transponder(*Type*). Please see [the page about beacon standards]({{< ref "/information/standards/_index.md" >}}) for more information.
 
 ------
 
-{{% command %}} 
-**Track.PLimit** <font color="blue">*速度*</font> 
-{{% /command %}} 
+{{% command %}}  
+**Track.Transponder** *Type*; *Signal*; *SwitchSystem*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+**Track.Tr** *Type*; *Signal*; *SwitchSystem*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
 
-{{% command-arguments %}} 
-**<font color="blue">*速度*</font>**：一个非负浮点数，指定这里的段限速。**默认的**单位是**km/h**。 
-{{% /command-arguments %}} 
+{{% command-arguments %}}  
+***Type***: The type of the transponder. The default value is 0.  
+***Signal***: The signal this transponder references. The default value is 0.  
+***SwitchSystem***: Whether to automatically switch the safety system. The default value is 0.  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+{{% /command-arguments %}}
 
-该指令设定一个段限速，等同于**Track.Pattern 1;_速度_**。 
+▸ Options for *Type*:
 
-##### <a name="track_misc"></a>● 11.7. 杂项
+{{% command-arguments %}}  
+![illustration_transponders](/images/illustration_transponders.png)  
+**0**: An S-type transponder used by ATS-S. Usually placed 600m in front of a signal.  
+**1**: An SN-type transponder used by ATS-SN. Usually placed 20m in front of a signal.  
+**2**: An accidental departure transponder. Usually placed shortly behind a station stop.  
+**3**: An ATS-P pattern renewal transponder. Usually placed 600m, 280m, 180m, 130m, 85m or 50m in front of a signal, depending on the circumstances.  
+**4**: An ATS-P immediate stop transponder. Usually placed either 25m or 30m in front of a signal, depending on the circumstances.  
+{{% /command-arguments %}}
+
+▸ Options for *Signal*:
+
+{{% command-arguments %}}  
+**0**: The upcoming signal is referenced.  
+**1**: The signal immediately behind the upcoming signal is referenced.  
+**n**: The *n*'th signal behind the upcoming signal is referenced.  
+{{% /command-arguments %}}
+
+▸ Options for *SwitchSystem*:
+
+{{% command-arguments %}}  
+**-1**: The transponder does not switch the train between ATS-SN and ATS-P.  
+**0**: The transponder automatically switches the train to ATS-SN for transponder types *0* and *1*, and to ATS-P for types *3* and *4*.  
+{{% /command-arguments %}}
+
+This command places a transponder, usually for the built-in safety systems ATS-SN or ATS-P. For more information about these systems and their transponders, see [the user's documentation about ATS](http://openbve-project.net/play-japanese/).
+
+It should be noted that custom safety system plugins also receive data from these transponders as Track.Transponder(*Type*) is roughly equivalent to Track.Beacon(*Type*). Please see [the page about beacon standards]({{< ref "/information/standards/_index.md" >}}) for more information.
+
+➟ [Go here to find out more about ATS-SN and ATS-P.](https://openbve-project.net/play-japanese/#3-ats-sn)
+
+➟ [There is a tutorial available for the proper use of ATS-SN and ATS-P in route files, including all of the five transponders.]({{< ref "/routes/tutorial_ats/_index.md" >}})
 
 ------
 
-{{% command %}} 
-**Track.Back** *背景材质编号* 
-{{% /command %}} 
+{{% command %}}  
+**Track.AtsSn**  
+{{% /command %}}
 
-{{% command-arguments %}} 
-***背景材质编号***：一个非负整数，指定一个已经通过Texture.Background(*背景材质编号*)载入的背景材质。 
-{{% /command-arguments %}} 
+This command places an S-type transponder for the built-in safety system ATS-SN, referencing the upcoming signal, and automatically switching to ATS-SN. The command is equivalent to **Track.Tr 0;0;0**. See there for more information.
 
-该指令指定从当前位置开始要显示的背景材质。 
+------
+
+{{% command %}}  
+**Track.AtsP**  
+{{% /command %}}
+
+This command places a pattern renewal transponder for the built-in safety system ATS-P, referencing the upcoming signal, and automatically switching to ATS-P. The command is equivalent to **Track.Tr 3;0;0**. See there for more information.
+
+------
+
+{{% command %}}  
+**Track.Pattern** *Type*; *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: The type of speed restriction.  
+***<font color="blue">Speed</font>***: A non-negative floating-point number representing the speed restriction, **by default** measured in **km/h**.  
+{{% /command-arguments %}}
+
+▸ Options for *Type*:
+
+{{% command-arguments %}}  
+**0**: A temporary speed restriction.  
+**1**: A permanent speed restriction.  
+{{% /command-arguments %}}
+
+This command defines a speed restriction for the built-in safety system ATS-P.
+
+A temporary speed restriction (*Type*=0) is to be inserted at the point where the speed restriction should apply. ATS-P will know about this speed restriction in advance and will brake the train so that the train meets the speed restriction at that point. Once the point is passed, the speed restriction no longer applies.
+
+A permanent speed restriction (*Type*=1) is to be inserted at the point where the speed restriction should apply, however, ATS-P does not know about this limit in advance and will only brake the train from that point on. For a higher degree of realism, insert permanent speed restrictions at the same point as ATS-P transponders. A permanent speed restriction, as the name suggests, is remembered by ATS-P and is only released by a subsequent permanent speed restriction.
+
+------
+
+{{% command %}}  
+**Track.PLimit** *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***<font color="blue">Speed</font>***: A positive floating-point number representing the permanent speed restriction for ATS-P, **by default** measured in **km/h**.  
+{{% /command-arguments %}}
+
+This command is equivalent to **Track.Pattern 1;_Speed_**. See there for more information. 
+
+##### <a name="track_misc"></a>● 11.7. Miscellaneous
+
+------
+
+{{% command %}}  
+**Track.Back** *BackgroundTextureIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***BackgroundTextureIndex***: A non-negative integer representing the background image to be displayed as defined via Texture.Background(*BackgroundTextureIndex*).  
+{{% /command-arguments %}}
+
+This command defines which background image to show from now on.
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}
 
 ------
 
-{{% command %}} 
-**Track.Fog** <font color="green">*起始近距离*</font>; <font color="green">*终止远距离*</font>; *红色分量*; *绿色分量*; *蓝色分量* 
-{{% /command %}} 
+{{% command %}}  
+**Track.Fog** *<font color="green">StartingDistance</font>*; *<font color="green">EndingDistance</font>*; *RedValue*; *GreenValue*; *BlueValue*  
+{{% /command %}}
 
-{{% command-arguments %}}    
-**<font color="green">*起始近距离*</font>**：一个浮点数，指示雾的起始位置距离摄像机的距离。**默认的**单位是**米**。默认值是0。   
-**<font color="green">*终止远距离*</font>**：一个浮点数，指示雾的终止位置距离摄像机的距离。**默认的**单位是**米**。默认值是0。   
-***红色分量***：一个0~255之间的整数，表示雾颜色的红色值。默认值是128。   
-***绿色分量***：一个0~255之间的整数，表示雾颜色的绿色值。默认值是128。   
-***蓝色分量***：一个0~255之间的整数，表示雾颜色的蓝色值。默认值是128。  
+{{% command-arguments %}}  
+***<font color="green">StartingDistance</font>***: A floating-point number indicating the start of fog, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">EndingDistance</font>***: A floating-point number indicating the end of fog, **by default** measured in **meters**. The default value is 0.  
+***RedValue***: An integer ranging from 0 to 255 representing the red component of the fog. The default value is 128.  
+***GreenValue***: An integer ranging from 0 to 255 representing the green component of the fog. The default value is 128.  
+***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the fog. The default value is 128.  
 {{% /command-arguments %}}
 
-该指令可以启用、更新或停用雾效果。如果需要启用雾，*起始近距离*必须小于*终止远距离*。如果需要停用雾，只需将*起始近距离*设得大于等于*终止远距离*。 
+This command defines the fog from this point on, or deactivates fog. If fog is to be enabled, *StartingDistance* must be less than *EndingDistance*. If fog is to be disabled, *StartingDistance* must be greater than or equal to *EndingDistance*.
 
-雾效果影响物体绘制的颜色。在起始近距离以内的物体颜色保持原样，在终止远距离外的物体颜色和雾颜色完全相同，在两个位置中间的物体颜色是线性平滑渐变的。雾也会影响背景图像。不论实际情况如何，在计算时背景图像都会被假定距离摄像机600米远。 
+Fog affects the coloring of objects. Objects before the starting distance appear as-is, objects after the ending distance appear in the fog color, and objects in-between blend linearly between those. The background image is affected by fog as well. For the fog calculations, the background image is assumed to be at 600 meters distance from the camera, regardless of the actual viewing distance.
 
-根据Options.FogBehavior的设定，雾的处理方式会有所不同。详情见上。基于区间块模式下，雾的颜色和范围从原先Track.Fog设置时的区间块的到新Track.Fog设置时的区间块以线性插值平滑过渡；线性插值模式下，雾的颜色和范围从两次Track.Fog调用的位置之间线性插值平滑过渡。这和Track.Brightness的效果类似。
+Depending on Options.FogBehavior, there are two options how this command affects fog from this point on. In block-wise mode, the current fog blends from the beginning of this block to the new settings at the end of this block. The new setting is kept for following blocks. This is the default behavior. In interpolation mode, each Track.Fog command defines a control point for fog, where all of the settings (distances and colors) are interpolated linearly between the control points.
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}
 
 ------
 
-{{% command %}} 
-**Track.Brightness** *亮度值* 
-{{% /command %}} 
+{{% command %}}  
+**Track.Brightness** *Value*  
+{{% /command %}}
 
-{{% command-arguments %}} 
-***亮度值***：一个位于0~255之间的整数。默认值是255。 
-{{% /command-arguments %}} 
+{{% command-arguments %}}  
+***Value***: A non-negative integer within the range from 0 to 255. The default value is 255.  
+{{% /command-arguments %}}
 
-该指令控制驾驶台的照明亮度情况。*亮度值*按照0（黑暗）到255（明亮）测算，并在连续的Track.Brightness指令之间平滑渐变。只要是会影响驾驶室内的亮度的地方（例如隧道、桥梁、车站顶棚、等等，尤其注意隧道灯和顶棚房梁的处理，虽然十分繁琐，但是能大大提高真实度），都应该使用这条指令来进行微调。 
+This command marks a point which affects the brightness in the cab. *Value* is measured from 0 (dark) to 255 (light), and is linearly interpolated between successive Track.Brightness commands for any given point on the track. This command should be used for tunnels, bridges, station roofs, or anything else that would affect the brightness as perceived inside the cab.
 
-{{% code "*Example:*" %}}    
-With Track   
-1200, .Brightness 255 ,; 桥前   
-1205, .Brightness 128 ,; 桥下   
-1210, .Brightness 255 ,; 桥后  
+{{% code "*Example:*" %}}  
+With Track  
+1200, .Brightness 255 ,; before the bridge starts  
+1205, .Brightness 128 ,; directly under the bridge here  
+1210, .Brightness 255 ,; as soon as the bridge ends  
 {{% /code %}}
 
 ------
 
-{{% command %}} 
-**Track.Marker** *文件*; <font color="green">*持续距离*</font> 
-{{% /command %}} 
-
-{{% command-arguments %}} 
-***文件***：相对于**Object**文件夹的标识图片路径。   
-<font color="green">***持续距离***</font>：一个非零浮点数，代表标识图片持续显示的距离。**默认的**单位是**米**。   
-{{% /command-arguments %}}
-
-▸ *持续距离*的意义：
-
-{{% command-arguments %}}    
-*负值*：图片从指令执行位置开始显示，并持续显示(－*持续距离*)米。   
-*正值*：图片从指令执行位置前*持续距离*米开始显示，并正好在指令执行位置结束。  
-{{% /command-arguments %}}
-
-这条指令显示一个所谓的标识图片在屏幕的右上角。可以把它用来传递建议或信息。图片中颜色是 [64,64,64]，即#404040的像素点会被绘制为透明的。 
-
-------
-
-{{% command %}} 
-**Track.Marker** *XML文件* 
-{{% /command %}} 
-
-也可以使用一个使用XML文件的*Track.Marker*指令。 这提供比起原来的标识图片来说更加复杂可控的行为。 
-
-请参见 [XML标记指南]({{< ref "/routes/xml/route_marker/_index.md" >}})
-
-------
-
-{{% command %}} 
-**Track.TextMarker** *文字*; <font color="green">*持续距离*</font>; *字体颜色* 
-{{% /command %}} 
-
-{{% command-arguments %}}    
-***文字***：要显示的标识文字。（不支持特殊字符）   
-<font color="green">***持续距离***</font>：一个非零浮点数，代表标识文字持续显示的距离。**默认的**单位是**米**.   
-***字体颜色***：标识文字显示时的字体颜色。  
-{{% /command-arguments %}}
-
-▸ *持续距离*的意义：
-
-{{% command-arguments %}}    
-*负值*：图片从指令执行位置开始显示，并持续显示(－*持续距离*)米。   
-*正值*：图片从指令执行位置前*持续距离*米开始显示，并正好在指令执行位置结束。  
-{{% /command-arguments %}}
-
-▸ *字体颜色*的可选项：
-
-{{% command-arguments %}}    
-*1*：高端黑。   
-*2*：隐喻灰。   
-*3*：纯洁白。   
-*4*：姨妈红。   
-*5*：阳光橙。   
-*6*：原谅绿。   
-*7*：深邃蓝。   
-*8*：少女粉。  
-{{% /command-arguments %}}
-
-这条指令创建一个简单的文字标识，和其他信息一样显示在屏幕左上角。
-
-------
-
-{{% command %}}    
-**Track.PointOfInterest** *轨道编号*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角*; *文字描述*   
-**Track.POI** *轨道编号*; *水平位置*; *垂直位置*; *偏转角*; *俯仰角*; *侧倾角*; *文字描述*
+{{% command %}}  
+**Track.Marker** *FileName*; *<font color="green">Distance</font>*  
 {{% /command %}}
 
-{{% command-arguments %}} 
-***轨道编号***：一个非负整数，代表这个兴趣点所在的轨道。   
-**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
-**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。  
-***偏转角***：相机在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
-***俯仰角***：相机在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
-***侧倾角***：相机在XY平面上转动的角度（相对于后方顺时针）。默认值是0。   
-***文字描述***：一行描述这个兴趣点的文字。   
+{{% command-arguments %}}  
+***FileName***: The file name for the marker image, relative to the **Object** folder.  
+***<font color="green">Distance</font>***: A non-zero floating-point number indicating the length for which the marker image is displayed, **by default** measured in **meters**.  
 {{% /command-arguments %}}
 
+▸ Behavior for *Distance*:
 
-这条指令创建一个用户可以使用CAMERA_POI_PREVIOUS（小键盘1）或CAMERA_POI_NEXT（小键盘7）跳转的一系列在轨道旁边的可能比较有意思的观察点。摄像机会被按照指定的方向放在指定的位置。如果设置了*文字描述*，在跳转时它会被显示，让玩家更好的了解这里是哪儿，为什么这里有意思。
-
-------
-
-{{% command %}} 
-**Track.PreTrain** *通过时间* 
-{{% /command %}} 
-
-{{% command-arguments %}} 
-***通过时间***：先行列车需要在这个轨道位置的[时间]({{< ref "/information/numberformats/_index.md#times" >}})。 
-{{% /command-arguments %}} 
-
-这条指令为一列不可见的列车指定它在固定时间要到达的地点，来影响自动闭塞信号显示。与Route.RunInterval来对比，该指令创建的隐形现行列车只是为了影响信号而已，并且可以指定它到达固定地点的特定时间。先行列车不会开倒车(EZY)，也不会做时空穿越，所以时间和位置必须是升序指定的，即不可以让它在更早的时间到达更远的位置，因为这明显违反了客观的物理定律。在第一个指定的时间之前，这列不可见列车留在起始位置。在第一个和最后一个指定的时间之间，这列不可见列车线性（即没有加减速的曲线变化）地在指定的位置之间移动。在最后一个指定的时间之后，这列不可见列车立刻消失，并清空它影响的所有区间。 
-
-------
-
-{{% command %}} 
-**Track.Announce** *文件*; <font color="blue">*参考速度*</font> 
-{{% /command %}} 
-
-{{% command-arguments %}}    
-***文件***：相对于**Sound**文件夹的要播放的声音的路径。   
-<font color="blue">***参考速度***</font>：如果该声音的播放速度会随列车速度改变，输入该声音录制时列车的行驶速度作为参考。如果该声音的播放速度不随列车速度改变，输入0或留空。  
+{{% command-arguments %}}  
+*negative value*: The marker image starts to display at the Track.Marker command, and ends -*Distance* meters after the Track.Marker command.  
+*positive value*: The marker image starts to display *Distance* meters before the Track.Marker command, and ends at the Track.Marker command.  
 {{% /command-arguments %}}
 
-该指令在玩家驾驶的列车通过该点时在驾驶台中播放一个声音。如果*参考速度*被设为0（默认），声音被原样播放（例如车内广播）。如果给出了*参考速度*，声音在列车速度等于参考速度时原调播放，在其他速度情况下按速度变调（例如自定义的轮缘摩擦声、道岔撞击声）。 
+This command shows a so-called marker image, which is displayed in the top-right corner of the screen. You can use these images for advisory or informational purposes. The RGB color of 64,64,64 inside the image is made transparent.
 
 ------
 
-{{% command %}} 
-**Track.Doppler** *文件*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font> 
-{{% /command %}} 
+{{% command %}}  
+**Track.Marker** *FileName.xml*  
+{{% /command %}}
 
-{{% command-arguments %}}    
-***文件***：相对于**Sound**文件夹的要播放的声音的路径。   
-**<font color="green">*水平位置*</font>**：声源距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。   
-**<font color="green">*垂直位置*</font>**：声源距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。默认值是0。 
+A *Track.Marker* command, linking to a single XML file is also supported. These allow more control over markers than is available in the routefile commands.
+
+These are fully described on the [the XML Markers page...]({{< ref "/routes/xml/route_marker/_index.md" >}})
+
+------
+
+{{% command %}}  
+**Track.TextMarker** *Text*; *<font color="green">Distance</font>*; *FontColor*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Text***: The marker text to display. (No special characters supported).  
+***<font color="green">Distance</font>***: A non-zero floating-point number indicating the length for which the text is displayed, **by default** measured in **meters**.  
+***FontColor***: The font color for this marker text  
 {{% /command-arguments %}}
 
-这条指令在对应位置放置一个环境声音（例如平交道口警报器）。这个声音会被无限重复播放，并具有真实的多普勒效果。（请注意：openBVE中的所有声音都有多普勒效果） 
+▸ Behavior for *Distance*:
+
+{{% command-arguments %}}  
+*negative value*: The marker image starts to display at the Track.Marker command, and ends -*Distance* meters after the Track.Marker command.  
+*positive value*: The marker image starts to display *Distance* meters before the Track.Marker command, and ends at the Track.Marker command.  
+{{% /command-arguments %}}
+
+▸ Available options for *FontColor*:
+
+{{% command-arguments %}}  
+*1*: Black.  
+*2*: Gray.  
+*3*: White.  
+*4*: Red.  
+*5*: Orange.  
+*6*: Green.  
+*7*: Blue.  
+*8*: Magenta.  
+{{% /command-arguments %}}
+
+This command creates a simple textual marker, which is added to the list of messages in the upper left-hand corner of the screen.
 
 ------
 
-{{% command %}}    
-**Track.Buffer**    
+{{% command %}}  
+**Track.PointOfInterest** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*; *Text*  
+**Track.POI** *RailIndex*; *X*; *Y*; *Yaw*; *Pitch*; *Roll*; *Text*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A non-negative integer representing the rail for the point of interest.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal offset from the rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical offset from the rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+***Yaw***: The angle in degrees by which the view is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the view is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the view is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
+***Text***: A textual representation of the point of interest.  
+{{% /command-arguments %}}
+
+This command creates a point of interest which the user can jump to by pressing the CAMERA_POI_PREVIOUS (NUM 1) or CAMERA_POI_NEXT (NUM 7) keys. The camera will be placed at the specified location with the specified orientation. If *Text* is non-empty, a message will appear briefly showing the text.
+
+------
+
+{{% command %}}  
+**Track.PreTrain** *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The [time]({{< ref "/information/numberformats/_index.md#times" >}}) at which the pretrain is at this track position.  
+{{% /command-arguments %}}
+
+This commands creates a position-time-association for an invisible preceding train in order to influence signalling. Contrary to a real preceding train as created by Route.RunInterval, the invisible preceding train created by Track.PreTrain is a way of scripting where the invisible preceding train is at any given time. The position-time-associations must be in increasing order, that is, at a later track position, the associated time must also be later. Before the first scripted time, the invisible preceding train resides at the first scripted position. In-between the first and last scripted time, the invisible preceding train moves (linearly) between the scripted points. After the last scripted time, the invisible preceding train is removed and thus clears signalling.
+
+------
+
+{{% command %}}  
+**Track.Announce** *FileName*; *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***FileName***: The file name for the sound to play, relative to the **Sound** folder.  
+***<font color="blue">Speed</font>***: The reference speed in km/h for speed-dependant sounds, or 0 to play the sound speed-independently. The default value is 0.  
+{{% /command-arguments %}}
+
+This command plays an announcement or other kind of sound in the cab once the player's train crosses the point where this command is used. If *Speed* is set to 0 (default), the sound is played as-is. If a *Speed* is given though, the sound plays at is original pitch at the specified speed, and is pitch-modulated proportionally for other speeds, useful for custom flange sounds, pointwork sounds, etc.
+
+------
+
+{{% command %}}  
+**Track.Doppler** *FileName*; *<font color="green">X</font>*; *<font color="green">Y</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***FileName***: The file name for the sound to play, relative to the **Sound** folder.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal offset from rail 0, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical offset from rail 0, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+{{% /command-arguments %}}
+
+This command places an environmental sound effect at the specified location. The sound will play in a loop for the duration of the simulation and employs the doppler effect. (Note: All sounds in openBVE employ the doppler effect.)
+
+------
+
+{{% command %}}  
+**Track.Buffer**  
 {{%/command %}}
 
-该指令创建一个不可见的缓冲器，用来停住列车。列车可以从从前后双向撞上它。在线路的开始和结束处都放上这个指令，以防止玩家驾车出图。该指令并不会放置可见的物体，所以如果必要，使用Track.FreeObj放置一个可见的实际代表物体。
+This command places a bumper. The train can collide with the bumper in both the forward and backward directions. Place this command at the beginning and the end of the route. An object is not automatically created, so use Track.FreeObj to create a visual representation of the bumper if necessary.
 
 ------
 
-{{% command %}} 
-**Track.Destination** *筛选类型*; *轨旁无线电应答器模型*; *正向通过目的地*; *反向通过目的地*; *单次触发*; <font color="green">*水平位置*</font>; <font color="green">*垂直位置*</font>; *偏转角*; *俯仰角*; *侧倾角* 
-{{% /command %}} 
+{{% command %}}  
+**Track.Destination** *Type*; *BeaconStructureIndex*; *NextDestination*; *PreviousDestination*; *TriggerOnce*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
+{{% /command %}}
 
-{{% command-arguments %}}    
-***筛选类型***：筛选这个应答机对于哪些列车有效。*-1*代表只应用于AI列车，*0*代表应用于所有列车，*1*代表只应用于玩家列车。   
-***轨旁无线电应答器模型***：一个非负整数，指定一个已经被Structure.Beacon载入的模型。输入-1代表不放置物体。   
-***正向通过目的地***：一个整数，代表当列车正向通过时要改变为的目的地显示索引值。*-1*代表不改变。   
-***反向通过目的地***：一个整数，代表当列车反向通过时要改变为的目的地显示索引值。*-1*代表不改变。   
-***单次触发***：如果设为*0*，这个应答机会向每一列车发送。如果设为*1*，只会发送给通过它的第一列列车。   
-**<font color="green">*水平位置*</font>**：物体距离轨道中心的水平距离。**默认的**单位是**米**。正值代表向右，负值代表向左。默认值是0。     
-**<font color="green">*垂直位置*</font>**：物体距离轨道中心的垂直距离。**默认的**单位是**米**。正值代表向上，负值代表向下。     
-***偏转角***：该物体在XZ平面上转动的角度（相对于上方顺时针）。默认值是0。   
-***俯仰角***：该物体在YZ平面上转动的角度（相对于左方顺时针）。默认值是0。   
-***侧倾角***：该物体在XY平面上转动的角度（相对于后方顺时针）。默认值是0。  
+{{% command-arguments %}}  
+***Type***: Defines the types of trains for which this destination setter applies: *-1* for AI trains only, *0* for all trains and *1* for the player train only.  
+***BeaconStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Beacon, or -1 to not place any object.  
+***NextDestination***: An integer representing the destination value set when passing over this beacon in a forwards direction, or *-1* to disable.  
+***PreviousDestination***: An integer representing the destination value set when passing over this beacon in a reverse direction, or *-1* to disable.  
+***TriggerOnce***: If set to *0*, this beacon will be triggered by all valid trains which pass over it. If set to *1*, it will be triggered by the first valid train only.  
+***<font color="green">X</font>***: The X-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***<font color="green">Y</font>***: The Y-coordinate at which to place the object, **by default** measured in **meters**. The default value is 0.  
+***Yaw***: The angle in degrees by which the object is rotated in the XZ-plane in clock-wise order when viewed from above. The default value is 0.  
+***Pitch***: The angle in degrees by which the object is rotated in the YZ-plane in clock-wise order when viewed from the left. The default value is 0.  
+***Roll***: The angle in degrees by which the object is rotated in the XY-plane in clock-wise order when viewed from behind. The default value is 0.  
 {{% /command-arguments %}}
 
-这条指令设定一个特殊的无源应答机，设定列车的目的地属性变量，并影响支持这个功能的车载信号系统插件和动画外饰物体。要使用的模型需先通过Structure.Beacon(*BeaconStructureIndex*)载入。
+This command places a special beacon, which sets the destination variable, available for use by plugins and animated objects. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.
 
 ------
 

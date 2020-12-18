@@ -1320,6 +1320,25 @@ This command sets the accuracy of the track from this point on. Values should be
 
 This command sets the adhesion of the track from this point on. As a reference, the value of 135 represents dry conditions, 85 represents frost and 50 represents snowy conditions. With a value of 0, the train will not be able to move at all. 
 
+---
+
+{{% command %}}  
+**Track.Rain** *Intensity*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Rate***: A non-negative floating-point number measured in percent representing the intensity of the current rainfall. The default value is 0.  
+{{% /command-arguments %}}
+
+This command sets the intensity of the current rainfall.
+
+{{% warning-nontitle %}}
+
+It is also possible to set the rain intensity using the legacy BVE4 beacon based method. If these commands are present in the route, all Rain commands will be ignored.
+
+{{% /warning-nontitle %}} 
+
+
 ##### <a name="track_geometry"></a>● 11.2. Geometry
 
 ---
@@ -1634,7 +1653,7 @@ This command can only be used at the beginning of a block.
 ***TimetableIndex***: A non-negative integer representing the timetable to be shown from this station on as defined via Train.Timetable(*TimetableIndex*).  
 {{% /command-arguments %}}
 
-▸ *ArrivalTime* 的選項:
+▸ Available options for *ArrivalTime*:
 
 {{% command-arguments %}}  
 *time*: The train is expected to arrive at this particular time.  
@@ -1645,7 +1664,7 @@ This command can only be used at the beginning of a block.
 **S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
 {{% /command-arguments %}}
 
-▸ *DepartureTime* 的選項:
+▸ Available options for *DepartureTime*:
 
 {{% command-arguments %}}  
 *time*: The train is expected to depart at this particular time.  
@@ -1658,14 +1677,14 @@ This command can only be used at the beginning of a block.
 **J:**_index:**Time**_: This is a station at which the train is "jumped" to the specified by *index*. Jumping will take place at the specified time unless *StopDuration* interfers. See the description below.  
 {{% /command-arguments %}}
 
-▸ *PassAlarm* 的選項:
+▸ Available options for *PassAlarm*:
 
 {{% command-arguments %}}  
 **0**: The pass alarm device does not remind the driver of stopping at this station.  
 **1**: The pass alarm device reminds the driver of stopping at this station.  
 {{% /command-arguments %}}
 
-▸ *Doors* 的選項:
+▸ Available options for *Doors*:
 
 {{% command-arguments %}}  
 **L** or **-1**: The left doors are expected to open at this station.  
@@ -1674,14 +1693,14 @@ This command can only be used at the beginning of a block.
 **B**: Both the left and right doors are expected to open at this station.  
 {{% /command-arguments %}}
 
-▸ *ForcedRedSignal* 的選項:
+▸ Available options for *ForcedRedSignal*:
 
 {{% command-arguments %}}  
 **0**: Signals are unaffected by this station.  
 **1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
 {{% /command-arguments %}}
 
-▸ *System* 的選項:
+▸ Available options for *System*:
 
 {{% command-arguments %}}  
 **ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
@@ -1717,7 +1736,7 @@ The first occuring station in a route may not be of the Terminal type.
 ***DepartureSound***: The sound file to be played before departure (departure time minus sound duration minus door closing time), relative to the **Sound** folder.  
 {{% /command-arguments %}}
 
-▸ *ArrivalTime* 的選項:
+▸ Available options for *ArrivalTime*:
 
 {{% command-arguments %}}  
 *time*: The train is expected to arrive at this particular time.  
@@ -1728,7 +1747,7 @@ The first occuring station in a route may not be of the Terminal type.
 **S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
 {{% /command-arguments %}}
 
-▸ *DepartureTime* 的選項:
+▸ Available options for *DepartureTime*:
 
 {{% command-arguments %}}  
 *time*: The train is expected to depart at this particular time.  
@@ -1739,14 +1758,14 @@ The first occuring station in a route may not be of the Terminal type.
 **C:**_time_: This is a station at which to "change ends". Changing ends will take place at the specified time unless *StopDuration* interferes. See the description below.  
 {{% /command-arguments %}}
 
-▸ *ForcedRedSignal* 的選項:
+▸ Available options for *ForcedRedSignal*:
 
 {{% command-arguments %}}  
 **0**: Signals are unaffected by this station.  
 **1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
 {{% /command-arguments %}}
 
-▸ *System* 的選項:
+▸ Available options for *System*:
 
 {{% command-arguments %}}  
 **ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
@@ -1790,7 +1809,7 @@ The first occuring station in a route may not be of the Terminal type.
 ***Cars***: A non-negative integer indicating for how many cars this stop point applies, or 0 for all cars. The default value is 0.  
 {{% /command-arguments %}}
 
-▸ *Direction* 的選項:
+▸ Available options for *Direction*:
 
 {{% command-arguments %}}  
 **-1**: A stop post is created on the left side.  
@@ -1822,7 +1841,7 @@ With Track
 ***FormStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Form and Structure.FormC  
 {{% /command-arguments %}}
 
-▸ *RailIndex<sub>2</sub>* 的選項:
+▸ Available options for *RailIndex<sub>2</sub>*:
 
 {{% command-arguments %}}  
 **Any current RailIndex**: The form is deformed to meet the specified RailIndex.  
@@ -2241,7 +2260,7 @@ These are fully described on the [the XML Markers page...]({{< ref "/routes/xml/
 *positive value*: The marker image starts to display *Distance* meters before the Track.Marker command, and ends at the Track.Marker command.  
 {{% /command-arguments %}}
 
-▸ *FontColor* 的選項:
+▸ Available options for *FontColor*:
 
 {{% command-arguments %}}  
 *1*: Black.  

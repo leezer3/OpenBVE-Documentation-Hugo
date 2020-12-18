@@ -827,7 +827,131 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="subjects"></a>■ 10. Available subjects
+## <a name="windscreen"></a>■ 10. The Windscreen section
+
+The Windscreen section defines a set of animated raindrops and windscreen wipers.
+
+------
+
+{{% command %}}  
+[Windscreen]  
+{{% /command %}}
+
+This starts the section.
+
+------
+
+{{% command %}}  
+TopLeft = *X*, *Y*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***X***: The X of the top left co-ordinate on the panel texture in which drops should appear. The default value is 0.
+***Y***: The Y of the top left co-ordinate on the panel texture in which drops should appear. The default value is 0.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+BottomRight = *X*, *Y*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***X***: The X of the bottom right co-ordinate on the panel texture in which drops should appear. The default value is the width of the panel texture.
+***X***: The Y of the bottom right co-ordinate on the panel texture in which drops should appear. The default value is height of the panel texture.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+NumberOfDrops = *TotalDrops*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***TotalDrops***: An integer controlling the total number of drops to be generated randomly at game start. The default value is 32.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+DropSize = *Pixels*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Pixels***: An integer controlling the size of a drop on the panel image in pixels. The default value is 16.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+RestPosition = *Position*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Position***: **Left or -1** : The wipers rest on the left-hand side of the windscreen. **Right or 1** : The wipers rest on the right-hand side of the windscreen. The default value is Left.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+HoldPosition = *Position*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Position***: **Left or -1** : When using intermittant wiping, the wipers hold on the left-hand side of the windscreen. **Right or 1** : When using intermittant wiping, the wipers hold on the right-hand side of the windscreen. The default value is Left.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+WipeSpeed = *Speed*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Speed***: The speed in seconds for one pass of the wiper from left to right. The default value is 1.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+HoldTime = *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The time in seconds for which the wiper is stationary at the hold position whilst using intermittant wiping. The default value is 1.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+DaytimeDrops = *Drops*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Drops***: A comma-separated list of drop image files relative to the train path to be used in the day. If not specified, built-in images will be used.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+NightTimeDrops = *Drops*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Drops***: A comma-separated list of drop image files relative to the train path to be used at night. If not specified, built-in images will be used.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+Layer = *LayerIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
+{{% /command-arguments %}}
+
+## <a name="subjects"></a>■ 11. Available subjects
 
 A subject is composed of a base subject and an optional subject suffix. The subject controls what information is fed to the element that uses the subject. For example, a *Needle* can use the subject *kmph* to be fed with the current speed of the train in kilometers per hour, or with the *mr* subject to show the main reservoir pressure.
 
@@ -872,6 +996,7 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 | passAlarm         | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 | pilotLamp         | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 | stationAdjustAlarm | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+| wiperPosition | The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) |
 
 
 {{% /table %}}
@@ -901,11 +1026,11 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% /table %}}
 
-##### ● Sufixos
+##### ● Suffixes
 
 {{% table %}}
 
-| Subject suffix | Descripció                                                  |
+| Subject suffix | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
 | d*i*           | With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10. |
 
