@@ -1323,14 +1323,15 @@ This command sets the adhesion of the track from this point on. As a reference, 
 ---
 
 {{% command %}}  
-**Track.Rain** *Intensity*  
+**Track.Rain** *Intensity*; *WeatherType* 
 {{% /command %}}
 
 {{% command-arguments %}}  
 ***Rate***: A non-negative floating-point number measured in percent representing the intensity of the current rainfall. The default value is 0.  
+***WeatherType***: A non-negative integer referencing the weather type to use as defined by Structure.Weather from this point onwards.
 {{% /command-arguments %}}
 
-This command sets the intensity of the current rainfall.
+This command sets the intensity of the current rainfall, and the weather object to be shown.
 
 {{% warning-nontitle %}}
 
@@ -1338,6 +1339,31 @@ It is also possible to set the rain intensity using the legacy BVE4 beacon based
 
 {{% /warning-nontitle %}} 
 
+---
+
+{{% command %}}  
+**Track.Snow** *Intensity*; *WeatherType* 
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Rate***: A non-negative floating-point number measured in percent representing the intensity of the current snowfall. The default value is 0.  
+***WeatherType***: A non-negative integer referencing the weather type to use as defined by Structure.Weather from this point onwards.
+{{% /command-arguments %}}
+
+This command sets the intensity of the current snowfall, and the weather object to be shown.
+
+{{% notice %}}
+
+#### Combining rain and snow
+
+Rain and snow may be combined, and the simulation will show an appropriate random raindrop or snowflake on the windscreen, based upon the following probabilities:
+
+The base probability for a drop / flake to appear is the greater of the rainfall and snowfall intensities.<br>
+The snowfall intensity is then used as the probability that this is a snowflake. <br>
+For example, with rainfall at 50 and snowfall at 40, there is a 50% chance for a drop to be added to the windscreen on each tick. <br>
+Of this, there is a 40% chance that this will be a snowflake.
+
+{{% /notice %}}
 
 ##### <a name="track_geometry"></a>● 11.2. Geometry
 

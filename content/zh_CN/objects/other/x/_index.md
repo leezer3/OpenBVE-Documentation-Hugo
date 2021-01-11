@@ -10,7 +10,16 @@ weight: 2
 
 原有的解析器只支持较有限范围的DirectX物件，例如基于BVE4物件查看器生成的。
 
-DirectX模型文件的完整文档在此尚未列出，但还是可以让您概览openBVE所支持的特性。
+{{% notice %}}
+
+#### Color key transparencies in textures
+
+For legacy reasons, the color of **pure black (0,0,0)** is reserved when used in a texture.
+If a texture contains this color, then these pixels will be rendered as transparent.
+
+{{% /notice %}}
+
+Full support & documentation of the X object format is not yet available from this site, but the following is an overview of the supported templates, unstructured.
 
 - Frame
 - FrameRoot
