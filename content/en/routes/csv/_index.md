@@ -964,6 +964,7 @@ The general syntax for commands in the Structure namespace is:
 | CrackR     | Defines transformable right objects for Track.Crack. <font color="red">No ANIMATED objects supported.</font> |
 | FreeObj    | Defines objects for Track.FreeObj.                           |
 | Beacon     | Defines objects for Track.Beacon.                            |
+| Weather     | Defines objects for weather generated using Track.Rain and Track.Snow. |
 
 {{% /table %}}
 
