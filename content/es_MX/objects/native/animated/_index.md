@@ -490,7 +490,8 @@ En algunos casos de las siguientes variables , *carIndex* tiene el siguiente sig
 
 | Variable                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `cars`                        | El número de carros que el tren tiene.                            |
+| `playerTrain`                 | Returns 1 if the train is the player train, 0 otherwise.                            |
+| `cars`                        | The number of cars the train has.                            |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speed[carIndex]`             | The signed actual speed of the car *carIndex* in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speedometer`                 | The signed perceived speed of the current car in m/s as it would appear to a speedometer on wheel slip and wheel lock. |
@@ -515,7 +516,7 @@ En algunos casos de las siguientes variables , *carIndex* tiene el siguiente sig
 
 {{% /table-2col %}}
 
-##### ● Trenes (freno)
+##### ● Trains (brake)
 
 {{% table-2col %}}
 
@@ -523,14 +524,14 @@ En algunos casos de las siguientes variables , *carIndex* tiene el siguiente sig
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
-| `emergencyReservoir`           | La presión actual de la reserva de emergencia en este carro, medido en Pa. |
+| `emergencyReservoir`           | The current pressure in the emergency reservoir in this car, measured in Pa. |
 | `emergencyReservoir[carIndex]` | The current pressure in the emergency reservoir in car *carIndex*, measured in Pa. |
 | `brakePipe`                    | The current pressure in the brake pipe in this car, measured in Pa. |
 | `brakePipe[carIndex]`          | The current pressure in the brake pipe in car *carIndex*, measured in Pa. |
 | `brakeCylinder`                | The current pressure in the brake cylinder in this car, measured in Pa. |
 | `brakeCylinder[carIndex]`      | The current pressure in the brake cylinder in car *carIndex*, measured in Pa. |
 | `straightAirPipe`              | The current pressure in the straight air pipe in this car, measured in Pa. |
-| `straightAirPipe[carIndex]`    | La presión actual de la valvula directa de aire en el carro *carIndex*, medido en Pa. |
+| `straightAirPipe[carIndex]`    | The current pressure in the straight air pipe in car *carIndex*, measured in Pa. |
 
 {{% /table-2col %}}
 
@@ -560,7 +561,7 @@ En algunos casos de las siguientes variables , *carIndex* tiene el siguiente sig
 
 {{% table-2col %}}
 
-| Variable                         | Descripción                                                  |
+| Variable                         | Description                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
 | `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
 | `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
@@ -598,9 +599,9 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語 - Japonés       | Return values                                |      | pluginState[271] | Significado           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
-| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC no disponible |
+| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
 | 258  | ATS RUN             | ATS 作動     | 0 (unlit / non-flashing), 1 (lit / flashing) |      | 2                | 15 km/h           |
 | 259  | P POWER             | P 電源       | 0 (unlit) or 1 (lit)                         |      | 3                | 25 km/h           |
@@ -608,7 +609,7 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 | 261  | BRAKE RELEASE       | ブレーキ開放 | 0 (unlit) or 1 (lit)                         |      | 5                | 55 km/h           |
 | 262  | BRAKE APPLY         | ブレーキ動作 | 0 (unlit) or 1 (lit)                         |      | 6                | 65 km/h           |
 | 263  | ATS P               | ATS-P        | 0 (unlit) or 1 (lit)                         |      | 7                | 75 km/h           |
-| 264  | FALLA             | 故障         | 0 (unlit) or 1 (lit)                         |      | 8                | 90 km/h           |
+| 264  | FAILURE             | 故障         | 0 (unlit) or 1 (lit)                         |      | 8                | 90 km/h           |
 | 265  | ATC                 | ATC          | 0 (unlit) or 1 (lit)                         |      | 9                | 100 km/h          |
 | 266  | ATC POWER           | ATC 電源     | 0 (unlit) or 1 (lit)                         |      | 10               | 110 km/h          |
 | 267  | ATC SRV             | ATC 常用     | 0 (unlit) or 1 (lit)                         |      | 11               | 120 km/h          |

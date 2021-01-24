@@ -829,7 +829,7 @@ Layer = *LayerIndex*
 
 ## <a name="windscreen"></a>■ 10. The Windscreen section
 
-The Windscreen section defines a set of animated raindrops and windscreen wipers.
+The Windscreen section defines a set of animated raindrops / snowflakes and windscreen wipers.
 
 ------
 
@@ -939,6 +939,26 @@ NightTimeDrops = *Drops*
 
 {{% command-arguments %}}  
 ***Drops***: A comma-separated list of drop image files relative to the train path to be used at night. If not specified, built-in images will be used.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+DaytimeFlakes = *Flakes*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Drops***: A comma-separated list of snowflake image files relative to the train path to be used in the day. If not specified, built-in images will be used.
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+NightTimeFlakes = *Flakes*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Drops***: A comma-separated list of snowflake image files relative to the train path to be used at night. If not specified, built-in images will be used.
 {{% /command-arguments %}}
 
 ------

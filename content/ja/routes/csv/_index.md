@@ -964,38 +964,39 @@ Structure名前空間のコマンドの一般的な構文は次のとおりで�
 | CrackR     | 変形可能なTrack.Crackの右側のオブジェクトを定義します。 <font color="red">アニメーテッドオブジェクトはサポートされていません。</font> |
 | FreeObj    | Track.FreeObj を定義します。                           |
 | Beacon     | Track.Beacon のオブジェクトを定義します。                            |
+| Weather     | Defines objects for weather generated using Track.Rain and Track.Snow. |
 
 {{% /table %}}
 
-通常、サポートされているオブジェクトの種類は B3D、 CSV、X及びANIMATEDです。 しかし、FormCL、FormCR、RoofCL、RoofCR、CrackL及びCrackRについては B3D、CSV及びXのみ受けいれます。
+Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, FormCR, RoofCL, RoofCR, CrackL and CrackR commands only accept B3D, CSV and X objects.
 
-➟ [form、roof 及び crackについての詳細情報はこちらを参照して下さい...]({{< ref "/routes/formroofcrack/_index.md" >}})
+➟ [More information about forms, roofs and cracks...]({{< ref "/routes/formroofcrack/_index.md" >}})
 
-付け加えると、少々異なる構文を持った Structure.Pole コマンドもあります:
+Additionally, there is the Structure.Pole command, which has a slightly different syntax:
 
 {{% command %}}  
 **Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***NumberOfAdditionalRails***: ポールで覆われる追加のレールを表す負でない整数。 例えば 0 は単線、 1 は複線用等です。  
-***PoleStructureIndex***: ポールのストラクチャのインデックス番号を表す負でない整数。  
-***FileName***: **Object** フォルダからの相対パスの、読み込ませるファイル名。  
+***NumberOfAdditionalRails***: An non-negative integer representing the number of additional rails covered by the pole. 0 creates a pole for one rail, 1 for two rails, etc.  
+***PoleStructureIndex***: A non-negative integer representing the pole structure index.  
+***FileName***: The object file to load, relative to the **Object** folder.  
 {{% /command-arguments %}}
 
-FreeObjを除くすべてのオブジェクトはブロックの先頭に挿入されるため、z軸上で0から *ブロック長* (デフォルトは25m) まで拡張する必要がある事に注意して下さい。 使用法の詳細については Track 名前空間の其々のコマンドを参照して下さい。
+Please note that all objects but the FreeObj are inserted at the beginning of a block and should thus extend from 0 to *BlockLength* (by default 25m) on the z-axis. For further information on usage, see the respective commands from the Track namespace.
 
-## <a name="texture"></a>■ 8. Texture 名前空間
+## <a name="texture"></a>■ 8. The Texture namespace
 
-この名前空間のコマンドは使用する背景画像と、それらの配置方法を定義します。
+Commands from this namespace define which background images to use and how they are aligned.
 
 ![illustration_background](/images/illustration_background.png)
 
-背景画像は、カメラの周囲の円柱状の壁として表示され、この壁の開始点 (上から見た場合) は最初の前方方向から60度 ( 10 時の方向)です。 そこから、背景画像は Texture.Background(*BackgroundTextureIndex*).X を用いて覆うように時計回りに円筒状に繰り返し、デフォルトでは真円の中に6回繰り返されます。
+The background image is displayed as a cylindric wall around the camera whose start (viewed from above) is 60 degrees to the left of the initial forward direction (at the 10 o'clock position). From there, the background image wraps clock-wise around the cylinder with a repetition count specified via Texture.Background(*BackgroundTextureIndex*).X, which by default creates 6 repetitions in a full circle.
 
-画像の上部4分の3は地平線の上に表示され、下部4分の1は地平線の下に表示されます。 Texture.Background(*BackgroundTextureIndex*).Aspectを通じて、 円柱の高さを固定するか、テクスチャのアスペクト比を維持するかを選択できます。 画像の高さが固定されている必要がある場合、円柱の高さは半径の2分の1になります。これは、画像の上部に対して約20度、画像の下部に対して約-7度の傾斜に相当します。もし画像のアスペクト比が維持されている場合、これには画像の幅と高さだけでなく、繰り返しの回数も考慮されます。
+The upper 3/4 of the image is displayed above the horizon, while the lower 1/4 is displayed below the horizon. Via Texture.Background(*BackgroundTextureIndex*).Aspect, you can choose whether to have a fixed cylinder height or to preserve the aspect ratio of the texture. If the image should have a fixed height, the cylinder has a height of 1/2 its radius, which corresponds to about 20 degree inclination to the top of the image, and about -7 degrees to the bottom of the image. If the aspect ratio of the image is preserved, this takes not only the width and height of the image into account, but also the repetition count.
 
-選択した繰り返しの回数に関係なく、テクスチャの左端と右端がシームレスにフィットする事を確認する必要があります。 また、画像の上部と下部の10%からサンプリングする上部と下部の蓋が作成されることも考慮に入れて下さい。 山の頂上のような極端なものが上部の蓋に入り込まないようにするため、画像の上部10%の中に入り込まないように注意する必要があります。
+Regardless of the repetition count you chose, you should make sure that the left and right edges of the textures fit seamlessly together. Please also take into account that top and bottom caps are created which sample from the top and bottom 10% of the image. You should avoid mountain peaks and similar extremes in the top 10% of the image in order for such extremes to not leak into the top cap.
 
 The image loaded into Texture.Background(0) is displayed at the beginning of the route, unless a Track.Back command at the beginning of the route requests a different image.
 

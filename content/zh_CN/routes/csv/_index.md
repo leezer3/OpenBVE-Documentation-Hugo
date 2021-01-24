@@ -981,197 +981,198 @@ Train.Gauge和Route.Gauge作用相同。
 | CrackR     | 用于Track.Crack指令的填充轨道间间隙的可以被变换拉伸的右侧地面模型。 <font color="red">不支持ANIMATED格式带动画物体。</font> |
 | FreeObj    | 用于Track.FreeObj指令在轨道旁放置的外景物体模型。                           |
 | Beacon     | 用于Track.Beacon指令的轨旁无线电应答器模型。                            |
+| Weather     | Defines objects for weather generated using Track.Rain and Track.Snow. |
 
 {{% /table %}}
 
-这些指令可以加载B3D、CSV、X、L3DOBJ、S、OBJ和ANIMATED格式的模型。但是由于包含变换拉伸，FormCL、FormCR、RoofCL、RoofCR、CrackL和CrackR指令都不支持ANIMATED格式的模型。
+Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, FormCR, RoofCL, RoofCR, CrackL and CrackR commands only accept B3D, CSV and X objects.
 
-➟ [关于Forms, Roofs, Cracks的更详尽说明...]({{< ref "/routes/formroofcrack/_index.md" >}})
+➟ [More information about forms, roofs and cracks...]({{< ref "/routes/formroofcrack/_index.md" >}})
 
-还有一个特殊的Structure.Pole指令，用法稍有不同：
+Additionally, there is the Structure.Pole command, which has a slightly different syntax:
 
 {{% command %}}  
-**Structure.Pole**( _额外轨道跨度值_ ; _架线柱模型编号_ )<font color="gray">.Load</font> *文件名*  
+**Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***额外轨道跨度值***：一个非负整数，代表这个架线柱模型跨过的额外轨道数量。0代表跨度为1组轨道的架线柱，1代表2组轨道，以此类推。  
-***架线柱模型编号***：一个非负整数，代表要加载到的模型编号。  
-***文件名***：一个相对于**Object**文件夹的路径，指向要加载的模型文件。  
+***NumberOfAdditionalRails***: An non-negative integer representing the number of additional rails covered by the pole. 0 creates a pole for one rail, 1 for two rails, etc.  
+***PoleStructureIndex***: A non-negative integer representing the pole structure index.  
+***FileName***: The object file to load, relative to the **Object** folder.  
 {{% /command-arguments %}}
 
-特别提示：除FreeObj之外的物体都是在区间块的开始位置被放置的，因此这些模型在建模时尺寸应当保证整个物体头尾的Z坐标伸展区域（放置时朝轨道前方的方向即Z轴正方向）在0~*区间块长度*（默认值为25m）之间（这样保证正好盖住整个区间块，否则出现空隙或相互重叠）。在Track命名空间中对应命令处有更详细的解释。
+Please note that all objects but the FreeObj are inserted at the beginning of a block and should thus extend from 0 to *BlockLength* (by default 25m) on the z-axis. For further information on usage, see the respective commands from the Track namespace.
 
-## <a name="texture"></a>■ 8. Texture (材质) 命名空间
+## <a name="texture"></a>■ 8. The Texture namespace
 
-这个命名空间中的指令指定要使用的天空背景图像和它对齐的方式。
+Commands from this namespace define which background images to use and how they are aligned.
 
-![_背景示意图](/images/illustration_background.png)
+![illustration_background](/images/illustration_background.png)
 
-背景图片被贴在一个环绕着游戏主视角摄像机的圆柱形墙上，从相对于初始前视角方向左偏60°（即十点钟方向）开始，将指定的这张图片重复平铺到Texture.Background(*背景材质编号*).X指令指定的次数（默认为一圈重复六次）。
+The background image is displayed as a cylindric wall around the camera whose start (viewed from above) is 60 degrees to the left of the initial forward direction (at the 10 o'clock position). From there, the background image wraps clock-wise around the cylinder with a repetition count specified via Texture.Background(*BackgroundTextureIndex*).X, which by default creates 6 repetitions in a full circle.
 
-图片的上方四分之三显示在地平面之上，下方四分之一显示在地平面之下。 通过Texture.Background(*背景材质编号*).Aspect指令，可以选择圆柱体的高度是固定的还是根据图片宽高比自动适应的。如果选择固定高度，圆柱体的高度将是其半径的二分之一，即图片上边缘位于20°视角，下边缘位于-7°视角。如果选择保持图片宽高比，这就不但计算图片宽度和高度，还将参考重复次数计算圆柱高度。
+The upper 3/4 of the image is displayed above the horizon, while the lower 1/4 is displayed below the horizon. Via Texture.Background(*BackgroundTextureIndex*).Aspect, you can choose whether to have a fixed cylinder height or to preserve the aspect ratio of the texture. If the image should have a fixed height, the cylinder has a height of 1/2 its radius, which corresponds to about 20 degree inclination to the top of the image, and about -7 degrees to the bottom of the image. If the aspect ratio of the image is preserved, this takes not only the width and height of the image into account, but also the repetition count.
 
-不论需要重复几次，都要保证传入的这张图片在重复时左右边缘可以完美贴合。圆柱的顶面和底面材质是按照图片最上方和最下方的十分之一来计算决定的。因此应尽量避免图片最上方十分之一有高山山峰等物体，否则它们会跑到顶面上去。
+Regardless of the repetition count you chose, you should make sure that the left and right edges of the textures fit seamlessly together. Please also take into account that top and bottom caps are created which sample from the top and bottom 10% of the image. You should avoid mountain peaks and similar extremes in the top 10% of the image in order for such extremes to not leak into the top cap.
 
-除非主轨道位置开头的Track.Back指令应用了一张不同的背景图，Texture.Background(0)的图像会在线路的开头被默认使用。
+The image loaded into Texture.Background(0) is displayed at the beginning of the route, unless a Track.Back command at the beginning of the route requests a different image.
 
-也可以使用***动态或基于模型的***背景。这个页面详细描述了如何使用这一功能：
+As an alternative ***Dynamic or Object*** based backgrounds may be used. The implementation of these is described upon this page:
 
-[动态和基于模型的背景]({{< ref "/routes/xml/dynamicbackground/_index.md" >}})
+[Dynamic & Object Based Backgrounds]({{< ref "/routes/xml/dynamicbackground/_index.md" >}})
 
 ---
 
 {{% command %}}  
-**Texture.Background**( _背景材质编号_ )<font color="gray">.Load</font> *文件名*  
+**Texture.Background**(_BackgroundTextureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***文件名***：一个相对于**Object**文件夹的路径，指向要加载的模型文件或动态XML配置文件。   
+***FileName***: The texture file to load, relative to the **Object** folder.  
 {{% /command-arguments %}}
 
-该指令加载用于Track.Back指令的背景图像。
+This command loads a background image to be later used by Track.Back.
 
 {{% note %}}
 
-如果要使用动态或基于模型的背景，请把它指向需要的XML配置文件。
+If a dynamic or object based background is to be used, this must instead point to the appropriate XML file.
 
 {{% /note%}}
 
 ---
 
 {{% command %}}  
-**Texture.Background**( _背景材质编号_ )**.X** *重复次数*  
+**Texture.Background**(_BackgroundTextureIndex_)**.X** *RepetitionCount*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***重复次数***：这张图像一圈中重复的次数。默认值是6。   
+***RepetitionCount***: The number of times the background image is repeated in a full circle. The default value is 6.  
 {{% /command-arguments %}}
 
 {{% note %}}
 
-如使用动态或基于模型的背景，这项设置不起作用。
+Ignored if using a dynamic or object based background.
 
 {{% /note %}}
 
 ---
 
 {{% command %}}  
-**Texture.Background**( _背景材质编号_ )**.Aspect** *模式*  
+**Texture.Background**(_BackgroundTextureIndex_)**.Aspect** *Mode*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***模式***：宽高比的处理模式。默认值是0（固定高度）。   
+***Mode***: The mode of aspect ratio handling to use. The default value is 0 (fixed).  
 {{% /command-arguments %}}
 
-▸ *模式*的可选项：
+▸ Options for *Mode*:
 
 {{% command-arguments %}}  
-**0**：使用固定高度。  
-**1**：保留宽高比。  
+**0**: Fixed: Use a fixed height for the cylinder.  
+**1**: Aspect: Preserve the aspect ratio of the image.  
 {{% /command-arguments %}}
 
 {{% note %}}
 
-如使用动态或基于模型的背景，这项设置不起作用。
+Ignored if using a dynamic or object based background.
 
 {{% /note %}}
 
-## <a name="cycle"></a>■ 9. Cycle (循环) 命名空间
+## <a name="cycle"></a>■ 9. The Cycle namespace
 
 {{% command %}}  
-**Cycle.Ground(_地面模型编号_)<font color="gray">.Params</font> _地面模型编号<sub>0</sub>_; _地面模型编号<sub>1</sub>_; _地面模型编号<sub>2</sub>_; ...; _地面模型编号<sub>n-1</sub>_**  
+**Cycle.Ground(_GroundStructureIndex_)<font color="gray">.Params</font> _GroundStructureIndex<sub>0</sub>_; _GroundStructureIndex<sub>1</sub>_; _GroundStructureIndex<sub>2</sub>_; ...; _GroundStructureIndex<sub>n-1</sub>_**  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***地面模型编号***：一个非负整数，指定哪一个地面模型编号要被定义为循环的。  
-***地面模型编号<sub>i</sub>***：一个非负整数，表示一个先前已经被加载的地面模型是循环的一部分。  
+***GroundStructureIndex***: A non-negative integer indicating the ground structure index for which a cycle is to be defined.  
+***GroundStructureIndex<sub>i</sub>***: A non-negative integer indicating a ground structure that has been previously loaded via Structure.Ground.  
 {{% /command-arguments %}}
 
-当平常使用Track.Ground(*地面模型编号*)指令时，选定的模型每个区间块都被重复一次。但是通过Cycle.Ground指令，在使用Track.Ground(*地面模型编号*)时可以把它改成几个不同模型循环出现。这个循环无限重复，*地面模型编号0*从主轨道位置0开始。从技术角度来说，对于一个特定的主轨道位置*p*计算出的*地面模型编号<sub>i</sub>*中的*i*是`Mod[p/区间块长度, n]`（P ÷ 区间块长度 Mod n）。
+When usually using Track.Ground(*GroundStructureIndex*), the same ground structure object will be repeatedly placed in every block. Via Cycle.Ground, you can override this behavior and automatically cycle through a series of different objects when using Track.Ground(*GroundStructureIndex*). The cycle repeats indefinitely, where *GroundStructureIndex0* starts at track position 0. Technically, the *i* in *GroundStructureIndex<sub>i</sub>* chosen for a particular track position *p* is `Mod[p / BlockLength, n]`.
 
 {{% command %}}  
-**Cycle.Rail(_轨道模型编号_)<font color="gray">.Params</font> _轨道模型编号<sub>0</sub>_; _轨道模型编号<sub>1</sub>_; _轨道模型编号<sub>2</sub>_; ...; _轨道模型编号<sub>n-1</sub>_**  
+**Cycle.Rail(_RailStructureIndex_)<font color="gray">.Params</font> _RailStructureIndex<sub>0</sub>_; _RailStructureIndex<sub>1</sub>_; _RailStructureIndex<sub>2</sub>_; ...; _RailStructureIndex<sub>n-1</sub>_**  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***轨道模型编号***：一个非负整数，指定哪一个轨道模型编号要被定义为循环的。  
-***轨道模型编号<sub>i</sub>***：一个非负整数，表示一个先前已经被加载的轨道模型是循环的一部分。   
+***RailStructureIndex***: A non-negative integer indicating the rail structure index for which a cycle is to be defined.  
+***RailStructureIndex<sub>i</sub>***: A non-negative integer indicating a rail structure that has been previously loaded via Structure.Rail.  
 {{% /command-arguments %}}
 
-以这一定义为例：
+Consider the following definition:
 
-{{% code %}}    
-With Structure    
-.Ground(0)  grass.csv    
-.Ground(1) river.csv    
-.Ground(2) asphalt.csv    
+{{% code %}}  
+With Structure  
+.Ground(0)  grass.csv  
+.Ground(1) river.csv  
+.Ground(2) asphalt.csv  
 {{% /code %}}
 
-这两组代码效果相同：
+The following two codes will produce the same output:
 
-{{% code %}}    
-With Track    
-0, .Ground 0    
-25, .Ground 1    
-50, .Ground 2    
-75, .Ground 0    
-100, .Ground 1    
-125, .Ground 2    
-; and so on...    
+{{% code %}}  
+With Track  
+0, .Ground 0  
+25, .Ground 1  
+50, .Ground 2  
+75, .Ground 0  
+100, .Ground 1  
+125, .Ground 2  
+; and so on...  
 {{% /code %}}
 
-{{% code "&nbsp;" %}}    
-With Cycle    
-.Ground(0) 0; 1; 2    
-With Track    
-0, .Ground 0    
+{{% code "&nbsp;" %}}  
+With Cycle  
+.Ground(0) 0; 1; 2  
+With Track  
+0, .Ground 0  
 {{% /code %}}
 
-## <a name="signal"></a>■ 10. Signal (信号) 命名空间
+## <a name="signal"></a>■ 10. The Signal namespace
 
-这个命名空间内的指令用来加载自定义信号机。
+Commands from this namespace define custom signals.
 
 ---
 
 {{% command %}}  
-__Signal(__ *信号机编号* __)__<font color="gray">.Load</font> *ANIMATED动画模型文件*  
+__Signal(__*SignalIndex*__)__<font color="gray">.Load</font> *AnimatedObjectFile*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***信号机编号***：一个非负整数，代表这类信号机的编号。  
-***ANIMATED动画模型文件***：一个相对于**Object**文件夹的路径，指向要加载的ANIMATED动画模型文件。  
+***SignalIndex***: A non-negative integer representing the signal index.  
+***AnimatedObjectFile***: A reference to an animated object file, relative to the **Object** folder.  
 {{% /command-arguments %}}
 
-用该指令来直接加在一个动画模型文件作为信号机。*信号机编号*可以在使用Track.SigF命令放置这类信号机时使用。
+Use this command to load signals directly from animated objects. The *SignalIndex* can be later referenced in Track.SigF commands to place the signal.
 
 ---
 
 {{% command %}}  
-__Signal(__ *信号机编号* __)__<font color="gray">.Load</font> *不带扩展名的基座模型文件*; *不带扩展名的发光模型文件*  
+__Signal(__*SignalIndex*__)__<font color="gray">.Load</font> *SignalFileWithoutExtension*; *GlowFileWithoutExtension*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***信号机编号***：一个非负整数，代表这类信号机的编号。  
-***不带扩展名的基座模型文件***：一个相对于**Object**文件夹的路径，指向要加载的基座B3D/CSV/……模型文件（不带扩展名）。**必须指定。**  
-***不带扩展名的发光模型文件***：一个相对于**Object**文件夹的路径，指向要加载的发光B3D/CSV/……模型文件（不带扩展名）。如果不需要发光效果，可以不指定。  
+***SignalIndex***: A non-negative integer representing the signal index.  
+***SignalFileWithoutExtension***: A reference to a B3D/CSV/X object file representing the signal, relative to the **Object** folder, but without the file extension. **Is required to be specified.**  
+***GlowFileWithoutExtension***: An optional reference to a B3D/CSV/X object file representing the distance glow, relative to the **Object** folder, but without the file extension.  
 {{% /command-arguments %}}
 
-该指令加载的信号机切换是通过给同一个模型糊上不同的材质实现的。openBVE按顺序搜索X、CSV、B3D……模型。材质的名字需要是“[模型名字不带扩展名]+[状态编号]+.[扩展名]”这样一个格式。*信号机编号*可以在使用Track.SigF命令放置这类信号机时使用。
+Use this command to load signals from a series of individual textures applied onto a common object. openBVE looks for X, CSV and B3D objects in this exact order. Textures are required to have the same name as the signal or glow, plus a non-negative aspect index, plus a file extension for textures. The *SignalIndex* can be later referenced in Track.SigF commands to place the signal.
 
-举个例子来说，对于*不带扩展名的基座模型文件*，应该有大概这样的一些文件：
+For the *SignalFileWithoutExtension*, there should be the following files present (example):
 
-_基座模型文件_**.csv**  
-_基座模型文件_**<font color="red">0</font>.bmp**  
-_基座模型文件_**<font color="red">1</font>.bmp**  
-_基座模型文件_**<font color="red">2</font>.bmp**  
-_基座模型文件_**<font color="red">n</font>.bmp**
+_SignalFileWithoutExtension_**.x**  
+_SignalFileWithoutExtension_**<font color="red">0</font>.bmp**  
+_SignalFileWithoutExtension_**<font color="red">1</font>.bmp**  
+_SignalFileWithoutExtension_**<font color="red">2</font>.bmp**  
+_SignalFileWithoutExtension_**<font color="red">n</font>.bmp**
 
-从0到*n*的这一串状态表示中，数值越大表示前方空闲区间越多，允许速度越快。0代表红灯。举个例子来说，内置的信号机是这样规定的：0 (<font color="#C00000">●</font>), 1 (<font color="#FFC000">●●</font>), 2 (<font color="#FFC000">●</font>), 3 (<font color="#00C000">●</font><font color="#FFC000">●</font>), 4 (<font color="#00C000">●</font>) 还有 5 (<font color="#00C000">●●</font>)。可以按照线路信号系统的实际情况增减设置。
+The aspect indices from 0 through *n* represent successively more permissive aspects, where 0 is red. The built-in signals, for example, use the indices 0 (<font color="#C00000">●</font>), 1 (<font color="#FFC000">●●</font>), 2 (<font color="#FFC000">●</font>), 3 (<font color="#00C000">●</font><font color="#FFC000">●</font>), 4 (<font color="#00C000">●</font>) and 5 (<font color="#00C000">●●</font>). You can use as many as required.
 
-文件里的材质指定指令会被忽略，所有面都会被糊上这个同样的状态材质。这表示不能在这个模型里使用一个以上的材质文件（甚至都不能指定），只需要正确地设置材质顶点坐标即可。对于发光模型也是一样的规则。发光模型一般来说是放在信号机前面的一个大方块（虽说也可以用其他的形状，但是由于一般大家都使用透明材质，所以这并没有什么用）。
+All faces in the object will be applied the currently active aspect texture. This means that you cannot use any other texture in the object, but still have to assign texture coordinates appropriately. For the glow object, the above rules also apply. The glow object is usually a rectangle placed clearly in front of the signal, although you can also use different shapes.
 
-发光模型材质的处理方法真的值得特别注意。发光模型材质是按照以下的步骤预处理的：
+The glow textures deserve special attention. All glow textures are pre-processed in the following way:
 
 {{% table %}}
 
@@ -1181,160 +1182,160 @@ _基座模型文件_**<font color="red">n</font>.bmp**
 
 {{% /table %}}
 
-用作发光材质的图像一般来说应该是椭圆的并且应该有一个锐利的边缘。图形的中心应该完全饱和，并在其外缘加入纯白色。图形的外边既可以是纯黑 (A) 也可以是纯白 (B)。
+The texture you start with should have a sharp shape, usually oval. The shape should be fully saturated in the core and blend into pure white at its outer rim. The surroundings of the shape can be either pure black (A) or pure white (B).
 
-当openBVE加载这个发光材质时，它会把所有纯黑颜色都换成纯白颜色，变成 (B) 的样子。之后，图像会被反色 (C)，然后进行180°的色调偏移 (D) 。比起 (B) 来说，这使整幅图像的亮度反转，即满饱和的颜色不会被改变（例如中心），亮颜色（例如图形外框）将会变暗，反之亦然。然后，将会进行亮度校正使暗部更暗 (E)，最后再稍稍加上一点模糊效果 (F)。
+When openBVE loads the glow texture, it will replace all purely black pixels with purely white pixels, thus arriving at (B). From there, the image is inverted \(C), then hue-shifted by 180 degrees (D). Compared to (B), this has the overall effect of inverting the lightness of the image, i.e. fully saturated pixels will be left unchanged (e.g. the core), while bright pixels (such as the outer rim of the shape) will become dark, and vice versa. Then, the image is gamma-corrected to further darken the dark parts (E), and finally, the image is blurred slightly (F).
 
-结果所得到的材质是被叠加混合的。这意味着不是直接在屏幕上覆盖性地绘制材质，而是将材质的颜色以RGB通道值相加的方法叠加在屏幕像素上。加上黑色不会改变原有颜色，而加上完全饱和的颜色就会覆盖原有颜色。例如，加上白色就会得到白色。在设计材质时，请牢记这个处理过程，并遵循它的逆规则。一定要设计出 (A) 或 (B) 这样的图像。
+The resulting texture is always additively blended. This means that instead of directly drawing the texture onto the screen, the pixels of the texture are added to the screen pixels. Here, adding black (0) does not change the screen pixels, while adding a fully satured color channel (1) will result in a fully satured color channel, e.g. adding white produces white. Keep in mind that when designing the textures, you will have to follow the inverse rules, e.g. design the image as depicted in (A) or (B), while having in mind how it will be processed afterward.
 
-## <a name="track"></a>■ 11. Track (轨道) 命名空间
+## <a name="track"></a>■ 11. The Track namespace
 
-这个命名空间中的指令定义了轨道的布局。这个命名空间内的指令应该出现在所有其他指令之后，一般位于线路文件的最后部分，且代码量基本都要远超其他部分。
-
-{{% notice %}}
-
-#### 使用主轨道位置
-
-Track命名空间内的所有指令都需要和一个主轨道位置联系起来，这表示该指令执行的位置。一旦出现一个主轨道位置表达式，它后面的Track指令都会在这个位置执行，直到一个新的主轨道位置表达式指定一个新的位置。在主轨道位置表达式出现前写出的Track指令默认会在0位置执行。由于指令会被自动地排序和执行，所以并不一定需要把主轨道位置按照固定顺序写（虽然按照顺序写可以使结构更加清晰）。虽然主轨道位置可以是任意非负浮点数，有一些指令是 **只可以在区间块开始位置（默认为25m的整倍数位置）** 被使用的。默认情况下这意味着它们必须被放在0、25、50、75、100、125、以此类推的位置上。下面有这个特别限制的指令都会被标注出来。
-
-{{% /notice %}}
-
-##### <a name="track_rails"></a>● 11.1. 轨道
-
----
-
-{{% command %}}  
-**Track.RailStart** *轨道编号*; <font color="green">*X*</font>; <font color="green">*Y*</font>; *轨道类型*  
-{{% /command %}}
-
-{{% command-arguments %}}  
-***轨道编号***：一个正整数(**>=1**)表示这个编号的轨道从这里开始。  
-**<font color="green">*X*</font>**：一个浮点数，表示该轨道和主轨道之间的水平距离。**默认的**单位是**米**。正值代表向右偏移，负值代表向左偏移。  
-**<font color="green">*Y*</font>**：一个浮点数，表示该轨道和主轨道之间的垂直距离。**默认的**单位是**米**。正值代表向上偏移，负值代表向下偏移。  
-***轨道类型***：一个非负整数，表示一个由Structure.Rail或Structure.Cycle指令先前已经载入的模型编号。  
-{{% /command-arguments %}}
-
-该指令开始一条由*轨道编号*代表的新轨道。当使用该指令时，*轨道编号*必须是没有被占用的（没有使用过或已经被Track.RailEnd指令声明结束）。*X*、*Y*和*轨道类型*的默认值是0，除非这个*编号*已被占用（不应该这样做）的情况下维持该轨道上次的原值。该指令只用于开始轨道。如果需要更新它的位置，应当使用Track.Rail指令。如果需要结束它，使用Track.RailEnd指令。 在同一位置先终止*一条轨道*再开始同样*编号*的新轨道是允许的。每个区间块中都会根据*轨道类型*自动放置一个对应的轨道模型。
-
-{{% warning-nontitle %}}
-
-该指令只能在区间块开始位置使用。
-
-{{% /warning-nontitle %}}
-
----
-
-{{% command %}}  
-**Track.Rail** *轨道编号*; <font color="green">*X*</font>; <font color="green">*Y*</font>; *轨道类型*  
-{{% /command %}}
-
-{{% command-arguments %}}  
-***轨道编号***：一个正整数(**>=1**)表示这个编号的轨道要被修改。  
-**<font color="green">*X*</font>**：一个浮点数，表示该轨道和主轨道之间的水平距离。**默认的**单位是**米**。正值代表向右偏移，负值代表向左偏移。  
-**<font color="green">*Y*</font>**：一个浮点数，表示该轨道和主轨道之间的垂直距离。**默认的**单位是**米**。正值代表向上偏移，负值代表向下偏移。  
-***轨道类型***：一个非负整数，表示一个由Structure.Rail或Structure.Cycle指令先前已经载入的模型编号。  
-{{% /command-arguments %}}
-
-该指令开始一条轨道或更新一条轨道的位置或类型。*轨道编号*代表要执行操作的轨道。在该*轨道编号*已存在轨道的情况下*X*,*Y*,*轨道类型*默认维持该轨道上次的原值，否则若未给出，默认值为0。如果需要结束它，使用Track.RailEnd指令。在同一位置先终止*一条轨道*再开始*同样编号*的新轨道是允许的。在每一个区间块中，如果没有Track.Rail指令执行更新，*X*和*Y*值都会保持上一个区间块的同样值。所以，更新*X*或*Y*值只会影响前方区间块的轨道形态。改变*轨道类型*将会改变从指令生效位置开始的轨道类型。如果试图在同一位置反复对同一条轨道进行多次修改，只有第一条指令会起作用，之后的将会被全部忽略。
-
-{{% warning-nontitle %}}
-
-该指令只能在区间块开始位置使用。
-
-{{% /warning-nontitle %}}
-
-{{% warning-nontitle %}}
-
-在该指令上使用为0的轨道编号是无效的，请改用RailType: [勘误备注](https://github.com/leezer3/OpenBVE/wiki/Errata#rail-and-railend-commands-with-an-index-of-zero)
-
-{{% /warning-nontitle %}}
+Commands from this namespace define the track layout. Commands from this namespace should appear after commands from any of the other namespaces, and they usually form the largest part of the route file.
 
 {{% notice %}}
 
-#### 对比Track.RailStart和Track.Rail
+#### Use of track positions
 
-这两个都可以用来开始一条轨道。但是当使用Track.RailStart时，openBVE将会检查这个*编号*是否已被占用。所以，使用Track.RailStart来开始轨道是更为明确的，且可以避免由于失误造成的bug。译注：可惜很无奈Hmmsim并不支持Track.RailStart，所以要用Hmmsim的话没得选。
+All commands from the Track namespace need to be associated to track positions. Once a track position has been defined, all subsequent commands are associated to this track position until a new track position is defined. If you do not explicitly state a track position before the first command of the Track namespace is used, 0 will be assumed. While you do not need to use track positions in ascending order, series of commands which are associated the same track position will be sorted into ascending order once the file is loaded. While track positions can be any non-negative floating-point number, many commands in the Track namespace are only to be applied at the beginning of a block, which is 25m by default. For the default situation, this means that some commands are only to be used at track positions 0, 25, 50, 75, 100, 125 and so on. All commands for which this restriction applies are marked as such.
+
+{{% /notice %}}
+
+##### <a name="track_rails"></a>● 11.1. Rails
+
+---
+
+{{% command %}}  
+**Track.RailStart** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *RailType*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command.  
+{{% /command-arguments %}}
+
+This command starts a new rail represented by the index *RailIndex*. Upon the point where this command is used, a rail of the same *RailIndex* must either not have been used so far in the route, or must have been ended via a Track.RailEnd command. If a rail of the same *RailIndex* was already used in the route, the default values of *X*, *Y* and *RailType* are the values last used by that rail, otherwise 0. If the rail is to be updated, use the Track.Rail command. If it is to be ended, use the Track.RailEnd command. You can end a rail of a given *RailIndex* and start a new rail of the same *RailIndex* at the same track position provided that the old rail is first ended and the new rail started afterward. For every block, a structure, determined by *RailType*, is automatically placed.
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+---
+
+{{% command %}}  
+**Track.Rail** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *RailType*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: A positive integer (**>=1**) indicating which rail index to use.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command.  
+{{% /command-arguments %}}
+
+This command starts a new rail or updates an existing rail. The rail is represented by the index *RailIndex*. If a rail of the same *RailIndex* was already used in the route, the default values of *X*, *Y* and *RailType* are the values last used by that rail, otherwise 0. If the rail is to be ended, use the Track.RailEnd command. You can end a rail of a given *RailIndex* and start a new rail of the same *RailIndex* at the same track position provided that the old rail is first ended and the new rail started afterward. In each block, the *X* and *Y* values are repeated if a Track.Rail command is not used for that block. As a consequence, updating the *X* or *Y* values affects the layout of the rail from the preceding block only. Changing the *RailType* will affect the rail from the point on where this command is used. If this command is used multiple times on the same track position for the same rail, then the first instance of the command takes effect, while subsequent ones are ignored.  
+
+{{% warning-nontitle %}}
+
+This command can only be used at the beginning of a block.
+
+{{% /warning-nontitle %}}
+
+{{% warning-nontitle %}}
+
+Using a RailIndex value of 0 is not valid for this command: [Errata Note](https://github.com/leezer3/OpenBVE/wiki/Errata#rail-and-railend-commands-with-an-index-of-zero)
+
+{{% /warning-nontitle %}}
+
+{{% notice %}}
+
+#### Track.RailStart vs. Track.Rail
+
+If you want to start a new rail, you can either use Track.RailStart or Track.Rail. When using Track.RailStart, you provide markup that a new rail is in fact to be started, which is invalid if the rail already exists. Using an explicit Track.RailStart will protect you from using a *RailIndex* which is already in use, in which case an error message is generated. 
 
 {{% /notice %}}
 
 ---
 
 {{% command %}}  
-**Track.RailType** *轨道编号*; *轨道类型*  
-{{% /command %}}
+**Track.RailType** *RailIndex*; *RailType*  
+{{% /command %}} 
 
 {{% command-arguments %}}  
-***轨道编号***：一个非负整数，代表要进行改变的轨道编号。主轨道编号为**0**。默认值是0.  
-***轨道类型***：一个非负整数，表示一个由Structure.Rail或Structure.Cycle指令先前已经载入的模型编号。默认值是0。  
+***RailIndex***: A non-negative integer indicating which rail index to change. The player's rail can be referred to with index **0**. The default value is 0.  
+***RailType***: A non-negative integer referencing the rail type to use as defined by either a Structure.Rail or a Structure.Cycle command. The default value is 0.  
 {{% /command-arguments %}}
 
-该指令改变由*轨道编号*代表的一条已存在轨道的类型。该轨道必须已经被Track.RailStart或Track.Rail指令创建且还没有被Track.RailEnd指令结束。*轨道类型*的更改将从该指令生效时的轨道位置开始。
+This command changes the rail type for an existing rail, represented by *RailIndex*. The rail must have been started with a Track.RailStart or Track.Rail command and must not have been ended by a Track.RailEnd command. Changing the *RailType* will affect the rail from the point on where this command is used.
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}    
 
 ---
 
 {{% command %}}  
-**Track.RailEnd** *轨道编号*; <font color="green">*X*</font>; <font color="green">*Y*</font>  
+**Track.RailEnd** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***轨道编号***：一个正整数(>=1)表示这个编号的轨道要被结束。  
-**<font color="green">*X*</font>**：一个浮点数，表示该轨道和主轨道之间的水平距离。**默认的**单位是**米**。正值代表向右偏移，负值代表向左偏移。  
-**<font color="green">*Y*</font>**：一个浮点数，表示该轨道和主轨道之间的垂直距离。**默认的**单位是**米**。正值代表向上偏移，负值代表向下偏移。  
+***RailIndex***: A positive integer (>=1) indicating which rail index to use.  
+***<font color="green">X</font>***: A floating-point number representing the horizontal distance from the player's rail, **by default** measured in **meters**. Negative values indicate left, positive ones right.  
+***<font color="green">Y</font>***: A floating-point number representing the vertical distance from the player's rail, **by default** measured in **meters**. Negative values indicate below, positive ones above.  
 {{% /command-arguments %}}
 
-该指令结束由*轨道编号*代表的一条已存在轨道。*X*和*Y*的默认值是该轨道上次的原值。一旦该指令执行，*该轨道*就会在这一点结束，并在之后视为不再存在。轨道模型不会再继续被放置。
+This command ends an existing rail, represented by the index *RailIndex*. The default values of *X* and *Y* are the ones last used by the rail. Once this command is used for a specific *RailIndex*, the corresponding rail is considered to be non-existing afterward.
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}
 
 {{% warning-nontitle %}}
 
-在该指令上使用为0的轨道编号是无效的，您不能终止主轨道: [勘误备注](https://github.com/leezer3/OpenBVE/wiki/Errata#rail-and-railend-commands-with-an-index-of-zero)
+Using a RailIndex value of 0 is not valid for this command: [Errata Note](https://github.com/leezer3/OpenBVE/wiki/Errata#rail-and-railend-commands-with-an-index-of-zero)
 
 {{% /warning-nontitle %}} 
 
-{{% code "*Example of Track.RailStart, Track.Rail, Track.RailType and Track.RailEnd commands*" %}}    
-With Track    
-1000, .RailStart 1; 3.8; 0.0; 0    
-1025, .RailType 1; 1    
-1050, .Rail 1; 1.9; 0.0; 0    
-1075, .RailEnd 1    
+{{% code "*Example of Track.RailStart, Track.Rail, Track.RailType and Track.RailEnd commands*" %}}  
+With Track  
+1000, .RailStart 1; 3.8; 0.0; 0  
+1025, .RailType 1; 1  
+1050, .Rail 1; 1.9; 0.0; 0  
+1075, .RailEnd 1  
 {{% /code %}}
 
-在这个例子中：1号轨道在1000米位置位于主轨道右侧3.8米处开始，使用类型0（这个线路中加载为直线轨道）；在1025米处轨道模型被换为1（加载的一个向左的S型曲线，让它在25米内左偏1.9米，以和下面轨道位置的改变正好对接）；在1050米处轨道被内移至主轨道右侧1.9米处，正好和先前的S型曲线对上，并重新换回直道类型；轨道在1075米处终止，并且在终止时仍旧在主轨道右侧1.9米处。
+In the preceding example, rail 1 starts with an x-value of 3.8 and bears a rail index which corresponds to an object intended to depict a straight rail. The rail keeps the x-value of 3.8 at track position 1025, where the rail type is changed to correspond to an object intended to depict an s-shaped curve. At track position 1050, the rail is redefined to have an x-value of 1.9, after which the rail is straight again until 1075, where it is ended, still having an x-value of 1.9.
 
 ---
 
 {{% command %}}  
-**Track.Accuracy** *精度系数*  
+**Track.Accuracy** *Value*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***精度系数***：一个非负浮点数，表示轨道的精度（质量、平稳度）。默认值是2.   
+***Value***: A non-negative floating-point number representing the accuracy of the track. The default value is 2.  
 {{% /command-arguments %}}
 
-该指令设定之后轨道的精度，影响晃动效果和一些物理计算。精度系数需要在0~4之间，超出这个范围的数会被截取到0或4两个值。0代表理想的轨道（没有任何不平），1代表很好的轨道（高速铁路标准），2代表较好的轨道，3代表一般的轨道，4代表较差的轨道。
+This command sets the accuracy of the track from this point on. Values should be in the range from 0 to 4, where 0 means perfect accuracy (no inaccuracy at all), 1 means very good accuracy (high speed lines), 2 means good accuracy, 3 means mediocre accuracy, and 4 means poor accuracy. Intermediate values are also possible. Currently, values below 0 are clamped at 0, and values above 4 are clamped at 4.
 
 ---
 
 {{% command %}}  
-**Track.Adhesion** *附着系数*  
+**Track.Adhesion** *Rate*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***附着系数***：一个非负整数，代表轨道的附着系数（数值越大，能产生越大的静摩擦力，车轮越不易打滑），单位是%。默认值是100。   
+***Rate***: A non-negative floating-point number measured in percent representing the adhesion of the track. The default value is 100.  
 {{% /command-arguments %}}
 
-该指令设定之后轨道的附着系数。这会影响车轮打滑等物理计算。作为参考，干燥轨面大约是135，湿滑轨面大约是70，降雪轨面大约是50。如果附着系数是0，意味着轨面完全理想光滑，列车车轮将一直打滑，根本不可能移动。
+This command sets the adhesion of the track from this point on. As a reference, the value of 135 represents dry conditions, 85 represents frost and 50 represents snowy conditions. With a value of 0, the train will not be able to move at all. 
 
 ---
 
@@ -1546,7 +1547,7 @@ This ends an existing wall that was previously started via Track.Wall on a speci
 
 {{% warning-nontitle %}}
 
-该指令只能在区间块开始位置使用。
+This command can only be used at the beginning of a block.
 
 {{% /warning-nontitle %}}
 

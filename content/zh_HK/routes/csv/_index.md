@@ -965,6 +965,7 @@ The general syntax for commands in the Structure namespace is:
 | CrackR     | Defines transformable right objects for Track.Crack. <font color="red">No ANIMATED objects supported.</font> |
 | FreeObj    | Defines objects for Track.FreeObj.                           |
 | Beacon     | Defines objects for Track.Beacon.                            |
+| Weather     | Defines objects for weather generated using Track.Rain and Track.Snow. |
 
 {{% /table %}}
 
@@ -1171,7 +1172,7 @@ When openBVE loads the glow texture, it will replace all purely black pixels wit
 
 The resulting texture is always additively blended. This means that instead of directly drawing the texture onto the screen, the pixels of the texture are added to the screen pixels. Here, adding black (0) does not change the screen pixels, while adding a fully satured color channel (1) will result in a fully satured color channel, e.g. adding white produces white. Keep in mind that when designing the textures, you will have to follow the inverse rules, e.g. design the image as depicted in (A) or (B), while having in mind how it will be processed afterward.
 
-## <a name="track"></a>■ 11. Track指令命名空間
+## <a name="track"></a>■ 11. The Track namespace
 
 Commands from this namespace define the track layout. Commands from this namespace should appear after commands from any of the other namespaces, and they usually form the largest part of the route file.
 
