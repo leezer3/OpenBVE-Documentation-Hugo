@@ -9,7 +9,7 @@ hidden: true
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 總概](#overview)
 - [2. Function calls](#functions)
 - [3. 播放聲音](#sound)
 - [4. Supporting the AI](#ai)

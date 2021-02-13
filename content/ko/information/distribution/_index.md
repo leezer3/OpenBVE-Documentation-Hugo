@@ -1,16 +1,16 @@
 ---
-title: "Distributing add-ons created for openBVE"
-linktitle: "Distributing add-ons"
+title: "openBVE에서만 사용 가능한 기능"
+linktitle: "추가된 기능들"
 weight: 7
 ---
 
-Whether you have written a route, a train or a plugin, there are a few things you should be aware of before distributing your add-ons. As openBVE is a cross-platform simulator intended with international interoperability in mind, your add-ons should be, too.
+경로, 열차, 플러그인을 모두 작성했든 간에 추가 기능을 배포하기 전에 주의해야 할 몇 가지 사항이 있습니다. openBVE는 국제 상호 운용성을 염두에 두고 설계된 크로스 플랫폼 시뮬레이터이며, 추가 기능 역시 마찬가지입니다.
 
-## ■ Text files and encodings
+## ■ 텍스트 파일 및 인코딩
 
-Whichever text file you are about to include in your distribution, including readme files, you should make sure that the file can be correctly processed internationally. The default encoding for all text files accessed by openBVE is UTF-8. For routes and associated objects, you can also use a different encoding, but then, the user has to select the specific encoding from a list. The same situation applies to trains and associated files. If you encode your text files in anything else but UTF-8, you must inform the user about your choice, or otherwise, the user might end up with garbage characters and potentially incorrectly parsed files. Using UTF-8 is the preferred choice, while using legacy encodings is acceptable, but discouraged. Please note that all files in a route or train must use the same encoding as it is neither currently possible nor feasible for the user to select the encoding of every individual file.
+Readme 파일등 배포에 포함할 텍스트 파일은 국제적으로 올바르게 처리될 수 있는지 확인하십시오. openBReadme 파일등 배포에 포함할 텍스트 파일은 국제적으로 올바르게 처리될 수 있는지 확인하십시오. openBVE에서 액세스 가능한 모든 텍스트 파일의 기본 인코딩은 UTF-8입니다.VE에서 액세스 가능한 모든 텍스트 파일의 기본 인코딩은 UTF-8입니다. 경로와 관련 객체의 경우 다른 인코딩을 사용할 수도 있지만, 사용자가 목록에서 특정 인코딩을 선택해야 합니다. 경로와 관련 객체의 경우 다른 인코딩을 사용할 수도 있지만, 사용자가 목록에서 특정 인코딩을 선택해야 합니다. 열차 및 관련 파일에도 동일한 상황이 적용됩니다. 열차 및 관련 파일에도 동일한 상황이 적용됩니다. UTF-8을 제외한 다른 항목에 텍스트 파일을 인코딩하는 경우 사용자에게 자신의 선택에 대해 알려야 하며 그렇지 않으면 구문을 잘못 분석하게 될 수 있습니다. UTF-8을 제외한 다른 항목에 텍스트 파일을 인코딩하는 경우 사용자에게 자신의 선택에 대해 알려야 하며 그렇지 않으면 구문을 잘못 분석하게 될 수 있습니다. UTF-8을 사용하는 것이 선호되는 반면, UTF-8 인코딩 외의 형식을 사용하는 것은 허용되지만 권장되지 않습니다. UTF-8을 사용하는 것이 선호되는 반면, UTF-8 인코딩 외의 형식을 사용하는 것은 허용되지만 권장되지 않습니다. 경로나 열차의 모든 파일은 사용자가 모든 개별 파일의 인코딩을 선택할 수 없거나 실행 가능하지 않으므로 동일한 인코딩을 사용해야 한다는 점에 유의하십시오. 경로나 열차의 모든 파일은 사용자가 모든 개별 파일의 인코딩을 선택할 수 없으므로 동일한 인코딩을 사용해야 한다는 점에 유의하십시오.
 
-Acceptable and not acceptable practices:
+허용되는 구문 및 허용되지 않는 구문:허용되는 것 및 허용되지 않는 것:
 
 {{% table-nonheader %}}
 
@@ -22,9 +22,9 @@ Acceptable and not acceptable practices:
 
 {{% /table-nonheader %}}
 
-## ■ Archives versus installers
+## ■ 아카이브 설치 프로그램
 
-When packaging a route or train, consider using a single archive instead of multiple smaller ones, unless the size of the download justifies splitting the archive. Never use platform-specific installers as they are not portable (unless you also provide an archive as an alternative). Platform-specific installers include Windows EXE files, Linux RPM repositories and Mac DMG files.
+경로나 열차를 압축할 때 파일 크기가 최대 용량을 초과하지 않는한 분할압축을 사용하지 않을것을 권장 드립니다.
 
 Acceptable and not acceptable practices:
 

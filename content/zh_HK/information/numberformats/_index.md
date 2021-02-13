@@ -1,31 +1,31 @@
 ---
-title: "Number formats"
+title: "數字格式"
 weight: 2
 ---
 
-<font color="Gray">This page describes which number formats are encountered in the various route and train files and how to adhere to them.</font>
+<font color="Gray">此頁面講解了各種路線和列車文件中遇到的數字格式，以及如何正確地使用。</font>
 
-## ■ Contents
+## ■ 目錄
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Integers](#integers)
-- [3. Floating-point numbers](#floating)
-- [4. Times](#times)
-- [5. Color values](#colors)
+- [1.總概](#overview)
+- [2. 整數](#integers)
+- [3. 浮點數](#floating)
+- [4. 時間](#times)
+- [5. 顏色值](#colors)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 總概
 
-Within the route and train files, you will encounter numbers like integers or floating-point numbers all the time, occasionally also others. These numbers are required to adhere to a certain format, which is described in the following sections.
+在路線和列車文件中，您經常會遇到整數或浮點數之類的數字，有時還會遇到其他數字。這些編號必須遵循某種格式，以下將對此進行介紹。
 
-There are two parsing methods for numbers: **Strict** and **Loose**. The Strict method is a very tight specification which does not leave space for making typographic mistakes. This method is used in all new file formats. The Loose method is a legacy parsing model required for compatibility with older material. The different files as presented on the *Developing for openBVE* pages indicate which model is being used. Note that whenever a *Loose* model is permitted, you can also use the *Strict* formats as *Strict* forms a subset of *Loose*.
+數字有兩種解析方法：**嚴格** 和 **寬鬆** 。嚴格方法不會留有犯印刷錯誤的空間。所有新文件格式均使用此方法。寬鬆方法是與舊方式兼容所必需的傳統解析模型。在 *為OpenBVE進行開發* 頁面上顯示的不同文件表示正在使用哪種模型。請注意，只要允許 *寬鬆* 模型，您也可以使用 *嚴格* 格式，因為 *嚴格* 構成 *寬鬆* 的子集。
 
-## <a name="integers"></a>■ 2. Integers
+## <a name="integers"></a>■ 2. 整數
 
-**Strict:** Permitted is any sequence of at least one decimal digit in the range from 0 to 9 (U+0030 - U+0039), optionally prepended by a negative sign (U+002D). The resulting character sequence may include leading or trailing white spaces.
+**嚴格:** 允許的任何序列至少為一個小數點，範圍為0到9(U+0030 - U+0039)，並可以帶一個負號(U+002D)。結果字符序列可能包含前導或尾隨空白。
 
 {{% code "*Examples for Strict integers:*" %}}  
 0  
@@ -33,7 +33,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -98  
 {{% /code %}}
 
-**Loose:** All white spaces are removed from the character sequence first. Then, the remaining character sequence (*abcde*) is interpreted according to the *Strict* model. If this fails to create a valid number, the last character is dropped from the sequence (*abcd*) and then, the sequence is tested again. This continues until a valid number is produced or until no character remains, after which the character sequence is determined to be an invalid number. 
+**寬鬆:** 首先從字符序列中刪除所有空格。然後，根據 *嚴格* 模型解釋其餘字符序列(*abcde*)。如果此操作無法創建有效數字，則從序列(*abcd*)中刪除最後一個字符，然後再次測試該序列。這一直持續到產生有效數字或直到沒有剩餘字符為止，此後字符序列被確定為無效數字。
 
 {{% code "*Examples for Loose integers:*" %}}  
 123  
@@ -47,7 +47,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -987  
 {{% /code %}}
 
-## <a name="floating"></a>■ 3. Floating-point numbers
+## <a name="floating"></a>■ 3. 浮點數
 
 **Strict:** Permitted is any sequence of at least one decimal digit in the range from 0 to 9 (U+0030 - U+0039), optionally interleaved by exactly one decimal separator in form of the period (U+002E), optionally prepended by a negative sign (U+002D). The resulting character sequence may include leading or trailing white spaces.
 

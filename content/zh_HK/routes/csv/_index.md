@@ -10,7 +10,7 @@ weight: 1
 
 {{% contents %}}
 
-- [1. 縂概](#overview)
+- [1. 總概](#overview)
 - [2. 句法](#syntax)
 - [3. 提前準備](#preprocessing)
 - [4. Options指令命名空間](#options)
@@ -78,7 +78,7 @@ weight: 1
 
 ##### ● 指令
 
-冇參數的指令：
+無參數的指令：
 
 {{% command %}}
 *指令的名稱*
@@ -136,7 +136,7 @@ Route.Timetable 1157_M
 
 {{% warning-nontitle %}}
 
-預處理指令的語法不可以隨意使用, 必須以下面畀出的形式出現。
+預處理指令的語法不可以隨意使用, 必須遵循以下面的形式。
 
 {{% /warning-nontitle %}}
 
@@ -525,7 +525,7 @@ Commands from this namespace define general properties of the route.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***File***: The file name of the image which appears in the route selection dialog, relative to the route's folder.  
+***文件***: 相對於路線文件夾，出現在路線選擇對話框中的圖檔的文件名。
 {{% /command-arguments %}}
 
 ---
@@ -535,7 +535,7 @@ Commands from this namespace define general properties of the route.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Text***: The text which appears at the top of the default timetable.  
+***Text***：顯示在默認時間表頂部的文字。 
 {{% /command-arguments %}}
 
 {{% warning-nontitle %}}
@@ -545,19 +545,19 @@ Commands from this namespace define general properties of the route.
 ---
 
 {{% command %}}  
-**Route.Change** *Mode*  
+**Route.Change** *模式*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Mode***: The mode for the train's safety system to start in. The default value is implementation-specific.  
+***模式***: 列車安全系統啟動的模式。默認值是特定於實現的。
 {{% /command-arguments %}}
 
 ▸ *模式* 的選項:
 
 {{% command-arguments %}}  
-**-1**: The safety system is **activated** and the *service* brakes are applied.  
-**0**: The safety system is **activated** and the **emergency** brakes are applied.  
-**1**: The safety system is *deactivated* and the **emergency** brakes are applied.  
+**-1 **：安全系統已 **啟動**，並且已應用了 *服務* 制動器。 
+**0**: 安全系統已 **啟動**，並且已應用了 **緊急** 制動器。  
+**1**: 安全系統 *未啟動*，並且已應用了 **緊急** 制動器。
 {{% /command-arguments %}}
 
 ---

@@ -87,7 +87,7 @@ CSV/B3D/X 확장의 *n* 개체를 로드합니다. 표시된 첫 번째 파일�
 {{% command %}}  
 **StateFunction = Formula**  
 {{% /command %}}  
-This defines the function for state changes. The result of the *Formula* is rounded toward the nearest integer. If that integer is between 0 and *n*-1, where *n* is the number of states as defined via *States*, the respective state is shown, otherwise, no object is shown. You can make use of the latter if you want an object to toggle on/off with only one state.
+이것은 상태 변화에 대한 기능을 정의합니다. *Formula*의 결과는 가장 가까운 정수로 반올림됩니다. 해당 정수가 0과 *n*-1 사이인 경우, 여기서 *n*은 *States*를 통해 정의된 상태 수입니다. 그렇지 않으면 해당 상태가 표시되고, 그렇지 않으면 개체가 표시되지 않습니다. 객체가 하나의 상태에서만 켜거나 끄도록 하려면 후자를 사용할수 있습니다.
 
 {{% command %}}  
 **TranslateXDirection = X, Y, Z**  
