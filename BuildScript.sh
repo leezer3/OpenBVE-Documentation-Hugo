@@ -13,7 +13,7 @@ if [ $retVal -eq 1 ]; then
 fi
 echo "Hugo build completed successfully."
 cd ..
-if [ -n "$GITHUB_API_KEY" ]; then
+if [ -n "$API_KEY" ]; then
 	echo "Beginning deploy"
     git clone --depth=50 --branch=gh-pages https://github.com/leezer3/OpenBVE-Site.git OpenBVE-Site
     rm -rf OpenBVE-Site/documentation_hugo
@@ -21,7 +21,7 @@ if [ -n "$GITHUB_API_KEY" ]; then
 	cd OpenBVE-Site
     git add -f --ignore-errors --all
     git -c user.name='travis' -c user.email='travis' commit -m "Automatic documentation update"
-    git push -f -q https://leezer3:$GITHUB_API_KEY@github.com/leezer3/OpenBVE-Site
+    git push -f -q https://leezer3:$API_KEY@github.com/leezer3/OpenBVE-Site
 	echo "Deploy complete"
 else
 	echo "Not deploying- Wrong branch."
