@@ -297,6 +297,7 @@ Played once when the emergency brakes are applied.
 {{% note %}}
 
 If the **ApplyFast** sound is not present, then the **Apply** sound will be played instead.
+Similarly, if **ReleaseFast** is not present, then **Release** will be played instead.
 
 {{% /note %}}
 
@@ -337,6 +338,7 @@ Played once when the power notch is increased to the maximum power notch.
 {{% note %}}
 
 If the **UpFast** sound is not present, then the **Up** sound will be played instead.
+Similarly, if **DownFast** is not present, then **Down** will be played instead.
 
 {{% /note %}}
 
