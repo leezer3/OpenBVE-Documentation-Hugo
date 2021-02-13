@@ -294,6 +294,12 @@ Max = *FileName*
 {{% /command %}}  
 Played once when the emergency brakes are applied.
 
+{{% note %}}
+
+If the **ApplyFast** sound is not present, then the **Apply** sound will be played instead.
+
+{{% /note %}}
+
 ------
 
 ##### ● [Master Controller]
@@ -327,6 +333,12 @@ Played once when the power notch is decreased to brake notch zero.
 Max = *FileName*  
 {{% /command %}}  
 Played once when the power notch is increased to the maximum power notch.
+
+{{% note %}}
+
+If the **UpFast** sound is not present, then the **Up** sound will be played instead.
+
+{{% /note %}}
 
 ------
 
