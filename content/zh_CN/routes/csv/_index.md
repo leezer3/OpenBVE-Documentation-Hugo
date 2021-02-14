@@ -802,11 +802,12 @@ phi = 0
 {{% /command %}}
 
 {{% command-arguments %}}  
-***模式***：一个整数，代表游戏开始时摄像机的位置。可选项有：  
-*0*：车内视点。（默认）  
-*1*：轨道视点。  
-*2*：定点观察。  
-*3*：定点观察（放大）。  
+***Value***: An integer defining the initial camera viewpoint mode. The following values are valid:  
+*0* : The camera will be placed in the cab. (Default)  
+*1* : The camera will be placed in 'Exterior Camera' mode.  
+*2* : The camera will be placed in 'Track Camera' mode.  
+*3* : The camera will be placed in 'Flyby Camera' mode.  
+*4* : The camera will be placed in 'Flyby Zooming Camera' mode.  
 {{% /command-arguments %}}
 
 该指令允许自定义游戏开始时的视角。

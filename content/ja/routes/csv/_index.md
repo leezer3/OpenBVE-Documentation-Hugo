@@ -785,11 +785,12 @@ phi = 0
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: 初期のカメラ視点モードを定義する整数。以下の値が有効です:  
-*0* : カメラは運転台視点になります。 (デフォルト)  
-*1* : カメラは '車外カメラ' モードになります。  
-*2* : カメラは '路線カメラ' モードになります。  
-*3* : カメラは 'フライバイズームカメラ' モードになります。  
+***Value***: An integer defining the initial camera viewpoint mode. The following values are valid:  
+*0* : The camera will be placed in the cab. (Default)  
+*1* : The camera will be placed in 'Exterior Camera' mode.  
+*2* : The camera will be placed in 'Track Camera' mode.  
+*3* : The camera will be placed in 'Flyby Camera' mode.  
+*4* : The camera will be placed in 'Flyby Zooming Camera' mode.  
 {{% /command-arguments %}}
 
 このコマンドを使用すると、路線作成者は初期カメラを代替のカメラモードの一つへ設定することが出来ます。

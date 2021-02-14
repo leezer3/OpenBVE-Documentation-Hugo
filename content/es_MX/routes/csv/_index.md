@@ -787,9 +787,10 @@ In the formulas above, [*cos(x)*](http://functions.wolfram.com/ElementaryFunctio
 {{% command-arguments %}}  
 ***Value***: An integer defining the initial camera viewpoint mode. The following values are valid:  
 *0* : The camera will be placed in the cab. (Default)  
-*1* : The camera will be placed in 'Track Camera' mode.  
-*2* : The camera will be placed in 'Flyby Camera' mode.  
-*3* : The camera will be placed in 'Flyby Zooming Camera' mode.  
+*1* : The camera will be placed in 'Exterior Camera' mode.  
+*2* : The camera will be placed in 'Track Camera' mode.  
+*3* : The camera will be placed in 'Flyby Camera' mode.  
+*4* : The camera will be placed in 'Flyby Zooming Camera' mode.  
 {{% /command-arguments %}}
 
 This command allows the route developer to place the initial camera in one of the alternate camera modes.
