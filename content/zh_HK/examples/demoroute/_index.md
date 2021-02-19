@@ -27,7 +27,7 @@ weight: 1
 | <font color="Red">✗</font>  | 一條高質素OpenBVE路線 - 只是讓開發者學習 |
 | --------------------------- | ------------------------------------------------------------- |
 | <font color="Red">✗</font>  | 任何真實路線的演繹。  |
-| <font color="Red">✗</font>  | 一個高質素嘅路線  |
+| <font color="Red">✗</font>  | 一條高質素的路線  |
 
 {{% /table-nonheader %}}
 
