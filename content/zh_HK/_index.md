@@ -7,7 +7,7 @@ linktitle: "主頁"
 
 ---
 
-範例會放喺一個叫Examples嘅資料夾。
+範例會放在Examples資料夾。
 
 ---
 
