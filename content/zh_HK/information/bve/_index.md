@@ -15,7 +15,7 @@ Track.Signal命令 ( 或: Track.Sig ) 是用於在CSV路線中創建 默認的�
 在OpenBVE中，Track.Signal命令採用以下參數：
 
 {{% command %}}  
-**Track.Signal** *Aspects*; *~~沒用~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
+**Track.Signal** *Aspects*; *~~未使用~~*; *X*; *Y*; <u>*Yaw*</u>; *Pitch*; *Roll*  
 {{% /command %}}
 
 但在BVE Trainsim中，Track.Signal指令接受的是係以下參數：
@@ -24,6 +24,6 @@ Track.Signal命令 ( 或: Track.Sig ) 是用於在CSV路線中創建 默認的�
 **Track.Signal** *Aspects*; *Label*; *X*; *Y*; <u>*Type*</u>  
 {{% /command %}}
 
-The *Label* parameter in BVE Trainsim is a textual description of the signal which serves no function in openBVE (thus termed *Unused* in the documentation).
+BVE Trainsim中的 *Label* 參數是信號的文字描述，該信號在OpenBVE中無有作用（因此在文檔中稱為 *未使用*）。
 
-BVE Trainsim features a *Type* argument which can take values 1, 2 or 3. It is used to denote different types of signals, e.g. home signal vs. departure signal. By mere accident, this argument was never included in openBVE, while subsequently, the need arose to include *Yaw*, *Pitch* and *Roll* arguments to provide for more control over a signal head's orientation. Consequently, BVE Trainsim's *Type* and openBVE's *Yaw* argument incompatibly overlap. If a route created for BVE Trainsim includes the *Type* argument, it will be (mis)interpreted as a yaw of up to 3 degrees in openBVE. Usually, this small angle should not produce noticable differences, especially given that the parameter is not often used anyway.
+BVE Trainsim具有 *Type* 參數，該參數可以採用值1、2或3。它用於表示不同類型的信號，例如原點信號與出發信號。偶然地，此參數從未包含在OpenBVE中，而隨後，便需要包含 *Yaw*， *Pitch* 和 *Roll* 參數以提供對信號頭方向的更多控制。 因此，BVE Trainsim的 *Type* 和OpenBVE的 *Yaw* 參數不兼容地重疊。 如果為BVE Trainsim創建的路線包含 *Type* 參數，則它將在OpenBVE中（誤）解釋為最多3度的偏航。 通常，此小角度不應產生明顯的差異，特別是考慮到該參數都不經常使用。
