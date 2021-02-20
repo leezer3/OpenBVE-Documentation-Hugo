@@ -20,6 +20,6 @@ RW路線格式嘅功能同CSV差唔多, 但使用唔同嘅句法, 結構同指�
 
 在RW中，第一個 [Section] 之前的每個文本都被視為路徑描述的一部分，即CSV中的Route.Comment。
 
-In RW, the default @Height at the beginning of the route is 0.3 meters, while in CSV, the default Track.Height is 0.0 meters. Additionally, every value passed to @Height is added an additional 0.3 meters in RW.
+在RW中，路線起點@Height默認為0.3米，而在CSV中，Track.Height默認為0.0米。 此外，@Height的每個值都會在RW中額外增加0.3米。
 
-In RW, the second argument to @Form can take special values: -9 is the same as L, 9 is the same as R, and 9X references rail 9. In CSV, -9 is invalid and 9 references rail 9.
+在RW中，@Form的第二個參數可以採用特殊數值：-9與L相同，9與R相同，而9X引用軌道9。在CSV中，-9無效, 9引用軌道9。
