@@ -25,23 +25,24 @@ weight: 2
   - [SetColor](#setcolor)
   - [SetEmissiveColor](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
+  - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
   - [SetCoordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Áttekintés
+## <a name="overview"></a>■ 1. Overview
 
-A CSV objektum lehetővé teszi egyetlen objektum létrehozását szöveges utasítások segítségével. Az objektum felhasználható útvonalakon vagy vonatokon. A fájl által leírt objektum tetszőleges számú sokszöget tartalmazhat. A fájlformátum lehetővé teszi, hogy több sokszöget csoportosítson a CreateMeshBuilder szakaszokban, ahol az egyes szakaszokban létrehozott összes sokszöghez olyan attribútumokat rendelnek, mint a szín vagy a textúra. Ez lehetővé teszi számos poligon létrehozását ugyanabban a CreateMeshBuilder szakaszban, amelyek közös attribútumokkal rendelkeznek. Ebben a formátumban a sokszöget arcnak nevezzük.
+A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
-A fájl egy egyszerű szöveges fájl, amely tetszőleges [kódolásban] van kódolva ({{< ref "/information/encodings/_index.md" >}}), azonban az UTF-8 bájtos megjelöléssel az előnyben részesített választás. A [elemző modell] ({{< ref "/information/numberformats/_index.md" >}}) a számokhoz ** laza **, mindazonáltal a * szigorú * kimenet előállítását javasoljuk. A fájlnév tetszőleges, de a **. Csv ** kiterjesztésűnek kell lennie. A fájlt soronként értelmezik, fentről lefelé.
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom.
 
-Lásd [lásd a CSV formátum gyors útmutatóját is ...] ({{< ref "/objects/native/b3d_quick/_index.md" >}})
+➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
 ## <a name="syntax"></a>■ 2. Syntax
 
-A fájl minden sorát felosztjuk egy parancs nevére és argumentumára. Az összes parancs szintaxisa megegyezik:
+Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
 {{% command %}}  
 **NameOfTheCommand**, *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*  
@@ -333,11 +334,26 @@ This command sets the blend mode for all faces in the current CreateMeshBuilder 
 
 {{% warning %}}
 
-#### openBVE 2 compatibility note
+------
 
-In openBVE 2, only additive glow will be supported and the *GlowAttenuationMode* parameter is likely going to be dropped. Please avoid using normal blending in conjunction with using glow.
+<a name="setwrapmode"></a>
 
-{{% /warning %}}
+{{% command %}}  
+**SetWrapMode**, *WrapMode*
+{{% /command %}}
+
+{{% command-arguments %}}  
+***WrapMode***: The openGL texture wrapping mode to use. If this is not specified, the game will attempt to auto-determine the most appropriate texture wrapping mde.  
+{{% /command-arguments %}}
+
+▸ Available options for *WrapMode*:
+
+{{% command-arguments %}}  
+**ClampClamp**: The texture is clamped to edge on both axes. 
+**ClampRepeat**: The texture is clamped to edge on the x-axis and repeats on the y-axis. 
+**RepeatClamp**: The texture repeats on the x-axis and is clamped to edge on the y-axis.
+**RepeatRepeat**: The texture repeats on both axes.
+{{% /command-arguments %}}
 
 ------
 

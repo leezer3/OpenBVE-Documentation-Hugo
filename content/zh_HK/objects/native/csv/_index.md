@@ -25,21 +25,22 @@ weight: 2
   - [SetColor](#setcolor)
   - [SetEmissiveColor](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
+  - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
   - [SetCoordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. 總概
+## <a name="overview"></a>■ 1. Overview
 
-一個csv格式的物件允許你通過代碼描述去建立一個單個的物件模型。這個物件可以在綫路或者列車中應用。佢的代碼描述的對象可以包含任何形式的多個多邊形。該文件格式在CreateMeshBuilder部分中對多個多邊形進行分組，并將color或texture等屬性分配到對應部分創建的多邊形。不過我哋亦都允許在同一個CreateMeshBuilder中共享好多個相同屬性的多邊形，該多邊形稱作面，即是話，一個CreateMeshBuilder下面可以使用多個AddFace或AddFace指令。
+A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
-該文件是以任何形式來進行編碼開文本文檔 [編碼方式]（{{< ref "/information/encodings/_index.md" >}}），不過，帶有字節順序標記的UTF-8當然是最好的選擇。[解析模型]（{{< ref "/information/numberformats/_index.md" >}}）對於這啲模型來講是**寬鬆**的，但是，你最好仲是用*嚴謹*的方式去編碼以免出錯。該文件的大名可以任意編，但必須有**.csv**這個后綴。該文件會從上到下逐行解析。
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom.
 
 ➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. 句法
+## <a name="syntax"></a>■ 2. Syntax
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
@@ -61,7 +62,7 @@ You can use comments anywhere at the end of a line. A comment is started by a se
 **CreateMeshBuilder**  
 {{% /command %}}
 
-這個命令標誌著新一組面的開始。它必須位於以下任何命令之前。在文件中可以根據需要添加任意數量的該指令。後續的所有命令將與前一個CreateMeshBuilder關聯。
+This command marks the beginning of a new section of faces. It must precede any of the following commands. There might be as many CreateMeshBuilder sections as desired in the object file. All subsequent commands will then relate to the last CreateMeshBuilder section opened.
 
 ------
 
@@ -169,7 +170,7 @@ The Cylinder command is equivalent to a series of AddVertex and AddFace commands
 <font color=#555555>GenerateNormals</font>  
 {{% /command %}}
 
-*<font color=#555555>這個命令是會被OpenBVE忽略</font>*
+*<font color=#555555>This command is ignored by openBVE.</font>*
 
 ------
 
@@ -273,14 +274,14 @@ The **MirrorAll** command not only affects the vertices generated in the current
 <a name="setcolor"></a>
 
 {{% command %}}  
-**SetColor**, *紅*, *緑*, *藍*, *透明度*  
+**SetColor**, *Red*, *Green*, *Blue*, *Alpha*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***紅***: 紅色成分. 由 0 (黑) 到 255 (紅). 默認為 255.  
-***綠***: 綠色成分. 由 (黑) 到 255 (綠). 默認為 255.  
-***藍***: 藍色成分. 由 0 (黑) 到 255 (藍). 默認為 255.  
-***透明度***: 透明成分. 由 0 (透明) 到 255 (不透明). 默認為 255.  
+***Red***: The red component of the color. Measured from 0 (black) to 255 (red). The default value is 255.  
+***Green***: The green component of the color. Measured from 0 (black) to 255 (green). The default value is 255.  
+***Blue***: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 255.  
+***Alpha***: The alpha component of the color. Measured from 0 (transparent) to 255 (opaque). The default value is 255.  
 {{% /command-arguments %}}
 
 This command sets the color for all faces that were already created in the current CreateMeshBuilder section. If no texture is used, the faces will be colored using the color data as specified by *Red*, *Green*and *Blue*. If a texture is used, the pixels in the texture will be multiplied by the color, where multiplying with black results in black and multiplying with white does not change the color of the texture pixels. Values in-between make the texture pixels darker. When lighting is used in the route, the actual color can change depending on the lighting conditions, but will usually become darker.
@@ -290,7 +291,7 @@ This command sets the color for all faces that were already created in the curre
 <a name="setemissivecolor"></a>
 
 {{% command %}}  
-**SetEmissiveColor**, *紅*, *緑*, *藍*  
+**SetEmissiveColor**, *Red*, *Green*, *Blue*  
 {{% /command%}}
 
 {{% command-arguments %}}  
@@ -333,11 +334,26 @@ This command sets the blend mode for all faces in the current CreateMeshBuilder 
 
 {{% warning %}}
 
-#### openBVE 2 compatibility note
+------
 
-In openBVE 2, only additive glow will be supported and the *GlowAttenuationMode* parameter is likely going to be dropped. Please avoid using normal blending in conjunction with using glow.
+<a name="setwrapmode"></a>
 
-{{% /warning %}}
+{{% command %}}  
+**SetWrapMode**, *WrapMode*
+{{% /command %}}
+
+{{% command-arguments %}}  
+***WrapMode***: The openGL texture wrapping mode to use. If this is not specified, the game will attempt to auto-determine the most appropriate texture wrapping mde.  
+{{% /command-arguments %}}
+
+▸ Available options for *WrapMode*:
+
+{{% command-arguments %}}  
+**ClampClamp**: The texture is clamped to edge on both axes. 
+**ClampRepeat**: The texture is clamped to edge on the x-axis and repeats on the y-axis. 
+**RepeatClamp**: The texture repeats on the x-axis and is clamped to edge on the y-axis.
+**RepeatRepeat**: The texture repeats on both axes.
+{{% /command-arguments %}}
 
 ------
 
@@ -377,11 +393,11 @@ This command sets the color used for screendoor transparency for all faces that 
 <a name="enablecrossfading"></a>
 
 {{% command %}}  
-**EnableCrossfading**, *值* 
+**EnableCrossfading**, *value* 
 {{% /command %}}
 
 {{% command-arguments %}}  
-**值**: true 啟用交叉漸變，或為false（默認）禁用。
+**value**: Either true to enable cross-fading, or false (default) to disable.
 {{% /command-arguments %}}
 
 This command controls the blending mode when both a daytime and a nighttime texture are specified.

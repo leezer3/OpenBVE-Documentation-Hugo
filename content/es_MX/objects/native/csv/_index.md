@@ -25,13 +25,14 @@ weight: 2
   - [SetColor](#setcolor)
   - [SetEmissiveColor](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
+  - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
   - [SetCoordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Vista general
+## <a name="overview"></a>■ 1. Overview
 
 A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
@@ -39,7 +40,7 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Sintaxis
+## <a name="syntax"></a>■ 2. Syntax
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
@@ -53,7 +54,7 @@ Arguments may also be omitted by leaving the text at each of the *Argumenti* bla
 
 You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## <a name="commands"></a>■ 3. Comandos disponibles
+## <a name="commands"></a>■ 3. Available commands
 
 <a name="createmeshbuilder"></a>
 
@@ -89,7 +90,7 @@ The normal is the direction perpendicular to the face at a particular point. If 
 <a name="addface"></a>
 
 {{% command %}}  
-**AddFace**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>máximo</sub>*  
+**AddFace**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>max</sub>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -103,7 +104,7 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 <a name="addface2"></a>
 
 {{% command %}}  
-**AddFace2**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>máximo</sub>*  
+**AddFace2**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>max</sub>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -157,7 +158,7 @@ The number of vertices *n* will usually suffice to be 6 or 8 when only small rad
 
 {{% notice %}}
 
-#### Representación del cilindro
+#### Cylinder representation
 
 The Cylinder command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cylinder command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
@@ -169,7 +170,7 @@ The Cylinder command is equivalent to a series of AddVertex and AddFace commands
 <font color=#555555>GenerateNormals</font>  
 {{% /command %}}
 
-*<font color=#555555>Este comando es ignorado por openBVE.</font>*
+*<font color=#555555>This command is ignored by openBVE.</font>*
 
 ------
 
@@ -210,8 +211,8 @@ The **Scale** command scales all vertices that have been created so far in the C
 <a name="rotate"></a>
 
 {{% command %}}  
-**Rotate**, *X*, *Y*, *Z*, *Ángulo*  
-**RotateAll**, *X*, *Y*, *Z*, *Ángulo*  
+**Rotate**, *X*, *Y*, *Z*, *Angle*  
+**RotateAll**, *X*, *Y*, *Z*, *Angle*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -273,7 +274,7 @@ The **MirrorAll** command not only affects the vertices generated in the current
 <a name="setcolor"></a>
 
 {{% command %}}  
-**SetColor**, *Rojo*, *Verde*, *Azul*, *Alfa*  
+**SetColor**, *Red*, *Green*, *Blue*, *Alpha*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -290,7 +291,7 @@ This command sets the color for all faces that were already created in the curre
 <a name="setemissivecolor"></a>
 
 {{% command %}}  
-**SetEmissiveColor**, *Rojo*, *Verde*, *Azul*  
+**SetEmissiveColor**, *Red*, *Green*, *Blue*  
 {{% /command%}}
 
 {{% command-arguments %}}  
@@ -333,11 +334,26 @@ This command sets the blend mode for all faces in the current CreateMeshBuilder 
 
 {{% warning %}}
 
-#### openBVE 2 compatibility note
+------
 
-In openBVE 2, only additive glow will be supported and the *GlowAttenuationMode* parameter is likely going to be dropped. Please avoid using normal blending in conjunction with using glow.
+<a name="setwrapmode"></a>
 
-{{% /warning %}}
+{{% command %}}  
+**SetWrapMode**, *WrapMode*
+{{% /command %}}
+
+{{% command-arguments %}}  
+***WrapMode***: The openGL texture wrapping mode to use. If this is not specified, the game will attempt to auto-determine the most appropriate texture wrapping mde.  
+{{% /command-arguments %}}
+
+▸ Available options for *WrapMode*:
+
+{{% command-arguments %}}  
+**ClampClamp**: The texture is clamped to edge on both axes. 
+**ClampRepeat**: The texture is clamped to edge on the x-axis and repeats on the y-axis. 
+**RepeatClamp**: The texture repeats on the x-axis and is clamped to edge on the y-axis.
+**RepeatRepeat**: The texture repeats on both axes.
+{{% /command-arguments %}}
 
 ------
 
@@ -361,7 +377,7 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 <a name="setdecaltransparentcolor"></a>
 
 {{% command %}}  
-**SetDecalTransparentColor**, *Rojo*, *Verde*, *Azul*  
+**SetDecalTransparentColor**, *Red*, *Green*, *Blue*  
 {{% /command %}}
 
 {{% command-arguments %}}  

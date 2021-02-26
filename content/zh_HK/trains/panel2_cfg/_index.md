@@ -4,11 +4,11 @@ linktitle: "The panel2.cfg file"
 weight: 4
 ---
 
-## ■ Contents
+## ■ 目錄
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 總概](#overview)
 - [2. Syntax](#syntax)
 - [3. The This section](#this)
 - [4. The PilotLamp section](#pilotlamp)
@@ -21,7 +21,7 @@ weight: 4
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 總概
 
 The panel2.cfg file allows to create 2D panels by defining which elements to use, like lamps, needles, etc., what they are intended to display and where they are to be placed.
 
@@ -49,7 +49,7 @@ For all elements that take a texture, you can specify distinct daytime and night
 
 {{% notice %}}
 
-#### Overlay and Lighting
+#### 覆蓋和光暗
 
 The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light.
 

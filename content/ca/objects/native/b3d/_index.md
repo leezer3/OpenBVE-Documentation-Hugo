@@ -25,13 +25,14 @@ weight: 1
   - [Color](#setcolor)
   - [EmissiveColor](#setemissivecolor)
   - [BlendMode](#setblendmode)
+  - [WrapMode](#setwrapmode)
   - [Load](#loadtexture)
   - [Transparent](#setdecaltransparentcolor)
   - [Coordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Descripció
+## <a name="overview"></a>■ 1. Overview
 
 A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
 
@@ -39,12 +40,12 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Sintaxi
+## <a name="syntax"></a>■ 2. Syntax
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
 {{% command %}}
-**Ordre** *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*
+**NameOfTheCommand** *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*
 {{% /command %}}
 
 *NameOfTheCommand* is case-insensitive. If there are arguments, *NameOfTheCommand* and *Argument1* are separated by at least one space space (U+0020). Arguments are separated by a comma (U+002C). [White spaces]({{< ref "/information/whitespaces/_index.md" >}}) around the arguments, and well as at the beginning and the end of the line, are ignored. Empty lines or lines solely consisting of white spaces are also ignored.
@@ -53,7 +54,7 @@ Arguments may also be omitted by leaving the text at each of the *Argument<sub>i
 
 You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## <a name="commands"></a>■ 3. Ordres disponibles
+## <a name="commands"></a>■ 3. Available commands
 
 <a name="createmeshbuilder"></a>
 
@@ -328,13 +329,26 @@ This command sets the emissive color for all faces that were already created in 
 
 This command sets the blend mode for all faces in the current [MeshBuilder] section. The *Normal* mode replaces screen pixels with texture pixels. The *Additive* mode adds the color of texture pixels to the color of screen pixels, where adding black does not change the screen pixel, while adding white results in white. If *GlowHalfDistance* is 0, glow attenuation will be disabled, which is the default. If glow attenuation is to be used, *GlowHalfDistance* represents the distance in meters at which the glow is exactly at 50% of its intensity. When the camera approaches the face, the face will gradually fade out (become transparent). The function used to determine the exact intensity for a given distance can be influenced with the setting of *GlowAttenuationMode*. DivideExponent2 creates a smoother transition, but will converge to the maximum intensity very slowly, while DivideExponent4 creates a sharper transition which converges more quickly.
 
-{{% warning %}}
+----------
 
-#### openBVE 2 compatibility note
+<a name="setwrapmode"></a>
 
-In openBVE 2, only additive glow will be supported and the *GlowAttenuationMode* parameter is likely going to be dropped. Please avoid using normal blending in conjunction with using glow.
+{{% command %}}  
+**WrapMode**, *WrapMode*
+{{% /command %}}
 
-{{% /warning %}}
+{{% command-arguments %}}  
+***WrapMode***: The openGL texture wrapping mode to use. If this is not specified, the game will attempt to auto-determine the most appropriate texture wrapping mde.  
+{{% /command-arguments %}}
+
+▸ Available options for *WrapMode*:
+
+{{% command-arguments %}}  
+**ClampClamp**: The texture is clamped to edge on both axes. 
+**ClampRepeat**: The texture is clamped to edge on the x-axis and repeats on the y-axis. 
+**RepeatClamp**: The texture repeats on the x-axis and is clamped to edge on the y-axis.
+**RepeatRepeat**: The texture repeats on both axes.
+{{% /command-arguments %}}
 
 ----------
 

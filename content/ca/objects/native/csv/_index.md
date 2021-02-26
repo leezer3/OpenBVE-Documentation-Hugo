@@ -25,13 +25,14 @@ weight: 2
   - [SetColor](#setcolor)
   - [SetEmissiveColor](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
+  - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
   - [SetCoordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Descripció
+## <a name="overview"></a>■ 1. Overview
 
 A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
@@ -39,7 +40,7 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Sintaxi
+## <a name="syntax"></a>■ 2. Syntax
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
@@ -53,7 +54,7 @@ Arguments may also be omitted by leaving the text at each of the *Argumenti* bla
 
 You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## <a name="commands"></a>■ 3. Ordres disponibles
+## <a name="commands"></a>■ 3. Available commands
 
 <a name="createmeshbuilder"></a>
 
@@ -333,11 +334,26 @@ This command sets the blend mode for all faces in the current CreateMeshBuilder 
 
 {{% warning %}}
 
-#### openBVE 2 compatibility note
+------
 
-In openBVE 2, only additive glow will be supported and the *GlowAttenuationMode* parameter is likely going to be dropped. Please avoid using normal blending in conjunction with using glow.
+<a name="setwrapmode"></a>
 
-{{% /warning %}}
+{{% command %}}  
+**SetWrapMode**, *WrapMode*
+{{% /command %}}
+
+{{% command-arguments %}}  
+***WrapMode***: The openGL texture wrapping mode to use. If this is not specified, the game will attempt to auto-determine the most appropriate texture wrapping mde.  
+{{% /command-arguments %}}
+
+▸ Available options for *WrapMode*:
+
+{{% command-arguments %}}  
+**ClampClamp**: The texture is clamped to edge on both axes. 
+**ClampRepeat**: The texture is clamped to edge on the x-axis and repeats on the y-axis. 
+**RepeatClamp**: The texture repeats on the x-axis and is clamped to edge on the y-axis.
+**RepeatRepeat**: The texture repeats on both axes.
+{{% /command-arguments %}}
 
 ------
 

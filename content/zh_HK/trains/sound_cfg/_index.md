@@ -4,17 +4,17 @@ linktitle: "The sound.cfg file"
 weight: 7
 ---
 
-## ■ Contents
+## ■ 目錄
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 總概](#overview)
 - [2. Syntax](#syntax)
 - [3. Content of the file](#content)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 總概
 
 The sound.cfg file allows to reference which sound files should be used, how they are called and where they are located relative to the train folder.
 

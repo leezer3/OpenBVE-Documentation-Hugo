@@ -25,23 +25,22 @@ weight: 2
   - [SetColor](#setcolor)
   - [SetEmissiveColor](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
+  - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
   - [SetCoordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Présentation
+## <a name="overview"></a>■ 1. Overview
 
-Un objet CSV permet de créer un seul objet à l'aide d'instructions textuelles. L'objet peut être utilisé dans des itinéraires ou dans des trains. L'objet décrit par le fichier peut contenir n'importe quel nombre de polygones individuels. Le format de fichier permet de regrouper plusieurs polygones dans des sections CreateMeshBuilder dans lesquelles des attributs tels que des informations de couleur ou de texture sont attribués à tous les polygones créés dans chaque section. Cela permet la création de nombreux polygones dans la même section CreateMeshBuilder qui partagent des attributs communs. Un polygone est appelé une face dans ce format de fichier.
+A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
-Le fichier est un fichier texte brut encodé dans n'importe quel [encodage] arbitraire ({{< ref "/information/encodings/_index.md" >}}), cependant, UTF-8 avec une marque d'ordre d'octets est le choix préféré. Le [modèle d'analyse] ({{< ref "/information/numberformats/_index.md" >}}) pour les nombres est ** Lâche **, cependant, nous vous encourageons à produire néanmoins une sortie * Strict *. Le nom du fichier est arbitraire, mais doit avoir l'extension **. Csv **. Le fichier est interprété ligne par ligne, de haut en bas.
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom.
 
+➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-
-➟ [Voir aussi la référence rapide pour le format CSV ...] ({{< ref "/objects/native/b3d_quick/_index.md" >}})
-
-## <a name="syntax"></a>■ 2. Syntaxe
+## <a name="syntax"></a>■ 2. Syntax
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
@@ -335,11 +334,26 @@ This command sets the blend mode for all faces in the current CreateMeshBuilder 
 
 {{% warning %}}
 
-#### openBVE 2 compatibility note
+------
 
-In openBVE 2, only additive glow will be supported and the *GlowAttenuationMode* parameter is likely going to be dropped. Please avoid using normal blending in conjunction with using glow.
+<a name="setwrapmode"></a>
 
-{{% /warning %}}
+{{% command %}}  
+**SetWrapMode**, *WrapMode*
+{{% /command %}}
+
+{{% command-arguments %}}  
+***WrapMode***: The openGL texture wrapping mode to use. If this is not specified, the game will attempt to auto-determine the most appropriate texture wrapping mde.  
+{{% /command-arguments %}}
+
+▸ Available options for *WrapMode*:
+
+{{% command-arguments %}}  
+**ClampClamp**: The texture is clamped to edge on both axes. 
+**ClampRepeat**: The texture is clamped to edge on the x-axis and repeats on the y-axis. 
+**RepeatClamp**: The texture repeats on the x-axis and is clamped to edge on the y-axis.
+**RepeatRepeat**: The texture repeats on both axes.
+{{% /command-arguments %}}
 
 ------
 

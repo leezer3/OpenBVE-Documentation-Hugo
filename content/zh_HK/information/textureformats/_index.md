@@ -1,6 +1,6 @@
 ---
-title: "Supported texture formats"
-linktitle: "Texture formats"
+title: "支持的材質格式"
+linktitle: "材質格式"
 weight: 4
 ---
 
@@ -8,7 +8,7 @@ This is a list of officially supported texture formats. Generally, the PNG forma
 
 {{% table %}}
 
-| 格式      | Allowed file extensions | Remarks                                                      |
+| 格式      | 允許的副檔名 | Remarks                                                      |
 | ----------- | ----------------------- | ------------------------------------------------------------ |
 | PNG         | .png                    | Preferred. Please be aware of the fact that using alpha channels significantly reduces performance when used in scenery objects and train exteriors. |
 | Windows BMP | .bmp                    | Not recommended due to large file size.                      |

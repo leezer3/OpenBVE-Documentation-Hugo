@@ -1,14 +1,14 @@
 ---
-title: "The **.animated** object format"
-linktitle: "The ANIMATED object"
+title: "**.animated** 物件格式"
+linktitle: "ANIMATED 物件"
 weight: 3
 ---
 
-## ■ Contents
+## ■ 目錄
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 總概](#overview)
 - [2. Sections](#description)
 - [3. List of infix notation operators](#operators)
 - [4.功能列表](#functions)
@@ -20,7 +20,7 @@ weight: 3
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 總概
 
 The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
 
@@ -297,7 +297,7 @@ This defines whether the sound effect defined above should be played when the re
 
 {{% warning %}}
 
-#### openBVE 2 compatibility note
+#### openBVE 2兼容性
 
 During the development of openBVE (v0.9) and during the development of the animated object format, there were certain commands in existance ending in *RPN*, such as *TranslateXFunctionRPN*. These commands never made it into any official release (v1.0) and were thus never meant to be used outside of development environments. While they are still available undocumentedly, they will be removed for openBVE 2. If you are using these commands, please get rid of them as soon as possible.
 
@@ -490,7 +490,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 | Variable                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `playerTrain`                 | Returns 1 if the train is the player train, 0 otherwise.                            |
+| `playerTrain`                 | 如果此物件是在玩家的列車，此變數會為1，否則此變數會為0。
+注: Route.RunInterval的列車並非玩家列車                            |
 | `cars`                        | The number of cars the train has.                            |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speed[carIndex]`             | The signed actual speed of the car *carIndex* in m/s. Is positive when the train travels forward, and negative when the train travels backward. |

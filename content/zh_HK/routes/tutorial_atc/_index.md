@@ -1,15 +1,15 @@
 ---
-title: "教學：喺CSV路線文件中使用ATC"
+title: "教學：在CSV路線文件中使用ATC"
 linktitle: "教學：使用ATC"
 weight: 5
 ---
 
-呢個教學將帶您正確咁喺您嘅路線上設置好遊戲內置嘅日式ATC信號系統。閱讀前應該先了解ATC係咩。否則的話，請您先看此頁：
+本教程旨在指導您如何正確設置內置的日本安全系統ATC，以備您隨時準備使用它。 該頁面假設您熟悉什麼是ATC。 如果沒有，請首先查看以下頁面：
 
 ➟ [信號、標牌、ATS與ATC速覽]
 (https://openbve-project.net/play-japanese/)
 
-## ■ 喺路線上安裝ATC
+## ■ 在路線上安裝ATC
 首先，ATC係按照車站為單位啟用的。對於每一個被設置為啟用ATC嘅車站，從果個車站起到下一站嘅末端的軌道都被視為安裝了ATC。遊戲會餘弦知道ATC安裝的軌道區域末端，並會自動在此之前剎停列車，以防止衝燈。
 
 {{% code "*In order to enable ATC:*" %}}  
@@ -20,25 +20,25 @@ Track.Sta STATION; ; ; ; ; ; 1
 Track.Sta STATION; ; ; ; ; ; 0  
 {{% /code %}}
 
-In the following example, the track from station B until station C is ATC-equipped:
+在以下例子中，從B站到C站的軌道配備了ATC：
 
 {{% code %}}  
 With Track  
 0000, .Sta A; ; ; ; ; ; 0  
 0120, .Stop  
-; start of ATC-equipped track at 800  
+; 配備ATC的軌道在800米開始  
 0800, .Sta B; ; ; ; ; ; 1  
 0920, .Stop  
 1600, .Sta C; ; ; ; ; ; 0  
 1720, .Stop  
-; end of ATC-equipped track at 1720  
+; 配備ATC的軌道在1720米結束  
 2400, .Sta D; ; ; ; ; ; 0  
 2520, .Stop  
 {{% /code %}}
 
-## ■ Signalling and ATC
+## ■ 信號和ATC
 
-Technically, users may ignore any signals as long as the train operates in ATC. Of course you can demand otherwise on your route. In openBVE, instead of using signals, ATC receives the distance to the next train in blocks of 200m. Depending on the deceleration characteristics of the train, ATC then dictates a particular speed limit, which may be released at any time depending on the change of location of the preceding train. These 200m blocks are placed at track positions 0, 200, 400, 600, and so on.
+理論上，只要列車在ATC中運行，玩家就可以忽略所有信號。 當然，您也可以在路線上提出其他要求。 在OpenBVE中，ATC不使用信號，而是以200m的塊接收到下一列列車的距離。 然後，根據列車的減速特性，ATC會指定一個特定的速度限制，該速度限制可根據前一列火車的位置變化隨時發布。 這些200m的塊放置在磁道位置0、200、400、600等。
 
 ## ■ Speed limits and ATC
 
