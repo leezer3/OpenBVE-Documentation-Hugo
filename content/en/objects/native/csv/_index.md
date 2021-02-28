@@ -25,6 +25,7 @@ weight: 2
   - [SetColor](#setcolor)
   - [SetEmissiveColor](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
+  - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
   - [SetCoordinates](#settexturecoordinates)
@@ -331,13 +332,26 @@ This command sets the emissive color for all faces that were already created in 
 
 This command sets the blend mode for all faces in the current CreateMeshBuilder section. The *Normal* mode replaces screen pixels with texture pixels. The *Additive* mode adds the color of texture pixels to the color of screen pixels, where adding black does not change the screen pixel, while adding white results in white. If *GlowHalfDistance* is 0, glow attenuation will be disabled, which is the default. If glow attenuation is to be used, *GlowHalfDistance* represents the distance in meters at which the glow is exactly at 50% of its intensity. When the camera approaches the face, the face will gradually fade out (become transparent). The function used to determine the exact intensity for a given distance can be influenced with the setting of *GlowAttenuationMode*. DivideExponent2 creates a smoother transition, but will converge to the maximum intensity very slowly, while DivideExponent4 creates a sharper transition which converges more quickly.
 
-{{% warning %}}
+------
 
-#### openBVE 2 compatibility note
+<a name="setwrapmode"></a>
 
-In openBVE 2, only additive glow will be supported and the *GlowAttenuationMode* parameter is likely going to be dropped. Please avoid using normal blending in conjunction with using glow.
+{{% command %}}  
+**SetWrapMode**, *WrapMode*
+{{% /command %}}
 
-{{% /warning %}}
+{{% command-arguments %}}  
+***WrapMode***: The openGL texture wrapping mode to use. If this is not specified, the game will attempt to auto-determine the most appropriate texture wrapping mde.  
+{{% /command-arguments %}}
+
+▸ Available options for *WrapMode*:
+
+{{% command-arguments %}}  
+**ClampClamp**: The texture is clamped to edge on both axes. 
+**ClampRepeat**: The texture is clamped to edge on the x-axis and repeats on the y-axis. 
+**RepeatClamp**: The texture repeats on the x-axis and is clamped to edge on the y-axis.
+**RepeatRepeat**: The texture repeats on both axes.
+{{% /command-arguments %}}
 
 ------
 
