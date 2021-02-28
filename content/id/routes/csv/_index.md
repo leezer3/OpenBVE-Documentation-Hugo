@@ -646,7 +646,7 @@ Route.RunInterval is the same as Train.Interval.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: A floating-point number representing the initial temperature in **Celsius**. The default value is 20.  
+***ValueInCelsius***: A floating-point number representing the initial temperature in **Celsius**. The default value is 20.  
 {{% /command-arguments %}}
 
 ---
@@ -840,7 +840,7 @@ The train developer provides a repertoire of different run sounds. Use this comm
 
 {{% command-arguments %}}  
 ***RailTypeIndex***: A non-negative integer representing the rail type as defined via Structure.Rail and used via Track.RailType.  
-***RunSoundIndex***: A non-negative integer representing the train's flange sound to associate to the rail type.  
+***FlangeSoundIndex***: A non-negative integer representing the train's flange sound to associate to the rail type.  
 {{% /command-arguments %}}
 
 The train developer provides a repertoire of different flange sounds. Use this command to associate these flange sounds to the rail types you use in your route. In order for the correct flange sounds to be played on any of your rail types, you need to coordinate your efforts with the train developer. Please see the page about [standards]({{< ref "/information/standards/_index.md" >}}) for further information.
@@ -894,12 +894,12 @@ Train.Gauge is the same as Route.Gauge.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***ValueInSeconds***: A floating-point number representing the time interval between the player's train and the preceding train, measured in **seconds**. The default value is 0.  
+***Interval<sub>i</sub>***: A floating-point number representing the time interval between the player's train and the preceding train, measured in **seconds**. The default value is 0.  
 {{% /command-arguments %}}
 
 {{% note %}}
 
-Train.ValueInSeconds is the same as Route.RunInterval.
+Train.Interval is the same as Route.RunInterval.
 
 {{% /note %}}
 
@@ -1328,7 +1328,7 @@ This command sets the adhesion of the track from this point on. As a reference, 
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Rate***: A non-negative floating-point number measured in percent representing the intensity of the current rainfall. The default value is 0.  
+***Intensity***: A non-negative floating-point number measured in percent representing the intensity of the current rainfall. The default value is 0.  
 ***WeatherType***: A non-negative integer referencing the weather type to use as defined by Structure.Weather from this point onwards.
 {{% /command-arguments %}}
 
@@ -1347,7 +1347,7 @@ It is also possible to set the rain intensity using the legacy BVE4 beacon based
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Rate***: A non-negative floating-point number measured in percent representing the intensity of the current snowfall. The default value is 0.  
+***Intensity***: A non-negative floating-point number measured in percent representing the intensity of the current snowfall. The default value is 0.  
 ***WeatherType***: A non-negative integer referencing the weather type to use as defined by Structure.Weather from this point onwards.
 {{% /command-arguments %}}
 
@@ -1416,7 +1416,7 @@ This command can only be used at the beginning of a block.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Rate***: A floating-point number representing a turn. The default value is 0.  
+***Ratio***: A floating-point number representing a turn. The default value is 0.  
 {{% /command-arguments %}}
 
 This command creates a point-based turn at the point of insertion. *Ratio* indicates the ratio between the length difference *Z* and the horizontal offset *X* in the following way:

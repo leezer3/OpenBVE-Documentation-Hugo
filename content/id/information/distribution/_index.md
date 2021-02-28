@@ -53,7 +53,7 @@ Yang dibolehkan dan tidak:
 
 ## ■ Archive dan susunan folder
 
-Anda harus selalu menambahkan semua susunan folder, seperti **Railway** dan **Train**, saat membuat archive dan menyebarkan add-ons. Hal ini dapat membantu user untuk menentukan di mana mereka harus meng-ekstrak archivenya. Jangan pernah membiarkan isi archive anda hanya folder *NamaFolder* yang seharusnya disimpan di folder Railway\Sound, sebagai contoh. Hanya user yang sudah berpengalaman yang bisa mengatasi masalah ini.
+You should always include the full folder structure, that is, **Railway** and **Train**, when distributing routes or trains. This will make it easiest for people to understand where they need to extract the content to. Never just include a subdirectory such as *YourNameHere* that is supposed to be extracted to the Railway\Sound folder, for example. Only the more experienced users will generally be able to figure out where to put such content to by examining the files or their extensions.
 
 Yang dibolehkan dan tidak:
 
@@ -67,7 +67,7 @@ Yang dibolehkan dan tidak:
 
 ## ■ Error dan peringatan
 
-Rute anda harus bebas dari ERROR. Ingat, OpenBVE membedakan pesan ERROR dan pesan PERINGATAN. Pesan ERROR menunjukkan sesuatu yang KESALAHAN tulisan yang sudah jelas dan harus langsung diperbaiki. Sedangkan pesan PERINGATAN hanya menunjukkan informasih tambahan yang bisa saja menjadi error atau mungkin menghasilkan kode yang ambigu, atau yang tidak sengaja tertulis. Untuk melihat pesan error dan pesan peringatan, buka Pengaturan OpenBVE dan aktifkan pilihan ini. RouteViewer dan ObjectViewer akan selalu menampilkan pesan ini. Caatan, mungkin OpenBVE dan aplikasi Viewer lainnya menampilkan jumlah error yang berbeda, karena tidak semua perintah di aplikasi Viewer bisa dibaca.
+Generally, your route should be free of errors. Please note that openBVE distinguishes between errors and warnings. An error is something definately wrong with your coding that should be fixed immediately. A warning is usually only raised to encourage inspection of potentially ambiguous code or code that might not have been meant the way it was written. In order to inspect your routes and trains for errors and warnings, go to the Options menu in openBVE and enable reporting them. RouteViewer and ObjectViewer always report such messages. Please note that the arious tools and openBVE itself might report a different set of messages as they don't share all the same functionality. Distributing add-ons containing errors might give users the impression that something was incompletely downloaded or was incorrectly packaged, and should generally be voided.
 
 Yang dibolehkan dan tidak:
 
