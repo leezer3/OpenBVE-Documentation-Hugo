@@ -550,6 +550,7 @@ This starts the section.
 {{% command-arguments %}}  
 **0**: Separate power and brake handles  
 **1**: One combined power and brake handle  
+**2**: Separate power and brake handles, but interlocked so that the power setting may not be modified whilst the brake is active 
 {{% /command-arguments %}}
 
 This entry defines which kind of handles should be used. If the train uses an automatic air brake (defined in the #BRAKE section), this setting will always be overridden to use two separate handles.
