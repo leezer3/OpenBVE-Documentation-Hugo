@@ -53,7 +53,7 @@ weight: 7
 
 ## ■ 壓縮檔案和文件夾結構
 
-You should always include the full folder structure, that is, **Railway** and **Train**, when distributing routes or trains. This will make it easiest for people to understand where they need to extract the content to. Never just include a subdirectory such as *YourNameHere* that is supposed to be extracted to the Railway\Sound folder, for example. Only the more experienced users will generally be able to figure out where to put such content to by examining the files or their extensions.
+發佈路線或列車時，應包含完整的文件夾結構，即 **Railway** 和 **Train** 。這將使用戶最容易理解他們需要將內容放到的那裡。不要僅包含子目錄，例如 *YourNameHere*，而該子目錄是應該被放進Railway\Sound文件夾中。通常只有更有經驗的用戶才能通過檢查文件或其檔案格式來確定將這些內容放在那裡。
 
 可接受和不可接受的做法：
 
@@ -67,7 +67,7 @@ You should always include the full folder structure, that is, **Railway** and **
 
 ## ■ 錯誤和警告
 
-Generally, your route should be free of errors. Please note that openBVE distinguishes between errors and warnings. An error is something definately wrong with your coding that should be fixed immediately. A warning is usually only raised to encourage inspection of potentially ambiguous code or code that might not have been meant the way it was written. In order to inspect your routes and trains for errors and warnings, go to the Options menu in openBVE and enable reporting them. RouteViewer and ObjectViewer always report such messages. Please note that the arious tools and openBVE itself might report a different set of messages as they don't share all the same functionality. Distributing add-ons containing errors might give users the impression that something was incompletely downloaded or was incorrectly packaged, and should generally be voided.
+您的路線應該沒有錯誤信息。請注意，OpenBVE 區分錯誤和警告。錯誤是您的編碼中肯定存在錯誤，應立即修復。警告是鼓勵檢查潛在句法錯誤 或 可能不是其編寫方式的代碼。為檢查您的路線和列車是否有錯誤和警告，請到OpenBVE中的“選項”菜單並在右下角啟用它們。 RouteViewer和ObjectViewer 總會報告此類信息。請注意，各種工具和OpenBVE本身可能報告不同的錯誤信息，因為它們不共享所有相同的功能。發佈含有錯誤的附加檔可能會令用戶認為某些東西下載不完整。應該避免此類情況。
 
 可接受和不可接受的做法：
 
