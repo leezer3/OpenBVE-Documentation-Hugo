@@ -40,19 +40,19 @@ With Track
 
 理論上，只要列車在ATC中運行，玩家就可以忽略所有信號。 當然，您也可以在路線上提出其他要求。 在OpenBVE中，ATC不使用信號，而是以200m的塊接收到下一列列車的距離。 然後，根據列車的減速特性，ATC會指定一個特定的速度限制，該速度限制可根據前一列火車的位置變化隨時發布。 這些200m的塊放置在磁道位置0、200、400、600等。
 
-## ■ Speed limits and ATC
+## ■ 速度限制和ATC
 
-When using the **Track.Limit** command, ATC knows the location of the immediately upcoming one in advance and automatically brakes the train before reaching that position. For example:
+使用 **Track.Limit** 指令時，ATC會提前知道下一個新速度限制的位置，並在到達該位置之前自動剎車。 例如：
 
 {{% code %}}  
 100, .Limit 100  
-800, .Limit 40 ,; is known in advance from track position 100  
+800, .Limit 40 ,;在軌道位置100(m)預先知道  
 {{% /code %}}
 
-There is a way, however, to prevent this behavior. As ATC only knows the immediately upcoming speed limit in advance, repeating the old speed limit in close proximity to the new speed limit makes ATC only brake as soon as the repeating speed limit is reached. For example:
+但有一種方法可以防止此行為。 由於ATC僅提前知道下一個的速度限制，因此在接近新速度限制的情況下重複舊速度限制使ATC僅在達到重複的速度限制後剎車。 例如：
 
 {{% code %}}  
 100, .Limit 100  
 799, .Limit 100  
-800, .Limit 40 ,; is known in advance only from track position 799  
+800, .Limit 40 ,;只在軌道位置799(m)預先知道  
 {{% /code %}}
