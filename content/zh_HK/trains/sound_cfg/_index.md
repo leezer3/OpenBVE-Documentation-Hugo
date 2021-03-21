@@ -228,6 +228,13 @@ Close Right = *FileName*
 {{% /command %}}  
 Played once when the right doors close.
 
+{{% note %}}
+
+The duration of these sound files is used to determine the opening and closing speed of the doors.<br><br>
+If both a **Left** and a **Right** sound is present, then both sets of doors will open / close in the average duration of the two sounds.<br>
+If a single sound is present, then both sets of doors will open / close in the duration of this sound.
+
+{{% /note %}}
 ------
 
 ##### ● [Ats]
