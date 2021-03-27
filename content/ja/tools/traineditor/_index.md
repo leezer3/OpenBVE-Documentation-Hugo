@@ -1,16 +1,16 @@
 ---
-title: "Train Editor"
+title: "車両エディタ"
 weight: 4
 ---
 
 ![img](/images/tool_traineditor_screenshot_1.png)![img](/images/tool_traineditor_screenshot_2.png)![img](/images/tool_traineditor_screenshot_3.png)![img](/images/tool_traineditor_screenshot_4.png)
 
-## ■ Overview
+## ■ 概要
 
-This tool can be used to more conveniently edit the train.dat. You can configure the train haracteristics, preview the acceleration curves and edit the motor sound curves.
+このツールを使用すると、train.datをより便利に編集できます。 車両の特性を設定したり、加速曲線をプレビューしたり、モーター音の曲線を編集したりできます。
 
-Please refer to the documentation of the [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) for explanations about the various entries.
+さまざまなエントリの説明は、[train.dat]({{< ref "/trains/train_dat/_index.md" >}})を参照してください。
 
-## ■ Notes
+## ■ 注意
 
-The *BrakeNotches* setting in the *Handle* section includes the hold brake device - the train.dat works this way. This means that the number of actual brake notches (excluding the hold brake) will be one lower than entered in the *BrakeNotches* field if the hold brake device is used.
+*Handle*セクションの*BrakeNotches*設定には、ホールドブレーキデバイスが含まれています-train.datはこのように機能します。 これは、ホールドブレーキ装置が使用されている場合、実際のブレーキノッチ（ホールドブレーキを除く）の数が* BrakeNotches *フィールドに入力された数よりも1つ少なくなることを意味します。
