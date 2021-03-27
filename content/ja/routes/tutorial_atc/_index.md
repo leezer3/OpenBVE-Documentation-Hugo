@@ -11,28 +11,28 @@ weight: 5
 ## ■ ATCの路線を設定する
 まず、ATCは駅ごとに有効にする必要があります。 ATCが有効になっているすべての駅について、その駅の開始から次の駅の終了までの線路にATCが装備されています。 ATC対応の線路の終わりはシステムによって事前に認識されているため、列車は時間内にブレーキをかけてオーバートラベルを防ぎます。
 
-{{% code "*In order to enable ATC:*" %}}
-Track.Sta STATION; ; ; ; ; ; 1
+{{% code "*In order to enable ATC:*" %}}  
+Track.Sta STATION; ; ; ; ; ; 1  
 {{% /code %}}
 
-{{% code "*In order to disable ATC:*" %}}
-Track.Sta STATION; ; ; ; ; ; 0 
+{{% code "*In order to disable ATC:*" %}}  
+Track.Sta STATION; ; ; ; ; ; 0  
 {{% /code %}}
 
 次の例では、駅Bから駅Cまでの路線にATCが装備されています:
 
-{{% code %}}
-With Track 
-0000, .Sta A; ; ; ; ; ; 0 
-0120, .Stop 
-; start of ATC-equipped track at 800 
-0800, .Sta B; ; ; ; ; ; 1 
-0920, .Stop 
-1600, .Sta C; ; ; ; ; ; 0 
-1720, .Stop 
-; end of ATC-equipped track at 1720 
-2400, .Sta D; ; ; ; ; ; 0 
-2520, .Stop 
+{{% code %}}  
+With Track  
+0000, .Sta A; ; ; ; ; ; 0  
+0120, .Stop  
+; start of ATC-equipped track at 800  
+0800, .Sta B; ; ; ; ; ; 1  
+0920, .Stop  
+1600, .Sta C; ; ; ; ; ; 0  
+1720, .Stop  
+; end of ATC-equipped track at 1720  
+2400, .Sta D; ; ; ; ; ; 0  
+2520, .Stop  
 {{% /code %}}
 
 ## ■ 信号とATC
