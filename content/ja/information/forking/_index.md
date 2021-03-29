@@ -6,7 +6,7 @@ weight: 8
 
 #### Q：フォークとは何ですか？
 
-**A:** If you take the source code and do anything else but mere recompilation or making portability adjustments, you create a modification of the original program. If you pursue an independent development from there on, your project would be called a fork of the original program.
+**A:** ソースコードを取得して、単なる再コンパイルまたは移植性の調整以外のことを行う場合は、元のプログラムの変更を作成します。 それ以降、独自の開発を行う場合、プロジェクトは元のプログラムのフォークと呼ばれます。
 
 {{% /information %}}
 
@@ -14,31 +14,31 @@ weight: 8
 
 {{% information %}}
 
-#### Q: When to make a fork?
+#### Q: いつフォークをするのですか？
 
-**A:** If you are not satisfied with openBVE and cannot identify with the goals set forth for future versions of it, there might be no other way as to implement your desired features yourself.
+**A:** openBVEに満足できず、openBVEの将来のバージョンで設定された目標を特定できない場合は、必要な機能を自分で実装する他の方法がない可能性があります。
 
 {{% /information %}}
 
 
-If you are planning on creating a fork of openBVE or one of its tools, these are a set of guidelines (not requirements) that you are encouraged to follow.
+openBVEまたはそのツールの1つを作成しようとしている場合、これらは従うことをお勧めする一連のガイドライン(必須条件ではありません)です。
 
-## ■ Rename the project
+## ■ プロジェクトの名前を変える
 
-You should give your project a distinct title and should generally also replace the logos. Just changing the version number does not constitute as giving your fork a distinct title. You should in fact rename it.
+プロジェクトに明確なタイトルを付け、通常はロゴも変える必要があります。 バージョン番号を変更するだけでは、フォークに明確なタイトルを付けることにはなりません。 実際に名前を変更する必要があります。
 
-Your fork should have a title distinct from **openBVE** and all possible spelling variations thereof. If you fail to give your fork a distinct name, users would be unable to distinguish between the fork and the original, leading to a lot of confusion.
+フォークには、**openBVE**およびそのすべての可能なスペルのバリエーションとは異なるタイトルを付ける必要があります。 フォークに明確な名前を付けないと、ユーザーはフォークとフォーク元を区別できなくなり、多くの混乱を招きます。
 
-## ■ Remove references to the homepage
+## ■ ホームページへの参照を削除する
 
-You should generally remove the references to the openBVE homepage and the version checking mechanism from the main menu.
+通常、openBVEホームページへの参照とバージョンチェック機能をメインメニューから削除する必要があります。
 
-This does not mean that you are discouraged to mention openBVE or its origin, but that you should make sure that users don't mistake this homepage as the origin of your fork.
+これは、openBVEまたはそのオリジナル版について言及することを思いとどまらせるという意味ではありませんが、ユーザーがこのホームページをフォーク元と間違えないようにする必要があります。
 
-## ■ There is no official support for forks
+## ■ フォークでは公式サポートは受けられません
 
-For any fork, regardless of how small the change, the openBVE forum is not the place to discuss it. While you can make a single announcement, you will have to find your own place if you want to further discuss your fork or want to offer support for it.
+どのフォークでも、変更がどれほど小さいかに関係なく、openBVEフォーラムはフォーク版について議論する場所ではありません。 アナウンスを行うことはできますが、フォークについてさらに話し合いたい場合、またはフォークのサポートを提供したい場合は、ご自身の場所を見つける必要があります。
 
-## ■ The future of openBVE
+## ■ openBVEの未来
 
-Eventually, there will be a successor to openBVE, and with it, an easier means to integrate new functionality in the form of plugins. You may want to wait until that time, or be prepared to later port your fork to become a regular add-on.
+最終的には、openBVEの後継があり、プラグインの形で新しい機能を統合するためのより簡単な方法があります。 その時まで待つか、後でフォークを移植して通常のアドオンにする準備をしておくことをお勧めします。
