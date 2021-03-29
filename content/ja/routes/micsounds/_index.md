@@ -15,7 +15,7 @@ openBVE 1.5.4.0では、マイクまたはライン入力からゲーム内の�
 {{% command-arguments %}}  
 ***X***: サウンドのX位置。  
 ***Y***: サウンドのY位置。  
-***ForwardsTolerance***: 列車がその位置に近づくにつれて音が聞こえるようになるメートル単位の距離。  
+***ForwardsTolerance***: 列車がその位置に近づくとき音が聞こえるようになるメートル単位の距離。  
 ***BackwardsTolerance***: 列車がその位置を通過した後、音が聞こえなくなるメートル単位の距離。  
 {{% /command-arguments %}}
 
