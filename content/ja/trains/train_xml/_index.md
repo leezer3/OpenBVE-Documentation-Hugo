@@ -1,7 +1,7 @@
 ---
-title: "The **train.xml** file format"
-linktitle: "The train.xml file"
+title: "**train.xml** ファイルフォーマット"
+linktitle: "train.xmlファイル"
 weight: 2
 ---
 
-Under construction
+準備中
