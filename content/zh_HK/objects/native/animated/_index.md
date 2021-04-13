@@ -571,7 +571,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `brakeNotches`                   | The amount of brake notches the train has. For trains with the automatic air brake, this returns 2. |
 | `brakeNotchLinear`               | A combination of brake notch, hold brake and emergency brake.<br />● For trains without the automatic air brake and without hold brake: 0 for N, 1 for B1, 2 for B2, 3 for B3, etc., up to *BrakeNotches*+1 for EMG.<br />● For trains without the automatic air brake but with hold brake: 0 for N, 1 for HLD, 2 for B1, 3 for B2, 4 for B3, etc., up to *BrakeNotches*+2 for EMG.<br />● For trains with the automatic air brake: 0 for REL, 1 for LAP, 2 for SRV or 3 for EMG. |
 | `brakeNotchesLinear`             | The highest value returned by *brakeNotchesLinear*.<br />● For trains without the automatic air brake and without hold brake, this is *BrakeNotches*+1.<br />● For trains without the automatic air brake but with hold brake, this is *BrakeNotches*+2.<br />● For trains with the automatic air brake, this returns 3. |
-| `locoBrake`                      | The current Loco Brake notch.                                |
+| `locoBrakeNotch`                      | The current Loco Brake notch.                                |
 | `locoBrakeNotches`               | The amount of Loco Brake notches the train has.              |
 | `emergencyBrake`                 | Whether the emergency brake is currently active (1) or not (0). |
 | `hasAirBrake`                    | Whether the train has the automatic air brake (1) or not (0). |

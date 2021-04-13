@@ -6,9 +6,9 @@ weight: 5
 
 このページでは、OpenBVE1.6.0以降で実装されている XMLベースの Track Following Object の原理とその実装方法について説明します。
 
-## ■ Basic Principles
+## ■ 基本原則
 
-openBVE can freely run a Track Following Object on other tracks.
+openBVEでは自由に他の線路にTrack Following Objectを走らせることができます。
 
 In order to do this, it is necessary to setup each object that you want to run using Track Following Object XML files. An example is shown below.
 
