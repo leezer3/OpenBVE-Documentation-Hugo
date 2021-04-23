@@ -1,6 +1,6 @@
 ---
-title: "Information and tips for train creation"
-linktitle: "Information and tips"
+title: "車両製作に関する情報とヒント"
+linktitle: "情報とヒント"
 weight: 10
 ---
 This page presents information developers need to be aware of and general tips for object creation.

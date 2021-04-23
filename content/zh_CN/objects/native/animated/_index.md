@@ -492,6 +492,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `nextStationStop`             | The index of the next station where the train must stop. |
 | `terminalStation`             | The index of the terminal station for this train. |
 | `timeTable`                   | Returns 1 if the timetable is currently set as visible, 0 otherwise. |
+| `brightness[carIndex]`        | Returns the interpolated brightness value applying to this car. |
 
 {{% /table-2col %}}
 
