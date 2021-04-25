@@ -10,15 +10,15 @@ weight: 5
 
 openBVEでは自由に他の線路にTrack Following Objectを走らせることができます。
 
-In order to do this, it is necessary to setup each object that you want to run using Track Following Object XML files. An example is shown below.
+これを行うには、Track Following ObjectのXMLファイルを使用して走らせる各オブジェクトを設定する必要があります。 以下に例を示します。
 
-In this example the object runs as follows.
+この例では、オブジェクトは次のように走ります。
 
-0. It is displayed when the in-game time 00:01:00 has elapsed and the object exists within 50 m to 100 m of the player's camera position in game. It becomes invisible after 5 minutes have elapsed since being displayed. The appearance is defined in extensions.cfg in 7-car formation.
-1. The in-game distance is 200 m and the right door is opened for 20 seconds and then the object accelerates to 30 km/h at an acceleration of 1.71km/h/s on **Rail2**.
-2. It travels at 60 km/h on **Rail2** for 400 m.
-3. The object decelerates to 30km/h at 1.71 km/h/s on **Rail2**, when it reaches a distance of 1000 m within the game, it stops and opens the doors on both sides. After stopping for 10 seconds, it accelerates in reverse to 30 km/h with an acceleration of 1.71 km/h/s on Rail1.
-4. The object decelerates to 30 km/h at 1.71 km/h/s on **Rail1**, stops and opens the right door at an in-game distance of 200 m.
+0. ゲーム内時間 00:01:00が経過し、ゲーム内のプレーヤーのカメラ位置から50mから100m以内にオブジェクトが存在する場合に表示されます。 表示してから5分経過すると非表示になります。 外観は、7両編成で、extensions.cfgで定義されています。
+1. ゲーム内の距離 200mで、右側のドアが20秒間開かれた後、オブジェクトは**Rail2**で1.71km/h/sの加速度で30 km/hに加速します。
+2. **Rail2**を時速60kmで400mを走行します。
+3. オブジェクトは**Rail2**で1.71km/h/sで30km/hに減速し、ゲーム内距離1000mに達すると、停止して両側のドアを開きます。 10秒間停止した後、Rail1では1.71 km/h/sの加速で、30 km/hに逆方向に加速します。
+4. オブジェクトは**Rail1**で1.71km/h/sで30km/hに減速し、ゲーム内距離200mで停止して右のドアを開きます。
 
 {{< textarea >}}  
 &lt;?xml version="1.0" encoding="utf-8"?>
@@ -95,132 +95,132 @@ In this example the object runs as follows.
 &lt;/openBVE>
 {{< /textarea >}}
 
-As you can see, the file consists of one **\<Definition>** section, one **\<Car>** section and one **\<Stops>** section. The **\<Stops>** section consists of two or more **\<Stop>** sections.
+ご覧のとおり、ファイルは1つの** \<Definition>**セクション、1つの** \<Car> **セクション、および1つの** \<Stops>**セクションで構成されています。 ** \<Stops>**セクションは、2つ以上の** \<Stop>**セクションで構成されます。
 
-## ■ Definition attribute
+## ■ Definition属性
 
 {{% command %}}  
-**\<AppearanceTime>** *Time* **\</AppearanceTime>**  
+**\<AppearanceTime>** *時間* **\</AppearanceTime>**  
 {{% /command %}}
 
-**Time** sets the time when the object appears in the game.
+**時間** は、オブジェクトがゲームに表示される時間を設定します。
 
-*Note:* If this parameter is omitted, the object will emerge from the start of the game.
+*注:* このパラメーターを省略すると、オブジェクトはゲームの開始から出現します。
 
 ------
 
 {{% command %}}  
-**\<AppearanceStartPosition>** *Position* **\</AppearanceStartPosition>**  
+**\<AppearanceStartPosition>** *位置* **\</AppearanceStartPosition>**  
 {{% /command %}}
 
-**Position** sets the in-game distance at which the object starts appearing. The object will appear when the player's train passes this point. The unit is **meter**.
+**位置**には、オブジェクトが表示され始めるゲーム内の距離を設定します。 プレイヤーの列車がこのポイントを通過すると、オブジェクトが表示されます。 単位は**メートル**です。
 
-*Note:* If this parameter is omitted, the object will emerge from the start of the game.
+*注:* このパラメーターを省略すると、オブジェクトはゲームの開始から出現します。
 
 ------
 
 {{% command %}}  
-**\<AppearanceEndPosition>** *Position* **\</AppearanceEndPosition>**  
+**\<AppearanceEndPosition>** *位置* **\</AppearanceEndPosition>**  
 {{% /command %}}
 
-**Position** sets the in-game distance at the end point where the object appears. The object will be hidden when the player's camera position passes this point. It must also be greater than the value specified for **\<AppearanceStartPosition>**. The unit is **meter**.
+**位置**には、オブジェクトが非表示になるゲーム内距離を設定します。 プレイヤーのカメラ位置がこのポイントを通過すると、オブジェクトは非表示になります。 また、** \ <AppearanceStartPosition>**に指定された値よりも大きくする必要があります。 単位は**メートル**です。
 
-*Note:* If this parameter is omitted, the object will emerge from the start of the game.
+*注:* このパラメーターを省略すると、オブジェクトはゲームの開始から出現します。
 
 ------
 
 {{% command %}}  
-**\<LeaveTime>** *Time* **\</LeaveTime>**  
+**\<LeaveTime>** *時間* **\</LeaveTime>**  
 {{% /command %}}
 
-**Time** sets the duration from when the object appears in the game until it disappears. The object will not be visible after this time. This value is not an in-game time.
+**時間**には、オブジェクトがゲームに表示されてから消えるまでの時間を設定します。 この時間を過ぎると、オブジェクトは非表示になります。 この値はゲーム内時間ではありません。
 
-*Note:* If this parameter is omitted, the object will remain visible until the end of the game, or until it is hidden by **\<AppearanceEndPosition>**
+*注:*このパラメーターを省略すると、オブジェクトはゲームが終了するまで、または** \<AppearanceEndPosition>**によって非表示になるまで表示されたままになります。
 
-## ■ Train attribute
+## ■ Train属性
 
 {{% command %}}  
-**\<Directory>** *Path* **\</Directory>**  
+**\<Directory>** *パス* **\</Directory>**  
 {{% /command %}}
 
-**Path** sets the relative path to the directory containing the object's train.dat, sound.cfg and extensions.cfg.
+**パス**には、オブジェクトのtrain.dat、sound.cfg、extensions.cfgを含むディレクトリへの相対パスを設定します。
 
-*Note:* If a train folder is intended solely for AI use, then the **train.dat** file may be renamed **train.ai**
+*注:* trainフォルダーがAI専用である場合、**train.dat**ファイルの名前は**train.ai**に変更できます。
 
 {{% command %}}  
 **\<Reversed>** *true* **\</Reversed>**  
 {{% /command %}}
 
-If this attribute is set to **true**  then the consist of the train will be reversed.
+この属性が**true**に設定されている場合、列車の構成は逆になります。
 
-## ■ Stop attribute
+## ■ Stop属性
 
 {{% command %}}  
-**\<Decelerate>** *Value* **\</Decelerate>**  
+**\<Decelerate>** *値* **\</Decelerate>**  
 {{% /command %}}
 
-**Value** sets the deceleration of the object. The unit is **km/h/s**.
+**値**にはオブジェクトの減速度を設定します。 単位は**km/h/s**です。
 
 ------
 
 {{% command %}}  
-**\<StopPosition>** *Position* **\</StopPosition>**  
+**\<StopPosition>** *位置* **\</StopPosition>**  
 {{% /command %}}
 
-**Position** sets the in-game distance where the object stops. The unit is **meter**.
+**位置**には、オブジェクトが停止するゲーム内の距離を設定します。 単位は**メートル**です。
 
 ------
 
 {{% command %}}  
-**\<Doors>** *Value* **\</Doors>**  
+**\<Doors>** *値* **\</Doors>**  
 {{% /command %}}
 
-**Value** sets the open door of the object. The valid values are:
+**値**にはオブジェクトの開くドアを設定します。 有効な値は次のとおりです。
 
-- **L** or **-1**: The left door opens.
-- **N** or **0**: Neither door opens.
-- **R** or **1**: The right door opens.
-- **B**: Both doors open.
+- **L** または **-1**: 左側のドアが開きます。
+- **N** または **0**: ドアは開きません。
+- **R** または **1**: 右側のドアが開きます。
+- **B**: 両側のドアが開きます。
 
 ------
 
 {{% command %}}  
-**\<StopTime>** *Time* **\</StopTime>**  
+**\<StopTime>** *時間* **\</StopTime>**  
 {{% /command %}}
 
-**Time** sets the duration of the stop of the object. This value is not an in-game time.
+**時間**には、オブジェクトの停止時間を設定します。 この値はゲーム内の時間ではありません。
 
 ------
 
 {{% command %}}  
-**\<Accelerate>** *Value* **\</Accelerate>**  
+**\<Accelerate>** *値* **\</Accelerate>**  
 {{% /command %}}
 
-**Value** sets the acceleration of the object. The unit is **km/h/s**.
+**値**にはオブジェクトの加速度を設定します。 単位は**km/h/s**です。
 
 ------
 
 {{% command %}}  
-**\<TargetSpeed>** *Value* **\</TargetSpeed>**  
+**\<TargetSpeed>** *値* **\</TargetSpeed>**  
 {{% /command %}}
 
-**Value** sets the speed after the acceleration of the object. The unit is **km/h**.
+**値**には、オブジェクトの加速後の速度を設定します。 単位は**km/h**です。
 
 ------
 
 {{% command %}}  
-**\<Direction>** *Value* **\</Direction>**  
+**\<Direction>** *値* **\</Direction>**  
 {{% /command %}}
 
-**Value** sets the direction of travel of the object. Valid values are as follows.
+**値**には、オブジェクトの移動方向を設定します。 有効な値は次のとおりです。
 
-- **F** or **1** : The object will move forward.
-- **R** or **-1** : The object goes backward.
+- **F** または **1** : オブジェクトは前に動きます。
+- **R** または **-1** : オブジェクトは後ろに動きます。
 
 ------
 
 {{% command %}}  
-**\<Rail>** *RailIndex* **\</Rail>**  
+**\<Rail>** *レールインデックス* **\</Rail>**  
 {{% /command %}}
 
-**RailIndex** sets the trajectory on which the object will run. It is necessary to define the trajectory by the **Track.Rail** command of the route file.
+**レールインデックス**には、オブジェクトが走る軌道を設定します。 路線ファイルの**Track.Rail**コマンドで軌道を定義する必要があります。
