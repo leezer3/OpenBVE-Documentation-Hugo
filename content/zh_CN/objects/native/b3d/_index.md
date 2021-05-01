@@ -272,6 +272,7 @@ The **Mirror** command mirrors all vertices that have been created so far in the
 
 {{% command %}}
 **Color** *Red*, *Green*, *Blue*, *Alpha*
+**ColorAll** *Red*, *Green*, *Blue*, *Alpha*
 {{% /command %}}
 
 {{% command-arguments %}}
@@ -281,7 +282,9 @@ The **Mirror** command mirrors all vertices that have been created so far in the
 ***Alpha***: The alpha component of the color. Measured from 0 (transparent) to 255 (opaque). The default value is 255.  
 {{% /command-arguments %}}
 
-This command sets the color for all faces that were already created in the current [MeshBuilder] section. If no texture is used, the faces will be colored using the color data as specified by *Red*, *Green* and *Blue*. If a texture is used, the pixels in the texture will be multiplied by the color, where multiplying with black results in black and multiplying with white does not change the color of the texture pixels. Values in-between make the texture pixels darker. When lighting is used in the route, the actual color can change depending on the lighting conditions, but will usually become darker.
+The **Color** command sets the color for all faces that were already created in the current [MeshBuilder] section. If no texture is used, the faces will be colored using the color data as specified by *Red*, *Green* and *Blue*. If a texture is used, the pixels in the texture will be multiplied by the color, where multiplying with black results in black and multiplying with white does not change the color of the texture pixels. Values in-between make the texture pixels darker. When lighting is used in the route, the actual color can change depending on the lighting conditions, but will usually become darker.
+
+The **ColorAll** command sets the color for all faces that were already created in the current [MeshBuilder] section, and those created in the previous [MeshBuilder] sections.
 
 ----------
 
@@ -289,6 +292,7 @@ This command sets the color for all faces that were already created in the curre
 
 {{% command %}}
 **EmissiveColor** *Red*, *Green*, *Blue*
+**EmissiveColorAll** *Red*, *Green*, *Blue*
 {{% /command %}}
 
 {{% command-arguments %}}
@@ -297,7 +301,9 @@ This command sets the color for all faces that were already created in the curre
 ***Blue***: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 0.  
 {{% /command-arguments %}}
 
-This command sets the emissive color for all faces that were already created in the current [MeshBuilder] section. The difference between the Color command and the EmissiveColor command is that the Color command is affected by lighting, while the EmissiveColor command is not. Thus, the EmissiveColor command should be used for faces which would emit light themselves, including signals, lamps, windows and the like. The actual color contribution to the faces will be the sum of the light-affected color data and the static emissive color data.
+The **EmissiveColor** command sets the emissive color for all faces that were already created in the current [MeshBuilder] section. The difference between the Color command and the EmissiveColor command is that the Color command is affected by lighting, while the EmissiveColor command is not. Thus, the EmissiveColor command should be used for faces which would emit light themselves, including signals, lamps, windows and the like. The actual color contribution to the faces will be the sum of the light-affected color data and the static emissive color data.
+
+The **EmissiveColorAll** command sets the color for all faces that were already created in the current [MeshBuilder] section, and those created in the previous [MeshBuilder] sections.
 
 ----------
 

@@ -1,10 +1,10 @@
 ---
-title: "The **panel.animated** file format"
-linktitle: "The panel.animated file"
+title: "**panel.animated**ファイル形式"
+linktitle: "panel.animatedファイル"
 weight: 5
 ---
 
-If present in the train folder, this file defines a 3D cab.
+trainフォルダーに存在する場合、このファイルは3Dcabを定義します。
 
 The file is a normal [animated object file]({{< ref "/objects/native/animated/_index.md" >}}). The train body is assumed to be centered on the x- and z-axes, while a value of 0 on the y-axis corresponds to the top of the rails, just as with exterior train objects.
 

@@ -275,6 +275,7 @@ The **MirrorAll** command not only affects the vertices generated in the current
 
 {{% command %}}  
 **SetColor**, *Red*, *Green*, *Blue*, *Alpha*  
+**SetColorAll**, *Red*, *Green*, *Blue*, *Alpha*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -284,7 +285,9 @@ The **MirrorAll** command not only affects the vertices generated in the current
 ***Alpha***: The alpha component of the color. Measured from 0 (transparent) to 255 (opaque). The default value is 255.  
 {{% /command-arguments %}}
 
-This command sets the color for all faces that were already created in the current CreateMeshBuilder section. If no texture is used, the faces will be colored using the color data as specified by *Red*, *Green*and *Blue*. If a texture is used, the pixels in the texture will be multiplied by the color, where multiplying with black results in black and multiplying with white does not change the color of the texture pixels. Values in-between make the texture pixels darker. When lighting is used in the route, the actual color can change depending on the lighting conditions, but will usually become darker.
+The **SetColor** command sets the color for all faces that were already created in the current CreateMeshBuilder section. If no texture is used, the faces will be colored using the color data as specified by *Red*, *Green*and *Blue*. If a texture is used, the pixels in the texture will be multiplied by the color, where multiplying with black results in black and multiplying with white does not change the color of the texture pixels. Values in-between make the texture pixels darker. When lighting is used in the route, the actual color can change depending on the lighting conditions, but will usually become darker.
+
+The **SetColorAll** command sets the color for all faces that were already created in the current CreateMeshBuilder section, and all those created in the previous CreateMeshBuilder sections.
 
 ------
 
@@ -292,6 +295,7 @@ This command sets the color for all faces that were already created in the curre
 
 {{% command %}}  
 **SetEmissiveColor**, *Red*, *Green*, *Blue*  
+**SetEmissiveColorAll**, *Red*, *Green*, *Blue*  
 {{% /command%}}
 
 {{% command-arguments %}}  
@@ -300,7 +304,9 @@ This command sets the color for all faces that were already created in the curre
 ***Blue***: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 0.  
 {{% /command-arguments %}}
 
-This command sets the emissive color for all faces that were already created in the current CreateMeshBuilder section. The difference between the SetColor command and the SetEmissiveColor command is that the SetColor command is affected by lighting, while the SetEmissiveColor command is not. Thus, the SetEmissiveColor command should be used for faces which would emit light themselves, including signals, lamps, windows and the like. The actual color contribution to the faces will be the sum of the light-affected color data and the static emissive color data.
+The **SetEmissiveColor** command sets the emissive color for all faces that were already created in the current CreateMeshBuilder section. The difference between the SetColor command and the SetEmissiveColor command is that the SetColor command is affected by lighting, while the SetEmissiveColor command is not. Thus, the SetEmissiveColor command should be used for faces which would emit light themselves, including signals, lamps, windows and the like. The actual color contribution to the faces will be the sum of the light-affected color data and the static emissive color data.
+
+The **SetEmissiveColor** command sets the emissive color for all faces that were already created in the current CreateMeshBuilder section, and all those created in the previous CreateMeshBuilder sections.
 
 ------
 
