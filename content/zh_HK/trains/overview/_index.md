@@ -27,18 +27,18 @@ weight: 1
 [**Default sounds:**]({{<ref "/trains/default_sounds/_index.md">}})  
 如果 *sound.cfg* 不存在列車文件夾中，這就是在列車文件夾中尋找的默認聲音文件。
 
-[**sound.cfg:**]({{<ref "/trains/sound_cfg/_index.md">}})  
-This defines the names of the sound files to use. The file is required if plugin-specific sounds are to be made available.
+[**sound.cfg:**]({{<ref "/trains/sound_cfg/_index.md">}})
+這定義了要使用的聲音文件的名稱。 如果要使用插件的聲音(Ats sound)，該文件是必需的。
 
 ## ■ 安全系統
 
-[**Built-in systems:**]({{<ref "/trains/openbveats/_index.md">}})  
-The built-in safety systems ATS-SN, ATS-P and ATC are only used if no *ats.cfg* file is present, and if the *train.dat* is configured to define which of these systems should be available.
+[**內置安全系統:**]({{<ref "/trains/openbveats/_index.md">}})
+內置安全系統ATS-SN，ATS-P和ATC只會在 *ats.cfg* 文件不存在時使用，並且將 *train.dat* 配置為定義應使用其中哪些系統的情況下才使用。
 
-[**ats.cfg:**]({{<ref "/trains/ats_cfg/_index.md">}})  
-This file defines which external train plugin to use. For information on how to create plugins, see [here]({{<ref "/trains/plugins/_index.md">}}).
+[**ats.cfg:**]({{<ref "/trains/ats_cfg/_index.md">}})
+該文件定義要使用的列車插件。 有關如何創建列車插件，請參見[這裡]({{<ref "/trains/plugins/_index.md">}})。
 
 ## ■ 雜項
 
 [**extensions.cfg:**]({{<ref "/trains/extensions_cfg/_index.md">}})  
-This defines additional characteristics that are not covered by the other files.
+這定義了其他文件未涵蓋的其他特徵。
