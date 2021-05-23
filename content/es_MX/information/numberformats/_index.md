@@ -9,11 +9,11 @@ weight: 2
 
 {{% contents %}}
 
-- [1. Vista general](#overview)
-- [2. Enteros](#integers)
-- [3. Números de punto flotante](#floating)
-- [4. Tiempos](#times)
-- [5. Valores de color](#colors)
+- [1. Overview](#overview)
+- [2. Integers](#integers)
+- [3. Floating-point numbers](#floating)
+- [4. Times](#times)
+- [5. Color values](#colors)
 
 {{% /contents %}}
 

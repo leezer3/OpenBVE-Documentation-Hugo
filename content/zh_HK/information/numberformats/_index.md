@@ -9,11 +9,11 @@ weight: 2
 
 {{% contents %}}
 
-- [1.總概](#overview)
-- [2. 整數](#integers)
-- [3. 浮點數](#floating)
-- [4. 時間](#times)
-- [5. 顏色值](#colors)
+- [1. Overview](#overview)
+- [2. Integers](#integers)
+- [3. Floating-point numbers](#floating)
+- [4. Times](#times)
+- [5. Color values](#colors)
 
 {{% /contents %}}
 

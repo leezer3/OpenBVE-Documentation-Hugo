@@ -8,21 +8,21 @@ weight: 2
 
 {{% contents %}}
 
-- [1. 概観](#overview)
-- [2. ファイル識別子](#identifier)
-  - [2a. バージョン履歴]({{<ref "/trains/train_dat_version/_index.md" >}})
-- [3. 構文](#syntax)
-- [4. Accelerationセクション](#acceleration)
-- [5. Performance セクション](#performance)
-- [6. Delay セクション](#delay)
-- [7. Move セクション](#move)
-- [8. Brake セクション](#brake)
-- [9. Pressure セクション](#pressure)
-- [10. Handle セクション](#handle)
-- [11. Cab セクション](#cab)
-- [12. Car セクション](#car)
-- [13. Device セクション](#device)
-- [14. Motor セクション](#motor)
+- [1. Overview](#overview)
+- [2. The file identifier](#identifier)
+  - [2a. Version history]({{<ref "/trains/train_dat_version/_index.md" >}})
+- [3. Syntax](#syntax)
+- [4. The Acceleration section](#acceleration)
+- [5. The Performance section](#performance)
+- [6. The Delay section](#delay)
+- [7. The Move section](#move)
+- [8. The Brake section](#brake)
+- [9. The Pressure section](#pressure)
+- [10. The Handle section](#handle)
+- [11. The Cab section](#cab)
+- [12. The Car section](#car)
+- [13. The Device section](#device)
+- [14. The Motor sections](#motor)
 
 {{% /contents %}}
 

@@ -8,16 +8,16 @@ weight: 4
 
 {{% contents %}}
 
-- [1. 概要](#overview)
-- [2. 文法](#syntax)
-- [3. This セクション](#this)
-- [4. PilotLamp セクション](#pilotlamp)
-- [5. Needle セクション](#needle)
-- [6. DigitalNumber セクション](#digitalnumber)
-- [7. DigitalGauge セクション](#digitalgauge)
-- [8. LinearGauge セクション](#lineargauge)
-- [9. Timetable セクション](#timetable)
-- [10. 使用可能なコマンド](#subjects)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. The This section](#this)
+- [4. The PilotLamp section](#pilotlamp)
+- [5. The Needle section](#needle)
+- [6. The DigitalNumber section](#digitalnumber)
+- [7. The DigitalGauge section](#digitalgauge)
+- [8. The LinearGauge section](#lineargauge)
+- [9. The Timetable section](#timetable)
+- [10. Available subjects](#subjects)
 
 {{% /contents %}}
 

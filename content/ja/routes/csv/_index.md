@@ -10,24 +10,24 @@ weight: 1
 
 {{% contents %}}
 
-- [1.概観](#overview)
-- [2.文法](#syntax)
-- [3. 前処理](#preprocessing)
-- [4.  Options 名前空間](#options)
-- [5. Route 名前空間](#route)
-- [6. Train 名前空間](#train)
-- [7. The Structure 名前空間](#structure)
-- [8. Texture 名前空間](#texture)
-- [9. Cycle 名前空間](#cycle)
-- [10. Signal 名前空間](#signal)
-- [11. Track 名前空間](#track)
-  - [11.1. レール](#track_rails)
-  - [11.2. ジオメトリ](#track_geometry)
-  - [11.3. オブジェクト](#track_objects)
-  - [11.4. 駅](#track_stations)
-  - [11.5. 信号と速度制限](#track_signalling)
-  - [11.6. 保安装置](#track_safety)
-  - [11.7. その他](#track_misc)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Preprocessing](#preprocessing)
+- [4. The Options namespace](#options)
+- [5. The Route namespace](#route)
+- [6. The Train namespace](#train)
+- [7. The Structure namespace](#structure)
+- [8. The Texture namespace](#texture)
+- [9. The Cycle namespace](#cycle)
+- [10. The Signal namespace](#signal)
+- [11. The Track namespace](#track)
+  - [11.1. Rails](#track_rails)
+  - [11.2. Geometry](#track_geometry)
+  - [11.3. Objects](#track_objects)
+  - [11.4. Stations](#track_stations)
+  - [11.5. Signalling and speed limits](#track_signalling)
+  - [11.6. Safety systems](#track_safety)
+  - [11.7. Miscellaneous](#track_misc)
 
 {{% /contents %}}
 
@@ -715,7 +715,7 @@ Route.RunInterval は Train.Interval と同じ意味を持ちます。
 
 これを用いることで、時間ベースのモデルを使用して照明を変化させることが出来ます。次のページで詳しく説明しています。
 
-[ダイナミックライティング]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
+[Dynamic Lighting]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
 
 ---
 

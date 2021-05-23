@@ -9,7 +9,7 @@ This is the documentation for train plugins. In order to create a train plugin, 
 
 {{% contents %}}
 
-- [1. Descripció](#overview)
+- [1. Overview](#overview)
 - [2. Function calls](#functions)
 - [3. Playing sounds](#sound)
 - [4. Supporting the AI](#ai)

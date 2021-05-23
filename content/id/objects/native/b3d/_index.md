@@ -8,9 +8,9 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Penjelasan](#overview)
-- [2. Format penulisan](#syntax)
-- [3. Perintah yang tersedia](#commands)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Available commands](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
   - [Vertex](#addvertex)
   - [Face](#addface)

@@ -11,9 +11,9 @@ This plugin will then be used automatically.
 {{% contents %}}
 
 - [1. Panel Indices](#panel)
-- [2. Sons](#sounds)
-- [3. Balises](#beacons)
-- [4. Balises especials](#beacons-special)
+- [2. Sounds](#sounds)
+- [3. Beacons](#beacons)
+- [4. Special Beacons](#beacons-special)
 - [5. Keyboard Assignments](#keyboard)
 
 {{% /contents %}}

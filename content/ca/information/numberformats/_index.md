@@ -9,10 +9,10 @@ weight: 2
 
 {{% contents %}}
 
-- [1. Descripció](#overview)
-- [2. Nombres enters](#integers)
+- [1. Overview](#overview)
+- [2. Integers](#integers)
 - [3. Floating-point numbers](#floating)
-- [4. Hores](#times)
+- [4. Times](#times)
 - [5. Color values](#colors)
 
 {{% /contents %}}

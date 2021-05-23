@@ -10,7 +10,7 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Vista general](#overview)
+- [1. Overview](#overview)
 - [2. Syntax](#syntax)
 - [3. Preprocessing](#preprocessing)
 - [4. The Options namespace](#options)

@@ -8,12 +8,11 @@ weight: 3
 
 {{% contents %}}
 
-- [1. Penjelasan](#overview)
-- [2. Format penulisan
-](#syntax)
-- [3. Bagian Car*i*](#car)
-- [4. Bagian Coupler*i*](#coupler)
-- [5. Bagian Exterior (sudah tidak dipakai)](#exterior)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. The Car*i* section](#car)
+- [4. The Coupler*i* section](#coupler)
+- [5. The Exterior section (outdated)](#exterior)
 
 {{% /contents %}}
 

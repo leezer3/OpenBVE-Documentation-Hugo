@@ -8,12 +8,12 @@ weight: 3
 
 {{% contents %}}
 
-- [1. 總概](#overview)
+- [1. Overview](#overview)
 - [2. Sections](#description)
 - [3. List of infix notation operators](#operators)
-- [4.功能列表](#functions)
+- [4. List of functions](#functions)
 - [5. List of variables](#variables)
-- [6.效能](#performance)
+- [6. Performance](#performance)
 - [7. Tips](#tips)
 - [8. Example functions](#examples)
 - [9. Formal Grammar](#grammar)
@@ -526,8 +526,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
-| `emergencyReservoir`           | The current pressure in the emergency reservoir in this car, measured in Pa. |
-| `emergencyReservoir[carIndex]` | The current pressure in the emergency reservoir in car *carIndex*, measured in Pa. |
+| `equalizingReservoir`          | The current pressure in the equalizing reservoir in this car, measured in Pa. |
+| `equalizingReservoir[carIndex]` | The current pressure in the equalizing reservoir in car *carIndex*, measured in Pa. |
 | `brakePipe`                    | The current pressure in the brake pipe in this car, measured in Pa. |
 | `brakePipe[carIndex]`          | The current pressure in the brake pipe in car *carIndex*, measured in Pa. |
 | `brakeCylinder`                | The current pressure in the brake cylinder in this car, measured in Pa. |

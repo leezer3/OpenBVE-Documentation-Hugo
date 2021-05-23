@@ -8,7 +8,7 @@ weight: 3
 
 {{% contents %}}
 
-- [1. Descripció](#overview)
+- [1. Overview](#overview)
 - [2. Syntax](#syntax)
 - [3. The Car*i* section](#car)
 - [4. The Coupler*i* section](#coupler)

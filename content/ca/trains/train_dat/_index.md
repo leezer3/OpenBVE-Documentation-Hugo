@@ -8,7 +8,7 @@ weight: 2
 
 {{% contents %}}
 
-- [1. Descripció](#overview)
+- [1. Overview](#overview)
 - [2. The file identifier](#identifier)
   - [2a. Version history]({{<ref "/trains/train_dat_version/_index.md" >}})
 - [3. Syntax](#syntax)

@@ -10,24 +10,24 @@ weight: 1
 
 {{% contents %}}
 
-- [1. 總概](#overview)
-- [2. 句法](#syntax)
-- [3. 提前準備](#preprocessing)
-- [4. Options指令命名空間](#options)
-- [5. Route指令命名空間](#route)
-- [6. Train指令命名空間](#train)
-- [7. Structure指令命名空間](#structure)
-- [8. Texture指令命名空間](#texture)
-- [9. Cycle指令命名空間](#cycle)
-- [10. Signal指令命名空間](#signal)
-- [11. Track指令命名空間](#track)
-  - [11.1. 軌道](#track_rails)
-  - [11.2. 幾何](#track_geometry)
-  - [11.3. 物件](#track_objects)
-  - [11.4. 車站](#track_stations)
-  - [11.5. 信號和限速](#track_signalling)
-  - [11.6. 保安系統](#track_safety)
-  - [11.7. 雜項](#track_misc)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Preprocessing](#preprocessing)
+- [4. The Options namespace](#options)
+- [5. The Route namespace](#route)
+- [6. The Train namespace](#train)
+- [7. The Structure namespace](#structure)
+- [8. The Texture namespace](#texture)
+- [9. The Cycle namespace](#cycle)
+- [10. The Signal namespace](#signal)
+- [11. The Track namespace](#track)
+  - [11.1. Rails](#track_rails)
+  - [11.2. Geometry](#track_geometry)
+  - [11.3. Objects](#track_objects)
+  - [11.4. Stations](#track_stations)
+  - [11.5. Signalling and speed limits](#track_signalling)
+  - [11.6. Safety systems](#track_safety)
+  - [11.7. Miscellaneous](#track_misc)
 
 {{% /contents %}}
 
@@ -35,11 +35,11 @@ weight: 1
 
 一個CSV格式的路線可以由文本檔案建立成路線。
 
-這個檔案為純文本，並可以用任意[字符編碼]（{{< ref "/information/encodings/_index.md" >}}），但我們建議作者用UTF-8編碼格式。解析數字數據時，使用[解析方法]（{{< ref "/information/numberformats/_index.md" >}}）是非常 **寬鬆** 的（特別指出的地方除外），我們推薦這個文件一般來說可以放在 *LegacyContent* 文件夾（或一個內部包含* Railway *同* Train *目錄的文件夾）下的任何地方。文件名可以隨意，但擴展名(File extension)一定要為 **.csv **。路線文件被從頭到尾逐行解析，每行被分割並被從左到右解析。
+這個檔案為純文本，並可以用任意 [字符編碼]({{< ref "/information/encodings/_index.md" >}})，但我們建議作者用UTF-8編碼格式。解析數字數據時，使用 [解析方法]({{< ref "/information/numberformats/_index.md" >}})是非常 **寬鬆** 的（特別指出的地方除外），我們推薦這個文件一般來說可以放在 *LegacyContent* 文件夾（或一個內部包含 *Railway* 同 *Train* 目錄的文件夾）下的任何地方。文件名可以隨意，但擴展名(File extension)一定要為 **.csv**。路線文件被從頭到尾逐行解析，每行是由左到右解析。
 
 路線文件由一系列命令組成，這些命令定義了在整個用來導入線路中用到的模型 (Structure)。 還可以定義路線，要使用的默認火車和要使用的背景圖像的其他屬性。 最後，路線文件將包含來自Track名稱空間的指令。 此處，軌道位置（通常以米為單位）用於定義軌道何時彎曲，何時放置樁，何時開始和結束牆體等等。 一般而言，在使用來自任何其他命名空間的指令之後，應使用來自Track命名空間的指令。
 
-這個格式默認了一條遊戲默認的主軌道 (0號軌道), 不可以指定它開始的位置, 都不可以完。 遊戲中其他軌道同不同的是, 它由路線的開始一直延續到路線的終點, 代表著玩家駕駛的列車行駛的軌道。 除此之外, 遊戲中定義的其他軌道都是只供裝飾, 不能行駛的。 不過可以使用 [軌道循跡對象]{{< ref "/routes/xml/trackfollowingobject/_index.md" >}} 來給 AI 列車在其它軌道上行駛。
+這個格式默認了一條遊戲默認的主軌道 (0號軌道), 不可以指定它開始的位置, 都不可以完。 遊戲中其他軌道同不同的是, 它由路線的開始一直延續到路線的終點, 代表著玩家駕駛的列車行駛的軌道。 除此之外, 遊戲中定義的其他軌道都是裝飾, 玩家不能行駛的。 不過可以使用 [跟隨軌道物件 Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}) 來給 AI 列車在其它軌道上行駛。
 
 可以幾何意義上曲同抬升默認的主軌道, 而其他軌道都是相對於主軌道定義的, 並隨主軌道曲起伏。 除非特別修改定義, 線路中每25米劃分為一個區間, 特定的命令只有在區間蚊的邊界位置 (成25米位置) 才能發揮作用。 物體的放置 (尤其是在彎道上) 成日基於一個坐標是, 它的軸並不隨軌道彎曲, 而是掂掂地指向鄰近的下一個區間。
 
@@ -48,7 +48,7 @@ weight: 1
 
 ## <a name="syntax"></a>■ 2. 句法
 
-對於線路文件中每一行, 是開頭同結尾的 [空格] ({{< ref "/information/whitespaces/_index.md" >}}) 會被統統忽略。 然後, 每行指令都會㩒逗號 (U+002C, 英文半角) 分割。 于是, 每行都會被看作這樣一個格式:
+對於路線文件中每一行, 開頭和結尾的 [空格]({{< ref "/information/whitespaces/_index.md" >}}) 會被忽略。 然後，每行指令都會㩒逗號 (U+002C) 分割。 于是, 每行都會被看作這樣一個格式:
 
 {{% command %}}
 *表達式內容<sub>1</sub>*,* 表達式內容<sub>2</sub>*,* 表達式內容<sub>3</sub>*, ..., *表達式內容<sub>n</sub>*
@@ -58,7 +58,7 @@ weight: 1
 
 ##### ● 註釋
 
-遊戲會忽略註釋。以分號(U+003B，英文半角)開頭的表達式都會被視為註釋。
+遊戲會忽略註釋。以分號(U+003B)開頭的表達式都會被視為註釋。
 
 ##### ● 軌道位置同長度
 
@@ -68,9 +68,9 @@ weight: 1
 一個非負的 [嚴格格式]({{< ref "/information/numberformats/_index.md" >}}) 浮點數，代表一個主軌道位置。隨後的指令都將以此位置作為基準點。
 
 {{% command %}}
-*部分<sub>1</sub>*:*部分<sub>2</sub>*:...:*部分<sub>n</sub>* 
+*第<sub>1</sub>部分*:*第<sub>2</sub>部分*:...:*第<sub>n</sub>部分* 
 {{% /command %}}
-是一個配合 options.unitoflength 的更加複雜的距離指定格式, 可用于非公制計量單位。 每一個 * 部分<sub>i</sub>* 都是 [嚴格格式] ({{< ref "/information/numberformats/_index.md" >}}) 的浮點數。 * 部分<sub>1</sub>* 會比搭返 * 是數 <sub>1</sub> *, * 部分<sub>2</sub>* 搭返 * 是數 <sub>2</sub> *, 以此類推, 以此類推, 真正的主軌道位置是所有積的和。 這個結果一定是非負的。 各部分被冒號 (U+003A, 英文半角嗰個) 分隔。 如果想了解如何設定系數, 請參見 Options.UnitOflength 節。
+是一個配合 Options.UnitOfLength 的更加複雜的距離指定格式, 可用于非公制計量單位。 每一個 * 部分<sub>i</sub>* 都是 [嚴格格式]({{< ref "/information/numberformats/_index.md" >}}) 的浮點數。 *部分<sub>1</sub>* 會比搭返 *是數 <sub>1</sub> *,* 部分<sub>2</sub>* 搭返 * 是數 <sub>2</sub>*, 以此類推, 真正的主軌道位置是所有的和。 這個結果一定是非負的。 各部分被冒號 (U+003A) 分隔。 如果想了解如何設定系數, 請參見 Options.UnitOflength 節。
 
 在任何參數中使用距離的命令中，這個冒號表示法就可以被使用，到時我們會用<font color="green">綠色</font>標示呢種情況。
 
@@ -98,13 +98,13 @@ weight: 1
 
 規則：
 
-*指令名稱* 是大小寫都可以的。 編號和參數被分號 (U+003B, 英文半角) 隔開。 *指令名稱*、編號和參數都在周圍的空格都是被忽略的, 括號周圍的空格都是被忽略的。
+*指令名稱* 是大小寫都可以的。 編號和參數被分號 (U+003B) 隔開。 *指令名稱*、編號和參數都在周圍的空格都是被忽略的, 括號周圍的空格都是被忽略的。
 
-如果要使用編碼, 它必須被成對括號 (U+0028, 英文半角, 鍵盤9上面嗰個) 和 (u+0029, 英文半角, 鍵盤0上面嗰個) 括起來。 在使用編碼時至少要提供一個參數和一個 *后缀*。
+如果要使用編碼, 它必須被成對括號 (U+0028, 鍵盤上面9) 和 (U+0029, 英文半角, 鍵盤0上面嗰個) 括起來。 在使用編碼時至少要提供一個參數和一個 *后缀*。
 
 有兩個使用參數的方法變種, 除了 $ 開頭的預處理指令 ($chr, $rnd, $sub,...) 之外, 可以按照個人喜好二選一。
 第 1 種方法: 參數被至少一個空格 (U+0020, 平時用嗰個) 和編碼、指令的大名與及 * 后缀 * 分開。
-第 2 種方法: 參數被成對括號 (U+0028, 英文半角在鍵盤9上面嗰個) 和 (U+0029, 英文半角在鍵盤0上面嗰個) 括起來。
+第 2 種方法: 參數被成對括號 (U+0028, 英文半角在鍵盤9上面嗰個) 和 (U+0029, 在鍵盤0上面嗰個) 括起來。
 系第二種方法中, 當使用編碼時就必須使用 * 后缀 *。 在參數周圍的空格都會被忽略。
 
 請注意在有些指令中, 不管是用邊種表示方法, *后缀* 都是必需的。 在接下來的文檔中, 必需的 *后缀* 將被 **加粗**, 對於第一種方法加不加均可的后缀將被使用<font color="gray">灰色</font>表示。
@@ -633,11 +633,11 @@ Route.RunInterval 是同 Train.Interval 一樣
 ---
 
 {{% command %}}  
-**Route.Elevation** *<font color="green">Height</font>*  
+**Route.Elevation** *<font color="green">高度</font>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***<font color="green">Height</font>***: A floating-point number representing the initial height above sea level, **by default** measured in **meters** (m). The default value is 0.  
+***<font color="green">高度 </font>***: 浮點數，代表初始海拔高度，**默認情況下**，以 **米** 為單位。 默認值為0。
 {{% /command-arguments %}}
 
 ---
@@ -646,8 +646,8 @@ Route.RunInterval 是同 Train.Interval 一樣
 **Route.Temperature** *ValueInCelsius*  
 {{% /command %}}
 
-{{% command-arguments %}}  
-***ValueInCelsius***: A floating-point number representing the initial temperature in **Celsius**. The default value is 20.  
+{{% command-arguments %}}
+***ValueInCelsius***: 代表 **攝氏** 的初始溫度(浮點數)。 預設值為20。 
 {{% /command-arguments %}}
 
 ---
@@ -675,14 +675,14 @@ This command allows speed related messages (overspeed etc.) to be displayed in a
 ---
 
 {{% command %}}  
-**Route.LoadingScreen** *Image*  
+**Route.LoadingScreen** *圖片*  
 {{% /command %}}
 
 {{% command-arguments %}}    
-***Image***: A path to a supported image file.  
+***圖片***：所支援圖片文件的路徑。
 {{% /command-arguments %}}
 
-This command allows a custom image to be set as the loading screen background.
+此指令允許將自定圖片設為加載時的背景。
 
 ---
 
@@ -900,7 +900,7 @@ Train.Gauge 是同 Route.Gauge 一樣
 
 {{% note %}}
 
-Train.Interval is the same as Route.RunInterval.
+Train.Interval 和 Route.RunInterval 是一樣的
 
 {{% /note %}}
 
@@ -930,7 +930,7 @@ This command defines the maximum speed limit the preceding trains may travel at.
 **<font color=#555555>Train.Station</font>**  
 {{% /command %}}
 
-<font color=#555555>這個命令是會比OpenBVE忽略</font>
+<font color=#555555>這個命令是會被OpenBVE忽略</font>
 
 ## <a name="structure"></a>■ 7. The Structure namespace
 
@@ -964,9 +964,9 @@ The general syntax for commands in the Structure namespace is:
 | RoofCR     | Defines transformable right roofs for Track.Form. <font color="red">No ANIMATED objects supported.</font> |
 | CrackL     | Defines transformable left objects for Track.Crack. <font color="red">No ANIMATED objects supported.</font> |
 | CrackR     | Defines transformable right objects for Track.Crack. <font color="red">No ANIMATED objects supported.</font> |
-| FreeObj    | Defines objects for Track.FreeObj.                           |
+| FreeObj    | 為Track.FreeObj定義物件。                           |
 | Beacon     | Defines objects for Track.Beacon.                            |
-| Weather     | Defines objects for weather generated using Track.Rain and Track.Snow. |
+| 天氣     | Defines objects for weather generated using Track.Rain and Track.Snow. |
 
 {{% /table %}}
 

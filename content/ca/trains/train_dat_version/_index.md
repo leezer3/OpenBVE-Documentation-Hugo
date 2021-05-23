@@ -9,7 +9,7 @@ hidden: true
 
 - [1. BVE1](#bve1)
 - [2. BVE2](#bve2)
-- [3. OpenBVE](#openbve)
+- [3. openBVE](#openbve)
 
 {{% /contents %}}
 

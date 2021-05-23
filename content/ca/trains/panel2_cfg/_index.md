@@ -8,15 +8,15 @@ weight: 4
 
 {{% contents %}}
 
-- [1. Descripció](#overview)
-- [2. Sintaxi](#syntax)
-- [3. Secció This](#this)
-- [4. Secció PilotLamp](#pilotlamp)
-- [5. Secció Needle](#needle)
-- [6. Secció DigitalNumber](#digitalnumber)
-- [7. Secció DigitalGauge](#digitalgauge)
-- [8. Secció LinearGauge](#lineargauge)
-- [9. Secció Timetable](#timetable)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. The This section](#this)
+- [4. The PilotLamp section](#pilotlamp)
+- [5. The Needle section](#needle)
+- [6. The DigitalNumber section](#digitalnumber)
+- [7. The DigitalGauge section](#digitalgauge)
+- [8. The LinearGauge section](#lineargauge)
+- [9. The Timetable section](#timetable)
 - [10. Available subjects](#subjects)
 
 {{% /contents %}}

@@ -8,10 +8,10 @@ weight: 3
 
 {{% contents %}}
 
-- [1.總概](#overview)
-- [2.句法](#syntax)
-- [3. Car*i* 部分](#car)
-- [4. Coupler*i* 部分](#coupler)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. The Car*i* section](#car)
+- [4. The Coupler*i* section](#coupler)
 - [5. The Exterior section (outdated)](#exterior)
 
 {{% /contents %}}

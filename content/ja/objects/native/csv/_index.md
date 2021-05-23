@@ -8,9 +8,9 @@ weight: 2
 
 {{% contents %}}
 
-- [1.概要](#overview)
-- [2.構文](#syntax)
-- [3.利用可能なコマンド](#commands)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Available commands](#commands)
   - [CreateMeshBuilder](#createmeshbuilder)
   - [AddVertex](#addvertex)
   - [AddFace](#addface)

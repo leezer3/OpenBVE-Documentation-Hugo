@@ -8,7 +8,7 @@ weight: 7
 
 {{% contents %}}
 
-- [1. Vista general](#overview)
+- [1. Overview](#overview)
 - [2. Syntax](#syntax)
 - [3. Content of the file](#content)
 

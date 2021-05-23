@@ -8,9 +8,9 @@ weight: 1
 
 {{% contents %}}
 
-- [1.總概](#overview)
-- [2. 句法](#syntax)
-- [3.可用命令](#commands)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Available commands](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
   - [Vertex](#addvertex)
   - [Face](#addface)

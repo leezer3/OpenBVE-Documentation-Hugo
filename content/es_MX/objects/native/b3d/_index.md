@@ -8,9 +8,9 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Vista General](#overview)
-- [2. Sintaxis](#syntax)
-- [3. Comandos disponbiles](#commands)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Available commands](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
   - [Vertex](#addvertex)
   - [Face](#addface)

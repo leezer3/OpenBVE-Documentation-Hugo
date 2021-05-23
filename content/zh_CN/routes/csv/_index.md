@@ -10,24 +10,24 @@ weight: 1
 
 {{% contents %}}
 
-- [1. 综述](#overview)
-- [2. 语法](#syntax)
-- [3. 预处理](#preprocessing)
-- [4. Options (配置) 命名空间](#options)
-- [5. Route (路线) 命名空间](#route)
-- [6. Train (列车) 命名空间](#train)
-- [7. Structure (结构) 命名空间](#structure)
-- [8. Texture (材质) 命名空间](#texture)
-- [9. Cycle (循环) 命名空间](#cycle)
-- [10. Signal (信号) 命名空间](#signal)
-- [11. Track (轨道) 命名空间](#track)
-  - [11.1. 轨道](#track_rails)
-  - [11.2. 几何变换](#track_geometry)
-  - [11.3. 物件](#track_objects)
-  - [11.4. 车站](#track_stations)
-  - [11.5. 信号与限速](#track_signalling)
-  - [11.6. 车载信号系统](#track_safety)
-  - [11.7. 杂项](#track_misc)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Preprocessing](#preprocessing)
+- [4. The Options namespace](#options)
+- [5. The Route namespace](#route)
+- [6. The Train namespace](#train)
+- [7. The Structure namespace](#structure)
+- [8. The Texture namespace](#texture)
+- [9. The Cycle namespace](#cycle)
+- [10. The Signal namespace](#signal)
+- [11. The Track namespace](#track)
+  - [11.1. Rails](#track_rails)
+  - [11.2. Geometry](#track_geometry)
+  - [11.3. Objects](#track_objects)
+  - [11.4. Stations](#track_stations)
+  - [11.5. Signalling and speed limits](#track_signalling)
+  - [11.6. Safety systems](#track_safety)
+  - [11.7. Miscellaneous](#track_misc)
 
 {{% /contents %}}
 
@@ -723,7 +723,7 @@ Route.RunInterval和Train.Interval作用相同。
 
 它允许根据时间改变光照，具体细节在这一页上说明：
 
-[动态光照系统]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
+[Dynamic Lighting]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
 
 ---
 

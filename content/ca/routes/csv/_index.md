@@ -10,9 +10,9 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Descripció](#overview)
-- [2. Sintaxi](#syntax)
-- [3. Preprocessament](#preprocessing)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Preprocessing](#preprocessing)
 - [4. The Options namespace](#options)
 - [5. The Route namespace](#route)
 - [6. The Train namespace](#train)
@@ -21,13 +21,13 @@ weight: 1
 - [9. The Cycle namespace](#cycle)
 - [10. The Signal namespace](#signal)
 - [11. The Track namespace](#track)
-  - [11.1. Vies](#track_rails)
-  - [11.2. Geometria](#track_geometry)
-  - [11.3. Objectes](#track_objects)
-  - [11.4. Estacions](#track_stations)
-  - [11.5. Senyalització i límits de velocitat](#track_signalling)
-  - [11.6. Sistemes de seguretat](#track_safety)
-  - [11.7. Miscel·lània](#track_misc)
+  - [11.1. Rails](#track_rails)
+  - [11.2. Geometry](#track_geometry)
+  - [11.3. Objects](#track_objects)
+  - [11.4. Stations](#track_stations)
+  - [11.5. Signalling and speed limits](#track_signalling)
+  - [11.6. Safety systems](#track_safety)
+  - [11.7. Miscellaneous](#track_misc)
 
 {{% /contents %}}
 

@@ -8,9 +8,9 @@ weight: 7
 
 {{% contents %}}
 
-- [1. Descripció](#overview)
-- [2. Sintaxi](#syntax)
-- [3. Contingut del fitxer](#content)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Content of the file](#content)
 
 {{% /contents %}}
 
