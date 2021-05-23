@@ -525,8 +525,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
-| `emergencyReservoir`           | The current pressure in the emergency reservoir in this car, measured in Pa. |
-| `emergencyReservoir[carIndex]` | The current pressure in the emergency reservoir in car *carIndex*, measured in Pa. |
+| `equalizingReservoir`          | The current pressure in the equalizing reservoir in this car, measured in Pa. |
+| `equalizingReservoir[carIndex]` | The current pressure in the equalizing reservoir in car *carIndex*, measured in Pa. |
 | `brakePipe`                    | The current pressure in the brake pipe in this car, measured in Pa. |
 | `brakePipe[carIndex]`          | The current pressure in the brake pipe in car *carIndex*, measured in Pa. |
 | `brakeCylinder`                | The current pressure in the brake cylinder in this car, measured in Pa. |
