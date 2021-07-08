@@ -7,7 +7,7 @@ hidden: true
 
 - 會被 Options.UnitOfLength 影響的指令參數會用 **<font color="green">綠色</font>** 表示。
 - 會被 Options.UnitOfSpeed 影響的指令參數會用 **<font color="blue">藍色</font>**  表示。
-- Optional suffixes are indicated in <font color="gray">gray</font>. Mandatory suffixes are **bolded**.
+- 可選的字尾以<font color="gray">灰色</font>表示。 強制字尾以 **粗體** 表示。
 - Syntax variations are not possible with the $-directives.
 - The statement separator is the , character.
 

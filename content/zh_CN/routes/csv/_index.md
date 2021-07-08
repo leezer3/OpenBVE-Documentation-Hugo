@@ -1706,6 +1706,7 @@ This command can only be used at the beginning of a block.
 **B**: The player's train is expected to pass this station, while all other trains are expected to stop.  
 **S**: The player's train is expected to stop at this station, while all other trains are expected to pass.  
 **S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
+**D**: This station is a dummy station for use in conjunction with *ForcedRedSignal*. No stop position overlay or timetable entry will be shown.
 {{% /command-arguments %}}
 
 ▸ Available options for *DepartureTime*:
