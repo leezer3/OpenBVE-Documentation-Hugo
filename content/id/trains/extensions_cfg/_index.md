@@ -178,7 +178,46 @@ This key-value pair defines the lowest and highest allowed distances between the
 Distances = 0.30, 0.35  
 {{% /code %}}
 
-## <a name="exterior"></a>■ 5. The Exterior section (outdated)
+## <a name="car"></a>■ 5. The Bogie*i* section
+
+The Bogie*i* section allows to define properties specific to a certain bogie. Each car is assumed to have two bogies (whether or not an object is displayed), placed at the axle points of the car.
+
+------
+
+{{% command %}}  
+**[Bogiei]**  
+{{% /command %}}
+
+This starts the section for bogie *i*, which is an integer between 0 and *n*-2, where *n* is the number of cars the train has.
+
+------
+
+{{% command %}}  
+**Object** = *File*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***file***: The relative file name of the exterior object to use for this bogie, relative to the train folder.  
+{{% /command-arguments %}}
+
+This key-value pair defines the exterior object for this bogie. Within the object file, the coordinate (0,0,0) (*x*, *y*, *z*) corresponds to the center of the bogie, both horizontally (*x*) and forward/backward (*z*), while *y*=0 corresponds to the top of the rails.
+
+------
+
+{{% command %}}  
+**Axles** = *Rear*, *Front*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Rear***: A floating-point number indicating the z-position of the rear axle measured from the center of the bogie. Usually a negative value.  
+***Front***: A floating-point number indicating the z-position of the front axle measured from the center of the bogie. Usually a positive value.  
+{{% /command-arguments %}}
+
+This key-value pair defines the positions of the axles. While *Rear* and *Front* can take any values, the condition *Rear* < *Front* must hold.
+
+------
+
+## <a name="exterior"></a>■ 6. The Exterior section (outdated)
 
 The Exterior section provides an easy way of adding exterior objects to the particular train. For more control on the setting of axle positions and individual car lengths, the Car*i* section has been introduced and should be used instead.
 
