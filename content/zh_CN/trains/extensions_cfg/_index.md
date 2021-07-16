@@ -12,13 +12,14 @@ weight: 3
 - [2. Syntax](#syntax)
 - [3. The Car*i* section](#car)
 - [4. The Coupler*i* section](#coupler)
-- [5. The Exterior section (outdated)](#exterior)
+- [5. The Bogie*i* section](#bogie)
+- [6. The Exterior section (outdated)](#exterior)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. 概述
+## <a name="overview"></a>■ 1. Overview
 
-extensions.cfg 文件允许为每节车厢设置独立特性。比如车长、车轴位置和外观。
+The extensions.cfg file allows to define properties for individual cars, like length, axle positions and exterior objects.
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file is required to be located inside the train folder and is expected to be named **extensions.cfg**. The file is interpreted on a per-line basis, from top to bottom.
 
@@ -184,7 +185,7 @@ This key-value pair defines the lowest and highest allowed distances between the
 Distances = 0.30, 0.35  
 {{% /code %}}
 
-## <a name="car"></a>■ 5. The Bogie*i* section
+## <a name="bogie"></a>■ 5. The Bogie*i* section
 
 The Bogie*i* section allows to define properties specific to a certain bogie. Each car is assumed to have two bogies (whether or not an object is displayed), placed at the axle points of the car.
 

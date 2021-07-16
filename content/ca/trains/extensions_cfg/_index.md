@@ -12,11 +12,12 @@ weight: 3
 - [2. Syntax](#syntax)
 - [3. The Car*i* section](#car)
 - [4. The Coupler*i* section](#coupler)
-- [5. The Exterior section (outdated)](#exterior)
+- [5. The Bogie*i* section](#bogie)
+- [6. The Exterior section (outdated)](#exterior)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Descripció
+## <a name="overview"></a>■ 1. Overview
 
 The extensions.cfg file allows to define properties for individual cars, like length, axle positions and exterior objects.
 
@@ -184,7 +185,7 @@ This key-value pair defines the lowest and highest allowed distances between the
 Distances = 0.30, 0.35  
 {{% /code %}}
 
-## <a name="car"></a>■ 5. The Bogie*i* section
+## <a name="bogie"></a>■ 5. The Bogie*i* section
 
 The Bogie*i* section allows to define properties specific to a certain bogie. Each car is assumed to have two bogies (whether or not an object is displayed), placed at the axle points of the car.
 

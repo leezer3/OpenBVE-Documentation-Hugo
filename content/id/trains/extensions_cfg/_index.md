@@ -12,53 +12,54 @@ weight: 3
 - [2. Syntax](#syntax)
 - [3. The Car*i* section](#car)
 - [4. The Coupler*i* section](#coupler)
-- [5. The Exterior section (outdated)](#exterior)
+- [5. The Bogie*i* section](#bogie)
+- [6. The Exterior section (outdated)](#exterior)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Penjelasan
+## <a name="overview"></a>■ 1. Overview
 
-File Extensions.cfg berisi teks yang memuat info kereta seperti panjang kereta, posisi bogie, dan objek kereta.
+The extensions.cfg file allows to define properties for individual cars, like length, axle positions and exterior objects.
 
-Isi file ini bisa menggunakan semua tipe [encoding]({{< ref "/information/encodings/_index.md" >}}), Biasanya untuk penulisan biasa dengan UTF-8.  [Cara penulisan]({{< ref "/information/numberformats/_index.md" >}}) angka **Strict**. File ini harus berada di dalam folder kereta dan harus diberi nama  **extensions.cfg**. File akan dibaca oleh sistem dari atas ke bawah, dari kiri ke kanan.
+The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file is required to be located inside the train folder and is expected to be named **extensions.cfg**. The file is interpreted on a per-line basis, from top to bottom.
 
-##### ● Bagian Car
+##### ● Car indices
 
-Semua kereta di extensions.cfg diberi nomor mulai dari 0 (kereta paling depan) sampai *n*-1 (kereta paling belakang), *n* adalah jumlah total semua kereta dalam satu rangkaian, berdasarkan apa yang ada di  [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) . Contohnya, pada rangkaian dengan total 10 kereta, kereta paling depan mempunyai nomor 0 dan paling belakangnya 9.
+All cars in the extensions.cfg are enumerated from 0 (front car) to *n*-1 (rear car), where *n* is the number of cars the train has in total, according to the [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) file. For example, on a train with 10 cars, the front car has index 0 and the rear car index 9.
 
-##### ● Bagian Coupler
+##### ● Coupler indices
 
-Bagian Coupler dalam file ini menentukan jarak antar kereta. Semua perangkai di extensions.cfg diberi nomor dari 0 (perangkai paling depan) sampai dengan *n*-2 (perangkai paling belakang), *n* adalah total kereta dalam rangkaian yg ditentukan dari  [train.dat]({{< ref "/trains/train_dat/_index.md" >}}). Nomor perangkai *i* adalah perangkai yang ada di antara kereta *i* dan *i+1* , jadi perangkai yang ada di 2 kereta pertama (antara car0 dan car1) adalah coupler0. Misalnya, jika pada rangkaian 10 kereta, coupler yang ada di antara 2 kereta terakhir (car8 dan car9) adalah coupler 8.
+A coupler in this document refers to the space between neighboring cars. All couplers in the extensions.cfg are enumerated from 0 (front-most coupler) to *n*-2 (rear-most coupler), where *n* is the number of cars the train has in total, according to the [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) file. Coupler index *i* corresponds to the coupler between the cars with indices *i* and *i+1*, so the coupler between the first two cars (0 and 1) in the train has index 0. Likewise, if a train has 10 cars, the coupler between the last two cars (8 and 9) would have index 8.
 
-## <a name="syntax"></a>■ 2. Format penulisan
+## <a name="syntax"></a>■ 2. Syntax
 
-Setiap baris dalam file ini bisa dikosongkan (atau dikasih spasi) dan tidak akan dibaca oleh sistem. Dengan begitu anda bisa memisahkan bagian satu dengan bagian lainnya. 
+Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
-Membuat bagian baru dimulai dengan menambahkan nama bagian dan memakai kurung tegak ( " [ " dan " ] " ). Spasi tidak akan terbaca di sistem. Contoh cara penulisannya:
+A new section is opened by starting the line with an opening bracket (U+005B) and ending it with a closing bracket (U+005D). The text in-between the brackets indicates the name of the section and is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as at the beginning and the end of the name of the section. Thus, the beginning of the section has the following form:
 
 {{% command %}}  
-[NamaBagian]  
+[NameOfTheSection]  
 {{% /command %}}
 
 {{% code "*Example for the indication of a new section:*" %}}  
 [exterior]  
 {{% /code %}}
 
-Cara menulis isi bagian ini yaitu dengan menambahkan kata kunci perintah, lalu sama dengan, kemudian masukkan angka atau teks yang dibutuhkan. Perhatian besar kecil huruf dan spasi. Contohnya seperti ini:
+A key-value pair is indicated by giving the key, an equals sign (U+003D) and then the value. The key is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as in front and after the equals sign. Alternatively phrased, white spaces surrounding the key and the value are ignored. Thus, a key-value pair as the following form:
 
 {{% command %}}  
-Perintah = Nilai  
+NameOfTheKey = Value  
 {{% /command %}}
 
 {{% code "*Example of a key-value pair:*" %}}  
 0 = train.csv  
 {{% /code %}}
 
-Komentar bisa ditambahkan di mana saja di akhir teks. Tambahkan titik koma " ; " lalu tulis komentar atau catatan yang diinginkan.
+You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## <a name="car"></a>■ 3. Bagian Car*i*
+## <a name="car"></a>■ 3. The Car*i* section
 
-Bagian Car*i* menentukan keterangan 1 kereta dalam rangkaian.
+The Car*i* section allows to define properties specific to a certain car.
 
 ------
 
@@ -74,7 +75,9 @@ This starts the section for car *i*, which is an integer between 0 and *n*-1, wh
 **Object** = *File*  
 {{% /command %}}
 
-***File***: Lokasi objek file kereta.
+{{% command-arguments %}}  
+***file***: The relative file name of the exterior object to use for this car, relative to the train folder.  
+{{% /command-arguments %}}
 
 This key-value pair defines the exterior object for this car. Within the object file, the coordinate (0,0,0) (*x*, *y*, *z*) corresponds to the center of the car, both horizontally (*x*) and forward/backward (*z*), while *y*=0 corresponds to the top of the rails.
 
@@ -84,9 +87,11 @@ This key-value pair defines the exterior object for this car. Within the object 
 **Length** = *Value*  
 {{% /command %}}
 
-***Value***: Panjang kereta dalam meter.
+{{% command-arguments %}}  
+***Value***: A positive floating-point number representing the length of the car.  
+{{% /command-arguments %}}
 
-Perintah ini menentukan panjang satu gerbong dalam satu rangkaian. Bagian ini akan mengganti nilai panjang kereta yang ditulis di train.dat. Jika tidak ada perintah ini, maka nilai yang ditulis di train.dat akan dipakai.
+This key-value pair defines the length for this car. This overrides the length as defined in the train.dat for this particular car. If not used, this car will have the default length as defined in the train.dat.
 
 ------
 
@@ -94,8 +99,10 @@ Perintah ini menentukan panjang satu gerbong dalam satu rangkaian. Bagian ini ak
 **Axles** = *Rear*, *Front*  
 {{% /command %}}
 
-***Rear***: Jarak antara titik pusat dengan bogie belakang. biasanya angkanya negatif.
-***Front***: Jarak antara titik pusat dengan bogie depan. Biasanya angka positif.
+{{% command-arguments %}}  
+***Rear***: A floating-point number indicating the z-position of the rear axle measured from the center of the car. Usually a negative value.  
+***Front***: A floating-point number indicating the z-position of the front axle measured from the center of the car. Usually a positive value.  
+{{% /command-arguments %}}
 
 This key-value pair defines the positions of the axles. While *Rear* and *Front* can take any values, the condition *Rear* < *Front* must hold.
 
@@ -106,10 +113,10 @@ This key-value pair defines the positions of the axles. While *Rear* and *Front*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: **True** atau **False** untuk menentukan apakah objek perlu dibalik atau tidak.  
+***Value***: Either **True** or **False** to indicate whether to reverse the car.  
 {{% /command-arguments %}}
 
-Dengan perintah ini, gerbong bisa dibalik pada rangkaian. Catatan, posisi bogie pada perintah sebelumnya menentukan posisi saat kereta tidak dibalik.
+With this setting, you can reverse the car in the consist. Please note that axle positions are given as if the car was not reversed.
 
 ------
 
@@ -118,10 +125,10 @@ Dengan perintah ini, gerbong bisa dibalik pada rangkaian. Catatan, posisi bogie 
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Value***: **True** atau **False**  
+***Value***: Either **True** or **False** to indicate whether to reverse the car.  
 {{% /command-arguments %}}
 
-Dengan pengaturan ini, kereta bisa diatur apakah akan bergoyang saat naik turun penumpang atau tidak.
+With this setting, you can enable or disable loading sway for a specific car in the consist.
 
 ------
 
@@ -178,7 +185,7 @@ This key-value pair defines the lowest and highest allowed distances between the
 Distances = 0.30, 0.35  
 {{% /code %}}
 
-## <a name="car"></a>■ 5. The Bogie*i* section
+## <a name="bogie"></a>■ 5. The Bogie*i* section
 
 The Bogie*i* section allows to define properties specific to a certain bogie. Each car is assumed to have two bogies (whether or not an object is displayed), placed at the axle points of the car.
 
