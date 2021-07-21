@@ -474,6 +474,9 @@ Please also note that some combinations of prefix and infix operators are not re
 | ---------------- | ------------------------------------------------------------ |
 | `time`           | The current in-game time measured in seconds since midnight of the first day. |
 | `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
+| `cameraXDistance` | The non-negative cartesian distance measured on the X axis from the object to the camera in meters |
+| `cameraYDistance` | The non-negative cartesian distance measured on the Y axis from the object to the camera in meters |
+| `cameraZDistance` | The non-negative cartesian distance measured on the Z axis from the object to the camera in meters |
 | `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
 
 {{% /table-2col %}}
@@ -553,8 +556,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `leftDoorsTarget[carIndex]`  | The anticipated target state of the left doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
 | `rightDoorsTarget`           | The anticipated target state of the right doors. Returns either 0 (closed) or 1 (opened). |
 | `rightDoorsTarget[carIndex]` | The anticipated target state of the right doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
-| `leftDoorsButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
-| `rightDoorsButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
+| `leftDoorButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
+| `rightDoorButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
 | `pilotLamp`                  | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 
 {{% /table-2col %}}
