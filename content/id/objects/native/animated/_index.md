@@ -474,6 +474,9 @@ Please also note that some combinations of prefix and infix operators are not re
 | ---------------- | ------------------------------------------------------------ |
 | `time`           | The current in-game time measured in seconds since midnight of the first day. |
 | `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
+| `cameraXDistance` | The non-negative cartesian distance measured on the X axis from the object to the camera in meters |
+| `cameraYDistance` | The non-negative cartesian distance measured on the Y axis from the object to the camera in meters |
+| `cameraZDistance` | The non-negative cartesian distance measured on the Z axis from the object to the camera in meters |
 | `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
 
 {{% /table-2col %}}
@@ -514,6 +517,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `terminalStation`             | The index of the terminal station for this train. |
 | `timeTable`                   | Returns 1 if the timetable is currently set as visible, 0 otherwise. |
 | `brightness[carIndex]`        | Returns the interpolated brightness value applying to this car. |
+| `routeLimit`                  | Returns the current route speed limit applying to this train in km/h. |
 
 {{% /table-2col %}}
 
@@ -552,8 +556,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `leftDoorsTarget[carIndex]`  | The anticipated target state of the left doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
 | `rightDoorsTarget`           | The anticipated target state of the right doors. Returns either 0 (closed) or 1 (opened). |
 | `rightDoorsTarget[carIndex]` | The anticipated target state of the right doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
-| `leftDoorsButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
-| `rightDoorsButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
+| `leftDoorButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
+| `rightDoorButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
 | `pilotLamp`                  | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 
 {{% /table-2col %}}
@@ -700,7 +704,7 @@ StateFunction = section / 2
 
 ##### ● Employing an approach-controlled delay in signals
 
-If you want to create a signal that keeps being red until the train approaches it to some distance, then counts down a timer before it changes aspect to green, please refer to [this post](http://openbve.freeforums.org/delay-in-approach-controlled-signals-t1195.html#p5378) on the forum for a detailed explanation. Once you understand the concepts, you can use this code template:
+If you want to create a signal that keeps being red until the train approaches it to some distance, then counts down a timer before it changes aspect to green, please refer to [this post](http://web.archive.org/web/20100902041536/http://openbve.freeforums.org/delay-in-approach-controlled-signals-t1195.html#p5378) on the forum for a detailed explanation. Once you understand the concepts, you can use this code template:
 
 {{% code "*Template for an approach-controlled delay in a signal with two aspects:*" %}}  
 States = RED_OBJECT, GREEN_OBJECT  
@@ -710,6 +714,15 @@ StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta
 {{% code "*Template for an approach-controlled delay in a signal with any number of aspects:*" %}}  
 States = RED_OBJECT, ..., GREEN_OBJECT  
 StateFunction = if[trackDistance>DISTANCE | section==0, 0, if[value<0.5, value + 0.5*value/DELAY, section]]  
+{{% /code %}}
+
+Using an approach controlled delay with a semaphore signal requires a slight variant on this technique. 
+As the result of the StateFunction is rounded, whereas that of the RotateFunction is not, a combination of both is required to achieve the desired effect.
+
+{{% code "*Template for an approach-controlled delay in a semaphore signal:*" %}}  
+States = SIGNAL_ARM, SIGNAL_ARM  
+StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta/DELAY, 1]]
+RotateYFunction = if[currentState == 0, 0, -0.7]
 {{% /code %}}
 
 ## <a name="grammar"></a>■ 9. Formal Grammar

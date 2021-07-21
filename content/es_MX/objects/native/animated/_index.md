@@ -474,6 +474,9 @@ Please also note that some combinations of prefix and infix operators are not re
 | ---------------- | ------------------------------------------------------------ |
 | `time`           | The current in-game time measured in seconds since midnight of the first day. |
 | `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
+| `cameraXDistance` | The non-negative cartesian distance measured on the X axis from the object to the camera in meters |
+| `cameraYDistance` | The non-negative cartesian distance measured on the Y axis from the object to the camera in meters |
+| `cameraZDistance` | The non-negative cartesian distance measured on the Z axis from the object to the camera in meters |
 | `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
 
 {{% /table-2col %}}
@@ -482,7 +485,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 Generally, objects attached to a particular train and car return values for that train and car, unless stated otherwise. For scenery objects, the reference is the driver's car of the nearest train (not necessarily the player's train).
 
-En algunos casos de las siguientes variables , *carIndex* tiene el siguiente significado: 0 es el 1<sup>er</sup> carro  del frente, 1 es el 2<sup>do</sup> carro del frente, etc., mientras que -1 es el 1<sup>er</sup> carro desde la parte posterior, -2 es el 2<sup>do</sup> carro desde la parte posterior, etc. En general los indices de los carros desde -*cars* hasta *cars*-1 representan carros existentes, donde *cars* es el numero de carros que el tren posee, mientras que valores que estén fuera de este rango representan carros que no existen. Todos los trenes tienen al menos 1 carro, indices -1 y 0 están garantizados que existan para cualquier tren.
+In some of the following variables, *carIndex* has the following meaning: 0 is the 1<sup>st</sup> car from the front, 1 is the 2<sup>nd</sup> car from the front, etc., while -1 is the 1<sup>st</sup> car from the rear, -2 is the 2<sup>nd</sup> car from the rear, etc. In general, car indices from -*cars* to *cars*-1 represent existing cars, where *cars* is the number of cars the train has, while values outside of this range represent non-existing cars. As all trains have at least 1 car, indices -1 and 0 are guaranteed to exist for any train.
 
 ##### ● Trains (general)
 
@@ -514,6 +517,7 @@ En algunos casos de las siguientes variables , *carIndex* tiene el siguiente sig
 | `terminalStation`             | The index of the terminal station for this train. |
 | `timeTable`                   | Returns 1 if the timetable is currently set as visible, 0 otherwise. |
 | `brightness[carIndex]`        | Returns the interpolated brightness value applying to this car. |
+| `routeLimit`                  | Returns the current route speed limit applying to this train in km/h. |
 
 {{% /table-2col %}}
 
@@ -552,8 +556,8 @@ En algunos casos de las siguientes variables , *carIndex* tiene el siguiente sig
 | `leftDoorsTarget[carIndex]`  | The anticipated target state of the left doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
 | `rightDoorsTarget`           | The anticipated target state of the right doors. Returns either 0 (closed) or 1 (opened). |
 | `rightDoorsTarget[carIndex]` | The anticipated target state of the right doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
-| `leftDoorsButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
-| `rightDoorsButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
+| `leftDoorButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
+| `rightDoorButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
 | `pilotLamp`                  | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 
 {{% /table-2col %}}
@@ -700,7 +704,7 @@ StateFunction = section / 2
 
 ##### ● Employing an approach-controlled delay in signals
 
-If you want to create a signal that keeps being red until the train approaches it to some distance, then counts down a timer before it changes aspect to green, please refer to [this post](http://openbve.freeforums.org/delay-in-approach-controlled-signals-t1195.html#p5378) on the forum for a detailed explanation. Once you understand the concepts, you can use this code template:
+If you want to create a signal that keeps being red until the train approaches it to some distance, then counts down a timer before it changes aspect to green, please refer to [this post](http://web.archive.org/web/20100902041536/http://openbve.freeforums.org/delay-in-approach-controlled-signals-t1195.html#p5378) on the forum for a detailed explanation. Once you understand the concepts, you can use this code template:
 
 {{% code "*Template for an approach-controlled delay in a signal with two aspects:*" %}}  
 States = RED_OBJECT, GREEN_OBJECT  
@@ -710,6 +714,15 @@ StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta
 {{% code "*Template for an approach-controlled delay in a signal with any number of aspects:*" %}}  
 States = RED_OBJECT, ..., GREEN_OBJECT  
 StateFunction = if[trackDistance>DISTANCE | section==0, 0, if[value<0.5, value + 0.5*value/DELAY, section]]  
+{{% /code %}}
+
+Using an approach controlled delay with a semaphore signal requires a slight variant on this technique. 
+As the result of the StateFunction is rounded, whereas that of the RotateFunction is not, a combination of both is required to achieve the desired effect.
+
+{{% code "*Template for an approach-controlled delay in a semaphore signal:*" %}}  
+States = SIGNAL_ARM, SIGNAL_ARM  
+StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta/DELAY, 1]]
+RotateYFunction = if[currentState == 0, 0, -0.7]
 {{% /code %}}
 
 ## <a name="grammar"></a>■ 9. Formal Grammar
