@@ -700,7 +700,7 @@ StateFunction = section / 2
 
 ##### ● Employing an approach-controlled delay in signals
 
-If you want to create a signal that keeps being red until the train approaches it to some distance, then counts down a timer before it changes aspect to green, please refer to [this post](http://openbve.freeforums.org/delay-in-approach-controlled-signals-t1195.html#p5378) on the forum for a detailed explanation. Once you understand the concepts, you can use this code template:
+If you want to create a signal that keeps being red until the train approaches it to some distance, then counts down a timer before it changes aspect to green, please refer to [this post](http://web.archive.org/web/20100902041536/http://openbve.freeforums.org/delay-in-approach-controlled-signals-t1195.html#p5378) on the forum for a detailed explanation. Once you understand the concepts, you can use this code template:
 
 {{% code "*Template for an approach-controlled delay in a signal with two aspects:*" %}}  
 States = RED_OBJECT, GREEN_OBJECT  
@@ -710,6 +710,15 @@ StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta
 {{% code "*Template for an approach-controlled delay in a signal with any number of aspects:*" %}}  
 States = RED_OBJECT, ..., GREEN_OBJECT  
 StateFunction = if[trackDistance>DISTANCE | section==0, 0, if[value<0.5, value + 0.5*value/DELAY, section]]  
+{{% /code %}}
+
+Using an approach controlled delay with a semaphore signal requires a slight variant on this technique. 
+As the result of the StateFunction is rounded, whereas that of the RotateFunction is not, a combination of both is required to achieve the desired effect.
+
+{{% code "*Template for an approach-controlled delay in a semaphore signal:*" %}}  
+States = SIGNAL_ARM, SIGNAL_ARM  
+StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta/DELAY, 1]]
+RotateYFunction = if[currentState == 0, 0, -0.7]
 {{% /code %}}
 
 ## <a name="grammar"></a>■ 9. Formal Grammar
