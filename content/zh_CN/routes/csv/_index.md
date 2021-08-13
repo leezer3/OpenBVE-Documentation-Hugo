@@ -983,6 +983,7 @@ Train.Interval is the same as Route.RunInterval.
 | FreeObj    | 用于Track.FreeObj指令在轨道旁放置的外景物体模型。                           |
 | Beacon     | 用于Track.Beacon指令的轨旁无线电应答器模型。                            |
 | Weather     | Defines objects for weather generated using Track.Rain and Track.Snow. |
+| DynamicLight     | Defines dynamic lighting sets. |
 
 {{% /table %}}
 
@@ -2425,3 +2426,88 @@ This command places a special beacon, which sets the destination variable, avail
 {{% /command-arguments %}}
 
 This command places a special beacon, which commands an AI driver to play the horn. Both an AI controlled player train and pure AI trains will trigger this beacon, unless **TriggerOnce** is set. The object must have been loaded via Structure.Beacon(*BeaconStructureIndex*) prior to using this command.
+
+------
+
+{{% command %}}  
+**Track.DynamicLight** *DynamicLightIndex*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***DynamicLightIndex***: A non-negative integer, representing the Dynamic Lighting set to be used from this point onwards, as defined by Structure.DynamicLight
+{{% /command-arguments %}}
+
+This command may be used as an alternative to the *Route.AmbientLight* , *Route.DirectionalLight* and *Route.LightDirection* commands.
+
+It allows the lighting to be varied using a time-based model, and is described fully on the following page:
+
+[Dynamic Lighting]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
+
+---
+
+{{% command %}}  
+**Track.AmbientLight** *RedValue*; *GreenValue*; *BlueValue*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RedValue***: An integer ranging from 0 to 255 representing the red component of the ambient light. The default value is 160.  
+***GreenValue***: An integer ranging from 0 to 255 representing the green component of the ambient light. The default value is 160.   
+***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the ambient light. The default value is 160.  
+{{% /command-arguments %}}
+
+This command defines the ambient light color to be used from this point onwards. All polygons in the scene are illuminated by the ambient light regardless of the light direction.
+
+---
+
+{{% command %}}  
+**Track.DirectionalLight** *RedValue*; *GreenValue*; *BlueValue*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RedValue***: An integer ranging from 0 to 255 representing the red component of the directional light. The default value is 160.  
+***GreenValue***: An integer ranging from 0 to 255 representing the green component of the directional light. The default value is 160.  
+***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the directional light. The default value is 160.  
+{{% /command-arguments %}}
+
+This command defines the directional light to be used from this point onwards. The polygons in the scene are only fully illuminated by the directional light if the light direction points at the front faces. If pointing at back faces, no light is contributed. *Route.LightDirection* should be set to specify the light direction.
+
+---
+
+{{% command %}}  
+**Track.LightDirection** *Theta*; *Phi*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Theta***: A floating-point number representing the angle in **degrees** which controls the pitch of the light direction. The default value is 60.  
+***Phi***: A floating-point number representing the angle in **degrees** which controls the planar rotation of the light direction. The default value is about -26.57.  
+{{% /command-arguments %}}
+
+This command defines the light direction from this point onwards. This is the direction the light shines at, meaning the opposite direction the sun is located at. First, *Theta* determines the pitch. A value of 90 represents a downward direction, while a value of -90 represents an upward direction. With those extremes, the value of *Phi* is irrelevant. A value of 0 for *Theta* represents a forward direction originating at the horizon behind. Once the pitch is defined by *Theta*, *Phi* determines the rotation in the plane. A value of 0 does not rotate, a value of 90 rotates the direction to the right and a value of -90 rotates to the left. A backward direction can be both obtained by setting *Theta* and *Phi* to 180 and 0 or to 0 and 180, respectively. Values in-between allow for more precise control of the exact light direction.
+
+{{% warning-nontitle %}}
+
+The direction of the light is relative to the initial direction at the zero-point of the route (e.g Track position **0**), not the current position.
+
+{{% /warning-nontitle %}}
+
+![illustration_light_direction](/images/illustration_light_direction.png)
+
+{{% function "*Converting a spherical direction (theta,phi) into a cartesian direction (x,y,z):*" %}}  
+x = cos(theta) * sin(phi)  
+y = -sin(theta)  
+z = cos(theta) * cos(phi)  
+{{% /function %}}
+
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²≠1:*" %}}  
+theta = -arctan(y/sqrt(x<sup>2</sup>+z<sup>2</sup>))  
+phi = arctan(z,x)  
+{{% /function %}}
+
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²=1:*" %}}  
+theta = -y * pi/2  
+phi = 0  
+{{% /function %}}
+
+In the formulas above, [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) represents the cosine, [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) the sine, [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) the inverse tangent, [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) the two-argument inverse tangent and [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) the square root. The formulas can be used to convert between spherical and cartesian coordinates if working with either one seems more intuitive than working with the other one. The formulas also serve as the official documentation on how the light direction is mathematically defined (using radians for the trigonometric functions).
+
+---
