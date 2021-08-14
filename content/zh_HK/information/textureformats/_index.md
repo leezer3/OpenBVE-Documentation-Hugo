@@ -14,10 +14,12 @@ weight: 4
 | Windows BMP | .bmp                    | 由於檔案過大，不建議使用。                      |
 | JPEG        | .jpg, .jpeg             | 由於有損壓縮，不推薦使用。 |
 | GIF         | .gif                    | 不建議使用，因為降低了色彩深度（除非對圖像已足夠）。 |
+| DDS         | .dds                    | Not reccomended for native content, only for content exported by external 3D editors. |
+| ACE         | .ace                    | Proprietary format used for MSTS content.                    |
 
 {{% /table %}}
 
-##### ● 材質大小
+##### ● Sizes of textures
 
 The widths and heights of textures should be a power of two, e.g. 1, 2, 4, 8, 16, 32, 64, 128, 256, and so on. While this is not a requirement, having textures whose sizes are not power-of-two increases loading times, increases storage requirements and introduces blurriness, because these textures have to be converted to a power-of-two size by openBVE.
 

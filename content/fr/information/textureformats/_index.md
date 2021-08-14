@@ -14,6 +14,8 @@ This is a list of officially supported texture formats. Generally, the PNG forma
 | Windows BMP | .bmp                    | Not recommended due to large file size.                      |
 | JPEG        | .jpg, .jpeg             | Not recommended due to lossy compression (unless not noticable even on large magnification). |
 | GIF         | .gif                    | Not recommended due to reduced color depth (unless sufficient for the image). |
+| DDS         | .dds                    | Not reccomended for native content, only for content exported by external 3D editors. |
+| ACE         | .ace                    | Proprietary format used for MSTS content.                    |
 
 {{% /table %}}
 

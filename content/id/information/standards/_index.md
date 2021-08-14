@@ -19,18 +19,40 @@ Tidak ada aturan standar untuk file flange*i*.wav . Anda bisa membuatnya sendiri
 
 ## ■ Beacon
 
-Tidak ada standar untuk membuat beacon, dan di Indonesia tidak ada aturan untuk membuat ini karena tidak ada di aslinya.
-
-Meskipun begitu, berikut ini adalah list beacon bawaan dari game untuk sistem ATS-SN dan ATS-P. Hanya untuk developer yang akan menggunakan beacon.
+Beacons reserved for the built-in safety systems ATS-SN and ATS-P. These should only be used by route/train developers if the meaning of the beacons are (nearly) identical:
 
 {{% table %}}
 
-| Tipe beacon | Data opsional  | Arti                                                      |
+| Beacon type | Optional data  | Meaning                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
-| 0           | *SwitchSystem* | ATS-SN transponder tipe S. Disimpan 600m di depan sinyal. Akan membunyikan alarm jika masinis akan mendekati sinyal merah.<br /><br />Nilai *SwitchSystem*:<br />-1: Kereta tidak akan mengganti sistem keamanan.<br />0: Sistem keamanan kereta berganti otomatis dari ATS-P ke ATS-SN saat melewati beacon. |
-| 1           | *SwitchSystem* | ATS-SN Transponder tipe SN. Disimpan 20m di depan sinyal. Mengaktifkan rem darurat jika sinyal merah.<br /><br />Nilai *SwitchSystem*:<br />-1: Kereta tidak akan mengganti sistem keamanan.<br />0: Kereta akan mengubah sistem keamanan dari ATS-P menjadi ATS-SN. |
-| 2           | *Cars*         | Stop transponder untuk ATS-SN dan ATS-P. Disimpan setelah batas berhenti. Membuat rem darurat aktif jika sinyal merah dan angka CARS sesuai dengan data.<br /><br />Nilai *Cars*:<br />0: Transponder aktif untuk semua kereta.<br />*Angka Positif*: Transponder aktif jika angka *Cars* Lebih besar atau sama dengan jumlah kereta dalam 1 rangkaian. |
-| 3           | *SwitchSystem* | Transponder model baru untuk ATS-P. Beberapa disimpan di depan sinyal. Memberikan info kepada kereta tentang jarak sinyal terdekat dan aspek yang ditampilkan. Kereta akan mengerem bertahap jika sinyal merah.<br /><br />Nilai *SwitchSystem*:<br />-1: Kereta tidak akan mengganti sistem keamananan.<br />0: Kereta akan mengganti sistem dari ATS-SN menjadi ATS-P saat melewati beacon. |
-| 4           | *SwitchSystem* | Stop transponder untuk ATS-P. Disimpan 25-30m di depan sinyal. MEmberikan informasi kepada kereta tentang jarak dan aspek sinyal. Kereta akan mengerem otomatis jika sinyal merah.<br /><br />Nilai *SwitchSystem*:<br />-1: Kereta tidak akan mengganti sistem keamanan.<br />0: Kereta akan mengganti sistem dari ATS-SN menjadi ATS-P. |
+| 0           | *SwitchSystem* | S-type transponder for ATS-SN. Placed about 600m in front of a signal. Raises an alarm the driver has to acknowledge whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
+| 1           | *SwitchSystem* | SN-type transponder for ATS-SN. Placed about 20m in front of a signal. Triggers the emergency brakes whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
+| 2           | *Cars*         | Immediate stop transponder for ATS-SN and ATS-P. Placed after stops. Applies the emergency brakes whenever the referenced signal is red and the number of cars corresponds to the optional data.<br /><br />Values for *Cars*:<br />0: The transponder triggers regardless of the amount of cars.<br />*Positive integer*: The transponder triggers only if *Cars* is greater than or equal to the number of cars the train has. |
+| 3           | *SwitchSystem* | Pattern renewal transponder for ATS-P. Multiple of these are placed in front of a signal. Informs the train about the distance to the referenced signal and whether it is red or not. The train then calculates a brake curve to the referenced signal if it is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-SN to ATS-P when passing this beacon. |
+| 4           | *SwitchSystem* | Immediate stop transponder for ATS-P. Placed about 25m/30m in front of a signal. Informs the train about the distance to the referenced signal and whether it is red or not. The train brakes immediately if the signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-SN to ATS-P when passing this beacon. |
+
+{{% /table %}}
+
+Beacons used by legacy train systems to simulate weather (Note- These will also be utilised by any train using the new Windscreen functionality):
+
+{{% table %}}
+
+| Beacon type | Optional data  | Meaning                                                      |
+| ----------- | -------------- | ------------------------------------------------------------ |
+| 21           | *Intensity*   | Sets the intensity of the weather.<br /><br />Values for *Intensity* should be within the following range:<br />0: No weather.<br />100: Maximum weather intensity. |
+
+{{% /table %}}
+
+UK Basic AWS / TPWS Beacons (Supported by OS_ATS, UKTrainSys, UKDT, UKMU & UKEMU):
+
+{{% table %}}
+
+| Beacon type | Optional data  | Meaning                                                      |
+| ----------- | -------------- | ------------------------------------------------------------ |
+| 44000       | 0              | Permanent AWS signal approach magnet. Raises an alarm the driver has to acknowledge if the referenced signal is red. |
+| 44001       | 0              | AWS speed restriction magnet. Raises an alarm the driver has to acknowledge regardless. |
+| 44003       | 0              | TPWS inductor associated with a signal. Triggers a TPWS brake demand if the referenced section is occupied. |
+| 44003       | 0              | TPWS inductor associated with a signal. Triggers a TPWS brake demand if the referenced section is occupied. <br /> If you wish to issue a brake demand regardless (e.g. buffers), then the current section should be referenced. |
+| 44004       | *Speed*        | TPWS overspeed inductor. Triggers a TPWS brake demand if the train's speed is greater than *Speed*. |
 
 {{% /table %}}
