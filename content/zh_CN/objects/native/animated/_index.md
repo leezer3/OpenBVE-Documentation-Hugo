@@ -472,8 +472,9 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 | Variable                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `playerTrain`                 | Returns 1 if the train is the player train, 0 otherwise.                            |
+| `playerTrain`                 | Returns 1 if the train is the player train, 0 otherwise.     |
 | `cars`                        | The number of cars the train has.                            |
+| `carNumber`                   | Returns the index of the current car.                        |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speed[carIndex]`             | The signed actual speed of the car *carIndex* in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speedometer`                 | The signed perceived speed of the current car in m/s as it would appear to a speedometer on wheel slip and wheel lock. |

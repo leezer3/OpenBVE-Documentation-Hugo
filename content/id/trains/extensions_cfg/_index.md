@@ -180,6 +180,18 @@ This key-value pair defines the lowest and highest allowed distances between the
 
 ------
 
+{{% command %}}  
+**Object** = *File*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***file***: The relative file name of the exterior object to use for this coupler, relative to the train folder.  
+{{% /command-arguments %}}
+
+This key-value pair defines the optional exterior object for this coupler. Within the object file, the coordinate (0,0,0) (*x*, *y*, *z*) corresponds to the center of the coupler, both horizontally (*x*) and forward/backward (*z*), while *y*=0 corresponds to the top of the rails.
+
+------
+
 {{% code "*Example of a Coupleri section:*" %}}  
 [Coupler0]  
 Distances = 0.30, 0.35  
