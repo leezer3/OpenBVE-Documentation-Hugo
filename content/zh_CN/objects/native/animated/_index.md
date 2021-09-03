@@ -452,6 +452,9 @@ Please also note that some combinations of prefix and infix operators are not re
 | Variable         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `time`           | The current in-game time measured in seconds since midnight of the first day. |
+| `hour`           | The integer part of the current hour. |
+| `minute`         | The integer part of the current minute. |
+| `second`         | The integer part of the current second. |
 | `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
 | `cameraXDistance` | The non-negative cartesian distance measured on the X axis from the object to the camera in meters |
 | `cameraYDistance` | The non-negative cartesian distance measured on the Y axis from the object to the camera in meters |
