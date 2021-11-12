@@ -26,3 +26,9 @@ The widths and heights of textures should be a power of two, e.g. 1, 2, 4, 8, 16
 ##### ● PNG file optimization
 
 PNG is a lossless image compression format. As with many other compression formats, the encoder can make a wide range of choices to result in different outcomes - some encoders can produce smaller files, others larger files. Normally, image editing software do not produce the smallest PNG files, which is why there are a number of tools with the sole purpose of squeezing every last bit out of PNG files. You are invited to use such tools in order to further reduce storage requirements. Windows users can use the convenient [PNGGauntlet](http://brh.numbera.com/software/pnggauntlet/) , while others can find a list of tools [here](http://optipng.sourceforge.net/pngtech/optipng.html)  (scroll down to 3. PNG (lossless) optimization programs).
+
+##### ● Animated Textures
+
+Generally, an animation created using the TextureShiftFunction should be used in preference to an animated texture, as this will be faster and provide better blending results.
+
+However, animated GIFs are also supported as a texture format. The alpha channel should be used in preference to the **TransparentColor** statement, which may give unexpected results.
