@@ -19,40 +19,40 @@ Ningún intento es conocido hasta el momento en estandarizar el significado de l
 
 ## ■ Balizas
 
-Beacons reserved for the built-in safety systems ATS-SN and ATS-P. These should only be used by route/train developers if the meaning of the beacons are (nearly) identical:
+Balizas reservadas para el sistema de seguridad ATS-SN y ATS-P. Estas deben solo ser usados por los desarrolladores de rutas/trenes si el significado de las balizas son (cercanamente) idénticos:
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipo de Baliza | Datos opcionales  | Significado                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
-| 0           | *SwitchSystem* | S-type transponder for ATS-SN. Placed about 600m in front of a signal. Raises an alarm the driver has to acknowledge whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
-| 1           | *SwitchSystem* | SN-type transponder for ATS-SN. Placed about 20m in front of a signal. Triggers the emergency brakes whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
-| 2           | *Cars*         | Immediate stop transponder for ATS-SN and ATS-P. Placed after stops. Applies the emergency brakes whenever the referenced signal is red and the number of cars corresponds to the optional data.<br /><br />Values for *Cars*:<br />0: The transponder triggers regardless of the amount of cars.<br />*Positive integer*: The transponder triggers only if *Cars* is greater than or equal to the number of cars the train has. |
-| 3           | *SwitchSystem* | Pattern renewal transponder for ATS-P. Multiple of these are placed in front of a signal. Informs the train about the distance to the referenced signal and whether it is red or not. The train then calculates a brake curve to the referenced signal if it is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-SN to ATS-P when passing this beacon. |
-| 4           | *SwitchSystem* | Immediate stop transponder for ATS-P. Placed about 25m/30m in front of a signal. Informs the train about the distance to the referenced signal and whether it is red or not. The train brakes immediately if the signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-SN to ATS-P when passing this beacon. |
+| 0           | *SistemaConmutado* | El transponedor de tipo-S para el ATS-SN. Ubicado alrededor de 600m en frente de una señal. Dispara una alarma al conductor que debe confirmar cuando la referida señal sea roja.<br /><br /> Valores para *SistemaConmutado*: <br /> -1: El tren no debe conmutar el sistema de vigilancia. <br />0: El tren debe automaticamente conmuta de ATS-P a ATS-SN cuando pasa esta baliza. |
+| 1           | *SistemaConmutado* | El transponedor de tipo SN para el ATS-SN. Ubicado cerca de 20m en frente de una señal. Dispara los frenos de emergencia ya sea que la referida señal este en rojo. los  <br /><br /> Valores para *SistemaConmutado*:<br />-1: El tren no debe conmutar el sistema de seguridad.<br /> 0: El tren debe automáticamente conmutar de ATS-P a ATS-SN cuando rebasa esta baliza.  |
+| 2           | *Carros*         | El transponedor de parada inmediata para el ATS-SN y ATS-P. Ubicada después de los puntos de parada. Dispara el frenado de emergencia ya sea que la señal se encuentre en rojo y el número de coches corresponde a los datos opcionales. <br /><br />Valores para *Carros*:<br />0: El transponedor dispara sin importar la cantidad de coches.<br /> *Entero positivo*: El transponedor dispara solo si *Carros* es mayor o igual al numero de coches que el tren tiene. |
+| 3           | *SistemaConmutado* | El transponedor de patrón renovable para el ATS-P. Múltiples de ellos están ubicados en frente de una señal. Informa al tren sobre la distancia de la referida señal y si esta en rojo o no. El tren calcula la curva de frenado a la referida señal si esta en rojo.<br /><br />Valores para *SistemaConmutado*: <br />-1: El tren no debería conmutar el sistema de seguridad.<br />0: El tren debería automáticamente conmutar de ATS-SN a ATS-P cuando rebase esta baliza. |
+| 4           | *SistemaConmutado* | El transponedor de parada inmediata para ATS-P. Ubicada cerca de 25m/30m en frente de la señal. Informa al tren sobre la distancia de la referida señal y si esta en rojo o no. El tren frena inmediatamente si la señal esta en rojo.<br /><br />Valores para *SistemaConmutado*: <br />-1: El tren no debe conmutar el sistema se de seguridad. <br />0: El tren debe automaticamente conmutar de ATS-SN a ATS-P cuando rebase esta baliza. |
 
 {{% /table %}}
 
-Beacons used by legacy train systems to simulate weather (Note- These will also be utilised by any train using the new Windscreen functionality):
+Balizas usadas por estos sistemas de trenes heredadas para simular clima (Nota- Estos también pueden ser utilizados usando la nueva funcionalidad de parabrisas):
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipo de Baliza | Datos opcionales  | Significado                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
-| 21           | *Intensity*   | Sets the intensity of the weather.<br /><br />Values for *Intensity* should be within the following range:<br />0: No weather.<br />100: Maximum weather intensity. |
+| 21           | *Intensidad*   | Establece la intensidad del clima.<br /><br />Valores para *Intensidad* deben estar en el siguiente rango:<br />0: Sin clima.<br />100: Máxima intensidad del clima. |
 
 {{% /table %}}
 
-UK Basic AWS / TPWS Beacons (Supported by OS_ATS, UKTrainSys, UKDT, UKMU & UKEMU):
+Balizas básicas AWS / TPWS del Reino Unido (Soportado por OS_ATS, UKTrainSys, UKDT, UKMU & UKEMU):
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipo de Baliza | Datos opcionales  | Significado                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
-| 44000       | 0              | Permanent AWS signal approach magnet. Raises an alarm the driver has to acknowledge if the referenced signal is red. |
-| 44001       | 0              | AWS speed restriction magnet. Raises an alarm the driver has to acknowledge regardless. |
-| 44003       | 0              | TPWS inductor associated with a signal. Triggers a TPWS brake demand if the referenced section is occupied. |
-| 44003       | 0              | TPWS inductor associated with a signal. Triggers a TPWS brake demand if the referenced section is occupied. <br /> If you wish to issue a brake demand regardless (e.g. buffers), then the current section should be referenced. |
-| 44004       | *Speed*        | TPWS overspeed inductor. Triggers a TPWS brake demand if the train's speed is greater than *Speed*. |
+| 44000       | 0              | Magneto de señal próxima permanente AWS. Dispara una señal que el conductor debe validar si la señal referida está en rojo. |
+| 44001       | 0              | Magneto de restricción de velocidad AWS. Dispara una alarma que el conductor debe validar independientemente. |
+| 44003       | 0              | Inductor TPWS asociado a una señal. Dispara una demanda de freno TPWS si la sección referida está ocupada. |
+| 44003       | 0              | Inductor TPWS asociado a una señal. Dispara una demanda de freno TPWS si la sección referida está ocupada. <br /> Si deseas  emitir una demanda de freno independientemente (ej. topes), entonces la sección actual debe ser referida. |
+| 44004       | *Velocidad*        | Inductor de sobre velocidad TPWS. Dispara una demanda de freno TPWS si la velocidad del tren es mayor que *Velocidad* |
 
 {{% /table %}}
