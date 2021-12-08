@@ -1,58 +1,58 @@
 ---
-title: "The **panel.cfg** file format - Quick reference"
+title: "El archivo de formado **panel.cfg** - Referencia rápida"
 hidden: true
 ---
 
 <font color="red">[Panel]</font>  
-**Background** = FileName
+**Background** = NombreArchivo
 
 <font color="red">[View]</font>  
-**Yaw** = ValueInDegrees  
-**Pitch** = ValueInDegrees
+**Yaw** = Valor en grados  
+**Pitch** = Valor en grados
 
 <font color="red">[PressureIndicator]</font>  
-**Type** = { **0** = gauge | **1** = LED }  
-**LowerNeedle** = Subject, RedValue, GreenValue, BlueValue  
-**UpperNeedle** = Subject, RedValue, GreenValue, BlueValue  
+**Type** = { **0** = aguja | **1** = LED }  
+**LowerNeedle** = Subject, ValorRojo, ValorVerde, ValorAzul
+**UpperNeedle** = Subject, ValorRojo, ValorVerde, ValorAzul
 **Center** = X, Y  
-**Radius** = ValueInPixels  
-**Background** = FileName  
-**Cover** = FileName  
+**Radius** = ValorEnPixeles
+**Background** = NombreArchivo
+**Cover** = NombreArchivo
 **Unit** = { **0** = kpa | **1** = kgf/cm2 }  
-**Minimum** = PressureValue  
-**Maximum** = PressureValue  
-**Angle** = ValueInDegrees
+**Minimum** = ValorPresion
+**Maximum** = ValorPresion
+**Angle** = ValorEnGrados
 
 <font color="red">[SpeedIndicator]</font>  
-**Type** = { **0** = gauge | **1** = LED }  
-**Needle** = RedValue, GreenValue, BlueValue  
+**Type** = { **0** = aguja | **1** = LED }  
+**Needle** = ValorRojo, ValorVerde, ValorAzul 
 **Center** = X, Y  
-**Radius** = ValueInPixels  
-**Background** = FileName  
-**Cover** = FileName  
-**Minimum** = SpeedValue  
-**Maximum** = SpeedValue  
-**Atc** = FileName  
-**AtcRadius** = ValueInPixels
+**Radius** = ValorEnPixeles  
+**Background** = NombreArchivo  
+**Cover** = NombreArchivo   
+**Minimum** = ValorVelocidad
+**Maximum** = ValorVelocidad
+**Atc** = NombreArchivo
+**AtcRadius** = ValorEnPixeles
 
 <font color="red">[DigitalIndicator]</font>  
-**Number** = FileName  
-**Corner** = Left, Top  
-**Size** = Width, Height  
+**Number** = NombreArchivo
+**Corner** = Izquierda, Arriba
+**Size** = Ancho, Alto
 **Unit** = { **0** = km/h | **1** = mph | **2** = m/s }
 
 <font color="red">[PilotLamp]</font>  
-**TurnOn** = FileName  
-**TurnOff** = FileName  
-**Corner** = Left, Top
+**TurnOn** = NombreArchivo
+**TurnOff** = NombreArchivo
+**Corner** = Izquierda, Arriba
 
 <font color="red">[Watch]</font>  
-**Background** = FileName  
+**Background** = NombreArchivo
 **Center** = X, Y  
-**Radius** = ValueInPixels  
-**Needle** = RedValue, GreenValue, BlueValue
+**Radius** = ValorEnPixeles
+**Needle** = ValorRojo, ValorVerde, ValorAzul
 
 <font color="red">[BrakeIndicator]</font>  
-**Image** = FileName  
-**Corner** = Left, Top  
-**Width** = ValueInPixels
+**Image** = NombreArchivo
+**Corner** = Izquierda, Arriba
+**Width** = ValorEnPixeles
