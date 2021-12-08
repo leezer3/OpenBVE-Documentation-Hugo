@@ -6,16 +6,16 @@ weight: 5
 
 Si esta presente en la carpeta del tren, este archivo defina una cabina 3D.
 
-The file is a normal [animated object file]({{< ref "/objects/native/animated/_index.md" >}}). The train body is assumed to be centered on the x- and z-axes, while a value of 0 on the y-axis corresponds to the top of the rails, just as with exterior train objects.
+El archivo es un normal [archivo animado de objeto]({{< ref "/objects/native/animated/_index.md" >}}). El cuerpo de tren es asumido que esta centrado en los ejes x- y z-, mientras que un valor de 0 en el eje y, corresponde a el tope de los rieles, al igual con los objetos exteriores del tren.
 
-The viewing point of the driver's eye is determined via the #CAB or #COCKPIT sections in the [train.dat]({{< ref "/trains/train_dat/_index.md#cab" >}}) (which measures the viewing point in millimeters from the front of the train).
+El punto de visualización de los ojos del conductor es determinado por las secciones #CAB o #COCKPIT en el [train.dat]({{< ref "/trains/train_dat/_index.md#cab" >}}) (el cual mide el punto de visualización en milímetros desde el frente del tren ).
 
-You can use [Object Viewer]({{< ref "/tools/objectviewer/_index.md" >}}) to preview any animated object, including the panel.animated file. It might also be a good idea to load both the exterior object and the panel.animated in Object Viewer so you can match them against each other.
+Puedes usar el [Object Viewer]({{< ref "/tools/objectviewer/_index.md" >}}) para previsualizar cualquier objeto animado, incluyendo el archivo panel.animated. También puede ser una buena idea de cargar tanto el exterior como el archivo panel.animated en el Object Viewer para así coincidirlos unos con otros.
 
 {{% notice %}}
 
 #### Sobreposición e Iluminación
 
-The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light. This behavior might change in future versions of openBVE.
+La cabina es renderizada como una incrustación. Esto significa que la cabina siempre aparecerá en frente de los objetos de escenario. Esto es intencional, debido a que esta manera la lluvia, paredes y otros objetos de obstrucción no puedan ser renderizados dentro de la cabina. Es mas, la iluminacion de la cabina es diferente que la del escenario. Mientras que el ambiente del brillo es reflejada en la cabina, el color de ambiente no lo es, y la cabina siempre aparecerá como si estuviera reflejando una luz blanca. Esta conducta pudiera cambiar en el futuro de las versiones de openBVE.
 
 {{% /notice %}}
