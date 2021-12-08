@@ -24,7 +24,7 @@ Lo que esta ruta no es:
 
 {{% table-nonheader %}}
 
-| <font color="Red">✗</font>  | Un complemento de openBVE serio - solo es algo para los desarrolladores lo estudien. |
+| <font color="Red">✗</font>  | Un complemento de openBVE de alta calidad - solo es algo para los desarrolladores lo estudien. |
 | --------------------------- | ------------------------------------------------------------- |
 | <font color="Red">✗</font>  | Una interpretación de cualquier ruta real.  |
 | <font color="Red">✗</font>  | Un ejemplo de alta calidad de una ruta  |
