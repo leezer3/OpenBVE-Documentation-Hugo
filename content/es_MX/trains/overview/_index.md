@@ -4,41 +4,41 @@ linktitle: "Vista general"
 weight: 1
 ---
 
-Trains consist of a series of individual configuration files accompanied by bitmaps and sounds. The following is an overview on which files are required and what they represent.
+Los trenes consisten en una serie de archivos de configuración individuales acompañados por texturas y sonidos. La siguiente es una vista general de cuales archivos son requeridos y que representa.
 
 ## ■ Características
 
 [**train.dat:**]({{<ref "/trains/train_dat/_index.md">}})  
-This is the core configuration file for the train's characteristics, and is mandatory.
+Este es el archivo de configuración principal para las características del tren, y es obligatoria.
 
 ## ■ Paneles
 
 [**panel.animated:**]({{<ref "/trains/panel_animated/_index.md">}})  
-This file allows to create a fully 3D cab. If present in the train folder, this file has precedence over the panel2.cfg and panel.cfg files.
+Este archivo permite la creación de una cabina completamente 3D. Si esta presente en la carpeta del tren, este archivo tiene prioridad sobre los archivos panel2.cfg y panel.cfg.
 
 [**panel2.cfg:**]({{<ref "/trains/panel2_cfg/_index.md">}})  
-This file allows to create a limited 2D cab. If present in the train folder, this file has precedence over the panel.cfg. The panel2.cfg has fully superseded the panel.cfg as it offers greater functionality.
+Este archivo permite la creación de una cabina 2D limitada. Si esta presente en la carpeta del tren, este archivo tiene prioridad sobre el panel.cfg. El panel2.cfg ha reemplazado completamente el panel.cfg, ya que ofrece una mejor funcionalidad.
 
 [**panel.cfg:**]({{<ref "/trains/panel_cfg/_index.md">}})  
-This file is outdated, and allows to create a limited 2D cab. It has been fully superseded by the panel2.cfg file, which should be used instead.
+Este archivo esta desactualizado, y permite la creacion de una cabina 2D limitada. Ha sido reemplazado por el archivo panel2.cfg que debe ser usado.
 
 ## ■ Sonidos
 
 [**Default sounds:**]({{<ref "/trains/default_sounds/_index.md">}})  
-If no *sound.cfg* is present, these are the default sound files that are being looked for in the train folder.
+Si no existe el archivo *sound.cfg*, los archivos predeterminados de sonido serán utilizados en la carpeta del tren.
 
 [**sound.cfg:**]({{<ref "/trains/sound_cfg/_index.md">}})  
-This defines the names of the sound files to use. The file is required if plugin-specific sounds are to be made available.
+Este defina el nombre de los archivos de sonido a ser usado. El archivo es requerido si existen archivos de plugin específicos que están hechos para ser disponibles.
 
 ## ■ Sistemas de seguridad
 
 [**Built-in systems:**]({{<ref "/trains/openbveats/_index.md">}})  
-The built-in safety systems ATS-SN, ATS-P and ATC are only used if no *ats.cfg* file is present, and if the *train.dat* is configured to define which of these systems should be available.
+Los sistemas de protección ATS-SN, ATS-P y ATC son exclusivamente usados si no esta presente el archivo *ats.cfg* , y si el *train.dat* es configurado definiendo así cual de estos sistemas debe estar disponible.
 
 [**ats.cfg:**]({{<ref "/trains/ats_cfg/_index.md">}})  
-This file defines which external train plugin to use. For information on how to create plugins, see [here]({{<ref "/trains/plugins/_index.md">}}).
+Este archivo defina cual es el plugin externo para ser usado. Para mas información de como crear los plugins, vea [aquí]({{<ref "/trains/plugins/_index.md">}}).
 
 ## ■ Otras funciones
 
 [**extensions.cfg:**]({{<ref "/trains/extensions_cfg/_index.md">}})  
-This defines additional characteristics that are not covered by the other files.
+Esto defina características adicionales que no son cubiertas por otros archivos.
