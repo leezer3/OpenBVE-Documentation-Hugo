@@ -14,10 +14,10 @@ Prácticas aceptadas y no aceptadas:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Guardar sus archivos como UTF-8                               |
+| <font color="Green">✓</font> | Guardar tus archivos como UTF-8                               |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Green">✓</font> | Guardar sus archivos de texto en cualquier codificación Unicode con un byte de marca ordenada. |
-| <font color="Red">✗</font>   | Guardar sus archivos de texto en cualquier codificación que no sea Unicode.            |
+| <font color="Green">✓</font> | Guardar tus archivos de texto en cualquier codificación Unicode con un byte de marca ordenada. |
+| <font color="Red">✗</font>   | Guardar tus archivos de texto en cualquier codificación que no sea Unicode.            |
 | <font color="Red">✗</font>   | Usar una codificación diferente para cada archivo de ruta o tren.   |
 
 {{% /table-nonheader %}}
@@ -53,7 +53,7 @@ Practicas aceptadas y no aceptadas:
 
 ## ■ Archivos y la estructura de carpetas.
 
-You should always include the full folder structure, that is, **Railway** and **Train**, when distributing routes or trains. This will make it easiest for people to understand where they need to extract the content to. Never just include a subdirectory such as *YourNameHere* that is supposed to be extracted to the Railway\Sound folder, for example. Only the more experienced users will generally be able to figure out where to put such content to by examining the files or their extensions.
+Debes incluir siempre la carpeta completa que es , **Railway** y **Train**, cuando se distribuyan rutas o trenes. Esto lo hará mas fácil para las personas entender lo que necesitan extraer el contenido y hacia donde. Por ejemplo, nunca incluyas un subdirectorio que sea *SuNombreAqui* que deba extraerse en la carpeta  Railway\Sound. Solo los usuarios con mas experiencia generalmente están en la capacidad de entender donde extraer el contenido examinando en los archivos o sus extensiones.
 
 Practicas aceptadas y no aceptadas:
 
@@ -67,7 +67,7 @@ Practicas aceptadas y no aceptadas:
 
 ## ■ Errores y advertencias
 
-Generally, your route should be free of errors. Please note that openBVE distinguishes between errors and warnings. An error is something definately wrong with your coding that should be fixed immediately. A warning is usually only raised to encourage inspection of potentially ambiguous code or code that might not have been meant the way it was written. In order to inspect your routes and trains for errors and warnings, go to the Options menu in openBVE and enable reporting them. RouteViewer and ObjectViewer always report such messages. Please note that the arious tools and openBVE itself might report a different set of messages as they don't share all the same functionality. Distributing add-ons containing errors might give users the impression that something was incompletely downloaded or was incorrectly packaged, and should generally be voided.
+Generalmente, su ruta debe estar libre de errores. Por favor tenga en consideración que openBVE distingue entre errores y advertencias. Un error es algo que esta definitivamente mal con su código y debe ser arreglado inmediatamente. Una advertencia, por lo general es para alentar a inspeccionar el código potencialmente ambiguo  o algún código que fue escrito de la manera que no debió escribirse. En orden para inspeccionar sus rutas y trenes por errores y advertencias, ve al menú Opciones en openBVE y habilita la opción para así reportarlos. El RouteViewer y ObjectViewer siempre reportan esos mensajes. Por favor, tenga en consideración que varias herramientas y el mismo openBVE reportan una serie de mensajes distintos debido a que no comparten la misma funcionalidad. Distribuir contenidos adicionales con errores le pueden dar la impresión al usuario que algo esta incompleto como en la descarga o en el paquete, y  esto debe ser generalmente evitado.
 
 Practicas aceptadas y no aceptadas:
 
