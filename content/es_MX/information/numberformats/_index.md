@@ -5,15 +5,15 @@ weight: 2
 
 <font color="Gray">Esta página describe cual formatos de número están disponibles en varios archivos de rutas y trenes y cómo implementarlos en ellos. </font>
 
-## ■ Contenido
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Integers](#integers)
-- [3. Floating-point numbers](#floating)
-- [4. Times](#times)
-- [5. Color values](#colors)
+- [1. Vista General](#overview)
+- [2. Enteros](#integers)
+- [3. Números coma-flotante](#floating)
+- [4. Tiempos](#times)
+- [5. Valores de colores](#colors)
 
 {{% /contents %}}
 
