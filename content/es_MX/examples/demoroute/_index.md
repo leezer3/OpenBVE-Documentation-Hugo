@@ -7,7 +7,7 @@ weight: 1
 ## ■ Vista general
 
 
-La **Ruta de Demostración de Objetos Animados** es una ruta minimalista con la intención de demostrar los formatos de ruta CSV y RW, y lo más importante, el uso de objetos animados.
+La **Ruta Demostrativa de Objetos Animados** es una ruta minimalista con la intención de demostrar los formatos de ruta CSV y RW, y lo más importante, el uso de objetos animados.
 
 Lo que esta ruta es:
 
