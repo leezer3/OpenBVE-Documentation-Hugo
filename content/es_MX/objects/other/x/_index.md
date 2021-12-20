@@ -12,14 +12,14 @@ El analizador original soporta mas limitado una pequeña parte del formato del o
 
 {{% notice %}}
 
-#### Color key transparencies in textures
+#### Llave de transparencia de color en texturas
 
-For legacy reasons, the color of **pure black (0,0,0)** is reserved when used in a texture.
-If a texture contains this color, then these pixels will be rendered as transparent.
+Por razones de compatibilidad, el color **negro puro (0,0,0)** esta reservado cuando es usado en una textura.
+Si una textura contiene este color, entonces estos pixeles serán renderizados como transparentes.
 
 {{% /notice %}}
 
-Full support & documentation of the X object format is not yet available from this site, but the following is an overview of the supported templates, unstructured.
+Soporte completo y documentación del formato de objeto X no esta disponible por el momento en este sitio, pero lo siguiente es una vista general de las plantillas soportadas , sin estructuras.
 
 - Frame
 - FrameRoot
