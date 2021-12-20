@@ -15,7 +15,7 @@ El comando Track.Signal  (alternativamente: Track.Sig) es usado para crear una S
 En openBVE, el comando Track.Signal toma los siguientes argumentos:
 
 {{% command %}}  
-**Track.Signal** *Aspecto*; *~~Sin uso~~*; *X*; *Y*; <u>*Dirección*</u>; *Cabeceo*; *Alabeo*  
+**Track.Signal** *Aspecto*; *~~Sin uso~~*; *X*; *Y*; <u>*Giro*</u>; *Cabeceo*; *Alabeo*  
 {{% /command %}}
 
 en el simulador de trenes BVE, el comando Track.Signal toma los siguientes argumentos:
