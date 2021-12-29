@@ -1,9 +1,9 @@
 ---
-title: "The **.csv** route format - Quick reference"
+title: "El formato de objeto **.csv** - Referencia rápida"
 hidden: true
 ---
 
-**Notes:** 
+**Notas:** 
 
 - Arguments highlighted in **<font color="green">green</font>** are affected by Options.UnitOfLength.
 - Arguments highlighted in **<font color="blue">blue</font>** are affected by Options.UnitOfSpeed.
@@ -130,11 +130,11 @@ hidden: true
 **Track.Crack** *RailIndex<sub>1</sub>*; *RailIndex<sub>2</sub>*; *CrackStructureIndex*  
 **Track.Ground** *CycleIndex*
 
-*Stations:*  
-**Track.Sta** *Name*; *ArrivalTime*; *DepartureTime*; *PassAlarm*; *Doors*; *ForcedRedSignal*; *System*; *ArrivalSound*; *StopDuration*; *PassengerRatio*; *DepartureSound*; *TimetableIndex*  
-**Track.Station** *Name*; *ArrivalTime*; *DepartureTime*; *ForcedRedSignal*; *System*; *DepartureSound*  
-**Track.Stop** *Direction*; *<font color="green">BackwardTolerance</font>*; *<font color="green">ForwardTolerance</font>*; *Cars*  
-**Track.Form** *RailIndex<sub>1</sub>*; *RailIndex<sub>2</sub>*; *RoofStructureIndex*; *FormStructureIndex*
+*Estaciones:*  
+**Track.Sta** *Nombre*; *TiempoLlegada*; *TiempoPartida*; *PassAlarm*; *Puertas*; *SeñalRojaForzada*; *Sistema*; *SonidoLlegada*; *DuraciónParada*; *TasaPasajeros*; *SonidoPartida*; *IndiceItinerario*  
+**Track.Station** *Nombre*; *SonidoLlegada*; *TiempoPartida*; *SeñalRojaForzada*; *Sistema*; *SonidoPartida*  
+**Track.Stop** *Dirección*; *<font color="green">ToleranciaTrasera</font>*; *<font color="green">ToleranciaDelantera</font>*; *Carros*  
+**Track.Form** *IndiceVía<sub>1</sub>*; *IndiceVía<sub>2</sub>*; *IndiceEstructuraTecho*; *IndiceEstructuraForma*
 
 *Signalling and speed limits:*  
 **Track.Limit** *<font color="blue">Speed</font>*; *Direction*; *Cource*  

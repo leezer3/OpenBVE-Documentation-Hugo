@@ -145,7 +145,7 @@ VehicleSpecs (class):
 | bool       | HasHoldBrake | Gets whether the train has a hold brake.                     |
 | int        | AtsNotch     | Gets the index of the brake notch that corresponds to B1 or LAP. |
 | int        | B67Notch     | Gets the index of the brake notch that corresponds to 70% of the available brake notches. |
-| int        | Cars         | Gets the number of cars the train has.                       |
+| int        | Carros         | Obtiene el numero de carros que el tren tiene.                       |
 
 {{% /table-nonheader %}}
 

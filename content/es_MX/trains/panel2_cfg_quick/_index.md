@@ -1,5 +1,5 @@
 ---
-title: "The **panel2.cfg** file format - Quick reference"
+title: "El archivo de formado **panel2.cfg** - Referencia rápida"
 hidden: true
 ---
 
@@ -78,7 +78,7 @@ hidden: true
 | mr, er, sap, bp, bc      |
 | power, brake, rev, csc   |
 | door, doorl*i*, doorr*i* |
-| hour, min, sec           |
+| hora, minuto, segundo           |
 | ats*i*, atc              |
 
 {{% /table-nonheader %}}

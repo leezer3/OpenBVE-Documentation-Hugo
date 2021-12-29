@@ -3,11 +3,11 @@ title: "車両製作に関する情報とヒント"
 linktitle: "情報とヒント"
 weight: 10
 ---
-This page presents information developers need to be aware of and general tips for object creation.
+このページでは、製作者がが知っておく必要のある情報と、オブジェクト作成の一般的なヒントをご紹介します。
 
-## ■ Exterior objects
+## ■ 外観のオブジェクト
 
-- Exterior objects need to follow the same rules as any other object. See [Information and tips on object creation]({{< ref "/objects/information/_index.md" >}}).
+- 外観のオブジェクトは、他のオブジェクトと同じように製作する必要があります。[オブジェクト製作に関する情報とヒント]({{< ref "/objects/information/_index.md" >}}) のページをご確認ください。
 
 
 

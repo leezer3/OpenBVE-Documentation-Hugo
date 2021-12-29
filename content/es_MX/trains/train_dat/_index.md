@@ -1,48 +1,48 @@
 ---
-title: "The **train.dat** file format"
-linktitle: "The train.dat file"
+title: "El formato de archivo **train.dat**"
+linktitle: "El archivo train.dat"
 weight: 2
 ---
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. The file identifier](#identifier)
-  - [2a. Version history]({{<ref "/trains/train_dat_version/_index.md" >}})
-- [3. Syntax](#syntax)
-- [4. The Acceleration section](#acceleration)
-- [5. The Performance section](#performance)
-- [6. The Delay section](#delay)
-- [7. The Move section](#move)
-- [8. The Brake section](#brake)
-- [9. The Pressure section](#pressure)
-- [10. The Handle section](#handle)
-- [11. The Cab section](#cab)
-- [12. The Car section](#car)
-- [13. The Device section](#device)
-- [14. The Motor sections](#motor)
+- [1. Vista general](#overview)
+- [2. El identificador del archivo](#identifier)
+  - [2a. Historial de versión]({{<ref "/trains/train_dat_version/_index.md" >}})
+- [3. Sintaxis](#syntax)
+- [4. La Sección aceleración](#acceleration)
+- [5. La sección Rendimiento](#performance)
+- [6. La sección de Retardo](#delay)
+- [7. La sección de Movimiento](#move)
+- [8. La sección de Freno](#brake)
+- [9. La sección de Presión](#pressure)
+- [10. La sección de Palancas](#handle)
+- [11. La sección de Cabina](#cab)
+- [12. La sección del Carro](#car)
+- [13. La sección de Dispositivo](#device)
+- [14. La sección Motor](#motor)
 
 {{% /contents %}}
 
 ## <a name="overview"></a>■ 1. Vista general
 
-The train.dat file describes the characteristics of trains including acceleration, brake behavior, installed equipment, speed-sound associations, and more.
+El archivo train.dat describe la característica de los trenes, incluyendo aceleración, comportamiento del freno, equipo instalado, asociaciones a la velocidad del sonido, y mas.
 
 {{% information %}}
 
-#### **☀** Tip: Train Editor
+#### **☀** Consejo: Train Editor
 
-You can use the [Train Editor]({{<ref "/tools/traineditor/_index.md" >}}) to more conveniently edit the train.dat. This page should still be used as a reference. However, you can also edit the train.dat manually if so desired.
+Puedes usar el [Train Editor]({{<ref "/tools/traineditor/_index.md" >}}) para mas conveniente editar el train.dat. Esta pagina debe de ser usada como referencia. Sin embargo, puedes editar el train.dat manualmente si lo deseas.
 
 {{% /information %}}
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside the train folder and is expected to be named **train.dat**. The file is interpreted on a per-line basis, from top to bottom.
+El archivo es un texto plano codificado en cualquier tipo arbitrario de [codificación]({{< ref "/information/encodings/_index.md" >}}), Sin embargo, UTF-8 con un byte de orden marca es la opción preferida El [analizar de modelo]({{< ref "/information/numberformats/_index.md" >}}) para los números es **Loose**, Sin embargo, le recomendamos que el resultado sea  *Strict* . El archivo requiere estar dentro de la carpeta del tren y el nombre es **train.dat**.  El archivo es interpretado línea por línea, de arriba hacia abajo.
 
-## <a name="identifier"></a>■ 2. The file identifier
+## <a name="identifier"></a>■ 2. El identificador del archivo
 
-The first line in the train.dat is expected to be an identifier indicating the version of the file format. Allowed values are:
+La primera lineal en el train.dat esta compuesto del identificador indicando la versión del formato del archivo. Los valores permitidos son:
 
 {{% code "*Version 1.22 is being used:*" %}}  
 BVE1200000  
@@ -55,17 +55,17 @@ BVE2000000
 OPENBVE  
 {{% /code %}}
 
-From Version **1.5.3.3** onwards, the *OPENBVE* identifier may optionally be followed by the minimum version number of openBVE required, e.g.
+Desde la Versión **1.5.3.3** en adelante, El identificador *OPENBVE* puede ser opcional seguido de la versión mínima de openBVE requerida, ej.
 
 {{% code "*openBVE 1.5.3.0 is required:*" %}}  
 OPENBVE1530  
 {{% /code %}}
 
-Any other value will be reported as being non-supported and version 2.0 will be assumed. The selected version number affects the parsing of the #ACCELERATION section, which is explained later on.
+Cualquier otro valor será reportado y además considerado como no-soportado y la versión 2.0 será asumida. El número de selección de versión afecta al análisis de la sección #ACELERACIÓN, que será explicada en adelante.
 
-## <a name="syntax"></a>■ 3. Syntax
+## <a name="syntax"></a>■ 3. Sintaxis
 
-For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored.
+Por cada lineal en el archivo, [espacios en blanco]({{< ref "/information/whitespaces/_index.md" >}}) al comienzo y al final de cada lineal son ignorados.
 
 Each line in the file after the identifier can mark the beginning of a new section or contain data entries for the last opened section. Empty lines or lines solely consisting of white spaces are **not** ignored.
 

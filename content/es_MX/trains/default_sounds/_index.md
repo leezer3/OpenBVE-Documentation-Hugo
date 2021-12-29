@@ -27,7 +27,7 @@ Without using a sound.cfg file, openBVE looks for a series of optional sound fil
 
 {{% /table %}}
 
-## ■ Sounds played on all cars (when applicable)
+## ■ Sonidos reproducidos en todos los carros (cuando aplique)
 
 {{% table %}}
 
