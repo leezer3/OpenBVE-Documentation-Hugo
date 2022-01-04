@@ -1,14 +1,14 @@
 ---
-title: "The **.animated** object format"
-linktitle: "The ANIMATED object"
+title: "Az **.animated** objektum formátum"
+linktitle: "Az ANIMATED objektum"
 weight: 3
 ---
 
-## ■ Contents
+## ■ Tartalom
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Áttekintés](#overview)
 - [2. Sections](#description)
 - [3. List of infix notation operators](#operators)
 - [4. List of functions](#functions)
@@ -20,7 +20,7 @@ weight: 3
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Áttekintés
 
 The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
 
