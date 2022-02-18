@@ -439,6 +439,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | `Cos[x]`    | The cosine (input in radians).                               |
 | `Tan[x]`    | The tangent (input in radians).                              |
 | `ArcTan[x]` | The inverse tangent (output in radians).                     |
+| `Pi` | Returns the value of *Pi*. |
 
 {{% /table-2col %}}
 
