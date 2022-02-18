@@ -982,38 +982,38 @@ Train.Interval is the same as Route.RunInterval.
 | CrackR     | 用于Track.Crack指令的填充轨道间间隙的可以被变换拉伸的右侧地面模型。 <font color="red">不支持ANIMATED格式带动画物体。</font> |
 | FreeObj    | 用于Track.FreeObj指令在轨道旁放置的外景物体模型。                           |
 | Beacon     | 用于Track.Beacon指令的轨旁无线电应答器模型。                            |
-| Weather     | Defines objects for weather generated using Track.Rain and Track.Snow. |
-| DynamicLight     | Defines dynamic lighting sets. |
+| 天气     | 为使用 Track.Rain 和 Track.Snow 生成的天气定义对象。 |
+| 动态光     | 定义动态照明集。 |
 
 {{% /table %}}
 
-Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, FormCR, RoofCL, RoofCR, CrackL and CrackR commands only accept B3D, CSV and X objects.
+通常支持的物件有 B3D、CSV、X 和 ANIMATED。 但是，FormCL、FormCR、RoofCL、RoofCR、CrackL 和 CrackR 命令只接受 B3D、CSV 和 X 物件。
 
 ➟ [More information about forms, roofs and cracks...]({{< ref "/routes/formroofcrack/_index.md" >}})
 
-Additionally, there is the Structure.Pole command, which has a slightly different syntax:
+此外，还有 Structure.Pole 命令，它的语法略有不同：
 
 {{% command %}}  
 **Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***NumberOfAdditionalRails***: An non-negative integer representing the number of additional rails covered by the pole. 0 creates a pole for one rail, 1 for two rails, etc.  
-***PoleStructureIndex***: A non-negative integer representing the pole structure index.  
-***FileName***: The object file to load, relative to the **Object** folder.  
+***额外轨道跨度值***：一个非负整数，代表这个架线柱模型跨过的额外轨道数量。0代表跨度为1组轨道的架线柱，1代表2组轨道，以此类推。  
+***架线柱模型编号***：一个非负整数，代表要加载到的模型编号。  
+***文件名***：一个相对于**Object**文件夹的路径，指向要加载的模型文件。  
 {{% /command-arguments %}}
 
-Please note that all objects but the FreeObj are inserted at the beginning of a block and should thus extend from 0 to *BlockLength* (by default 25m) on the z-axis. For further information on usage, see the respective commands from the Track namespace.
+特别提示：除FreeObj之外的物体都是在区间块的开始位置被放置的，因此这些模型在建模时尺寸应当保证整个物体头尾的Z坐标伸展区域（放置时朝轨道前方的方向即Z轴正方向）在0~ *区间块长度 *（默认值为25m）之间（这样保证正好盖住整个区间块，否则出现空隙或相互重叠）。在Track命名空间中对应命令处有更详细的解释.
 
-## <a name="texture"></a>■ 8. The Texture namespace
+## <a name="texture"></a>■ 8. Texture（材质）命名空间
 
-Commands from this namespace define which background images to use and how they are aligned.
+这个命名空间中的指令指定要使用的天空背景图像和它对齐的方式。
 
 ![illustration_background](/images/illustration_background.png)
 
-The background image is displayed as a cylindric wall around the camera whose start (viewed from above) is 60 degrees to the left of the initial forward direction (at the 10 o'clock position). From there, the background image wraps clock-wise around the cylinder with a repetition count specified via Texture.Background(*BackgroundTextureIndex*).X, which by default creates 6 repetitions in a full circle.
+背景图片被贴在一个环绕着游戏主视角摄像机的圆柱形墙上，从相对于初始前视角方向左偏60°（即十点钟方向）开始，将指定的这张图片重复平铺到Texture.Background(*背景材质编号*).X指令指定的次数（默认为一圈重复六次）。
 
-The upper 3/4 of the image is displayed above the horizon, while the lower 1/4 is displayed below the horizon. Via Texture.Background(*BackgroundTextureIndex*).Aspect, you can choose whether to have a fixed cylinder height or to preserve the aspect ratio of the texture. If the image should have a fixed height, the cylinder has a height of 1/2 its radius, which corresponds to about 20 degree inclination to the top of the image, and about -7 degrees to the bottom of the image. If the aspect ratio of the image is preserved, this takes not only the width and height of the image into account, but also the repetition count.
+图片的上方四分之三显示在地平面之上，下方四分之一显示在地平面之下。 通过Texture.Background(*背景材质编号*).Aspect指令，可以选择圆柱体的高度是固定的还是根据图片宽高比自动适应的。如果选择固定高度，圆柱体的高度将是其半径的二分之一，即图片上边缘位于20°视角，下边缘位于-7°视角。如果选择保持图片宽高比，这就不但计算图片宽度和高度，还将参考重复次数计算圆柱高度。
 
 Regardless of the repetition count you chose, you should make sure that the left and right edges of the textures fit seamlessly together. Please also take into account that top and bottom caps are created which sample from the top and bottom 10% of the image. You should avoid mountain peaks and similar extremes in the top 10% of the image in order for such extremes to not leak into the top cap.
 

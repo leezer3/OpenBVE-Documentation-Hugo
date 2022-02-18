@@ -439,6 +439,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | `Cos[x]`    | The cosine (input in radians).                               |
 | `Tan[x]`    | The tangent (input in radians).                              |
 | `ArcTan[x]` | The inverse tangent (output in radians).                     |
+| `Pi` | Returns the value of *Pi*. |
 
 {{% /table-2col %}}
 
@@ -448,11 +449,11 @@ Please also note that some combinations of prefix and infix operators are not re
 
 | Function                        | Description                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
-| `If[cond,truevalue,falsevalue]` | Si *condición* es != 0, retorna *valorverdadero*, en caso contrario *valorfalso* |
+| `If[cond,truevalue,falsevalue]` | If *cond* is != 0, returns *truevalue*, otherwise *falsevalue* |
 
 {{% /table-2col %}}
 
-## <a name="variables"></a>■ 5. Lista de variables
+## <a name="variables"></a>■ 5. List of variables
 
 ##### ● Primitives
 
@@ -461,7 +462,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | Variable       | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
 | `value`        | The value returned by the function in the last evaluation. At the beginning of the simulation, this is 0. |
-| `delta`        | La diferencia de tiempo desde la última evaluación de la función en segundos. Por favor ten en cuenta que no hay tiempo garantizado desde que transcurre entre los llamados de función sucesivos. |
+| `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
 | `currentState` | Returns the current numerical state of the object.           |
 
 {{% /table-2col %}}
@@ -473,12 +474,12 @@ Please also note that some combinations of prefix and infix operators are not re
 | Variable         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `time`           | The current in-game time measured in seconds since midnight of the first day. |
-| `hora`           | The integer part of the current hour. |
+| `hour`           | The integer part of the current hour. |
 | `minute`         | The integer part of the current minute. |
 | `second`         | The integer part of the current second. |
-| `DistanciaCamara` | Una distancia cartesiana no negativa medida desde el objeto a la cámara en metros. |
+| `cameraDistance` | The non-negative cartesian distance measured from the object to the camera in meters. |
 | `cameraXDistance` | The non-negative cartesian distance measured on the X axis from the object to the camera in meters |
-| `cameraYDistance` | Una distancia cartesiana no negativa medida desde el eje Y al objeto a la cámara en metros. |
+| `cameraYDistance` | The non-negative cartesian distance measured on the Y axis from the object to the camera in meters |
 | `cameraZDistance` | The non-negative cartesian distance measured on the Z axis from the object to the camera in meters |
 | `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
 
@@ -488,35 +489,35 @@ Please also note that some combinations of prefix and infix operators are not re
 
 Generally, objects attached to a particular train and car return values for that train and car, unless stated otherwise. For scenery objects, the reference is the driver's car of the nearest train (not necessarily the player's train).
 
-En algunos casos de las siguientes variables , *IndiceCarro* tiene el siguiente significado: 0 es el 1<sup>er</sup> carro  del frente, 1 es el 2<sup>do</sup> carro del frente, etc., mientras que -1 es el 1<sup>er</sup> carro desde la parte posterior, -2 es el 2<sup>do</sup> carro desde la parte posterior, etc. En general los indices de los carros desde -*cars* hasta *cars*-1 representan carros existentes, donde *cars* es el numero de carros que el tren posee, mientras que valores que estén fuera de este rango representan carros que no existen. Todos los trenes tienen al menos 1 carro, indices -1 y 0 están garantizados que existan para cualquier tren.
+In some of the following variables, *carIndex* has the following meaning: 0 is the 1<sup>st</sup> car from the front, 1 is the 2<sup>nd</sup> car from the front, etc., while -1 is the 1<sup>st</sup> car from the rear, -2 is the 2<sup>nd</sup> car from the rear, etc. In general, car indices from -*cars* to *cars*-1 represent existing cars, where *cars* is the number of cars the train has, while values outside of this range represent non-existing cars. As all trains have at least 1 car, indices -1 and 0 are guaranteed to exist for any train.
 
-##### ● Trenes (generalidades)
+##### ● Trains (general)
 
 {{% table-2col %}}
 
 | Variable                      | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `TrenJugador`                 | Returns 1 if the train is the player train, 0 otherwise.     |
-| `carros`                        | El número de carros que el tren tiene.                            |
+| `playerTrain`                 | Returns 1 if the train is the player train, 0 otherwise.     |
+| `cars`                        | The number of cars the train has.                            |
 | `carNumber`                   | Returns the index of the current car.                        |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speed[carIndex]`             | The signed actual speed of the car *carIndex* in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speedometer`                 | The signed perceived speed of the current car in m/s as it would appear to a speedometer on wheel slip and wheel lock. |
 | `speedometer[carIndex]`       | The signed perceived speed of the car *carIndex* in m/s as it would appear to a speedometer on wheel slip and wheel lock. |
-| `aceleración`                | The actual acceleration of the current car in m/s².          |
-| `acceleration[carIndex]`      | The actual acceleration of the car *carIndex* in m/s².       |
-| `accelerationMotor`           | La aceleración actual la cual el motor del primer carro genera en m/s². |
-| `accelerationMotor[carIndex]` | The acceleration which the motor of the car *carIndex* currently generates in m/s². |
+| `acceleration`                | The actual acceleration of the current car in m/s2.          |
+| `acceleration[carIndex]`      | The actual acceleration of the car *carIndex* in m/s2.       |
+| `accelerationMotor`           | The acceleration which the motor of the first motor car currently generates in m/s2. |
+| `accelerationMotor[carIndex]` | The acceleration which the motor of the car *carIndex* currently generates in m/s2. |
 | `distance`                    | The non-negative cartesian distance measured from the object to the closest car in meters. Only meaningful for scenery objects. |
 | `distance[carIndex]`          | The non-negative cartesian distance measured from the object to the car *carIndex* in meters, or 0 if the car does not exist. Only meaningful for scenery objects. |
 | `trackDistance`               | The signed track distance measured from the object to the closest end of the nearest train in meters. Is positive when the train is in front of the object, negative when behind, and zero when the object lies between the ends of the train. |
-| `trackDistance[carIndex]`     | La distancia de la vía desde el objeto al carro número *IndiceCarro* del tren mas próximo en metros. Es positivo cuando el centro del coche esté en frente del objeto, y negativo cuando esta por detrás, Retorna 0 si el coche no existe. Solamente es usado por objetos de escenario. |
+| `trackDistance[carIndex]`     | The signed track distance measured from the object to the car *carIndex* of the nearest train in meters. Is positive when the center of the car is in front of the object, and negative if behind. Returns 0 if the car does not exist. Only meaningful for scenery objects. |
 | `destination`                 | The currently set destination for this train. (Set via *Track.Destination* or the plugin interface) |
-| `distanceNextStation`         | La distancia en metros a la siguiente estación. |
+| `distanceNextStation`         | The distance in m to the next station. |
 | `distanceStation[stationIndex]`| The distance in m to the station with *stationIndex* |
 | `stopsNextStation`            | Whether the train stops at the next station. |
 | `stopsStation[stationIndex]`  | Whether the train stops at the station with *stationIndex* |
-| `siguienteEstación`                 | The index of the next station. |
+| `nextStation`                 | The index of the next station. |
 | `nextStationStop`             | The index of the next station where the train must stop. |
 | `terminalStation`             | The index of the terminal station for this train. |
 | `timeTable`                   | Returns 1 if the timetable is currently set as visible, 0 otherwise. |
@@ -529,11 +530,11 @@ En algunos casos de las siguientes variables , *IndiceCarro* tiene el siguiente 
 
 {{% table-2col %}}
 
-| Variable                       | Descripción                                                  |
+| Variable                       | Description                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
-| `equalizingReservoir`          | La presión actual del depósito de compensación en este carro, medido en Pascal. |
+| `equalizingReservoir`          | The current pressure in the equalizing reservoir in this car, measured in Pa. |
 | `equalizingReservoir[carIndex]` | The current pressure in the equalizing reservoir in car *carIndex*, measured in Pa. |
 | `brakePipe`                    | The current pressure in the brake pipe in this car, measured in Pa. |
 | `brakePipe[carIndex]`          | The current pressure in the brake pipe in car *carIndex*, measured in Pa. |
@@ -554,19 +555,19 @@ En algunos casos de las siguientes variables , *IndiceCarro* tiene el siguiente 
 | `doors[carIndex]`            | The state of the doors of car *carIndex*. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
 | `leftDoors`                  | The state of the left doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
 | `leftDoors[carIndex]`        | The state of the left doors of car *carIndex*. Returns a value between 0 and 1, biasing doors that are in a more open state, or -1 if the car does not exist. |
-| `rightDoors`                 | El estado de las puertas del lado derecho. Retorna 0 si esta totalmente cerrada, 1 si esta totalmente abierta, o cualquier otro estado intermedio, las puertas están parciales en un estado abierto. |
-| `rightDoors[IndiceCarro]`       | El estado de las puertas del lado derecho del carro *IndiceCarro*. Retorna un valor entre 0 y 1, en un estado parcial de puertas que están en un estado de apertura, o -1 si el carro no existe. |
+| `rightDoors`                 | The state of the right doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
+| `rightDoors[carIndex]`       | The state of the right doors of car *carIndex*. Returns a value between 0 and 1, biasing doors that are in a more open state, or -1 if the car does not exist. |
 | `leftDoorsTarget`            | The anticipated target state of the left doors. Returns either 0 (closed) or 1 (opened). |
-| `leftDoorsTarget[carIndex]`  | El estado de la trayectoria anticipada de las puertas izquierdas del carro *IndiceCarro*. Retorna 0 (cerrada) o 1 (abierta). |
+| `leftDoorsTarget[carIndex]`  | The anticipated target state of the left doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
 | `rightDoorsTarget`           | The anticipated target state of the right doors. Returns either 0 (closed) or 1 (opened). |
-| `rightDoorsTarget[carIndex]` | El estado de destino anticipado de las puertas derechas del carro *IndiceCarro*. Retorna cualquiera 0 (cerrado) ó 1 (abierto). |
+| `rightDoorsTarget[carIndex]` | The anticipated target state of the right doors of car *carIndex*. Returns either 0 (closed) or 1 (opened). |
 | `leftDoorButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
 | `rightDoorButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
 | `pilotLamp`                  | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 
 {{% /table-2col %}}
 
-##### ● Trenes (otros)
+##### ● Trains (miscellaneous)
 
 {{% table-2col %}}
 
@@ -586,19 +587,19 @@ En algunos casos de las siguientes variables , *IndiceCarro* tiene el siguiente 
 | `holdBrake`                      | Whether the hold brake is currently active (1) or not (0).   |
 | `hasHoldBrake`                   | Whether the train has a hold brake (1) or not (0).           |
 | `constSpeed`                     | Whether the const speed system is currently active (1) or not (0). |
-| `tieneVelocidadConstante`                  | Whether the train has a const speed system (1) or not (0).   |
+| `hasConstSpeed`                  | Whether the train has a const speed system (1) or not (0).   |
 | `hasPlugin`                      | Whether the train uses a plugin (1) or not (0).              |
-| `pluginState[i]`                 | El estado de la i<sup>ava</sup> variable del plugin, retornando un entero dependiendo del plugin. Es lo mismo para ats*i* en el panel2.cfg. |
+| `pluginState[i]`                 | The state of the i<sup>th</sup> plugin variable, returning an integer depending on the plugin. Is the same as ats*i* in the panel2.cfg. |
 | `FrontAxleCurveRadius[carIndex]` | Returns the curve radius at the front axle position of car *carIndex*. |
 | `RearAxleCurveRadius[carIndex]`  | Returns the curve radius at the rear axle position of car *carIndex*. |
 | `CurveCant[carIndex]`            | Returns the cant value for car *carIndex*.                   |
 | `Pitch[carIndex]`                | Returns the pitch value for car *carIndex*.                  |
-| `Odometer`                       | Retorna un numero representando la distancia en metros viajadas por el carro actual. |
+| `Odometer`                       | Returns a signed number representing the distance in meters travelled by the current car. |
 | `Odometer[carIndex]`             | Returns a signed number representing the distance in meters travelled by car *carIndex*. |
 | `Klaxon`                         | Returns the currently playing horn (if any) as follows: (0) No horns are playing (1) The primary horn is playing (2) The secondary horn is playing (3) The music horn is playing. *Note* If multiple horns are playing, the lowest value will be returned. |
 | `PrimaryKlaxon`                  | Returns 1 if the primary horn is currently playing, 0 otherwise. |
-| `KlaxonSecundario`                | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
-| `KlaxonMusical`                    | Returns 1 if the music horn is currently playing, 0 otherwise. |
+| `SecondaryKlaxon`                | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
+| `MusicKlaxon`                    | Returns 1 if the music horn is currently playing, 0 otherwise. |
 | `passAlarm`                      | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 | `stationAdjustAlarm`             | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 
@@ -608,9 +609,9 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Valores de retorno                                |      | pluginState[271] | Meaning           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
-| 256  | ATS                 | ATS          | 0 (apagado) o 1 (encendido)                         |      | 0                | ATC not available |
+| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
 | 258  | ATS RUN             | ATS 作動     | 0 (unlit / non-flashing), 1 (lit / flashing) |      | 2                | 15 km/h           |
 | 259  | P POWER             | P 電源       | 0 (unlit) or 1 (lit)                         |      | 3                | 25 km/h           |

@@ -418,6 +418,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | `Cos[x]`    | The cosine (input in radians).                               |
 | `Tan[x]`    | The tangent (input in radians).                              |
 | `ArcTan[x]` | The inverse tangent (output in radians).                     |
+| `Pi` | Returns the value of *Pi*. |
 
 {{% /table-2col %}}
 
@@ -482,10 +483,10 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `speed[carIndex]`             | The signed actual speed of the car *carIndex* in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speedometer`                 | The signed perceived speed of the current car in m/s as it would appear to a speedometer on wheel slip and wheel lock. |
 | `speedometer[carIndex]`       | The signed perceived speed of the car *carIndex* in m/s as it would appear to a speedometer on wheel slip and wheel lock. |
-| `acceleration`                | The actual acceleration of the current car in m/s².          |
-| `acceleration[carIndex]`      | The actual acceleration of the car *carIndex* in m/s².       |
-| `accelerationMotor`           | The acceleration which the motor of the first motor car currently generates in m/s². |
-| `accelerationMotor[carIndex]` | The acceleration which the motor of the car *carIndex* currently generates in m/s². |
+| `acceleration`                | The actual acceleration of the current car in m/s2.          |
+| `acceleration[carIndex]`      | The actual acceleration of the car *carIndex* in m/s2.       |
+| `accelerationMotor`           | The acceleration which the motor of the first motor car currently generates in m/s2. |
+| `accelerationMotor[carIndex]` | The acceleration which the motor of the car *carIndex* currently generates in m/s2. |
 | `distance`                    | The non-negative cartesian distance measured from the object to the closest car in meters. Only meaningful for scenery objects. |
 | `distance[carIndex]`          | The non-negative cartesian distance measured from the object to the car *carIndex* in meters, or 0 if the car does not exist. Only meaningful for scenery objects. |
 | `trackDistance`               | The signed track distance measured from the object to the closest end of the nearest train in meters. Is positive when the train is in front of the object, negative when behind, and zero when the object lies between the ends of the train. |
