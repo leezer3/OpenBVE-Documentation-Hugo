@@ -1,16 +1,16 @@
 ---
-title: "A **.b3d** objektum formátum"
-linktitle: "A B3D objektum"
+title: "The **.b3d** object format"
+linktitle: "The B3D object"
 weight: 1
 ---
 
-## ■ Tartalom
+## ■ Contents
 
 {{% contents %}}
 
-- [1. Áttekintés](#overview)
-- [2. Szintaxis](#syntax)
-- [3. Elérhető parancsok](#commands)
+- [1. Overview](#overview)
+- [2. Syntax](#syntax)
+- [3. Available commands](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
   - [Vertex](#addvertex)
   - [Face](#addface)
@@ -22,8 +22,8 @@ weight: 1
   - [Rotate, RotateAll](#rotate)
   - [Shear, ShearAll](#shear)
   - [Mirror, MirrorAll](#mirror)
-  - [Color, ColorAll](#setcolor)
-  - [EmissiveColor, EmissiveColorAll](#setemissivecolor)
+  - [Color](#setcolor)
+  - [EmissiveColor](#setemissivecolor)
   - [BlendMode](#setblendmode)
   - [WrapMode](#setwrapmode)
   - [Load](#loadtexture)
@@ -32,7 +32,7 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Áttekintés
+## <a name="overview"></a>■ 1. Overview
 
 A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
 
@@ -40,7 +40,7 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Szintaxis
+## <a name="syntax"></a>■ 2. Syntax
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
@@ -54,7 +54,7 @@ Arguments may also be omitted by leaving the text at each of the *Argument<sub>i
 
 You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## <a name="commands"></a>■ 3. Elérhető parancsok
+## <a name="commands"></a>■ 3. Available commands
 
 <a name="createmeshbuilder"></a>
 
