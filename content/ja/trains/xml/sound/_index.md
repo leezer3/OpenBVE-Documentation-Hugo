@@ -59,7 +59,7 @@ If the camera is outside of this volume of space, the volume is attenuated accor
 
 ## <a name="ats"></a>■ 3. ATS Sounds
 
-The **<ATS>** node defines sounds to be played by train plugins, and must contain a minimum of one **<Sound>** child-node, with the following additional unique properties:
+The **\<ATS>** node defines sounds to be played by train plugins, and must contain a minimum of one **\<Sound>** child-node, with the following additional unique properties:
 
 {{% command %}}  
 **\<Index>** *SoundIndex* **\</Index>**  
@@ -69,7 +69,7 @@ The **<ATS>** node defines sounds to be played by train plugins, and must contai
 
 ## <a name="run"></a>■ 4. Run Sounds
 
-The **<Run>** node defines run sounds to be played by on differing track types, and must contain a minimum of one **<Sound>** child-node, with the following additional unique properties:
+The **\<Run>** node defines run sounds to be played by on differing track types, and must contain a minimum of one **\<Sound>** child-node, with the following additional unique properties:
 
 {{% command %}}  
 **\<Index>** *SoundIndex* **\</Index>**  
@@ -79,7 +79,7 @@ The **<Run>** node defines run sounds to be played by on differing track types, 
 
 ## <a name="flange"></a>■ 5. Flange Sounds
 
-The **<Flange>** node defines flange sounds to be played on differing track types, and must contain a minimum of one **<Sound>** child-node, with the following additional unique properties:
+The **\<Flange>** node defines flange sounds to be played on differing track types, and must contain a minimum of one **\<Sound>** child-node, with the following additional unique properties:
 
 {{% command %}}  
 **\<Index>** *SoundIndex* **\</Index>**  
@@ -89,7 +89,7 @@ The **<Flange>** node defines flange sounds to be played on differing track type
 
 ## <a name="switch"></a>■ 6. Switch Sounds
 
-The **<Switch>** node defines switch sounds to be played on differing track types, and must contain a minimum of one **<Sound>** child-node, with the following additional unique properties:
+The **\<Switch>** node defines switch sounds to be played on differing track types, and must contain a minimum of one **\<Sound>** child-node, with the following additional unique properties:
 
 {{% command %}}  
 **\<Index>** *SoundIndex* **\</Index>**  
@@ -99,89 +99,89 @@ The **<Switch>** node defines switch sounds to be played on differing track type
 
 ## <a name="horn"></a>■ 7. Horn Sounds
 
-The **<Horn>** node defines sounds to be played by each train horn. This consists of three sub-nodes- **<Primary>** , **<Secondary>** and **<Music>** corresponding to the three horn types.
+The **\<Horn>** node defines sounds to be played by each train horn. This consists of three sub-nodes- **\<Primary>** , **\<Secondary>** and **\<Music>** corresponding to the three horn types.
 
-Each horn must define a **<Loop>** child-node, containing the sound to be played whilst the horn is active.
+Each horn must define a **\<Loop>** child-node, containing the sound to be played whilst the horn is active.
 
-Optionally, the **<Start>** and **<End>** child nodes may also be defined, which set a sound to be played once respectively before and after the main loop.
+Optionally, the **\<Start>** and **\<End>** child nodes may also be defined, which set a sound to be played once respectively before and after the main loop.
 
 ## <a name="compressor"></a>■ 8. Compressor Sounds
 
-The **<Compressor>** node defines the sounds to be played by the train air-compressor.
+The **\<Compressor>** node defines the sounds to be played by the train air-compressor.
 
 This node must define three child-nodes:
 
-The **<Start>** child-node, containing the sound to be played when the compressor first activates.
+The **\<Start>** child-node, containing the sound to be played when the compressor first activates.
 
-The **<Loop>** child-node, containing the sound to be played whilst the compressor is active.
+The **\<Loop>** child-node, containing the sound to be played whilst the compressor is active.
 
-The **<End>** child-node, containing the sound to be played when the compressor deactivates.
+The **\<End>** child-node, containing the sound to be played when the compressor deactivates.
 
 ## <a name="handle"></a>■ 9. Handle Sounds
 
-The **<PowerHandle>** and **<BrakeHandle>** nodes defines the sounds to be played when the respective power and brake handles are moved.
+The **\<PowerHandle>** and **\<BrakeHandle>** nodes defines the sounds to be played when the respective power and brake handles are moved.
 
 These nodes support the following child nodes:
 
-The **<Minimum>** child-node, containing the sound to be played when the handle is returned to notch zero.
+The **\<Minimum>** child-node, containing the sound to be played when the handle is returned to notch zero.
 
-The **<Apply>** child-node, containing the sound to be played when the notch is changed to a notch greater than zero, but less than maximum.
+The **\<Apply>** child-node, containing the sound to be played when the notch is changed to a notch greater than zero, but less than maximum.
 
-The **<Maxiumum>** child-node, containing the sound to be played when the handle is increased to the maximum notch.
+The **\<Maxiumum>** child-node, containing the sound to be played when the handle is increased to the maximum notch.
 
 ## <a name="reverser"></a>■ 10. Reverser Sounds
 
-The **<Reverser>** node defines the sounds to be played when the reverser is moved.
+The **\<Reverser>** node defines the sounds to be played when the reverser is moved.
 
 This node supports the following child nodes:
 
-The **<On>** child-node, containing the sound to be played when the reverser is moved to forwards or reverse.
+The **\<On>** child-node, containing the sound to be played when the reverser is moved to forwards or reverse.
 
-The **<Off>** child-node, containing the sound to be played when the reverser is returned to neutral.
+The **\<Off>** child-node, containing the sound to be played when the reverser is returned to neutral.
 
 ## <a name="brake"></a>■ 11. Brake Sounds
 
-The **<Brake>** node defines the sounds to be played when the brakes are activated.
+The **\<Brake>** node defines the sounds to be played when the brakes are activated.
 
 This node supports the following child nodes:
 
-The **<ReleaseFull>** child-node, containing the sound to be played when the pressure in the brake cylinder is decreased to zero.
+The **\<ReleaseFull>** child-node, containing the sound to be played when the pressure in the brake cylinder is decreased to zero.
 
-The **<ReleaseHigh>** child-node, containing the sound to be played when the pressure in the brake cylinder is decreased from a high value.
+The **\<ReleaseHigh>** child-node, containing the sound to be played when the pressure in the brake cylinder is decreased from a high value.
 
-The **<Release>** child-node, containing the sound to be played when the pressure in the brake cylinder is decreased from a high value to a non-zero value
+The **\<Release>** child-node, containing the sound to be played when the pressure in the brake cylinder is decreased from a high value to a non-zero value
 
-The **<Emergency>** child-node, containing the sound to be played when the emergency brakes are activated.
+The **\<Emergency>** child-node, containing the sound to be played when the emergency brakes are activated.
 
-The **<Application>** child-node, containing the sound to be played when the handle is moved into the SRV or EMG position, if the train has an automatic air brake. For other trains, is played when the brake notch is decreased
+The **\<Application>** child-node, containing the sound to be played when the handle is moved into the SRV or EMG position, if the train has an automatic air brake. For other trains, is played when the brake notch is decreased
 
 ## <a name="doors"></a>■ 12. Door Sounds
 
-The **<Doors>** node defines the sounds to be played when the doors open and close.
+The **\<Doors>** node defines the sounds to be played when the doors open and close.
 
 This node supports the following child nodes:
 
-The **<OpenLeft>** child-node, containing the sound to be played when the left-hand doors open.
+The **\<OpenLeft>** child-node, containing the sound to be played when the left-hand doors open.
 
-The **<CloseLeft>** child-node, containing the sound to be played when the left-hand doors close.
+The **\<CloseLeft>** child-node, containing the sound to be played when the left-hand doors close.
 
-The **<OpenRight>** child-node, containing the sound to be played when the right-hand doors open.
+The **\<OpenRight>** child-node, containing the sound to be played when the right-hand doors open.
 
-The **<CloseRight>** child-node, containing the sound to be played when the right-hand doors close.
+The **\<CloseRight>** child-node, containing the sound to be played when the right-hand doors close.
 
 ## <a name="suspension"></a>■ 13. Suspension Sounds
 
-The **<Suspension>** node defines the sounds to be played by the motion of the train's suspension.
+The **\<Suspension>** node defines the sounds to be played by the motion of the train's suspension.
 
 This node supports the following child nodes:
 
-The **<Left>** child-node, containing the sound to be played when the train sways to the left.
+The **\<Left>** child-node, containing the sound to be played when the train sways to the left.
 
-The **<Right>** child-node, containing the sound to be played when the train sways to the right.
+The **\<Right>** child-node, containing the sound to be played when the train sways to the right.
 
 ## <a name="motor"></a>■ 14. Motor Sounds
 
-The **<Motor>** node defines the sounds attached to each Motor Sound table, and must contain a minimum of one **<Sound>** child-node, with the following additional unique properties:
+The **\<Motor>** node defines the sounds attached to each Motor Sound table, and must contain a minimum of one **\<Sound>** child-node, with the following additional unique properties:
 
 {{% command %}}  
 **\<Index>** *SoundIndex* **\</Index>**  
@@ -191,30 +191,30 @@ The **<Motor>** node defines the sounds attached to each Motor Sound table, and 
 
 ## <a name="breaker"></a>■ 15. Breaker Sounds
 
-The **<Breaker>** node defines the sounds triggered by the train's circuit breakers, and supports the following child-nodes:
+The **\<Breaker>** node defines the sounds triggered by the train's circuit breakers, and supports the following child-nodes:
 
-The **<On>** child-node, containing the sound played once when power is resumed (was interrupted before). There is a series of circumstances when that can happen, for example when moving from power notch zero to power notch one, assuming the reverser is non-neutral and the brakes are released. It can also happen when the power notch is already non-zero, but the reverser or brakes previously interrupted the power. The safety systems can also interrupt power.
+The **\<On>** child-node, containing the sound played once when power is resumed (was interrupted before). There is a series of circumstances when that can happen, for example when moving from power notch zero to power notch one, assuming the reverser is non-neutral and the brakes are released. It can also happen when the power notch is already non-zero, but the reverser or brakes previously interrupted the power. The safety systems can also interrupt power.
 
-The **<Off>** child-node, containing the sound to be played once when power is interrupted or resumed. There is a series of circumstances when that can happen, for example when moving from power notch zero to power notch one, or vice versa, assuming the reverser is non-neutral and the brakes are released. The safety systems can also interrupt power.
+The **\<Off>** child-node, containing the sound to be played once when power is interrupted or resumed. There is a series of circumstances when that can happen, for example when moving from power notch zero to power notch one, or vice versa, assuming the reverser is non-neutral and the brakes are released. The safety systems can also interrupt power.
 
 ## <a name="windscreen"></a>■ 16. Windscreen Related Sounds
 
-The **<Windscreen>** node defines the sounds relating to the train's windscreen and wipers. 
+The **\<Windscreen>** node defines the sounds relating to the train's windscreen and wipers. 
 
 This node supports the following child nodes:
 
-The **<RainDrop>** child-node, containing the sound played when a raindrop hits the windscreen.
+The **\<RainDrop>** child-node, containing the sound played when a raindrop hits the windscreen.
 
-The **<WetWipe>** child-node, containing the sound played when the wiper moves with more than 20% of the available drops visible.
+The **\<WetWipe>** child-node, containing the sound played when the wiper moves with more than 20% of the available drops visible.
 
-The **<DryWipe>** child-node, containing the sound played when the wiper moves with less than 20% of the available drops visible.
+The **\<DryWipe>** child-node, containing the sound played when the wiper moves with less than 20% of the available drops visible.
 
-The **<Switch>** child-node, containing the sound played when wiper switch is moved.
+The **\<Switch>** child-node, containing the sound played when wiper switch is moved.
 
 ## <a name="misc"></a>■ 17. Miscellaneous Sounds
 
-The **<Loop>** node defines a sound to be played in a continuous loop throughout the simulation.
+The **\<Loop>** node defines a sound to be played in a continuous loop throughout the simulation.
 
-The **<Rub>** node defines the sound to be played in a loop when the brake shoe rubs against the wheels. The sound is played at a pitch inversely proportional to the speed, and the volume of the sound decreases with increasing speeds.
+The **\<Rub>** node defines the sound to be played in a loop when the brake shoe rubs against the wheels. The sound is played at a pitch inversely proportional to the speed, and the volume of the sound decreases with increasing speeds.
 
-The **<Halt>** node defines the sound to be played once or in a loop (depending on the train.dat setting) when the pass alarm system warns about an approaching station stop.
+The **\<Halt>** node defines the sound to be played once or in a loop (depending on the train.dat setting) when the pass alarm system warns about an approaching station stop.

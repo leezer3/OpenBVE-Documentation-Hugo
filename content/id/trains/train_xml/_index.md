@@ -13,6 +13,7 @@ This page is still under construction.
 - [1. Overview](#overview)
 - [2. The Train section](#train)
 - [3. The Car section](#car)
+- [4. The Coupler section](#coupler)
 
 {{% /contents %}}
 
@@ -158,3 +159,32 @@ A child-node must be of the following format:
 
 **Position** should contain a comma-separated 3D vector, defining the position of the driver's eyes within the car, relative to *0,0,0*
 
+## <a name="coupler"></a>■ 4. The Coupler section
+
+Car nodes (or child file references) may optionally be separated by a **\<Coupler>** node.
+
+This defines the coupler between the two cars, and supports the following properties:
+
+{{% command %}}  
+**\<Minimum>** *Distance* **\</Distance>**  
+{{% /command %}}
+
+**Distance** sets the minimum distance between the two cars.
+
+{{% command %}}  
+**\<Maximum>** *Distance* **\</Maximum>**  
+{{% /command %}}
+
+**Distance** sets the maximum distance between the two cars.
+
+{{% command %}}  
+**\<Object>** *ObjectFile* **\</Object>**  
+{{% /command %}}
+
+**ObjectFile** should be a relative on-disk path to the exterior 3D object to use.
+
+{{% note %}}
+
+The coupler object is not deformed when the coupler stretches / compresses.
+
+{{% /note %}}
