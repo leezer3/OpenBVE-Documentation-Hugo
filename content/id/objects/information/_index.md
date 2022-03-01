@@ -14,7 +14,7 @@ Bagian ini menjelaskan hal yang harus diperhatikan oleh kreator untuk membuat ob
 ## ■ Geometri
 
 - Avoid overly complex geometry where the end results are hardly noticable. Avoid using Cube and Cylinder commands (B3D/CSV) if parts of the cube/cylinder will not be visible. Do not create cylinder caps unless they are likely to be visible.
-- To get smoothly curved objects, use custom normals with fewer faces instead of no custom normals with many faces.
+- Untuk mendapatkan objek melengkung yang mulus, gunakan arah normal yang dikustom dengan menggunakan sedikit face daripada tidak menggunakan arah normal yang tidak dikustom dengan face yang banyak.
 
 ## ■ Texture gambar
 

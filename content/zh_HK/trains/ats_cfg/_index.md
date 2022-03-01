@@ -1,7 +1,7 @@
 ---
 title: "**ats.cfg** 檔案格式"
 linktitle: "**ats.cfg** 檔案"
-weight: 8
+weight: 9
 ---
 
 ats.cfg 文件係純文本文件, 由一行構成: 要使用的插件的相對路徑。

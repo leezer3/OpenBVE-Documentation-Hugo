@@ -1,7 +1,7 @@
 ---
 title: "File format **extensions.cfg**"
 linktitle: "File **Extensions.cfg**"
-weight: 3
+weight: 4
 ---
 
 ## ■ Isi

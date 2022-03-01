@@ -1,7 +1,7 @@
 ---
 title: "Format de fitxer **sound.cfg**"
 linktitle: "Fitxer sound.cfg"
-weight: 7
+weight: 8
 ---
 
 ## ■ Continguts

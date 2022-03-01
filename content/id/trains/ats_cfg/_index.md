@@ -1,7 +1,7 @@
 ---
 title: "File **ats.cfg**"
 linktitle: "File ats.cfg"
-weight: 8
+weight: 9
 ---
 
 File ats.cfg berisi hanya 1 baris teks tengan lokasi file plugin yang dipakai

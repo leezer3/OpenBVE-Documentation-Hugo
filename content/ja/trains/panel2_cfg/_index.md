@@ -1,7 +1,7 @@
 ---
 title: "**panel2.cfg** ファイルフォーマット"
 linktitle: "panel2.cfg ファイル"
-weight: 4
+weight: 5
 ---
 
 ## ■ 内容
@@ -981,7 +981,7 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 
 | Base              | subjectDescription                                           |
 | ----------------- | ------------------------------------------------------------ |
-| acc               | Returns the (signed) acceleration of the train in meters per second squared (m/s²). |
+| acc               | Returns the (signed) acceleration of the train in meters per second squared (m/s2). |
 | atc               | Equivalent to *ats271*.                                      |
 | ats*i*            | Returns the state of the *i*<sup>th</sup> plugin variable, depending on the plugin used. This is the same as pluginState[*i*] in animated objects.<br/>For the built-in safety systems ATS and ATC, see below. |
 | locobrakecylinder | Returns the pressure of the brake cylinder on the driver's car in kPa (1000 Pa). |
@@ -1000,7 +1000,7 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 | hour              | Returns the integer part of the current hour.                |
 | kmph              | Returns the absolute speed of the train in kilometers per hour (km/h). |
 | min               | Returns the integer part of the current minute.              |
-| motor             | Returns the acceleration which the motor of the first motor car currently generates in m/s². |
+| motor             | Returns the acceleration which the motor of the first motor car currently generates in m/s2. |
 | mph               | Returns the absolute speed of the train in international miles per hour (mph). |
 | mr                | Returns the pressure of the main reservoir in kPa (1000 Pa). |
 | ms                | Returns the absolute speed of the train in meters per second (m/s). |

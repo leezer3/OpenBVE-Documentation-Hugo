@@ -1,6 +1,6 @@
 ---
 title: "Default sounds"
-weight: 6
+weight: 7
 ---
 
 Without using a sound.cfg file, openBVE looks for a series of optional sound files within the train folder.

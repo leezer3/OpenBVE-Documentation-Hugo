@@ -1,6 +1,6 @@
 ---
 title: "Plugins de Tren"
-weight: 9
+weight: 10
 ---
 Los plugins de tren permiten de cambiar la conducta de los trenes en cierto grado. Cosas que puedes hacer incluidas mostrar indicadores personalizados en los paneles, reproducir sonidos personalizados y sustituir las palancas del conductor que están originalmente configurados. Plugins también pueden usarse para simular los equipos de seguridad tales como ATS o ATC, entre otras cosas.
 

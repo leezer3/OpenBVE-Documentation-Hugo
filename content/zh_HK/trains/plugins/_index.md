@@ -1,6 +1,6 @@
 ---
 title: "列車插件"
-weight: 9
+weight: 10
 ---
 列車插件可更改列車運行時的行為。您可以在Panel上向顯示Custom Indicator，播放聲音並覆蓋司機設置的手柄。插件可模擬安全設備，例如ATS或ATC。
 

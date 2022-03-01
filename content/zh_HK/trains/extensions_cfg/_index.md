@@ -1,7 +1,7 @@
 ---
 title: "**extensions.cfg** 檔案格式"
 linktitle: "extensions.cfg 檔案"
-weight: 3
+weight: 4
 ---
 
 ## 目錄

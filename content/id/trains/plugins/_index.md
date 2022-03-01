@@ -1,6 +1,6 @@
 ---
 title: "Plugin kereta"
-weight: 9
+weight: 10
 ---
 Plugin kereta berfungsi untuk menambahkan atau mengubah settingan kereta dari default / standarnya di openBVE. Misalnya untuk menambahkan indikator baru pada panel, menambahkan suara sendiri dan mengganti sistem kemudi, atau membuat sistem keamanan ATS, ATC, dan sebagainya.
 

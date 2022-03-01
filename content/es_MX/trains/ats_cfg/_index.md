@@ -1,7 +1,7 @@
 ---
 title: "El formato de archivo **ats.cfg**"
 linktitle: "El archivo ats.cfg"
-weight: 8
+weight: 9
 ---
 
 El archivo ats.cfg es un archivo de texto plano consistente de una sola linea : el directorio relativo del plugin que será utilizado.

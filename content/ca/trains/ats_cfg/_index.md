@@ -1,7 +1,7 @@
 ---
 title: "Format de fitxer **ats.cfg**"
 linktitle: "Fitxer ats.cfg"
-weight: 8
+weight: 9
 ---
 
 The ats.cfg file is a plain text file consisting of a single line: the relative path to the plugin that is to be used.

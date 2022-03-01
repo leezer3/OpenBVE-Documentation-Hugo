@@ -1,7 +1,7 @@
 ---
 title: "**ats.cfg** ファイルの書式"
 linktitle: "ats.cfgファイル"
-weight: 8
+weight: 9
 ---
 
 ats.cfgファイルは、使用するプラグインへの相対パスの1行で構成されるシンプルなテキストファイルです。
