@@ -4,11 +4,11 @@ linktitle: "The panel2.cfg file"
 weight: 5
 ---
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Syntax](#syntax)
 - [3. The This section](#this)
 - [4. The PilotLamp section](#pilotlamp)
@@ -49,13 +49,13 @@ For all elements that take a texture, you can specify distinct daytime and night
 
 {{% notice %}}
 
-#### Overlay and Lighting
+#### Sobreposición e Iluminación
 
 The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light.
 
 {{% /notice %}}
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxis
 
 Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
@@ -73,7 +73,7 @@ NameOfTheKey = Value
 
 Some values are further split into multiple parts, separated by commas (U+002C).
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Puedes usar comentarios en cualquier lado al final de una línea. Un comentario comienza por punto y coma (U+003B). Si los comentarios estan presentes, son quitados de las líneas después de ser procesados.
 
 ## <a name="this"></a>■ 3. The This section
 
@@ -1009,13 +1009,13 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 | sap               | Returns the pressure of the straight air pipe in kPa (1000 Pa). |
 | sec               | Returns the integer part of the current second.              |
 | true              | Always returns 1. This is useful for the *PilotLamp* element in order to always show the associated bitmap. |
-| Klaxon            | Returns the currently playing horn (if any) as follows: (0) No horns are playing (1) The primary horn is playing (2) The secondary horn is playing (3) The music horn is playing. *Note* If multiple horns are playing, the lowest value will be returned. |
-| PrimaryKlaxon     | Returns 1 if the primary horn is currently playing, 0 otherwise. |
-| SecondaryKlaxon   | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
-| MusicKlaxon       | Returns 1 if the music horn is currently playing, 0 otherwise. |
-| passAlarm         | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
-| pilotLamp         | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
-| stationAdjustAlarm | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+| Klaxon            | Retorna la bocina actual que esta reproduciendo (cualquiera) de las siguientes: (0) Ninguna bocina se esta reproduciendo (1) La bocina principal esta reproduciéndose (2) La bocina secundaria esta reproduciéndose (3) La bocina musical esta reproduciéndose. *Nota*: Si múltiples bocinas se encuentran reproduciéndose, el valor mas bajo será retornado. |
+| PrimaryKlaxon     | Retorna 1 si la bocina primaria esta reproduciéndose, 0 en caso contrario. |
+| SecondaryKlaxon   | Retorna 1 si la bocina secundaria esta reproduciéndose, 0 en caso contrario. |
+| MusicKlaxon       | Retorna 1 si la bocina musical esta reproduciéndose, 0 en caso contrario. |
+| passAlarm         | Cuando la alarma de rebase de estación ha sido activada. Retorna 0 (inactivo) o 1 (activo). |
+| pilotLamp         | El estado de la lampara piloto (Puertas cerradas y listo para iniciar). Retorna cualquiera 0 (apagado) o 1 (encendido). |
+| stationAdjustAlarm | Cuando la alarma de ajuste de estación ha sido activada. Retorna 0 (inactivo) o 1 (activo). |
 | wiperPosition | The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) |
 
 
@@ -1025,24 +1025,24 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | ats271 | Meaning           |
+| *i*  | Español             | 日本語 - Japonés       | Valores de retorno                                |      | ats271 | Significado           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ------ | ----------------- |
-| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0      | ATC not available |
-| 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1      | 0 km/h            |
-| 258  | ATS RUN             | ATS 作動     | 0 (unlit / non-flashing), 1 (lit / flashing) |      | 2      | 15 km/h           |
-| 259  | P POWER             | P 電源       | 0 (unlit) or 1 (lit)                         |      | 3      | 25 km/h           |
-| 260  | PTN APPROACH        | パターン接近 | 0 (unlit) or 1 (lit)                         |      | 4      | 45 km/h           |
-| 261  | BRAKE RELEASE       | ブレーキ開放 | 0 (unlit) or 1 (lit)                         |      | 5      | 55 km/h           |
-| 262  | BRAKE APPLY         | ブレーキ動作 | 0 (unlit) or 1 (lit)                         |      | 6      | 65 km/h           |
-| 263  | ATS P               | ATS-P        | 0 (unlit) or 1 (lit)                         |      | 7      | 75 km/h           |
-| 264  | FAILURE             | 故障         | 0 (unlit) or 1 (lit)                         |      | 8      | 90 km/h           |
-| 265  | ATC                 | ATC          | 0 (unlit) or 1 (lit)                         |      | 9      | 100 km/h          |
-| 266  | ATC POWER           | ATC 電源     | 0 (unlit) or 1 (lit)                         |      | 10     | 110 km/h          |
-| 267  | ATC SRV             | ATC 常用     | 0 (unlit) or 1 (lit)                         |      | 11     | 120 km/h          |
-| 268  | ATC EMG             | ATC 非常     | 0 (unlit) or 1 (lit)                         |      | 12     | ATS is active     |
-| 269  | CONST SPEED         | 定速         | 0 (unlit) or 1 (lit)                         |      |        |                   |
-| 270  | EB                  | EB           | 0 (unlit) or 1 (lit)                         |      |        |                   |
-| 271  | ATC speed indicator |              | 0 - 12, see table on the right               |      |        |                   |
+| 256  | ATS                 | ATS          | 0 (apagado) o 1 (encendido)                         |      | 0      | ATC no disponible |
+| 257  | ATS RUN             | ATS 作動     | 0 (apagado), 1 (encendido) o 2 (parpadeando)           |      | 1      | 0 km/h            |
+| 258  | ATS RUN             | ATS 作動     | 0 (apagado / sin parpadear), 1 (encendido / parpadeando) |      | 2      | 15 km/h           |
+| 259  | P POWER             | P 電源       | 0 (apagado) o 1 (encendido)                         |      | 3      | 25 km/h           |
+| 260  | PTN APPROACH        | パターン接近 | 0 (apagado) o 1 (encendido)                         |      | 4      | 45 km/h           |
+| 261  | FRENO LIBERADO       | ブレーキ開放 | 0 (apagado) o 1 (encendido)                         |      | 5      | 55 km/h           |
+| 262  | FRENO APLICADO         | ブレーキ動作 | 0 (apagado) o 1 (encendido)                         |      | 6      | 65 km/h           |
+| 263  | ATS P               | ATS-P        | 0 (apagado) o 1 (encendido)                         |      | 7      | 75 km/h           |
+| 264  | FALLA             | 故障         | 0 (apagado) o 1 (encendido)                         |      | 8      | 90 km/h           |
+| 265  | ATC                 | ATC          | 0 (apagado) o 1 (encendido)                         |      | 9      | 100 km/h          |
+| 266  | ATC ENCENDIDO           | ATC 電源     | 0 (apagado) o 1 (encendido)                         |      | 10     | 110 km/h          |
+| 267  | ATC SERVICIO             | ATC 常用     | 0 (apagado) o 1 (encendido)                         |      | 11     | 120 km/h          |
+| 268  | ATC EMERGENCIA             | ATC 非常     | 0 (apagado) o 1 (encendido)                         |      | 12     | ATS esta activo     |
+| 269  | VELOCIDAD CONSTANTE         | 定速         | 0 (apagado) o 1 (encendido)                         |      |        |                   |
+| 270  | EB                  | EB           | 0 (apagado) o 1 (encendido)                         |      |        |                   |
+| 271  | Indicador de velocidad del ATC |              | 0 - 12, ver tabla a la derecha               |      |        |                   |
 
 {{% /table %}}
 
@@ -1050,7 +1050,7 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% table %}}
 
-| Subject suffix | Description                                                  |
+| Subject suffix | Descripción                                                  |
 | -------------- | ------------------------------------------------------------ |
 | d*i*           | With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10. |
 
