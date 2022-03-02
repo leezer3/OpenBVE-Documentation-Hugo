@@ -4,7 +4,7 @@ linktitle: "The panel2.cfg file"
 weight: 5
 ---
 
-## ■ Contents
+## ■ Tartalom
 
 {{% contents %}}
 
@@ -21,7 +21,7 @@ weight: 5
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Áttekintés
 
 The panel2.cfg file allows to create 2D panels by defining which elements to use, like lamps, needles, etc., what they are intended to display and where they are to be placed.
 
