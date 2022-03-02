@@ -25,24 +25,24 @@ This tool does not support the plugin API yet. This means that only the built-in
 
 Vegeu també el registre de canvis del programa principal.
 
-##### ● Version 1.4.4.0 (2016-01-30)
+##### ● Versió 1.4.4.0 (30/01/2016)
 
 - Added support for antialiasing and anisotropic filtering.
 - Added support for different window sizes. 
 
-##### ● Version 1.3.2.0 (2011-11-30)
+##### ● Versió 1.3.2.0 (30/11/2011)
 
 - Added support for managed content package references.
 
-##### ● Version 1.2.11.0 (2011-01-07)
+##### ● Versió 1.2.11.0 (07/01/2011)
 
 - The file system organization has changed along with the openBVE main program. Route Viewer accepts the /filesystem=FILE switch.
 
-##### ● Version 1.2.7.2 (2010-07-31)
+##### ● Versió 1.2.7.2 (31/07/2010)
 
 - Animated objects were not updated immediately after loading or reloading routes, but only after *RefreshRate* seconds had passed.
 
-##### ● Version 1.2.6.0 (2010-03-14)
+##### ● Versió 1.2.6.0 (14/03/2010)
 
 - If a CSV file is passed as a command-line argument, Object Viewer is started if the file is determined to be a CSV object instead of a CSV route. The detection is now solely based on the presence of the *CreateMeshBuilder* string.
 
@@ -50,7 +50,7 @@ Vegeu també el registre de canvis del programa principal.
 
 - You can now enter a track position using the number keys and jump to that position.
 
-##### ● Version 1.2.5.0 (2010-01-24)
+##### ● Versió 1.2.5.0 (24/01/2010)
 
 - Removed the dependency on specific versions of the Tao.OpenAL, Tao.OpenGL and Tao.SDL libraries, which could cause problems in recent Linux distributions.
 
@@ -62,11 +62,11 @@ Vegeu també el registre de canvis del programa principal.
 
 - The camera yaw, pitch and roll are now displayed along with the track position and offsets.
 
-##### ● Version 1.1.0.0 (2009-06-28)
+##### ● Versió 1.1.0.0 (28/06/2009)
 
 - The set of variables than can be used in functions of animated objects has been vastly extended. This matches with the corresponding version of openBVE.
 
-##### ● Version 1.0.7.1 (2009-06-14)
+##### ● Versió 1.0.7.1 (14/06/2009)
 
 - Support for new parameters in *ArrivalTime* in Track.Sta and Track.Station commands.
 - Support for custom normals in AddVertex and Vertex commands (objects).
@@ -77,6 +77,6 @@ Vegeu també el registre de canvis del programa principal.
 
 - Added the functionality to mute sound.  
 
-##### ● Version 1.0.4.0 (2009-04-26)
+##### ● Versió 1.0.4.0 (26/04/2009)
 
 - S'han canviat algunes assignacions de tecles perquè siguin més fàcils de recordar.
