@@ -1,16 +1,16 @@
 ---
-title: "The Wavefront **.obj** object format"
+title: "Format objek Wavefront **.obj**"
 linktitle: "Wavefront (.obj)"
 weight: 4
 ---
 
 ![construction_64](/images/construction_64.png)
 
-openBVE supports a subset of the Wavefront .obj object format. 
+openBVE dapat membaca file objek Wavefront dengan format .obj
 
-The following is a non-exhaustive list of unsupported functions:
+Berikut ini adalah fitur yang tidak dapat digunakan:
 
-- Animation
-- Lighting
+- Animasi
+- Pencahayaan
 - Custom shaders
 - Reflection / luminosity
