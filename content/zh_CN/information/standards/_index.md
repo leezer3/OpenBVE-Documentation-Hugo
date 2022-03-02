@@ -1,19 +1,19 @@
 ---
-title: "Standards"
+title: "標準"
 weight: 6
 ---
 
-On a few occasions in route and train development, you will need to coordinate your efforts with other developers in order to allow easy exchange of trains across routes. Otherwise, trains might not work on a route or might not sound correctly.
+喺路線同列車開發時嘅某些情況下，您要同其他開發人士協調，以便輕鬆咁喺唔同路線交換列車。否則，列車可能無法喺路線上行或聽起嚟唔正確。
 
 For example, the run i.wav sounds are played whenever the train moves along the rails, where i is a number identifying the rail type. If developer A used run1.wav to represent a continuously elded rail, but another developer B used run1.wav as the sound to represent jointed rails on concrete leepers, both trains might not be suited for use on the same route. This makes exchange of trains across routes difficult, even if a train would be used on that route in reality.
 
 As such, if you know of standards that have been created and are actually employed by enough developers, give your feedback, and these standards might be listed here.
 
-## ■ Train run*i*.wav sounds
+## ■ 列車 run*i*.wav 聲檔
 
 The only attempt currently known is the [BVE Track Sound Standard](http://www.railsimroutes.net/bvetss/index.php). It should be noted that it is not widely used outside the UK, and also not necessarily suited for all kinds of railways.
 
-## ■ Train flange*i*.wav sounds
+## ■ 列車 flange*i*.wav 聲檔
 
 No attempts are currently known to standardize the meanings of flange*i*.wav sounds.
 
@@ -23,7 +23,7 @@ Beacons reserved for the built-in safety systems ATS-SN and ATS-P. These should 
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Beacon type | Optional data  | 含义                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
 | 0           | *SwitchSystem* | S-type transponder for ATS-SN. Placed about 600m in front of a signal. Raises an alarm the driver has to acknowledge whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
 | 1           | *SwitchSystem* | SN-type transponder for ATS-SN. Placed about 20m in front of a signal. Triggers the emergency brakes whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
@@ -37,7 +37,7 @@ Beacons used by legacy train systems to simulate weather (Note- These will also 
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Beacon type | Optional data  | 含义                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
 | 21           | *Intensity*   | Sets the intensity of the weather.<br /><br />Values for *Intensity* should be within the following range:<br />0: No weather.<br />100: Maximum weather intensity. |
 
@@ -47,7 +47,7 @@ UK Basic AWS / TPWS Beacons (Supported by OS_ATS, UKTrainSys, UKDT, UKMU & UKEMU
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Beacon type | Optional data  | 含义                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
 | 44000       | 0              | Permanent AWS signal approach magnet. Raises an alarm the driver has to acknowledge if the referenced signal is red. |
 | 44001       | 0              | AWS speed restriction magnet. Raises an alarm the driver has to acknowledge regardless. |
