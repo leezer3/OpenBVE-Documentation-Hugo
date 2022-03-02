@@ -1,10 +1,10 @@
 ---
-title: "The **.animated** object format"
-linktitle: "The ANIMATED object"
+title: "**.animated** 오브젝트 영역"
+linktitle: ".animated 오브젝트"
 weight: 3
 ---
 
-## ■ Contents
+## ■ 목차
 
 {{% contents %}}
 
@@ -20,74 +20,74 @@ weight: 3
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 개요
 
-The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
+애니메이션 개체 형식은 다른 개체(B3D/CSV/X)를 참조하고 애니메이션을 적용할 수 있는 컨테이너 형식입니다. 또한 다른 개체(다른 애니메이션 개체 포함)를 애니메이션화하지 않고 그룹화할 수 있습니다.
 
-Animated objects can be used in CSV/RW routes (unless explicitly disallowed by some commands), as train exterior objects via the *extensions.cfg*, and as 3D cabs via the *panel.animated* file.
+.animated 오브젝트는 .CSV/RW 루트(일부 구문 제외)에 이용될 수 있고,  *extensions.cfg* 파일을 통해 차량의 외부시점 오브젝트 또는 *panel.animated* 파일을 통해 3D 캡뷰로도 이용될 수 있다.
 
-##### ● Basics
+##### ● 기본
 
 Animation is performed via the following primitives:
 
-- State changes - basically allowing to switch between different objects at any time
-- Translation - moving objects in three independent directions
-- Rotation - rotating objects around three independent axes
-- Texture shifts - allowing to shift the texture coordinates of objects in two independent directions
+- 상태 변경 - 기본적으로 다른 개체 간에 언제든지 전환할 수 있음
+- 이동 - 물체를 세 개의 독립된 방향으로 이동
+- 회전 - 세 개의 독립된 축을 중심으로 물체가 회전합니다.
+- 텍스처 이동 - 물체의 텍스처 좌표를 두 개의 독립된 방향으로 이동할 수 있습니다
 
-##### ● A little formality
+##### ● 약간의 형식
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file name is arbitrary, but must have the extension **.animated**. The file is interpreted on a per-line basis, from top to bottom.
+파일은 임의로 인코딩된 일반 텍스트 파일이다. [인코딩]({{< ref "/information/encodings/_index.md" >}}), 하지만, UTF-8바이트 순서 표시를 선호한다. [파싱모델]({{< ref "/information/numberformats/_index.md" >}}) 숫자**Strict** 있다. 파일 이름, 하지만 연장 **.animated**이 있어야 한다는 자의적이야. 파일per-line 기초 위에 위에서 아래로 해석됩니다.
 
-## <a name="description"></a>■ 2. Sections
+## <a name="description"></a>■ 2. 구역
 
-##### ● The [Include] section
+##### ● [Include] 영역
 
-You can use the [Include] section to just include other objects, but without animating them. This allows you to use the ANIMATED object file as a container to group other objects. There can be any number of [Include] sections within the file.
+다른 물체를 포함하고 있으나 이들의 움직임을 계산하지 않고[포함]섹션을 사용할 수 있다. 이 용기가 다른 개체 그룹화하는 것은 ANIMATED 개체 파일을 사용할 수 있습니다. 파일 내에[포함]의 섹션이 있을 수 있는 번호입니다.
 
 {{% command %}}  
 [Include]  
 {{% /command %}}  
-This starts the section.
+이것은 구문을 시작합니다
 
 {{% command %}}  
-*FileName<sub>0</sub>*  
-*FileName<sub>1</sub>*  
-*FileName<sub>2</sub>*  
+*파일이름<sub>0</sub>*  
+*파일이름<sub>1</sub>*  
+*파일이름<sub>2</sub>*  
 ...  
 {{% /command %}}  
-Defines a series of B3D/CSV/X/ANIMATED objects that should be included as-is.
+현재 상태로 포함되어야 하는 일련의 B3D/CSV/X/ANIMITED 객체를 정의합니다.
 
-{{% command %}}  
-**Position = X, Y, Z**  
-{{% /command %}}  
-This defines the position of the objects, basically allowing you to offset them with respect to the rest of the ANIMATED object file.
+{{% command %}}
+**위치 = X, Y, Z**
+{{% /command %}}
+이것은 개체의 위치를 정의하며, 기본적으로 나머지 애니메이션 개체 파일에 대해 개체를 상쇄할 수 있다.
 
 ------
 
-##### ● The [Object] section
+##### ● [Object] 영역
 
-You can use the [Object] section to create a single animation. This requires to set up at least one state via the *States* parameter, and to use any combination of functions you want, which provide control over the animation. There can be any number of [Object] sections within the file.
+[Object] 섹션을 사용하여 단일 애니메이션을 만들 수 있다. 이를 위해서는 *States* 파라미터를 통해 적어도 하나의 상태를 설정하고 원하는 기능의 조합을 사용하여 애니메이션을 제어해야 한다. 파일 내에 [Object] 섹션이 얼마든지 있을 수 있다.
 
 {{% command %}}  
 [Object]  
 {{% /command %}}  
-This starts the section.
+이것은 구문을 시작합니다
 
 {{% command %}}  
 **Position = X, Y, Z**  
 {{% /command %}}  
-Defines the position of the object. This basically corresponds to a final TranslateAll command in the respective CSV/B3D file, but is performed after any of the functions are performed. For example, if you want to use rotation, then keep in mind that rotation is done around the origin (0,0,0). The *Position* command allows you to reposition the object after the rotation is performed.
+개체의 위치를 정의합니다. 기본적으로 이것은 각각의 독특한 CSV/B3D 파일에서 최종 TranslateAll 명령 통해 수행되는 기능의 수행된다 해당합니다. 만약 당신이 회전을 사용하고 싶어 예를 들어, 의식은 그 회전은 기원(0,0,0)에 끝나지 않고 있다. 그 *Position* 명령 후 회전을 수행하기가 당신이 개체를 확보할 수 있습니다.
 
 {{% command %}}  
 **States = File<sub>0</sub>, File<sub>1</sub>, ..., File<sub>n-1</sub>**  
 {{% /command %}}  
-Loads *n* objects of CSV/B3D/X extension. Please note that the first file indicated has state index 0. Use multiple files only if you want to use state changes.
+CSV/B3D/X 확장의 *n* 개체를 로드합니다. 표시된 첫 번째 파일에 상태 인덱스가 0입니다. 상태 변경을 사용할 경우에만 여러 파일을 사용하십시오.
 
 {{% command %}}  
 **StateFunction = Formula**  
 {{% /command %}}  
-This defines the function for state changes. The result of the *Formula* is rounded toward the nearest integer. If that integer is between 0 and *n*-1, where *n* is the number of states as defined via *States*, the respective state is shown, otherwise, no object is shown. You can make use of the latter if you want an object to toggle on/off with only one state.
+이것은 상태 변화에 대한 기능을 정의합니다. *Formula*의 결과는 가장 가까운 정수로 반올림됩니다. 해당 정수가 0과 *n*-1 사이인 경우, 여기서 *n*은 *States*를 통해 정의된 상태 수입니다. 그렇지 않으면 해당 상태가 표시되고, 그렇지 않으면 개체가 표시되지 않습니다. 객체가 하나의 상태에서만 켜거나 끄도록 하려면 후자를 사용할수 있습니다.
 
 {{% command %}}  
 **TranslateXDirection = X, Y, Z**  
