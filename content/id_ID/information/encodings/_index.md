@@ -1,54 +1,54 @@
 ---
-title: "Character encodings"
+title: "Enkoding karakter"
 weight: 1
 ---
 
-<font color="Gray">This page describes what character encodings are and how they should be used.</font>
+<font color="Gray">Bagian ini menjelaskan tentang enkoding karakter dan cara penggunaannya.</font>
 
-■ Overview
+■ Penjelasan
 ------
 
-A character encoding is a way to translate characters into bytes that can be stored on the hard drive. In the beginnings, one byte (256 states) was used to encode one character. As different writing systems around the world have different requirements for characters to be encoded, there are a lot of different encodings in use throughout the world. Problematically, if the encoding of a text file is not known in advance, misinterpreting the encoding can result in mojibake (meaningless sequence of characters).
+Karakter enkoding adalah cara sistem menerjemahkan karakter menjadi byte yang tersimpan di hard disk. Di awal file, satu byte (256 state) digunakan untuk enkode satu karakter. Karena cara penulisan di tiap negara bisa berbeda beda, enkode yang diperlukan pun berbeda. Jika suatu teks tidak memiliki enkode yang benar, sistem akan salah mengartikan tiap byte dan bisa jadi menghasilkan karakter yang tidak jelas (dan tidak bisa dibaca tentunya).
 
-Example of a Japanese text encoded in Shift_JIS (requires appropriate fonts available):
+Contohnya teks bahasa Jepang menggunakan enkode Shift_JIS (memerlukan beberapa font tambahan):
 
 {{% code %}}  
 ひらがなカタカナ漢字  
 {{% /code %}}
 
-The byte sequence generated from the previous example in Shift_JIS:
+Dari contoh Shift_JIS sebelumnya jika diubah ke byte sequence:
 
 {{% code %}}  
 82 D0 82 E7 82 AA 82 C8 83 4A 83 5E 83 4A 83 69 8A BF 8E 9A  
 {{% /code %}}
 
-What happens if the byte sequence is misinterpreted as being ISO 8859-1 (Latin-1) instead of Shift_JIS: 
+Yang terjadi jika byte salah diterjemahkan sebagai ISO 8859-1 (Bahasa Latin) yang seharusnya Shift_JIS:
 
 {{% code %}}  
 ‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš  
 {{% /code %}}
 
-Usually, one particular encoding only allows to use the writing system for which it was designed for. Unicode, a standard which covers basically all characters as used in writing systems throughout the world, provides a solution here.
+Biasanya, satu file hanya boleh menggunakan satu enkoding. Untuk indonesia dan beberapa wilayah dunia yang menggunakan huruf latin, cukup pakai Unicode, yaitu metode enkode yang paling umum dan bisa dipakai untuk seluruh karakter.
 
-While Unicode is wide-spread today, there are still some issues. First of all, Unicode is not directly a character encoding. Instead, so-called Unicode Transformation Formats (UTF) provide the means to encode particular characters. Transformation formats frequently used are UTF-8 and UTF-16.
+Meski banyak yang menggunakan Unicode, masih ada kelemahannya. Pertama, Unicode sebenarnya bukanlah metode enkode. Itu hanya kata sederhana dari Unicode Transformation Formats (UTF), yang menyediakan karakter basic bahasa latin. Yang biasa dipakai adalah UTF-8 dan UTF-16.
 
-Route and train files are usually, for compatibility reasons, allowed to be encoded in any arbitrary encoding. As the encoding is not known in advance, the user will need to select the correct encoding for the route and the train in the settings tab in the main menu. Of course this is a nuisance and should be avoided somehow.
+Biasanya, pada file kereta dan rute, bisa saja menggunakan enkode jenis apapun. Kalau enkode yang dipakai di kereta dan rute tidak diketahui, pengguna harus memilih pengodean yang benar untuk rute dan kereta di tab pengaturan pada menu utama. Hindari hal seperti ini terjadi.
 
-## ■ The Byte Order Mark
+## ■ Byte Order Mark
 
-UTF-16 descends from a character encoding (UTC-2) which always used two bytes to encode one character. As such, the order of those two bytes matters. In order to know in which order the bytes appear, a so-called byte order mark is frequently prepended to the text, usually automatically and transparently by the text editor. The byte order mark provides decoders a means of detecting in which byte order the file was saved in. Additionally, the byte order mark provides a fairly safe way of detecting that the text file is saved in Unicode in the first place.
+UTF-16 turun dari pengkodean karakter (UTC-2) yang selalu menggunakan dua byte untuk mengkodekan satu karakter. Dengan demikian, urutan kedua byte itu penting. Untuk mengetahui urutan urutan byte yang muncul, yang disebut tanda urutan byte sering kali ditambahkan ke teks, biasanya secara otomatis dan transparan oleh editor teks. Tanda urutan byte menyediakan decoder cara mendeteksi di mana urutan byte file disimpan. Selain itu, tanda urutan byte menyediakan cara yang cukup aman untuk mendeteksi bahwa file teks disimpan dalam Unicode di tempat pertama.
 
-While not technically necessary, the byte order mark is also frequently used for UTF-8. As UTF-8 does not have a byte order issue, the sole purpose of using a byte order mark with UTF-8 is to provide a means to flagging the file as being encoded in UTF-8.
+Meskipun tidak secara teknis diperlukan, tanda urutan byte juga sering digunakan untuk UTF-8. Karena UTF-8 tidak memiliki masalah urutan byte, satu-satunya tujuan menggunakan tanda urutan byte dengan UTF-8 adalah untuk menyediakan sarana untuk menandai file sebagai dikodekan dalam UTF-8.
 
-As said, while Unicode allows to encode virtually all characters used in all writing systems around the world, it does not necessarily make working with text files easier if the encoding to be used was not agreed on.
+Seperti yg dijelaskan sebelumnya, sementara Unicode memungkinkan untuk melakukan enkode hampir semua karakter yang digunakan dalam semua sistem penulisan di seluruh dunia, itu tidak selalu membuat bekerja dengan file teks lebih mudah jika pengkodean yang akan digunakan tidak disetujui.
 
-Using a byte order mark provides openBVE the ability to automatically detect the encoding for each individual file. If you have a good text editor, you will not only be able to select the encoding manually, but also if you want to save with a byte order mark or not. Notepad (Windows) always saves with a byte order mark if UTF-8 is selected as the character encoding upon saving the file, to make an acceptable example.
+Menggunakan tanda urutan byte(Byte Orde Mark/BOM) memberikan openBVE kemampuan untuk secara otomatis mendeteksi pengkodean untuk setiap file. Jika anda memiliki editor teks yang bagus, Anda tidak hanya dapat memilih tipe pengkodean secara manual, tetapi juga jika anda dapat menyimpan dengan BOM atau tidak. Notepad (Windows) selalu menyimpan dengan BOM jika UTF-8 dipilih sebagai pengkodean karakter saat menyimpan file.
 
-Technically, the byte order mark is the first bytes of a particular text file. The byte order marks which can be automatically detected by openBVE are:
+Secara teknis, tanda urutan byte adalah byte pertama dari file teks tertentu. Tanda urutan byte yang dapat dideteksi secara otomatis oleh openBVE adalah:
 
 {{% table %}}
 
-| Encoding               | Hexadecimal representation |
+| Enkoding               | Representasi Hexadecimal |
 | ---------------------- | -------------------------- |
 | UTF-8                  | EF BB BF                   |
 | UTF-16 (big endian)    | FE FF                      |
@@ -58,4 +58,4 @@ Technically, the byte order mark is the first bytes of a particular text file. T
 
 {{% /table %}}
 
-You are encouraged to always save text files in one of those encodings with a byte order mark in order for openBVE to automatically detect the encoding used.
+Anda dianjurkan untuk selalu menyimpan file teks ke salah satu pengkodean dengan tanda urutan byte diatas agar openBVE secara otomatis mendeteksi pengkodean yang digunakan.
