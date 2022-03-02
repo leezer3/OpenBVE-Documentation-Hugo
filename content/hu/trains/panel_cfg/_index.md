@@ -4,7 +4,7 @@ linktitle: "The panel.cfg file"
 weight: 4
 ---
 
-## ■ Contents
+## ■ Tartalom
 
 {{% contents %}}
 
@@ -21,7 +21,7 @@ weight: 4
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Áttekintés
 
 The panel.cfg file allows to create 2D panels by defining which elements to use, like speedometers, pressure gauges etc., and where they are to be placed.
 
