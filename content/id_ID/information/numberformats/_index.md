@@ -1,11 +1,11 @@
 ---
-title: "Number formats"
+title: "Format angka"
 weight: 2
 ---
 
-<font color="Gray">This page describes which number formats are encountered in the various route and train files and how to adhere to them.</font>
+<font color="Gray">Halaman ini menjelaskan format angka mana yang ditemukan dalam berbagai rute dan file kereta api dan bagaimana mematuhinya.</font>
 
-## ■ Contents
+## ■ Isi
 
 {{% contents %}}
 
@@ -17,15 +17,15 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
-Within the route and train files, you will encounter numbers like integers or floating-point numbers all the time, occasionally also others. These numbers are required to adhere to a certain format, which is described in the following sections.
+Dalam file rute dan kereta, Anda akan selalu menemukan angka seperti bilangan bulat/integer dan angka floating-point , terkadang juga yang lain. Angka-angka ini harus mengikuti format tertentu, yang dijelaskan di bagian berikut.
 
-There are two parsing methods for numbers: **Strict** and **Loose**. The Strict method is a very tight specification which does not leave space for making typographic mistakes. This method is used in all new file formats. The Loose method is a legacy parsing model required for compatibility with older material. The different files as presented on the *Developing for openBVE* pages indicate which model is being used. Note that whenever a *Loose* model is permitted, you can also use the *Strict* formats as *Strict* forms a subset of *Loose*.
+Ada dua metode penguraian untuk angka: **Strict** dan **Loose**. Metode Ketat/Strict adalah tipe yang sangat ketat yang tidak meninggalkan ruang untuk membuat kesalahan seperti salah ketik. Metode ini digunakan dalam semua format file baru. Metode Loose adalah model penguraian jadul yang diperlukan untuk kompatibilitas dengan materi yang jadul. File yang berbeda seperti yang disajikan pada halaman *Mengembangkan openBVE* menunjukkan model mana yang digunakan. Perhatikan bahwa kapan pun model *Loose* diizinkan, Anda juga dapat menggunakan format *Strict* karena *Strict* membentuk subset dari *Loose*.
 
 ## <a name="integers"></a>■ 2. Integers
 
-**Strict:** Permitted is any sequence of at least one decimal digit in the range from 0 to 9 (U+0030 - U+0039), optionally prepended by a negative sign (U+002D). The resulting character sequence may include leading or trailing white spaces.
+**Strict:** Diizinkan di urutan apa pun dari setidaknya satu digit desimal dalam rentang dari 0 hingga 9 (U+0030 - U+0039), secara opsional dapat diawali dengan tanda negatif (U+002D). Urutan karakter yang dihasilkan dapat mencakup spasi di depan atau di belakang.
 
 {{% code "*Examples for Strict integers:*" %}}  
 0  
@@ -33,7 +33,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -98  
 {{% /code %}}
 
-**Loose:** All white spaces are removed from the character sequence first. Then, the remaining character sequence (*abcde*) is interpreted according to the *Strict* model. If this fails to create a valid number, the last character is dropped from the sequence (*abcd*) and then, the sequence is tested again. This continues until a valid number is produced or until no character remains, after which the character sequence is determined to be an invalid number. 
+**Loose:** Semua spasi dihilangkan dari urutan karakter terlebih dahulu. Kemudian, urutan karakter yang tersisa (*abcde*) diinterpretasikan menurut model *Strict*. Jika ini gagal untuk membuat nomor yang valid, karakter terakhir dikeluarkan dari urutan (*abcd*) dan kemudian, urutan diuji lagi. Ini berlanjut sampai nomor yang valid dihasilkan atau sampai tidak ada karakter yang tersisa, setelah itu urutan karakter ditentukan sebagai angka yang tidak valid.
 
 {{% code "*Examples for Loose integers:*" %}}  
 123  
@@ -49,7 +49,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 
 ## <a name="floating"></a>■ 3. Floating-point numbers
 
-**Strict:** Permitted is any sequence of at least one decimal digit in the range from 0 to 9 (U+0030 - U+0039), optionally interleaved by exactly one decimal separator in form of the period (U+002E), optionally prepended by a negative sign (U+002D). The resulting character sequence may include leading or trailing white spaces.
+**Strict:**  Diizinkan di urutan apa pun dari setidaknya satu digit desimal dalam kisaran dari 0 hingga 9 (U+0030 - U+0039), secara opsional dapat disisipkan dengan satu pemisah desimal dalam bentuk titik (U+002E) , secara opsional dapat diawali dengan tanda negatif (U+002D). Urutan karakter yang dihasilkan dapat mencakup spasi di depan atau di belakang.
 
 {{% code "*Examples for Strict floating-point numbers:*" %}}  
 123  
@@ -61,7 +61,7 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 -123.456  
 {{% /code %}} 
 
-**Loose:** All white spaces are removed from the character sequence first. Then, the remaining character sequence (*abcde*) is interpreted according to the *Strict* model. If this fails to create a valid number, the last character is dropped from the sequence (*abcd*) and then, the sequence is tested again. This continues until a valid number is produced or until no character remains, after which the character sequence is determined to be an invalid number. 
+**Loose:** Semua spasi dihilangkan dari urutan karakter terlebih dahulu. Kemudian, urutan karakter yang tersisa (*abcde*) diinterpretasikan menurut model *Strict*. Jika ini gagal untuk membuat nomor yang valid, karakter terakhir dikeluarkan dari urutan (*abcd*) dan kemudian, urutan diuji lagi. Ini berlanjut sampai nomor yang valid dihasilkan atau sampai tidak ada karakter yang tersisa, setelah itu urutan karakter ditentukan sebagai angka yang tidak valid.
 
 {{% code "*Examples for Loose floating-point numbers:*" %}}  
 -123 . 456  
@@ -73,9 +73,9 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 987  
 {{% /code %}}
 
-## <a name="times"></a>■ 4. Times
+## <a name="times"></a>■ 4. Waktu
 
-**Legacy:** Permitted is any of the following sequences:
+**Legacy:** Diizinkan jika salah satu dari urutan berikut:
 
 {{% code %}}  
 *hhh*__.__*mmss*  
@@ -85,38 +85,38 @@ There are two parsing methods for numbers: **Strict** and **Loose**. The Strict 
 *hhh*  
 {{% /code %}}
 
-In these sequences, *hhh* denotes any sequence of at least one decimal digit to indicate the hour, *mm* denotes the two-digit minute part, *m* denotes a one-digit minute part, *ss* denotes a two-digit second part, *s* denotes a one-digit second part, and the character to separate the hours from the minutes is the period (U+002E). All digits need to be characters from 0 to 9 (U+0030 - U+0039). Leading or trailing white spaces are ignored. The total time is determined via the following formula, resulting in seconds since midnight:
+Dalam urutan ini, *hhh* menunjukkan urutan apa pun dari setidaknya satu digit desimal untuk menunjukkan jam, *mm* menunjukkan bagian menit dua digit, *m* menunjukkan bagian menit satu digit, *ss* menunjukkan dua- digit bagian kedua, *s* menunjukkan bagian kedua satu digit, dan karakter untuk memisahkan jam dari menit adalah titik (U+002E). Semua digit harus berupa karakter dari 0 hingga 9 (U+0030 - U+0039). Spasi di depan atau di belakang diabaikan. Total waktu ditentukan melalui rumus berikut, menghasilkan detik berawal dari tengah malam:
 
 {{% function "*Seconds since midnight for a given time:*" %}}  
 3600\**hhh* + 60\**mm* + *ss*  
 {{% /function %}}
 
-If minutes or seconds are not indicated, they are assumed to be zero. You can use any non-negative hour, including values greater than or equal to 24. If, for example, a station arrival time is 23:59:00 (day 1), and the arrival time of the following station is 00:02:15 (day 2), then use the following sequences to represent these times in order to ensure a chronological order:
+Jika menit atau detik tidak ditunjukkan, akan dianggap nol. Anda dapat menggunakan jam non-negatif, termasuk nilai yang lebih besar atau sama dengan 24. Jika, misalnya, waktu kedatangan stasiun adalah 23:59:00 (hari ke 1), dan waktu kedatangan stasiun berikut adalah 00:02 :15 (hari ke 2), lalu gunakan urutan berikut untuk mewakili waktu ini untuk memastikan urutan kronologis:
 
 {{% code "*Examples for times:*" %}}  
 23.5900  
 24.0215  
 {{% /code %}}
 
-## <a name="colors"></a>■ 5. Color values
+## <a name="colors"></a>■ 5. Nilai warna
 
-**Hexcolor:** A six-digit hexadecimal number is preceded by a number sign character (U+0023). An individual hexadecimal digit can be comprised of the decimal digits from 0 to 9 (U+0030 - U+0039), the lowercase letters from a to f (U+0061 - U+0066) and the uppercase letters from A to F (U+0041 - U+0046).The hexcolor has the following form:
+**Hexcolor:** Bilangan heksadesimal enam digit didahului oleh karakter tanda angka (U+0023). Satu digit heksadesimal dapat terdiri dari digit desimal dari 0 hingga 9 (U+0030 - U+0039), huruf kecil dari a hingga f (U+0061 - U+0066) dan huruf besar dari A hingga F ( U+0041 - U+0046). Hexcolor memiliki bentuk berikut:
 
 {{% code %}}  
 \#*RRGGBB*  
 {{% /code %}}
 
-In this sequence, RR represents the red component, GG the green component and BB the blue component. Each component ranges from 00 to FF (0 - 255), where 00 represents no contribution for that channel and FF full contribution.
+Pada bagian ini, RR mewakili komponen warna merah, GG komponen warna hijau dan B komponen warna biru. Setiap komponen berkisar dari 00 hingga FF (0 - 255), di mana 00 mewakili tidak ada kontribusi untuk warna itu dan FF kontribusi penuh.
 
-Commonly used colors (to indicate transparency) include:
+Warna yang umum digunakan (untuk menunjukkan transparansi) yaitu:
 
 {{% code %}}  
-<font color="Black">#000000 (black)</font>  
-<font color="Red">#FF0000 (red)</font>  
-<font color="Green">#00FF00 (green)</font>  
-<font color="Blue">#0000FF (blue)</font>  
+<font color="Black">#000000 (hitam)</font>  
+<font color="Red">#FF0000 (merah)</font>  
+<font color="Green">#00FF00 (hijau)</font>  
+<font color="Blue">#0000FF (biru)</font>  
 <font color="Cyan">#00FFFF (cyan)</font>  
 <font color="Magenta">#FF00FF (magenta)</font>  
-<font color="Yellow">#FFFF00 (yellow)</font>  
-<font color="White">#FFFFFF (white)</font>  
+<font color="Yellow">#FFFF00 (kuning)</font>  
+<font color="White">#FFFFFF (putih)</font>  
 {{% /code %}}
