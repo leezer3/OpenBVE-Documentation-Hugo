@@ -156,7 +156,7 @@ If this attribute is set to **true**  then the consist of the train will be reve
 ## ■ Stop attribute
 
 {{% command %}}  
-**\<Decelerate>** *Value* **\</Decelerate>**  
+**\<Decelerate>** *Valor* **\</Decelerate>**  
 {{% /command %}}
 
 **Value** sets the deceleration of the object. The unit is **km/h/s**.
@@ -164,7 +164,7 @@ If this attribute is set to **true**  then the consist of the train will be reve
 ------
 
 {{% command %}}  
-**\<StopPosition>** *Position* **\</StopPosition>**  
+**\<StopPosition>** *Posició* **\</StopPosition>**  
 {{% /command %}}
 
 **Position** sets the in-game distance where the object stops. The unit is **meter**.
@@ -172,20 +172,20 @@ If this attribute is set to **true**  then the consist of the train will be reve
 ------
 
 {{% command %}}  
-**\<Doors>** *Value* **\</Doors>**  
+**\<Doors>** *Valor* **\</Doors>**  
 {{% /command %}}
 
 **Value** sets the open door of the object. The valid values are:
 
-- **L** or **-1**: The left door opens.
-- **N** or **0**: Neither door opens.
-- **R** or **1**: The right door opens.
-- **B**: Both doors open.
+- **L** o **-1**: S'obren les portes del costat esquerre.
+- **N** o **0**: No s'obren les portes.
+- **R** o **1**: S'obren les portes del costat dret.
+- **B**: S'obren les portes de tots dos costats.
 
 ------
 
 {{% command %}}  
-**\<StopTime>** *Time* **\</StopTime>**  
+**\<StopTime>** *Temps* **\</StopTime>**  
 {{% /command %}}
 
 **Time** sets the duration of the stop of the object. This value is not an in-game time.
@@ -193,7 +193,7 @@ If this attribute is set to **true**  then the consist of the train will be reve
 ------
 
 {{% command %}}  
-**\<Accelerate>** *Value* **\</Accelerate>**  
+**\<Accelerate>** *Valor* **\</Accelerate>**  
 {{% /command %}}
 
 **Value** sets the acceleration of the object. The unit is **km/h/s**.
@@ -201,7 +201,7 @@ If this attribute is set to **true**  then the consist of the train will be reve
 ------
 
 {{% command %}}  
-**\<TargetSpeed>** *Value* **\</TargetSpeed>**  
+**\<TargetSpeed>** *Valor* **\</TargetSpeed>**  
 {{% /command %}}
 
 **Value** sets the speed after the acceleration of the object. The unit is **km/h**.
@@ -209,13 +209,13 @@ If this attribute is set to **true**  then the consist of the train will be reve
 ------
 
 {{% command %}}  
-**\<Direction>** *Value* **\</Direction>**  
+**\<Direction>** *Valor* **\</Direction>**  
 {{% /command %}}
 
-**Value** sets the direction of travel of the object. Valid values are as follows.
+**Valor** defineix la direcció de desplaçament de l'objecte. Són vàlids els valors següents.
 
-- **F** or **1** : The object will move forward.
-- **R** or **-1** : The object goes backward.
+- **F** o **1** : L'objecte es mourà cap endavant.
+- **R** o **-1** : L'objecte es mourà cap enrere.
 
 ------
 
