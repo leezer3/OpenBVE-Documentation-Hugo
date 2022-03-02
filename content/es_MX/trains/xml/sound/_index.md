@@ -6,7 +6,7 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Common Properties](#properties)
 - [3. ATS Sounds](#ats)
 - [4. Run Sounds](#run)
@@ -26,7 +26,7 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
 The **sound.xml** format is the native train sound format for newer versions of OpenBVE.
 
