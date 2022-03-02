@@ -26,7 +26,7 @@ Readme 파일등 배포에 포함할 텍스트 파일은 국제적으로 올바�
 
 경로나 열차를 압축할 때 파일 크기가 최대 용량을 초과하지 않는한 분할압축을 사용하지 않을것을 권장 드립니다.
 
-Acceptable and not acceptable practices:
+허용되는 구문 및 허용되지 않는 구문:허용되는 것 및 허용되지 않는 것:
 
 {{% table-nonheader %}}
 
@@ -40,7 +40,7 @@ Acceptable and not acceptable practices:
 
 Generally, you can use any file name you want, that is, include any characters such as Latin, Japanese, Chinese, and the like. However, you need to make very sure that the archive format you use supports Unicode file names then. If not, the user might be unable to extract your files correctly, leading to a series of files that cannot be found later. Unfortunately, the popuplar ZIP format does not support Unicode file names, while for example [7Z](https://www.7-zip.org/) does. Alternatively, restrict yourself to ASCII characters, e.g. A-Z, a-z, 0-9.
 
-Acceptable and not acceptable practices:
+허용되는 구문 및 허용되지 않는 구문:허용되는 것 및 허용되지 않는 것:
 
 {{% table-nonheader %}}
 
@@ -55,7 +55,7 @@ Acceptable and not acceptable practices:
 
 You should always include the full folder structure, that is, **Railway** and **Train**, when distributing routes or trains. This will make it easiest for people to understand where they need to extract the content to. Never just include a subdirectory such as *YourNameHere* that is supposed to be extracted to the Railway\Sound folder, for example. Only the more experienced users will generally be able to figure out where to put such content to by examining the files or their extensions.
 
-Acceptable and not acceptable practices:
+허용되는 구문 및 허용되지 않는 구문:허용되는 것 및 허용되지 않는 것:
 
 {{% table-nonheader %}}
 
@@ -69,7 +69,7 @@ Acceptable and not acceptable practices:
 
 Generally, your route should be free of errors. Please note that openBVE distinguishes between errors and warnings. An error is something definately wrong with your coding that should be fixed immediately. A warning is usually only raised to encourage inspection of potentially ambiguous code or code that might not have been meant the way it was written. In order to inspect your routes and trains for errors and warnings, go to the Options menu in openBVE and enable reporting them. RouteViewer and ObjectViewer always report such messages. Please note that the arious tools and openBVE itself might report a different set of messages as they don't share all the same functionality. Distributing add-ons containing errors might give users the impression that something was incompletely downloaded or was incorrectly packaged, and should generally be voided.
 
-Acceptable and not acceptable practices:
+허용되는 구문 및 허용되지 않는 구문:허용되는 것 및 허용되지 않는 것:
 
 {{% table-nonheader %}}
 
