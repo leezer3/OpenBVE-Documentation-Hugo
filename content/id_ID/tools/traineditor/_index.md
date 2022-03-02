@@ -5,12 +5,12 @@ weight: 4
 
 ![img](/images/tool_traineditor_screenshot_1.png)![img](/images/tool_traineditor_screenshot_2.png)![img](/images/tool_traineditor_screenshot_3.png)![img](/images/tool_traineditor_screenshot_4.png)
 
-## ■ Overview
+## ■ Rangkuman
 
-This tool can be used to more conveniently edit the train.dat. You can configure the train haracteristics, preview the acceleration curves and edit the motor sound curves.
+Alat ini berfungsi untuk meng-edit file train.dat lebih mudah. Anda dapat mengatur karakteristik kereta, mengatur akselerasi dan suara motor.
 
-Please refer to the documentation of the [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) for explanations about the various entries.
+Silakan lihat info lebih lanjut tentang [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) untuk mengetahui penjelasan lengkapnya.
 
-## ■ Notes
+## ■ Catatan
 
-The *BrakeNotches* setting in the *Handle* section includes the hold brake device - the train.dat works this way. This means that the number of actual brake notches (excluding the hold brake) will be one lower than entered in the *BrakeNotches* field if the hold brake device is used.
+Pilihan *BrakeNotches* yang ada di bagian *Handle* termasuk dengan rem ikat / rem tahan. Artinya, jumlah tuas rem aslinya pada game (selain rem ikat / rem tahan) akan lebih sedikit 1 tingkat daripada yang tertulis di *BrakeNotches* apabila rangkaian memiliki rem ikat atau rem tahan.
