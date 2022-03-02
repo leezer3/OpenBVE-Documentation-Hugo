@@ -1,21 +1,21 @@
 ---
-title: "The **panel.animated** file format"
-linktitle: "The panel.animated file"
+title: "**panel.animated** 檔案格式"
+linktitle: "panel.animated 檔案"
 weight: 5
 ---
 
-If present in the train folder, this file defines a 3D cab.
+如果在列車文件夾中，此文件會定義3D駕駛室。
 
-The file is a normal [animated object file]({{< ref "/objects/native/animated/_index.md" >}}). The train body is assumed to be centered on the x- and z-axes, while a value of 0 on the y-axis corresponds to the top of the rails, just as with exterior train objects.
+該文件是正常的 [動態物件檔案]({{< ref "/objects/native/animated/_index.md" >}}). 假設列車主體位於x軸和z軸的中心，而y軸上的0值對應於鐵軌的頂部，就像外部列車對像一樣。
 
-The viewing point of the driver's eye is determined via the #CAB or #COCKPIT sections in the [train.dat]({{< ref "/trains/train_dat/_index.md#cab" >}}) (which measures the viewing point in millimeters from the front of the train).
+駕駛員的視點是通過[train.dat]({{< ref "/trains/train_dat/_index.md#cab" >}})中的#CAB或#COCKPIT部分調較的（測量距離由列車前方計算, 毫米）。
 
-You can use [Object Viewer]({{< ref "/tools/objectviewer/_index.md" >}}) to preview any animated object, including the panel.animated file. It might also be a good idea to load both the exterior object and the panel.animated in Object Viewer so you can match them against each other.
+您可以使用[ObjectViewer]({{< ref "/tools/objectviewer/_index.md" >}})預覽任何動畫物件，包括panel.animated文件。 你也可以將列車外部和panel.animated在Object Viewer中一起加載，這樣您就可以將它們配合。
 
 {{% notice %}}
 
-#### Overlay and Lighting
+#### 覆蓋和光暗
 
-The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light. This behavior might change in future versions of openBVE.
+駕駛室永遠都會出現在路線景物前面。 這是故意的，因為這樣雨水不會穿透駕駛室，牆壁和其他障礙物。 此外，駕駛室中的照明與路線不同。 當環境亮度在駕駛室內反射時，環境顏色不會反射，並且駕駛室看起來總會好像在發出白光。 未來OpenBVE版本中可能會更改。
 
 {{% /notice %}}
