@@ -1,90 +1,90 @@
 ---
-title: "Distributing add-ons created for openBVE"
-linktitle: "Distributing add-ons"
+title: "發佈OpenBVE的附加檔"
+linktitle: "發佈附加檔"
 weight: 7
 ---
 
-Whether you have written a route, a train or a plugin, there are a few things you should be aware of before distributing your add-ons. As openBVE is a cross-platform simulator intended with international interoperability in mind, your add-ons should be, too.
+無論您是編寫路線，列車或插件，在發佈附加檔之前都應注意一些事項。由於OpenBVE是一個跨平台的列車模擬器，旨在實現國際互操作性，您的附加檔也應如此。
 
-## ■ Text files and encodings
+## 文字文件和編碼
 
-Whichever text file you are about to include in your distribution, including readme files, you should make sure that the file can be correctly processed internationally. The default encoding for all text files accessed by openBVE is UTF-8. For routes and associated objects, you can also use a different encoding, but then, the user has to select the specific encoding from a list. The same situation applies to trains and associated files. If you encode your text files in anything else but UTF-8, you must inform the user about your choice, or otherwise, the user might end up with garbage characters and potentially incorrectly parsed files. Using UTF-8 is the preferred choice, while using legacy encodings is acceptable, but discouraged. Please note that all files in a route or train must use the same encoding as it is neither currently possible nor feasible for the user to select the encoding of every individual file.
+無論您要包含任何文字檔案，包括README檔案，應確保在世界各地也能正確處理該檔案。 OpenBVE分析所有文字檔案的默認編碼為UTF-8。 對於路線和有關的物件，你可以可以使用其他編碼，但是用戶必須從列表中選擇特定的編碼。 同樣的情況適用於列車和相關檔案。 如果需要使用UTF-8以外的任何其他格式編碼文本文件，則必須告知用戶您的編碼，否則，該用戶可能會最終得到亂碼和可能錯誤地解析的檔案。 UTF-8是首選，而使用傳統編碼則可以接受，但不建議使用。 請注意，路線或列車中的所有文件都必須使用相同的編碼，因為用戶目前無法選擇每個文件的編碼。
 
-Acceptable and not acceptable practices:
+可接受和不可接受的做法：
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Save your text files as UTF-8.                               |
+| <font color="Green">✓</font> | 儲存你的文件為UTF-8。                               |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Green">✓</font> | Save your text files in any Unicode encoding with a byte order mark. |
-| <font color="Red">✗</font>   | Save your text files in any non-Unicode encoding.            |
-| <font color="Red">✗</font>   | Use different encodings for each file in a route or train.   |
+| <font color="Green">✓</font> | 以任何Unicode編碼儲存文字檔案 |
+| <font color="Red">✗</font>   | 不使用Unicode編碼儲存文字檔案            |
+| <font color="Red">✗</font>   | 在路線或列車中的每個文件使用不同編碼。   |
 
 {{% /table-nonheader %}}
 
-## ■ Archives versus installers
+## 壓縮檔案 vs 安裝程式
 
-When packaging a route or train, consider using a single archive instead of multiple smaller ones, unless the size of the download justifies splitting the archive. Never use platform-specific installers as they are not portable (unless you also provide an archive as an alternative). Platform-specific installers include Windows EXE files, Linux RPM repositories and Mac DMG files.
+除非因下載大小而需要拆分歸檔文件，打包路線或列車時，請考慮使用一個壓縮檔案，而非多個較小的壓縮檔案。切勿使用不能跨平台的安裝程式，因為它們不可便携 ( Portable )（除非您同時提供壓縮檔案作為替代方法）。特定於平台的安裝程序包括Windows EXE檔案，Linux RPM存儲庫和Mac DMG檔案。
 
-Acceptable and not acceptable practices:
+可接受和不可接受的做法：
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Use an archive format such as 7Z, ZIP, TAR.GZ, etc.         |
+| <font color="Green">✓</font> | 使用壓縮檔案，例如7Z，ZIP，TAR.GZ 等。         |
 | ---------------------------- | ----------------------------------------------------------- |
-| <font color="Red">✗</font>   | Use a platform-specific format, such as EXE, RPM, DMG, etc. |
+| <font color="Red">✗</font>   | 使用非跨平台的格式, 例如 EXE, RPM, DMG 等。 |
 
 {{% /table-nonheader %}}
 
-## ■ Files names and archives
+## ■ 文件名和壓縮檔案
 
-Generally, you can use any file name you want, that is, include any characters such as Latin, Japanese, Chinese, and the like. However, you need to make very sure that the archive format you use supports Unicode file names then. If not, the user might be unable to extract your files correctly, leading to a series of files that cannot be found later. Unfortunately, the popuplar ZIP format does not support Unicode file names, while for example [7Z](https://www.7-zip.org/) does. Alternatively, restrict yourself to ASCII characters, e.g. A-Z, a-z, 0-9.
+通常，您可以使用任何的檔案名稱，即包括任何字符，例如拉丁文，日文，中文等。但是，您需要確保所使用的壓縮檔格式支持Unicode檔案名稱。否則，用戶可能無法正確解壓您的文件而導致之後無法找到一系列的檔案。流行的ZIP格式不支持Unicode檔案名稱，但例如[7Z](https://www.7-zip.org/)則支持。又或者，限制自己只使用ASCII字符，例如A-Z，a-z，0-9。
 
-Acceptable and not acceptable practices:
+可接受和不可接受的做法：
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Use an archive format that supports Unicode files names (e.g. 7Z) |
+| <font color="Green">✓</font> | 使用支持Unicode檔案名的壓縮檔格式（例如7Z） |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Green">✓</font> | Use an archive format that doesn't support Unicode and restrict yourself to ASCII file names. |
-| <font color="Red">✗</font>   | Use an archive format that doesn't support Unicode but use Unicode files names. |
+| <font color="Green">✓</font> | 使用不支持Unicode檔案名的壓縮檔格式和限制自己只使用ASCII字符。 |
+| <font color="Red">✗</font>   | 使用不支持Unicode檔案名的壓縮檔格式但使用Unicode檔案名。 |
 
 {{% /table-nonheader %}}
 
-## ■ Archives and the folder structure
+## ■ 壓縮檔案和文件夾結構
 
-You should always include the full folder structure, that is, **Railway** and **Train**, when distributing routes or trains. This will make it easiest for people to understand where they need to extract the content to. Never just include a subdirectory such as *YourNameHere* that is supposed to be extracted to the Railway\Sound folder, for example. Only the more experienced users will generally be able to figure out where to put such content to by examining the files or their extensions.
+發佈路線或列車時，應包含完整的文件夾結構，即 **Railway** 和 **Train** 。這將使用戶最容易理解他們需要將內容放到的那裡。不要僅包含子目錄，例如 *YourNameHere*，而該子目錄是應該被放進Railway\Sound文件夾中。通常只有更有經驗的用戶才能通過檢查文件或其檔案格式來確定將這些內容放在那裡。
 
-Acceptable and not acceptable practices:
+可接受和不可接受的做法：
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Include the two base folders **Railway** or **Train**, best both. |
+| <font color="Green">✓</font> | 包括兩個基礎文件夾 **Railway** 或 **Train**，最好包括兩者。 |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Red">✗</font>   | Just include some subdirectory or files directly and expect users to figure out how to handle this. |
+| <font color="Red">✗</font>   | 只包含一些子目錄或文件，並認為用戶知道如何安裝。 |
 
 {{% /table-nonheader %}}
 
-## ■ Errors and warnings
+## ■ 錯誤和警告
 
-Generally, your route should be free of errors. Please note that openBVE distinguishes between errors and warnings. An error is something definately wrong with your coding that should be fixed immediately. A warning is usually only raised to encourage inspection of potentially ambiguous code or code that might not have been meant the way it was written. In order to inspect your routes and trains for errors and warnings, go to the Options menu in openBVE and enable reporting them. RouteViewer and ObjectViewer always report such messages. Please note that the arious tools and openBVE itself might report a different set of messages as they don't share all the same functionality. Distributing add-ons containing errors might give users the impression that something was incompletely downloaded or was incorrectly packaged, and should generally be voided.
+您的路線應該沒有錯誤信息。請注意，OpenBVE 區分錯誤和警告。錯誤是您的編碼中肯定存在錯誤，應立即修復。警告是鼓勵檢查潛在句法錯誤 或 可能不是其編寫方式的代碼。為檢查您的路線和列車是否有錯誤和警告，請到OpenBVE中的“選項”菜單並在右下角啟用它們。 RouteViewer和ObjectViewer 總會報告此類信息。請注意，各種工具和OpenBVE本身可能報告不同的錯誤信息，因為它們不共享所有相同的功能。發佈含有錯誤的附加檔可能會令用戶認為某些東西下載不完整。應該避免此類情況。
 
-Acceptable and not acceptable practices:
+可接受和不可接受的做法：
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Activate the report of errors and warnings in the *Options* menu and inspect your add-ons. |
+| <font color="Green">✓</font> | 在 *選項* 菜單中右下角啟用錯誤和警告報告，並檢查您的附加檔。 |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Green">✓</font> | Distribute add-ons that are eventually free of errors (not necessarily of warnings). |
-| <font color="Red">✗</font>   | Never inspect your add-ons for errors by disabling the error report or by ignoring the messages. |
-| <font color="Red">✗</font>   | Distribute an add-on that contains errors.                   |
+| <font color="Green">✓</font> | 發佈沒有錯誤（不一定是警告）的附加檔。 |
+| <font color="Red">✗</font>   | 切勿透過禁用錯誤報告或忽略錯誤信息來檢查附加檔是否有錯誤。 |
+| <font color="Red">✗</font>   | 發佈含有錯誤的附加檔。                   |
 
 {{% /table-nonheader %}}
 
-## ■ Routes and trains designed for using plugins
+## 專為列車插件而設計的路線和列車
 
-If you include plugins in your train, they should be only of the .NET type. Older Windows-only plugins are retained for backward compatibility, but should not be distributed any longer with new releases. If you cannot remove the dependency on a Windows-only plugin for the time being, then at least design your routes and trains so that they work with the default safety system. You can test how your train behaves without a plugin by deleting the ats.cfg file (or by temporarily enaming it).
+如果您在列車中包含插件，它們僅應該為.NET。 保留Win32插件純粹只是向後兼容性，不應再存在在新作品。 如果暫時無法刪除對Win32插件，至少要設計到路線和列車能與默認安全系統配合。 您可以透過刪除ats.cfg檔案（或臨時命名插件）來測試沒有插件下 列車的行為。
 
-## ■ Operation manuals
+## ■ 操作手冊
 
-An overview on the signs and signalling in your route, as well as on how to operate your train, is generally in order. Otherwise, users unfamiliar with the particular territory might be left with guessing the meaning of signs, or have to guess which keys serve which purpose. If you can, provide an English version of the instruction, as this generally increases the number of people who are able to understand it.
+對您的路線上的標誌和信號以及如何操作列車進行概述。 否則，可能不熟悉某些區域的用戶只能猜測符號的含義，或者不得不猜測哪個鍵可以能做什麼。 如果可以，請提供該說明的英語版本，這通常會增加能夠理解該說明的人數。
