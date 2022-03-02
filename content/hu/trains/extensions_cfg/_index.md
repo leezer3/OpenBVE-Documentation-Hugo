@@ -4,7 +4,7 @@ linktitle: "The extensions.cfg file"
 weight: 4
 ---
 
-## ■ Contents
+## ■ Tartalom
 
 {{% contents %}}
 
@@ -17,7 +17,7 @@ weight: 4
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Áttekintés
 
 The extensions.cfg file allows to define properties for individual cars, like length, axle positions and exterior objects.
 
