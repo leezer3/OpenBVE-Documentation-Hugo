@@ -6,7 +6,7 @@ weight: 4
 
 This tutorial is intended to guide you on how to properly set up the built-in Japanese safety systems ATS-SN and ATS-P in the case you want to make your route ready to use them. This page assumes that you are familiar with what ATS-SN and ATS-P are. If not, please take a look at the following page first:
 
-➟ [How to drive - A quick overview on controls, ATS/ATC, signals and signs](https://openbve-project.net/play-japanese/)
+➟ [信号、标牌、ATS与ATC速览](https://openbve-project.net/play-japanese/)
 
 ## ■ Setting up a route for ATS-SN
 
