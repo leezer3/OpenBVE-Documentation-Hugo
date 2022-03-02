@@ -1,18 +1,18 @@
 ---
-title: "Information and tips for train creation"
-linktitle: "Information and tips"
+title: "關於列車製作的資料和貼士"
+linktitle: "参考资料与重要提示"
 weight: 10
 ---
-This page presents information developers need to be aware of and general tips for object creation.
+本页内容概括了开发者制作时需要了解的资料，以及物件制作的通用提示。
 
-## ■ Exterior objects
+## ■ 車外物件
 
-- Exterior objects need to follow the same rules as any other object. See [Information and tips on object creation]({{< ref "/objects/information/_index.md" >}}).
+- 列車外部物件需要遵循與其他任何物件相同的規則。 請參閱[關於物件製作的資料和貼士]({{< ref "/objects/information/_index.md" >}})。
 
 
 
 ## ■ panel.cfg / panel2.cfg
 
-- You are free to use textures with full alpha channels without worrying about performance or transparency artifacts. Depth sorting will always perform correctly with these panel formats, so make good use of dirty or wet windscreens via alpha channels, for example.
-- In the panel2.cfg, you are responsible for ensuring that overlapping elements are placed in unique layers. Otherwise, the rendering order might be erratic or could lead to z-fighting.
-- Single textures should be of power-of-two size, e.g. sides should have a length of 1, 2, 4, 8, 16, 32, etc. However, with textures containing smaller images to be extracted later, e.g. DigitalIndicator in panel.cfg or DigitalNumber in panel2.cfg, the individual contained images should be of power-of-two size where possible, while the size of the container texture is irrelevant.
+- 在2D Panel下，您可以自由地使用含有Alpha Channel的材質，而不必擔心性能或透明度問題。 深度排序會正確執行，因此，例如，可以利用Alpha Channel來製作骯髒或潮濕的擋風玻璃。
+- 在panel2.cfg中，您應該要確保重疊的元素是放置在獨立的圖層中。 否則，渲染順序可能會導致z-fighting。
+- 單一材質的解像度應該為二次方。 側面的長度應為1、2、4、8、16、32等。但是，包含較小圖像的材質 (Texture Atlas) 將在以後提取，例如panel.cfg中的DigitalIndicator或panel2.cfg中的DigitalNumber，所包含的每個材質的解像度應為二次方，但整體材質的解像度可以為任何解像度。
