@@ -4,7 +4,7 @@ linktitle: "The panel.cfg file"
 weight: 4
 ---
 
-## ■ Contents
+## ■ 目录
 
 {{% contents %}}
 
@@ -21,7 +21,7 @@ weight: 4
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概述
 
 The panel.cfg file allows to create 2D panels by defining which elements to use, like speedometers, pressure gauges etc., and where they are to be placed.
 
@@ -39,13 +39,13 @@ The panel.cfg has been superseded by the panel2.cfg. You can achieve the full fu
 
 {{% notice %}}
 
-#### Overlay and Lighting
+#### 覆蓋和光暗
 
 The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light.
 
 {{% /notice %}}
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 语法
 
 Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
@@ -63,7 +63,7 @@ NameOfTheKey = Value
 
 Some values are further split into multiple parts, separated by commas (U+002C). Instead of a comma, a colon (U+003A) can be used interchangeably.
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+您可以在一行的末尾添加注释。注释由分号（U+003B，英文半角）开始。所有注释在开始解析文件之前就将被自动排除。 
 
 ## <a name="panel"></a>■ 3. The Panel section
 
