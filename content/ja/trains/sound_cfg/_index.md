@@ -4,17 +4,17 @@ linktitle: "The sound.cfg file"
 weight: 8
 ---
 
-## ■ Contents
+## ■目次
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 概要](#overview)
 - [2. Syntax](#syntax)
 - [3. Content of the file](#content)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概要
 
 The sound.cfg file allows to reference which sound files should be used, how they are called and where they are located relative to the train folder.
 
@@ -22,23 +22,23 @@ The sound.cfg file is a plain text file encoded in any arbitrary  [encoding]({{<
 
 ➟ [See also the quick reference for the sound.cfg...]({{< ref "/trains/sound_cfg_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 文法
 
-Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
+ファイル内の各行は空(または空白)飲みにすることが出来、またその行は無視され、新しいセクションの開始をマークするか、セクション内にキーと値のペアを含めることが出来ます。全てのキーと値のペアは、最後に開かれたセクションと関連付けされます。
 
-A new section is opened by starting the line with an opening bracket (U+005B) and ending it with a closing bracket (U+005D). The text in-between the brackets indicates the name of the section and is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as at the beginning and the end of the name of the section. Thus, the beginning of the section has the following form:
+新しいセクションを開くには、行を開始ブラケット (U+005B) で開始し、終了ブラケット (U+005D)で終了します。 カッコ内のテキストはセクション名を示し、大文字と小文字を区別しません。 行の最初と最後の空白、及びセクション名の最初と最後の空白は無視されます。従って、セクションの先頭は次の形式になります:
 
 {{% command %}}   
 [NameOfTheSection]  
 {{% /command %}}
 
-A key-value pair is indicated by giving the key, an equals sign (U+003D) and then the value. The key is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as in front and after the equals sign. Alternatively, white spaces surrounding the key and the value are ignored. Thus, a key-value pair as the following form:
+キーと値のペアは、キー、等号 (U+003D)、そして値を与えることで示されます。 キーは大文字と小文字を区別しません。 行頭と末尾、及び等号の前後の空白は無視され、または、キーと値を囲む空白は無視されます。 従って、キーと値のペアは次のような書式をとります:
 
 {{% command %}}   
 NameOfTheKey = Value  
 {{% /command %}}
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+コメントは行末のどこでも使用可能です。 コメントはセミコロン (U+003B)で始まります。 コメントは存在する場合、処理される前に全ての行から削除されます。
 
 ## <a name="content"></a> ■ 3. Content of the file
 
