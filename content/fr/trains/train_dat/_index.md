@@ -4,7 +4,7 @@ linktitle: "The train.dat file"
 weight: 2
 ---
 
-## ■ Contents
+## ■ Contenu
 
 {{% contents %}}
 
@@ -26,7 +26,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Présentation
 
 The train.dat file describes the characteristics of trains including acceleration, brake behavior, installed equipment, speed-sound associations, and more.
 
