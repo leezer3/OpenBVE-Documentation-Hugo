@@ -178,7 +178,7 @@ This directive is replaced by the ASCII character represented by *Ascii*. This i
 
 {{% table %}}
 
-| Code | Meaning             | Character |
+| Code | Arti             | Character |
 | ---- | ------------------- | --------- |
 | 10   | Newline             | *newline* |
 | 13   | Newline             | *newline* |
@@ -945,7 +945,7 @@ The general syntax for commands in the Structure namespace is:
 
 {{% table %}}
 
-| *Command*: | Remarks                                                      |
+| *Command*: | Catatan                                                      |
 | ---------- | ------------------------------------------------------------ |
 | Ground     | Defines objects for Cycle.Ground and Track.Ground.           |
 | Rail       | Defines objects for Track.Rail, Track.RailStart and Track.RailType. |
