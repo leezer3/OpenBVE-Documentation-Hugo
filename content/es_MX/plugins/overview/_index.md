@@ -8,9 +8,9 @@ Plugins allow to offer functionality that openBVE does not provide out of the bo
 
 ##### ● Train plugins
 
-Train plugins allow to change the runtime behavior of trains to some degree. Things you can do include displaying custom indicators in the panels, playing custom sounds and overriding the handles the driver originally set. Plugins can be used to simulate safety equipment such as ATS or ATC, among other things.
+Los plugins de tren permiten de cambiar la conducta de los trenes en cierto grado. Cosas que puedes hacer incluidas mostrar indicadores personalizados en los paneles, reproducir sonidos personalizados y sustituir las palancas del conductor que están originalmente configurados. Plugins también pueden usarse para simular los equipos de seguridad tales como ATS o ATC, entre otras cosas.
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
@@ -106,9 +106,9 @@ Be sure to compile against AnyCPU, to enable CLS-compliance checks and to remove
 
 {{% table %}}
 
-| API component | Description   | Documentation                                     |
+| API component | Descripción   | Documentation                                     |
 | ------------- | ------------- | ------------------------------------------------- |
-| IRuntime      | Train plugins | [View]({{< ref "/plugins/iruntime/_index.md" >}}) |
+| IRuntime      | Plugins de Tren | [View]({{< ref "/plugins/iruntime/_index.md" >}}) |
 
 {{% /table %}}
 
