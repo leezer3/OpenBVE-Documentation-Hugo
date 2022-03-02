@@ -4,7 +4,7 @@ linktitle: "The panel.cfg file"
 weight: 4
 ---
 
-## ■ Contents
+## ■ Continguts
 
 {{% contents %}}
 
@@ -45,7 +45,7 @@ The cab is rendered as an overlay. This means that the cab will always appear in
 
 {{% /notice %}}
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxi
 
 Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
