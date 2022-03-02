@@ -1,35 +1,35 @@
 ---
-title: "Standards"
+title: "Standar"
 weight: 6
 ---
 
-On a few occasions in route and train development, you will need to coordinate your efforts with other developers in order to allow easy exchange of trains across routes. Otherwise, trains might not work on a route or might not sound correctly.
+Saat membuat add-on bersama orang lain, anda harus membuat standar atau bekerja sama dengan kreator lain untuk membuat standar dalam isi add-on rute dan kereta. Jika tidak, bisa saja kereta atau rute tidak dapat bekerja dengan baik.
 
-For example, the run i.wav sounds are played whenever the train moves along the rails, where i is a number identifying the rail type. If developer A used run1.wav to represent a continuously elded rail, but another developer B used run1.wav as the sound to represent jointed rails on concrete leepers, both trains might not be suited for use on the same route. This makes exchange of trains across routes difficult, even if a train would be used on that route in reality.
+Contohnya, file run X.wav adalah suara kereta saat berjalan di rel, sedangkan X sendiri adalah angka railtype. Jika developer A membuat rail 1.wav untuk tikungan ke kiri, sedangkan developer B membuat rail 1.wav untuk membuat jembatan rel, kita tidak bisa menggunakan kereta yang sama untuk kedua rute tersebut. Meskipun jika dipaksakan dipakai, kereta masih bisa dipakai, hanya saja hasil suaranya akan berbeda.
 
-As such, if you know of standards that have been created and are actually employed by enough developers, give your feedback, and these standards might be listed here.
+Jika anda membuat konten bersama orang lain, sebaiknya buatlah standar atau rule supaya hal di atas tidak terjadi. Berikut adalah list aturan yang bisa anda pakai.
 
-## ■ Train run*i*.wav sounds
+## ■ File run*i*.wav di kereta
 
-The only attempt currently known is the [BVE Track Sound Standard](http://www.railsimroutes.net/bvetss/index.php). It should be noted that it is not widely used outside the UK, and also not necessarily suited for all kinds of railways.
+Aturan yang biasanya dipakai adalah [BVE Track Sound Standard](http://www.railsimroutes.net/bvetss/index.php). Tidak semua developer mengikuti aturan ini, dan biasanya tidak dibutuhkan untuk add-on diluar Inggris karena jenis trek yang berbeda-beda.
 
-## ■ Train flange*i*.wav sounds
+## ■ Suara kereta flange*i*.wav
 
-No attempts are currently known to standardize the meanings of flange*i*.wav sounds.
+Tidak ada aturan standar untuk file flange*i*.wav . Anda bisa membuatnya sendiri.
 
-## ■ Beacons
+## ■ Beacon
 
-Beacons reserved for the built-in safety systems ATS-SN and ATS-P. These should only be used by route/train developers if the meaning of the beacons are (nearly) identical:
+Beacon diperuntukan untuk sistem keamanan bawaan ATS-SN dan ATS-P. Ini hanya boleh digunakan oleh pengembang rute/kereta jika arti beacon (hampir) identik:
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipe beacon | Data opsional  | Arti                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
-| 0           | *SwitchSystem* | S-type transponder for ATS-SN. Placed about 600m in front of a signal. Raises an alarm the driver has to acknowledge whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
-| 1           | *SwitchSystem* | SN-type transponder for ATS-SN. Placed about 20m in front of a signal. Triggers the emergency brakes whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
-| 2           | *Cars*         | Immediate stop transponder for ATS-SN and ATS-P. Placed after stops. Applies the emergency brakes whenever the referenced signal is red and the number of cars corresponds to the optional data.<br /><br />Values for *Cars*:<br />0: The transponder triggers regardless of the amount of cars.<br />*Positive integer*: The transponder triggers only if *Cars* is greater than or equal to the number of cars the train has. |
-| 3           | *SwitchSystem* | Pattern renewal transponder for ATS-P. Multiple of these are placed in front of a signal. Informs the train about the distance to the referenced signal and whether it is red or not. The train then calculates a brake curve to the referenced signal if it is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-SN to ATS-P when passing this beacon. |
-| 4           | *SwitchSystem* | Immediate stop transponder for ATS-P. Placed about 25m/30m in front of a signal. Informs the train about the distance to the referenced signal and whether it is red or not. The train brakes immediately if the signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-SN to ATS-P when passing this beacon. |
+| 0           | *SwitchSystem* | Transponder tipe-S untuk ATS-SN. Ditempatkan sekitar 600m di depan sinyal. Mebunyikan alarm yang harus diketahui ole masinis setiap kali sinyal berwarna merah.<br /><br />Nilai untuk *SwitchSystem*:<br />-1: Kereta tidak boleh mengganti sistem keselamatan.<br />0: Kereta harus secara otomatis beralih dari ATS-P ke ATS-SN saat lewat beacon ini. |
+| 1           | *SwitchSystem* | Transponder tipe-SN untuk ATS-SN. Ditempatkan sekitar 20m di depan sinyal. Membunyikan alarm yang harus diketahui ole masinis setiap kali sinyal berwarna merah.<br /><br />Nilai untuk *SwitchSystem*:<br />-1: Kereta tidak boleh mengganti sistem keselamatan.<br />0: Kereta harus secara otomatis beralih dari ATS-P ke ATS-SN saat lewat beacon ini. |
+| 2           | *Cars*         | Transponder berhenti darurat untuk ATS-SN dan ATS-P. Ditempatkan setelah pemberhentian. Menerapkan rem darurat setiap kali sinyal berwarna merah dan jumlah gerbong sesuai dengan data opsional.<br /><br />Nilai untuk *Cars*:<br />0: Transponder terpicu terlepas dari jumlah gerbong.<br />*Bilangan positif*: Transponder terpicu hanya jika * gerbong* lebih banyak dari atau sama dengan jumlah gerbong yang dimiliki kereta. |
+| 3           | *SwitchSystem* | Transponder model baru untuk ATS-P. Beberapa disimpan di depan sinyal. Memberikan info kepada kereta tentang jarak sinyal terdekat dan aspek yang ditampilkan. Kereta akan mengerem bertahap jika sinyal merah.<br /><br />Nilai *SwitchSystem*:<br />-1: Kereta tidak akan mengganti sistem keamananan.<br />0: Kereta akan mengganti sistem dari ATS-SN menjadi ATS-P saat melewati beacon. |
+| 4           | *SwitchSystem* | Stop transponder untuk ATS-P. Disimpan 25-30m di depan sinyal. MEmberikan informasi kepada kereta tentang jarak dan aspek sinyal. Kereta akan mengerem otomatis jika sinyal merah.<br /><br />Nilai *SwitchSystem*:<br />-1: Kereta tidak akan mengganti sistem keamanan.<br />0: Kereta akan mengganti sistem dari ATS-SN menjadi ATS-P. |
 
 {{% /table %}}
 
@@ -37,9 +37,9 @@ Beacons used by legacy train systems to simulate weather (Note- These will also 
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipe beacon | Data opsional  | Arti                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
-| 21           | *Intensity*   | Sets the intensity of the weather.<br /><br />Values for *Intensity* should be within the following range:<br />0: No weather.<br />100: Maximum weather intensity. |
+| 21           | *Intensity*   | Menyetel intensitas cuaca<br /><br />.Nilai untuk *Intensitas* harus dalam kisaran berikut:<br />0: Tidak ada cuaca.<br />100: Intensitas cuaca maksimum. |
 
 {{% /table %}}
 
@@ -47,7 +47,7 @@ UK Basic AWS / TPWS Beacons (Supported by OS_ATS, UKTrainSys, UKDT, UKMU & UKEMU
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipe beacon | Data opsional  | Arti                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
 | 44000       | 0              | Permanent AWS signal approach magnet. Raises an alarm the driver has to acknowledge if the referenced signal is red. |
 | 44001       | 0              | AWS speed restriction magnet. Raises an alarm the driver has to acknowledge regardless. |
