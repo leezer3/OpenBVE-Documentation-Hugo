@@ -1,10 +1,10 @@
 ---
-title: "The **.animated** object format"
+title: "Objek **.animated**"
 linktitle: "The ANIMATED object"
 weight: 3
 ---
 
-## ■ Contents
+## ■ Isi
 
 {{% contents %}}
 
@@ -20,7 +20,7 @@ weight: 3
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
 The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
 
@@ -31,7 +31,7 @@ Animated objects can be used in CSV/RW routes (unless explicitly disallowed by s
 Animation is performed via the following primitives:
 
 - State changes - basically allowing to switch between different objects at any time
-- Translation - moving objects in three independent directions
+- Translasi - menggeserkan objek ke 3 arah yang berbeda
 - Rotation - rotating objects around three independent axes
 - Texture shifts - allowing to shift the texture coordinates of objects in two independent directions
 
@@ -526,7 +526,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% /table-2col %}}
 
-##### ● Trains (brake)
+##### ● Kereta (rem)
 
 {{% table-2col %}}
 
@@ -545,7 +545,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% /table-2col %}}
 
-##### ● Trains (doors)
+##### ● Kereta (pintu)
 
 {{% table-2col %}}
 
@@ -609,7 +609,7 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Arti           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
@@ -648,16 +648,16 @@ There are certain kinds of animation which are less expensive, and others which 
 
 {{% table %}}
 
-| Animation      | Object                          | Performance |
+| Animasi      | Object                          | Performance |
 | -------------- | ------------------------------- | ----------- |
 | State changes  | Has only opaque faces           | Good        |
 | State changes  | Has partially transparent faces | Moderate    |
 | Translation    | Has only opaque faces           | Good        |
 | Translation    | Has partially transparent faces | Moderate    |
 | Rotation       | Has only opaque faces           | Good        |
-| Rotation       | Has partially transparent faces | Bad         |
-| Texture shifts | Has only opaque faces           | Bad         |
-| Texture shifts | Has partially transparent faces | Bad         |
+| Rotation       | Has partially transparent faces | Buruk         |
+| Pergeseran tekstur | Has only opaque faces           | Buruk         |
+| Pergeseran tekstur | Has partially transparent faces | Buruk         |
 
 {{% /table %}}
 
