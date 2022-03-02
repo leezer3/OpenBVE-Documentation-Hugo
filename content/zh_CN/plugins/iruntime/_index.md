@@ -1,11 +1,11 @@
 ---
-title: "Train plugin API (IRuntime)"
+title: "列車插件應用程式介面(IRuntime)"
 hidden: true
 ---
 
-This is the documentation for train plugins. In order to create a train plugin, implement the IRuntime interface from the OpenBveApi.Runtime namespace. In the following, you will find a description of how this interface works.
+這是火車插件的文檔。 為了創建火車插件，請從OpenBveApi.Runtime命名空間實現IRuntime接口。 在下面，您將找到有關此界面如何工作的描述。
 
-## ■ Contents
+## ■ 目录
 
 {{% contents %}}
 
@@ -16,7 +16,7 @@ This is the documentation for train plugins. In order to create a train plugin, 
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ Overview
+## <a name="overview"></a>■ 總概
 
 The following functions are called in this order when the plugin is loaded:
 
@@ -227,7 +227,7 @@ VehicleState (class):
 
 | double | Location    | Gets the location of the front of the train, in meters.   |
 | ------ | ----------- | --------------------------------------------------------- |
-| Speed  | Speed       | Gets the speed of the train.                              |
+| 允许速度  | 允许速度       | Gets the speed of the train.                              |
 | double | BcPressure  | Gets the pressure in the brake cylinder, in pascal.       |
 | double | MrPressure  | Gets the pressure in the main reservoir, in pascal.       |
 | double | ErPressure  | Gets the pressure in the equilizing reservoir, in pascal. |
@@ -243,7 +243,7 @@ PrecedingVehicleState (class):
 | double | Location | Gets the location of the back of the preceding train, in meters. |
 | ------ | -------- | ------------------------------------------------------------ |
 | double | Distance | Gets the distance from the front of the current train to the back of the preceding train, in meters. |
-| Speed  | Speed    | Gets the speed of the preceding train.                       |
+| 允许速度  | 允许速度    | Gets the speed of the preceding train.                       |
 
 {{% /table-nonheader %}}
 
@@ -501,7 +501,7 @@ SignalData (class):
 
 {{% table-nonheader %}}
 
-| int    | Aspect   | Gets the aspect of the section.   |
+| int    | 显示   | Gets the aspect of the section.   |
 | ------ | -------- | --------------------------------- |
 | double | Distance | Gets the distance to the section. |
 
@@ -546,7 +546,7 @@ SignalData (class):
 
 {{% table-nonheader %}}
 
-| int    | Aspect   | Gets the aspect of the section.   |
+| int    | 显示   | Gets the aspect of the section.   |
 | ------ | -------- | --------------------------------- |
 | double | Distance | Gets the distance to the section. |
 
