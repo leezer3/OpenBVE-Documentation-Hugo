@@ -6,7 +6,7 @@ weight: 1
 
 ➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ Contents
+## ■ Tartalom
 
 {{% contents %}}
 
@@ -31,7 +31,7 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Áttekintés
 
 A CSV route allows to create a route in a text file.
 
