@@ -8,7 +8,7 @@ This is a list of supported sound formats.
 
 {{% table %}}
 
-| Format      | Usual file extension |
+| 格式      | Usual file extension |
 | ----------- | -------------------- |
 | RIFF WAVE   | .wav                 |
 | Native FLAC | .flac                |
@@ -23,7 +23,7 @@ WAVE files are supported, which technically are RIFF (or RIFX) container files w
 
 {{% table %}}
 
-| Format          | Sample rate | Bitrate | Channels |
+| 格式          | Sample rate | Bitrate | Channels |
 | --------------- | ----------- | ------- | -------- |
 | PCM             | any         | any     | any      |
 | Microsoft ADPCM | any         | 4 bits  | any      |
