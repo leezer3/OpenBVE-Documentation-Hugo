@@ -1,5 +1,5 @@
 ---
-title: "Developing for openBVE"
+title: "對OpenBVE進行開發"
 linktitle: "主页"
 ---
 
