@@ -1,11 +1,11 @@
 ---
-title: "The Loksim3D **.l3dobj** object format"
+title: "File objek Loksim 3D ( **.l3dobj** )"
 linktitle: "Loksim3D (.l3dobj)"
 weight: 1
 ---
 
 ![construction_64](/images/construction_64.png)
 
-openBVE supports the Loksim3D object format, including both single .l3dobj files, and .l3dgrp groupings (These are roughly analagous to a .animated file) 
+openBVE dapat membaca file objek dari Loksim3D, termasuk file .l3dobj dan file .l3dgrp (seperti file objek .animated)
 
-Most features other than animations are supported.
+Sebagian besar fitur selain animasi dapat digunakan.
