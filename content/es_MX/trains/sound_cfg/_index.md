@@ -4,11 +4,11 @@ linktitle: "The sound.cfg file"
 weight: 8
 ---
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Syntax](#syntax)
 - [3. Content of the file](#content)
 
@@ -22,7 +22,7 @@ The sound.cfg file is a plain text file encoded in any arbitrary  [encoding]({{<
 
 ➟ [See also the quick reference for the sound.cfg...]({{< ref "/trains/sound_cfg_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxis
 
 Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
@@ -38,7 +38,7 @@ A key-value pair is indicated by giving the key, an equals sign (U+003D) and the
 NameOfTheKey = Value  
 {{% /command %}}
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Puedes usar comentarios en cualquier lado al final de una línea. Un comentario comienza por punto y coma (U+003B). Si los comentarios estan presentes, son quitados de las líneas después de ser procesados.
 
 ## <a name="content"></a> ■ 3. Content of the file
 
