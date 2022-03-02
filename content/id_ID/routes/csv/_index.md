@@ -1,12 +1,12 @@
 ---
-title: "The **.csv** route format"
-linktitle: "The CSV route"
+title: "File rute **.csv**"
+linktitle: "Rute CSV"
 weight: 1
 ---
 
-➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
+➟ [Rangkuman skrip]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ Contents
+## ■ Isi
 
 {{% contents %}}
 
@@ -31,40 +31,40 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
-A CSV route allows to create a route in a text file.
+File rute CSV berfungsi membuat sebuah rute dari rangkaian teks.
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose** (unless otherwise stated), however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside any folder whose current or parent folder includes the *Railway* and *Train* folders. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom, where each line is split into expressions, which are interpreted from left to right.
+File ini berisi teks yang ditulis dalam 1 enkoding [encoding]({{< ref "/information/encodings/_index.md" >}}), Biasanya, otomatis menggunakan UTF-8. [format penulisan angkanya]({{< ref "/information/numberformats/_index.md" >}})  **Loose** (kecuali ada keterangan lain), namun bisa memakai format *Strict*. File ini harus disimpan di folder mana saja di dalam folder Route dari *Railway* dan *Train* . Nama filenya bebas, tapi harus diakhiri ekstensi **.csv**.  File ini berisi perintah dalam baris per baris, dibaca dari atas ke bawah. Setiap baris perintah dibagi jadi beberapa bagian dengan karakter koma.
 
-The route file consists of a series of commands to define the objects which are used throughout the route (Structure namespace). Additional properties for the route, for the default train to be used and for the background images to be used can also be defined. At last, the route file will contain instructions from the Track namespace. Here, track positions (usually in meters) are used to define when the track should curve, when stations are to be placed, when a wall should start and end, and so on. Generally speaking, instructions from the Track namespace should be used after using instructions from any of the other namespaces.
+File rute terdiri dari berbagai perintah untuk menentukan posisi objek yang dipakai dalam rute (Bagian Structure). Tambahan info rute, rangkaian standar, dan gambar latar juga ditentukan di sini. Terakhir, file rute memuat instruksi untuk bagian trek kereta. Di sini, posisi trek atau jalur (biasanya dalam meter) dipakai untuk menentukan di mana rel harus berbelok, posisi stasiun, mulainya rel lain, dan sebagainya. Biasanya, bagian Track ditulis di paling ahkir setelah bagian lain selesai ditulis.
 
 The format assumes an implicit rail 0 which cannot be explicitly started or ended. Instead, it is present from the beginning of the route to the end, and it marks the rail the player's train drives on. rail 0 and the other rails are not only for used for visual, and also use for  [Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}).
 
-Geometrically, you can curve and pitch the implicit rail 0, while all other rails are defined relative to rail 0 and follow rail 0 into curves and pitch changes. Unless overridden, the file format is built around a fixed block size of 25 meters length, and it is only possible for certain commands to be used on 25 meter block boundaries. The placement of objects always assumes a non-curved coordinate system which connects blocks linearly.
+Anda bisa membuat rail 0 berbelok, menanjak, atau menurun, sementara rail lainnya akan mengikuti belokan dan ketinggian rail 0. Di sini, beberapa perintah hanya tersedia di setiap blok, dimana per blok biasanya berjarak 25m. penempatan objek juga selalu mengikuti posisi rel.
 
-➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
+➟ [Lihat rangkuman perintah rute CSV...]({{< ref "/routes/csv_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Format penulisan
 
-For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
+Di setiap baris dalam file, [spasi kosong]({{< ref "/information/whitespaces/_index.md" >}}) di awal baris tidak akan terbaca. Setiap baris dapat terdiri dari beberapa perintah, dipisahkan dengan KOMA (U+002C). Biasanya setiap perintah tertulis seperti ini:
 
 {{% command %}}  
-*Expression<sub>1</sub>*, *Expression<sub>2</sub>*, *Expression<sub>3</sub>*, ..., *Expression<sub>n</sub>*  
+*Perintah<sub>1</sub>*, *Perintah<sub>2</sub>*, *Perintah<sub>3</sub>*, ..., *Perintah<sub>n</sub>*  
 {{% /command %}}
 
-In turn, each expression can be of any of the following forms:
+Selanjutnya, setiap perintah dapat berupa salah satu dari bentuk berikut:
 
-##### ● Comments
+##### ● Komentar
 
-A comment is completely ignored by the parser. To form a comment, the expression must begin with a semicolon (U+003B).
+Komentar tidak akan terbaca oleh sistem. Untuk menulis komentar, tambahkan karakter titik koma di depan komentar (U+003B).
 
-##### ● Track positions and lengths
+##### ● Posisi Trek dan Panjangnya
 
 {{% command %}}  
-*Position*  
+*Posisi*  
 {{% /command %}}  
-A non-negative [strict]({{< ref "/information/numberformats/_index.md" >}}) floating-point number corresponding to a track position. All subsequent commands from the Track namespace are associated to this track position.
+[Angka]({{< ref "/information/numberformats/_index.md" >}}) positif menunjukkan jarak posisi ini dari lokasi awal rute. Semua perintah selanjutnya dari bagian Track akan berlokasi di angka ini.
 
 {{% command %}}  
 *Part<sub>1</sub>*:*Part<sub>2</sub>*:...:*Part<sub>n</sub>*  
@@ -75,30 +75,30 @@ Wherever arguments in commands represent lengths, they can also be entered using
 
 When *n* units are defined via Options.UnitOfLength, but fewer parameters are given using the colon notation, the parameters are right-associative, meaning, the parameters on the left are those which are skipped. Therefore, each of the following lengths are equivalent: *0:0:2*, *0:2*, and *2*.
 
-##### ● Commands
+##### ● Perintah
 
-Commands without arguments:
-
-{{% command %}}  
-*NameOfTheCommand*  
-{{% /command %}}
-
-Commands with arguments:
+Perintah tanpa keterangan:
 
 {{% command %}}  
-*NameOfTheCommand* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
-*NameOfTheCommand*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
+*NamaPerintah*  
 {{% /command %}}
 
-Commands with indices and arguments:
+Perintah dengan keterangan:
 
 {{% command %}}  
-*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*) *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
-*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix* *Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*  
-*NameOfTheCommand*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix*(*Argument<sub>1</sub>*;*Argument<sub>2</sub>*;*Argument<sub>3</sub>*;...;*Argument<sub>n</sub>*)  
+*NamaPerintah* *Keterangan<sub>1</sub>*;*Keterangan<sub>2</sub>*;*Keterangan<sub>3</sub>*;...;*Keterangan<sub>n</sub>*  
+*NamaPerintah*(*Keterangan<sub>1</sub>*;*Keterangan<sub>2</sub>*;*Keterangan<sub>3</sub>*;...;*Keterangan<sub>n</sub>*)  
 {{% /command %}}
 
-Rules:
+Peritnah dengan indeks dan keterangan:
+
+{{% command %}}  
+*NamaPerintah*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*) *Keterangan<sub>1</sub>*;*Keterangan<sub>2</sub>*;*Keterangan<sub>3</sub>*;...;*Keterangan<sub>n</sub>*  
+*NamaPerintah*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix* *Keterangan<sub>1</sub>*;*Argument<sub>2</sub>*;*Keterangan<sub>3</sub>*;...;*Keterangan<sub>n</sub>*  
+*NamaPerintah*(*Index<sub>1</sub>*;*Index<sub>2</sub>*;...;*Index<sub>m</sub>*).*Suffix*(*Keterangan<sub>1</sub>*;*Keterangan<sub>2</sub>*;*Keterangan<sub>3</sub>*;...;*Keterangan<sub>n</sub>*)  
+{{% /command %}}
+
+Aturan:
 
 *NameOfTheCommand* is case-insensitive. Indices and arguments are separated by semicolons (U+003B). White spaces around *NameOfTheCommand* and any of the indices and arguments are ignored. White spaces surrounding any of the parentheses are also ignored.
 
@@ -108,10 +108,10 @@ There are two variations on how to encode arguments. Except for the $-directives
 
 Please note that in some commands, *Suffix* is mandatory regardless of the style you use to encode arguments. In the following, *Suffix* will be **bolded** when it is mandatory, and <font color="gray">grayed</font> when it is optional.
 
-##### ● The **With** statement
+##### ● Bagian **With**
 
 {{% command %}}  
-With *Prefix*  
+With *NamaBagian*  
 {{% /command %}}
 
 All subsequent commands that start with a period (U+002E) are prepended by *Prefix*. For example:
@@ -122,20 +122,20 @@ With Route
 .Timetable 1157_M  
 {{% /code %}}
 
-Is equivalent to:
+Hasilnya sama seperti:
 
 {{% code %}}  
 Route.Gauge 1435  
 Route.Timetable 1157_M  
 {{% /code %}}
 
-## <a name="preprocessing"></a>■ 3. Preprocessing
+## <a name="preprocessing"></a>■ 3. Perintah prioritas
 
-Before any of the commands in the route file are actually interpreted, the expressions are preprocessed. The first thing done is to replace any occurrences of the $-directives within an expression from right to left. The $Chr, $Rnd and $Sub directives may be nested in any way, while $Include, $If, $Else and $EndIf must not appear inside another directive.
+Sebelum perintah lain akan loading ke sistem, perintah prioritas akan diproses duluan. Perintah ini menggunakan karakter $ sebagai penanda dan diikuti perintah khusus. $Chr, $Rnd, dan $Sub bisa disimpan di mana saja, sedangkan $Include, $If, $Else dan $EndIf hanya bisa disimpan di satu posisi baris.
 
 {{% warning-nontitle %}}
 
-The syntax for the $-directives cannot be freely chosen, but must adhere to the forms presented below.
+Penulisan perintah prioritas harus mengikuti format berikut.
 
 {{% /warning-nontitle %}}
 
@@ -178,7 +178,7 @@ This directive is replaced by the ASCII character represented by *Ascii*. This i
 
 {{% table %}}
 
-| Code | Meaning             | Character |
+| Code | Arti             | Character |
 | ---- | ------------------- | --------- |
 | 10   | Newline             | *newline* |
 | 13   | Newline             | *newline* |
@@ -945,7 +945,7 @@ The general syntax for commands in the Structure namespace is:
 
 {{% table %}}
 
-| *Command*: | Remarks                                                      |
+| *Command*: | Catatan                                                      |
 | ---------- | ------------------------------------------------------------ |
 | Ground     | Defines objects for Cycle.Ground and Track.Ground.           |
 | Rail       | Defines objects for Track.Rail, Track.RailStart and Track.RailType. |
