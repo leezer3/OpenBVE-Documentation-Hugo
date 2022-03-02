@@ -10,14 +10,14 @@ This page is still under construction.
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. The Train section](#train)
 - [3. The Car section](#car)
 - [4. The Coupler section](#coupler)
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
 The **train.xml** format is the native format for newer versions of OpenBVE, and is intended to replace the older train.dat format. It allows setting of many more properties, and is extensible.
 
