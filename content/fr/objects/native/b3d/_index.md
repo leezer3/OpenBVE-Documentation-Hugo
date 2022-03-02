@@ -4,7 +4,7 @@ linktitle: "The B3D object"
 weight: 1
 ---
 
-## ■ Contents
+## ■ Contenu
 
 {{% contents %}}
 
@@ -32,7 +32,7 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Présentation
 
 A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
 
@@ -40,7 +40,7 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Syntaxe
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
 
