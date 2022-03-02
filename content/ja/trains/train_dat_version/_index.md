@@ -3,7 +3,7 @@ title: "The **train.dat** file format: Version History"
 hidden: true
 ---
 
-## ■ Contents
+## ■目次
 
 {{% contents %}}
 
