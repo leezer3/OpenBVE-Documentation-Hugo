@@ -6,7 +6,7 @@ weight: 1
 
 ➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ Contents
+## ■ Continguts
 
 {{% contents %}}
 
@@ -178,7 +178,7 @@ This directive is replaced by the ASCII character represented by *Ascii*. This i
 
 {{% table %}}
 
-| Code | Meaning             | Character |
+| Code | Significat             | Character |
 | ---- | ------------------- | --------- |
 | 10   | Newline             | *newline* |
 | 13   | Newline             | *newline* |
