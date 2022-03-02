@@ -31,7 +31,7 @@ The header and code files for the C/C++ programming languages are available to d
 
 {{% /table-nonheader %}}
 
-## ■ Overview
+## ■ 總概
 
 The following functions are called in this order when the plugin is loaded:
 
