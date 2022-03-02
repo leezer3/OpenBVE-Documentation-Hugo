@@ -637,7 +637,7 @@ The absolute difference between *InitialAngle* and *LastAngle* may not exceed 36
 ------
 
 {{% command %}}  
-Minimum = *Value*  
+Minimum = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -647,7 +647,7 @@ Minimum = *Value*
 ------
 
 {{% command %}}  
-Maximum = *Value*  
+Maximum = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -716,7 +716,7 @@ Location = *CenterX*, *CenterY*
 ------
 
 {{% command %}}  
-Minimum = *Value*  
+Minimum = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -726,7 +726,7 @@ Minimum = *Value*
 ------
 
 {{% command %}}  
-Maximum = *Value*  
+Maximum = *Valor*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1025,7 +1025,7 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | ats271 | Meaning           |
+| *i*  | English             | 日本語       | Return values                                |      | ats271 | Significat           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ------ | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0      | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1      | 0 km/h            |
@@ -1046,11 +1046,11 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% /table %}}
 
-##### ● Suffixes
+##### ● Sufixos
 
 {{% table %}}
 
-| Subject suffix | Description                                                  |
+| Subject suffix | Descripció                                                  |
 | -------------- | ------------------------------------------------------------ |
 | d*i*           | With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10. |
 
