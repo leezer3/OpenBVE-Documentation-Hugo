@@ -5,11 +5,11 @@ hidden: true
 
 This is the documentation for train plugins. In order to create a train plugin, implement the IRuntime interface from the OpenBveApi.Runtime namespace. In the following, you will find a description of how this interface works.
 
-## ■ Contents
+## ■目次
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 概要](#overview)
 - [2. Function calls](#functions)
 - [3. Playing sounds](#sound)
 - [4. Supporting the AI](#ai)
@@ -227,7 +227,7 @@ VehicleState (class):
 
 | double | Location    | Gets the location of the front of the train, in meters.   |
 | ------ | ----------- | --------------------------------------------------------- |
-| Speed  | Speed       | Gets the speed of the train.                              |
+| 速度  | 速度       | Gets the speed of the train.                              |
 | double | BcPressure  | Gets the pressure in the brake cylinder, in pascal.       |
 | double | MrPressure  | Gets the pressure in the main reservoir, in pascal.       |
 | double | ErPressure  | Gets the pressure in the equilizing reservoir, in pascal. |
@@ -243,7 +243,7 @@ PrecedingVehicleState (class):
 | double | Location | Gets the location of the back of the preceding train, in meters. |
 | ------ | -------- | ------------------------------------------------------------ |
 | double | Distance | Gets the distance from the front of the current train to the back of the preceding train, in meters. |
-| Speed  | Speed    | Gets the speed of the preceding train.                       |
+| 速度  | 速度    | Gets the speed of the preceding train.                       |
 
 {{% /table-nonheader %}}
 
@@ -501,7 +501,7 @@ SignalData (class):
 
 {{% table-nonheader %}}
 
-| int    | Aspect   | Gets the aspect of the section.   |
+| int    | アスペクト   | Gets the aspect of the section.   |
 | ------ | -------- | --------------------------------- |
 | double | Distance | Gets the distance to the section. |
 
@@ -546,7 +546,7 @@ SignalData (class):
 
 {{% table-nonheader %}}
 
-| int    | Aspect   | Gets the aspect of the section.   |
+| int    | アスペクト   | Gets the aspect of the section.   |
 | ------ | -------- | --------------------------------- |
 | double | Distance | Gets the distance to the section. |
 
@@ -691,7 +691,7 @@ You can directly control the driver handles with the *data.Handles* member, for 
 
 If you decide to let the AI do something, you must set the *data.Response* member to a meaningful value. For operating the handles, best use a short response time, while for other actions like turning a switch not directly accessible, use a long response time. Note that the actual timings are at the whim of the host application.
 
-Example:
+例:
 
 {{% code %}}
 
