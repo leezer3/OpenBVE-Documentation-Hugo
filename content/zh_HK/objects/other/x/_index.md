@@ -19,7 +19,7 @@ If a texture contains this color, then these pixels will be rendered as transpar
 
 {{% /notice %}}
 
-Full support & documentation of the X object format is not yet available from this site, but the following is an overview of the supported templates, unstructured.
+DirectX模型文件的完整文檔尚未列出, 但可以比你睇睇OpenBVE所支持的特性。
 
 - Frame
 - FrameRoot
