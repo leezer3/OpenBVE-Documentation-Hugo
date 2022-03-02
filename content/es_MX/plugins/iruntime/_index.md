@@ -9,7 +9,7 @@ This is the documentation for train plugins. In order to create a train plugin, 
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Function calls](#functions)
 - [3. Playing sounds](#sound)
 - [4. Supporting the AI](#ai)
@@ -124,7 +124,7 @@ This function is the last to be called before the plugin is unloaded.
 
 This function is called after *Load* to inform the plugin about the specifications of the train.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -168,7 +168,7 @@ For more information about the meanings of the notches, see the sections on SetR
 
 This function is called after *SetVehicleSpecs* and informs the plugin about the mode the safety system should start in. If the safety system in your plugin can be activated or deactivated, you should initialize the state of the plugin accordingly. When the user selects a *Jump to station* target, this function is also called prior to moving the train to its new location.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -197,7 +197,7 @@ The initialization mode is set in CSV/RW routes via the Route.Change command. Pl
 
 This function is called every frame. It informs the plugin about the current state of the train and allows to set the virtual handles.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -288,7 +288,7 @@ The meanings of the notches are explained in the sections on SetReverser, SetPow
 
 This function is called when the driver changes the reverser position.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -306,7 +306,7 @@ For *reverser*, the value of -1 corresponds to backward, 0 to neutral and 1 to f
 
 This function is called when the driver changes the power notch.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -324,7 +324,7 @@ For *powerNotch*, the value passed can range from 0 to *specs.PowerNotches*.
 
 This function is called when the driver changes the brake notch.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -390,7 +390,7 @@ When making use of plugin-specific keys in your plugin, be sure to release a doc
 
 This function is called when a plugin-specific key is released.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -432,7 +432,7 @@ When making use of plugin-specific keys in your plugin, be sure to release a doc
 
 This function is called when a horn starts playing. In case of the musical horn, this function is also called when the horn stops playing.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -459,7 +459,7 @@ HornTypes (enumeration):
 
 This function is called when the state of the doors change.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -487,7 +487,7 @@ DoorStates (enumeration):
 
 This function is called when the aspect in the current or in any of the upcoming section changes, or when passing section boundaries. For the current section, it is assumed that no train is currently inside. Only sections until the first red section are reported.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -521,7 +521,7 @@ In CSV/RW routes, the Track.Section (CSV) or @Section (RW) command is used to cr
 
 This function is called when a beacon is passed by the front of the train.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -562,7 +562,7 @@ Please note that plugins may receive beacon types less than 0. These beacon type
 
 This function is called when the AI is performed.
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -590,7 +590,7 @@ You can play custom sounds from within your plugin. Custom sounds need to be con
 
 **SoundHandle PlaySound(int index, double volume, double pitch, bool looped)**
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
@@ -602,7 +602,7 @@ Arguments:
 
 {{% /table-nonheader %}}
 
-Return value:
+Valor de retorno:
 
 {{% table-nonheader %}}
 
@@ -641,7 +641,7 @@ It is important to understand that unless your plugin also simulates a full ATO 
 
 **void PerformAI(AIData data)**
 
-Arguments:
+Argumentos:
 
 {{% table-nonheader %}}
 
