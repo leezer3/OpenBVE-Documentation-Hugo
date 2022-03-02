@@ -9,7 +9,7 @@ Without using a sound.cfg file, openBVE looks for a series of optional sound fil
 
 {{% table %}}
 
-| File | Effect |
+| Fitxer | Effect |
 | --- |--- |
 | adjust.wav | Played once when the train stops at a station, but needs to correct its stop position. |
 | ats.wav | Played in a loop when the built-in security system ATS rings its bell. This happens when passing certain transponders or when the security system is deactivated but power is applied. |
@@ -31,7 +31,7 @@ Without using a sound.cfg file, openBVE looks for a series of optional sound fil
 
 {{% table %}}
 
-| File | Effect |
+| Fitxer | Effect |
 | --- |--- |
 | air.wav | Played occasionally when the pressure in the brake cylinder is decreased from a non-high value to a non-zero value. |
 | airhigh.wav | Played occasionally when the pressure in the brake cylinder is decreased from a high value. |
