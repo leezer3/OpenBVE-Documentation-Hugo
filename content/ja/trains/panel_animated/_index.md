@@ -14,7 +14,7 @@ You can use [Object Viewer]({{< ref "/tools/objectviewer/_index.md" >}}) to prev
 
 {{% notice %}}
 
-#### Overlay and Lighting
+#### 重なりとライティング
 
 The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light. This behavior might change in future versions of openBVE.
 
