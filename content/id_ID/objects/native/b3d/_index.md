@@ -1,10 +1,10 @@
 ---
-title: "The **.b3d** object format"
-linktitle: "The B3D object"
+title: "Objek format **.b3d**"
+linktitle: "Objek B3D"
 weight: 1
 ---
 
-## ■ Contents
+## ■ Isi
 
 {{% contents %}}
 
@@ -32,29 +32,29 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
-A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
+Objek B3D berfungsi membuat objek dengan perintah teks. Objek ini dapat digunakan di rute atau kereta. Dalam file ini objek dapat dibuat sebanyak mungkin. File ini dapat membuat satu atau lebih polygon. Dalam satu bagian [MeshBuilder] memiliki warna dan tekstur yang sama untuk setiap mesh dan polygon dalam bagian yang sama. Polygon dalam file objek ini disebut dengan Face.
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.b3d**. The file is interpreted on a per-line basis, from top to bottom.
 
-➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
+➟ [Lihat juga rangkuman singkat daftar perintah B3D]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Format penulisan
 
-Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
+Setiap baris dalam file ini adalah satu perintah beserta nilai argumennya. Semua sistem penulisan di file ini sama, sebagai berikut:
 
 {{% command %}}
-**NameOfTheCommand** *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*
+**NamaPerintah** *Argumen<sub>1</sub>*, *Argumen<sub>2</sub>*, *Argumen<sub>3</sub>*, ..., *Argumen<sub>n</sub>*
 {{% /command %}}
 
 *NameOfTheCommand* is case-insensitive. If there are arguments, *NameOfTheCommand* and *Argument1* are separated by at least one space space (U+0020). Arguments are separated by a comma (U+002C). [White spaces]({{< ref "/information/whitespaces/_index.md" >}}) around the arguments, and well as at the beginning and the end of the line, are ignored. Empty lines or lines solely consisting of white spaces are also ignored.
 
-Arguments may also be omitted by leaving the text at each of the *Argument<sub>i</sub>* blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands. Note however that the first argument may not be omitted if other arguments are provided.
+Argumen dapat dibiarkan kosong, tanpa diisi nilai apapun. Jika kosong, maka nilai default akan dipakai sesuai perintah yang digunakan. Semua nilai default dijelaskan di setiap penjelasan perintah. Catatan: *Argumen <sub> 1 </sub>* tidak boleh kosong jika ada argumen yang diisi di belakangnya.
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Komentar bisa ditambahkan di mana saja di akhir teks. Tambahkan titik koma " ; " lalu tulis komentar atau catatan yang diinginkan.
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. Daftar perintah
 
 <a name="createmeshbuilder"></a>
 
@@ -62,7 +62,7 @@ You can use comments anywhere at the end of a line. A comment is started by a se
 **[MeshBuilder]**
 {{% /command %}}
 
-This command marks the beginning of a new section of faces. It must precede any of the following commands. There might be as many [MeshBuilder] sections as desired in the object file. All subsequent commands will then relate to the last [MeshBuilder] section opened.
+Perintah ini membuat bagian mesh baru dalam 1 file. Anda bisa membuat [meshbuilder] sebanyak apapun yang diinginkan. Semua keterangan tentang gambar dan warna di bagian ini akan diterapkan ke semua mesh dan poligon ini juga.
 
 ----------
 
@@ -73,17 +73,17 @@ This command marks the beginning of a new section of faces. It must precede any 
 {{% /command %}}
 
 {{% command-arguments %}}
-***vX***: The x-coordinate for the vertex in meters. Negative values are left, positive ones right. The default value is 0.  
-***vY***: The y-coordinate for the vertex in meters. Negative values are down, positive ones up. The default value is 0.  
-***vZ***: The z-coordinate for the vertex in meters. Negative values are backward, positive ones forward. The default value is 0.  
-***nX***: The x-coordinate for the normal of this vertex. The default value is 0.  
-***nY***: The y-coordinate for the normal of this vertex. The default value is 0.  
-***nZ***: The z-coordinate for the normal of this vertex. The default value is 0.  
+***vX***: posisi x dalam meter. minus ke kiri, plus ke kanan. nilai defaultnya 0
+***vY***: posisi y dalam meter. minus ke bawah, plus ke atas. nilai defaultnya 0
+***vZ***: posisi z dalam meter. minus ke belakang, plus kedepan. nilai defaultnya 0
+***nX***: pencahayaan atau normals di posisi x. defaultnya 0
+***nY***: pencahayaan atau normals di posisi y. defaultnya 0
+***nZ***: pencahayaan atau normals di posisi z. defaultnya 0  
 {{% /command-arguments %}}
 
-This command creates a new vertex which can then be used to create faces via the Face or Face2 commands. There can be as many Vertex commands as desired within a [MeshBuilder] section. However, the order of the vertices given is important for other commands. The first vertex given has index 0, and subsequent vertices have indices 1, 2, 3 and so on.
+Perintah ini berfungsi membuat titik sudut baru yang bisa dibentuk dari perintah Face atau Face2. Anda bisa membuat titik sudut sebanyak mungkin dalam 1 [meshbuilder]. Setiap 1 baris Vertex mempunyai nomor urut dimulai dari 0, yang pasti akan dipakai di perintah selanjutnya. Vertex paling atas nomor urut 0, sedangkan vertex di bawahnya bernomor 1, selanjutnya vertex ke-2, 3, 4, dan seterusnya.
 
-The normal is the direction perpendicular to the face at a particular point. If all vertices in a face have the same normal, the face will look flat. If used appropriately, you can give the illusion of a curved face by specifying different normals per vertex, but using the same normal on all vertices that share the same spatial coordinate - across multiple faces. If left all zero, the normal will be calculated automatically.
+Normals, atau pencahayaan, berfungsi untuk menentukan arah datangnya cahaya ke mesh ini. Jika semuanya diabaikan atau ditulis 0, maka pengaturan cahaya akan dibuat otomatis. Jika anda menggunakan Normals ini, anda dapat mengatur cahaya yang datang di setiap titik sudut.
 
 ----------
 
@@ -94,10 +94,10 @@ The normal is the direction perpendicular to the face at a particular point. If 
 {{% /command %}}
 
 {{% command-arguments %}}
-***v<sub>i</sub>***: The vertex index to include in this face. Allowed values are 0 through *n*-1, where *n* is the number of Vertex commands used.  
+***v<sub>i</sub>***: Vertex yang akan dibuat bidang datar. angka yang dibolehkan adalah dari 0 sampai dengan *n-1* , dimana *n* adalah jumlah total vertex yang ada dalam satu [meshbuilder]. 
 {{% /command-arguments %}}
 
-This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will not be visible. However, the Face2 command can be used to create a face which is visible from both sides. Only convex polygons are supported.
+Perintah ini membuat sebuah bangun datar yang terbentuk dari semua Vertex yang telah dimasukan. Urutan penulisan nomor vertex harus berurut sehingga bisa menjadi satu bangun datar. urutan penulisan nomor vertex sesuai arah jarum jam (misalnya kiri bawah, kiri atas, kanan atas, kanan bawah) akan menghasilkan bangun datar menghadap ke depan. Sebaliknya, akan mengarah ke belakang. Jika menggunakan Face2, bagian depan dan belakang bidang datar akan terlihat.
 
 ----------
 
@@ -108,10 +108,10 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 {{% /command %}}
 
 {{% command-arguments %}}
-***v<sub>i</sub>***: The vertex index to include in this face. Allowed values are 0 through *n*-1, where *n* is the number of Vertex commands used.  
+***v<sub>i</sub>***: Vertex yang akan dibuat bidang datar. angka yang dibolehkan adalah dari 0 sampai dengan *n-1* , dimana *n* adalah jumlah total vertex yang ada dalam satu [meshbuilder]. 
 {{% /command-arguments %}}
 
-This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will also be visible, however, lighting on the back face might be the same as on the front face. Only convex polygons are supported.
+Perintah ini membuat sebuah bangun datar yang terbentuk dari semua Vertex yang telah dimasukan. Urutan penulisan nomor vertex harus berurut sehingga bisa menjadi satu bangun datar. urutan penulisan nomor vertex sesuai arah jarum jam (misalnya kiri bawah, kiri atas, kanan atas, kanan bawah) akan menghasilkan bangun datar menghadap ke depan. bagian belakang bangun datar juga akan terlihat. Namun pada bagian belakang tidak akan terpengaruh oleh pencahayaan.
 
 ----------
 
@@ -122,18 +122,18 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 {{% /command %}}
 
 {{% command-arguments %}}
-***HalfWidth***: A floating-point number representing half the width of the cube in **meters**.  
-***HalfHeight***: A floating-point number representing half the height of the cube in **meters**.  
-***HalfDepth***: A floating-point number representing half the depth of the cube in **meters**.  
+***HalfWidth***: Setengah lebar kubus dalam **meter**.  
+***HalfHeight***: Setengah tinggi kubus dalam **meter**.  
+***HalfDepth***: Setengah panjang kubus dalam **meter**.  
 {{% /command-arguments %}}
 
 This command creates a cube having dimensions as specified by *HalfWidth*, *HalfHeight* and *HalfDepth*. The cube will be centered on the origin (0,0,0). Thus, on the x-axis, the cube extends from -*HalfWidth* to *HalfWidth*, on the y-axis from -*HalfHeight* to *HalfHeight* and on the z-axis from -*HalfDepth* to *HalfDepth*. The cube always has 8 vertices and 6 faces.
 
 {{% notice %}}
 
-#### Cube representation
+#### Penggambaran perintah Cube
 
-The Cube command is equivalent to a series of Vertex and Face commands, which you need to account for when using other commands in the same [MeshBuilder] section. The details on what the Cube command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
+Perintah Cube sama dengan kombinasi perintah Vertex dan Face. Detailnya dapat dilihat di [sini]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
 {{% /notice %}}
 
@@ -146,10 +146,10 @@ The Cube command is equivalent to a series of Vertex and Face commands, which yo
 {{% /command %}}
 
 {{% command-arguments %}}
-***n***: An integer representing the number of vertices to be used for the base of the frustum.  
-***UpperRadius***: A floating-point number representing the radius for the upper base of the frustum in **meters**. Can be negative to indicate that the top cap is to be omitted.  
-***LowerRadius***: A floating-point number representing the radius for the lower base of the frustum in **meters**. Can be negative to indicate that the bottom cap is to be omitted.  
-***Height***: A floating-point number representing the height of the prism in **meters**. Can be negative, which will flip the frustum vertically and display it inside-out.  
+***n***: Jumlah sisi alas dan tutup tabung
+***UpperRadius***: jari-jari tutup tabung dalam satuan **meter**. Bisa negatif kalau ingin tutup prisma tidak terlihat.
+***LowerRadius***: jari-jari alas tabung dalam satuan **meter**. Bisa negatif kalau ingin alas prisma tidak terlihat.
+***Height***: tinggi tinggi dalam **meter**. Bisa negatif jika ingin tabung terlihat dari dalam saja.  
 {{% /command-arguments %}}
 
 This command creates a [frustrum](http://en.wikipedia.org/wiki/Frustrum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -½\**Height* to ½\**Height*.
@@ -158,9 +158,9 @@ The number of vertices *n* will usually suffice to be 6 or 8 when only small rad
 
 {{% notice %}}
 
-#### Cylinder representation
+#### Representasi tabung
 
-The Cylinder command is equivalent to a series of Vertex and Face commands, which you need to account for when using other commands in the same [MeshBuilder] section. The details on what the Cylinder command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
+Cylinder adalah gabungan dari beberapa perintah Vertex dan Face. Info lebih lanjut bisa dilihat [di sini]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
 {{% /notice %}}
 
@@ -170,7 +170,7 @@ The Cylinder command is equivalent to a series of Vertex and Face commands, whic
 <font color=#555555>Texture</font>
 {{% /command %}}
 
-*<font color=#555555>This command is ignored by openBVE.</font>*
+*<font color=#555555>Perintah ini tidak dipakai di openBVE.</font>*
 
 ----------
 
@@ -182,12 +182,12 @@ The Cylinder command is equivalent to a series of Vertex and Face commands, whic
 {{% /command %}}
 
 {{% command-arguments %}}
-***X***: A floating-point number representing the translation on the x-coordinate in **meters**. Negative values translate to the left, positive ones right. The default value is 0.  
-***Y***: A floating-point number representing the translation on the y-coordinate in **meters**. Negative values translate down, positive ones up. The default value is 0.  
-***Z***: A floating-point number representing the translation on the z-coordinate in **meters**. Negative values translate backward, positive ones forward. The default value is 0.  
+***X***: jarak perpindahan di sumbu x dalam **meter**. Negatif ke kiri, positif ke kanan. Nilai defaultnya 0.  
+***Y***: jarak perpindahan di sumbu y dalam **meter**. Negatif ke bawah, positif ke atas. Nilai defaultnya 0. 
+***Z***: jarak perpindahan di sumbu z dalam **meter**. Negatif ke belakang, positif ke depan. Nilai defaultnya 0. 
 {{% /command-arguments %}}
 
-The **Translate** command moves all vertices that have been created so far in the [MeshBuilder] section via the Vertex, Cube or Cylinder commands. Subsequent vertices are not affected. You can use as many Translate commands as desired in a [MeshBuilder] section. The **TranslateAll** command not only affects the vertices generated in the current [MeshBuilder] section, but also those created in previous [MeshBuilder] sections. This is useful to insert at the end of the file in order to translate the whole object.
+Perintah **Translate** memindahkan semua mesh yang dibuat dari bagian [MeshBuilder] terakhir, baik Vertex, Cube, atau Cylinder. Semua tulisan yang ada di bawah perintah ini tidak akan berpindah. Anda bisa menggunakan perintah ini sebanyak yang diinginkan. Perintah **TranslateAll** akan memindahkan semua objek dan mesh yang ditulis dari [MeshBuilder] sampai tulisan di atas perintah ini. Perintah ini berguna pada akhir teks untuk memindahkan semua objek yang sudah ditulis.
 
 ----------
 
@@ -204,7 +204,7 @@ The **Translate** command moves all vertices that have been created so far in th
 ***Z***: non-zero A floating-point number representing the scale factor on the z-coordinate. The default value is 1.  
 {{% /command-arguments %}}
 
-The **Scale** command scales all vertices that have been created so far in the [MeshBuilder] section via the Vertex, Cube or Cylinder commands. Subsequent vertices are not affected. You can use as many Scale commands as desired in a [MeshBuilder] section. The **ScaleAll** command not only affects the vertices generated in the current [MeshBuilder] section, but also those created in previous [MeshBuilder] sections. This is useful to insert at the end of the file in order to scale the whole object.
+Perintah **Scale** dapat dipakai untuk memperbesar atau memperkecil objek yang sudah dibuat dari [MeshBuilder] terakhir, termasuk Vertex, Cube, dan Cylinder. Tulisan di bawah perintah ini tidak akan terpengaruh. Tidak ada batasan jumlah untuk menggunakan perintah ini. Perintah **ScaleAll** akan memperbesar atau memperkecil semua mesh yang sudah ditulis dari [meshbuilder] paling atas sampai dengan tulisan di atas perintah ini. Berguna di akhir teks untuk memperbesar atau memperkecil semua objek dalam file. Angka antara 0-1 akan memperkecil, sedangkan lebih dari 1 akan diperbesar. Angka negatif akan menukar kanan-kiri, atas-bawah, atau depan-belakang objek.
 
 ----------
 
@@ -216,10 +216,10 @@ The **Scale** command scales all vertices that have been created so far in the [
 {{% /command %}}
 
 {{% command-arguments %}}
-***X***: The x-direction of the rotational axis. Negative values point to the left, positive ones to the right. The default value is 0.  
-***Y***: The y-direction of the rotational axis. Negative values point down, positive ones up. The default value is 0.  
-***Z***: The z-direction of the rotational axis. Negative values point backward, positive ones forward. The default value is 0.  
-***Angle***: The angle to rotate in degrees. Negative values rotate counter-clockwise, positive ones clock-wise. The default value is 0.  
+***X***: rotasi di sumbu-X. -1 artinya ke kiri, 1 artinya ke kanan. Nilai defaultnya 0.
+***Y***: rotasi di sumbu-Y. -1 artinya ke bawah, 1 artinya ke atas. Nilai defaultnya 0.
+***Z***: rotasi di sumbu-Z. -1 artinya ke belakang, 1 artinya ke depan. Nilai defaultnya 0.
+***Angle***: Besar rotasi dalam derajat (0-360). Negatif artinya berlawanan jarum jam, positif searah jarum jam. Nilai defaultnya 0  
 {{% /command-arguments %}}
 
 The **Rotate** command rotates all vertices that have been created so far in the current [MeshBuilder] section via the Vertex, Cube or Cylinder commands. Subsequent vertices are not affected. The axis of rotation is specified via the *X*, *Y* and *Z* values. Rotation will occur in the plane perpendicular to that direction. A zero vector for this axis is treated as (1,0,0). All other directions are normalized. You can use as many Rotate commands as desired in a [MeshBuilder] section. The **RotateAll** command not only affects the vertices generated in the current [MeshBuilder] section, but also those created in previous [MeshBuilder] sections. This is useful to insert at the end of the file in order to rotate the whole object.
@@ -276,10 +276,10 @@ The **Mirror** command mirrors all vertices that have been created so far in the
 {{% /command %}}
 
 {{% command-arguments %}}
-***Red***: The red component of the color. Measured from 0 (black) to 255 (red). The default value is 255.  
-***Green***: The green component of the color. Measured from 0 (black) to 255 (green). The default value is 255.  
-***Blue***: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 255.  
-***Alpha***: The alpha component of the color. Measured from 0 (transparent) to 255 (opaque). The default value is 255.  
+***Red***: Komposisi merah, dari angka 0 (hitam) sampai 255 (merah). Angka defaultnya 255.  
+***Green***: Komposisi hijau, dari angka 0 (hitam) sampai 255 (hijau). Angka defaultnya 255. 
+***Blue***: Komposisi biru, dari angka 0 (hitam) sampai 255 (biru). Angka defaultnya 255. 
+***Alpha***: Komposisi alpha, dari angka 0 (transparen) sampai 255 (jelas). Angka defaultnya 255. 
 {{% /command-arguments %}}
 
 The **Color** command sets the color for all faces that were already created in the current [MeshBuilder] section. If no texture is used, the faces will be colored using the color data as specified by *Red*, *Green* and *Blue*. If a texture is used, the pixels in the texture will be multiplied by the color, where multiplying with black results in black and multiplying with white does not change the color of the texture pixels. Values in-between make the texture pixels darker. When lighting is used in the route, the actual color can change depending on the lighting conditions, but will usually become darker.
@@ -296,9 +296,9 @@ The **ColorAll** command sets the color for all faces that were already created 
 {{% /command %}}
 
 {{% command-arguments %}}
-***Red***: The red component of the color. Measured from 0 (black) to 255 (red). The default value is 0.  
-***Green***: The green component of the color. Measured from 0 (black) to 255 (green). The default value is 0.  
-***Blue***: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 0.  
+***Red***: Komposisi merah, dari angka 0 (hitam) sampai 255 (merah). Angka defaultnya 255.  
+***Green***: Komposisi hijau, dari angka 0 (hitam) sampai 255 (hijau). Angka defaultnya 255. 
+***Blue***: Komposisi biru, dari angka 0 (hitam) sampai 255 (biru). Angka defaultnya 255.  
 {{% /command-arguments %}}
 
 The **EmissiveColor** command sets the emissive color for all faces that were already created in the current [MeshBuilder] section. The difference between the Color command and the EmissiveColor command is that the Color command is affected by lighting, while the EmissiveColor command is not. Thus, the EmissiveColor command should be used for faces which would emit light themselves, including signals, lamps, windows and the like. The actual color contribution to the faces will be the sum of the light-affected color data and the static emissive color data.
@@ -314,23 +314,23 @@ The **EmissiveColorAll** command sets the color for all faces that were already 
 {{% /command %}}
 
 {{% command-arguments %}}
-***BlendMode***: The blend mode to use. The default is Normal.  
-***GlowHalfDistance***: The distance at which the glow is at 50% of its intensity, measured in meters. The value must be an integer in the range from 1 to 4095, or 0 to disable glow attenuation. The default value is 0.  
-***GlowAttenuationMode***: The glow attenuation mode to use. The default is DivideExponent4.  
+***BlendMode***: Menentukan cara blending gambar, Defaultnya adalah Normal.  
+***GlowHalfDistance***: Jarak dimana mesh akan bersinar 50% . Nilainya harus antara 0 sampai 4095, atau 0 jika tidak ada peredaman cahaya.  
+***GlowAttenuationMode***: Cara cahaya meredup. Defaultnya adalah DivideExponent4.  
 {{% /command-arguments %}}
 
-▸ Available options for *BlendMode*:
+▸ Pilihan tersedia untuk *BlendMode*:
 
 {{% command-arguments %}}
-**Normal**: The faces are rendered normally.  
-**Additive**: The faces are rendered additively.  
+**Normal**: Mesh akan di-render dengan normal.  
+**Additive**: Mesh akan di-render dengan tambahan setingan.  
 {{% /command-arguments %}}
 
-▸ Available options for *GlowAttenuationMode*:
+▸ Pilihan yang bisa dipakai pada *GlowAttenuationMode*:
 
 {{% command-arguments %}}
-**DivideExponent2**: The glow intensity is determined via the function *x*<sup>2</sup> / (*x*<sup>2</sup> + *GlowHalfDistance*<sup>2</sup>), where *x* is the distance from the camera to the object in meters.  
-**DivideExponent4**: The glow intensity is determined via the function *x*<sup>4</sup> / (*x*<sup>4</sup> + *GlowHalfDistance*<sup>4</sup>), where *x* is the distance from the camera to the object in meters.  
+**DivideExponent2**: Intensitas cahaya akan diatur dari rumus *x*<sup>2</sup> / (*x*<sup>2</sup> + *GlowHalfDistance*<sup>2</sup>), di mana *x* adalah jarak dari kamera ke objek dalam meter.  
+**DivideExponent4**: Intensitas cahaya akan diatur dari rumus *x*<sup>4</sup> / (*x*<sup>4</sup> + *GlowHalfDistance*<sup>4</sup>), di mana *x* adalah jarak dari kamera ke objek dalam meter.  
 {{% /command-arguments %}}
 
 This command sets the blend mode for all faces in the current [MeshBuilder] section. The *Normal* mode replaces screen pixels with texture pixels. The *Additive* mode adds the color of texture pixels to the color of screen pixels, where adding black does not change the screen pixel, while adding white results in white. If *GlowHalfDistance* is 0, glow attenuation will be disabled, which is the default. If glow attenuation is to be used, *GlowHalfDistance* represents the distance in meters at which the glow is exactly at 50% of its intensity. When the camera approaches the face, the face will gradually fade out (become transparent). The function used to determine the exact intensity for a given distance can be influenced with the setting of *GlowAttenuationMode*. DivideExponent2 creates a smoother transition, but will converge to the maximum intensity very slowly, while DivideExponent4 creates a sharper transition which converges more quickly.
@@ -382,9 +382,9 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 {{% /command %}}
 
 {{% command-arguments %}}
-***Red***: The red component of the color. Measured from 0 (black) to 255 (red). The default value is 0.  
-***Green***: The green component of the color. Measured from 0 (black) to 255 (green). The default value is 0.  
-***Blue***: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 0.  
+***Red***: Komposisi merah, dari angka 0 (hitam) sampai 255 (merah). Angka defaultnya 255.  
+***Green***: Komposisi hijau, dari angka 0 (hitam) sampai 255 (hijau). Angka defaultnya 255. 
+***Blue***: Komposisi biru, dari angka 0 (hitam) sampai 255 (biru). Angka defaultnya 255.  
 {{% /command-arguments %}}
 
 This command sets the color used for screendoor transparency for all faces that were already created. The texture loaded via the Load command will become transparent for all pixels which match exactly with the color specified via the *Red*, *Green* and *Blue* parameters. The use of screendoor transparency is much more efficient than using a full alpha channel, so prefer using a texture without an alpha channel and use this command instead to make parts of the texture transparent. You need to specify texture coordinates via the Coordinate command in order for the texture to correctly appear on the faces.
