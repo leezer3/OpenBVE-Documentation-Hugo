@@ -1,10 +1,10 @@
 ---
-title: "Playing Sounds from a Microphone Input"
-linktitle: "Playing Sounds from a Microphone Input"
+title: "Menggunakan mic"
+linktitle: "Menggunakan mic"
 weight: 2
 ---
 
-openBVE 1.5.4.0 introduces the ability to play sounds from the microphone or line-in input to a specified position within the game world. 
+Mulai openBVE 1.5.4.0, game dapat menggunakan mic atau perangkat masukan suara lainnya di posisi tertentu dalam rute.
 
 ---
 
@@ -13,14 +13,14 @@ openBVE 1.5.4.0 introduces the ability to play sounds from the microphone or lin
 {{% /command %}}
 
 {{% command-arguments %}}  
-***X***: The X position of the sound.  
-***Y***: The Y position of the sound.  
-***ForwardsTolerance***: The distance in meters at which the sound becomes audible as the train approaches it's position.  
-***BackwardsTolerance***: The distance in meters at which the sound is inaudible after the train passes it's position.  
+***X***: Posisi X suara.  
+***Y***: Posisi Y suara.  
+***ForwardsTolerance***: Batas jarak suara dapat didengar saat kereta mendekati posisi ini.
+***BackwardsTolerance*** : Batas jarak suara dapat didengar setelah kereta melewati posisi ini.
 {{% /command-arguments %}}
 
-__**Implementation Notes**__:
+__**Catatan penggunaan**__:
 
-* Microphone input must be activated using the **PLAY_MIC_SOUNDS** key, which is assigned to **W** by default.
-* The microphone input will be routed to all **Track.MicSound** sound sources within the camera range.
-* Only the first available openAL microphone input is supported at present. 
+* Input mic harus diaktifkan dengan tombol **PLAY_MIC_SOUNDS** , defaultnya tekan **W** .
+* Suara dari mic akan terdengar di semua lokasi yang ada perintah **Track.MicSound** .
+* Hanya perangkat mic openAL awal yang dapat digunakan saat ini.
