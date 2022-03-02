@@ -4,7 +4,7 @@ linktitle: "The panel.cfg file"
 weight: 4
 ---
 
-## ■ Contents
+## ■ Isi
 
 {{% contents %}}
 
@@ -21,7 +21,7 @@ weight: 4
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
 The panel.cfg file allows to create 2D panels by defining which elements to use, like speedometers, pressure gauges etc., and where they are to be placed.
 
@@ -39,31 +39,31 @@ The panel.cfg has been superseded by the panel2.cfg. You can achieve the full fu
 
 {{% notice %}}
 
-#### Overlay and Lighting
+#### Overlay dan Pencahayaan
 
 The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light.
 
 {{% /notice %}}
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Format penulisan
 
-Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
+Setiap baris dalam file ini bisa dikosongkan (atau dikasih spasi) dan tidak akan dibaca oleh sistem. Dengan begitu anda bisa memisahkan bagian satu dengan bagian lainnya. 
 
-A new section is opened by starting the line with an opening bracket (U+005B) and ending it with a closing bracket (U+005D). The text in-between the brackets indicates the name of the section and is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as at the beginning and the end of the name of the section. Thus, the beginning of the section has the following form:
+Membuat bagian baru dimulai dengan menambahkan nama bagian dan memakai kurung tegak ( " [ " dan " ] " ). Spasi tidak akan terbaca di sistem. Contoh cara penulisannya:
 
 {{% command %}}  
-[NameOfTheSection]  
+[NamaBagian]  
 {{% /command %}}
 
 A key-value pair is indicated by giving the key, an equals sign (U+003D) and then the value. The key is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as in front and after the equals sign. Alternatively, white spaces surrounding the key and the value are ignored. Thus, a key-value pair as the following form:
 
 {{% command %}}  
-NameOfTheKey = Value  
+Perintah = Nilai  
 {{% /command %}}
 
 Some values are further split into multiple parts, separated by commas (U+002C). Instead of a comma, a colon (U+003A) can be used interchangeably.
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Komentar bisa ditambahkan di mana saja di akhir teks. Tambahkan titik koma " ; " lalu tulis komentar atau catatan yang diinginkan.
 
 ## <a name="panel"></a>■ 3. The Panel section
 
