@@ -8,7 +8,7 @@ weight: 2
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 概要](#overview)
 - [2. The file identifier](#identifier)
   - [2a. Version history]({{<ref "/trains/train_dat_version/_index.md" >}})
 - [3. Syntax](#syntax)
@@ -77,7 +77,7 @@ A new section is opened by starting the line with a number sign character (U+002
 
 The order in which sections appear within the file is irrelevant. Each line following the opening of a new section is interpreted as a data entry. These data entries are not named, thus their order is important. When a data entry is expected but omitted because a new section was started, a default value will apply. The exact interpretation of each data entry is explained in the following sections, along with default values.
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+コメントは行末のどこでも使用可能です。 コメントはセミコロン (U+003B)で始まります。 コメントは存在する場合、処理される前に全ての行から削除されます。
 
 ## <a name="acceleration"></a>■ 4. The Acceleration section
 
@@ -89,7 +89,7 @@ The Acceleration section defines the acceleration characteristics of the train f
 #ACCELERATION  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -159,7 +159,7 @@ This section defines the brake performance and coefficients which influence the 
 #PERFORMANCE  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 {{% note-withtitle %}}
 
@@ -230,7 +230,7 @@ This section defines various delays associated with electric power and electric 
 #DELAY  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -294,7 +294,7 @@ This section defines various jerk values associated with electric power and elec
 #MOVE  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -368,7 +368,7 @@ This section defines the brake type and other related settings.
 #BRAKE  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -447,7 +447,7 @@ This section defines various pressures for the train brake.
 #PRESSURE  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -537,7 +537,7 @@ This section defines the type of the handle and the amount of power and brake no
 #HANDLE  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -651,7 +651,7 @@ This section defines the location of the driver's eyes inside the train.
 #CAB  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 {{% note-withtitle %}}
 
@@ -713,7 +713,7 @@ This section defines the number of cars and their masses.
 #CAR  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -854,7 +854,7 @@ This section defines which devices are present on the train.
 #DEVICE  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
