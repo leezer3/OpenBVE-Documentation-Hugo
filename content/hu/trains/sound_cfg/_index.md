@@ -4,7 +4,7 @@ linktitle: "The sound.cfg file"
 weight: 8
 ---
 
-## ■ Contents
+## ■ Tartalom
 
 {{% contents %}}
 
@@ -14,7 +14,7 @@ weight: 8
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Áttekintés
 
 The sound.cfg file allows to reference which sound files should be used, how they are called and where they are located relative to the train folder.
 
