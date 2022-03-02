@@ -26,7 +26,7 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
 The **sound.xml** format is the native train sound format for newer versions of OpenBVE.
 
