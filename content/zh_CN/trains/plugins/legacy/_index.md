@@ -1,5 +1,5 @@
 ---
-title: "Win32 train plugins"
+title: "Win32列車插件"
 hidden: true
 ---
 
@@ -31,7 +31,7 @@ The header and code files for the C/C++ programming languages are available to d
 
 {{% /table-nonheader %}}
 
-## ■ Overview
+## ■ 概述
 
 The following functions are called in this order when the plugin is loaded:
 
@@ -123,7 +123,7 @@ This function is called after SetVehicleSpec() is called and informs the plugin 
 | ATS_INIT_ON_EMG  | 0    | The plugin should start in an **active** state. The **emergency** brakes are applied on startup. |
 | ATS_INIT_OFF_EMG | 1    | The plugin should start in an *inactive* state. The **emergency** brakes are applied on startup. |
 
-{{% /table-nonheader %}}  
+{{% /table-nonheader %}}
 
 ------
 
@@ -133,7 +133,7 @@ This function is called every frame, informs the plugin about the current state 
 
 *struct ATS_VEHICLESTATE:*
 
-{{% table-nonheader %}}  
+{{% table-nonheader %}}
 
 | <span style="white-space: nowrap;">double Location</span>   | The current track position of the front of the train in meters. |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
@@ -146,7 +146,7 @@ This function is called every frame, informs the plugin about the current state 
 | <span style="white-space: nowrap;">float SapPressure</span> | The current pressure in the straight air brake in pascal.    |
 | <span style="white-space: nowrap;">float Current</span>     | This value always returns 0 and should be ignored.           |
 
-{{% /table-nonheader %}}  
+{{% /table-nonheader %}}
 
 *int[] panel:*  
 An array with 256 elements (0 through 255) which can be set to any value. The values in the array are preserved between successive Elapse() calls. At the beginning of the simulation, all elements are initialized to 0. Panel developers can query values of this array via the ats*i* subject, while developers of animated objects can query values via the pluginstate[*i*] variable. You should coordinate your efforts with panel/object developers and release a specification that tells which element in the array has what purpose.
@@ -154,7 +154,7 @@ An array with 256 elements (0 through 255) which can be set to any value. The va
 *int[] sound:*  
 An array with 256 elements (0 through 255) which can be set to any sound instruction. The values in the array are preserved between successive Elapse() calls. At the beginning of the simulation, all elements are initialized to ATS_SOUND_PLAYLOOPING (0). Train developers can reference sounds in the sound.cfg file. You should coordinate your efforts with train developers and release a specification that tells which sound index plays what kind of sound. The sound instructions that can be used are:
 
-{{% table-nonheader %}}  
+{{% table-nonheader %}}
 
 | ATS_SOUND_STOP        | -10000           | Stops the sound.                                             |
 | --------------------- | ---------------- | ------------------------------------------------------------ |
@@ -163,11 +163,11 @@ An array with 256 elements (0 through 255) which can be set to any sound instruc
 | ATS_SOUND_PLAY        | 1                | Plays the sound once. If the sound is already playing, a new instance of the sound starts playing. Subsequently, stopping or changing volume only affects the new sound. The host application will set the sound instruction to ATS_SOUND_CONTINUE after having processed it. |
 | ATS_SOUND_CONTINUE    | 2                | Does not execute any command. You should set to this value if you don't want to change anything. |
 
-{{% /table-nonheader %}}  
+{{% /table-nonheader %}}
 
 *Return value struct ATS_HANDLES:*
 
-{{% table-nonheader %}}  
+{{% table-nonheader %}}
 
 | <span style="white-space: nowrap;">int Brake</span>         | The brake notch to apply. See SetBrake() below for more information. |
 | ------------------------------ | ------------------------------------------------------------ |
@@ -229,14 +229,14 @@ This function is called when any of the horn starts or stops playing.
 
 *hornType:* 
 
-{{% table-nonheader %}} 
+{{% table-nonheader %}}
 
 | ATS_HORN_PRIMARY   | 0    | The function is called only when the horn starts playing.    |
 | ------------------ | ---- | ------------------------------------------------------------ |
 | ATS_HORN_SECONDARY | 1    | The function is called only when the horn starts playing.    |
 | ATS_HORN_MUSIC     | 2    | The function is called both when the horn starts playing and when it stops playing. |
 
-{{% /table-nonheader %}} 
+{{% /table-nonheader %}}
 
 ------
 
@@ -270,7 +270,7 @@ This function is called when a beacon is passed.
 
 *struct ATS_BEACONDATA:*
 
-{{% table-nonheader %}} 
+{{% table-nonheader %}}
 
 | <span style="white-space: nowrap;">int Type</span>       | The type of the beacon. In CSV routes, this corresponds to *Type* in Track.Beacon(*Type*; *BeaconStructureIndex*; *Section*; *Data*). |
 | --------------------------- | ------------------------------------------------------------ |
@@ -278,6 +278,6 @@ This function is called when a beacon is passed.
 | <span style="white-space: nowrap;">float Distance</span> | The distance from the front of the train to the signal in meters. This can be negative if the associated section is behind the front of the train. |
 | <span style="white-space: nowrap;">int Data</span>       | The data of the beacon. In CSV routes, this corresponds to *Data* in Track.Beacon(*Type*; *BeaconStructureIndex*; *Section*; *Data*). |
 
-{{% /table-nonheader %}} 
+{{% /table-nonheader %}}
 
 *Type* can be in the range from 0 to 2147483647, while *Data* can be in the range from 2147483648 to 2147483647. Please see the page about [standards]({{< ref "/information/standards/_index.md" >}}) to learn more about assigning beacon types.
