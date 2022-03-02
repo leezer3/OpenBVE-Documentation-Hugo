@@ -5,7 +5,7 @@ hidden: true
 
 This is the documentation for train plugins. In order to create a train plugin, implement the IRuntime interface from the OpenBveApi.Runtime namespace. In the following, you will find a description of how this interface works.
 
-## ■ Contents
+## ■ Continguts
 
 {{% contents %}}
 
@@ -535,7 +535,7 @@ BeaconData (class):
 
 {{% table-nonheader %}}
 
-| int        | Type     | Gets the type of beacon.                    |
+| int        | Tipus     | Gets the type of beacon.                    |
 | ---------- | -------- | ------------------------------------------- |
 | int        | Optional | Gets optional data the beacon transmits.    |
 | SignalData | Signal   | Gets the section the beacon is attached to. |
@@ -691,7 +691,7 @@ You can directly control the driver handles with the *data.Handles* member, for 
 
 If you decide to let the AI do something, you must set the *data.Response* member to a meaningful value. For operating the handles, best use a short response time, while for other actions like turning a switch not directly accessible, use a long response time. Note that the actual timings are at the whim of the host application.
 
-Example:
+Exemple:
 
 {{% code %}}
 
