@@ -5,7 +5,7 @@ weight: 1
 
 ![img](/images/tool_objectviewer_screenshot_1.png)![img](/images/tool_objectviewer_screenshot_2.png)![img](/images/tool_objectviewer_screenshot_3.png)
 
-## ■ Overview
+## ■개요
 
 This tool allows to preview one or more object files. Objects can be added at any time and also reloaded to quickly reflect changes. Keyboard and mouse controls allow to move and rotate the camera. If objects contain errors, a report can be optionally displayed.
 
