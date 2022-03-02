@@ -8,7 +8,7 @@ weight: 5
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 概要](#overview)
 - [2. Syntax](#syntax)
 - [3. The This section](#this)
 - [4. The PilotLamp section](#pilotlamp)
@@ -364,7 +364,7 @@ TransparentColor = *HexColor*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***HexColor***: A [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}}) representing the exact color in both the *DaytimeImage* and *NighttimeImage* files which corresponds to a transparent pixel. The default value is #0000FF.  
+***HexColor***: [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}})  *DaytimeImage* と *NighttimeImage* ファイルの双方で、透明ピクセルに対応する正確な色を表します。デフォルト値は #0000FF です。  
 {{% /command-arguments %}}
 
 ------
@@ -451,7 +451,7 @@ Layer = *LayerIndex*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
+***LayerIndex***: 重なり合うレイヤー要素の中で、個々の要素を一意に定義する整数。 小さい数字は背景側を示し、大きい数字は前景側を示します。 各要素は重なり合わない限り同じ *LayerIndex* を使用できます。 デフォルト値は0です。 
 {{% /command-arguments %}}
 
 ## <a name="digitalnumber"></a>■ 6. The DigitalNumber section
@@ -466,7 +466,7 @@ The image used for the DigitalNumber, defined by *DaytimeImage* (required) and *
 [DigitalNumber]  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -475,7 +475,7 @@ Subject = *Subject*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
+***Subject***: [available subjects](#subjects) で定義されているものの一つを指定します。デフォルトのサブジェクトは **true** です。  
 {{% /command-arguments %}}
 
 ------
@@ -485,8 +485,8 @@ Location = *Left*, *Top*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Left***: A floating-point number representing the x-coordinate at which the left of the image is inserted. The default value is 0.  
-***Top***: A floating-point number representing the y-coordinate at which the top of the image is inserted. The default value is 0.  
+***Left***: 画面の左端が挿入されるX座標を示す浮動小数点数。デフォルトは値は0です。  
+***Top***: 画面の上端が挿入されるY座標を示す浮動小数点数。デフォルトは値は0です。   
 {{% /command-arguments %}}
 
 ------
@@ -516,7 +516,7 @@ TransparentColor = *HexColor*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***HexColor***: A [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}}) representing the exact color in both the *DaytimeImage* and *NighttimeImage* files which corresponds to a transparent pixel. The default value is #0000FF.  
+***HexColor***: [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}})  *DaytimeImage* と *NighttimeImage* ファイルの双方で、透明ピクセルに対応する正確な色を表します。デフォルト値は #0000FF です。  
 {{% /command-arguments %}}
 
 ------
@@ -536,7 +536,7 @@ Layer = *LayerIndex*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
+***LayerIndex***: 重なり合うレイヤー要素の中で、個々の要素を一意に定義する整数。 小さい数字は背景側を示し、大きい数字は前景側を示します。 各要素は重なり合わない限り同じ *LayerIndex* を使用できます。 デフォルト値は0です。 
 {{% /command-arguments %}}
 
 ## <a name="digitalgauge"></a>■ 7. The DigitalGauge section
@@ -557,7 +557,7 @@ The subject needs to return a value that meaningfully works together with the *M
 [DigitalGauge]  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -566,7 +566,7 @@ Subject = *Subject*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
+***Subject***: [available subjects](#subjects) で定義されているものの一つを指定します。デフォルトのサブジェクトは **true** です。  
 {{% /command-arguments %}}
 
 ------
@@ -671,7 +671,7 @@ Layer = *LayerIndex*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
+***LayerIndex***: 重なり合うレイヤー要素の中で、個々の要素を一意に定義する整数。 小さい数字は背景側を示し、大きい数字は前景側を示します。 各要素は重なり合わない限り同じ *LayerIndex* を使用できます。 デフォルト値は0です。 
 {{% /command-arguments %}}
 
 ## <a name="lineargauge"></a>■ 8. The LinearGauge section
@@ -690,7 +690,7 @@ Further, the direction of the texture shift may be changed from horizontal to ve
 [LinearGauge]  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -699,7 +699,7 @@ Subject = *Subject*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
+***Subject***: [available subjects](#subjects) で定義されているものの一つを指定します。デフォルトのサブジェクトは **true** です。  
 {{% /command-arguments %}}
 
 ------
@@ -761,7 +761,7 @@ Layer = *LayerIndex*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
+***LayerIndex***: 重なり合うレイヤー要素の中で、個々の要素を一意に定義する整数。 小さい数字は背景側を示し、大きい数字は前景側を示します。 各要素は重なり合わない限り同じ *LayerIndex* を使用できます。 デフォルト値は0です。 
 {{% /command-arguments %}}
 
 ## <a name="timetable"></a>■ 9. The Timetable section
@@ -774,7 +774,7 @@ The Timetable section defines where to place custom timetables. The actual image
 [Timetable]  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -783,8 +783,8 @@ Location = *Left*, *Top*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Left***: A floating-point number representing the x-coordinate at which the left of the image is inserted. The default value is 0.  
-***Top***: A floating-point number representing the y-coordinate at which the top of the image is inserted. The default value is 0.  
+***Left***: 画面の左端が挿入されるX座標を示す浮動小数点数。デフォルトは値は0です。  
+***Top***: 画面の上端が挿入されるY座標を示す浮動小数点数。デフォルトは値は0です。   
 {{% /command-arguments %}}
 
 ------
@@ -824,7 +824,7 @@ Layer = *LayerIndex*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
+***LayerIndex***: 重なり合うレイヤー要素の中で、個々の要素を一意に定義する整数。 小さい数字は背景側を示し、大きい数字は前景側を示します。 各要素は重なり合わない限り同じ *LayerIndex* を使用できます。 デフォルト値は0です。 
 {{% /command-arguments %}}
 
 ## <a name="windscreen"></a>■ 10. The Windscreen section
@@ -837,7 +837,7 @@ The Windscreen section defines a set of animated raindrops / snowflakes and wind
 [Windscreen]  
 {{% /command %}}
 
-This starts the section.
+これをを定義することにより、セクションを開始します。
 
 ------
 
@@ -968,7 +968,7 @@ Layer = *LayerIndex*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
+***LayerIndex***: 重なり合うレイヤー要素の中で、個々の要素を一意に定義する整数。 小さい数字は背景側を示し、大きい数字は前景側を示します。 各要素は重なり合わない限り同じ *LayerIndex* を使用できます。 デフォルト値は0です。 
 {{% /command-arguments %}}
 
 ## <a name="subjects"></a>■ 11. Available subjects
@@ -1025,7 +1025,7 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | ats271 | Meaning           |
+| *i*  | English             | 日本語       | Return values                                |      | ats271 | 意味           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ------ | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0      | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1      | 0 km/h            |
