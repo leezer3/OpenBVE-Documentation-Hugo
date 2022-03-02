@@ -22,274 +22,244 @@ weight: 3
 
 ## <a name="overview"></a>■ 1. 總概
 
-The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
+ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他的多个模型（B3D/CSV/...）并给它们添加动画。除了制作动画之外，你也能只用它来组合多个模型（包括其他的ANIMATED动画物件）。
 
-Animated objects can be used in CSV/RW routes (unless explicitly disallowed by some commands), as train exterior objects via the *extensions.cfg*, and as 3D cabs via the *panel.animated* file.
+除了一些明确指出不允许的指令之外，ANIMATED动画物件可以被用在CSV/RW线路中，作为列车模型用在 *extensions.cfg* 中，还可以作为3D驾驶室模型用在 *panel.animated* 文件中。
 
 ##### ● 基本
 
-Animation is performed via the following primitives:
+动画是通过以下类型的语句实现的：
 
-- State changes - basically allowing to switch between different objects at any time
-- Translation - moving objects in three independent directions
-- Rotation - rotating objects around three independent axes
-- Texture shifts - allowing to shift the texture coordinates of objects in two independent directions
+- 状态变化 —— 简单地在不同的时间点切换成不同的模型
+- 平移变换 —— 在三个独立的方向轴（XYZ）上移动物体
+- 旋转变换 —— 在三个独立的轴（XYZ）上旋转物体
+- 材质偏移 —— 在两个独立的方向（UV）上移动对象的纹理坐标
 
-##### ● A little formality
+##### ● 一点点编码格式
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file name is arbitrary, but must have the extension **.animated**. The file is interpreted on a per-line basis, from top to bottom.
+这个动画文件可以是任何 [编码格式]({{< ref "/information/encodings/_index.md" >}}) 的纯文本文件， 但是，使用带 BOM 的 UTF-8 编码是最佳的选择。 数字的 [解析格式]({{< ref "/information/numberformats/_index.md" >}}) 是 **严格** 的。文件名可以任意选择，但是扩展名必须为 **.animated** 。 这个文件是通过从上到下通过分析各行的描述来解析的。
 
-## <a name="description"></a>■ 2. Sections
+## <a name="description"></a>■ 2. 小节
 
-##### ● The [Include] section
+##### ● [Include] 小节
 
-You can use the [Include] section to just include other objects, but without animating them. This allows you to use the ANIMATED object file as a container to group other objects. There can be any number of [Include] sections within the file.
+你可以使用 [Include] 小节来引入组合其他的模型，这可以让你将ANIMATED物件作为一个容器来组合你的其它物件。当然 [Include] 小节的数量是随意的，你可以给任意数量的对象进行分组操作。
 
 {{% command %}}  
 [Include]  
 {{% /command %}}  
-This starts the section.
+这行代码开始一个Include小节。
 
-{{% command %}}  
-*FileName<sub>0</sub>*  
-*FileName<sub>1</sub>*  
-*FileName<sub>2</sub>*  
+{{% command %}}
+*文件名或路径<sub>0</sub>*   
+*文件名或路径<sub>1</sub>*   
+*文件名或路径<sub>2</sub>*   
 ...  
-{{% /command %}}  
-Defines a series of B3D/CSV/X/ANIMATED objects that should be included as-is.
+{{% /command %}}
+定义一系列的模型对象来原样组合在一起。
 
 {{% command %}}  
 **Position = X, Y, Z**  
 {{% /command %}}  
-This defines the position of the objects, basically allowing you to offset them with respect to the rest of the ANIMATED object file.
+将你引入的模型按照三维坐标来偏移。对于其下的文件都有效。
 
 ------
 
-##### ● The [Object] section
+##### ● [Object] 小节
 
-You can use the [Object] section to create a single animation. This requires to set up at least one state via the *States* parameter, and to use any combination of functions you want, which provide control over the animation. There can be any number of [Object] sections within the file.
+你可以使用 [Object] 小节来创建一个普通的动画。这需要你通过 *States* 参数设置至少一个模型，并使用相应的函数来控制动画。[Object] 小节数量也是随意的。
 
 {{% command %}}  
 [Object]  
 {{% /command %}}  
-This starts the section.
+这行代码标志这个小节开始。
 
 {{% command %}}  
 **Position = X, Y, Z**  
 {{% /command %}}  
-Defines the position of the object. This basically corresponds to a final TranslateAll command in the respective CSV/B3D file, but is performed after any of the functions are performed. For example, if you want to use rotation, then keep in mind that rotation is done around the origin (0,0,0). The *Position* command allows you to reposition the object after the rotation is performed.
+定义对象的整体位置。这和在 CSV/B3d 文件中最后加一句TranslateAll很类似，但这个指令将会在所有其他函数变换都完成后才被执行。例如你如果需要旋转对象， 此时旋转的的中心点仍然是原点 (0,0,0)， *Position* 命令只会在旋转之后来才会进行偏移坐标操作。
 
 {{% command %}}  
 **States = File<sub>0</sub>, File<sub>1</sub>, ..., File<sub>n-1</sub>**  
 {{% /command %}}  
-Loads *n* objects of CSV/B3D/X extension. Please note that the first file indicated has state index 0. Use multiple files only if you want to use state changes.
+加载 *n* 个 CSV/B3D/X 模型对象，每加载一个文件就会自带一个状态索引值，从第一个文件开始为 0 不断递增，当你需要使用状态变化的时候才需要使用多个文件。这样你可以在多个模型之间选择一个来显示。
 
 {{% command %}}  
-**StateFunction = Formula**  
+**StateFunction = 式子**  
 {{% /command %}}  
-This defines the function for state changes. The result of the *Formula* is rounded toward the nearest integer. If that integer is between 0 and *n*-1, where *n* is the number of states as defined via *States*, the respective state is shown, otherwise, no object is shown. You can make use of the latter if you want an object to toggle on/off with only one state.
+这个指令指定状态变化所遵循的 *式子* ，其值将会被四舍五入到整数，如果这个整数在 0 ~ *n* -1 之间（ *n* 为你使用 *States* 指令时所设定的状态数量），那么这样将会显示出相应的状态，如果索引值指向的对象不存在，则不会显示任何物体。如果你需要做出一个物体的显示隐藏效果，可以使用后者这个特性。
 
 {{% command %}}  
 **TranslateXDirection = X, Y, Z**  
 **TranslateYDirection = X, Y, Z**  
 **TranslateZDirection = X, Y, Z**  
 {{% /command %}}  
-These define the directions for the *TranslateXFunction*, *TranslateYFunction* and *TranslateZFunction*, respectively. The default directions are:
+这三个指令分别定义*TranslateXFunction* ，*TranslateYFunction* 和 *TranslateZFunction* 的偏移方向，默认方向是：
 
 *TranslateXDirection = 1, 0, 0*  
 *TranslateYDirection = 0, 1, 0*  
 *TranslateZDirection = 0, 0, 1*
 
-This means that TranslateXFunction will move right by default, TranslateYFunction up and TranslateZFunction forward, which is also why TranslateXFunction and so on bear their names. If you define other directions, then simply think of the three functions and associated directions as three independent ways to move the object in that direction.
+这样意味着TranslateXFunction将会默认向右移动，TranslateYFunction默认向上移动，TranslateZFunction默认向前移动，这也是为什么这样命名的原因。如果你要定义其他方向的话，那么只需要考虑三个函数和相关方向的独立公式即可。在大多数情况下，您都不需要使用到这三个指令。
 
 {{% command %}}  
 **TranslateXFunction = Formula**  
 **TranslateYFunction = Formula**  
 **TranslateZFunction = Formula**  
 {{% /command %}}  
-These define the functions to move the object into the respective direction. The *Formula* needs to return the amount of meters to move from the initial position. The *X*, *Y* and *Z* parameters in the respective direction are multiplied by the result of *Formula*, so you could for example either multiple the formula by 2 or the direction by 2 if you want to double the speed of movement.
+这个指令指定的式子将对象偏移到相应方向。 *式子* 的计算结果是从原位置移动的米数。三个 Translate *X* *Y* *Z* Direction 将会和*式子*相乘得出最终结果，所以如果你想让物体运动速度加快的话，那么可以尝试把式子乘以二或者是方向轴乘以二。
 
 {{% command %}}  
 **RotateXDirection = X, Y, Z**  
 **RotateYDirection = X, Y, Z**  
 **RotateZDirection = X, Y, Z**  
 {{% /command %}}  
-These define the directions for the *RotateXFunction*, *RotateYFunction* and *RotateZFunction*, respectively. The default directions are:
+这三个指令分别定义 *RotateXFunction* , *RotateYFunction* 和 *RotateZFunction*  的旋转方向。默认方向是：
 
 *RotateXDirection = 1, 0, 0* 
 *RotateYDirection = 0, 1, 0* 
 *RotateZDirection = 0, 0, 1*
 
-This means that RotateXFunction will rotate around the x-axis by default, RotateYFunction around the Y-axis, and RotateZFunction around the z-axis, which is also why RotateXFunction and so on bear their names. If you define other directions, then simply think of the three functions and associated directions as three independent ways to rotate the object.
+这样意味着RotateXFunction将会默认绕X轴旋转，RotateYFunction默认绕Y轴，RotateZFunction默认绕Z轴，这也是为什么这样命名的原因。如果你要定义其他方向的话，那么只需要考虑三个函数和相关方向的独立公式即可。在大多数情况下，您还是都不需要使用这三个指令。
 
 {{% command %}}  
-**RotateXFunction = Formula**  
-**RotateYFunction = Formula**  
-**RotateZFunction = Formula**  
+**RotateXFunction = 式子**  
+**RotateYFunction = 式子**  
+**RotateZFunction = 式子**  
 {{% /command%}}  
-These define the functions to rotate along the respective direction in counter-clockwise order. The *Formula* needs to return the angle by which to rotate in radians. The order in which the rotations are performed is: RotateXFunction (first), RotateYFunction (then) and RotateZFunction (last). If you use more than one rotation function at a time, bear this order in mind. If necessary, overwrite the default directions for the rotations if you need a different order.
+这些式子指定了将物体在相应的方向上逆时针旋转的度数。
+*式子* 的结果应该是所需要旋转度数的 弧度制 形式。旋转的默认顺序是X -> Y -> Z。如果你需要进行多个轴上的旋转，设计时请记好这个顺序。 如果必须使用不同的顺序，请使用Rotate(X,Y,Z)Direction指令重新定义轴向。
 
 {{% command %}}  
-**RotateXDamping = NaturalFrequency, DampingRatio**  
-**RotateYDamping = NaturalFrequency, DampingRatio**  
-**RotateZDamping = NaturalFrequency, DampingRatio**  
+**RotateXDamping = 自然速率, 阻尼比值**  
+**RotateYDamping = 自然速率, 阻尼比值**  
+**RotateZDamping = 自然速率, 阻尼比值**  
 {{% /command %}}  
-These define damping for the corresponding functions. If not used, damping will not be performed. *NaturalFrequency* is a non-negative value corresponding to the angular frequency of an assumed undamped oscillator in radians per second. *DampingRatio* is a non-negative value indicating the type of damping. Values between 0 and 1 represent under-damping, 1 represents critical damping, and values above 1 represent over-damping.
+这个指令定义相关的旋转的阻尼系数。如果没有指定，旋转就没有阻尼效果。 *自然速率* 是一个代表对应旋转运动理想无阻力时的角速度的非负值。单位是弧度每秒。*阻尼比值* 是一个代表阻尼程度的非负值。0与1之间代表阻尼不足，1代表临界阻尼，1以上代表过阻尼。详情可查阅对应的物理文献。
 
 {{% command %}}  
 **TextureShiftXDirection = X, Y**  
 **TextureShiftYDirection = X, Y**  
 {{% /command %}}  
-These define the directions for the *TextureShiftXFunction* and *TextureShiftYFunction*, respectively. The default directions are:
+这定义了对应的 *TextureShiftXFunction* 和 *TextureShiftYFunction* 的方向。默认方向是：
 
 *TextureShiftXDirection = 1, 0*  
 *TextureShiftYDirection = 0, 1*
 
-This means that TextureShiftXFunction will shift the texture right by default, and TextureShiftYFunction down, which is also why TextureShiftXFunction and so on bear their names. If you define other directions, then simply think of the two functions and associated directions as two independent ways to shift textures on the objects.
+这样意味着 TranslateXFunction 将会默认正方向向右偏移， TranslateYFunction默认正方向向下偏移， 这也是为什么这样命名的原因。如果你要定义其他方向的话，那么只需要考虑函数和相关方向的独立公式即可。在大多数情况下，您还是都不需要使用这两个指令。
 
 {{% command %}}  
-**TextureShiftXFunction = Formula**  
-**TextureShiftYFunction = Formula**  
+**TextureShiftXFunction = 式子**  
+**TextureShiftYFunction = 式子**  
 {{% /command %}}  
-These define the functions to shift the texture in the respective direction. The texture is shifted by the return value of *Formula* in texture coordinates. The integer part of the result is ignored, and a fractional part of 0.5 represents moving the texture half way. The SetTextureCoordinate commands in the object file define the coordinates, which are then added the outcome of these formulas.
+这个式子在对应的方向偏移材质的UV坐标。材质坐标按照 *式子* 的结果偏移。结果的整数部分被忽略，0.5的小数代表把材质偏移一半。最终结果是式子结果和材质中UV坐标之和。
 
 {{% command %}}  
-**TrackFollowerFunction = Formula**  
+**TrackFollowerFunction = 式子**  
 {{% /command %}}  
-This defines the function which moves an object along the path of **Rail 0**. *Formula* must return a distance in meters, for which the object is then moved, respecting the curves and height changes of **Rail 0**.
+这个式子将物体沿着 **Rail 0(主轨道)** 移动一定的距离。*式子* 的结果是物体以米为单位的移动距离，并受 **Rail 0(主轨道)** 的弯曲转折影响。
 
 {{% command %}}  
-**TextureOverride = Value**  
+**TextureOverride = 替换类型**  
 {{% /command %}}  
-*Value* = **Timetable**: All faces will show the timetable bitmap as set up by CSV/RW routes.  
-*Value* = **None**: The original textures will be displayed on the faces (default behavior).
+*替换类型* = **Timetable** : 该物体的所有面都会显示CSV/RW线路中所指定的时刻表图片。
+*替换类型* = **None** : 不改变物体材质 (默认)。
 
 {{% command %}}  
-**RefreshRate = Seconds**  
+**RefreshRate = 秒数**  
 {{% /command %}}  
-This defines the minimum amount of time that needs to pass before the functions are updated. A value of 0 forces the functions to be updated every frame. Please note that objects outside of the visual range might be updated less frequently regardless of this parameter. Use RefreshRate when you don't need a perfectly smooth animation (in order to optimize performance), or when you deliberately want the object to be only updated in fixed intervals.
+这个指令定义了物体动画状态刷新的间隔。当值等于0时，物体将被每帧刷新一次。请注意不论取值如何，可视范围外的物体的刷新频率都会更低。你可以在不需要一个十分平滑的动画（这可以优化性能），或你希望物体以一个固定的时间频率变动时，你可以使用这个指令。译注：如果不使用的话，物体的动画状态就每帧都更新一次。说人话的话，这个指令是用来限制物体动画的流畅程度，而不是用来提升它的。
 
 ------
 
 ##### ● [Sound] 部分
 
-You can use the [Sound] section to add standalone sound effects to animated objects.
+你可以使用 [Sound] 小节让你的动画物件独立发出响声。
 
 {{% command %}}  
 [Sound]  
 {{% /command %}}  
-This starts the section.
+这行代码标志这个小节开始。
 
 {{% command %}}  
-**FileName = File**
+**FileName = 文件名或路径**
 {{% /command %}}  
-This loads the sound effect to play.
+这指定要播放的音效文件。
+
+{{% command %}}**位置= X，Y，Z **{{% /command %}}定义声音相对于动画文件中心的位置。
+
+{{% command %}}**数量=价值**{{% /command %}}
+
+指定音源的播放音量。 **1.0** 代表文件中原来的音量。
+
+{{% command %}}**间距=值**{{% /command %}}
+
+指定音源处播放时的音调。 **1.0** 代表不改变原文件的音调。
+
+{{% command %}}**半径=值**{{% /command %}}
+
+这定义了以音源为单位的半径以米为单位，声音在该半径处以最大音量播放。 默认值为** 30 **。
 
 {{% command %}}  
-**Position = X, Y, Z**  
+**VolumeFunction = 式子**  
 {{% /command %}}  
-Defines the position of the sound, relative to the center of the animated file.
+使用一个 *式子* 来动态地改变声音的音量。式子的结果是想要的音量。 **1.0** 代表文件原来的音量。
 
 {{% command %}}  
-**Volume = Value**  
+**PitchFunction = 式子**  
 {{% /command %}}  
-
-This defines the initial volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
+使用一个 *式子* 来动态地改变声音的音调。式子的结果是想要的音调。 **1.0** 代表不改变原文件的音调。
 
 {{% command %}}  
-**Pitch = Value**  
+**TrackFollowerFunction = 式子**  
 {{% /command %}}  
-
-This defines the initial pitch of the sound at the source position. A value of **1.0** represents the nominal unchanged pitch of the sound file.
-
-{{% command %}}  
-**Radius = Value**  
-{{% /command %}}  
-
-This defines the radius in meters from it's source at which the sound effect plays at full volume. The default value is **30**.
-
-{{% command %}}  
-**VolumeFunction = Formula**  
-{{% /command %}}  
-This defines the function which controls the volume of the sound. *Formula* must return a number representing the desired volume, where **1.0** represents the nomimal unchanged volume of the sound file.
-
-{{% command %}}  
-**PitchFunction = Formula**  
-{{% /command %}}  
-This defines the function which controls the pitch of the sound. *Formula* must return a number representing the desired pitch, where **1.0** represents the nomimal unchanged pitch of the sound file.
-
-{{% command %}}  
-**TrackFollowerFunction = Formula**  
-{{% /command %}}  
-This defines the function which moves the source of the sound along the path of **Rail 0**. *Formula* must return a distance in meters, for which the object is then moved, respecting the curves and height changes of **Rail 0**.
+这个式子将音源沿着 **Rail 0(主轨道)** 移动一定的距离。*式子* 的结果是声音音源以米为单位的移动距离，并受 **Rail 0(主轨道)** 的弯曲转折影响。
 
 ------
 
 ##### ● [StateChangeSound] 部分
 
-You can use the [StateChangeSound] section to attach sound effects to the preceeding [Object] section.
+您可以使用[StateChangeSound]部分将声音效果附加到前面的[Object]部分。
 
-{{% command %}}  
-[StateChangeSound]  
-{{% /command %}}  
-This starts the section- Must immediately follow an [Object] section.
+{{% command %}}[StateChangeSound]{{% /command %}}这将启动“部分-必须立即跟随[Object]”部分。
 
-{{% command %}}  
-**FileName = File**
-{{% /command %}}  
-This loads the sound effect to play for all state changes. Alternatively, **FileNames** may be used, which is described below:
+{{% command %}}**文件名=文件**{{% /command %}}这将加载声音效果以播放所有状态更改。 或者，可以使用** FileNames **，如下所述：
 
-{{% command %}}  
-**FileNames = File<sub>0</sub>, File<sub>1</sub>, ..., File<sub>n-1</sub>**  
-{{% /command %}}  
-Loads a list of *n* sounds, which correspond to the states in the [Object] section above.
-If a state is to have no sound effect, the list entry should be left blank.
+{{% command %}}**文件名=文件<sub>0</sub>，文件<sub>1</sub>，…，文件<sub>n-1</sub>**{{% /command %}}加载* n *声音列表，这些列表与上面[Object]部分中的状态相对应。
+如果状态没有声音效果，则列表条目应留空。
 
-{{% command %}}  
-**Position = X, Y, Z**  
-{{% /command %}}  
-Defines the position of the sound, relative to the center of the animated file.
+{{% command %}}**位置= X，Y，Z **{{% /command %}}定义声音相对于动画文件中心的位置。
 
-{{% command %}}  
-**Volume = Value**  
-{{% /command %}}  
+{{% command %}}**数量=价值**{{% /command %}}
 
-This defines the volume of the sound at the source position. A value of **1.0** represents the nominal unchanged volume of the sound file.
+这定义了源位置的声音音量。 ** 1.0 **值表示声音文件的名义上不变的音量。
 
-{{% command %}}  
-**Pitch = Value**  
-{{% /command %}}  
+{{% command %}}**间距=值**{{% /command %}}
 
-This defines the pitch of the sound at the source position. A value of **1.0** represents the nominal unchanged pitch of the sound file.
+这定义了源位置的声音音高。 ** 1.0 **值表示声音文件的名义不变音调。
 
-{{% command %}}  
-**Radius = Value**  
-{{% /command %}}  
+{{% command %}}**半径=值**{{% /command %}}
 
-This defines the radius in meters from it's source at which the sound effect plays at full volume. The default value is **30**.
+这定义了以音源为单位的半径以米为单位，声音在该半径处以最大音量播放。 默认值为** 30 **。
 
-{{% command %}}  
-**PlayOnShow = Value**  
-{{% /command %}}  
+{{% command %}}**PlayOnShow = 值**{{% /command %}}
 
-*Value* = **0**: The sound effect will not be played.
-*Value* = **1**: The sound effect will be played.
-
-This defines whether the sound effect defined above should be played when a the relevant state is shown. 
-
-{{% command %}}  
-**PlayOnHide = Value**  
-{{% /command %}}  
+*值* = ** 0 **：将不会播放声音效果。*值* = ** 1 **：将播放声音效果。
 
 
-*Value* = **0**: The sound effect will not be played.
-*Value* = **1**: The sound effect will be played.
+这定义了在显示相关状态时是否应播放上面定义的声音效果。
 
-This defines whether the sound effect defined above should be played when the relevant state is hidden.
+{{% command %}}** PlayOnHide =值**{{% /command %}}
+
+
+*值* = ** 0 **：将不会播放声音效果。*值* = ** 1 **：将播放声音效果。
+
+
+这定义了在隐藏相关状态时是否应播放上面定义的声音效果。
 
 {{% note %}}
 
-**PlayOnShow** and **PlayOnHide** will be ignored when using multiple state sounds.
+当使用多种状态声音时，** PlayOnShow **和** PlayOnHide **将被忽略。
 
 {{% /note %}}
 
@@ -299,88 +269,88 @@ This defines whether the sound effect defined above should be played when the re
 
 #### openBVE 2兼容性
 
-During the development of openBVE (v0.9) and during the development of the animated object format, there were certain commands in existance ending in *RPN*, such as *TranslateXFunctionRPN*. These commands never made it into any official release (v1.0) and were thus never meant to be used outside of development environments. While they are still available undocumentedly, they will be removed for openBVE 2. If you are using these commands, please get rid of them as soon as possible.
+在openBVE（v0.9）的开发过程中以及动画对象格式的开发过程中，存在以* RPN *结尾的某些命令，例如* TranslateXFunctionRPN *。 这些命令从未将其放入任何正式版本（v1.0）中，因此决不打算在开发环境之外使用。 尽管它们仍然可以无证地使用，但是它们将被openBVE 2删除。如果您正在使用这些命令，请尽快将其删除。
 
 {{% /warning %}}
 
 ------
 
-##### ● About the formulas
+##### ●关于代码
 
-First of all, infix notation, which is what you can enter for *Formula*, is converted into functional notation. Thus for every infix notation, there is a corresponding functional notation. Some functions do not have an infix operator and can thus only be entered in functional notation. For operators, precedence plays an important role. You can use parantheses to override the order of precedence just as in any usual mathematical formula. Names of functions are case-insensitive.
+首先，您在 *式子* 中输入的中缀表示法，是被转换为函数来处理的。 因此，对于每个中缀符号，都有相应的函数。 某些函数没有中缀运算符，因此只能以函数符号输入。 对于运算符而言，优先级起着重要作用。 您可以像使用任何通常的数学公式一样，使用括号来指定优先级顺序。 函数名称不区分大小写。
 
 {{% warning-nontitle %}}
 
-Please note that if the result of any mathematical operation or function would be infinity, indeterminate or non-real, 0 is returned. Numeric overflow is not prevented, so you need to take that into account yourself.
+请注意，如果任何数学运算或函数的结果为无穷大，不确定或非实数，则返回0。 不会处理数字的溢出，因此您需要自己考虑这一点。
 
 {{% /warning-nontitle %}}
 
-## <a name="operators"></a>■ 3. List of infix notation operators
+## <a name="operators"></a>■3.中缀符号运算符列表
 
-##### ● Basic arithmetics
+##### ●基本算术
 
 {{% table %}}
 
-| Infix   | Functional       | Description               |
+| 中缀   | 功能       | 描述               |
 | :------ | :--------------- | :------------------------ |
-| `a + b` | `Plus[a,b, ...]` | Represents addition       |
-| `a - b` | `Subtract[a,b]`  | Represents subtraction    |
-| `-a`    | `Minus[a]`       | Negates the number        |
-| `a * b` | `Times[a,b,...]` | Represents multiplication |
-| `a / b` | `Divide[a,b]`    | Represents division       |
+| `a + b` | `Plus[a,b, ...]` | 代表加法       |
+| `a - b` | `Subtract[a,b]`  | 代表减法    |
+| `-a`    | `Minus[a]`       | 取相反数        |
+| `a * b` | `Times[a,b,...]` | 代表乘法 |
+| `a / b` | `Divide[a,b]`    | 代表除法       |
 
 {{% /table %}}
 
-##### ● Comparisons
+##### ●比较运算符
 
-All comparisons return 1 for true and 0 for false.
+所有比较均返回1（真, True）和0（假, False）。
 
 {{% table %}}
 
-| Infix    | Functional          | Description                                     |
+| 中缀    | 功能          | 描述                                     |
 | :------- | ------------------- | ----------------------------------------------- |
-| `a == b` | `Equal[a,b]`        | True (1) if *a* equals *b*                      |
-| `a != b` | `Unequal[a,b]`      | True (1) if *a* does not equal *b*              |
-| `a < b`  | `Less[a,b]`         | True (1) if *a* is less than *b*                |
-| `a > b`  | `Greater[a,b]`      | True (1) if *a* is greater than *b*             |
-| `a <= b` | `LessEqual[a,b]`    | True (1) if *a* is less than or equal to *b*    |
-| `a >= b` | `GreaterEqual[a,b]` | True (1) if *a* is greater than or equal to *b* |
+| `a == b` | `Equal[a,b]`        | 如果 *a* 等于 *b* 则为真（1）                      |
+| `a != b` | `Unequal[a,b]`      | 如果 *a* 不等于 *b* 则为真（1）              |
+| `a < b`  | `Less[a,b]`         | 如果* a *小于* b *为真（1）                |
+| `a > b`  | `Greater[a,b]`      | 如果* a *大于* b *为真（1）             |
+| `a <= b` | `LessEqual[a,b]`    | 如果* a *小于或等于* b *，则为真（1）    |
+| `a >= b` | `GreaterEqual[a,b]` | 如果* a *大于或等于* b *，则为真（1） |
 
 {{% /table %}}
 
-##### ● Logical operations
+##### ●逻辑运算
 
-All operations treat 0 as false and any other value as true, and return 1 for true and 0 for false.
+所有操作将0视为false，将其他任何值视为true，然后返回1表示true，0表示false。
 
 {{% table %}}
 
-| Infix          | Functional | Description                            |
+| 中缀          | 功能 | 描述                            |
 | :------------- | ---------- | -------------------------------------- |
-| `!a`           | `Not[a]`   | True (1) if *a* is false               |
-| `a & b`        | `And[a,b]` | True (1) if both *a* and *b* are true  |
-| `a` &#124; `b` | `Or[a,b]`  | True (1) if any of *a* or *b* are true |
-| `a ^ b`        | `Xor[a,b]` | True (1) if either *a* or *b* is true  |
+| `!a`           | `Not[a]`   | 如果 *a* 为假，则为真（1）               |
+| `a & b`        | `And[a,b]` | 如果 *a* 和 *b* 均为真，则为真（1）  |
+| `a` &#124; `b` | `Or[a,b]`  | 如果 *a* 或 *b* 中的任何一个为真，则为真（1） |
+| `a ^ b`        | `Xor[a,b]` | 如果 *a* 或 *b* 其中之一为真，则为真（1）  |
 
 {{% /table %}}
 
-##### ● Operator precedence
+##### ●运算符优先级
 
-From highest precedence to lowest. Operators of same precedence are evaluated either left to right or right to left, depending on if they share a precedence with another operator.
+从最高优先级到最低优先级。 优先级相同的运算符从左到右或从右到左评估，具体取决于它们是否与另一个运算符共享优先级。
 
 {{% table %}}
 
-| Operator                         | Associativity | Unparenthesized | Equivilant      |
+| 运算符                         | 关联性 | 无括号 | 等效形式      |
 | -------------------------------- |---------------|-----------------|-----------------|
-| `a[...]`                         | unary         | &nbsp;          | &nbsp;          |
-| `-` (Minus)                      | unary         | &nbsp;          | &nbsp;          |
-| `/`                              | right-to-left | 1 / 2 / 3       | (1 / (2 / 3))   |
-| `*`                              | right-to-left | 1 * 2 * 3       | (1 * (2 * 3))   |
-| `+`, `-` (Subtract)              | left-to-right | 1 + 2 + 3       | ((1 + 2) + 3)   |
-| `==`, `!=`, `<`, `>`, `<=`, `>=` | left-to-right | 1 <= 2 <= 3     | ((1 <= 2) <= 3) |
-| `!`                              | unary         | &nbsp;          | &nbsp;          |
-| `&`                              | right-to-left | 1 & 2 & 3       | (1 & (2 & 3))   |
-| `^`                              | right-to-left | 1 ^ 2 ^ 3       | (1 ^ (2 ^ 3))   |
-| &#124;                           | right-to-left | 1 &#124; 2 &#124; 3       | (1 &#124; (2 &#124; 3))   |
+| `a[...]`                         | 一元         | &nbsp;          | &nbsp;          |
+| `-`（减号）                      | 一元         | &nbsp;          | &nbsp;          |
+| `/`                              | 从右到左 | 1 / 2 / 3       | (1 / (2 / 3))   |
+| `*`                              | 从右到左 | 1 * 2 * 3       | (1 * (2 * 3))   |
+| `+`，`-`（减）              | 从左到右 | 1 + 2 + 3       | ((1 + 2) + 3)   |
+| `==`, `!=`, `<`, `>`, `<=`, `>=` | 从左到右 | 1 <= 2 <= 3     | ((1 <= 2) <= 3) |
+| `!`                              | 一元         | &nbsp;          | &nbsp;          |
+| `&`                              | 从右到左 | 1 & 2 & 3       | (1 & (2 & 3))   |
+| `^`                              | 从右到左 | 1 ^ 2 ^ 3       | (1 ^ (2 ^ 3))   |
+| &#124;                           | 从右到左 | 1 &#124; 2 &#124; 3       | (1 &#124; (2 &#124; 3))   |
 
 {{% /table %}}
 
@@ -393,24 +363,24 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% /warning-nontitle %}}
 
-## <a name="functions"></a>■ 4. List of functions
+## <a name="functions"></a>■ 4.函数列表
 
-##### ● Basic arithmetics
+##### ●基本算术
 
 {{% table-2col %}}
 
-| Function         | Description                                                  |
+| 函数         | 描述                                                  |
 | ---------------- | ------------------------------------------------------------ |
-| `Reciprocal[x]`  | Returns the reciprocal, equal to 1/*x*                       |
-| `Power[a,b,...]` | Returns *a* raised to the *b*<sup>th</sup> power. *b* must be a non-negative number. For consistency, Power[0,*b*] always returns 1, even in the degenerate case Power[0,0], and *a* being negative always returns 0. Adding more arguments will create a chain. Power[a,b,c] will return *a*<sup>*b*<sup>*c*</sup></sup>. |
+| `Reciprocal[x]`  | 返回倒数，等于1 / *x*                       |
+| `Power[a,b,...]` | 返回 *a* 的 <sup>*b*</sup>次幂。 *b*必须为非负数。 为了保持一致性，Power [0, *b*]始终返回1，即使Power[0,0]也如此，而*a*为负数时始终返回0。添加更多参数将创建一个链。 Power [a, b, c]将返回 *a* <sup> *b* <sup> *c* </sup></sup>。 |
 
 {{% /table-2col %}}
 
-#####  ● Numeric functions
+#####  ● 数学函数
 
 {{% table-2col %}}
 
-| Function                      | Description                                                  |
+| 函数                      | 描述                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
 | `Quotient[a,b]`               | Divides *a* by *b* and rounds the result down, equal to `Floor[a/b]`. |
 | `Mod[a,b]`                    | Returns the remainder of dividing *a* by *b*, equal to `a-b*Floor[a/b]`. |
@@ -430,7 +400,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% table-2col %}}
 
-| Function    | Description                                                  |
+| 函数    | 描述                                                  |
 | ----------- | ------------------------------------------------------------ |
 | `Exp[x]`    | The exponential function, or *e* to the *x*<sup>th</sup> power. |
 | `Log[x]`    | The natural logarithm, to base *e*.                          |
@@ -447,7 +417,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% table-2col %}}
 
-| Function                        | Description                                                  |
+| 函数                        | 描述                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
 | `If[cond,truevalue,falsevalue]` | If *cond* is != 0, returns *truevalue*, otherwise *falsevalue* |
 
@@ -459,7 +429,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% table-2col %}}
 
-| Variable       | Description                                                  |
+| Variable       | 描述                                                  |
 | -------------- | ------------------------------------------------------------ |
 | `value`        | The value returned by the function in the last evaluation. At the beginning of the simulation, this is 0. |
 | `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
@@ -471,7 +441,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% table-2col %}}
 
-| Variable         | Description                                                  |
+| Variable         | 描述                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `time`           | The current in-game time measured in seconds since midnight of the first day. |
 | `hour`           | The integer part of the current hour. |
@@ -495,9 +465,10 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                      | Description                                                  |
+| Variable                      | 描述                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `playerTrain`                 | Returns 1 if the train is the player train, 0 otherwise.     |
+| `playerTrain`                 | 如果此物件是在玩家的列車，此變數會為1，否則此變數會為0。
+注: Route.RunInterval的列車並非玩家列車     |
 | `cars`                        | The number of cars the train has.                            |
 | `carNumber`                   | Returns the index of the current car.                        |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
@@ -530,7 +501,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                       | Description                                                  |
+| Variable                       | 描述                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
@@ -549,7 +520,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                     | Description                                                  |
+| Variable                     | 描述                                                  |
 | ---------------------------- | ------------------------------------------------------------ |
 | `doors`                      | The state of the doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
 | `doors[carIndex]`            | The state of the doors of car *carIndex*. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
@@ -571,7 +542,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                         | Description                                                  |
+| Variable                         | 描述                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
 | `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
 | `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
@@ -609,7 +580,7 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | 意思           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
@@ -636,7 +607,7 @@ The section context is defined when the object is placed using Track.SigF.
 
 {{% table-2col %}}
 
-| Variable  | Description                                                  |
+| Variable  | 描述                                                  |
 | --------- | ------------------------------------------------------------ |
 | `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 
@@ -648,7 +619,7 @@ There are certain kinds of animation which are less expensive, and others which 
 
 {{% table %}}
 
-| Animation      | Object                          | Performance |
+| 動畫      | Object                          | Performance |
 | -------------- | ------------------------------- | ----------- |
 | State changes  | Has only opaque faces           | Good        |
 | State changes  | Has partially transparent faces | Moderate    |
