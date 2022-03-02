@@ -32,7 +32,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概要
 
 A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
@@ -40,9 +40,9 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 文法
 
-Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
+ファイル内のそれぞれの行はコマンド名とその引数に分けられています。全てのコマンドの文法は同様です。
 
 {{% command %}}  
 **NameOfTheCommand**, *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*  
@@ -52,9 +52,9 @@ Each line in the file is split into the name of a command and its arguments. The
 
 Arguments may also be omitted by leaving the text at each of the *Argumenti* blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands.
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+コメントは行末のどこでも使用可能です。 コメントはセミコロン (U+003B)で始まります。 コメントは存在する場合、処理される前に全ての行から削除されます。
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. 使用可能なコマンド
 
 <a name="createmeshbuilder"></a>
 
@@ -83,7 +83,7 @@ This command marks the beginning of a new section of faces. It must precede any 
 
 This command creates a new vertex which can then be used to create faces via the AddFace or AddFace2 commands. There can be as many AddVertex commands as desired within a CreateMeshBuilder section. However, the order of the vertices given is important for other commands. The first vertex given has index 0, and subsequent vertices have indices 1, 2, 3 and so on.
 
-The normal is the direction perpendicular to the face at a particular point. If all vertices in a face have the same normal, the face will look flat. If used appropriately, you can give the illusion of a curved face by specifying different normals per vertex, but using the same normal on all vertices that share the same spatial coordinate - across multiple faces. If left all zero, the normal will be calculated automatically.
+法線の方向は面の特定の場所において垂直方向です。 もしすべての頂点の面が全く同じ法線である場合、 法線はフラットに見えます。 もし適切に用いられているならば、 頂点ごとに異なる法線を設定することで、まるで曲がった面をしているかのような錯覚を与えることができます。 しかし複数の面にわたって - 同一の空間座標上の全ての頂点で同一の法線を用いると、 もしすべて0が設定されていた場合は、法線は自動的に計算されます。
 
 ------
 
@@ -111,7 +111,7 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 ***v<sub>i</sub>***: The vertex index to include in this face. Allowed values are 0 through *n*-1, where *n* is the number of AddVertex commands used.  
 {{% /command-arguments %}}
 
-This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will also be visible, however, lighting on the back face might be the same as on the front face. Only convex polygons are supported.
+このコマンドは任意の長い頂点のリストで面を生成します。 インデックス番号は、先にVertexコマンドにより生々された純序に従い生成されます。 したがって、 Face コマンドは Vertexコマンドの後に記述する必要があります。 最初の Vertex コマンドはインデックス番号0で生成され、 そしてそれ以降の Vertex コマンドは 1, 2, 3 などとインデックス番号を生成します。 頂点のインデックス番号の記述順序は重要で、面に正対して時計回りに記述する必要があります。  後ろ側の面も同様に見えますが、 後側の面に対する光の当たり方は表側の面と同一になります。 凸面の頂点ポリゴンのみサポートされます。
 
 ------
 
@@ -127,11 +127,11 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 ***HalfDepth***: A floating-point number representing half the depth of the cube in **meters**.  
 {{% /command-arguments %}}
 
-This command creates a cube having dimensions as specified by *HalfWidth*, *HalfHeight* and *HalfDepth*. The cube will be centered on the origin (0,0,0). Thus, on the x-axis, the cube extends from -*HalfWidth* to *HalfWidth*, on the y-axis from -*HalfHeight* to *HalfHeight* and on the z-axis from -*HalfDepth* to *HalfDepth*. The cube always has 8 vertices and 6 faces.
+このコマンドは *HalfWidth* 、 *HalfHeight* 、 *HalfDepth* で指定された大きさの三次元の立方体を生成します。 生成される立方体の中心は原点 (0,0,0) です。 したがって、 X軸上では -*HalfWidth* から *HalfWidth* に拡張し、 Y軸上は -*HalfHeight* から *HalfHeight* に、そしてZ軸上は -*HalfDepth* to *HalfDepth*に拡張します。 生成される立方体は常に8つの頂点と6つの面を持ちます。
 
 {{% notice %}}  
 
-#### Cube representation
+#### Cube の表記方法について
 
 The Cube command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cube command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
@@ -170,7 +170,7 @@ The Cylinder command is equivalent to a series of AddVertex and AddFace commands
 <font color=#555555>GenerateNormals</font>  
 {{% /command %}}
 
-*<font color=#555555>This command is ignored by openBVE.</font>*
+*<font color=#555555>このコマンドは、 openBVE によって無視されます。</font>*
 
 ------
 
