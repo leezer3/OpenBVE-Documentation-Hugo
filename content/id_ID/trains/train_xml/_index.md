@@ -1,6 +1,6 @@
 ---
-title: "The **train.xml** file format"
-linktitle: "The train.xml file"
+title: "File **train.xml** "
+linktitle: "File train.xml "
 weight: 2
 ---
 
@@ -17,7 +17,7 @@ This page is still under construction.
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
 The **train.xml** format is the native format for newer versions of OpenBVE, and is intended to replace the older train.dat format. It allows setting of many more properties, and is extensible.
 
