@@ -4,7 +4,7 @@ linktitle: "The CSV object"
 weight: 2
 ---
 
-## ■ Contents
+## ■ Isi
 
 {{% contents %}}
 
@@ -32,7 +32,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
 A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
@@ -40,9 +40,9 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Format penulisan
 
-Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
+Setiap baris dalam file ini adalah satu perintah beserta nilai argumennya. Semua sistem penulisan di file ini sama, sebagai berikut:
 
 {{% command %}}  
 **NameOfTheCommand**, *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*  
@@ -52,9 +52,9 @@ Each line in the file is split into the name of a command and its arguments. The
 
 Arguments may also be omitted by leaving the text at each of the *Argumenti* blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands.
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Komentar bisa ditambahkan di mana saja di akhir teks. Tambahkan titik koma " ; " lalu tulis komentar atau catatan yang diinginkan.
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. Daftar perintah
 
 <a name="createmeshbuilder"></a>
 
@@ -83,7 +83,7 @@ This command marks the beginning of a new section of faces. It must precede any 
 
 This command creates a new vertex which can then be used to create faces via the AddFace or AddFace2 commands. There can be as many AddVertex commands as desired within a CreateMeshBuilder section. However, the order of the vertices given is important for other commands. The first vertex given has index 0, and subsequent vertices have indices 1, 2, 3 and so on.
 
-The normal is the direction perpendicular to the face at a particular point. If all vertices in a face have the same normal, the face will look flat. If used appropriately, you can give the illusion of a curved face by specifying different normals per vertex, but using the same normal on all vertices that share the same spatial coordinate - across multiple faces. If left all zero, the normal will be calculated automatically.
+Normals, atau pencahayaan, berfungsi untuk menentukan arah datangnya cahaya ke mesh ini. Jika semuanya diabaikan atau ditulis 0, maka pengaturan cahaya akan dibuat otomatis. Jika anda menggunakan Normals ini, anda dapat mengatur cahaya yang datang di setiap titik sudut.
 
 ------
 
@@ -111,7 +111,7 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 ***v<sub>i</sub>***: The vertex index to include in this face. Allowed values are 0 through *n*-1, where *n* is the number of AddVertex commands used.  
 {{% /command-arguments %}}
 
-This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will also be visible, however, lighting on the back face might be the same as on the front face. Only convex polygons are supported.
+Perintah ini membuat sebuah bangun datar yang terbentuk dari semua Vertex yang telah dimasukan. Urutan penulisan nomor vertex harus berurut sehingga bisa menjadi satu bangun datar. urutan penulisan nomor vertex sesuai arah jarum jam (misalnya kiri bawah, kiri atas, kanan atas, kanan bawah) akan menghasilkan bangun datar menghadap ke depan. bagian belakang bangun datar juga akan terlihat. Namun pada bagian belakang tidak akan terpengaruh oleh pencahayaan.
 
 ------
 
@@ -131,7 +131,7 @@ This command creates a cube having dimensions as specified by *HalfWidth*, *Half
 
 {{% notice %}}  
 
-#### Cube representation
+#### Penggambaran perintah Cube
 
 The Cube command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cube command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
@@ -158,7 +158,7 @@ The number of vertices *n* will usually suffice to be 6 or 8 when only small rad
 
 {{% notice %}}
 
-#### Cylinder representation
+#### Representasi tabung
 
 The Cylinder command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cylinder command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
@@ -170,7 +170,7 @@ The Cylinder command is equivalent to a series of AddVertex and AddFace commands
 <font color=#555555>GenerateNormals</font>  
 {{% /command %}}
 
-*<font color=#555555>This command is ignored by openBVE.</font>*
+*<font color=#555555>Perintah ini tidak dipakai di openBVE.</font>*
 
 ------
 
@@ -322,14 +322,14 @@ The **SetEmissiveColor** command sets the emissive color for all faces that were
 ***GlowAttenuationMode***: The glow attenuation mode to use. The default is DivideExponent4.  
 {{% /command-arguments %}}
 
-▸ Available options for *BlendMode*:
+▸ Pilihan tersedia untuk *BlendMode*:
 
 {{% command-arguments %}}  
 **Normal**: The faces are rendered normally.  
 **Additive**: The faces are rendered additively.  
 {{% /command-arguments %}}
 
-▸ Available options for *GlowAttenuationMode*:
+▸ Pilihan yang bisa dipakai pada *GlowAttenuationMode*:
 
 {{% command-arguments %}}  
 **DivideExponent2**: The glow intensity is determined via the function *x*2 / (*x*2 + *GlowHalfDistance*2), where *x* is the distance from the camera to the object in meters.  
