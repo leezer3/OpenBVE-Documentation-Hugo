@@ -10,7 +10,7 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 概要](#overview)
 - [2. Syntax](#syntax)
 - [3. Preprocessing](#preprocessing)
 - [4. The Options namespace](#options)
@@ -970,35 +970,35 @@ Structure名前空間のコマンドの一般的な構文は次のとおりで�
 
 {{% /table %}}
 
-Generally, supported objects are B3D, CSV, X and ANIMATED. However, the FormCL, FormCR, RoofCL, RoofCR, CrackL and CrackR commands only accept B3D, CSV and X objects.
+通常、サポートされているオブジェクトの種類は B3D、 CSV、X及びANIMATEDです。 しかし、FormCL、FormCR、RoofCL、RoofCR、CrackL及びCrackRについては B3D、CSV及びXのみ受けいれます。
 
-➟ [More information about forms, roofs and cracks...]({{< ref "/routes/formroofcrack/_index.md" >}})
+➟ [form、roof 及び crackについての詳細情報はこちらを参照して下さい...]({{< ref "/routes/formroofcrack/_index.md" >}})
 
-Additionally, there is the Structure.Pole command, which has a slightly different syntax:
+付け加えると、少々異なる構文を持った Structure.Pole コマンドもあります:
 
 {{% command %}}  
 **Structure.Pole**(_NumberOfAdditionalRails_; _PoleStructureIndex_)<font color="gray">.Load</font> *FileName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
-***NumberOfAdditionalRails***: An non-negative integer representing the number of additional rails covered by the pole. 0 creates a pole for one rail, 1 for two rails, etc.  
-***PoleStructureIndex***: A non-negative integer representing the pole structure index.  
-***FileName***: The object file to load, relative to the **Object** folder.  
+***NumberOfAdditionalRails***: ポールで覆われる追加のレールを表す負でない整数。 例えば 0 は単線、 1 は複線用等です。  
+***PoleStructureIndex***: ポールのストラクチャのインデックス番号を表す負でない整数。  
+***FileName***: **Object** フォルダからの相対パスの、読み込ませるファイル名。  
 {{% /command-arguments %}}
 
-Please note that all objects but the FreeObj are inserted at the beginning of a block and should thus extend from 0 to *BlockLength* (by default 25m) on the z-axis. For further information on usage, see the respective commands from the Track namespace.
+FreeObjを除くすべてのオブジェクトはブロックの先頭に挿入されるため、z軸上で0から *ブロック長* (デフォルトは25m) まで拡張する必要がある事に注意して下さい。 使用法の詳細については Track 名前空間の其々のコマンドを参照して下さい。
 
-## <a name="texture"></a>■ 8. The Texture namespace
+## <a name="texture"></a>■ 8. Texture 名前空間
 
-Commands from this namespace define which background images to use and how they are aligned.
+この名前空間のコマンドは使用する背景画像と、それらの配置方法を定義します。
 
 ![illustration_background](/images/illustration_background.png)
 
-The background image is displayed as a cylindric wall around the camera whose start (viewed from above) is 60 degrees to the left of the initial forward direction (at the 10 o'clock position). From there, the background image wraps clock-wise around the cylinder with a repetition count specified via Texture.Background(*BackgroundTextureIndex*).X, which by default creates 6 repetitions in a full circle.
+背景画像は、カメラの周囲の円柱状の壁として表示され、この壁の開始点 (上から見た場合) は最初の前方方向から60度 ( 10 時の方向)です。 そこから、背景画像は Texture.Background(*BackgroundTextureIndex*).X を用いて覆うように時計回りに円筒状に繰り返し、デフォルトでは真円の中に6回繰り返されます。
 
-The upper 3/4 of the image is displayed above the horizon, while the lower 1/4 is displayed below the horizon. Via Texture.Background(*BackgroundTextureIndex*).Aspect, you can choose whether to have a fixed cylinder height or to preserve the aspect ratio of the texture. If the image should have a fixed height, the cylinder has a height of 1/2 its radius, which corresponds to about 20 degree inclination to the top of the image, and about -7 degrees to the bottom of the image. If the aspect ratio of the image is preserved, this takes not only the width and height of the image into account, but also the repetition count.
+画像の上部4分の3は地平線の上に表示され、下部4分の1は地平線の下に表示されます。 Texture.Background(*BackgroundTextureIndex*).Aspectを通じて、 円柱の高さを固定するか、テクスチャのアスペクト比を維持するかを選択できます。 画像の高さが固定されている必要がある場合、円柱の高さは半径の2分の1になります。これは、画像の上部に対して約20度、画像の下部に対して約-7度の傾斜に相当します。もし画像のアスペクト比が維持されている場合、これには画像の幅と高さだけでなく、繰り返しの回数も考慮されます。
 
-Regardless of the repetition count you chose, you should make sure that the left and right edges of the textures fit seamlessly together. Please also take into account that top and bottom caps are created which sample from the top and bottom 10% of the image. You should avoid mountain peaks and similar extremes in the top 10% of the image in order for such extremes to not leak into the top cap.
+選択した繰り返しの回数に関係なく、テクスチャの左端と右端がシームレスにフィットする事を確認する必要があります。 また、画像の上部と下部の10%からサンプリングする上部と下部の蓋が作成されることも考慮に入れて下さい。 山の頂上のような極端なものが上部の蓋に入り込まないようにするため、画像の上部10%の中に入り込まないように注意する必要があります。
 
 The image loaded into Texture.Background(0) is displayed at the beginning of the route, unless a Track.Back command at the beginning of the route requests a different image.
 
@@ -2420,9 +2420,9 @@ This command places a special beacon, which commands an AI driver to play the ho
 ***DynamicLightIndex***: A non-negative integer, representing the Dynamic Lighting set to be used from this point onwards, as defined by Structure.DynamicLight
 {{% /command-arguments %}}
 
-This command may be used as an alternative to the *Route.AmbientLight* , *Route.DirectionalLight* and *Route.LightDirection* commands.
+このコマンドは、 *Route.AmbientLight* 、 *Route.DirectionalLight* および *Route.LightDirection* コマンドの代わりとして使用できます。
 
-It allows the lighting to be varied using a time-based model, and is described fully on the following page:
+これを用いることで、時間ベースのモデルを使用して照明を変化させることが出来ます。次のページで詳しく説明しています。
 
 [Dynamic Lighting]({{< ref "/routes/xml/dynamiclight/_index.md" >}})
 
@@ -2433,9 +2433,9 @@ It allows the lighting to be varied using a time-based model, and is described f
 {{% /command %}}
 
 {{% command-arguments %}}  
-***RedValue***: An integer ranging from 0 to 255 representing the red component of the ambient light. The default value is 160.  
-***GreenValue***: An integer ranging from 0 to 255 representing the green component of the ambient light. The default value is 160.   
-***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the ambient light. The default value is 160.  
+***RedValue***: 環境光の赤の要素を表す0から255までの範囲の整数。 デフォルト値は 160 です。  
+***GreenValue***: 環境光の緑の要素を表す0から255までの範囲の整数。 デフォルト値は 160 です。   
+***BlueValue***: 環境光の青の要素を表す0から255までの範囲の整数。 デフォルト値は 160 です。  
 {{% /command-arguments %}}
 
 This command defines the ambient light color to be used from this point onwards. All polygons in the scene are illuminated by the ambient light regardless of the light direction.
@@ -2447,9 +2447,9 @@ This command defines the ambient light color to be used from this point onwards.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***RedValue***: An integer ranging from 0 to 255 representing the red component of the directional light. The default value is 160.  
-***GreenValue***: An integer ranging from 0 to 255 representing the green component of the directional light. The default value is 160.  
-***BlueValue***: An integer ranging from 0 to 255 representing the blue component of the directional light. The default value is 160.  
+***RedValue***: 指向性ライトの赤の要素を表す0から255までの範囲の整数。 デフォルト値は160です。  
+***GreenValue***: 指向性ライトの緑の要素を表す0から255までの範囲の整数。 デフォルト値は160です。  
+***BlueValue***: 指向性ライトの緑の要素を表す0から255までの範囲の整数。 デフォルト値は160です。  
 {{% /command-arguments %}}
 
 This command defines the directional light to be used from this point onwards. The polygons in the scene are only fully illuminated by the directional light if the light direction points at the front faces. If pointing at back faces, no light is contributed. *Route.LightDirection* should be set to specify the light direction.
@@ -2461,8 +2461,8 @@ This command defines the directional light to be used from this point onwards. T
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Theta***: A floating-point number representing the angle in **degrees** which controls the pitch of the light direction. The default value is 60.  
-***Phi***: A floating-point number representing the angle in **degrees** which controls the planar rotation of the light direction. The default value is about -26.57.  
+***Theta***: ライトの方向のピッチを制御する **度** の角度を表す浮動小数点数。 デフォルト値は 60 です。  
+***Phi***: ライトの方向の回転の面の **度** の角度を表す浮動小数点数。 デフォルト値は -26.57 です。  
 {{% /command-arguments %}}
 
 This command defines the light direction from this point onwards. This is the direction the light shines at, meaning the opposite direction the sun is located at. First, *Theta* determines the pitch. A value of 90 represents a downward direction, while a value of -90 represents an upward direction. With those extremes, the value of *Phi* is irrelevant. A value of 0 for *Theta* represents a forward direction originating at the horizon behind. Once the pitch is defined by *Theta*, *Phi* determines the rotation in the plane. A value of 0 does not rotate, a value of 90 rotates the direction to the right and a value of -90 rotates to the left. A backward direction can be both obtained by setting *Theta* and *Phi* to 180 and 0 or to 0 and 180, respectively. Values in-between allow for more precise control of the exact light direction.
@@ -2491,6 +2491,6 @@ theta = -y * pi/2
 phi = 0  
 {{% /function %}}
 
-In the formulas above, [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) represents the cosine, [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) the sine, [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) the inverse tangent, [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) the two-argument inverse tangent and [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) the square root. The formulas can be used to convert between spherical and cartesian coordinates if working with either one seems more intuitive than working with the other one. The formulas also serve as the official documentation on how the light direction is mathematically defined (using radians for the trigonometric functions).
+上記の数式では、 [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) はコサインを表し、 [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) は正弦、 [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) は逆正接、 [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) は2つの引数の逆正接、 [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) は平方根を表します。 どちらか一方を使用するほうが、もう一方を使用するよりも直感的に見える場合、数式を用いると、球座標とデカルト座標を変換することが出来ます。数式は、光の方向が数学的に定義される公式文書として機能します (ラジアンを三角関数として用いる場合)。
 
 ---
