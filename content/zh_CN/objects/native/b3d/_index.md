@@ -32,29 +32,29 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概述
 
-A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
+一个B3D文件允许使用纯文本命令来创造单个物件。该物件可以在线路或车辆中使用。文件所描述的物件可以包含任意数量的多边形。B3D格式允许在[MeshBuilder]部分中对多个多边形进行分组，并将颜色或纹理信息等属性分配给在每个部分中创建的多边形。这允许在同一个[MeshBuilder]当中创建多个多边形，这些多边形共享同一属性。多边形在这里称为面。 
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.b3d**. The file is interpreted on a per-line basis, from top to bottom.
+该文件是以任意[编码]({{< ref "/information/encodings/_index.md" >}})编码的纯文本文件，但是，带字节顺序标记的UTF-8是更好的选择。数字的[解析方式]({{< ref "/information/numberformats/_index.md" >}}) 是 **宽松的** ，尽管如此，编写时建议您必须写一些 *严格正确的* 数字。文件名是任意的，但必须有扩展名 **.b3d** 。该文件将从上到下逐行进行解析。
 
-➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
+→ [另请参阅B3D格式的快速参考...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 语法
 
-Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
+文件中的每一行都分为命令名称及其参数。所有命令的语法都是相同的： 
 
-{{% command %}}
-**NameOfTheCommand** *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*
-{{% /command %}}
+{{% command %}} 
+**命令名称** , *参数<sub>1</sub>* , *参数<sub>2</sub>* , *参数<sub>3</sub>* ，...， *参数<sub>n</sub>* 
+{{% /command %}} 
 
-*NameOfTheCommand* is case-insensitive. If there are arguments, *NameOfTheCommand* and *Argument1* are separated by at least one space space (U+0020). Arguments are separated by a comma (U+002C). [White spaces]({{< ref "/information/whitespaces/_index.md" >}}) around the arguments, and well as at the beginning and the end of the line, are ignored. Empty lines or lines solely consisting of white spaces are also ignored.
+*命令名称* 不区分大小写。如果有参数，则 *命令名称* 和 *参数1* 需使用至少一个空格（U+0020）来分隔。参数用逗号（U+002C）分隔。参数周围及行的开头与结尾的 [空格]({{< ref "/information/whitespaces/_index.md" >}}) 都会被忽略。仅由空格组成的行或空行也被忽略。
 
-Arguments may also be omitted by leaving the text at each of the *Argument<sub>i</sub>* blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands. Note however that the first argument may not be omitted if other arguments are provided.
+在 *参数<sub>i</sub>* 处留空，也可以省略该参数。在省略时会应用特定的默认值。所有默认值都在下方有列出。
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+您可以在一行的末尾添加注释。注释由分号（U+003B，英文半角）开始。所有注释在开始解析文件之前就将被自动排除。 
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. 可用指令
 
 <a name="createmeshbuilder"></a>
 
@@ -62,7 +62,7 @@ You can use comments anywhere at the end of a line. A comment is started by a se
 **[MeshBuilder]**
 {{% /command %}}
 
-This command marks the beginning of a new section of faces. It must precede any of the following commands. There might be as many [MeshBuilder] sections as desired in the object file. All subsequent commands will then relate to the last [MeshBuilder] section opened.
+这个命令标志着新一组面的开始。它必须位于以下任何命令之前。在文件中可以根据需要添加任意数量的该指令。后续的所有命令将与前一个[MeshBuilder]关联。
 
 ----------
 
@@ -72,18 +72,18 @@ This command marks the beginning of a new section of faces. It must precede any 
 **Vertex** *vX*, *vY*, *vZ*, *nX*, *nY*, *nZ*
 {{% /command %}}
 
-{{% command-arguments %}}
-***vX***: The x-coordinate for the vertex in meters. Negative values are left, positive ones right. The default value is 0.  
-***vY***: The y-coordinate for the vertex in meters. Negative values are down, positive ones up. The default value is 0.  
-***vZ***: The z-coordinate for the vertex in meters. Negative values are backward, positive ones forward. The default value is 0.  
-***nX***: The x-coordinate for the normal of this vertex. The default value is 0.  
-***nY***: The y-coordinate for the normal of this vertex. The default value is 0.  
-***nZ***: The z-coordinate for the normal of this vertex. The default value is 0.  
-{{% /command-arguments %}}
+{{% command-arguments %}} 
+***vX*** ：顶点的x坐标，以米为单位，负值向左，正值向右，默认值为0。   
+***vY*** ：顶点的y坐标，以米为单位，负值向下，正值向上，默认值为0。   
+***vZ*** ：顶点的z坐标，以米为单位，负值向后，正值向前，默认值为0。   
+***nX*** ：顶点法线的x坐标，默认值为0。   
+***nY*** ：顶点法线的y坐标，默认值为0。   
+***nZ*** ：顶点法线的z坐标，默认值为0。   
+{{% /command-arguments %}} 
 
-This command creates a new vertex which can then be used to create faces via the Face or Face2 commands. There can be as many Vertex commands as desired within a [MeshBuilder] section. However, the order of the vertices given is important for other commands. The first vertex given has index 0, and subsequent vertices have indices 1, 2, 3 and so on.
+这个命令将创建一个新顶点，然后可以将此顶点用于Face或Face2命令来创建面。在[MeshBuilder]部分中可以根据需要添加任意数量的该指令。但是，给出顶点的顺序对后续的命令很重要。给定的第一个顶点具有索引编号0，后续顶点具有索引1,2,3等等。 
 
-The normal is the direction perpendicular to the face at a particular point. If all vertices in a face have the same normal, the face will look flat. If used appropriately, you can give the illusion of a curved face by specifying different normals per vertex, but using the same normal on all vertices that share the same spatial coordinate - across multiple faces. If left all zero, the normal will be calculated automatically.
+法线是在特定点垂直于面的方向。如果面里的所有顶点具有相同的法线，那么面将看起来平坦。如果使用得当，您可以通过为每个顶点指定不同的法线来造成曲面的错觉 - 跨多个面在所有顶点上使用相同法线除外。 **请尽量使用简单的面和复杂的法线而不是复杂的面来达成曲面或凹凸效果。这能节省性能开支。** 如果全部为0或不给出，法线将被自动计算。 
 
 ----------
 
@@ -111,7 +111,7 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 ***v<sub>i</sub>***: The vertex index to include in this face. Allowed values are 0 through *n*-1, where *n* is the number of Vertex commands used.  
 {{% /command-arguments %}}
 
-This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will also be visible, however, lighting on the back face might be the same as on the front face. Only convex polygons are supported.
+此命令将创建一个以所有给出v点为顶点的面。i的值（索引值）对应于AddVertex中创建顶点的顺序，因此该命令须在AddVertex命令之后使用。顶点索引出现的顺序很重要，必须以从面的正面来看的顺时针顺序给出。在相邻位置出现的顶点的连线不可以是该多边形的对角线。 仅支持凸多边形，凹多边形需要被拆成多个凸多边形。面的两边都可见，但在目前的openBVE版本里背面的光照计算会有错误。
 
 ----------
 
@@ -127,11 +127,11 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 ***HalfDepth***: A floating-point number representing half the depth of the cube in **meters**.  
 {{% /command-arguments %}}
 
-This command creates a cube having dimensions as specified by *HalfWidth*, *HalfHeight* and *HalfDepth*. The cube will be centered on the origin (0,0,0). Thus, on the x-axis, the cube extends from -*HalfWidth* to *HalfWidth*, on the y-axis from -*HalfHeight* to *HalfHeight* and on the z-axis from -*HalfDepth* to *HalfDepth*. The cube always has 8 vertices and 6 faces.
+此命令将以原点（0,0,0）为中心创建一个以 *两倍的半宽* ， *两倍的半高* 和 *两倍的半深* 为尺寸的立方体。即，在X轴上它占据 -*半宽* 到 *半宽* 的范围，在Y轴上它占据 -*半高* 到 *半高* 的范围，在Z轴上它占据 -*半深* 到 *半深* 的范围。立方体总有8个顶点和6个面。
 
 {{% notice %}}
 
-#### Cube representation
+#### 立方体指令表示
 
 The Cube command is equivalent to a series of Vertex and Face commands, which you need to account for when using other commands in the same [MeshBuilder] section. The details on what the Cube command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
@@ -154,11 +154,11 @@ The Cube command is equivalent to a series of Vertex and Face commands, which yo
 
 This command creates a [frustrum](http://en.wikipedia.org/wiki/Frustrum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -½\**Height* to ½\**Height*.
 
-The number of vertices *n* will usually suffice to be 6 or 8 when only small radii are used, for example to create a pole. Regardless of the values of *UpperRadius*, *LowerRadius* and *n*, the frustum will always have 2\**n* vertices, and usually *n*+2 faces unless any of the caps are omitted. If *UpperRadius* or *LowerRadius* are negative, the absolute value is being taken, but the respective caps are not created. If *Height* is negative, the roles of top and bottom are reversed and the faces will be visible from the inside, while otherwise, they will be visible from the outside.
+当半径的值较小时， 如线杆或扶手，顶点数 *n* 为6或8就足够了。无论 *上底半径* ， *下底半径* 和 *n* 的值如何，该多面体将始终有 2\**n* 个顶点和 *n* +2个面，除非省略上下底面。若 *上底半径* 或 *下底半径* 为负数，则采用其绝对值，同时不创建相应的底面（没有盖儿）。若 *高* 为负数，则上下底面会倒转（上底在下，下底在上），同时所有面都会变为内部可见（默认情况是外部可见） 。
 
 {{% notice %}}
 
-#### Cylinder representation
+#### 截锥体命令表示
 
 The Cylinder command is equivalent to a series of Vertex and Face commands, which you need to account for when using other commands in the same [MeshBuilder] section. The details on what the Cylinder command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
@@ -170,7 +170,7 @@ The Cylinder command is equivalent to a series of Vertex and Face commands, whic
 <font color=#555555>Texture</font>
 {{% /command %}}
 
-*<font color=#555555>This command is ignored by openBVE.</font>*
+*<font color=#555555>未给出的情况下，openBVE会自动计算法线坐标。该命令被openBVE忽略。</font>*
 
 ----------
 
@@ -243,11 +243,11 @@ The **Rotate** command rotates all vertices that have been created so far in the
 ***r***: The ratio that indicates how much to displace vectors. The default value is 0.  
 {{% /command-arguments %}}
 
-The **Shear** command performs a [shear mapping](http://en.wikipedia.org/wiki/Shear_mapping) for all vertices that have been created so far in the current CreateMeshBuilder section. The **ShearAll** command not only affects the vertices generated in the current CreateMeshBuilder section, but also those created in previous CreateMeshBuilder sections. This is useful to insert at the end of the file in order to shear the whole object.
+**Shear** 命令为当前CreateMeshBuilder部分中到目前为止创建的所有顶点执行[剪切映射](http://en.wikipedia.org/wiki/Shear_mapping)。 **ShearAll** 不仅影响当前CreateMeshBuilder部分中创建的顶点，还会影响到之前所有CreateMeshBuilder部分中创建的顶点，这对于在文件末尾插入来剪切整个物件很有用。 
 
 ![illustration_shear](/images/illustration_shear.png)
 
-The shear mapping is performed around the origin. Loosely speaking, the object is sliced into planes along the direction D and then displaced along the direction S. Typically, D and S are perpendicular. D and S are always normalized. If *Ratio* is 0, no transformation is performed. If D and S are perpendicular, a *Ratio* of 1 corresponds to a slope of 45 degrees.
+剪切映射以原点为中心进行。不严谨地说，将物体沿方向D切成平面，然后沿方向S移位。通常，D和S是垂直的。D和S都被折算为单位向量。如果 *r* 为0，则不执行转换。如果D和S垂直，则 *r* 的1值对应45度的斜率。 
 
 ----------
 
@@ -319,14 +319,14 @@ The **EmissiveColorAll** command sets the color for all faces that were already 
 ***GlowAttenuationMode***: The glow attenuation mode to use. The default is DivideExponent4.  
 {{% /command-arguments %}}
 
-▸ Available options for *BlendMode*:
+▸ *混色模式* 命令中的可用选项： 
 
 {{% command-arguments %}}
 **Normal**: The faces are rendered normally.  
 **Additive**: The faces are rendered additively.  
 {{% /command-arguments %}}
 
-▸ Available options for *GlowAttenuationMode*:
+▸ *光衰减模式* 命令中的可用选项：
 
 {{% command-arguments %}}
 **DivideExponent2**: The glow intensity is determined via the function *x*<sup>2</sup> / (*x*<sup>2</sup> + *GlowHalfDistance*<sup>2</sup>), where *x* is the distance from the camera to the object in meters.  
@@ -344,16 +344,17 @@ This command sets the blend mode for all faces in the current [MeshBuilder] sect
 {{% /command %}}
 
 {{% command-arguments %}}  
-***WrapMode***: The openGL texture wrapping mode to use. If this is not specified, the game will attempt to auto-determine the most appropriate texture wrapping mde.  
+*** WrapMode ***：指定openGL texture wrapping mode。 如果未指定，遊戲將嘗試自動使用最合適的wrapping mode。
 {{% /command-arguments %}}
 
-▸ Available options for *WrapMode*:
+▸ *WrapMode* 的選項:
 
 {{% command-arguments %}}  
-**ClampClamp**: The texture is clamped to edge on both axes. 
-**ClampRepeat**: The texture is clamped to edge on the x-axis and repeats on the y-axis. 
-**RepeatClamp**: The texture repeats on the x-axis and is clamped to edge on the y-axis.
-**RepeatRepeat**: The texture repeats on both axes.
+**ClampClamp**: 紋理在兩個軸上都夾在邊緣上。 
+**ClampRepeat**: 紋理在X軸上被夾緊到邊緣，並在Y軸上重複。
+**RepeatClamp**: 紋理在x軸上重複，並在y軸上固定到邊緣。
+**RepeatRepeat**: 紋理在兩個軸上重複。
+歡迎試下不同選項的效果
 {{% /command-arguments %}}
 
 ----------
@@ -369,16 +370,16 @@ This command sets the blend mode for all faces in the current [MeshBuilder] sect
 ***NighttimeTexture***: The file name of the daytime version of the texture to load, relative to the directory the object file is stored in.  
 {{% /command-arguments %}}
 
-This command loads a texture and uses it for all faces in the current CreateMeshBuilder section. The file name is relative to the directory the object file is stored in. You can use PNG, which supports full alpha channels, but use the alpha channel only if absolutely required as it reduces performance. Prefer using a texture without an alpha channel in conjunction with the SetDecalTransparentColor command in order to use color-key transparency.
+此命令将加载材质并将其用于当前CreateMeshBuilder部分中的所有面。文件路径相对于CSV文件所在路径。您也可以使用支持完整Alpha通道的PNG格式，但请尽量不要使用半透明的PNG，因为很吃性能。没有Alpha通道（全不透明）的材质可以与SetDecalTransparentColor命令配合使用来达到性能更好的透明效果。 
 
-If *NighttimeTexture* is used, it specifies the texture to be used on nighttime lighting conditions, while *DaytimeTexture* then specifies the texture to be used on daytime lighting conditions. The textures might blend into each other and should be designed accordingly. If *NighttimeTexture* is used, *DaytimeTexture* must also be specified. If *NighttimeTexture* is not used, low lighting conditions will make the daytime version darker. Nighttime textures are meant for use with train interior/exterior objects.
+如果使用了 *夜间材质* ，它指定在夜间光照状态（.Brightness 0）下使用的材质，而 *日间材质* 指定在日间光照状态（.Brightness 255）下使用的材质。两个材质会根据光照状态互相混合（.Brightness 1~254），材质也需要以此来进行设计。如果指定了 *夜间材质* ，就必须同时指定 *日间材质* 。如果没有指定 *夜间材质* ，暗光照条件会使日间材质更黑。必须使用SetTextureCoordinates指令设定好材质与各顶点的关系，材质才能被正常显示。 
 
 ----------
 
 <a name="setdecaltransparentcolor"></a>
 
 {{% command %}}
-**Transparent** *Red*, *Green*, *Blue*
+**Transparent** *紅*, *綠*, *藍*
 {{% /command %}}
 
 {{% command-arguments %}}
@@ -387,7 +388,7 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 ***Blue***: The blue component of the color. Measured from 0 (black) to 255 (blue). The default value is 0.  
 {{% /command-arguments %}}
 
-This command sets the color used for screendoor transparency for all faces that were already created. The texture loaded via the Load command will become transparent for all pixels which match exactly with the color specified via the *Red*, *Green* and *Blue* parameters. The use of screendoor transparency is much more efficient than using a full alpha channel, so prefer using a texture without an alpha channel and use this command instead to make parts of the texture transparent. You need to specify texture coordinates via the Coordinate command in order for the texture to correctly appear on the faces.
+这条指令为已经创建的所有面指定一个蒙版式的透明色（例如屏蔽门和车窗）。刚刚加载的材质中与指定的 *红*、*绿*、*蓝* 颜色完全相同的像素都会变为透明的。这种蒙版式的透明色比起使用含透明部分的PNG性能高，所以最好绘制全不透明的材质，然后将材质中要透明的部分填为固定颜色，再使用此指令将这些部分“挖空”，而不是使用半透明的PNG。必须使用SetTextureCoordinates指令设定好材质与各顶点的关系，材质才能被正常显示。
 
 ----------
 
