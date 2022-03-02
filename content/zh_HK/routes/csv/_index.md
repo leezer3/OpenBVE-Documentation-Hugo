@@ -966,8 +966,8 @@ The general syntax for commands in the Structure namespace is:
 | CrackR     | Defines transformable right objects for Track.Crack. <font color="red">No ANIMATED objects supported.</font> |
 | FreeObj    | 為Track.FreeObj定義物件。                           |
 | Beacon     | Defines objects for Track.Beacon.                            |
-| 天氣     | Defines objects for weather generated using Track.Rain and Track.Snow. |
-| DynamicLight     | Defines dynamic lighting sets. |
+| 天氣     | 为使用 Track.Rain 和 Track.Snow 生成的天气定义对象。 |
+| 动态光     | 定义动态照明集。 |
 
 {{% /table %}}
 
@@ -1174,7 +1174,7 @@ When openBVE loads the glow texture, it will replace all purely black pixels wit
 
 The resulting texture is always additively blended. This means that instead of directly drawing the texture onto the screen, the pixels of the texture are added to the screen pixels. Here, adding black (0) does not change the screen pixels, while adding a fully satured color channel (1) will result in a fully satured color channel, e.g. adding white produces white. Keep in mind that when designing the textures, you will have to follow the inverse rules, e.g. design the image as depicted in (A) or (B), while having in mind how it will be processed afterward.
 
-## <a name="track"></a>■ 11. The Track namespace
+## <a name="track"></a>■ 11. Track指令命名空間
 
 Commands from this namespace define the track layout. Commands from this namespace should appear after commands from any of the other namespaces, and they usually form the largest part of the route file.
 
@@ -1682,7 +1682,7 @@ This command can only be used at the beginning of a block.
 ***TimetableIndex***: A non-negative integer representing the timetable to be shown from this station on as defined via Train.Timetable(*TimetableIndex*).  
 {{% /command-arguments %}}
 
-▸ Available options for *ArrivalTime*:
+▸ *ArrivalTime* 的選項:
 
 {{% command-arguments %}}  
 *time*: The train is expected to arrive at this particular time.  
@@ -1694,7 +1694,7 @@ This command can only be used at the beginning of a block.
 **D**: This station is a dummy station for use in conjunction with *ForcedRedSignal*. No stop position overlay or timetable entry will be shown.
 {{% /command-arguments %}}
 
-▸ Available options for *DepartureTime*:
+▸ *DepartureTime* 的選項:
 
 {{% command-arguments %}}  
 *time*: The train is expected to depart at this particular time.  
@@ -1707,14 +1707,14 @@ This command can only be used at the beginning of a block.
 **J:**_index:**Time**_: This is a station at which the train is "jumped" to the specified by *index*. Jumping will take place at the specified time unless *StopDuration* interfers. See the description below.  
 {{% /command-arguments %}}
 
-▸ Available options for *PassAlarm*:
+▸ *PassAlarm* 的選項:
 
 {{% command-arguments %}}  
 **0**: The pass alarm device does not remind the driver of stopping at this station.  
 **1**: The pass alarm device reminds the driver of stopping at this station.  
 {{% /command-arguments %}}
 
-▸ Available options for *Doors*:
+▸ *Doors* 的選項:
 
 {{% command-arguments %}}  
 **L** or **-1**: The left doors are expected to open at this station.  
@@ -1723,14 +1723,14 @@ This command can only be used at the beginning of a block.
 **B**: Both the left and right doors are expected to open at this station.  
 {{% /command-arguments %}}
 
-▸ Available options for *ForcedRedSignal*:
+▸ *ForcedRedSignal* 的選項:
 
 {{% command-arguments %}}  
 **0**: Signals are unaffected by this station.  
 **1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
 {{% /command-arguments %}}
 
-▸ Available options for *System*:
+▸ *System* 的選項:
 
 {{% command-arguments %}}  
 **ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
@@ -1766,7 +1766,7 @@ The first occuring station in a route may not be of the Terminal type.
 ***DepartureSound***: The sound file to be played before departure (departure time minus sound duration minus door closing time), relative to the **Sound** folder.  
 {{% /command-arguments %}}
 
-▸ Available options for *ArrivalTime*:
+▸ *ArrivalTime* 的選項:
 
 {{% command-arguments %}}  
 *time*: The train is expected to arrive at this particular time.  
@@ -1777,7 +1777,7 @@ The first occuring station in a route may not be of the Terminal type.
 **S:**_time_: The player's train is expected to arrive at this particular time, while all other trains are expected to pass.  
 {{% /command-arguments %}}
 
-▸ Available options for *DepartureTime*:
+▸ *DepartureTime* 的選項:
 
 {{% command-arguments %}}  
 *time*: The train is expected to depart at this particular time.  
@@ -1788,14 +1788,14 @@ The first occuring station in a route may not be of the Terminal type.
 **C:**_time_: This is a station at which to "change ends". Changing ends will take place at the specified time unless *StopDuration* interferes. See the description below.  
 {{% /command-arguments %}}
 
-▸ Available options for *ForcedRedSignal*:
+▸ *ForcedRedSignal* 的選項:
 
 {{% command-arguments %}}  
 **0**: Signals are unaffected by this station.  
 **1**: The signal immediately following the last station stop is hold at red until the train reaches the stopping area and the departure time.  
 {{% /command-arguments %}}
 
-▸ Available options for *System*:
+▸ *System* 的選項:
 
 {{% command-arguments %}}  
 **ATS** or **0**: ATS should be used from this station on. The following track is not be equipped with ATC.  
@@ -1839,7 +1839,7 @@ The first occuring station in a route may not be of the Terminal type.
 ***Cars***: A non-negative integer indicating for how many cars this stop point applies, or 0 for all cars. The default value is 0.  
 {{% /command-arguments %}}
 
-▸ Available options for *Direction*:
+▸ *Direction* 的選項:
 
 {{% command-arguments %}}  
 **-1**: A stop post is created on the left side.  
@@ -1871,7 +1871,7 @@ With Track
 ***FormStructureIndex***: A non-negative integer representing the object to be placed as defined via Structure.Form and Structure.FormC  
 {{% /command-arguments %}}
 
-▸ Available options for *RailIndex<sub>2</sub>*:
+▸ *RailIndex<sub>2</sub>* 的選項:
 
 {{% command-arguments %}}  
 **Any current RailIndex**: The form is deformed to meet the specified RailIndex.  
@@ -2290,7 +2290,7 @@ These are fully described on the [the XML Markers page...]({{< ref "/routes/xml/
 *positive value*: The marker image starts to display *Distance* meters before the Track.Marker command, and ends at the Track.Marker command.  
 {{% /command-arguments %}}
 
-▸ Available options for *FontColor*:
+▸ *FontColor* 的選項:
 
 {{% command-arguments %}}  
 *1*: Black.  
