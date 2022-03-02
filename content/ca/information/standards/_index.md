@@ -23,7 +23,7 @@ Beacons reserved for the built-in safety systems ATS-SN and ATS-P. These should 
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipus de balisa | Dades opcionals  | Significat                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
 | 0           | *SwitchSystem* | S-type transponder for ATS-SN. Placed about 600m in front of a signal. Raises an alarm the driver has to acknowledge whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
 | 1           | *SwitchSystem* | SN-type transponder for ATS-SN. Placed about 20m in front of a signal. Triggers the emergency brakes whenever the referenced signal is red.<br /><br />Values for *SwitchSystem*:<br />-1: The train should not switch the safety system.<br />0: The train should automatically switch from ATS-P to ATS-SN when passing this beacon. |
@@ -37,7 +37,7 @@ Beacons used by legacy train systems to simulate weather (Note- These will also 
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipus de balisa | Dades opcionals  | Significat                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
 | 21           | *Intensity*   | Sets the intensity of the weather.<br /><br />Values for *Intensity* should be within the following range:<br />0: No weather.<br />100: Maximum weather intensity. |
 
@@ -47,7 +47,7 @@ UK Basic AWS / TPWS Beacons (Supported by OS_ATS, UKTrainSys, UKDT, UKMU & UKEMU
 
 {{% table %}}
 
-| Beacon type | Optional data  | Meaning                                                      |
+| Tipus de balisa | Dades opcionals  | Significat                                                      |
 | ----------- | -------------- | ------------------------------------------------------------ |
 | 44000       | 0              | Permanent AWS signal approach magnet. Raises an alarm the driver has to acknowledge if the referenced signal is red. |
 | 44001       | 0              | AWS speed restriction magnet. Raises an alarm the driver has to acknowledge regardless. |
