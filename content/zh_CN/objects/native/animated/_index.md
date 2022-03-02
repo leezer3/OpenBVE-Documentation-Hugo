@@ -338,28 +338,28 @@ ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他
 | `!a`           | `Not[a]`   | 如果 *a* 为假，则为真（1）               |
 | `a & b`        | `And[a,b]` | 如果 *a* 和 *b* 均为真，则为真（1）  |
 | `a` &#124; `b` | `Or[a,b]`  | 如果 *a* 或 *b* 中的任何一个为真，则为真（1） |
-| `a ^ b`        | `Xor[a,b]` | True (1) if either *a* or *b* is true  |
+| `a ^ b`        | `Xor[a,b]` | 如果 *a* 或 *b* 其中之一为真，则为真（1）  |
 
 {{% /table %}}
 
-##### ● Operator precedence
+##### ●运算符优先级
 
-From highest precedence to lowest. Operators of same precedence are evaluated either left to right or right to left, depending on if they share a precedence with another operator.
+从最高优先级到最低优先级。 优先级相同的运算符从左到右或从右到左评估，具体取决于它们是否与另一个运算符共享优先级。
 
 {{% table %}}
 
-| Operator                         | Associativity | Unparenthesized | Equivilant      |
+| 运算符                         | 关联性 | 无括号 | 等效形式      |
 | -------------------------------- |---------------|-----------------|-----------------|
-| `a[...]`                         | unary         | &nbsp;          | &nbsp;          |
-| `-` (Minus)                      | unary         | &nbsp;          | &nbsp;          |
-| `/`                              | right-to-left | 1 / 2 / 3       | (1 / (2 / 3))   |
-| `*`                              | right-to-left | 1 * 2 * 3       | (1 * (2 * 3))   |
-| `+`, `-` (Subtract)              | left-to-right | 1 + 2 + 3       | ((1 + 2) + 3)   |
-| `==`, `!=`, `<`, `>`, `<=`, `>=` | left-to-right | 1 <= 2 <= 3     | ((1 <= 2) <= 3) |
-| `!`                              | unary         | &nbsp;          | &nbsp;          |
-| `&`                              | right-to-left | 1 & 2 & 3       | (1 & (2 & 3))   |
-| `^`                              | right-to-left | 1 ^ 2 ^ 3       | (1 ^ (2 ^ 3))   |
-| &#124;                           | right-to-left | 1 &#124; 2 &#124; 3       | (1 &#124; (2 &#124; 3))   |
+| `a[...]`                         | 一元         | &nbsp;          | &nbsp;          |
+| `-`（减号）                      | 一元         | &nbsp;          | &nbsp;          |
+| `/`                              | 从右到左 | 1 / 2 / 3       | (1 / (2 / 3))   |
+| `*`                              | 从右到左 | 1 * 2 * 3       | (1 * (2 * 3))   |
+| `+`，`-`（减）              | 从左到右 | 1 + 2 + 3       | ((1 + 2) + 3)   |
+| `==`, `!=`, `<`, `>`, `<=`, `>=` | 从左到右 | 1 <= 2 <= 3     | ((1 <= 2) <= 3) |
+| `!`                              | 一元         | &nbsp;          | &nbsp;          |
+| `&`                              | 从右到左 | 1 & 2 & 3       | (1 & (2 & 3))   |
+| `^`                              | 从右到左 | 1 ^ 2 ^ 3       | (1 ^ (2 ^ 3))   |
+| &#124;                           | 从右到左 | 1 &#124; 2 &#124; 3       | (1 &#124; (2 &#124; 3))   |
 
 {{% /table %}}
 
@@ -372,24 +372,24 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% /warning-nontitle %}}
 
-## <a name="functions"></a>■ 4. List of functions
+## <a name="functions"></a>■ 4.函数列表
 
-##### ● Basic arithmetics
+##### ●基本算术
 
 {{% table-2col %}}
 
-| Function         | Description                                                  |
+| 函数         | 描述                                                  |
 | ---------------- | ------------------------------------------------------------ |
-| `Reciprocal[x]`  | Returns the reciprocal, equal to 1/*x*                       |
-| `Power[a,b,...]` | Returns *a* raised to the *b*<sup>th</sup> power. *b* must be a non-negative number. For consistency, Power[0,*b*] always returns 1, even in the degenerate case Power[0,0], and *a* being negative always returns 0. Adding more arguments will create a chain. Power[a,b,c] will return *a*<sup>*b*<sup>*c*</sup></sup>. |
+| `Reciprocal[x]`  | 返回倒数，等于1 / *x*                       |
+| `Power[a,b,...]` | 返回 *a* 的 <sup>*b*</sup>次幂。 *b*必须为非负数。 为了保持一致性，Power [0, *b*]始终返回1，即使Power[0,0]也如此，而*a*为负数时始终返回0。添加更多参数将创建一个链。 Power [a, b, c]将返回 *a* <sup> *b* <sup> *c* </sup></sup>。 |
 
 {{% /table-2col %}}
 
-#####  ● Numeric functions
+#####  ● 数学函数
 
 {{% table-2col %}}
 
-| Function                      | Description                                                  |
+| 函数                      | 描述                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
 | `Quotient[a,b]`               | Divides *a* by *b* and rounds the result down, equal to `Floor[a/b]`. |
 | `Mod[a,b]`                    | Returns the remainder of dividing *a* by *b*, equal to `a-b*Floor[a/b]`. |
@@ -409,7 +409,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% table-2col %}}
 
-| Function    | Description                                                  |
+| 函数    | 描述                                                  |
 | ----------- | ------------------------------------------------------------ |
 | `Exp[x]`    | The exponential function, or *e* to the *x*<sup>th</sup> power. |
 | `Log[x]`    | The natural logarithm, to base *e*.                          |
@@ -426,7 +426,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% table-2col %}}
 
-| Function                        | Description                                                  |
+| 函数                        | 描述                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
 | `If[cond,truevalue,falsevalue]` | If *cond* is != 0, returns *truevalue*, otherwise *falsevalue* |
 
@@ -438,7 +438,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% table-2col %}}
 
-| Variable       | Description                                                  |
+| Variable       | 描述                                                  |
 | -------------- | ------------------------------------------------------------ |
 | `value`        | The value returned by the function in the last evaluation. At the beginning of the simulation, this is 0. |
 | `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
@@ -450,7 +450,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% table-2col %}}
 
-| Variable         | Description                                                  |
+| Variable         | 描述                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `time`           | The current in-game time measured in seconds since midnight of the first day. |
 | `hour`           | The integer part of the current hour. |
@@ -474,9 +474,10 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                      | Description                                                  |
+| Variable                      | 描述                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| `playerTrain`                 | Returns 1 if the train is the player train, 0 otherwise.     |
+| `playerTrain`                 | 如果此物件是在玩家的列車，此變數會為1，否則此變數會為0。
+注: Route.RunInterval的列車並非玩家列車     |
 | `cars`                        | The number of cars the train has.                            |
 | `carNumber`                   | Returns the index of the current car.                        |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
@@ -509,7 +510,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                       | Description                                                  |
+| Variable                       | 描述                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
@@ -528,7 +529,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                     | Description                                                  |
+| Variable                     | 描述                                                  |
 | ---------------------------- | ------------------------------------------------------------ |
 | `doors`                      | The state of the doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
 | `doors[carIndex]`            | The state of the doors of car *carIndex*. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
@@ -550,7 +551,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                         | Description                                                  |
+| Variable                         | 描述                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
 | `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
 | `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
@@ -588,7 +589,7 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | 含义           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
@@ -615,7 +616,7 @@ The section context is defined when the object is placed using Track.SigF.
 
 {{% table-2col %}}
 
-| Variable  | Description                                                  |
+| Variable  | 描述                                                  |
 | --------- | ------------------------------------------------------------ |
 | `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 
@@ -627,7 +628,7 @@ There are certain kinds of animation which are less expensive, and others which 
 
 {{% table %}}
 
-| Animation      | Object                          | Performance |
+| 动画      | Object                          | Performance |
 | -------------- | ------------------------------- | ----------- |
 | State changes  | Has only opaque faces           | Good        |
 | State changes  | Has partially transparent faces | Moderate    |
