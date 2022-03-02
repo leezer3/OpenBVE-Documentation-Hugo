@@ -5,7 +5,7 @@ weight: 2
 
 <font color="Gray">This page describes which number formats are encountered in the various route and train files and how to adhere to them.</font>
 
-## ■ Contents
+## ■ 목차
 
 {{% contents %}}
 
@@ -17,7 +17,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 개요
 
 Within the route and train files, you will encounter numbers like integers or floating-point numbers all the time, occasionally also others. These numbers are required to adhere to a certain format, which is described in the following sections.
 
