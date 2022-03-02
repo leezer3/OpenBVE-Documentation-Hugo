@@ -4,11 +4,11 @@ linktitle: "The panel.cfg file"
 weight: 4
 ---
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Syntax](#syntax)
 - [3. The Panel section](#panel)
 - [4. The View section](#view)
@@ -39,13 +39,13 @@ The panel.cfg has been superseded by the panel2.cfg. You can achieve the full fu
 
 {{% notice %}}
 
-#### Overlay and Lighting
+#### Sobreposición e Iluminación
 
 The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light.
 
 {{% /notice %}}
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxis
 
 Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
@@ -63,7 +63,7 @@ NameOfTheKey = Value
 
 Some values are further split into multiple parts, separated by commas (U+002C). Instead of a comma, a colon (U+003A) can be used interchangeably.
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Puedes usar comentarios en cualquier lado al final de una línea. Un comentario comienza por punto y coma (U+003B). Si los comentarios estan presentes, son quitados de las líneas después de ser procesados.
 
 ## <a name="panel"></a>■ 3. The Panel section
 
