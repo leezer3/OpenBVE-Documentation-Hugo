@@ -19,7 +19,7 @@ If a texture contains this color, then these pixels will be rendered as transpar
 
 {{% /notice %}}
 
-Full support & documentation of the X object format is not yet available from this site, but the following is an overview of the supported templates, unstructured.
+Semua info perintah tentang objek X belum tersedia di situs ini, tapi berikut ini rangkuman perintah yang bisa dibaca OpenBVE.
 
 - Frame
 - FrameRoot
