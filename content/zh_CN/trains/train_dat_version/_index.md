@@ -1,9 +1,9 @@
 ---
-title: "The **train.dat** file format: Version History"
+title: "**train.dat** 檔案格式: 版本歷史"
 hidden: true
 ---
 
-## ■ Contents
+## ■ 目录
 
 {{% contents %}}
 
@@ -15,7 +15,7 @@ hidden: true
 
 ## <a name="bve1"></a>■ 1. BVE1
 
-The following BVE1 version strings are recognised:
+以下的 BVE1 版本的關鍵字會被認到:
 
 {{% code %}}  
 BVE1200000  
@@ -25,18 +25,18 @@ BVE1220000
 
 ## <a name="bve2"></a>■ 2. BVE2
 
-The following BVE2 version strings are recognised: 
+以下的 BVE2 版本的關鍵字會被認到:
 
 {{% code %}}  
 BVE2000000  
 OPENBVE  
 {{% /code %}}
 
-## <a name="openbve"></a>■ 3. openBVE
+## <a name="openbve"></a>■ 3. OpenBVE
 
-From openBVE 1.5.3.0 onwards, the ***OPENBVE*** identifier may be optionally followed by a version string.
+由OpenBVE 1.5.3.0 之後, ***OPENBVE*** 識別字後面可以跟一個版本。
 
-The changes for each version are described below:
+每個版本的更改如下所述:
 
 {{% code-inline "\- Added the *EbHandleBehaviour* parameter to the **#HANDLE** section."  %}}  
 OPENBVE1530  
