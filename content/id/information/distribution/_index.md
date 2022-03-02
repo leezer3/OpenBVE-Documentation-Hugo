@@ -53,7 +53,7 @@ Yang dibolehkan dan tidak:
 
 ## ■ Archive dan susunan folder
 
-You should always include the full folder structure, that is, **Railway** and **Train**, when distributing routes or trains. This will make it easiest for people to understand where they need to extract the content to. Never just include a subdirectory such as *YourNameHere* that is supposed to be extracted to the Railway\Sound folder, for example. Only the more experienced users will generally be able to figure out where to put such content to by examining the files or their extensions.
+Anda harus selalu menyertakan struktur folder lengkap, yaitu **Railway** dan **Train**, saat mendistribusikan rute atau kereta. Ini akan memudahkan orang untuk memahami dimana mereka perlu mengekstrak konten. Jangan pernah memasukkan subdirektori seperti *NamaAndaDisini* yang seharusnya diekstrak ke folder Railway\Sound, misalnya. Hanya pengguna yang lebih berpengalaman yang dapat mengetahui di mana harus meletakkan konten tersebut dengan memeriksa file atau ekstensinya.
 
 Yang dibolehkan dan tidak:
 
@@ -67,7 +67,7 @@ Yang dibolehkan dan tidak:
 
 ## ■ Error dan peringatan
 
-Generally, your route should be free of errors. Please note that openBVE distinguishes between errors and warnings. An error is something definately wrong with your coding that should be fixed immediately. A warning is usually only raised to encourage inspection of potentially ambiguous code or code that might not have been meant the way it was written. In order to inspect your routes and trains for errors and warnings, go to the Options menu in openBVE and enable reporting them. RouteViewer and ObjectViewer always report such messages. Please note that the arious tools and openBVE itself might report a different set of messages as they don't share all the same functionality. Distributing add-ons containing errors might give users the impression that something was incompletely downloaded or was incorrectly packaged, and should generally be voided.
+Umumnya, rute anda harus bebas dari kesalahan. Harap dicatat bahwa openBVE membedakan antara Kesalahan/Error dan Peringatan/Warning. Kesalahan adalah sesuatu yang pasti salah dengan pengkodean anda yang harus segera diperbaiki. Peringatan biasanya hanya dimunculkan untuk pemeriksaan kode yang berpotensi ambigu atau kode yang mungkin tidak bekerja seperti yang tertulis. Untuk memeriksa kesalahan dan peringatan pada rute dan kereta anda, buka menu pengaturan di openBVE dan aktifkan pelaporannya. RouteViewer dan ObjectViewer selalu melaporkan pesan seperti itu. Harap dicatat bahwa berbagai alat dan openBVE itu sendiri mungkin melaporkan kumpulan pesan yang berbeda karena tidak memiliki semua fungsi yang sama. Mendistribusikan add-on yang mengandung kesalahan mungkin memberi kesan kepada pengguna lain bahwa ada sesuatu yang tidak diunduh secara lengkap atau ada yang salah.
 
 Yang dibolehkan dan tidak:
 
