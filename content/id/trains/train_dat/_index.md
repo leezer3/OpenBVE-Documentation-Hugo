@@ -4,7 +4,7 @@ linktitle: "The train.dat file"
 weight: 2
 ---
 
-## ■ Contents
+## ■ Isi
 
 {{% contents %}}
 
@@ -26,7 +26,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
 The train.dat file describes the characteristics of trains including acceleration, brake behavior, installed equipment, speed-sound associations, and more.
 
@@ -77,7 +77,7 @@ A new section is opened by starting the line with a number sign character (U+002
 
 The order in which sections appear within the file is irrelevant. Each line following the opening of a new section is interpreted as a data entry. These data entries are not named, thus their order is important. When a data entry is expected but omitted because a new section was started, a default value will apply. The exact interpretation of each data entry is explained in the following sections, along with default values.
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Komentar bisa ditambahkan di mana saja di akhir teks. Tambahkan titik koma " ; " lalu tulis komentar atau catatan yang diinginkan.
 
 ## <a name="acceleration"></a>■ 4. The Acceleration section
 
