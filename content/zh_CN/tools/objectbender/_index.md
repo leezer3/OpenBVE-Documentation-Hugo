@@ -5,7 +5,7 @@ weight: 2
 
 ![img](/images/tool_objectbender_screenshot_1.png)
 
-## ■ Overview
+## ■ 概述
 
 This tool allows to concatenate object segments and to bend the resulting mesh. This is useful to create curved objects such as rails, walls, embankments, etc. The segments can be of B3D or CSV format. You need to be able to provide those segments, meaning you need a basic understanding of the B3D or CSV file formats. See their respective documentation for more information.
 
@@ -21,7 +21,7 @@ Supported object file formats:
 ## ■ Command-line arguments
 {{% table %}}
 
-| Argument           | Meaning                                                      |
+| Argument           | 含义                                                      |
 | ------------------ | ------------------------------------------------------------ |
 | /?                 | Shows the list of command-line arguments.                    |
 | *InputFile*        | The path to the input file. Can be a B3D or CSV file.        |
