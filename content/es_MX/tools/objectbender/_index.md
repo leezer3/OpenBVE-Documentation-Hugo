@@ -21,7 +21,7 @@ Supported object file formats:
 ## ■ Command-line arguments
 {{% table %}}
 
-| Argument           | Meaning                                                      |
+| Argument           | Significado                                                      |
 | ------------------ | ------------------------------------------------------------ |
 | /?                 | Shows the list of command-line arguments.                    |
 | *InputFile*        | The path to the input file. Can be a B3D or CSV file.        |
