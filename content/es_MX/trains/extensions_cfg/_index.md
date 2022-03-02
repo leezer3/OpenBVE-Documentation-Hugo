@@ -4,11 +4,11 @@ linktitle: "The extensions.cfg file"
 weight: 4
 ---
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Syntax](#syntax)
 - [3. The Car*i* section](#car)
 - [4. The Coupler*i* section](#coupler)
@@ -17,7 +17,7 @@ weight: 4
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
 The extensions.cfg file allows to define properties for individual cars, like length, axle positions and exterior objects.
 
@@ -31,7 +31,7 @@ All cars in the extensions.cfg are enumerated from 0 (front car) to *n*-1 (rear 
 
 A coupler in this document refers to the space between neighboring cars. All couplers in the extensions.cfg are enumerated from 0 (front-most coupler) to *n*-2 (rear-most coupler), where *n* is the number of cars the train has in total, according to the [train.dat]({{< ref "/trains/train_dat/_index.md" >}}) file. Coupler index *i* corresponds to the coupler between the cars with indices *i* and *i+1*, so the coupler between the first two cars (0 and 1) in the train has index 0. Likewise, if a train has 10 cars, the coupler between the last two cars (8 and 9) would have index 8.
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxis
 
 Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
@@ -55,7 +55,7 @@ NameOfTheKey = Value
 0 = train.csv  
 {{% /code %}}
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Puedes usar comentarios en cualquier lado al final de una línea. Un comentario comienza por punto y coma (U+003B). Si los comentarios estan presentes, son quitados de las líneas después de ser procesados.
 
 ## <a name="car"></a>■ 3. The Car*i* section
 
