@@ -4,7 +4,7 @@ linktitle: "The sound.cfg file"
 weight: 8
 ---
 
-## ■ Contents
+## ■ Isi
 
 {{% contents %}}
 
@@ -14,7 +14,7 @@ weight: 8
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Penjelasan
 
 The sound.cfg file allows to reference which sound files should be used, how they are called and where they are located relative to the train folder.
 
@@ -22,11 +22,11 @@ The sound.cfg file is a plain text file encoded in any arbitrary  [encoding]({{<
 
 ➟ [See also the quick reference for the sound.cfg...]({{< ref "/trains/sound_cfg_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Format penulisan
 
-Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
+Setiap baris dalam file ini bisa dikosongkan (atau dikasih spasi) dan tidak akan dibaca oleh sistem. Dengan begitu anda bisa memisahkan bagian satu dengan bagian lainnya. 
 
-A new section is opened by starting the line with an opening bracket (U+005B) and ending it with a closing bracket (U+005D). The text in-between the brackets indicates the name of the section and is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as at the beginning and the end of the name of the section. Thus, the beginning of the section has the following form:
+Membuat bagian baru dimulai dengan menambahkan nama bagian dan memakai kurung tegak ( " [ " dan " ] " ). Spasi tidak akan terbaca di sistem. Contoh cara penulisannya:
 
 {{% command %}}   
 [NameOfTheSection]  
@@ -38,7 +38,7 @@ A key-value pair is indicated by giving the key, an equals sign (U+003D) and the
 NameOfTheKey = Value  
 {{% /command %}}
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Komentar bisa ditambahkan di mana saja di akhir teks. Tambahkan titik koma " ; " lalu tulis komentar atau catatan yang diinginkan.
 
 ## <a name="content"></a> ■ 3. Content of the file
 
