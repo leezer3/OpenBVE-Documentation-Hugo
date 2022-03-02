@@ -61,7 +61,7 @@ weight: 2
 -123.456  
 {{% /code %}} 
 
-**Loose:** All white spaces are removed from the character sequence first. Then, the remaining character sequence (*abcde*) is interpreted according to the *Strict* model. If this fails to create a valid number, the last character is dropped from the sequence (*abcd*) and then, the sequence is tested again. This continues until a valid number is produced or until no character remains, after which the character sequence is determined to be an invalid number. 
+**寬鬆:** 首先從字符序列中刪除所有空格。然後，根據 *嚴格* 模型解釋其餘字符序列(*abcde*)。如果此操作無法創建有效數字，則從序列(*abcd*)中刪除最後一個字符，然後再次測試該序列。這一直持續到產生有效數字或直到沒有剩餘字符為止，此後字符序列被確定為無效數字。
 
 {{% code "*Examples for Loose floating-point numbers:*" %}}  
 -123 . 456  
