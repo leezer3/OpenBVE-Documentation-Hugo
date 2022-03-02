@@ -4,7 +4,7 @@ linktitle: "The ANIMATED object"
 weight: 3
 ---
 
-## ■ Contents
+## ■ Tartalom
 
 {{% contents %}}
 
@@ -20,7 +20,7 @@ weight: 3
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Áttekintés
 
 The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
 
