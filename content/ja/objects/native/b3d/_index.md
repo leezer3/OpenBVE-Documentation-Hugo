@@ -8,7 +8,7 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 概要](#overview)
 - [2. Syntax](#syntax)
 - [3. Available commands](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
@@ -32,29 +32,29 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概要
 
-A B3D object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in [MeshBuilder] sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same [MeshBuilder] section which share common attributes. A polygon is called a face in this file format.
+B3Dオブジェクトはテクスチャつきのオブジェクトを作成出来ます。作成したオブジェクトは路線のストラクチャーや車両オブジェクトに用いる事が出来ます。個別のオブジェクトは複数のポリゴンが内包されます。このファイルフォーマットは複数のポリゴンを[MeshBuilder]セクションにおいて色かテクスチャ情報を其々のセクションにおいて設定できます。これにより、いくつかの共通の[MeshBuilder]セクションの属性を用いて複数のポリゴンを生成できます。個別のポリゴンはこのファイルフォーマットにおいてはfaceと呼ばれます。
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.b3d**. The file is interpreted on a per-line basis, from top to bottom.
+ファイルは任意のエンコードで記述されたプレーンテキストですが[encoding]({{< ref "/information/encodings/_index.md" >}})、好ましい選択としてはバイトオーダー付きのUTF-8です。  [parsing model]({{< ref "/information/numberformats/_index.md" >}}) に用いる数字は **ルーズ**ですが、 それでも出力にあたっては *厳密な* 出力をすることが望ましいです。 ファイル名は任意ですが、 拡張子は必ず **.b3d** を用います。 ファイルは基本的に上から下に向かって解釈されていきます。
 
-➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
+➟ [B3Dフォーマットのクイックリファレンスも参照してください...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. 文法
 
-Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
+ファイル内のそれぞれの行はコマンド名とその引数に分けられています。全てのコマンドの文法は同様です。
 
 {{% command %}}
-**NameOfTheCommand** *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*
+**コマンド名** *引数<sub>1</sub>*, *引数<sub>2</sub>*, *引数<sub>3</sub>*, ..., *引数<sub>n</sub>*
 {{% /command %}}
 
-*NameOfTheCommand* is case-insensitive. If there are arguments, *NameOfTheCommand* and *Argument1* are separated by at least one space space (U+0020). Arguments are separated by a comma (U+002C). [White spaces]({{< ref "/information/whitespaces/_index.md" >}}) around the arguments, and well as at the beginning and the end of the line, are ignored. Empty lines or lines solely consisting of white spaces are also ignored.
+*コマンド名* は大文字と小文字を区別せず使えます。  もし引数であった場合、 *コマンド名* と *引数1* 少なくとも1つ以上の半角スペース(U+0020)で空ける必要があります。 引数は 半角コンマ(U+002C)で区切られます。 命令の前後の [ホワイトスペース]({{< ref "/information/whitespaces/_index.md" >}}) は、引数の前後、行頭と行末は無視されます。 何もない空白行も同様に、ホワイトスペースとして無視されます。
 
-Arguments may also be omitted by leaving the text at each of the *Argument<sub>i</sub>* blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands. Note however that the first argument may not be omitted if other arguments are provided.
+引数はそれぞれの *引数<sub>i</sub>* を空白にすることで省略することができます。 この場合多くのケースでコマンド固有の既定の値が適用されます。 コマンド固有の規定値の詳細は使用できるコマンドのセクションで記載されています。 ただし、他の引数が指定されているときは最初の引数は省略できません。
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+コメントは行末のどこでも使用可能です。 コメントはセミコロン (U+003B)で始まります。 コメントは存在する場合、処理される前に全ての行から削除されます。
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. 使用可能なコマンド
 
 <a name="createmeshbuilder"></a>
 
@@ -62,7 +62,7 @@ You can use comments anywhere at the end of a line. A comment is started by a se
 **[MeshBuilder]**
 {{% /command %}}
 
-This command marks the beginning of a new section of faces. It must precede any of the following commands. There might be as many [MeshBuilder] sections as desired in the object file. All subsequent commands will then relate to the last [MeshBuilder] section opened.
+このコマンドは新しい face のセクションの始まりを記します。 以下に続くコマンドの前に、これを記しておかなければなりません。 オブジェクトファイルには、必要に応じていくつでも [MeshBuilder] セクションを設置できます。 全てのこれに続くコマンドは、最後に開かれた [MeshBuilder] コマンドに関連付けられます。
 
 ----------
 
@@ -73,17 +73,17 @@ This command marks the beginning of a new section of faces. It must precede any 
 {{% /command %}}
 
 {{% command-arguments %}}
-***vX***: The x-coordinate for the vertex in meters. Negative values are left, positive ones right. The default value is 0.  
-***vY***: The y-coordinate for the vertex in meters. Negative values are down, positive ones up. The default value is 0.  
-***vZ***: The z-coordinate for the vertex in meters. Negative values are backward, positive ones forward. The default value is 0.  
-***nX***: The x-coordinate for the normal of this vertex. The default value is 0.  
-***nY***: The y-coordinate for the normal of this vertex. The default value is 0.  
-***nZ***: The z-coordinate for the normal of this vertex. The default value is 0.  
+***vX***: 頂点のX座標をメートルで記します。 負の値は左、正の値は右です。 デフォルト値は0です。 
+***vY***: 頂点のY座標をメートルで記します。  負の値は下、 正の値は上です。 デフォルト値は0です。 
+***vZ***: 頂点のZ座標をメートルで記します。  負の値は後ろ、正の値は前方です。 デフォルト値は0です。 
+***nX***: この頂点における法線のX座標をメートルで記します。 デフォルト値は0です。  
+***nY***: この頂点における法線のY座標をメートルで記します。 デフォルト値は0です。 
+***nZ***: この頂点における法線のZ座標をメートルで記します。 デフォルト値は0です。 
 {{% /command-arguments %}}
 
-This command creates a new vertex which can then be used to create faces via the Face or Face2 commands. There can be as many Vertex commands as desired within a [MeshBuilder] section. However, the order of the vertices given is important for other commands. The first vertex given has index 0, and subsequent vertices have indices 1, 2, 3 and so on.
+このコマンドは Face もしくは Face2 コマンドを用いた面に用いるための新しい頂点を作成できます。 必要に応じて [MeshBuilder] セクション内には Vertex コマンドをいくつも用いることができます。 ただし、頂点の設置順序は他のコマンドに影響を与えるため重要な要素です。 最初の頂点はインデックス番号0、 続く頂点は、1,2,3...等と順番に与えられていきます。
 
-The normal is the direction perpendicular to the face at a particular point. If all vertices in a face have the same normal, the face will look flat. If used appropriately, you can give the illusion of a curved face by specifying different normals per vertex, but using the same normal on all vertices that share the same spatial coordinate - across multiple faces. If left all zero, the normal will be calculated automatically.
+法線の方向は面の特定の場所において垂直方向です。 もしすべての頂点の面が全く同じ法線である場合、 法線はフラットに見えます。 もし適切に用いられているならば、 頂点ごとに異なる法線を設定することで、まるで曲がった面をしているかのような錯覚を与えることができます。 しかし複数の面にわたって - 同一の空間座標上の全ての頂点で同一の法線を用いると、 もしすべて0が設定されていた場合は、法線は自動的に計算されます。
 
 ----------
 
@@ -94,10 +94,10 @@ The normal is the direction perpendicular to the face at a particular point. If 
 {{% /command %}}
 
 {{% command-arguments %}}
-***v<sub>i</sub>***: The vertex index to include in this face. Allowed values are 0 through *n*-1, where *n* is the number of Vertex commands used.  
+***v<sub>i</sub>***: この面に含める頂点インデックス。 適用される番号は0から *n*-1で、 *n* はVertexコマンドで使われている頂点の番号と連動します。  
 {{% /command-arguments %}}
 
-This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will not be visible. However, the Face2 command can be used to create a face which is visible from both sides. Only convex polygons are supported.
+このコマンドは任意の長い頂点のリストで面を生成します。 インデックス番号は、先にVertexコマンドにより生々された純序に従い生成されます。 したがって、 Face コマンドは Vertexコマンドの後に記述する必要があります。 最初の Vertex コマンドはインデックス番号0で生成され、 そしてそれ以降の Vertex コマンドは 1, 2, 3 などとインデックス番号を生成します。 頂点のインデックス番号の記述順序は重要で、面に正対して時計回りに記述する必要があります。 生成された面の後側は何も見えないでしょう。 しかし、 Face2 コマンドでなら両面が見える面を作成することができます。 凸面の頂点ポリゴンのみサポートされます。
 
 ----------
 
@@ -108,10 +108,10 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 {{% /command %}}
 
 {{% command-arguments %}}
-***v<sub>i</sub>***: The vertex index to include in this face. Allowed values are 0 through *n*-1, where *n* is the number of Vertex commands used.  
+***v<sub>i</sub>***: この面に含める頂点インデックス。 適用される番号は0から *n*-1で、 *n* はVertexコマンドで使われている頂点の番号と連動します。  
 {{% /command-arguments %}}
 
-This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will also be visible, however, lighting on the back face might be the same as on the front face. Only convex polygons are supported.
+このコマンドは任意の長い頂点のリストで面を生成します。 インデックス番号は、先にVertexコマンドにより生々された純序に従い生成されます。 したがって、 Face コマンドは Vertexコマンドの後に記述する必要があります。 最初の Vertex コマンドはインデックス番号0で生成され、 そしてそれ以降の Vertex コマンドは 1, 2, 3 などとインデックス番号を生成します。 頂点のインデックス番号の記述順序は重要で、面に正対して時計回りに記述する必要があります。  後ろ側の面も同様に見えますが、 後側の面に対する光の当たり方は表側の面と同一になります。 凸面の頂点ポリゴンのみサポートされます。
 
 ----------
 
@@ -122,18 +122,18 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 {{% /command %}}
 
 {{% command-arguments %}}
-***HalfWidth***: A floating-point number representing half the width of the cube in **meters**.  
-***HalfHeight***: A floating-point number representing half the height of the cube in **meters**.  
-***HalfDepth***: A floating-point number representing half the depth of the cube in **meters**.  
+***HalfWidth***: 浮動小数点数で、立方体の幅の半分の長さを **メートル** で表します。 
+***HalfHeight***: 浮動小数点数で、立方体の高さの半分の長さを **メートル** で表します。  
+***HalfDepth***: 浮動小数点数で、立方体の奥行きの半分の長さを **メートル** で表します。  
 {{% /command-arguments %}}
 
-This command creates a cube having dimensions as specified by *HalfWidth*, *HalfHeight* and *HalfDepth*. The cube will be centered on the origin (0,0,0). Thus, on the x-axis, the cube extends from -*HalfWidth* to *HalfWidth*, on the y-axis from -*HalfHeight* to *HalfHeight* and on the z-axis from -*HalfDepth* to *HalfDepth*. The cube always has 8 vertices and 6 faces.
+このコマンドは *HalfWidth* 、 *HalfHeight* 、 *HalfDepth* で指定された大きさの三次元の立方体を生成します。 生成される立方体の中心は原点 (0,0,0) です。 したがって、 X軸上では -*HalfWidth* から *HalfWidth* に拡張し、 Y軸上は -*HalfHeight* から *HalfHeight* に、そしてZ軸上は -*HalfDepth* to *HalfDepth*に拡張します。 生成される立方体は常に8つの頂点と6つの面を持ちます。
 
 {{% notice %}}
 
-#### Cube representation
+#### Cube の表記方法について
 
-The Cube command is equivalent to a series of Vertex and Face commands, which you need to account for when using other commands in the same [MeshBuilder] section. The details on what the Cube command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
+Cube コマンドは、一連の Vertex と Face コマンド群を実行することに相当します。 この時同じ [MeshBuilder] セクション内において他のコマンドと同時に実行する際に考慮する必要があります。 Cube コマンドの詳細は [こちら]({{< ref "/objects/native/cubecylinder/_index.md" >}})にあります。
 
 {{% /notice %}}
 
@@ -146,13 +146,13 @@ The Cube command is equivalent to a series of Vertex and Face commands, which yo
 {{% /command %}}
 
 {{% command-arguments %}}
-***n***: An integer representing the number of vertices to be used for the base of the frustum.  
-***UpperRadius***: A floating-point number representing the radius for the upper base of the frustum in **meters**. Can be negative to indicate that the top cap is to be omitted.  
-***LowerRadius***: A floating-point number representing the radius for the lower base of the frustum in **meters**. Can be negative to indicate that the bottom cap is to be omitted.  
-***Height***: A floating-point number representing the height of the prism in **meters**. Can be negative, which will flip the frustum vertically and display it inside-out.  
+***n***: 整数値:角柱の基底部の頂点の分割数。 
+***UpperRadius***: 浮動小数点数: 角柱の上底の半径を **メートル** で表します。 負の数を指定すると、円柱の上面がなくなります。
+***LowerRadius***: 浮動小数点数:角柱の下底の半径を **メートル** で表します。 負の数を指定すると、円柱の下面がなくなります。
+***Height***: 浮動小数点数:角柱の側面の高さを **メートル** で表します。 負の数を指定すると、角柱を垂直方向に反転させ、裏返しにして表示します。
 {{% /command-arguments %}}
 
-This command creates a [frustrum](http://en.wikipedia.org/wiki/Frustrum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -½\**Height* to ½\**Height*.
+このコマンドは [錐台](http://en.wikipedia.org/wiki/Frustrum) を作ることができます。 もし *LowerRadius* と *UpperRadius* が等しい場合、生成されるオブジェクトは [角柱](http://en.wikipedia.org/wiki/Prism_(geometry)) となり、 円柱に近いものとして使うことができます。 もし、 *LowerRadius* もしくは *UpperRadius* がゼロの場合、 [角錐](http://en.wikipedia.org/wiki/Pyramid_(geometry)) が生成されます。錐台は原点を中心とします（0,0,0）。 X軸又はZ軸上に沿って、錐台は -*LowerRadius* から *LowerRadius* を下底の基準として、そして -*UpperRadius* から *UpperRadius* を上底の基準として拡がります。 Y軸上では、錐台は -½\**Height* から ½\**Height* に拡がります。
 
 The number of vertices *n* will usually suffice to be 6 or 8 when only small radii are used, for example to create a pole. Regardless of the values of *UpperRadius*, *LowerRadius* and *n*, the frustum will always have 2\**n* vertices, and usually *n*+2 faces unless any of the caps are omitted. If *UpperRadius* or *LowerRadius* are negative, the absolute value is being taken, but the respective caps are not created. If *Height* is negative, the roles of top and bottom are reversed and the faces will be visible from the inside, while otherwise, they will be visible from the outside.
 
@@ -170,7 +170,7 @@ The Cylinder command is equivalent to a series of Vertex and Face commands, whic
 <font color=#555555>Texture</font>
 {{% /command %}}
 
-*<font color=#555555>This command is ignored by openBVE.</font>*
+*<font color=#555555>このコマンドは、 openBVE によって無視されます。</font>*
 
 ----------
 
