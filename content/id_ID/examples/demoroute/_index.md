@@ -1,55 +1,55 @@
 ---
-title: "Demonstration route"
-linktitle: "Demonstration route"
+title: "Rute percobaan"
+linktitle: "Rute percobaan"
 weight: 1
 ---
 
-## ■ Overview
+## ■ Rangkuman
 
 
-The **Animated Object Demonstration Route** is a minimalistic route intended to demonstrate the CSV and RW route formats, and, most importantly, the use of animated objects.
+**Rute percobaan** ini adalah add-on rute yang bisa dipakai sebagai contoh untuk percobaan objek beranimasi dengan format CSV dan RW.
 
-What this route is:
+Rute ini adalah:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | An example to show developers how to create a CSV or RW route |
+| <font color="Green">✓</font> | Contoh cara membuat rute CSV dan RW untuk kreator |
 | ---------------------------- | ------------------------------------------------------------- |
-| <font color="Green">✓</font> | An example to show developers how to create animated objects  |
-| <font color="Green">✓</font> | A way for users to be inspired by the feeling of a non-static environment  |
+| <font color="Green">✓</font> | Contoh cara membuat objek animasi  |
+| <font color="Green">✓</font> | Referensi untuk kreator supaya dapat membuat konten yang dapat lebih hidup dengan animasi  |
 
 {{% /table-nonheader %}}
 
-What this route is not:
+Rute ini bukan untuk:
 
 {{% table-nonheader %}}
 
-| <font color="Red">✗</font>  | A serious openBVE add-on - just something for developers to study |
+| <font color="Red">✗</font>  | Dimainkan dan bukan add-on openBVE. Hanya bahan referensi saja |
 | --------------------------- | ------------------------------------------------------------- |
-| <font color="Red">✗</font>  | A rendition of any real route.  |
-| <font color="Red">✗</font>  | A high quality example of a route  |
+| <font color="Red">✗</font>  | Rute non-fiksi  |
+| <font color="Red">✗</font>  | Contoh rute HD  |
 
 {{% /table-nonheader %}}
 
-Key features of this route:
+Beberapa skrip yang ada di rute:
 
-* Animated destination indicators and analog clock at a station.
-* Animated semaphore and blinking light signals.
-* Animated crossing gate and moving cars.
-* Animated escalator and flying airplane.
+* Animasi papan tujuan dan jam analog di stasiun.
+* Sinyal mekanik animasi dan sinyal berkedip.
+* PJL beranimasi dan mobil yang bergerak
+* Animasi eskalator dan pesawat terbang
 
 ## ■ Download
 
-This route may be downloaded in openBVE package format here:
+Rute ini dapat di-download dari paket openBVE di sini:
 
 <http://openbve-project.net/files/DemoRoute1.zip>
 
-## ■ Using the route
+## ■ Menggunakan rute ini
 
-Select a train of your choice.
+Pilih kereta.
 
-The default train suggested by this route is the **113-1000atccab**, which may be downloaded from the following page:
+Kereta yang disarankan di rute ini adalah **113-1000atccab** , yang bisa didownload di sini:
 
 <http://bve.jpn.org/jr113.html>
 
-The built-in safety systems ATS and ATC are used on this route, which are explained in the <a href="https://openbve-project.net/play-japanese/">How to drive - A quick overview on controls, ATS/ATC, signals and signs</a> guide.
+Sistem keamanan kereta yang dipakai di rute ini menggunakan ATS dan ATC bawaan main program. Penjelasannya ada di <a href="https://openbve-project.net/play-japanese/">Cara mengemudi dengan kontrol ATS/ATC, sinyal, dan taspat bawaan main program</a>.
