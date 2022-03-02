@@ -6,7 +6,7 @@ weight: 4
 
 This page describes the principles and implementation of the XML based station format.
 
-## ■ Basic Principles
+## ■ Principis bàsics
 
 A station within openBVE, when combined with one or more *.Stop* commands, defines a point at which trains call. 
 
