@@ -1,25 +1,25 @@
 ---
-title: "Supported texture formats"
-linktitle: "Texture formats"
+title: "支持的材質格式"
+linktitle: "材質格式"
 weight: 4
 ---
 
-This is a list of officially supported texture formats. Generally, the PNG format is the preferred choice due to its lossless compression.
+這是官方支持的材質格式列表。 由於PNG格式無損壓縮，因此通常是首選。
 
 {{% table %}}
 
-| Format      | Allowed file extensions | Remarks                                                      |
+| 格式      | 允許的副檔名 | 简介                                                      |
 | ----------- | ----------------------- | ------------------------------------------------------------ |
 | PNG         | .png                    | Preferred. Please be aware of the fact that using alpha channels significantly reduces performance when used in scenery objects and train exteriors. |
-| Windows BMP | .bmp                    | Not recommended due to large file size.                      |
-| JPEG        | .jpg, .jpeg             | Not recommended due to lossy compression (unless not noticable even on large magnification). |
-| GIF         | .gif                    | Not recommended due to reduced color depth (unless sufficient for the image). |
+| Windows BMP | .bmp                    | 由於檔案過大，不建議使用。                      |
+| JPEG        | .jpg, .jpeg             | 由於有損壓縮，不推薦使用。 |
+| GIF         | .gif                    | 不建議使用，因為降低了色彩深度（除非對圖像已足夠）。 |
 | DDS         | .dds                    | Not reccomended for native content, only for content exported by external 3D editors. |
 | ACE         | .ace                    | Proprietary format used for MSTS content.                    |
 
 {{% /table %}}
 
-##### ● Sizes of textures
+##### ● 材質大小
 
 The widths and heights of textures should be a power of two, e.g. 1, 2, 4, 8, 16, 32, 64, 128, 256, and so on. While this is not a requirement, having textures whose sizes are not power-of-two increases loading times, increases storage requirements and introduces blurriness, because these textures have to be converted to a power-of-two size by openBVE.
 
