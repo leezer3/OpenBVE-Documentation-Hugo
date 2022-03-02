@@ -33,7 +33,7 @@ The header and code files for the C/C++ programming languages are available to d
 
 ## ■ Vista general
 
-The following functions are called in this order when the plugin is loaded:
+Las siguientes funciones son llamadas en este orden cuando el plugin ha ha sido cargado:
 
 - Load
 - GetPluginVersion
@@ -57,7 +57,7 @@ The following functions are called whenever their respective events occur:
 - SetSignal
 - SetBeaconData
 
-The following function is called when the plugin is unloaded:
+Las siguientes funciones son llamadas cuando el plugin es deshabilitado:
 
 - Dispose
 
@@ -101,7 +101,7 @@ This function is called after GetPluginVersion() is called and informs the plugi
 
 | <span style="white-space: nowrap;">int BrakeNotches</span> | The amount of brake notches the train has. This does not include the emergency brake, but it does include the hold brake if the train has one. For trains with automatic air brakes, 2 is returned. |
 | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| <span style="white-space: nowrap;">int PowerNotches</span> | The amount of power notches the train has.                   |
+| <span style="white-space: nowrap;">int PowerNotches</span> | La cantidad de posiciones de palanca de tracción que el tren tiene.                   |
 | <span style="white-space: nowrap;">int AtsNotch</span>     | The brake notch index corresponding to the first real brake notch. For trains with automatic air brakes, this returns 1. For other trains, this returns 2 if the train has a hold brake, and 1 otherwise. |
 | <span style="white-space: nowrap;">int B67Notch</span>     | The brake notch index corresponding to 70% of the brake notches, i.e. round(0.7 * BrakeNotches). |
 | <span style="white-space: nowrap;">entero Carros</span>         | El número de carros que el tren tiene.                            |
