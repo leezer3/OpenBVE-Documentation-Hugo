@@ -3,7 +3,7 @@ title: "The **.rw** route format - Quick reference"
 hidden: true
 ---
 
-**Notes:** 
+**注意:** 
 
 - Arguments highlighted in **<font color="green">green</font>** are affected by UnitOfLength in [Options].
 - Arguments highlighted in **<font color="blue">blue</font>** are affected by UnitOfSpeed in [Options].
@@ -11,9 +11,9 @@ hidden: true
 
 ---
 
-<font color="red">Track positions</font>  
-*<font color="green">Number</font>*  
-*<font color="green">Number<sub>1</sub></font>* : *<font color="green">Number<sub>2</sub></font>* : *...* : *<font color="green">Number<sub>n</sub></font>*
+<font color="red">軌道位置</font>  
+*<font color="green">數字</font>*  
+*<font color="green">數字<sub>1</sub></font>* : *<font color="green">數字<sub>2</sub></font>* : *...* : *<font color="green">數字<sub>n</sub></font>*
 
 <font color="red">Preprocessing directives</font>  
 **$Include**(*File<sub>1</sub>*; *Weight<sub>1</sub>*; *File<sub>2</sub>*; *Weight<sub>2</sub>*; ...)  
