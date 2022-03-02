@@ -3,7 +3,7 @@ title: "The **.rw** route format - Quick reference"
 hidden: true
 ---
 
-**Notes:** 
+**Notas:** 
 
 - Arguments highlighted in **<font color="green">green</font>** are affected by UnitOfLength in [Options].
 - Arguments highlighted in **<font color="blue">blue</font>** are affected by UnitOfSpeed in [Options].
