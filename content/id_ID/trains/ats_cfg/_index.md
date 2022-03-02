@@ -1,13 +1,13 @@
 ---
-title: "The **ats.cfg** file format"
-linktitle: "The ats.cfg file"
+title: "File **ats.cfg**"
+linktitle: "File ats.cfg"
 weight: 9
 ---
 
-The ats.cfg file is a plain text file consisting of a single line: the relative path to the plugin that is to be used.
+File ats.cfg berisi hanya 1 baris teks tengan lokasi file plugin yang dipakai
 
 {{% code "*Example of an ats.cfg file:* " %}}  
 `myplugin.dll`  
 {{% /code %}}  
 
-If you don't include the ats.cfg file, the default plugin for trains is used which provides basic implementations of ATS and ATC. Please find more information about the default safety systems [here](https://openbve-project.net/play-japanese/), in the tutorials on the left, and [here]({{< ref "/trains/openbveats/_index.md" >}}).
+Jika anda tidak menambahkan file ats.cfg, maka plugin standar openBVE untuk kereta akan dipakai, menggunakan sistem dasar ATS dan ATC. Carilah info tentang sistem dasar ATS dan ATC standar openbve [di sini](https://openbve-project.net/play-japanese/), di tutorial yang ada di tab kiri, dan [di sini]({{< ref "/trains/openbveats/_index.md" >}}).
