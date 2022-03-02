@@ -26,7 +26,7 @@ The following panel indices are exposed:
 
 {{% table %}}
 
-| Panel Index | Description                   | Value Range |
+| Panel Index | Descripción                   | Value Range |
 |-------------|-------------------------------|-------------|
 | 256         |    ATS power (ATS電源)        | 0 - 1       |
 | 257         | ATS actuation (ATS動作)       | 0 - 2       |
@@ -38,7 +38,7 @@ The following panel indices are exposed:
 
 {{% table %}}
 
-| Panel Index | Description                   | Value Range |
+| Panel Index | Descripción                   | Value Range |
 |-------------|-------------------------------|-------------|
 | 259         |P power (P電源)                | 0 - 1       |
 | 260         | pattern approach (パターン接近)  | 0 - 1      |
@@ -53,9 +53,9 @@ The following panel indices are exposed:
 
 {{% table %}}
 
-| Value | Description       |
+| Value | Descripción       |
 |-------|-------------------|
-| 0     | ATC not available |
+| 0     | ATC no disponible |
 | 1     | 0 km/h            | 
 | 2     | 15 km/h           |
 | 3     | 25 km/h           |
@@ -67,7 +67,7 @@ The following panel indices are exposed:
 | 9     | 100 km/h          |
 | 10    | 110 km/h          |
 | 11    | 120 km/h          |
-| 12    | ATS is active     |
+| 12    | ATS esta activo     |
 
 {{% /table %}}
 
@@ -77,7 +77,7 @@ The following sound indices are exposed:
 
 {{% table %}}
 
-| Index | File       | Description    | Type    |
+| Index | File       | Descripción    | Type    |
 |-------|------------|----------------|---------|
 |0      | ats.wav    | ATS bell       | looping |
 |1      | atscnt.wav | ATS chime      | looping |
@@ -183,7 +183,7 @@ Marks the status of ATC. The optional data has the following meaning:
 
 {{% table-nonheader %}}
 
-| 0 | ATC not available                     |
+| 0 | ATC no disponible                     |
 |---|---------------------------------------|
 | 1 | ATC available, switch from ATS to ATC |
 | 2 | ATC available                         |
@@ -228,7 +228,7 @@ The OpenBveAts Plugin uses the following keyboard assignments:
 
 {{% table %}}
 
-| Virtual Key | Default Assignment | Description                                    |
+| Virtual Key | Default Assignment | Descripción                                    |
 |-------------|--------------------|------------------------------------------------|
 | S           | space              | Cancels the ATS-SN bell.                       |
 | A1          | insert             | Cancels the ATS-SN chime.                      |
