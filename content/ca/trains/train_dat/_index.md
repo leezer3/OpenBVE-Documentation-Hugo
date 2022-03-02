@@ -4,7 +4,7 @@ linktitle: "The train.dat file"
 weight: 2
 ---
 
-## ■ Contents
+## ■ Continguts
 
 {{% contents %}}
 
@@ -953,7 +953,7 @@ This entry defines the type of readhesion device to be used. The device tests in
 
 {{% table %}}
 
-| Type | Reduce interval | Reduce amount  | Increase interval | Increase amount | Characteristics                                              |
+| Tipus | Reduce interval | Reduce amount  | Increase interval | Increase amount | Characteristics                                              |
 | ---- | --------------- | -------------- | ----------------- | --------------- | ------------------------------------------------------------ |
 | A    | high            | instantly zero | medium            | very high       | Cuts off power instantly and rebuilds it up fast in steps.   |
 | B    | medium          | small          | high              | small           | Updates not so often and adapts slowly. Wheel slip can persist longer and power is regained slower. The behavior is smoother. |
