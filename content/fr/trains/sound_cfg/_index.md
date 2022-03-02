@@ -4,7 +4,7 @@ linktitle: "The sound.cfg file"
 weight: 8
 ---
 
-## ■ Contents
+## ■ Contenu
 
 {{% contents %}}
 
@@ -14,7 +14,7 @@ weight: 8
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Présentation
 
 The sound.cfg file allows to reference which sound files should be used, how they are called and where they are located relative to the train folder.
 
@@ -22,7 +22,7 @@ The sound.cfg file is a plain text file encoded in any arbitrary  [encoding]({{<
 
 ➟ [See also the quick reference for the sound.cfg...]({{< ref "/trains/sound_cfg_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Syntaxe
 
 Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
