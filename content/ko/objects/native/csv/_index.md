@@ -4,7 +4,7 @@ linktitle: "The CSV object"
 weight: 2
 ---
 
-## ■ Contents
+## ■ 목차
 
 {{% contents %}}
 
@@ -32,7 +32,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 개요
 
 A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
