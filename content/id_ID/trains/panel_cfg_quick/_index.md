@@ -1,5 +1,5 @@
 ---
-title: "The **panel.cfg** file format - Quick reference"
+title: "Rangkuman perintah file **panel.cfg**"
 hidden: true
 ---
 
