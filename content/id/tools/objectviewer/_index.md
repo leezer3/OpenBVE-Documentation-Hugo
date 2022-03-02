@@ -5,7 +5,7 @@ weight: 1
 
 ![img](/images/tool_objectviewer_screenshot_1.png)![img](/images/tool_objectviewer_screenshot_2.png)![img](/images/tool_objectviewer_screenshot_3.png)
 
-## ■ Overview
+## ■ Rangkuman
 
 This tool allows to preview one or more object files. Objects can be added at any time and also reloaded to quickly reflect changes. Keyboard and mouse controls allow to move and rotate the camera. If objects contain errors, a report can be optionally displayed.
 
@@ -57,7 +57,7 @@ Please also see the changelog of the main program.
 
 - If a CSV file is passed as a command-line argument, Route Viewer is started if the file is determined to be a CSV route instead of a CSV object. The detection is now solely based on the presence of the *CreateMeshBuilder* string.
 
-##### ● Version 1.2.5.0 (2010-01-24)
+##### ● Versi 1.2.5.0 (2010-01-24)
 
 - Removed the dependency on specific versions of the Tao.OpenAL, Tao.OpenGL and Tao.SDL libraries, which could cause problems in recent Linux distributions.
 
