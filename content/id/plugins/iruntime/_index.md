@@ -5,7 +5,7 @@ hidden: true
 
 This is the documentation for train plugins. In order to create a train plugin, implement the IRuntime interface from the OpenBveApi.Runtime namespace. In the following, you will find a description of how this interface works.
 
-## ■ Contents
+## ■ Isi
 
 {{% contents %}}
 
