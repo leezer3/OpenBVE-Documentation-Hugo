@@ -42,9 +42,9 @@ Meskipun tidak secara teknis diperlukan, tanda urutan byte juga sering digunakan
 
 Seperti yg dijelaskan sebelumnya, sementara Unicode memungkinkan untuk melakukan enkode hampir semua karakter yang digunakan dalam semua sistem penulisan di seluruh dunia, itu tidak selalu membuat bekerja dengan file teks lebih mudah jika pengkodean yang akan digunakan tidak disetujui.
 
-Using a byte order mark provides openBVE the ability to automatically detect the encoding for each individual file. If you have a good text editor, you will not only be able to select the encoding manually, but also if you want to save with a byte order mark or not. Notepad (Windows) always saves with a byte order mark if UTF-8 is selected as the character encoding upon saving the file, to make an acceptable example.
+Menggunakan tanda urutan byte(Byte Orde Mark/BOM) memberikan openBVE kemampuan untuk secara otomatis mendeteksi pengkodean untuk setiap file. Jika anda memiliki editor teks yang bagus, Anda tidak hanya dapat memilih tipe pengkodean secara manual, tetapi juga jika anda dapat menyimpan dengan BOM atau tidak. Notepad (Windows) selalu menyimpan dengan BOM jika UTF-8 dipilih sebagai pengkodean karakter saat menyimpan file.
 
-Technically, the byte order mark is the first bytes of a particular text file. The byte order marks which can be automatically detected by openBVE are:
+Secara teknis, tanda urutan byte adalah byte pertama dari file teks tertentu. Tanda urutan byte yang dapat dideteksi secara otomatis oleh openBVE adalah:
 
 {{% table %}}
 
@@ -58,4 +58,4 @@ Technically, the byte order mark is the first bytes of a particular text file. T
 
 {{% /table %}}
 
-You are encouraged to always save text files in one of those encodings with a byte order mark in order for openBVE to automatically detect the encoding used.
+Anda dianjurkan untuk selalu menyimpan file teks ke salah satu pengkodean dengan tanda urutan byte diatas agar openBVE secara otomatis mendeteksi pengkodean yang digunakan.
