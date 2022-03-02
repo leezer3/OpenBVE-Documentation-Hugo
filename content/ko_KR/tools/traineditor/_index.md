@@ -5,7 +5,7 @@ weight: 4
 
 ![img](/images/tool_traineditor_screenshot_1.png)![img](/images/tool_traineditor_screenshot_2.png)![img](/images/tool_traineditor_screenshot_3.png)![img](/images/tool_traineditor_screenshot_4.png)
 
-## ■ Overview
+## ■개요
 
 This tool can be used to more conveniently edit the train.dat. You can configure the train haracteristics, preview the acceleration curves and edit the motor sound curves.
 
