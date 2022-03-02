@@ -1,12 +1,12 @@
 ---
-title: "The **.csv** route format"
-linktitle: "The CSV route"
+title: "**.csv** 루트 형식"
+linktitle: "CSV 루트"
 weight: 1
 ---
 
-➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
+➟ [빠른 참조...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ Contents
+## ■ 목차
 
 {{% contents %}}
 
@@ -31,9 +31,9 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 개요
 
-A CSV route allows to create a route in a text file.
+CSV 루트는 텍스트 파일로 노선을 만들 수 있도록 해준다.
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose** (unless otherwise stated), however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside any folder whose current or parent folder includes the *Railway* and *Train* folders. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom, where each line is split into expressions, which are interpreted from left to right.
 
