@@ -8,7 +8,7 @@ weight: 2
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Syntax](#syntax)
 - [3. Available commands](#commands)
   - [CreateMeshBuilder](#createmeshbuilder)
@@ -32,7 +32,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Vista general
 
 A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
 
@@ -40,9 +40,9 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxis
 
-Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
+Cada linea en el archivo se divide en el nombre del comando y en su argumento. La sintaxis para todos los comandos es la misma que a continuación:
 
 {{% command %}}  
 **NameOfTheCommand**, *Argument<sub>1</sub>*, *Argument<sub>2</sub>*, *Argument<sub>3</sub>*, ..., *Argument<sub>n</sub>*  
@@ -52,9 +52,9 @@ Each line in the file is split into the name of a command and its arguments. The
 
 Arguments may also be omitted by leaving the text at each of the *Argumenti* blank. A default value will usually apply in this case, which is specific to the command used. All default values are specified in the section of available commands.
 
-You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
+Puedes usar comentarios en cualquier lado al final de una línea. Un comentario comienza por punto y coma (U+003B). Si los comentarios estan presentes, son quitados de las líneas después de ser procesados.
 
-## <a name="commands"></a>■ 3. Available commands
+## <a name="commands"></a>■ 3. Comandos disponibles
 
 <a name="createmeshbuilder"></a>
 
@@ -83,14 +83,14 @@ This command marks the beginning of a new section of faces. It must precede any 
 
 This command creates a new vertex which can then be used to create faces via the AddFace or AddFace2 commands. There can be as many AddVertex commands as desired within a CreateMeshBuilder section. However, the order of the vertices given is important for other commands. The first vertex given has index 0, and subsequent vertices have indices 1, 2, 3 and so on.
 
-The normal is the direction perpendicular to the face at a particular point. If all vertices in a face have the same normal, the face will look flat. If used appropriately, you can give the illusion of a curved face by specifying different normals per vertex, but using the same normal on all vertices that share the same spatial coordinate - across multiple faces. If left all zero, the normal will be calculated automatically.
+El normal es la dirección perpendicular a la cara en un punto en específico. Si todos los vértices en la cara tienen el mismo normal, la cara se verá plana. Si es usado apropiadamente, podrás dar la ilusión de una cara curva a través de especificar diferentes normal por cada vértice, pero usando el mismo normal en todos los vértices que comparten la misma coordenada espacial - a través de múltiples caras. Si todo el lado izquierdo es igual a cero, el normal será calculado automáticamente.
 
 ------
 
 <a name="addface"></a>
 
 {{% command %}}  
-**AddFace**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>max</sub>*  
+**AddFace**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>máximo</sub>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -104,14 +104,14 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 <a name="addface2"></a>
 
 {{% command %}}  
-**AddFace2**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>max</sub>*  
+**AddFace2**, *v<sub>1</sub>*, *v<sub>2</sub>*, *v<sub>3</sub>*, ..., *v<sub>máximo</sub>*  
 {{% /command %}}
 
 {{% command-arguments %}}  
 ***v<sub>i</sub>***: The vertex index to include in this face. Allowed values are 0 through *n*-1, where *n* is the number of AddVertex commands used.  
 {{% /command-arguments %}}
 
-This command creates a face given an arbitrary long list of vertex indices. The index corresponds to the order in which the vertices have been created by the Vertex command, thus the Face command needs to be stated after the corresponding Vertex commands. The first Vertex command used creates index 0, and subsequent Vertex commands create indices 1, 2, 3 and so on. The order in which the vertex indices appear is important. They need to be given in clockwise order when looking at the front of the face. The back of the face will also be visible, however, lighting on the back face might be the same as on the front face. Only convex polygons are supported.
+Este comando crea una cara dada en una lista arbitraría larga de índices de vértices. El índice corresponde al orden en el cual los vértices han sido creados por el comando Vertex, por consiguiente el comando Face necesitará iniciar después del comando Vertex correspondiente. El primer comando Vertex usado crea un índice 0, y los comandos Vertex siguientes crearán indice 1,2,3 en adelante. El orden en el cual el índice del vértice aparece es importante. Estos necesitan ser dados en orden hacia las agujas del reloj cuando se vean hacia al frente de la cara. La cara posterior también será visible, sin embargo, la iluminación de la cara posterior será del mismo resultado que la cara frontal. Solo polígonos convexos están soportados.
 
 ------
 
@@ -127,11 +127,11 @@ This command creates a face given an arbitrary long list of vertex indices. The 
 ***HalfDepth***: A floating-point number representing half the depth of the cube in **meters**.  
 {{% /command-arguments %}}
 
-This command creates a cube having dimensions as specified by *HalfWidth*, *HalfHeight* and *HalfDepth*. The cube will be centered on the origin (0,0,0). Thus, on the x-axis, the cube extends from -*HalfWidth* to *HalfWidth*, on the y-axis from -*HalfHeight* to *HalfHeight* and on the z-axis from -*HalfDepth* to *HalfDepth*. The cube always has 8 vertices and 6 faces.
+Este comando crea un cubo teniendo dimensiones especificadas por *MitadAncho*, *MitadAlto* y *MitadLongitud*. El cubo será centrado al origen (0,0,0). Por consiguiente, en el eje-x, el cubo extenderá desde -*MitadAncho* hasta *MitadAncho*, en el eje-y desde -*MitadAlto* hasta *MitadAlto* y en el eje-z desde -*MitadLongitud* hasta *MitadLongitud*. El cubo siempre tendrá 8 vértices y 6 caras.
 
 {{% notice %}}  
 
-#### Cube representation
+#### Representación del cubo
 
 The Cube command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cube command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
@@ -154,11 +154,11 @@ The Cube command is equivalent to a series of AddVertex and AddFace commands, wh
 
 This command creates a [frustum](http://en.wikipedia.org/wiki/Frustum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -½\**Height* to ½\**Height*.
 
-The number of vertices *n* will usually suffice to be 6 or 8 when only small radii are used, for example to create a pole. Regardless of the values of *UpperRadius*, *LowerRadius* and *n*, the frustum will always have 2\**n* vertices, and usually *n*+2 faces unless any of the caps are omitted. If *UpperRadius* or *LowerRadius* are negative, the absolute value is being taken, but the respective caps are not created. If *Height* is negative, the roles of top and bottom are reversed and the faces will be visible from the inside, while otherwise, they will be visible from the outside.
+El número de vértices *n* que satisfacen cuando es un radio pequeño es de 6 o 8 , por ejemplo para crear un poste. Independientemente de los valores de *RadioSuperior*,*RadioInferior* y *n*, el tronco siempre tendrá 2\**n* vértices, y usualmente *n*+2 caras, a menos que algunos de los extremos sea omitido. Si *RadioSuperior* o *RadioInferior* son negativos, el valor absoluto será tomado, pero los extremos respectivos no serán creados. Sí *Height* es negativo, los roles de arriba y abajo serán revertidos y las caras serán visibles desde adentro, mientras que de caso contrario, estos serán visibles desde afuera.
 
 {{% notice %}}
 
-#### Cylinder representation
+#### Representación del cilindro
 
 The Cylinder command is equivalent to a series of AddVertex and AddFace commands, which you need to account for when using other commands in the same CreateMeshBuilder section. The details on what the Cylinder command does are available [here]({{< ref "/objects/native/cubecylinder/_index.md" >}}).
 
@@ -170,7 +170,7 @@ The Cylinder command is equivalent to a series of AddVertex and AddFace commands
 <font color=#555555>GenerateNormals</font>  
 {{% /command %}}
 
-*<font color=#555555>This command is ignored by openBVE.</font>*
+*<font color=#555555>Este comando es ignorado por openBVE.</font>*
 
 ------
 
@@ -211,8 +211,8 @@ The **Scale** command scales all vertices that have been created so far in the C
 <a name="rotate"></a>
 
 {{% command %}}  
-**Rotate**, *X*, *Y*, *Z*, *Angle*  
-**RotateAll**, *X*, *Y*, *Z*, *Angle*  
+**Rotate**, *X*, *Y*, *Z*, *Ángulo*  
+**RotateAll**, *X*, *Y*, *Z*, *Ángulo*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -244,11 +244,11 @@ You can use as many Rotate commands as desired in a CreateMeshBuilder section. T
 ***r***: The ratio that indicates how much to displace vectors. The default value is 0.  
 {{% /command-arguments %}}
 
-The **Shear** command performs a [shear mapping](http://en.wikipedia.org/wiki/Shear_mapping) for all vertices that have been created so far in the current CreateMeshBuilder section. The **ShearAll** command not only affects the vertices generated in the current CreateMeshBuilder section, but also those created in previous CreateMeshBuilder sections. This is useful to insert at the end of the file in order to shear the whole object.
+El comando **Shear** logra un [cambio de mapeo] (http://en.wikipedia.org/wiki/Shear_mapping) para todos los vértices que han sido creados hasta ahora en la actual sección [MeshBuilder]. El comando **ShearAll** no solo afecta a los vértices generados en la sección actual [MeshBuilder], sino también a aquellos que han sido creados anteriormente en las secciones [MeshBuilder]. Esto es útil al instertar al final del archivo en orden de cambiar todo el objeto.
 
 ![illustration_shear](/images/illustration_shear.png)
 
-The shear mapping is performed around the origin. Loosely speaking, the object is sliced into planes along the direction D and then displaced along the direction S. Typically, D and S are perpendicular. D and S are always normalized. If *Ratio* is 0, no transformation is performed. If D and S are perpendicular, a *Ratio* of 1 corresponds to a slope of 45 degrees.
+El mapeado de cambio es hecho sobre el origen. Pobremente hablando, el objeto es cortado en planos sobre la dirección D y después desplazada a lo largo de la dirección S. Típicamente, D y S son perpendicular. D y S siempre són normalizados. Si la *Cantidad* es 0, ninguna transformación es aplicada. Si D y S son perpendicular, y una *Cantidad* de 1 corresponde a una pendiente de 45 grados.
 
 ------
 
@@ -322,14 +322,14 @@ The **SetEmissiveColor** command sets the emissive color for all faces that were
 ***GlowAttenuationMode***: The glow attenuation mode to use. The default is DivideExponent4.  
 {{% /command-arguments %}}
 
-▸ Available options for *BlendMode*:
+▸ Opciones disponibles para *ModoCombinar*:
 
 {{% command-arguments %}}  
 **Normal**: The faces are rendered normally.  
 **Additive**: The faces are rendered additively.  
 {{% /command-arguments %}}
 
-▸ Available options for *GlowAttenuationMode*:
+▸ Opciones disponibles para *ModoAtenuaciónBrillo*:
 
 {{% command-arguments %}}  
 **DivideExponent2**: The glow intensity is determined via the function *x*2 / (*x*2 + *GlowHalfDistance*2), where *x* is the distance from the camera to the object in meters.  
@@ -381,7 +381,7 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 <a name="setdecaltransparentcolor"></a>
 
 {{% command %}}  
-**SetDecalTransparentColor**, *Red*, *Green*, *Blue*  
+**SetDecalTransparentColor**, *Rojo*, *Verde*, *Azul*  
 {{% /command %}}
 
 {{% command-arguments %}}  
