@@ -6,11 +6,11 @@ weight: 1
 
 ➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ Contents
+## ■ Contenidos
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Vista general](#overview)
 - [2. Syntax](#syntax)
 - [3. Preprocessing](#preprocessing)
 - [4. The Options namespace](#options)
@@ -45,7 +45,7 @@ Geometrically, you can curve and pitch the implicit rail 0, while all other rail
 
 ➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Sintaxis
 
 For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
 
@@ -178,7 +178,7 @@ This directive is replaced by the ASCII character represented by *Ascii*. This i
 
 {{% table %}}
 
-| Code | Meaning             | Character |
+| Code | Significado             | Character |
 | ---- | ------------------- | --------- |
 | 10   | Newline             | *newline* |
 | 13   | Newline             | *newline* |
@@ -945,7 +945,7 @@ The general syntax for commands in the Structure namespace is:
 
 {{% table %}}
 
-| *Command*: | Remarks                                                      |
+| *Command*: | Observaciones                                                      |
 | ---------- | ------------------------------------------------------------ |
 | Ground     | Defines objects for Cycle.Ground and Track.Ground.           |
 | Rail       | Defines objects for Track.Rail, Track.RailStart and Track.RailType. |
