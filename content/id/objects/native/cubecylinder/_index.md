@@ -1,11 +1,11 @@
 ---
-title: "Cubes and cylinders"
+title: "Kubus dan silinder"
 hidden: true
 ---
 
-## ■ The Cube command
+## ■ Perintah Cube
 
-The Cube command in B3D and CSV objects is equivalent to a series of Vertex/AddVertex and Face/AddFace commands.
+Perintah Cube di objek B3D dan CSV setara dengan serangkaian perintah Vertex/AddVertex dan Face/AddFace.
 
 Given the following code (B3D style):
 
