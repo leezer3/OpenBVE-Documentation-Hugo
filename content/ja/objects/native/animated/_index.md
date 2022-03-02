@@ -4,11 +4,11 @@ linktitle: "The ANIMATED object"
 weight: 3
 ---
 
-## ■ Contents
+## ■目次
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. 概要](#overview)
 - [2. Sections](#description)
 - [3. List of infix notation operators](#operators)
 - [4. List of functions](#functions)
@@ -20,7 +20,7 @@ weight: 3
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. 概要
 
 The ANIMATED object format is a container format allowing you to reference other objects (B3D/CSV/X) and to apply animation to them. It also allows to just group other objects (including other ANIMATED objects) without animating them.
 
@@ -609,7 +609,7 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | 意味           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
@@ -648,7 +648,7 @@ There are certain kinds of animation which are less expensive, and others which 
 
 {{% table %}}
 
-| Animation      | Object                          | Performance |
+| アニメーション      | Object                          | Performance |
 | -------------- | ------------------------------- | ----------- |
 | State changes  | Has only opaque faces           | Good        |
 | State changes  | Has partially transparent faces | Moderate    |
