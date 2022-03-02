@@ -1,90 +1,90 @@
 ---
-title: "Distributing add-ons created for openBVE"
-linktitle: "Distributing add-ons"
+title: "Share add-on openBVE"
+linktitle: "Membagikan add-ons"
 weight: 7
 ---
 
-Whether you have written a route, a train or a plugin, there are a few things you should be aware of before distributing your add-ons. As openBVE is a cross-platform simulator intended with international interoperability in mind, your add-ons should be, too.
+Saat anda membuat rute, kereta, atau plugin, banyak yang perlu diperhatikan. Seperti, memastikan bahwa add-on anda harus bisa dipakai di OpenBVE pada semua Sistem Operasi.
 
-## ■ Text files and encodings
+## ■ File teks dan enkoding
 
-Whichever text file you are about to include in your distribution, including readme files, you should make sure that the file can be correctly processed internationally. The default encoding for all text files accessed by openBVE is UTF-8. For routes and associated objects, you can also use a different encoding, but then, the user has to select the specific encoding from a list. The same situation applies to trains and associated files. If you encode your text files in anything else but UTF-8, you must inform the user about your choice, or otherwise, the user might end up with garbage characters and potentially incorrectly parsed files. Using UTF-8 is the preferred choice, while using legacy encodings is acceptable, but discouraged. Please note that all files in a route or train must use the same encoding as it is neither currently possible nor feasible for the user to select the encoding of every individual file.
+Apapun teks yang akan anda tulis dalam add-on, termasuk readme, pastikan file ini bisa dibuka di semua OS secara internasional. Enkoding default untuk semua file yang diproses di OpenBVE adalah UTF-8. Tenang saja, karena Bahasa Indonesia sudah menggunakan format ini, maka biasanya tidak perlu khawatir filenya tidak dapat terbaca di komputer lain di seluruh dunia. Hanya saja, jika ingin menambahkan bahasa yang membutuhkan karakter khusus, seperti bahasa cina, jepang, india, atau bahasa daerah yang tidak ada di 26 Alfabet standar, maka pastikan gunakan enkode UTF-8.
 
-Acceptable and not acceptable practices:
+Yang dibolehkan dan tidak:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Save your text files as UTF-8.                               |
+| <font color="Green">✓</font> | Simpan file anda dengan format UTF-8.                               |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Green">✓</font> | Save your text files in any Unicode encoding with a byte order mark. |
-| <font color="Red">✗</font>   | Save your text files in any non-Unicode encoding.            |
-| <font color="Red">✗</font>   | Use different encodings for each file in a route or train.   |
+| <font color="Green">✓</font> | Menyimpan teks anda dengan format Unicode dan byte order mark. |
+| <font color="Red">✗</font>   | Menyimpan teks anda dengan format selain Unicode.            |
+| <font color="Red">✗</font>   | Menggunakan enkoding yang berbeda di berbagai file dalam 1 add-on   |
 
 {{% /table-nonheader %}}
 
-## ■ Archives versus installers
+## ■ Archive x Installer
 
-When packaging a route or train, consider using a single archive instead of multiple smaller ones, unless the size of the download justifies splitting the archive. Never use platform-specific installers as they are not portable (unless you also provide an archive as an alternative). Platform-specific installers include Windows EXE files, Linux RPM repositories and Mac DMG files.
+Saat membuat archive add-on,  buat 1 file archive saja daripada membuat banyak file archive yang lebih kecil, kecuali jika sizenya terlalu besar. Jangan gunakan installer yang hanya bisa digunakan oleh 1 OS saja (kecuali jika anda ingin menyediakan installer untuk semua OS). Misalnya format EXE untuk Windows, RPM untuk Linux, dan DMG untuk Mac.
 
-Acceptable and not acceptable practices:
+Yang dibolehkan dan tidak:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Use an archive format such as 7Z, ZIP, TAR.GZ, etc.         |
+| <font color="Green">✓</font> | Menggunakan format 7Z, ZIP, TAR.GZ, dll.         |
 | ---------------------------- | ----------------------------------------------------------- |
-| <font color="Red">✗</font>   | Use a platform-specific format, such as EXE, RPM, DMG, etc. |
+| <font color="Red">✗</font>   | Menggunakan file EXE, RPM, DMG, dsb. |
 
 {{% /table-nonheader %}}
 
-## ■ Files names and archives
+## ■ Nama file dan archive
 
-Generally, you can use any file name you want, that is, include any characters such as Latin, Japanese, Chinese, and the like. However, you need to make very sure that the archive format you use supports Unicode file names then. If not, the user might be unable to extract your files correctly, leading to a series of files that cannot be found later. Unfortunately, the popuplar ZIP format does not support Unicode file names, while for example [7Z](https://www.7-zip.org/) does. Alternatively, restrict yourself to ASCII characters, e.g. A-Z, a-z, 0-9.
+Biasanya, anda bebas membuat nama file dalam karakter apapun seperti huruf latin, mandarin, jepang, dsb. Tapi pastikan format nama yang dipakai bisa dibaca oleh software. Jika tidak, mungkin pengguna konten anda akan kesulitan menggunakannya. Sayangnya, format ZIP tidak support Unicode sedangkan format lain seperti [7Z](https://www.7-zip.org/) bisa. Mungkin anda bisa menggunakan format ASCII seperti huruf A-Z, a-z, 0-9.
 
-Acceptable and not acceptable practices:
+Yang dibolehkan dan tidak:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Use an archive format that supports Unicode files names (e.g. 7Z) |
+| <font color="Green">✓</font> | Menggunakan archive yang berformat Unicode (misal 7Z) |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Green">✓</font> | Use an archive format that doesn't support Unicode and restrict yourself to ASCII file names. |
-| <font color="Red">✗</font>   | Use an archive format that doesn't support Unicode but use Unicode files names. |
+| <font color="Green">✓</font> | Menggunakan archive format yang tidak didukung oleh Unicode dan memakai format bahasa anda sendiri. |
+| <font color="Red">✗</font>   | Menggunakan archive yang tidak memakai Unicode tetapi memakai nama Unicode. |
 
 {{% /table-nonheader %}}
 
-## ■ Archives and the folder structure
+## ■ Archive dan susunan folder
 
-You should always include the full folder structure, that is, **Railway** and **Train**, when distributing routes or trains. This will make it easiest for people to understand where they need to extract the content to. Never just include a subdirectory such as *YourNameHere* that is supposed to be extracted to the Railway\Sound folder, for example. Only the more experienced users will generally be able to figure out where to put such content to by examining the files or their extensions.
+Anda harus selalu menyertakan struktur folder lengkap, yaitu **Railway** dan **Train**, saat mendistribusikan rute atau kereta. Ini akan memudahkan orang untuk memahami dimana mereka perlu mengekstrak konten. Jangan pernah memasukkan subdirektori seperti *NamaAndaDisini* yang seharusnya diekstrak ke folder Railway\Sound, misalnya. Hanya pengguna yang lebih berpengalaman yang dapat mengetahui di mana harus meletakkan konten tersebut dengan memeriksa file atau ekstensinya.
 
-Acceptable and not acceptable practices:
+Yang dibolehkan dan tidak:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Include the two base folders **Railway** or **Train**, best both. |
+| <font color="Green">✓</font> | Menambahkan folder **Railway** atau **Train**, lebih baik tambahkan keduanya. |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Red">✗</font>   | Just include some subdirectory or files directly and expect users to figure out how to handle this. |
+| <font color="Red">✗</font>   | Hanya memasukkan folder atau file dan membiarkan user mencari tau sendiri cara menggunakannya. |
 
 {{% /table-nonheader %}}
 
-## ■ Errors and warnings
+## ■ Error dan peringatan
 
-Generally, your route should be free of errors. Please note that openBVE distinguishes between errors and warnings. An error is something definately wrong with your coding that should be fixed immediately. A warning is usually only raised to encourage inspection of potentially ambiguous code or code that might not have been meant the way it was written. In order to inspect your routes and trains for errors and warnings, go to the Options menu in openBVE and enable reporting them. RouteViewer and ObjectViewer always report such messages. Please note that the arious tools and openBVE itself might report a different set of messages as they don't share all the same functionality. Distributing add-ons containing errors might give users the impression that something was incompletely downloaded or was incorrectly packaged, and should generally be voided.
+Umumnya, rute anda harus bebas dari kesalahan. Harap dicatat bahwa openBVE membedakan antara Kesalahan/Error dan Peringatan/Warning. Kesalahan adalah sesuatu yang pasti salah dengan pengkodean anda yang harus segera diperbaiki. Peringatan biasanya hanya dimunculkan untuk pemeriksaan kode yang berpotensi ambigu atau kode yang mungkin tidak bekerja seperti yang tertulis. Untuk memeriksa kesalahan dan peringatan pada rute dan kereta anda, buka menu pengaturan di openBVE dan aktifkan pelaporannya. RouteViewer dan ObjectViewer selalu melaporkan pesan seperti itu. Harap dicatat bahwa berbagai alat dan openBVE itu sendiri mungkin melaporkan kumpulan pesan yang berbeda karena tidak memiliki semua fungsi yang sama. Mendistribusikan add-on yang mengandung kesalahan mungkin memberi kesan kepada pengguna lain bahwa ada sesuatu yang tidak diunduh secara lengkap atau ada yang salah.
 
-Acceptable and not acceptable practices:
+Yang dibolehkan dan tidak:
 
 {{% table-nonheader %}}
 
-| <font color="Green">✓</font> | Activate the report of errors and warnings in the *Options* menu and inspect your add-ons. |
+| <font color="Green">✓</font> | Mengaktifkan laporkan error dan peringatan pada menu *Pengaturan* dan cek add-ons anda. |
 | ---------------------------- | ------------------------------------------------------------ |
-| <font color="Green">✓</font> | Distribute add-ons that are eventually free of errors (not necessarily of warnings). |
-| <font color="Red">✗</font>   | Never inspect your add-ons for errors by disabling the error report or by ignoring the messages. |
-| <font color="Red">✗</font>   | Distribute an add-on that contains errors.                   |
+| <font color="Green">✓</font> | Menyebarkan add-on yang tidak ada errornya (warning tidak apa-apa). |
+| <font color="Red">✗</font>   | Jangan mengecek error pada add-on dengan mematikan laporan error atau abaikan pesan. |
+| <font color="Red">✗</font>   | Membagikan add-on yang masih mempunyai error.                   |
 
 {{% /table-nonheader %}}
 
-## ■ Routes and trains designed for using plugins
+## ■ Rute dan kereta yang menggunakan plugin khusus.
 
-If you include plugins in your train, they should be only of the .NET type. Older Windows-only plugins are retained for backward compatibility, but should not be distributed any longer with new releases. If you cannot remove the dependency on a Windows-only plugin for the time being, then at least design your routes and trains so that they work with the default safety system. You can test how your train behaves without a plugin by deleting the ats.cfg file (or by temporarily enaming it).
+Jika anda ingin menambahkan plugin, pastikan hanya berformat .NET. Plugin jadul yang hanya bisa dipakai di OS Windows sudah tidak bisa dipakai lagi, dan harusnya sudah tidak dipakai. Jika anda masih sangat membutuhkan plugin jadul, setidaknya pastikan add-on anda bisa dipakai tanpa menggunakan plugin itu. Silakan tes dengan menghapus file ats.cfg (atau rename aja file ats ini sementara).
 
-## ■ Operation manuals
+## ■ Panduan operasional
 
-An overview on the signs and signalling in your route, as well as on how to operate your train, is generally in order. Otherwise, users unfamiliar with the particular territory might be left with guessing the meaning of signs, or have to guess which keys serve which purpose. If you can, provide an English version of the instruction, as this generally increases the number of people who are able to understand it.
+Penjelasan tentang persinyalan dan semboyan, dan juga cara menggunakan kereta, sebaiknya ditambahkan sebagai file readme, atau file tutorial. Jangan sampai pengguna menebak-nebak apa yang harus dilakukan saat mengoperaskan kereta anda. Lebih baik lagi cantumkan tutorial bahasa inggris supaya lebih banyak orang yang mengerti.
