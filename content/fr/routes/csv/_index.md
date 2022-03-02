@@ -6,7 +6,7 @@ weight: 1
 
 ➟ [Quick reference...]({{< ref "/routes/csv_quick/_index.md" >}}) 
 
-## ■ Contents
+## ■ Contenu
 
 {{% contents %}}
 
@@ -31,7 +31,7 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Présentation
 
 A CSV route allows to create a route in a text file.
 
@@ -45,7 +45,7 @@ Geometrically, you can curve and pitch the implicit rail 0, while all other rail
 
 ➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Syntaxe
 
 For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
 
