@@ -19,7 +19,7 @@ weight: 4
 
 {{% /table %}}
 
-##### ● Sizes of textures
+##### ● 材質大小
 
 The widths and heights of textures should be a power of two, e.g. 1, 2, 4, 8, 16, 32, 64, 128, 256, and so on. While this is not a requirement, having textures whose sizes are not power-of-two increases loading times, increases storage requirements and introduces blurriness, because these textures have to be converted to a power-of-two size by openBVE.
 
