@@ -1,13 +1,13 @@
 ---
-title: "White Spaces"
+title: "空格"
 weight: 3
 ---
-<font color="Gray">This page describes what white spaces are.</font> 
+<font color="Gray">呢個頁面為您講解空格係咩。</font>
 
 White spaces are characters which leave an invisible space between characters. The various file formats usually ignore white spaces to parts when parsing an expression.
 
-{{% code "*Example expression:*" %}}  
-&nbsp;&nbsp;&nbsp;&nbsp;some text  
+{{% code "*Example expression:*" %}}
+&nbsp;&nbsp;&nbsp;&nbsp;一啲字
 {{% /code %}}
 
 This example expression contains three spaces at the beginning, which might be ignored by any of the file parsers. Whether or not the parser ignores white spaces is mentioned in the documentation for the respective file format.
