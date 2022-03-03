@@ -159,6 +159,18 @@ A child-node must be of the following format:
 
 **Position** should contain a comma-separated 3D vector, defining the position of the driver's eyes within the car, relative to *0,0,0*
 
+{{% command %}}  
+**\<Cargo>** *CargoType* **\</Cargo>**  
+{{% /command %}}
+
+**CargoType** defines the type of cargo which this car carries. The following load types are available:
+
+{{% command-arguments %}}  
+**Passenger**: This car carries passengers. Its overall weight is affected by the loading given at stations, and passenger discomfort is scored.
+**Freight**: This car carries freight. Its overall weight is affected by the loading given at stations.  
+**None**: This car carries no load (e.g. a locomotive, brake van or similar). It's weight is not affected by the loading given at stations.  
+{{% /command-arguments %}}
+
 ## <a name="coupler"></a>■ 4. The Coupler section
 
 Car nodes (or child file references) may optionally be separated by a **\<Coupler>** node.

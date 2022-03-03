@@ -4,24 +4,24 @@ hidden: true
 ---
 
 <font color="red">[This]</font>  
-**Resolution** = Value  
-**Left** = Value  
-**Right** = Value  
-**Top** = Value  
-**Bottom** = Value  
-**DaytimeImage** = FileName  
-**NighttimeImage** = FileName  
-**TransparentColor** = HexColor  
+**Resolution** = Valor
+**Left** = Valor
+**Right** = Valor
+**Top** = Valor
+**Bottom** = Valor
+**DaytimeImage** = NombreArchivo
+**NighttimeImage** = NombreArchivo
+**TransparentColor** = ColorHexadecimal
 **Center** = X, Y  
 **Origin** = X, Y
 
 <font color="red">[PilotLamp]</font>  
-**Subject** = Subject  
-**Location** = Left, Top  
-**DaytimeImage** = FileName  
-**NighttimeImage** = FileName  
-**TransparentColor** = HexColor  
-**Layer** = LayerIndex
+**Subject** = Asunto
+**Location** = Izquierda, Arriba
+**DaytimeImage** = NombreArchivo
+**NighttimeImage** = NombreArchivo
+**TransparentColor** = ColorHexadecimal
+**Layer** = IndiceCapa
 
 <font color="red">[Needle]</font>  
 **Subject** = Subject  
@@ -68,7 +68,7 @@ hidden: true
 **TransparentColor** = HexColor  
 **Layer** = LayerIndex
 
-<font color="red">Base subjects</font>
+<font color="red">Asuntos base</font>
 
 {{% table-nonheader %}}
 
@@ -78,7 +78,7 @@ hidden: true
 | mr, er, sap, bp, bc      |
 | power, brake, rev, csc   |
 | door, doorl*i*, doorr*i* |
-| hora, minuto, segundo           |
+| hour, min, sec           |
 | ats*i*, atc              |
 
 {{% /table-nonheader %}}
