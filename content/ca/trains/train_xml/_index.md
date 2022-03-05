@@ -14,6 +14,7 @@ This page is still under construction.
 - [2. The Train section](#train)
 - [3. The Car section](#car)
 - [4. The Coupler section](#coupler)
+- [5. Miscellaneous Properties](#misc)
 
 {{% /contents %}}
 
@@ -200,3 +201,17 @@ This defines the coupler between the two cars, and supports the following proper
 The coupler object is not deformed when the coupler stretches / compresses.
 
 {{% /note %}}
+
+## <a name="misc"></a>■ 5. Miscellaneous Properties
+
+{{% command %}}  
+**\<Plugin>** *PluginFile* **\</Plugin>**  
+{{% /command %}}
+
+**PluginFile** should contain the relative path to the security plugin DLL to load.
+
+{{% command %}}  
+**\<Description>** *Text* **\</Description>**  
+{{% /command %}}
+
+**Text** should contain the textual description for the train to display in the main menu.
