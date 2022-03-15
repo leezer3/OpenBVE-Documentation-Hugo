@@ -12,10 +12,9 @@ File asli harus berisi setidaknya perintah yang support di OpenBVE seperti yang 
 
 {{% notice %}}
 
-#### Color key transparencies in textures
+#### Kode warna transparan dalam gambar
 
-For legacy reasons, the color of **pure black (0,0,0)** is reserved when used in a texture.
-If a texture contains this color, then these pixels will be rendered as transparent.
+Untuk alasan tertentu, warna **hitam murni (0,0,0)** digunakan sebagai warna transparan dalam gambar. Jika dalam gambar ada warna ini, maka pixel tersebut akan menjadi transparan.
 
 {{% /notice %}}
 
