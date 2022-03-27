@@ -15,6 +15,7 @@ This page is still under construction.
 - [3. The Car section](#car)
 - [3.1. The Power section](#power)
 - [3.2. The Brake section](#brake)
+- [3.3. The Doors section] (#doors)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
@@ -444,6 +445,42 @@ The **\<Handle>** node specifies properties for the brake handle, and supports t
 **AnyHandle**: The spring return mechanism is reset when any power or brake handle is operated.
 **AnyKey**: The spring return mechanism is reset when any keyboard key or joystick control is operated.
 {{% /command-arguments %}}
+
+## <a name="doors"></a>■ 3.3. The Doors section
+
+The **\<Doors>** section specifies the properties of the passenger doors fitted to this car, and supports the following properties:
+
+{{% command %}}  
+**\<OpenSpeed>** *Speed* **\</OpenSpeed>**  
+{{% /command %}}
+
+**Speed** should be a positive number, setting the time taken for the doors to open in seconds.
+
+{{% command %}}  
+**\<CloseSpeed>** *Speed* **\</CloseSpeed>**  
+{{% /command %}}
+
+**Speed** should be a positive number, setting the time taken for the doors to close in seconds.
+
+{{% note %}}
+
+If the opening or closing speed is not set, this will be calculated using the duration of the open / close sounds.
+
+See the **sound.cfg** documentation for further details.
+
+{{% /note %}}
+
+{{% command %}}  
+**\<Width>** *DoorWidth* **\</Width>**  
+{{% /command %}}
+
+**DoorWidth** should be a positive number, setting the width of the door opening in meters.
+
+{{% command %}}  
+**\<Tolerance>** *DoorTolerance* **\</Tolerance>**  
+{{% /command %}}
+
+**DoorTolerance** should be a positive number, setting a tolerance in meters before the door is considered to be closed.
 
 ## <a name="coupler"></a>■ 4. The Coupler section
 
