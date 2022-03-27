@@ -15,7 +15,7 @@ This page is still under construction.
 - [3. The Car section](#car)
 - [3.1. The Power section](#power)
 - [3.2. The Brake section](#brake)
-- [3.3. The Doors section] (#doors)
+- [3.3. The Doors section](#doors)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
