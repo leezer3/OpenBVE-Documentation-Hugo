@@ -13,6 +13,9 @@ This page is still under construction.
 - [1. Overview](#overview)
 - [2. The Train section](#train)
 - [3. The Car section](#car)
+- [3.1. The Power section](#power)
+- [3.2. The Brake section](#brake)
+- [3.3. The Doors section](#doors)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
@@ -39,6 +42,12 @@ This defines a car within the train.
 **CarProperties** may either be a set of child nodes (if using the single file format) or a relative on-disk path to a child car file.
 
 {{% command %}}  
+**\<DriverCar>** *Car* **\</DriverCar>**  
+{{% /command %}}
+
+**Car** must be a positive integer less than or equal to the number of cars in the train, setting the driver car.
+
+{{% command %}}  
 **\<NotchDescriptions>** *Notch* **\</NotchDescriptions>**  
 {{% /command %}}
 
@@ -58,7 +67,7 @@ A child-node must be of the following format:
 
 {{% note %}}
 
-When using child car files, the **<Car>** node should be the first node in the file. All other details remain the same.
+When using child car files, the **\<Car>** node should be the first node in the file. All other details remain the same.
 
 {{% /note %}}
 
@@ -171,6 +180,307 @@ A child-node must be of the following format:
 **Freight**: This car carries freight. Its overall weight is affected by the loading given at stations.  
 **None**: This car carries no load (e.g. a locomotive, brake van or similar). It's weight is not affected by the loading given at stations.  
 {{% /command-arguments %}}
+
+## <a name="power"></a>■ 3.1. The Power section
+
+Motor cars may specifiy a **\<Power>** node.
+
+This defines the acceleration curves and the power handle fitted to the car, and supports the following child nodes:
+
+### 3.1.1. Acceleration Curves
+
+The **\<AccelerationCurves>** child node should contain a list of acceleration curve nodes. These must be in ascending order, and should correspond to the number of power notches the train has.
+
+Currently, the only supported acceleration curve node is the **\<OpenBVE>** node, supporting the following properties (as per a **train.dat** acceleration curve):
+
+{{% command %}}  
+**\<StageZeroAcceleration>** *Acceleration* **\</StageZeroAcceleration>**  
+{{% /command %}}
+
+**Acceleration** should be a positive floating-point number representing the acceleration at a speed of 0 km/h expressed in km/h/s.
+
+{{% command %}}  
+**\<StageOneAcceleration>** *Acceleration* **\</StageOneAcceleration>**  
+{{% /command %}}
+
+**Acceleration** should be a positive floating-point number representing the acceleration at a speed of *n* km/h expressed in km/h/s.
+
+{{% command %}}  
+**\<StageOneSpeed>** *Speed* **\</StageOneSpeed>**  
+{{% /command %}}
+
+**Speed** should be a positive floating-point number representing the reference speed for *StageOneAcceleration*
+
+{{% command %}}  
+**\<StageTwoExponent>** *Exponent* **\</StageTwoExponent>**  
+{{% /command %}}
+
+**Exponent** should be a positive floating-point number representing the exponent used in the stage two speed calculation.
+
+{{% command %}}  
+**\<StageTwoSpeed>** *Speed* **\</StageTwoSpeed>**  
+{{% /command %}}
+
+**Speed** should be a positive floating-point number representing the reference speed for *StageTwoExponent*
+
+
+Thus:
+
+If the speed of the train is 0 km/h, *a<sub>0</sub>* indicates the acceleration output.
+
+If the speed of the train is between 0 km/h and *v<sub>1</sub>*, the acceleration output is determined via the following formula:
+
+{{% function "*Acceleration between 0 km/h and v<sub>1</sub>, where x is the current speed of the train in km/h:*" %}}  
+a<sub>0</sub> + (a<sub>1</sub> - a<sub>0</sub>) \* x / v<sub>1</sub>  
+{{% /function %}}
+
+If the speed of the train is *v<sub>1</sub>*, the acceleration output is indicated by *a<sub>1</sub>*.
+
+If the speed of the train is between *v<sub>1</sub>* and *v<sub>2</sub>*, the acceleration output is determined via the following formula:
+
+{{% function "*Acceleration between v<sub>1</sub> and v<sub>2</sub>, where x is the current speed of the train in km/h:*" %}}  
+v<sub>1</sub> \* a<sub>1</sub> / x  
+{{% /function %}}
+
+If the speed of the train is greater than *v<sub>2</sub>*, the acceleration output is determined via the following formula (for version 2.0 exponents):
+
+{{% function "_Acceleration above v<sub>2</sub>, where x is the current speed of the train in km/h:_" %}}  
+v<sub>1</sub> \* a<sub>1</sub> \* v<sub>2</sub><sup>e-1</sup> / x<sup>e</sup>  
+{{% /function %}}
+
+### 3.1.2. Power Handles
+
+{{% note-withtitle %}}
+
+#### *Driver and non-driver cars:* 
+
+The properties within this node will only be interpreted if the car is specified as the driver car.
+
+{{% /note-withtitle %}}
+
+The **\<Handle>** node specifies properties for the power handle, and supports the folowing properties:
+
+{{% command %}}  
+**\<Notches>** *NumberOfNotches* **\</Notches>**  
+{{% /command %}}
+
+**NumberOfNotches** should be a positive integer, setting the number of power notches.
+
+{{% command %}}  
+**SpringType** *Type*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: The type of spring return fitted to this handle (if any).
+{{% /command-arguments %}}
+
+▸ Available options for *Type*:
+
+{{% command-arguments %}}  
+**None**: No spring return mechanism is fitted.  
+**Single**: The spring return mechanism is reset when this handle is operated.  
+**AnyHandle**: The spring return mechanism is reset when any power or brake handle is operated.
+**AnyKey**: The spring return mechanism is reset when any keyboard key or joystick control is operated.
+{{% /command-arguments %}}
+
+## <a name="brake"></a>■ 3.2. The Brake section
+
+The **\<Brake>** section specifies properties for the braking system of the car, and consists of the following child nodes, each corresponding the a component of the twin-pipe standard air-brake system:
+
+### Air compressor
+
+An optional **\<Compressor>** node, supporting the following properties:
+
+{{% command %}}  
+**\<Rate>** *CompressionRate* **\</Rate>**  
+{{% /command %}}
+
+**CompressionRate** should be a positive number, representing the compression rate in Pa/s.
+
+### Main Reservoir
+
+The **\<MainReservoir>** node, supporting the following properties:
+
+{{% command %}}  
+**\<MinimumPressure>** *Pressure* **\</MinimumPressure>**  
+{{% /command %}}
+
+**Pressure** should be a positive number, representing the minimum pressure in the main reservoir in Pa.
+
+{{% command %}}  
+**\<MaximumPressure>** *Pressure* **\</MaximumPressure>**  
+{{% /command %}}
+
+**Pressure** should be a positive number, representing the maximum achievable pressure in the main reservoir in Pa.
+
+### Auxiliary Reservoir
+
+The **\<AuxiliaryReservoir>** node, supporting the following properties:
+
+{{% command %}}  
+**\<ChargeRate>** *Rate* **\</ChargeRate>**  
+{{% /command %}}
+
+**Rate** should be a positive number, representing the charge rate of the auxiliary reservoir from the main reservoir in Pa/s.
+
+### Equalizing Reservoir
+
+The **\<EqualizingReservoir>** node, supporting the following properties:
+
+{{% command %}}  
+**\<NormalPressure>** *Pressure* **\</NormalPressure>**  
+{{% /command %}}
+
+**Pressure** should be a positive number, representing the normal pressure of this reservoir in Pa.
+
+### Brake Pipe
+
+The **\<BrakePipe>** node, supporting the following properties:
+
+{{% command %}}  
+**\<NormalPressure>** *Pressure* **\</NormalPressure>**  
+{{% /command %}}
+
+**Pressure** should be a positive number, representing the normal nominal pressure of the brake pipe in Pa.
+
+{{% command %}}  
+**\<ChargeRate>** *Rate* **\</ChargeRate>**  
+{{% /command %}}
+
+**Rate** should be a positive number, representing the normal charge rate in Pa/s.
+
+{{% command %}}  
+**\<ServiceRate>** *Rate* **\</ServiceRate>**  
+{{% /command %}}
+
+**Rate** should be a positive number, representing the charge rate in Pa/s when making a service brake application.
+
+{{% command %}}  
+**\<EmergencyRate>** *Rate* **\</EmergencyRate>**  
+{{% /command %}}
+
+**Rate** should be a positive number, representing the charge rate in Pa/s when making an emergency brake application.
+
+### Straight Air Pipe
+
+The **\<StraightAirPipe>** node, supporting the following properties:
+
+{{% command %}}  
+**\<ServiceRate>** *Rate* **\</ServiceRate>**  
+{{% /command %}}
+
+**Rate** should be a positive number, representing the charge rate in Pa/s when making a service brake application.
+
+{{% command %}}  
+**\<EmergencyRate>** *Rate* **\</EmergencyRate>**  
+{{% /command %}}
+
+**Rate** should be a positive number, representing the charge rate in Pa/s when making an emergency brake application.
+
+{{% command %}}  
+**\<ReleaseRate>** *Rate* **\</ReleaseRate>**  
+{{% /command %}}
+
+**Rate** should be a positive number, representing the charge rate in Pa/s when releasing a brake application.
+
+### Brake Cylinder
+
+The **\<BrakeCylinder>** node, supporting the following properties:
+
+{{% command %}}  
+**\<ServiceMaximumPressure>** *Pressure* **\</ServiceMaximumPressure>**  
+{{% /command %}}
+
+**Pressure** should be a positive number, representing the maximum pressure in Pa when making a full service brake application.
+
+{{% command %}}  
+**\<EmergencyMaximumPressure>** *Pressure* **\</EmergencyMaximumPressure>**  
+{{% /command %}}
+
+**Pressure** should be a positive number, representing the maximum pressure in Pa when making a full emergency brake application.
+
+{{% command %}}  
+**\<EmergencyRate>** *Rate* **\</EmergencyRate>**  
+{{% /command %}}
+
+**Rate** should be a positive number, representing the release rate in Pa/s during a full emergency brake application.
+
+{{% command %}}  
+**\<ReleaseRate>** *Rate* **\</ReleaseRate>**  
+{{% /command %}}
+
+**Rate** should be a positive number, representing the charge rate in Pa/s when releasing the brakes.
+
+### 3.2.2. Brake Handles
+
+{{% note-withtitle %}}
+
+#### *Driver and non-driver cars:* 
+
+The properties within this node will only be interpreted if the car is specified as the driver car.
+
+{{% /note-withtitle %}}
+
+The **\<Handle>** node specifies properties for the brake handle, and supports the folowing properties:
+
+{{% command %}}  
+**\<Notches>** *NumberOfNotches* **\</Notches>**  
+{{% /command %}}
+
+**NumberOfNotches** should be a positive integer, setting the number of power notches.
+
+{{% command %}}  
+**SpringType** *Type*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: The type of spring return fitted to this handle (if any).
+{{% /command-arguments %}}
+
+▸ Available options for *Type*:
+
+{{% command-arguments %}}  
+**None**: No spring return mechanism is fitted.  
+**Single**: The spring return mechanism is reset when this handle is operated.  
+**AnyHandle**: The spring return mechanism is reset when any power or brake handle is operated.
+**AnyKey**: The spring return mechanism is reset when any keyboard key or joystick control is operated.
+{{% /command-arguments %}}
+
+## <a name="doors"></a>■ 3.3. The Doors section
+
+The **\<Doors>** section specifies the properties of the passenger doors fitted to this car, and supports the following properties:
+
+{{% command %}}  
+**\<OpenSpeed>** *Speed* **\</OpenSpeed>**  
+{{% /command %}}
+
+**Speed** should be a positive number, setting the time taken for the doors to open in seconds.
+
+{{% command %}}  
+**\<CloseSpeed>** *Speed* **\</CloseSpeed>**  
+{{% /command %}}
+
+**Speed** should be a positive number, setting the time taken for the doors to close in seconds.
+
+{{% note %}}
+
+If the opening or closing speed is not set, this will be calculated using the duration of the open / close sounds.
+
+See the **sound.cfg** documentation for further details.
+
+{{% /note %}}
+
+{{% command %}}  
+**\<Width>** *DoorWidth* **\</Width>**  
+{{% /command %}}
+
+**DoorWidth** should be a positive number, setting the width of the door opening in meters.
+
+{{% command %}}  
+**\<Tolerance>** *DoorTolerance* **\</Tolerance>**  
+{{% /command %}}
+
+**DoorTolerance** should be a positive number, setting a tolerance in meters before the door is considered to be closed.
 
 ## <a name="coupler"></a>■ 4. The Coupler section
 
