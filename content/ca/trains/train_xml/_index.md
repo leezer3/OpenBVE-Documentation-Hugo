@@ -15,7 +15,7 @@ This page is still under construction.
 - [3. The Car section](#car)
 - [3.1. The Power section](#power)
 - [3.2. The Brake section](#brake)
-- [3.3. The Doors section] (#doors)
+- [3.3. The Doors section](#doors)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
@@ -26,6 +26,15 @@ This page is still under construction.
 The **train.xml** format is the native format for newer versions of OpenBVE, and is intended to replace the older train.dat format. It allows setting of many more properties, and is extensible.
 
 It may either be constructed as a single file containing the properties of the entire train, or as a single consist definition, along with child car files.
+
+{{% information %}}
+
+#### Positions Within Cars:
+
+In the **train.xml** format, all positions are measured relative to the center of the car, which is assumed to be at 0,0,0
+Whilst this is a change for some parameters from the legacy BVE formats, it means that all positions should be consistant.
+
+{{% /information %}}
 
 ## <a name="train"></a>■ 2. The Train section
 

@@ -8,8 +8,8 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
+- [1. Áttekintés](#overview)
+- [2. Szintaxis](#syntax)
 - [3. Available commands](#commands)
   - [[MeshBuilder]](#createmeshbuilder)
   - [Vertex](#addvertex)
@@ -22,8 +22,8 @@ weight: 1
   - [Rotate, RotateAll](#rotate)
   - [Shear, ShearAll](#shear)
   - [Mirror, MirrorAll](#mirror)
-  - [Color](#setcolor)
-  - [EmissiveColor](#setemissivecolor)
+  - [Color, ColorAll](#setcolor)
+  - [EmissiveColor, EmissiveColorAll](#setemissivecolor)
   - [BlendMode](#setblendmode)
   - [WrapMode](#setwrapmode)
   - [Load](#loadtexture)

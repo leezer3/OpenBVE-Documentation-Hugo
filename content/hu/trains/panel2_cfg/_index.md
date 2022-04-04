@@ -8,8 +8,8 @@ weight: 5
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
+- [1. Áttekintés](#overview)
+- [2. Szintaxis](#syntax)
 - [3. The This section](#this)
 - [4. The PilotLamp section](#pilotlamp)
 - [5. The Needle section](#needle)

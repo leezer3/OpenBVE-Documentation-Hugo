@@ -9,7 +9,7 @@ weight: 2
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Áttekintés](#overview)
 - [2. Integers](#integers)
 - [3. Floating-point numbers](#floating)
 - [4. Times](#times)

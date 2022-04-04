@@ -8,8 +8,8 @@ weight: 8
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
+- [1. Áttekintés](#overview)
+- [2. Szintaxis](#syntax)
 - [3. Content of the file](#content)
 
 {{% /contents %}}

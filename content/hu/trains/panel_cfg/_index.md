@@ -8,8 +8,8 @@ weight: 4
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
+- [1. Áttekintés](#overview)
+- [2. Szintaxis](#syntax)
 - [3. The Panel section](#panel)
 - [4. The View section](#view)
 - [5. The PressureIndicator section](#pressureindicator)

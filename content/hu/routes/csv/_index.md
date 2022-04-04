@@ -10,8 +10,8 @@ weight: 1
 
 {{% contents %}}
 
-- [1. Overview](#overview)
-- [2. Syntax](#syntax)
+- [1. Áttekintés](#overview)
+- [2. Szintaxis](#syntax)
 - [3. Preprocessing](#preprocessing)
 - [4. The Options namespace](#options)
 - [5. The Route namespace](#route)
@@ -45,7 +45,7 @@ Geometrically, you can curve and pitch the implicit rail 0, while all other rail
 
 ➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Szintaxis
 
 For each line in the file, [white spaces]({{< ref "/information/whitespaces/_index.md" >}}) at the beginning and the end of that line are ignored. Then, lines are split into individual expressions, separated by commas (U+002C). Thus, each line is of the following form:
 

@@ -8,7 +8,7 @@ weight: 3
 
 {{% contents %}}
 
-- [1. Overview](#overview)
+- [1. Áttekintés](#overview)
 - [2. Sections](#description)
 - [3. List of infix notation operators](#operators)
 - [4. List of functions](#functions)
