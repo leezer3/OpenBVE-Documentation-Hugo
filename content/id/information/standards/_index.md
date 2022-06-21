@@ -30,6 +30,8 @@ Beacon diperuntukan untuk sistem keamanan bawaan ATS-SN dan ATS-P. Ini hanya bol
 | 2           | *Cars*         | Transponder berhenti darurat untuk ATS-SN dan ATS-P. Ditempatkan setelah pemberhentian. Menerapkan rem darurat setiap kali sinyal berwarna merah dan jumlah gerbong sesuai dengan data opsional.<br /><br />Nilai untuk *Cars*:<br />0: Transponder terpicu terlepas dari jumlah gerbong.<br />*Bilangan positif*: Transponder terpicu hanya jika * gerbong* lebih banyak dari atau sama dengan jumlah gerbong yang dimiliki kereta. |
 | 3           | *SwitchSystem* | Transponder model baru untuk ATS-P. Beberapa disimpan di depan sinyal. Memberikan info kepada kereta tentang jarak sinyal terdekat dan aspek yang ditampilkan. Kereta akan mengerem bertahap jika sinyal merah.<br /><br />Nilai *SwitchSystem*:<br />-1: Kereta tidak akan mengganti sistem keamananan.<br />0: Kereta akan mengganti sistem dari ATS-SN menjadi ATS-P saat melewati beacon. |
 | 4           | *SwitchSystem* | Stop transponder untuk ATS-P. Disimpan 25-30m di depan sinyal. MEmberikan informasi kepada kereta tentang jarak dan aspek sinyal. Kereta akan mengerem otomatis jika sinyal merah.<br /><br />Nilai *SwitchSystem*:<br />-1: Kereta tidak akan mengganti sistem keamanan.<br />0: Kereta akan mengganti sistem dari ATS-SN menjadi ATS-P. |
+| -16777214   | *SpeedLimit*   | Generated automatically by the CSV / RW route parser for track sections with ATC. *SpeedLimit* passes the applicable speed limit in this case. |
+| -16777215   | *TrackState*   | Generated automaticall by the CSV / RW route parser. *TrackState* is set to **1** when the track is compatible with ATC, **0** otherwise. |
 
 {{% /table %}}
 
