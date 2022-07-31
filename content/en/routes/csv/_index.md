@@ -1846,7 +1846,13 @@ The first occuring station in a route may not be of the Terminal type.
 **1**: A stop post is created on the right side.  
 {{% /command-arguments %}}
 
-This command places a stop point for the last created station. If there is more than one stop defined for a station, a train is expected to stop at the first Track.Stop command for which *Cars* is greater than or equal to the number of cars the train has, where a value for *Cars* of 0 indicates a stop point regardless of the amount of cars to be used as the last stop point for a station.
+This command places a stop point for the last created station. If there is more than one stop defined for a station, the following rules are evaluated in order:
+1. If a stop point is defined with the exact number of cars in the train, this will be used.
+2. If an all cars stop is defined, this will be used.
+3. If no stop points are defined with a matching number of cars, the stop point with the closest greater number of cars will be used.
+4. If no stop points have a greater number of cars, the first stop point will be used.
+
+<br>
 
 {{% code "*Example of a station with multiple stop points:*" %}}  
 With Track  
