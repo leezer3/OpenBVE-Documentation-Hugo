@@ -514,6 +514,7 @@ En algunos casos de las siguientes variables , *IndiceCarro* tiene el siguiente 
 | `trackDistance[carIndex]`     | La distancia de la vía desde el objeto al carro número *IndiceCarro* del tren mas próximo en metros. Es positivo cuando el centro del coche esté en frente del objeto, y negativo cuando esta por detrás, Retorna 0 si el coche no existe. Solamente es usado por objetos de escenario. |
 | `destination`                 | La configuración actual del destino del tren (Es configurado por *Track.Destination* ó la interfaz del plugin) |
 | `distanceNextStation`         | La distancia en metros a la siguiente estación. |
+| `distanceLastStation`         | The distance in m to the previous station. |
 | `distanceStation[stationIndex]`| La distancia en metros a la estación con indice *stationIndex* |
 | `stopsNextStation`            | Indica si el tren hace parada en la próxima estación. |
 | `stopsStation[stationIndex]`  | Indica que el tren se detiene en la estación con indice *stationIndex* |
