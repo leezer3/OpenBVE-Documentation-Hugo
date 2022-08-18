@@ -16,7 +16,7 @@ This is the documentation for train plugins. In order to create a train plugin, 
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ Overview
+## <a name="overview"></a>■ 概要
 
 The following functions are called in this order when the plugin is loaded:
 
@@ -74,6 +74,10 @@ LoadProperties (class):
 | string            | TrainFolder   | Gets the absolute path to the train folder.            |
 | int[]             | Panel         | Gets or sets the array of panel variables.             |
 | PlaySoundDelegate | PlaySound     | Gets the callback function for playing sounds.         |
+| PlayCarSoundDelegate | PlaySound     | Gets the callback function for playing car-based sounds. |
+| AddInterfaceMessageDelegate | N/A    | Gets the callback function for adding messages to the in-game UI. |
+| OpenDoorsDelegate | N/A     | Gets the callback function for opening the train doors from the plugin. |
+| CloseDoorsDelegate | N/A     | Gets the callback function for closing the train doors from the plugin. |
 | AISupport         | AISupport     | The extent to which the plugin supports the AI.        |
 | string            | FailureReason | Gets or sets the reason why the plugin failed loading. |
 
