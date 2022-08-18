@@ -74,6 +74,10 @@ LoadProperties (clase):
 | string            | TrainFolder   | Obtiene el directorio absoluto de la carpeta del tren.            |
 | int[]             | Panel         | Obtiene o otorga el arreglo de las variables de panel.             |
 | PlaySoundDelegate | PlaySound     | Obtiene la función de llamado para reproducir sonidos.         |
+| PlayCarSoundDelegate | PlaySound     | Gets the callback function for playing car-based sounds. |
+| AddInterfaceMessageDelegate | N/A    | Gets the callback function for adding messages to the in-game UI. |
+| OpenDoorsDelegate | N/A     | Gets the callback function for opening the train doors from the plugin. |
+| CloseDoorsDelegate | N/A     | Gets the callback function for closing the train doors from the plugin. |
 | AISupport         | AISupport     | La extensión para así el plugin soporte la IA.        |
 | string            | FailureReason | Obtiene o otorga la razón por la cual el plugin ha fallado al cargar. |
 
