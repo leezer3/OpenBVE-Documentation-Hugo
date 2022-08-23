@@ -150,6 +150,7 @@ VehicleSpecs (class):
 | int        | AtsNotch     | Gets the index of the brake notch that corresponds to B1 or LAP. |
 | int        | B67Notch     | Gets the index of the brake notch that corresponds to 70% of the available brake notches. |
 | int        | Cars         | Gets the number of cars the train has.                       |
+| int        | HeadlightStates | Gets the number of headlight states the train has.                       |
 
 {{% /table-nonheader %}}
 
