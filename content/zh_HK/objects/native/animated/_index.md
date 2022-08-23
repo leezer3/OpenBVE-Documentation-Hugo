@@ -495,6 +495,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `timeTable`                   | Returns 1 if the timetable is currently set as visible, 0 otherwise. |
 | `brightness[carIndex]`        | Returns the interpolated brightness value applying to this car. |
 | `routeLimit`                  | Returns the current route speed limit applying to this train in km/h. |
+| `headlights`                  | Gets the current state of the train's headlights. |
 
 {{% /table-2col %}}
 
