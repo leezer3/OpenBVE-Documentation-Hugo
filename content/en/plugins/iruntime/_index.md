@@ -219,10 +219,17 @@ ElapseData (class):
 | VehicleState          | Vehicle          | Gets the state of the train.                                 |
 | --------------------- | ---------------- | ------------------------------------------------------------ |
 | PrecedingVehicleState | PrecedingVehicle | Gets the state of the preceding train, or a null reference if there is no preceding train. |
+| List<Station>         | Stations         | Gets the list of stations in the route. |
 | Handles               | Handles          | Gets or sets the virtual handles.                            |
+| DoorInterlockStates   | DoorInterlockState | Gets or sets the door interlock state. |
+| int                   | HeadlightsState  | Gets or sets the headlights state. |
+| int                   | Destination      | Gets the current destination. |
 | Time                  | TotalTime        | Gets the absolute in-game time.                              |
 | Time                  | ElapsedTime      | Gets the time that elapsed since the last call to Elapse.    |
+| string                | CurrentLanguageCode | Gets the language code used by the host application. |
+| boolean               | DisableTimeAcceleration | Enables or disables time acceleration in the host application.    |
 | string                | DebugMessage     | Gets or sets the debug message the plugin wants the host application to display. |
+| CameraViewModes       | CameraViewMode   | Gets the current camera view mode in the host application. |
 
 {{% /table-nonheader %}}
 
