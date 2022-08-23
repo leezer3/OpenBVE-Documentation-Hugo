@@ -534,3 +534,11 @@ The coupler object is not deformed when the coupler stretches / compresses.
 {{% /command %}}
 
 **Text** should contain the textual description for the train to display in the main menu.
+
+{{% command %}}  
+**\<HeadlightStates>** *NumberOfStates* **\</HeadlightStates>**  
+{{% /command %}}
+
+**NumberOfStates** should be the total number of states that the train headlight posesses.
+
+*Note:* Headlight effects must be implemented by the train developer, using animation / panel properties. 
