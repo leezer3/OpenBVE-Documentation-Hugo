@@ -514,6 +514,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `trackDistance[carIndex]`     | The signed track distance measured from the object to the car *carIndex* of the nearest train in meters. Is positive when the center of the car is in front of the object, and negative if behind. Returns 0 if the car does not exist. Only meaningful for scenery objects. |
 | `destination`                 | The currently set destination for this train. (Set via *Track.Destination* or the plugin interface) |
 | `distanceNextStation`         | The distance in m to the next station. |
+| `distanceLastStation`         | The distance in m to the previous station. |
 | `distanceStation[stationIndex]`| The distance in m to the station with *stationIndex* |
 | `stopsNextStation`            | Whether the train stops at the next station. |
 | `stopsStation[stationIndex]`  | Whether the train stops at the station with *stationIndex* |
@@ -523,6 +524,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `timeTable`                   | Returns 1 if the timetable is currently set as visible, 0 otherwise. |
 | `brightness[carIndex]`        | Returns the interpolated brightness value applying to this car. |
 | `routeLimit`                  | Returns the current route speed limit applying to this train in km/h. |
+| `headlights`                  | Gets the current state of the train's headlights. |
 
 {{% /table-2col %}}
 
