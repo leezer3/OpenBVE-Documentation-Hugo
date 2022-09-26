@@ -613,7 +613,7 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | 意味           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
@@ -652,7 +652,7 @@ There are certain kinds of animation which are less expensive, and others which 
 
 {{% table %}}
 
-| Animation      | Object                          | Performance |
+| アニメーション      | Object                          | Performance |
 | -------------- | ------------------------------- | ----------- |
 | State changes  | Has only opaque faces           | Good        |
 | State changes  | Has partially transparent faces | Moderate    |
