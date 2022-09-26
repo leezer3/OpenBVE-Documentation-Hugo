@@ -170,7 +170,7 @@ The Cylinder command is equivalent to a series of Vertex and Face commands, whic
 <font color=#555555>Texture</font>
 {{% /command %}}
 
-*<font color=#555555>このコマンドは、 openBVE によって無視されます。</font>*
+*<font color=#555555>このコマンドは、 OpenBVE によって無視されます。</font>*
 
 ----------
 

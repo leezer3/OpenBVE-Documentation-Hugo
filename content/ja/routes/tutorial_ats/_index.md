@@ -126,7 +126,7 @@ If the signal distance is shorter than 600 meters, you should additionally emplo
 
 ## ■ Setting up a route for the use of accidental departure transponders
 
-In stations, the accidental departure transponders are occasionally placed shortly after a station stop point to prevent a train from accidentally starting toward a red signal. The accidental departure transponder will trigger regardless of whether the train currently operates in ATS-SN or in ATS-P. As you can define multiple stop points per station, each being associated to a particular number of cars, any accidental departure transponder will only be active if it is behind the stop point at which the train is supposed to stop at.
+駅では、列車が赤信号の時に誤出発を防止をするトランスポンダを、停止位置目標の少し先に設置される場合があります。列車の保安装置が現在ATS-SNか、またはATS-Pで有るかにかかわらず、ご出発防止のトランスポンダがトリガーされます。駅ごとに複数の停止位置目標を設置でき、其々が特定の車両の数に関連付けられているため、誤出発防止トランスポンダは列車が停止する予定の停止位置目標の後ろに設置されている場合にのみトリガーされます。
 
 You can employ the accidental departure transponder in the following way:
 

@@ -18,7 +18,7 @@ weight: 1
 - [6. The Train namespace](#train)
 - [7. The Structure namespace](#structure)
 - [8. The Texture namespace](#texture)
-- [9. The Cycle namespace](#cycle)
+- [9. Cycle 名前空間](#cycle)
 - [10. The Signal namespace](#signal)
 - [11. The Track namespace](#track)
   - [11.1. Rails](#track_rails)
@@ -31,7 +31,7 @@ weight: 1
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. 概観
+## <a name="overview"></a>■ 1. 概要
 
 CSVルートは、テキストファイルに記述することで路線データを作成できます。
 
@@ -626,7 +626,7 @@ Route.RunInterval は Train.Interval と同じ意味を持ちます。
 {{% /command %}}
 
 {{% command-arguments %}}  
-**Value**: **メートル毎秒の二乗** (m/s²) で重力による加速度を表す正の浮動小数点数。 デフォルト値は 9.80665 です。  
+**Value**: A positive floating-point number representing the acceleration due to gravity in **meters per second squared** (m/s2). The default value is 9.80665.  
 {{% /command-arguments %}}
 
 ---
@@ -766,12 +766,12 @@ y = -sin(theta)
 z = cos(theta) * cos(phi)  
 {{% /function %}}
 
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²≠1:*" %}}  
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y2≠1:*" %}}  
 theta = -arctan(y/sqrt(x<sup>2</sup>+z<sup>2</sup>))  
 phi = arctan(z,x)  
 {{% /function %}}
 
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²=1:*" %}}  
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y2=1:*" %}}  
 theta = -y * pi/2  
 phi = 0  
 {{% /function %}}
@@ -966,7 +966,7 @@ Structure名前空間のコマンドの一般的な構文は次のとおりで�
 | FreeObj    | Track.FreeObj を定義します。                           |
 | Beacon     | Track.Beacon のオブジェクトを定義します。                            |
 | Weather     | Defines objects for weather generated using Track.Rain and Track.Snow. |
-| DynamicLight     | Defines dynamic lighting sets. |
+| DynamicLight     | ダイナミックライティングを定義します。 |
 
 {{% /table %}}
 
@@ -1004,7 +1004,7 @@ The image loaded into Texture.Background(0) is displayed at the beginning of the
 
 As an alternative ***Dynamic or Object*** based backgrounds may be used. The implementation of these is described upon this page:
 
-[Dynamic & Object Based Backgrounds]({{< ref "/routes/xml/dynamicbackground/_index.md" >}})
+[「動的な」 & オブジェクトベースの背景]({{< ref "/routes/xml/dynamicbackground/_index.md" >}})
 
 ---
 
@@ -1031,7 +1031,7 @@ If a dynamic or object based background is to be used, this must instead point t
 {{% /command %}}
 
 {{% command-arguments %}}  
-***RepetitionCount***: The number of times the background image is repeated in a full circle. The default value is 6.  
+***RepetitionCount***: 背景の画像で周囲を完全な円で満たすために繰り返す回数。デフォルト値は6です。 
 {{% /command-arguments %}}
 
 {{% note %}}
@@ -1043,7 +1043,7 @@ Ignored if using a dynamic or object based background.
 ---
 
 {{% command %}}  
-**Texture.Background**(_BackgroundTextureIndex_)**.Aspect** *Mode*  
+**Texture.Background**(_背景テクスチャのインデックス番号_)**.Aspect** *Mode*  
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -1167,13 +1167,13 @@ The glow textures deserve special attention. All glow textures are pre-processed
 
 {{% /table %}}
 
-The texture you start with should have a sharp shape, usually oval. The shape should be fully saturated in the core and blend into pure white at its outer rim. The surroundings of the shape can be either pure black (A) or pure white (B).
+最初のテクスチャは、通常は楕円形のシャープな形状である必要があります。 形状は中心から完全に満たされ、外側の縁で真っ白に溶け込ませる必要があります。形状の周囲は完全な黒 (A) または完全な白 (B) の何れかです。
 
 When openBVE loads the glow texture, it will replace all purely black pixels with purely white pixels, thus arriving at (B). From there, the image is inverted \(C), then hue-shifted by 180 degrees (D). Compared to (B), this has the overall effect of inverting the lightness of the image, i.e. fully saturated pixels will be left unchanged (e.g. the core), while bright pixels (such as the outer rim of the shape) will become dark, and vice versa. Then, the image is gamma-corrected to further darken the dark parts (E), and finally, the image is blurred slightly (F).
 
 The resulting texture is always additively blended. This means that instead of directly drawing the texture onto the screen, the pixels of the texture are added to the screen pixels. Here, adding black (0) does not change the screen pixels, while adding a fully satured color channel (1) will result in a fully satured color channel, e.g. adding white produces white. Keep in mind that when designing the textures, you will have to follow the inverse rules, e.g. design the image as depicted in (A) or (B), while having in mind how it will be processed afterward.
 
-## <a name="track"></a>■ 11. The Track namespace
+## <a name="track"></a>■ 11. Track 名前空間
 
 Commands from this namespace define the track layout. Commands from this namespace should appear after commands from any of the other namespaces, and they usually form the largest part of the route file.
 
@@ -1736,7 +1736,7 @@ This command can only be used at the beginning of a block.
 **ATC** or **1**: ATC should be used from this station on. The following track is equipped with ATC.  
 {{% /command-arguments %}}
 
-This command initializes a new station. It should be placed at the beginning of the station platform. In order to finalize the creation of a station, use the Track.Stop command to place stop points following this command. All following Track.Stop commands will be associated to this station. At least one Track.Stop command must follow if trains are expected to stop at this station.
+このコマンドは、新しい駅を作成し、初期化します。 このコマンドは駅の一番進行方向手前に設置しなければなりません。 駅の作成を完了させるには、Track.Stopコマンドを使用し、このコマンドの後に停止位置目標を設置します。これ以降の全てのTrack.Stopコマンドは、この設置される駅に関連付けられます。 列車をこの駅に停車させる場合は、少なくとも一つ、Track.Stopを設置しなければなりません。
 
 **Special Features:**
 
@@ -1815,7 +1815,7 @@ This command initializes a new station. Prefer using the Track.Sta command, whic
 
 {{% /table-nonheader %}}
 
-The command should be placed at the beginning of the station platform. In order to finalize the creation of a station, use the Track.Stop command to place stop points following this command. All following Track.Stop commands will be associated to this station. At least one Track.Stop command must follow if trains are expected to stop at this station.
+コマンドは、駅のホームの先頭の位置に配置する必要があります。 駅の作成を完了させるには、Track.Stopコマンドを使用し、このコマンドの後に個別の両数の停止位置目標を設置する必要があります。 これ以降のTrack.Stopコマンドは、この設置された駅に関連付けられて個別の車両数に合わせた停止位置目標が設定されます。 列車をこの駅に停車させる場合は、少なくとも一つのTrack.Stopコマンドで停止位置目標を設置しなければなりません。
 
 Stations can be marked as "changing ends" in the departure time. At such stations, when the departure time has been reached, the train will automatically jump to the next station. This feature is intended to fake a reverse of traveling direction without the need to jump to stations manually from the menu.
 
@@ -1846,7 +1846,13 @@ The first occuring station in a route may not be of the Terminal type.
 **1**: A stop post is created on the right side.  
 {{% /command-arguments %}}
 
-This command places a stop point for the last created station. If there is more than one stop defined for a station, a train is expected to stop at the first Track.Stop command for which *Cars* is greater than or equal to the number of cars the train has, where a value for *Cars* of 0 indicates a stop point regardless of the amount of cars to be used as the last stop point for a station.
+このコマンドは、作成された駅の停止位置目標を配置します。 もし駅に複数の車両の両数に合わせた個別の、または共通の停止位置目標を定義する場合、次のルールが適用されます:
+1. もし、編成の車両数が明確に設定されている場合は、その停止位置位置目標が使用されます。
+2. If an all cars stop is defined, this will be used.
+3. 車両数が一致する停止位置目標が設定されていない場合は、車両数が最も多く定義されている停止位置目標が使用されます。
+4. もし運転する車両数より多い両数に対応する停止位置目標が見つからなかった場合は、進行方向に向かって一番手前に設置された停止位置目標に停車します。
+
+<br>
 
 {{% code "*Example of a station with multiple stop points:*" %}}  
 With Track  
@@ -2481,12 +2487,12 @@ y = -sin(theta)
 z = cos(theta) * cos(phi)  
 {{% /function %}}
 
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²≠1:*" %}}  
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y2≠1:*" %}}  
 theta = -arctan(y/sqrt(x<sup>2</sup>+z<sup>2</sup>))  
 phi = arctan(z,x)  
 {{% /function %}}
 
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²=1:*" %}}  
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y2=1:*" %}}  
 theta = -y * pi/2  
 phi = 0  
 {{% /function %}}

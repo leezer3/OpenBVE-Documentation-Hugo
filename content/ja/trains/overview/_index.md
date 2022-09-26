@@ -1,6 +1,6 @@
 ---
-title: "Developing trains - Overview"
-linktitle: "Overview"
+title: "列車の開発 - 概要"
+linktitle: "概要"
 weight: 1
 ---
 

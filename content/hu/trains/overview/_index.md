@@ -1,6 +1,6 @@
 ---
 title: "Developing trains - Overview"
-linktitle: "Overview"
+linktitle: "Áttekintés"
 weight: 1
 ---
 

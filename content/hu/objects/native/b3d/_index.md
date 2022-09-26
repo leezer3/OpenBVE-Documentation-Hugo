@@ -1,6 +1,6 @@
 ---
-title: "The **.b3d** object format"
-linktitle: "The B3D object"
+title: "A **.b3d** objektum formátum"
+linktitle: "A B3D objektum"
 weight: 1
 ---
 
@@ -40,7 +40,7 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
-## <a name="syntax"></a>■ 2. Syntax
+## <a name="syntax"></a>■ 2. Szintaxis
 
 A fájl minden sorát felosztjuk egy parancs nevére és argumentumára. Az összes parancs szintaxisa megegyezik:
 

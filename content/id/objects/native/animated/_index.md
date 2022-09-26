@@ -524,10 +524,13 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `timeTable`                   | Returns 1 if the timetable is currently set as visible, 0 otherwise. |
 | `brightness[carIndex]`        | Returns the interpolated brightness value applying to this car. |
 | `routeLimit`                  | Returns the current route speed limit applying to this train in km/h. |
+| `headlights`                  | Gets the current state of the train's headlights. |
+| `wheelSlip`                   | Returns 1 if the train is experincing wheelslip in the current car, 0 otherwise. |
+| `wheelSlip[carIndex]`         | Returns 1 if the train is experinging wheelslip in the specified car, 0 otherwise. |
 
 {{% /table-2col %}}
 
-##### ● Kereta (rem)
+##### ● Trains (brake)
 
 {{% table-2col %}}
 
@@ -546,7 +549,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% /table-2col %}}
 
-##### ● Kereta (pintu)
+##### ● Trains (doors)
 
 {{% table-2col %}}
 
@@ -610,7 +613,7 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Arti           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
@@ -649,16 +652,16 @@ There are certain kinds of animation which are less expensive, and others which 
 
 {{% table %}}
 
-| Animasi      | Object                          | Performance |
+| Animation      | Object                          | Performance |
 | -------------- | ------------------------------- | ----------- |
 | State changes  | Has only opaque faces           | Good        |
 | State changes  | Has partially transparent faces | Moderate    |
 | Translation    | Has only opaque faces           | Good        |
 | Translation    | Has partially transparent faces | Moderate    |
 | Rotation       | Has only opaque faces           | Good        |
-| Rotation       | Has partially transparent faces | Buruk         |
-| Pergeseran tekstur | Has only opaque faces           | Buruk         |
-| Pergeseran tekstur | Has partially transparent faces | Buruk         |
+| Rotation       | Has partially transparent faces | Bad         |
+| Texture shifts | Has only opaque faces           | Bad         |
+| Texture shifts | Has partially transparent faces | Bad         |
 
 {{% /table %}}
 

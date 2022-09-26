@@ -74,6 +74,10 @@ LoadProperties (class):
 | string            | TrainFolder   | Gets the absolute path to the train folder.            |
 | int[]             | Panel         | Gets or sets the array of panel variables.             |
 | PlaySoundDelegate | PlaySound     | Gets the callback function for playing sounds.         |
+| PlayCarSoundDelegate | PlaySound     | Gets the callback function for playing car-based sounds. |
+| AddInterfaceMessageDelegate | N/A    | Gets the callback function for adding messages to the in-game UI. |
+| OpenDoorsDelegate | N/A     | Gets the callback function for opening the train doors from the plugin. |
+| CloseDoorsDelegate | N/A     | Gets the callback function for closing the train doors from the plugin. |
 | AISupport         | AISupport     | The extent to which the plugin supports the AI.        |
 | string            | FailureReason | Gets or sets the reason why the plugin failed loading. |
 
@@ -146,6 +150,7 @@ VehicleSpecs (class):
 | int        | AtsNotch     | Gets the index of the brake notch that corresponds to B1 or LAP. |
 | int        | B67Notch     | Gets the index of the brake notch that corresponds to 70% of the available brake notches. |
 | int        | Cars         | Gets the number of cars the train has.                       |
+| int        | HeadlightStates | Gets the number of headlight states the train has.                       |
 
 {{% /table-nonheader %}}
 
@@ -214,10 +219,17 @@ ElapseData (class):
 | VehicleState          | Vehicle          | Gets the state of the train.                                 |
 | --------------------- | ---------------- | ------------------------------------------------------------ |
 | PrecedingVehicleState | PrecedingVehicle | Gets the state of the preceding train, or a null reference if there is no preceding train. |
+| List<Station>         | Stations         | Gets the list of stations in the route. |
 | Handles               | Handles          | Gets or sets the virtual handles.                            |
+| DoorInterlockStates   | DoorInterlockState | Gets or sets the door interlock state. |
+| int                   | HeadlightsState  | Gets or sets the headlights state. |
+| int                   | Destination      | Gets the current destination. |
 | Time                  | TotalTime        | Gets the absolute in-game time.                              |
 | Time                  | ElapsedTime      | Gets the time that elapsed since the last call to Elapse.    |
+| string                | CurrentLanguageCode | Gets the language code used by the host application. |
+| boolean               | DisableTimeAcceleration | Enables or disables time acceleration in the host application.    |
 | string                | DebugMessage     | Gets or sets the debug message the plugin wants the host application to display. |
+| CameraViewModes       | CameraViewMode   | Gets the current camera view mode in the host application. |
 
 {{% /table-nonheader %}}
 

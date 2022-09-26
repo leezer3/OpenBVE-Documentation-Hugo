@@ -170,7 +170,7 @@ The Cylinder command is equivalent to a series of AddVertex and AddFace commands
 <font color=#555555>GenerateNormals</font>  
 {{% /command %}}
 
-*<font color=#555555>このコマンドは、 openBVE によって無視されます。</font>*
+*<font color=#555555>このコマンドは、 OpenBVE によって無視されます。</font>*
 
 ------
 

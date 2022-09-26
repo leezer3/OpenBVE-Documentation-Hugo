@@ -1,5 +1,5 @@
 ---
-title: "A **. Csv ** objektum formátum"
+title: "A **.csv** objektum formátum"
 linktitle: "A CSV objektum"
 weight: 2
 ---

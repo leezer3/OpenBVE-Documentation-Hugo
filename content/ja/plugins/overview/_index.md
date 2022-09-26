@@ -1,6 +1,6 @@
 ---
 title: ".NET assembly plugins"
-linktitle: "Overview"
+linktitle: "概要"
 weight: 1
 ---
 

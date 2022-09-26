@@ -1,6 +1,6 @@
 ---
 title: "The **train.dat** file format"
-linktitle: "The train.dat file"
+linktitle: "A train.dat fájl"
 weight: 2
 ---
 
@@ -11,7 +11,7 @@ weight: 2
 - [1. Áttekintés](#overview)
 - [2. The file identifier](#identifier)
   - [2a. Version history]({{<ref "/trains/train_dat_version/_index.md" >}})
-- [3. Syntax](#syntax)
+- [3. Szintaxis](#syntax)
 - [4. The Acceleration section](#acceleration)
 - [5. The Performance section](#performance)
 - [6. The Delay section](#delay)

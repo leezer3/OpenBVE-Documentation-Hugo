@@ -633,7 +633,7 @@ Route.RunInterval和Train.Interval作用相同。
 {{% /command %}}
 
 {{% command-arguments %}}  
-**数值**：一个正浮点数，表示以**米每秒平方**(m/s²)为单位的重力加速度。默认值是9.80665。   
+**Value**: A positive floating-point number representing the acceleration due to gravity in **meters per second squared** (m/s2). The default value is 9.80665.  
 {{% /command-arguments %}}
 
 ---
@@ -775,16 +775,14 @@ y = -sin(theta)
 z = cos(theta) * cos(phi)    
 {{% /function %}}
 
-将直角坐标(x,y,z)换算为球面坐标(θ,φ)的公式（y²≠1）：  
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²≠1:*" %}}    
-theta = -arctan(y/sqrt(x<sup>2</sup>+z<sup>2</sup>))    
-phi = arctan(z,x)    
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y2≠1:*" %}}  
+theta = -arctan(y/sqrt(x<sup>2</sup>+z<sup>2</sup>))  
+phi = arctan(z,x)  
 {{% /function %}}
 
-将直角坐标(x,y,z)换算为球面坐标(θ,φ)的公式（y²=1）：  
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²=1:*" %}}    
-theta = -y * pi/2    
-phi = 0    
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y2=1:*" %}}  
+theta = -y * pi/2  
+phi = 0  
 {{% /function %}}
 
 [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) 代表余弦，  
@@ -1863,7 +1861,13 @@ The first occuring station in a route may not be of the Terminal type.
 **1**：在右侧放置指示牌。  
 {{% /command-arguments %}}
 
-该指令为上一个创建的车站添加停车点。如果有多个停车点，列车会停在设定的*编组数量*大于等于它的实际编组数量的第一个停车点。一个*编组数量*为0，代表允许所有编组列车停靠的停车点，在配合其他停车点放置时一般被放在最后。
+This command places a stop point for the last created station. If there is more than one stop defined for a station, the following rules are evaluated in order:
+1. If a stop point is defined with the exact number of cars in the train, this will be used.
+2. If an all cars stop is defined, this will be used.
+3. If no stop points are defined with a matching number of cars, the stop point with the closest greater number of cars will be used.
+4. If no stop points have a greater number of cars, the first stop point will be used.
+
+<br>
 
 {{% code "*Example of a station with multiple stop points:*" %}}    
 With Track  
@@ -2500,16 +2504,14 @@ y = -sin(theta)
 z = cos(theta) * cos(phi)    
 {{% /function %}}
 
-将直角坐标(x,y,z)换算为球面坐标(θ,φ)的公式（y²≠1）：  
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²≠1:*" %}}    
-theta = -arctan(y/sqrt(x<sup>2</sup>+z<sup>2</sup>))    
-phi = arctan(z,x)    
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y2≠1:*" %}}  
+theta = -arctan(y/sqrt(x<sup>2</sup>+z<sup>2</sup>))  
+phi = arctan(z,x)  
 {{% /function %}}
 
-将直角坐标(x,y,z)换算为球面坐标(θ,φ)的公式（y²=1）：  
-{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y²=1:*" %}}    
-theta = -y * pi/2    
-phi = 0    
+{{% function "*Converting a cartesian direction (x,y,z) into a spherical direction (theta,phi) for y2=1:*" %}}  
+theta = -y * pi/2  
+phi = 0  
 {{% /function %}}
 
 [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) 代表余弦，  
