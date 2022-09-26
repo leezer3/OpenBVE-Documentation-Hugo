@@ -534,7 +534,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                       | Description                                                  |
+| Variable                       | Descripció                                                  |
 | ------------------------------ | ------------------------------------------------------------ |
 | `mainReservoir`                | The current pressure in the main reservoir in this car, measured in Pa. |
 | `mainReservoir[carIndex]`      | The current pressure in the main reservoir in car *carIndex*, measured in Pa. |
@@ -549,11 +549,11 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% /table-2col %}}
 
-##### ● Trains (doors)
+##### ● Trens (portes)
 
 {{% table-2col %}}
 
-| Variable                     | Description                                                  |
+| Variable                     | Descripció                                                  |
 | ---------------------------- | ------------------------------------------------------------ |
 | `doors`                      | The state of the doors. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
 | `doors[carIndex]`            | The state of the doors of car *carIndex*. Returns 0 if fully closed, 1 if fully opened, or any intermediate value, biasing doors that are in a more open state. |
@@ -575,7 +575,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 
 {{% table-2col %}}
 
-| Variable                         | Description                                                  |
+| Variable                         | Descripció                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
 | `reverserNotch`                  | The state of the reverser, which is either -1 (backward), 0 (neutral), or forward (1). |
 | `powerNotch`                     | The current power notch, i.e. 0 for N, 1 for P1, 2 for P2, 3 for P3, etc. |
@@ -613,7 +613,7 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Meaning           |
+| *i*  | English             | 日本語       | Return values                                |      | pluginState[271] | Significat           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0                | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1                | 0 km/h            |
@@ -640,7 +640,7 @@ The section context is defined when the object is placed using Track.SigF.
 
 {{% table-2col %}}
 
-| Variable  | Description                                                  |
+| Variable  | Descripció                                                  |
 | --------- | ------------------------------------------------------------ |
 | `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 
@@ -652,7 +652,7 @@ There are certain kinds of animation which are less expensive, and others which 
 
 {{% table %}}
 
-| Animation      | Object                          | Performance |
+| Animacions      | Object                          | Performance |
 | -------------- | ------------------------------- | ----------- |
 | State changes  | Has only opaque faces           | Good        |
 | State changes  | Has partially transparent faces | Moderate    |
