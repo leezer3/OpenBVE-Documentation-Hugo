@@ -35,6 +35,12 @@ Animation is performed via the following primitives:
 - 회전 - 세 개의 독립된 축을 중심으로 물체가 회전합니다.
 - 텍스처 이동 - 물체의 텍스처 좌표를 두 개의 독립된 방향으로 이동할 수 있습니다
 
+{{% warning-nontitle %}}
+
+If an animated object is used within a group, any distance based functions such as **CameraDistance** refer to the relative transformed center of the child object, not that of the parent object.
+
+{{% /warning-nontitle %}}
+
 ##### ● 약간의 형식
 
 파일은 임의로 인코딩된 일반 텍스트 파일이다. [인코딩]({{< ref "/information/encodings/_index.md" >}}), 하지만, UTF-8바이트 순서 표시를 선호한다. [파싱모델]({{< ref "/information/numberformats/_index.md" >}}) 숫자**Strict** 있다. 파일 이름, 하지만 연장 **.animated**이 있어야 한다는 자의적이야. 파일per-line 기초 위에 위에서 아래로 해석됩니다.
