@@ -35,6 +35,12 @@ ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他
 - 旋转变换 —— 在三个独立的轴（XYZ）上旋转物体
 - 材质偏移 —— 在两个独立的方向（UV）上移动对象的纹理坐标
 
+{{% warning-nontitle %}}
+
+If an animated object is used within a group, any distance based functions such as **CameraDistance** refer to the relative transformed center of the child object, not that of the parent object.
+
+{{% /warning-nontitle %}}
+
 ##### ● 一点点编码格式
 
 这个动画文件可以是任何 [编码格式]({{< ref "/information/encodings/_index.md" >}}) 的纯文本文件， 但是，使用带 BOM 的 UTF-8 编码是最佳的选择。 数字的 [解析格式]({{< ref "/information/numberformats/_index.md" >}}) 是 **严格** 的。文件名可以任意选择，但是扩展名必须为 **.animated** 。 这个文件是通过从上到下通过分析各行的描述来解析的。
