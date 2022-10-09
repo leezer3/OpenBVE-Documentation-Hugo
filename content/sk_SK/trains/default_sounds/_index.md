@@ -42,8 +42,8 @@ The following positions are used:
 
 {{% table %}}
 
-| File | Effect |
-| --- |--- |
+| File | Effect | Position | Sound Radius |
+| --- | --- | --- | --- |
 | air.wav | Played occasionally when the pressure in the brake cylinder is decreased from a non-high value to a non-zero value. | Center | 5.0m |
 | airhigh.wav | Played occasionally when the pressure in the brake cylinder is decreased from a high value. | Center | 5.0m |
 | airzero.wav | Played occasionally when the pressure in the brake cylinder is decreased to zero value. | Center | 5.0m |
