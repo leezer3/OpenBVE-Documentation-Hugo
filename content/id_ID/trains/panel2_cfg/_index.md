@@ -1017,6 +1017,7 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 | pilotLamp         | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
 | stationAdjustAlarm | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 | wiperPosition | The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) |
+| wheelSlip     | Whether the train is currently experiencing wheelsip. Returns 1 if true, 0 otherwise. |
 
 
 {{% /table %}}
@@ -1025,7 +1026,7 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | ats271 | Arti           |
+| *i*  | English             | 日本語       | Return values                                |      | ats271 | Meaning           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ------ | ----------------- |
 | 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0      | ATC not available |
 | 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1      | 0 km/h            |

@@ -1,5 +1,5 @@
 ---
-title: "Developing for openBVE"
+title: "Fejlesztés az openBVE-hez"
 linktitle: "Home"
 ---
 

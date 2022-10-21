@@ -35,6 +35,12 @@ ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他
 - 旋转变换 —— 在三个独立的轴（XYZ）上旋转物体
 - 材质偏移 —— 在两个独立的方向（UV）上移动对象的纹理坐标
 
+{{% warning-nontitle %}}
+
+If an animated object is used within a group, any distance based functions such as **CameraDistance** refer to the relative transformed center of the child object, not that of the parent object.
+
+{{% /warning-nontitle %}}
+
 ##### ● 一点点编码格式
 
 这个动画文件可以是任何 [编码格式]({{< ref "/information/encodings/_index.md" >}}) 的纯文本文件， 但是，使用带 BOM 的 UTF-8 编码是最佳的选择。 数字的 [解析格式]({{< ref "/information/numberformats/_index.md" >}}) 是 **严格** 的。文件名可以任意选择，但是扩展名必须为 **.animated** 。 这个文件是通过从上到下通过分析各行的描述来解析的。
@@ -186,28 +192,19 @@ ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他
 {{% /command %}}  
 这指定要播放的音效文件。
 
-{{% command %}}  
-**Position = X, Y, Z**  
-{{% /command %}}  
-指定声音源头所在的位置，相对于这个ANIMATED文件的原点。
+{{% command %}}**位置= X，Y，Z **{{% /command %}}定义声音相对于动画文件中心的位置。
 
-{{% command %}}  
-**Volume = 音量**  
-{{% /command %}}  
+{{% command %}}**数量=价值**{{% /command %}}
 
 指定音源的播放音量。 **1.0** 代表文件中原来的音量。
 
-{{% command %}}  
-**Pitch = Value**  
-{{% /command %}}  
+{{% command %}}**间距=值**{{% /command %}}
 
 指定音源处播放时的音调。 **1.0** 代表不改变原文件的音调。
 
-{{% command %}}  
-**Radius = 满音量半径**  
-{{% /command %}}  
+{{% command %}}**半径=值**{{% /command %}}
 
-这个声音在离音源这个半径的范围内满音量播放。默认的值是 **30** 。
+这定义了以音源为单位的半径以米为单位，声音在该半径处以最大音量播放。 默认值为** 30 **。
 
 {{% command %}}  
 **VolumeFunction = 式子**  
@@ -276,7 +273,7 @@ ANIMATED动画物件格式是一种容器格式，使你可以引用组合其他
 
 {{% warning %}}
 
-#### openBVE 2兼容性说明
+#### openBVE 2的未来兼容性说明
 
 在openBVE（v0.9）的开发过程中以及动画对象格式的开发过程中，存在以* RPN *结尾的某些命令，例如* TranslateXFunctionRPN *。 这些命令从未将其放入任何正式版本（v1.0）中，因此决不打算在开发环境之外使用。 尽管它们仍然可以无证地使用，但是它们将被openBVE 2删除。如果您正在使用这些命令，请尽快将其删除。
 

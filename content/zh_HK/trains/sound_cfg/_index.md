@@ -61,6 +61,10 @@ Assigns a run sound. The non-negative integer *Index* represents the type of run
 
 The sound is played at a pitch proportional to the speed. The recording should correspond to a speed of 90 km/h.
 
+**Position:** Center
+
+**Radius:** 10.0m
+
 ------
 
 ##### ● [Flange]
@@ -72,6 +76,10 @@ Assigns a flange sound. The non-negative integer *Index* represents the type of 
 
 The sound is played at a pitch proportional to the speed. The recording should correspond to a speed of 45 km/h.
 
+**Position:** Center
+
+**Radius:** 10.0m
+
 ------
 
 ##### ● [Motor]
@@ -80,6 +88,10 @@ The sound is played at a pitch proportional to the speed. The recording should c
 Index = *FileName*  
 {{% /command %}}  
 Assigns a motor sound. The non-negative integer *Index* represents the index of the motor sound that can be referenced in the #MOTOR\_*Xn* sections of the train.dat. Please see the documentation for the [train.dat]({{< ref "/trains/train_dat/_index.md" >}})  for more information.
+
+**Position:** Center
+
+**Radius:** 10.0m
 
 ------
 
@@ -90,6 +102,10 @@ Index = *FileName*
 {{% /command %}}  
 Assigns a switch sound- These are played once per axle when the train crosses a block containing pointwork. The non-negative integer *Index* represents the type of switch sound to use. Route developers can choose which flange sound to play for a given piece of track. Please see the page about [standards]({{< ref "/information/standards/_index.md" >}}) for further information. 
 
+**Position:** FrontAxle / RearAxle
+
+**Radius:** 5.0m
+
 ------
 
 ##### ● [Brake]
@@ -99,25 +115,54 @@ BC Release High = *FileName*
 {{% /command %}}  
 Played occasionally when the pressure in the brake cylinder is decreased from a high value.
 
+**Position:** Center
+
+**Radius:** 5.0m
+
 {{% command %}}   
 BC Release = *FileName*  
 {{% /command %}}  
 Played occasionally when the pressure in the brake cylinder is decreased from a non-high value to a non-zero value.
+
+**Position:** Center
+
+**Radius:** 5.0m
 
 {{% command %}}   
 BC Release Full = *FileName*  
 {{% /command %}}  
 Played occasionally when the pressure in the brake cylinder is decreased to zero value.
 
+**Position:** Center
+
+**Radius:** 5.0m
+
 {{% command %}}  
 Emergency = *FileName*  
 {{% /command %}}  
 Played once when the emergency brakes are activated.
 
+**Position:** Center
+
+**Radius:** 10.0m
+
+{{% command %}}  
+EmergencyRelease = *FileName*  
+{{% /command %}}  
+Played once when the emergency brakes are released.
+
+**Position:** Center
+
+**Radius:** 10.0m
+
 {{% command %}}  
 BP Decomp = *FileName*  
 {{% /command %}}  
 For trains with automatic air brake, is played when the handle is moved into the SRV or EMG position. For other trains, is played when the brake notch is decreased.
+
+**Position:** Center
+
+**Radius:** 5.0m
 
 ------
 
@@ -138,6 +183,10 @@ Release = *FileName*
 {{% /command %}}  
 Played once when the air compressor is deactivated.
 
+**Position:** Center
+
+**Radius:** 10.0m
+
 ------
 
 ##### ● [Suspension]
@@ -151,6 +200,10 @@ Played occasionally when the train sways to the left side.
 Right = *FileName*  
 {{% /command %}}  
 Played occasionally when the train sways to the right side.
+
+**Position:** Left / Right
+
+**Radius:** 5.0m
 
 ------
 
@@ -204,6 +257,10 @@ Music = *FileName*
 {{% /command %}}  
 Played in a continuous loop whilst the music horn is active.  
 
+**Position:** Front
+
+**Radius:** 10.0m for Music Horns, 30.0m for all other Horns
+
 ------
 
 ##### ● [Door]
@@ -228,6 +285,10 @@ Close Right = *FileName*
 {{% /command %}}  
 Played once when the right doors close.
 
+**Position:** Left / Right
+
+**Radius:** 5.0m
+
 {{% note %}}
 
 The duration of these sound files is used to determine the opening and closing speed of the doors.<br><br>
@@ -244,6 +305,10 @@ If a single sound is present, then both sets of doors will open / close in the d
 {{% /command %}}  
 Assigns a plugin sound. The non-negative integer *Index* represents the sound index. Train plugin developers can choose which sound to play. The assignment of sounds needs to be coordinated with the plugin developer.
 
+**Position:** Panel
+
+**Radius:** 2.0m
+
 ------
 
 ##### ● [Buzzer]
@@ -252,6 +317,10 @@ Assigns a plugin sound. The non-negative integer *Index* represents the sound in
 Correct = *FileName*   
 {{% /command %}}  
 Played once when the train stops at a station, but needs to correct its stop position.
+
+**Position:** Panel
+
+**Radius:** 2.0m
 
 ------
 
@@ -266,6 +335,10 @@ Played once as soon as the doors have closed and the train is ready for departur
 Off = *FileName*  
 {{% /command %}}  
 Played once as soon as the doors start to open.
+
+**Position:** Panel
+
+**Radius:** 2.0m
 
 ------
 
@@ -300,6 +373,10 @@ Played once when the brake notch is decreased to brake notch zero.
 Max = *FileName*  
 {{% /command %}}  
 Played once when the emergency brakes are applied.
+
+**Position:** Panel
+
+**Radius:** 2.0m
 
 {{% note %}}
 
@@ -342,6 +419,10 @@ Max = *FileName*
 {{% /command %}}  
 Played once when the power notch is increased to the maximum power notch.
 
+**Position:** Panel
+
+**Radius:** 2.0m
+
 {{% note %}}
 
 If the **UpFast** sound is not present, then the **Up** sound will be played instead.
@@ -363,6 +444,10 @@ Off = *FileName*
 {{% /command %}}  
 Played once when the reverser is moved into the neutral position.
 
+**Position:** Panel
+
+**Radius:** 2.0m
+
 ------
 
 ##### ● [Breaker]
@@ -376,6 +461,10 @@ Played once when power is resumed (was interrupted before). There is a series of
 Off = *FileName*  
 {{% /command %}}  
 Played once when power is interrupted or resumed. There is a series of circumstances when that can happen, for example when moving from power notch zero to power notch one, or vice versa, assuming the reverser is non-neutral and the brakes are released. The safety systems can also interrupt power.
+
+**Position:** Panel
+
+**Radius:** 5.0m
 
 ##### ● [Windscreen]
 
@@ -399,6 +488,10 @@ Switch = *FileName*
 {{% /command %}}  
 Played when the wiper switch is moved.
 
+**Position:** Panel
+
+**Radius:** 2.0m
+
 ------
 
 ##### ● [Others]
@@ -408,12 +501,24 @@ Noise = *FileName*
 {{% /command %}}  
 Played in a loop all the time for the duration of the simulation.
 
+**Position:** Center
+
+**Radius:** 10.0m
+
 {{% command %}}  
 Shoe = *FileName*  
 {{% /command %}}  
 Played in a loop when the brake shoe rubs against the wheels. The sound is played at a pitch inversely proportional to the speed, and the volume of the sound decreases with increasing speeds.
 
+**Position:** Center
+
+**Radius:** 10.0m
+
 {{% command %}}  
 Halt = *FileName*  
 {{% /command %}}  
 Played once or in a loop (depending on the train.dat setting) when the pass alarm system warns about an approaching station stop.
+
+**Position:** Panel
+
+**Radius:** 2.0m

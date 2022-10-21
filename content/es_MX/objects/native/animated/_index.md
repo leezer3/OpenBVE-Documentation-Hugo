@@ -35,6 +35,12 @@ La animación es realizada por las siguientes directrices:
 - Rotación - rotando objetos sobre los tres ejes independientes
 - Saltos de textura - habilitando el salto de coordenadas de textura en objetos en dos direcciones independientes
 
+{{% warning-nontitle %}}
+
+If an animated object is used within a group, any distance based functions such as **CameraDistance** refer to the relative transformed center of the child object, not that of the parent object.
+
+{{% /warning-nontitle %}}
+
 ##### ● Una pequeña formalidad
 
 El archivo es un texto plano codificado en cualquier arbitrario [codificación] ({{< ref "/information/encodings/_index.md" >}}), Sin embargo, UTF-8 con un byte de orden marca es la opción preferida. El [modelo de análisis]({{< ref "/information/numberformats/_index.md" >}}) para números es **Strict**. El nombre de archivo es arbitrario, pero debe tener la extensión **.animated**. El archivo es interpretado por cada linea, desde arriba hasta abajo.
@@ -186,7 +192,7 @@ Esto inicia la sección
 Esto añade el efecto de sonido a ser reproducido.
 
 {{% command %}}  
-**Posición = X, Y, Z**  
+**Position = X, Y, Z**  
 {{% /command %}}  
 Esto define la posición del sonido, relativo al centro del archivo animated.
 

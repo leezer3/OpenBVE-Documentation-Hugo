@@ -35,6 +35,12 @@ Animation is performed via the following primitives:
 - Rotation - rotating objects around three independent axes
 - Texture shifts - allowing to shift the texture coordinates of objects in two independent directions
 
+{{% warning-nontitle %}}
+
+If an animated object is used within a group, any distance based functions such as **CameraDistance** refer to the relative transformed center of the child object, not that of the parent object.
+
+{{% /warning-nontitle %}}
+
 ##### ● A little formality
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Strict**. The file name is arbitrary, but must have the extension **.animated**. The file is interpreted on a per-line basis, from top to bottom.
