@@ -1026,24 +1026,24 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | ats271 | Meaning           |
+| *i*  | Español             | 日本語 - Japonés       | Valores de retorno                                |      | ats271 | Significado           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ------ | ----------------- |
-| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0      | ATC not available |
-| 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1      | 0 km/h            |
-| 258  | ATS RUN             | ATS 作動     | 0 (unlit / non-flashing), 1 (lit / flashing) |      | 2      | 15 km/h           |
-| 259  | P POWER             | P 電源       | 0 (unlit) or 1 (lit)                         |      | 3      | 25 km/h           |
-| 260  | PTN APPROACH        | パターン接近 | 0 (unlit) or 1 (lit)                         |      | 4      | 45 km/h           |
-| 261  | BRAKE RELEASE       | ブレーキ開放 | 0 (unlit) or 1 (lit)                         |      | 5      | 55 km/h           |
-| 262  | BRAKE APPLY         | ブレーキ動作 | 0 (unlit) or 1 (lit)                         |      | 6      | 65 km/h           |
-| 263  | ATS P               | ATS-P        | 0 (unlit) or 1 (lit)                         |      | 7      | 75 km/h           |
-| 264  | FAILURE             | 故障         | 0 (unlit) or 1 (lit)                         |      | 8      | 90 km/h           |
-| 265  | ATC                 | ATC          | 0 (unlit) or 1 (lit)                         |      | 9      | 100 km/h          |
-| 266  | ATC POWER           | ATC 電源     | 0 (unlit) or 1 (lit)                         |      | 10     | 110 km/h          |
-| 267  | ATC SRV             | ATC 常用     | 0 (unlit) or 1 (lit)                         |      | 11     | 120 km/h          |
-| 268  | ATC EMG             | ATC 非常     | 0 (unlit) or 1 (lit)                         |      | 12     | ATS is active     |
-| 269  | CONST SPEED         | 定速         | 0 (unlit) or 1 (lit)                         |      |        |                   |
-| 270  | EB                  | EB           | 0 (unlit) or 1 (lit)                         |      |        |                   |
-| 271  | ATC speed indicator |              | 0 - 12, see table on the right               |      |        |                   |
+| 256  | ATS                 | ATS          | 0 (apagado) o 1 (encendido)                         |      | 0      | ATC no disponible |
+| 257  | ATS RUN             | ATS 作動     | 0 (apagado), 1 (encendido) o 2 (parpadeando)           |      | 1      | 0 km/h            |
+| 258  | ATS RUN             | ATS 作動     | 0 (apagado / sin parpadear), 1 (encendido / parpadeando) |      | 2      | 15 km/h           |
+| 259  | P POWER             | P 電源       | 0 (apagado) o 1 (encendido)                         |      | 3      | 25 km/h           |
+| 260  | PTN APPROACH        | パターン接近 | 0 (apagado) o 1 (encendido)                         |      | 4      | 45 km/h           |
+| 261  | FRENO LIBERADO       | ブレーキ開放 | 0 (apagado) o 1 (encendido)                         |      | 5      | 55 km/h           |
+| 262  | FRENO APLICADO         | ブレーキ動作 | 0 (apagado) o 1 (encendido)                         |      | 6      | 65 km/h           |
+| 263  | ATS P               | ATS-P        | 0 (apagado) o 1 (encendido)                         |      | 7      | 75 km/h           |
+| 264  | FALLA             | 故障         | 0 (apagado) o 1 (encendido)                         |      | 8      | 90 km/h           |
+| 265  | ATC                 | ATC          | 0 (apagado) o 1 (encendido)                         |      | 9      | 100 km/h          |
+| 266  | ATC ENCENDIDO           | ATC 電源     | 0 (apagado) o 1 (encendido)                         |      | 10     | 110 km/h          |
+| 267  | ATC SERVICIO             | ATC 常用     | 0 (apagado) o 1 (encendido)                         |      | 11     | 120 km/h          |
+| 268  | ATC EMERGENCIA             | ATC 非常     | 0 (apagado) o 1 (encendido)                         |      | 12     | ATS esta activo     |
+| 269  | VELOCIDAD CONSTANTE         | 定速         | 0 (apagado) o 1 (encendido)                         |      |        |                   |
+| 270  | EB                  | EB           | 0 (apagado) o 1 (encendido)                         |      |        |                   |
+| 271  | Indicador de velocidad del ATC |              | 0 - 12, ver tabla a la derecha               |      |        |                   |
 
 {{% /table %}}
 
@@ -1051,7 +1051,7 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% table %}}
 
-| Subject suffix | Description                                                  |
+| Subject suffix | Descripción                                                  |
 | -------------- | ------------------------------------------------------------ |
 | d*i*           | With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10. |
 
