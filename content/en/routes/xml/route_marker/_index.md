@@ -161,3 +161,15 @@ Defines the list of trains for which this marker will show.
 {{% /command %}}
 
 **RelativePath** is the relative on-disk path to the marker image.
+
+{{% command %}}  
+**\<Size>** *MarkerSize* **\</Size>**  
+{{% /command %}}
+
+**MarkerSize** is a comma separated Vector2, controlling the rendered size in pixels of the marker on-scren.
+
+{{% note %}}
+
+If this is not set or is invalid, the rendered size of the marker will be the dimensions of the texture.
+
+{{% /note %}}
