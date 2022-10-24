@@ -1018,6 +1018,8 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 | stationAdjustAlarm | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 | wiperPosition | The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) |
 | wheelSlip     | Whether the train is currently experiencing wheelsip. Returns 1 if true, 0 otherwise. |
+| sanders       | Whether the sanders are currently active. Returns 1 if true, 0 otherwise. |
+| sandLevel     | Returns the current sand level. |
 
 
 {{% /table %}}
