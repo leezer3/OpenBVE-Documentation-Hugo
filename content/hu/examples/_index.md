@@ -1,5 +1,5 @@
 ---
-title: "Further Examples"
+title: "További példák"
 weight: 8
 layout: "hidden"
 ---
