@@ -72,6 +72,20 @@ A child-node must be of the following format:
 
 **Descriptions** should be a comma-separated list, equal to the number of notches the train has for the subject.
 
+The entries for this list must be placed in order from low to high. 
+
+For an example brake handle with EB, hold brake and 8 notches, the following would be used:
+
+{{% function "_Example Brake Handle NotchDescriptions:_" %}}  
+\<NotchDescriptions>EB,8,7,6,5,4,3,1,HLD,N\</NotchDescriptions>  
+{{% /function %}}
+
+For an example power handle with 8 notches, the following would be used:
+
+{{% function "_Example Power Handle NotchDescriptions:_" %}}  
+\<NotchDescriptions>N,1,2,3,4,5,6,7,8\</NotchDescriptions>  
+{{% /function %}}
+
 ## <a name="car"></a>■ 3. The Car section
 
 {{% note %}}
