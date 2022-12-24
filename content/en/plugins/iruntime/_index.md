@@ -643,6 +643,12 @@ Please note that depending on the implementation by the host application, sounds
 
 Please also note that the handle returned might be a null reference in the case the host application could not play the sound, for example because the file could not be found.
 
+{{% warning-nontitle %}}
+
+Only one distinct copy of any given sound index may be playing at any given time. If you require two copies of a sound playing (for example on different cars), then two sound indicies must be used.
+
+{{% /warning-nontitle %}}
+
 ## <a name="ai"></a>■ Supporting the AI
 
 Usually, the host application performs the AI. However, your plugin might require special operation precedures which the built-in AI cannot know of. For this reason, you can complement the built-in AI by performing operation procedures specific to your plugin. Before considering to support the AI, however, you should understand what the AI is intended to represent: a human being standing or sitting in the cab, operating levers and pressing buttons, just like the player. This means that the AI must not operate 6 levers and 12 buttons simultaneously, but only do one thing at a time.
