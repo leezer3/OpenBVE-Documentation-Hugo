@@ -70,20 +70,32 @@ A child-node must be of the following format:
 **\<Subject>** *Descriptions* **\</Subject>**  
 {{% /command %}}
 
-**Descriptions** should be a comma-separated list, equal to the number of notches the train has for the subject.
+**Descriptions** should be a comma or semi-colon separated list, equal to the number of notches the train has for the subject.
 
 The entries for this list must be placed in order from low to high. 
 
-For an example brake handle with EB, hold brake and 8 notches, the following would be used:
+For an example brake or locomotive brake handle with EB, hold brake and 8 notches, the following would be used:
 
 {{% function "_Example Brake Handle NotchDescriptions:_" %}}  
-\<NotchDescriptions>EB,8,7,6,5,4,3,1,HLD,N\</NotchDescriptions>  
+\<NotchDescriptions>EB,HLD,N,1,2,3,4,5,6,7,8\</NotchDescriptions>  
+{{% /function %}}
+
+A train using the automatic air-brake has a total of three notches, e.g:
+
+{{% function "_Example Brake Handle NotchDescriptions:_" %}}  
+\<NotchDescriptions>EB,REL,LAP,SRV\</NotchDescriptions>  
 {{% /function %}}
 
 For an example power handle with 8 notches, the following would be used:
 
 {{% function "_Example Power Handle NotchDescriptions:_" %}}  
 \<NotchDescriptions>N,1,2,3,4,5,6,7,8\</NotchDescriptions>  
+{{% /function %}}
+
+The reverser must be in the order Neutral, Forwards, Reverse:
+
+{{% function "_Example Reverser Handle NotchDescriptions:_" %}}  
+\<NotchDescriptions>N,F,R\</NotchDescriptions>  
 {{% /function %}}
 
 ## <a name="car"></a>■ 3. The Car section
