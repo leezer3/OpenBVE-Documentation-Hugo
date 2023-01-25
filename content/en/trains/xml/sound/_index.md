@@ -22,6 +22,7 @@ weight: 1
 - [14. Motor Sounds](#motor)
 - [15. Breaker Sounds](#breaker)
 - [16. Windscreen Related Sounds](#windscreen)
+- [17. Sanders Related Sounds](#sanders)
 - [17. Miscellaneous Sounds](#misc)
 
 {{% /contents %}}
@@ -211,7 +212,23 @@ The **\<DryWipe>** child-node, containing the sound played when the wiper moves 
 
 The **\<Switch>** child-node, containing the sound played when wiper switch is moved.
 
-## <a name="misc"></a>■ 17. Miscellaneous Sounds
+## <a name="sanders"></a>■ 17. Sanders Related Sounds
+
+The **\<Sanders>** node defines the sounds relating to the train's sanders. 
+
+This node supports the following child nodes:
+
+The **\<Activate>** child-node, containing the sound played when the sanders are activated with sand remaining.
+
+The **\<EmptyActivate>** child-node, containing the sound played when the sanders are activated with no sand remaining.
+
+The **\<DeActivate>** child-node, containing the sound played when the sanders are deactivated.
+
+The **\<Loop>** child-node, containing the sound played in a loop whilst the sanders are active.
+
+The **\<Empty>** child-node, containing the sound played once when the sander have no sand remaining.
+
+## <a name="misc"></a>■ 18. Miscellaneous Sounds
 
 The **\<Loop>** node defines a sound to be played in a continuous loop throughout the simulation.
 

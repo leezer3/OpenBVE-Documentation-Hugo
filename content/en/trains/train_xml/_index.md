@@ -16,6 +16,7 @@ This page is still under construction.
 - [3.1. The Power section](#power)
 - [3.2. The Brake section](#brake)
 - [3.3. The Doors section](#doors)
+- [3.4. The Sanders section](#sanders)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
@@ -516,6 +517,68 @@ See the **sound.cfg** documentation for further details.
 {{% /command %}}
 
 **DoorTolerance** should be a positive number, setting a tolerance in meters before the door is considered to be closed.
+
+## <a name="sanders"></a>■ 3.4. The Sanders section
+
+The **\<Sanders>** section specifies the properties of the sanders fitted to this car, and supports the following properties:
+
+{{% command %}}  
+**Type** *Type*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: The type of sanders fitted to this car (if any).
+{{% /command-arguments %}}
+
+▸ Available options for *Type*:
+
+{{% command-arguments %}}  
+**NotFitted**: No sanding mechanism is fitted.  
+**PressAndHold**: The sanders are applied whilst the **Sanders** key is held and sufficient sand is available.  
+**Toggle**: The **Sanders** key toggles the sanders on and off.
+**NumberOfShots**: N shots of sand are available, which are applied when the **Sanders** key is pressed.
+**Automatic**: The sanders are automatically activated when wheelslip is detected and sufficient sand is present.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**Rate** *SandingRate*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***SandingRate***: The rate at which sand is applied per second.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**SandLevel** *Level*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Level***: The initial starting level of sand, if not in shot mode.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**NumberOfShots** *Shots*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Shots***: The number of sand shots available.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**ApplicationTime** *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: When in shots mode, sets the duration of a sand shot in seconds.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**ActivationTime** *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: When in automatic mode, the amount of time before the system reacts and applies sand.
+{{% /command-arguments %}}
 
 ## <a name="coupler"></a>■ 4. The Coupler section
 
