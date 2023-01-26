@@ -412,6 +412,7 @@ This command can be used to specify the length of a block. This is an overall se
 {{% command-arguments %}}  
 **0**: Legacy: An object is made invisible as soon as the end of the block which it resides in has been passed by the camera. This does not work well when turning the camera around. Self-intersecting track (e.g. loops) is not possible.  
 **1**: Track-based: An object is made invisible as soon as its end has been passed by the camera. This is measured in track positions. Self-intersecting track (e.g. loops) is not possible.  
+**2**: Quad-Tree: A tile based quad teee is used to determine visibility. Self-intersecting track (e.g. loops) are possible, but care should be taken when using track-distance based animations.
 {{% /command-arguments %}}
 
 ---
