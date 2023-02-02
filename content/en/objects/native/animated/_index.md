@@ -165,6 +165,13 @@ These define the functions to shift the texture in the respective direction. The
 This defines the function which moves an object along the path of **Rail 0**. *Formula* must return a distance in meters, for which the object is then moved, respecting the curves and height changes of **Rail 0**.
 
 {{% command %}}  
+**ScaleXFunction = Formula**
+**ScaleYFunction = Formula**
+**ScaleZFunction = Formula**
+{{% /command %}}  
+These define the functions to scale the object in the respective axis. The original size of the object is represented by a nomimal **1.0** in each axis.
+
+{{% command %}}  
 **TextureOverride = Value**  
 {{% /command %}}  
 *Value* = **Timetable**: All faces will show the timetable bitmap as set up by CSV/RW routes.  
