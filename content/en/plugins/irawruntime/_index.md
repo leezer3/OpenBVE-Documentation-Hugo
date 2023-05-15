@@ -17,6 +17,7 @@ This interface is currently experimental / unstable, and subject to breaking cha
 
 - [1. Overview](#overview)
 - [2. Function calls](#functions)
+- [3. Additional ElapseData Members](#elapse)
 
 {{% /contents %}}
 
@@ -72,3 +73,15 @@ Arguments:
 |     |               |                                                   |
 
 {{% /table-nonheader %}}
+
+## <a name="elapse"></a>■ Additional ElapseData Members
+
+IRawInput also adds the following useful **ElapseData** members:
+
+Arguments:  
+
+{{% table-nonheader %}}
+
+| BlockingInput | boolean  | Whether the plugin is blocking input- This should be set when taking custom keyboard input to avoid triggering controls. |
+| ------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+|               |          |                                                                                                                          |
