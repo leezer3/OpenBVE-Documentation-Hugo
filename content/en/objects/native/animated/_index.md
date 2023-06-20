@@ -480,7 +480,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% /table-2col %}}
 
-##### ● Time and camera
+##### ● Time, weather and camera
 
 {{% table-2col %}}
 
@@ -495,6 +495,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | `cameraYDistance` | The non-negative cartesian distance measured on the Y axis from the object to the camera in meters |
 | `cameraZDistance` | The non-negative cartesian distance measured on the Z axis from the object to the camera in meters |
 | `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
+| `ambientTemperature` | Returns the ambient temperature in degrees Kelvin. |
 
 {{% /table-2col %}}
 
