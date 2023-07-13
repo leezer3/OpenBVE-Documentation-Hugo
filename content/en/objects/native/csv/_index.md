@@ -22,13 +22,14 @@ weight: 2
   - [Rotate, RotateAll](#rotate)
   - [Shear, ShearAll](#shear)
   - [Mirror, MirrorAll](#mirror)
-  - [SetColor](#setcolor)
-  - [SetEmissiveColor](#setemissivecolor)
+  - [SetColor, SetColorAll](#setcolor)
+  - [SetEmissiveColor, SetEmissiveColorAll](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
   - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
-  - [SetCoordinates](#settexturecoordinates)
+  - [EnableCrossfading](#enablecrossfading)
+  - [SetTextureCoordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
