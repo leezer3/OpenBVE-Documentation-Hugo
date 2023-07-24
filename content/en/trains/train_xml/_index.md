@@ -225,6 +225,14 @@ This defines the acceleration curves and the power handle fitted to the car, and
 
 ### 3.1.1. Acceleration Curves
 
+{{% warning-nontitle %}}
+
+In the **train.dat** acceleration curve figures are given for the train as a whole, and an internal calculation is performed to produce the per-car acceleration figures.
+<br><br>
+However, in **train.xml** acceleration curve figures apply to the current car only.
+
+{{% /warning-nontitle %}}
+
 The **\<AccelerationCurves>** child node should contain a list of acceleration curve nodes. These must be in ascending order, and should correspond to the number of power notches the train has.
 
 Currently, the only supported acceleration curve node is the **\<OpenBVE>** node, supporting the following properties (as per a **train.dat** acceleration curve):
