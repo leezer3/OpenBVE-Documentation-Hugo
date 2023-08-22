@@ -618,6 +618,12 @@ The coupler object is not deformed when the coupler stretches / compresses.
 
 {{% /note %}}
 
+{{% command %}}  
+**\<CanUncouple>** *Boolean* **\</CanUncouple>**  
+{{% /command %}}
+
+**Boolean** should be a boolean true / false value, determining whether this coupler may be uncoupled by the player.
+
 ## <a name="misc"></a>■ 5. Miscellaneous Properties
 
 {{% command %}}  

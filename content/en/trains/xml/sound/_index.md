@@ -228,7 +228,15 @@ The **\<Loop>** child-node, containing the sound played in a loop whilst the san
 
 The **\<Empty>** child-node, containing the sound played once when the sander have no sand remaining.
 
-## <a name="misc"></a>■ 18. Miscellaneous Sounds
+## <a name="sanders"></a>■ 18. Coupler Related Sounds
+
+The **\<Coupler>** node defines the sounds relating to the train's couplers.
+
+This node supports the following child nodes:
+
+The **\<Uncouple>** child-node, containing the sound played when a coupler is uncoupled.
+
+## <a name="misc"></a>■ 19. Miscellaneous Sounds
 
 The **\<Loop>** node defines a sound to be played in a continuous loop throughout the simulation.
 
