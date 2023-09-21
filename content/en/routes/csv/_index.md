@@ -1885,10 +1885,12 @@ With Track
 **R**: The specified FormR, FormCR and RoofR objects are placed without deformation.  
 {{% /command-arguments %}}
 
-**Note:**
+**Notes:**
 If *RailIndex<sub>1</sub>* is to the **left** of *RailIndex<sub>2</sub>* (e.g. it's X-cordinate is smaller), then the objects defined in Structure.FormL, Structure.FormCL and Structure.RoofL will be used.  
 Otherwise, the objects defined in Structure.FormR, Structure.FormCL and Structure.RoofR will be used.
 
+
+**Structure.Roof** should be set to zero if you wish to have no roof. This cannot have an object defined for it.
 
 ##### <a name="track_signalling"></a>● 11.5. Signalling and speed limits
 
