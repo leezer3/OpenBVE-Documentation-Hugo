@@ -17,6 +17,7 @@ This page is still under construction.
 - [3.2. The Brake section](#brake)
 - [3.3. The Doors section](#doors)
 - [3.4. The Sanders section](#sanders)
+- [3.4. The Windscreen section](#windscreen)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
@@ -586,6 +587,72 @@ The **\<Sanders>** section specifies the properties of the sanders fitted to thi
 
 {{% command-arguments %}}  
 ***Time***: When in automatic mode, the amount of time before the system reacts and applies sand.
+{{% /command-arguments %}}
+
+## <a name="windscreen"></a>■ 3.5. The Windscreen section
+
+The **\<Windscreen>** section specifies the properties of the windscreen, and should be used if you wish to animated a windscreen on a 3D cab using the inbuilt functionality. It supports the following properties:
+
+{{% command %}}  
+**NumberOfDrops* *Drops*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Drops***: The total number of drops on the windscreen.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**WipeSpeed* *Speed*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Speed***: The time in seconds for the wipers to make a single sweep of the windscreen.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**HoldTime* *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The time in seconds for the wipers to hold at the hold position during a sweep.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**DropLife* *Life*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Life***: The life in seconds before a drop is eligible to be recycled when all drops are visible.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**RestPosition* *Position*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Position**: The rest position for the wipers.
+{{% /command-arguments %}}
+
+▸ Available options for *Position*:
+
+{{% command-arguments %}}  
+**Left**: The wipers rest at the left of the screen when off.  
+**Right**: The wipers rest at the right of the screen when off.  
+{{% /command-arguments %}}
+
+{{% command %}}  
+**HoldPosition* *Position*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Position**: The hold position for the wipers.
+{{% /command-arguments %}}
+
+▸ Available options for *Position*:
+
+{{% command-arguments %}}  
+**Left**: The wipers hold on the left of the screen for *HoldTime* during their sweep.  
+**Right**: The wipers hold on the right of the screen for *HoldTime* during their sweep.  
 {{% /command-arguments %}}
 
 ## <a name="coupler"></a>■ 4. The Coupler section
