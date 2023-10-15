@@ -434,8 +434,8 @@ Please also note that some combinations of prefix and infix operators are not re
 | `Floor[x]`                    | Rounds down to the nearest integer.                          |
 | `Ceiling[x]`                  | Rounds up to the nearest integer.                            |
 | `Round[x]`                    | Rounds to the nearest integer. Numbers ending in .5 are rounded to the nearest even integer. |
-| `random[Minimum, Maximum]`    | Returns a new random floating-point number between *Minimum* and *Maximum*. |
-| `randomInt[Minimum, Maximum]` | Returns a new random integer between *Minimum* and *Maximum*. |
+| `random[Minimum, Maximum, Mode]`    | Returns a new random floating-point number between *Minimum* and *Maximum*. *Mode* is an optional parameter which may be set to **1** to generate a fixed value at the start of the simulation. |
+| `randomInt[Minimum, Maximum, Mode]` | Returns a new random integer between *Minimum* and *Maximum*. *Mode* is an optional parameter which may be set to **1** to generate a fixed value at the start of the simulation. |
 
 {{% /table-2col %}}
 
