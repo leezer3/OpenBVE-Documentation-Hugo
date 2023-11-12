@@ -631,6 +631,22 @@ A non-negative integer indicating how many locomotive brake notches are availabl
 
 ------
 
+{{% command %}}  
+*DriverPowerNotches*  
+{{% /command %}}
+
+A non-negative integer indicating how many power notches are available to the driver.
+
+------
+
+{{% command %}}  
+*DriverBrakeNotches*  
+{{% /command %}}
+
+A non-negative integer indicating how many brake notches are available to the driver.
+
+------
+
 {{% code "*Example of a Handle section:*" %}}  
 #HANDLE  
 0  
