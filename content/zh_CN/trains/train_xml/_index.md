@@ -38,7 +38,7 @@ Whilst this is a change for some parameters from the legacy BVE formats, it mean
 
 ## <a name="train"></a>■ 2. The Train section
 
-Whether using child car files, or a single file, the first node in each **train.xml** file must be the **<Train>** node.
+Whether using child car files, or a single file, the first node in each **train.xml** file must be the **\<Train\>** node.
 
 This supports the following properties:
 
