@@ -276,7 +276,7 @@ The **\<Handle>** node specifies properties for the power handle, and supports t
 **NumberOfNotches** should be a positive integer, setting the number of power notches.
 
 {{% command %}}  
-**SpringType** *Type*  
+**\<SpringType>** *Type* **\</SpringType>** 
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -439,7 +439,7 @@ The **\<Handle>** node specifies properties for the brake handle, and supports t
 **NumberOfNotches** should be a positive integer, setting the number of power notches.
 
 {{% command %}}  
-**SpringType** *Type*  
+**\<SpringType>** *Type* **\</SpringType>** 
 {{% /command %}}
 
 {{% command-arguments %}}  
