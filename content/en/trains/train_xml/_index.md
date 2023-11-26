@@ -147,6 +147,12 @@ A child-node must be of the following format:
 **HeightInMeters** should be the length of the car in meters.
 
 {{% command %}}  
+**\<CenterOfGravityHeight>** *CenterOfGravityInMeters* **\</CenterOfGravityHeight>**  
+{{% /command %}}
+
+**CenterOfGravityInMeters** should be the height above the rails in meters at which the center of mass is located.
+
+{{% command %}}  
 **\<Mass>** *EmptyMass* **\</EmptyMass>**  
 {{% /command %}}
 
