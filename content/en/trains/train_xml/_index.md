@@ -153,6 +153,18 @@ A child-node must be of the following format:
 **CenterOfGravityInMeters** should be the height above the rails in meters at which the center of mass is located.
 
 {{% command %}}  
+**\<ExposedFrontalArea>** *Area* **\</ExposedFrontalArea>**  
+{{% /command %}}
+
+**Area** should be a positive floating-point number measured in square meters (m²) indicating the frontal area of a car when it is fully exposed to resisting air, for example when the car is the front car in the current nominal direction of travel. 
+
+{{% command %}}  
+**\<UnexposedFrontalArea>** *Area* **\</UnexposedFrontalArea>**  
+{{% /command %}}
+
+**Area** should be a positive floating-point number measured in square meters (m²) indicating the frontal area of a car when it is fully not exposed to resisting air, namely any car in the train other than the front car.
+
+{{% command %}}  
 **\<Mass>** *EmptyMass* **\</EmptyMass>**  
 {{% /command %}}
 
