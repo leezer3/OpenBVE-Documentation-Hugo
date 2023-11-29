@@ -643,13 +643,13 @@ Please note that depending on the implementation by the host application, sounds
 
 Please also note that the handle returned might be a null reference in the case the host application could not play the sound, for example because the file could not be found.
 
-## <a name="ai"></a>■ Supporting the AI
+<a name="ai"></a>■ Supporting the AI
 
 Usually, the host application performs the AI. However, your plugin might require special operation precedures which the built-in AI cannot know of. For this reason, you can complement the built-in AI by performing operation procedures specific to your plugin. Before considering to support the AI, however, you should understand what the AI is intended to represent: a human being standing or sitting in the cab, operating levers and pressing buttons, just like the player. This means that the AI must not operate 6 levers and 12 buttons simultaneously, but only do one thing at a time.
 
 If you want to support the AI, first set *data.AISupport* inside the Load call to *AISupport.Basic*. Whenever the host application performs an AI round, a call to PerformAI will then be made inside the plugin. The plugin can then decide to let the AI perform an action, or to pass and let the host application perform an action. Different kinds of actions can take different amounts of time, so whenever the plugin lets the AI perform an action, it will also set the time it takes before the next action can be performed.
 
-It is important to understand that unless your plugin also simulates a full ATO with automatic stopping at stations, you must let the host application perform the AI for most of the time and only intervene if absolutely necessary, for example in order to start the engine, to acknowledge a vigilance device, etc. Whenever this is the case, react to the PerformAI call appropriately:
+## It is important to understand that unless your plugin also simulates a full ATO with automatic stopping at stations, you must let the host application perform the AI for most of the time and only intervene if absolutely necessary, for example in order to start the engine, to acknowledge a vigilance device, etc. Whenever this is the case, react to the PerformAI call appropriately:
 
 **void PerformAI(AIData data)**
 
@@ -657,53 +657,85 @@ Argumentos:
 
 {{% table-nonheader %}}
 
-| AIData | data | The AI data. |
+AIData
+
+data
+
+The AI data.
+
+| {{% /table-nonheader %}} | AIData (class): | {{% table-nonheader %}} |
 | ------ | ---- | ------------ |
 |        |      |              |
 
-{{% /table-nonheader %}}
+Handles
 
-AIData (class):
+Handles
 
-{{% table-nonheader %}}
+Gets or sets the driver handles.
 
-| Handles    | Handles  | Gets or sets the driver handles. |
+| AIResponse    | Response  | Gets or sets the AI response. |
 | ---------- | -------- | -------------------------------- |
-| AIResponse | Response | Gets or sets the AI response.    |
+| {{% /table-nonheader %}} | Handles (class): | {{% table-nonheader %}}    |
 
-{{% /table-nonheader %}}
+int
 
-Handles (class):
+Reverser
 
-{{% table-nonheader %}}
+Gets or sets the reverser position.
 
-| int  | Reverser   | Gets or sets the reverser position.                     |
+| int  | PowerNotch   | Gets or sets the power notch.                     |
 | ---- | ---------- | ------------------------------------------------------- |
-| int  | PowerNotch | Gets or sets the power notch.                           |
 | int  | BrakeNotch | Gets or sets the brake notch.                           |
-| bool | ConstSpeed | Gets or sets whether the const speed system is enabled. |
-
-{{% /table-nonheader %}}
-
-The meanings of the notches are explained in the sections on SetReverser, SetPower and SetBrake.
-
-AIResponse (enumeration):
+| bool  | ConstSpeed | Gets or sets whether the const speed system is enabled.                           |
+| {{% /table-nonheader %}} | The meanings of the notches are explained in the sections on SetReverser, SetPower and SetBrake. | AIResponse (enumeration): |
 
 {{% table-nonheader %}}
 
-| AIResponse.None   | No action was performed by the plugin.               |
+AIResponse.None
+
+No action was performed by the plugin.
+
+AIResponse.Short
+
+| The action performed took a short time.   | AIResponse.Medium               |
 | ----------------- | ---------------------------------------------------- |
-| AIResponse.Short  | The action performed took a short time.              |
-| AIResponse.Medium | The action performed took an average amount of time. |
-| AIResponse.Long   | The action performed took a long time.               |
-
-{{% /table-nonheader %}}
-
-You can directly control the driver handles with the *data.Handles* member, for example if you want to cut power or apply a certain brake notch. For plugin-specific actions, you should only simulate key presses, for example by calling KeyDown or KeyUp. This will prevent you from letting the AI cheat in any way. If you let the AI operate the handles, you should only change by one notch at a time with a short response time.
-
-If you decide to let the AI do something, you must set the *data.Response* member to a meaningful value. For operating the handles, best use a short response time, while for other actions like turning a switch not directly accessible, use a long response time. Note that the actual timings are at the whim of the host application.
+| The action performed took an average amount of time.  | AIResponse.Long              |
+| The action performed took a long time. | {{% /table-nonheader %}} |
+| You can directly control the driver handles with the *data.Handles* member, for example if you want to cut power or apply a certain brake notch. For plugin-specific actions, you should only simulate key presses, for example by calling KeyDown or KeyUp. This will prevent you from letting the AI cheat in any way. If you let the AI operate the handles, you should only change by one notch at a time with a short response time.   | If you decide to let the AI do something, you must set the *data.Response* member to a meaningful value. For operating the handles, best use a short response time, while for other actions like turning a switch not directly accessible, use a long response time. Note that the actual timings are at the whim of the host application.               |
 
 Example:
+
+{{% code %}}
+
+```
+if (AtsAlarm) {  
+  /* The driver needs to cut power and apply the brakes,  
+  * then press the virtual S key.*/  
+  if (data.Handles.PowerNotch > 0) {  
+    /* We change only by one notch at a time. */  
+    data.Handles.PowerNotch -= 1;  
+    data.Response = AIResponse.Short;  
+  } else if (data.Handles.BrakeNotch < 2) {  
+    /* We change only by one notch at a time. */  
+    data.Handles.BrakeNotch += 1;  
+    data.Response = AIResponse.Short;  
+} else {  
+    /* We simulate a key press here. */  
+    KeyDown(VirtualKeys.S);  
+    data.Response = AIResponse.Medium;  
+  }  
+} else if (AtoActive) {  
+  /* Our ATO does not require driver interaction, so  
+  * let's prevent the built-in AI from doing anything. */  
+  data.Response = AIResponse.Long;  
+} else {  
+  /* Let the host application perform a default action  
+  * such as braking for signals or stations. */  
+  data.Response = AIResponse.None;  
+}
+```
+
+{{% /code %}}
 
 {{% code %}}
 
