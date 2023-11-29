@@ -17,7 +17,8 @@ weight: 5
 - [7. The DigitalGauge section](#digitalgauge)
 - [8. The LinearGauge section](#lineargauge)
 - [9. The Timetable section](#timetable)
-- [10. Available subjects](#subjects)
+- [10. The Windscreen section](#windscreen)
+- [11. Available subjects](#subjects)
 
 {{% /contents %}}
 
@@ -47,7 +48,7 @@ For all elements that take a texture, you can specify distinct daytime and night
 
 ➟ [See also the quick reference for the panel2.cfg...]({{< ref "/trains/panel2_cfg_quick/_index.md" >}})
 
-{{% notice %}}
+Default versus simplified section behavior
 
 #### Overlay dan Pencahayaan
 
@@ -335,7 +336,9 @@ DaytimeImage = *FileName*
 ***FileName***: The image file to use as the daytime version of the needle image, relative to the train folder. ***Is required to be specified.***  
 {{% /command-arguments %}}
 
-------
+{{% command %}}  
+**Track.TextMarker** *Text*; *<font color="green">Distance</font>*; *FontColor*  
+{{% /command %}}
 
 {{% command %}}  
 NighttimeImage = *FileName*  
@@ -1009,15 +1012,17 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 | sap               | Returns the pressure of the straight air pipe in kPa (1000 Pa). |
 | sec               | Returns the integer part of the current second.              |
 | true              | Always returns 1. This is useful for the *PilotLamp* element in order to always show the associated bitmap. |
-| Klaxon            | Returns the currently playing horn (if any) as follows: (0) No horns are playing (1) The primary horn is playing (2) The secondary horn is playing (3) The music horn is playing. *Note* If multiple horns are playing, the lowest value will be returned. |
-| PrimaryKlaxon     | Returns 1 if the primary horn is currently playing, 0 otherwise. |
-| SecondaryKlaxon   | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
-| MusicKlaxon       | Returns 1 if the music horn is currently playing, 0 otherwise. |
-| passAlarm         | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
-| pilotLamp         | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
-| stationAdjustAlarm | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+| Klaxon            | `MusicKlaxon` |
+| PrimaryKlaxon     | `passAlarm` |
+| SecondaryKlaxon   | `stationAdjustAlarm` |
+| MusicKlaxon       | {{% /table-2col %}} |
+| passAlarm         | {{% table %}} |
+| pilotLamp         | Description |
+| stationAdjustAlarm | English |
 | wiperPosition | The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) |
 | wheelSlip     | Whether the train is currently experiencing wheelsip. Returns 1 if true, 0 otherwise. |
+| sanders       | Whether the sanders are currently active. Returns 1 if true, 0 otherwise. |
+| sandLevel     | Returns the current sand level. |
 
 
 {{% /table %}}
@@ -1026,24 +1031,24 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | ats271 | Arti           |
+| Arti  | ATS             | ATS       | 0 (unlit) or 1 (lit)                                |      | ats271 | Arti           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ------ | ----------------- |
-| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0      | ATC not available |
-| 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1      | 0 km/h            |
-| 258  | ATS RUN             | ATS 作動     | 0 (unlit / non-flashing), 1 (lit / flashing) |      | 2      | 15 km/h           |
-| 259  | P POWER             | P 電源       | 0 (unlit) or 1 (lit)                         |      | 3      | 25 km/h           |
-| 260  | PTN APPROACH        | パターン接近 | 0 (unlit) or 1 (lit)                         |      | 4      | 45 km/h           |
-| 261  | BRAKE RELEASE       | ブレーキ開放 | 0 (unlit) or 1 (lit)                         |      | 5      | 55 km/h           |
-| 262  | BRAKE APPLY         | ブレーキ動作 | 0 (unlit) or 1 (lit)                         |      | 6      | 65 km/h           |
-| 263  | ATS P               | ATS-P        | 0 (unlit) or 1 (lit)                         |      | 7      | 75 km/h           |
-| 264  | FAILURE             | 故障         | 0 (unlit) or 1 (lit)                         |      | 8      | 90 km/h           |
-| 265  | ATC                 | ATC          | 0 (unlit) or 1 (lit)                         |      | 9      | 100 km/h          |
-| 266  | ATC POWER           | ATC 電源     | 0 (unlit) or 1 (lit)                         |      | 10     | 110 km/h          |
-| 267  | ATC SRV             | ATC 常用     | 0 (unlit) or 1 (lit)                         |      | 11     | 120 km/h          |
-| 268  | ATC EMG             | ATC 非常     | 0 (unlit) or 1 (lit)                         |      | 12     | ATS is active     |
-| 269  | CONST SPEED         | 定速         | 0 (unlit) or 1 (lit)                         |      |        |                   |
-| 270  | EB                  | EB           | 0 (unlit) or 1 (lit)                         |      |        |                   |
-| 271  | ATC speed indicator |              | 0 - 12, see table on the right               |      |        |                   |
+| 256  | ATS 作動                 | ATS 作動          | 55 km/h                         |      | 0      | ATC not available |
+| 257  | ATS 作動             | 0 (unlit) or 1 (lit)     | 15 km/h           |      | 1      | 0 km/h            |
+| 258  | ATS 作動             | 0 (unlit) or 1 (lit)     | 25 km/h |      | 2      | 15 km/h           |
+| 259  | パターン接近             | 0 (unlit) or 1 (lit)       | 55 km/h                         |      | 3      | 25 km/h           |
+| 260  | ブレーキ開放        | 0 (unlit) or 1 (lit) | 55 km/h                         |      | 4      | 45 km/h           |
+| 261  | ブレーキ動作       | 0 (unlit) or 1 (lit) | 55 km/h                         |      | 5      | 55 km/h           |
+| 262  | ATS-P         | 0 (unlit) or 1 (lit) | 55 km/h                         |      | 6      | 65 km/h           |
+| 263  | 故障               | ATS-P        | 55 km/h                         |      | 7      | 75 km/h           |
+| 264  | ATC             | 0 (unlit) or 1 (lit)         | 55 km/h                         |      | 8      | 90 km/h           |
+| 265  | ATC 電源                 | ATC 電源          | 55 km/h                         |      | 9      | 100 km/h          |
+| 266  | ATC 常用           | 0 (unlit) or 1 (lit)     | 55 km/h                         |      | 10     | 110 km/h          |
+| 267  | ATC 非常             | 0 (unlit) or 1 (lit)     | 55 km/h                         |      | 11     | 120 km/h          |
+| 268  | 定速             | 0 (unlit) or 1 (lit)     | 55 km/h                         |      | 12     | ATS is active     |
+| 269  | 0 (unlit) or 1 (lit)         | ATC speed indicator         | 55 km/h                         |      |        |                   |
+| 270  | ● Sections (signalling)                  | ● Sections (signalling)           | 55 km/h                         |      |        |                   |
+| 271  | {{% table-2col %}} |              | Variable               |      |        |                   |
 
 {{% /table %}}
 
