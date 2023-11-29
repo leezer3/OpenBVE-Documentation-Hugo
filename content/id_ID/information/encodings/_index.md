@@ -25,7 +25,7 @@ Dari contoh Shift_JIS sebelumnya jika diubah ke byte sequence:
 Yang terjadi jika byte salah diterjemahkan sebagai ISO 8859-1 (Bahasa Latin) yang seharusnya Shift_JIS:
 
 {{% code %}}  
-‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš  
+‚Ð‚ç‚a‚ÈƒJƒ^ƒJƒiŠ¿Žš  
 {{% /code %}}
 
 Biasanya, satu file hanya boleh menggunakan satu enkoding. Untuk indonesia dan beberapa wilayah dunia yang menggunakan huruf latin, cukup pakai Unicode, yaitu metode enkode yang paling umum dan bisa dipakai untuk seluruh karakter.
