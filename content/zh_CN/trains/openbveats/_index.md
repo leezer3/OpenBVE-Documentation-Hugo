@@ -53,7 +53,7 @@ The following panel indices are exposed:
 
 {{% table %}}
 
-| Value | Description       |
+| Value | 描述       |
 |-------|-------------------|
 | 0     | ATC not available |
 | 1     | 0 km/h            | 
