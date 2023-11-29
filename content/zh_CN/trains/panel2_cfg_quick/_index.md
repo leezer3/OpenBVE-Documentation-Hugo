@@ -72,7 +72,7 @@ hidden: true
 
 {{% table-nonheader %}}
 
-| true                     |
+| Always returns 1. This is useful for the *PilotLamp* element in order to always show the associated bitmap.                     |
 | ------------------------ |
 | kmph, mph, ms            |
 | mr, er, sap, bp, bc      |

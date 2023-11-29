@@ -22,12 +22,13 @@ weight: 1
   - [Rotate, RotateAll](#rotate)
   - [Shear, ShearAll](#shear)
   - [Mirror, MirrorAll](#mirror)
-  - [Color](#setcolor)
-  - [EmissiveColor](#setemissivecolor)
+  - [Color, ColorAll](#setcolor)
+  - [EmissiveColor, EmissiveColorAll](#setemissivecolor)
   - [BlendMode](#setblendmode)
   - [WrapMode](#setwrapmode)
   - [Load](#loadtexture)
   - [Transparent](#setdecaltransparentcolor)
+  - [Crossfading](#enablecrossfading)
   - [Coordinates](#settexturecoordinates)
 
 {{% /contents %}}
@@ -152,7 +153,7 @@ The Cube command is equivalent to a series of Vertex and Face commands, which yo
 ***Height***: A floating-point number representing the height of the prism in **meters**. Can be negative, which will flip the frustum vertically and display it inside-out.  
 {{% /command-arguments %}}
 
-This command creates a [frustrum](http://en.wikipedia.org/wiki/Frustrum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -½\**Height* to ½\**Height*.
+This command creates a [frustrum](http://en.wikipedia.org/wiki/Frustrum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -1⁄2\**Height* to 1⁄2\**Height*.
 
 当半径的值较小时， 如线杆或扶手，顶点数 *n* 为6或8就足够了。无论 *上底半径* ， *下底半径* 和 *n* 的值如何，该多面体将始终有 2\**n* 个顶点和 *n* +2个面，除非省略上下底面。若 *上底半径* 或 *下底半径* 为负数，则采用其绝对值，同时不创建相应的底面（没有盖儿）。若 *高* 为负数，则上下底面会倒转（上底在下，下底在上），同时所有面都会变为内部可见（默认情况是外部可见） 。
 
@@ -271,8 +272,8 @@ The **Mirror** command mirrors all vertices that have been created so far in the
 <a name="setcolor"></a>
 
 {{% command %}}
-**Color** *Red*, *Green*, *Blue*, *Alpha*
-**ColorAll** *Red*, *Green*, *Blue*, *Alpha*
+**Color** *Red*, *Green*, *Blue*, *Alpha*  
+**ColorAll** *Red*, *Green*, *Blue*, *Alpha*  
 {{% /command %}}
 
 {{% command-arguments %}}
@@ -291,8 +292,8 @@ The **ColorAll** command sets the color for all faces that were already created 
 <a name="setemissivecolor"></a>
 
 {{% command %}}
-**EmissiveColor** *Red*, *Green*, *Blue*
-**EmissiveColorAll** *Red*, *Green*, *Blue*
+**EmissiveColor** *Red*, *Green*, *Blue*  
+**EmissiveColorAll** *Red*, *Green*, *Blue*  
 {{% /command %}}
 
 {{% command-arguments %}}
@@ -391,6 +392,29 @@ This command sets the blend mode for all faces in the current [MeshBuilder] sect
 这条指令为已经创建的所有面指定一个蒙版式的透明色（例如屏蔽门和车窗）。刚刚加载的材质中与指定的 *红*、*绿*、*蓝* 颜色完全相同的像素都会变为透明的。这种蒙版式的透明色比起使用含透明部分的PNG性能高，所以最好绘制全不透明的材质，然后将材质中要透明的部分填为固定颜色，再使用此指令将这些部分“挖空”，而不是使用半透明的PNG。必须使用SetTextureCoordinates指令设定好材质与各顶点的关系，材质才能被正常显示。
 
 ----------
+
+<a name="enablecrossfading"></a>
+
+{{% command %}}  
+**Crossfading** *value* 
+{{% /command %}}
+
+{{% command-arguments %}}  
+**值**: true 啟用交叉漸變，或為false（默認）禁用。
+{{% /command-arguments %}}
+
+This command controls the blending mode when both a daytime and a nighttime texture are specified.
+
+When this is set to **false** the behavior is as follows:
+1. The daytime texture is drawn.
+2. The opacity level for the nighttime texture is calculated from the __Track.Brightness__ value, where a value of **255** produces a fully opaque texture, and a value of **0** produces a fully transparent texture.
+3. The nighttime texture is drawn.
+
+When this is set to **true** the behaviour is as follows:
+
+The opacity level for each texture is blended proportionately, so that for example, a __Track.Brightness__ value of **128** would produce an (approximately) 50% blend of each texture and so-on.
+
+---------
 
 <a name="settexturecoordinates"></a>
 
