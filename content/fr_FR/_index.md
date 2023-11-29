@@ -1,17 +1,17 @@
 ---
-title: "Developing for openBVE"
-linktitle: "Home"
+title: "Développer pour openBVE"
+linktitle: "Accueil"
 ---
 
-Please select a topic from the menu on the left side.
-
----
-
-Examples may be found in the 'Examples' folder.
+Veuillez sélectionner un sujet dans le menu de gauche.
 
 ---
 
-Please note that some of these pages are still under construction. This applies to the following pages:
+Vous trouverez des exemples dans le dossier "Examples".
 
-- The X object - 1% complete
-- The CSV route - 98% complete
+---
+
+Veuillez noter que certaines de ces pages sont encore en construction. Ceci s'applique aux pages suivantes:
+
+- L'object X - 1% achevé
+- La route CSV - 98% achevé
