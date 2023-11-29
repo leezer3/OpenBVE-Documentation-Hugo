@@ -553,7 +553,9 @@ The **\<Sanders>** section specifies the properties of the sanders fitted to thi
 ***Type***: The type of sanders fitted to this car (if any).
 {{% /command-arguments %}}
 
-▸ Available options for *Type*:
+{{% command %}}  
+**\<NormalPressure>** *Pressure* **\</NormalPressure>**  
+{{% /command %}}
 
 {{% command-arguments %}}  
 **NotFitted**: No sanding mechanism is fitted.  
@@ -687,11 +689,9 @@ This defines the coupler between the two cars, and supports the following proper
 
 **Distance** sets the maximum distance between the two cars.
 
-{{% command %}}  
-**\<Object>** *ObjectFile* **\</Object>**  
-{{% /command %}}
+This defines the acceleration curves and the power handle fitted to the car, and supports the following child nodes:
 
-**ObjectFile** should be a relative on-disk path to the exterior 3D object to use.
+3.1.1. Acceleration Curves
 
 {{% note %}}
 
