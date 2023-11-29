@@ -9,7 +9,7 @@ weight: 2
 
 {{% contents %}}
 
-- [1. Vista General](#overview)
+- [1. Vista general](#overview)
 - [2. Enteros](#integers)
 - [3. Números coma-flotante](#floating)
 - [4. Tiempos](#times)
@@ -33,7 +33,7 @@ Existen dos métodos de análisis para los números: **Strict** y **Loose** . El
 -98  
 {{% /code %}}
 
-**Loose:** Todos los espacios en blanco son removidos desde la primera secuencia de caracteres. Entonces, la cadena de caracteres restante (*abcde*) es interpretada de acuerdo al modelo *Strict*. Si esto falla en crear un número válido, el último carácter es quitado de la secuencia (*abcd*) y así, la secuencia es probada otra vez. Esto continúa hasta que un número valido es producido o hasta que no quede ningún carácter, después es determinado si la secuencia de es un número inválido.
+**Loose:** Todos los espacios en blanco son quitados desde la secuencia de carácter primero. Entonces, la secuencia de carácter restante (*abcde*) es interpretada de acuerdo al modelo *Strict* . Si esto falla al crear un número valido, el ultimo carácter es quitado de la ultima secuencia (*abcd*) y así , la secuencia es probada. Esto continua hasta que un número valido es producido o hasta que ningún carácter quede, en caso contrario es determinado que no es un número valido.
 
 {{% code "*Examples for Loose integers:*" %}}  
 123  
@@ -100,13 +100,13 @@ Si los minutos o segundos no están indicados, estos se asumen que son iguales a
 
 ## <a name="colors"></a>■ 5. Valores de color
 
-**Color hexadecimal:** Un número de seis dígitos en hexadecimal precedido por el símbolo numeral (U+0023). Un dígito individual hexadecimal puede ser contenido de los dígitos decimales del 0 al 9 (U+0030 - U+0039), las letras minúsculas de la a a la f (U+0061 - U+0066) y las letras mayúsculas desde la A a la F (U+0041 - U+0046). El color hexadecimal tiene la siguiente forma:
+**Hexcolor:** A six-digit hexadecimal number is preceded by a number sign character (U+0023). An individual hexadecimal digit can be comprised of the decimal digits from 0 to 9 (U+0030 - U+0039), the lowercase letters from a to f (U+0061 - U+0066) and the uppercase letters from A to F (U+0041 - U+0046).The hexcolor has the following form:
 
 {{% code %}}  
 \#*RRGGBB*  
 {{% /code %}}
 
-En esta secuencia, RR representa el componente rojo, GG el componente verde y BB el componente azul. Cada componente tiene un rango del 00 al FF (0 - 255), donde 00 representa no contribución para ese canal y  FF contribución total.
+In this sequence, RR represents the red component, GG the green component and BB the blue component. Each component ranges from 00 to FF (0 - 255), where 00 represents no contribution for that channel and FF full contribution.
 
 Colores comúnmente usados (para indicar transparencias) incluye:
 
