@@ -22,12 +22,13 @@ weight: 1
   - [Rotate, RotateAll](#rotate)
   - [Shear, ShearAll](#shear)
   - [Mirror, MirrorAll](#mirror)
-  - [Color](#setcolor)
-  - [EmissiveColor](#setemissivecolor)
+  - [Color, ColorAll](#setcolor)
+  - [EmissiveColor, EmissiveColorAll](#setemissivecolor)
   - [BlendMode](#setblendmode)
   - [WrapMode](#setwrapmode)
   - [Load](#loadtexture)
   - [Transparent](#setdecaltransparentcolor)
+  - [Crossfading](#enablecrossfading)
   - [Coordinates](#settexturecoordinates)
 
 {{% /contents %}}
@@ -152,7 +153,7 @@ El comando Cube es equivalente a una serie comandos Vertex y Face, en lo cual ne
 ***Altura***: Un número de coma flotante representando la altura del prisma en **metros**. Puede ser negativo, en el cual invertirá el tronco verticalmente y mostrándose hacia adentro.
 {{% /command-arguments %}}
 
-Este comando crea un [tronco](https://es.wikipedia.org/wiki/Tronco). Si *RadioInferior* y el *RadioSuperior* son iguales, el objeto generado se reducirá a un [prisma](https://es.wikipedia.org/wiki/Prisma_(geometría)), el cual puede ser usado como una aproximación del cilindro. Si alguno de *RadioInferior* o *RadioSuperior* son cero. El objeto generado se reducirá a una  [pirámide](https://es.wikipedia.org/wiki/Pirámide_(geometría)). El tronco será centrado al origen (0,0,0). En los ejes X y Z, el tronco se extiende desde el -*RadioInferior* al *RadioSuperior* para la base mas baja y desde -*RadioSuperior* hasta *RadioSuperior* para la base mas alta. En el eje Y, el tronco se extiende desde -½\**Altura* hasta ½\**Altura*.
+This command creates a [frustrum](http://en.wikipedia.org/wiki/Frustrum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -1⁄2\**Height* to 1⁄2\**Height*.
 
 El número de vértices *n* que satisfacen cuando es un radio pequeño es de 6 o 8 , por ejemplo para crear un poste. Independientemente de los valores de *RadioSuperior*,*RadioInferior* y *n*, el tronco siempre tendrá 2\**n* vértices, y usualmente *n*+2 caras, a menos que algunos de los extremos sea omitido. Si *RadioSuperior* o *RadioInferior* son negativos, el valor absoluto será tomado, pero los extremos respectivos no serán creados. Sí *Height* es negativo, los roles de arriba y abajo serán revertidos y las caras serán visibles desde adentro, mientras que de caso contrario, estos serán visibles desde afuera.
 
@@ -271,8 +272,8 @@ The **Mirror** command mirrors all vertices that have been created so far in the
 <a name="setcolor"></a>
 
 {{% command %}}
-**Color** *Red*, *Green*, *Blue*, *Alpha*
-**ColorAll** *Red*, *Green*, *Blue*, *Alpha*
+**Color** *Red*, *Green*, *Blue*, *Alpha*  
+**ColorAll** *Red*, *Green*, *Blue*, *Alpha*  
 {{% /command %}}
 
 {{% command-arguments %}}
@@ -291,8 +292,8 @@ The **ColorAll** command sets the color for all faces that were already created 
 <a name="setemissivecolor"></a>
 
 {{% command %}}
-**EmissiveColor** *Red*, *Green*, *Blue*
-**EmissiveColorAll** *Red*, *Green*, *Blue*
+**EmissiveColor** *Red*, *Green*, *Blue*  
+**EmissiveColorAll** *Red*, *Green*, *Blue*  
 {{% /command %}}
 
 {{% command-arguments %}}
@@ -390,6 +391,29 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 This command sets the color used for screendoor transparency for all faces that were already created. The texture loaded via the Load command will become transparent for all pixels which match exactly with the color specified via the *Red*, *Green* and *Blue* parameters. The use of screendoor transparency is much more efficient than using a full alpha channel, so prefer using a texture without an alpha channel and use this command instead to make parts of the texture transparent. You need to specify texture coordinates via the Coordinate command in order for the texture to correctly appear on the faces.
 
 ----------
+
+<a name="enablecrossfading"></a>
+
+{{% command %}}  
+**Crossfading** *value* 
+{{% /command %}}
+
+{{% command-arguments %}}  
+**value**: Either true to enable cross-fading, or false (default) to disable.
+{{% /command-arguments %}}
+
+This command controls the blending mode when both a daytime and a nighttime texture are specified.
+
+When this is set to **false** the behavior is as follows:
+1. The daytime texture is drawn.
+2. The opacity level for the nighttime texture is calculated from the __Track.Brightness__ value, where a value of **255** produces a fully opaque texture, and a value of **0** produces a fully transparent texture.
+3. The nighttime texture is drawn.
+
+When this is set to **true** the behaviour is as follows:
+
+The opacity level for each texture is blended proportionately, so that for example, a __Track.Brightness__ value of **128** would produce an (approximately) 50% blend of each texture and so-on.
+
+---------
 
 <a name="settexturecoordinates"></a>
 

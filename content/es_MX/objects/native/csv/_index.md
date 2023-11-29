@@ -22,13 +22,14 @@ weight: 2
   - [Rotate, RotateAll](#rotate)
   - [Shear, ShearAll](#shear)
   - [Mirror, MirrorAll](#mirror)
-  - [SetColor](#setcolor)
-  - [SetEmissiveColor](#setemissivecolor)
+  - [SetColor, SetColorAll](#setcolor)
+  - [SetEmissiveColor, SetEmissiveColorAll](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
   - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
-  - [SetCoordinates](#settexturecoordinates)
+  - [EnableCrossfading](#enablecrossfading)
+  - [SetTextureCoordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
@@ -152,7 +153,7 @@ The Cube command is equivalent to a series of AddVertex and AddFace commands, wh
 ***Height***: A floating-point number representing the height of the prism in **meters**. Can be negative, which will flip the frustum vertically and display it inside-out.  
 {{% /command-arguments %}}
 
-This command creates a [frustum](http://en.wikipedia.org/wiki/Frustum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -½\**Height* to ½\**Height*.
+This command creates a [frustum](http://en.wikipedia.org/wiki/Frustum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -1⁄2\**Height* to 1⁄2\**Height*.
 
 El número de vértices *n* que satisfacen cuando es un radio pequeño es de 6 o 8 , por ejemplo para crear un poste. Independientemente de los valores de *RadioSuperior*,*RadioInferior* y *n*, el tronco siempre tendrá 2\**n* vértices, y usualmente *n*+2 caras, a menos que algunos de los extremos sea omitido. Si *RadioSuperior* o *RadioInferior* son negativos, el valor absoluto será tomado, pero los extremos respectivos no serán creados. Sí *Height* es negativo, los roles de arriba y abajo serán revertidos y las caras serán visibles desde adentro, mientras que de caso contrario, estos serán visibles desde afuera.
 
