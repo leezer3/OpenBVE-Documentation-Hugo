@@ -1,6 +1,6 @@
 ---
-title: "The **.csv** object format"
-linktitle: "The CSV object"
+title: "Le format d'objet **. Csv **"
+linktitle: "L'objet CSV"
 weight: 2
 ---
 
@@ -22,23 +22,26 @@ weight: 2
   - [Rotate, RotateAll](#rotate)
   - [Shear, ShearAll](#shear)
   - [Mirror, MirrorAll](#mirror)
-  - [SetColor](#setcolor)
-  - [SetEmissiveColor](#setemissivecolor)
+  - [SetColor, SetColorAll](#setcolor)
+  - [SetEmissiveColor, SetEmissiveColorAll](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
   - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
-  - [SetCoordinates](#settexturecoordinates)
+  - [EnableCrossfading](#enablecrossfading)
+  - [SetTextureCoordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
 ## <a name="overview"></a>■ 1. Overview
 
-A CSV object allows to create a single object by using textual instructions. The object can be used in routes or in trains. The object described by the file can contain any number of individual polygons. The file format allows to group multiple polygons in CreateMeshBuilder sections in which attributes like color or texture information is assigned to all polygons created in each section. This allows for the creation of many polygons in the same CreateMeshBuilder section which share common attributes. A polygon is called a face in this file format.
+Un objet CSV permet de créer un seul objet à l'aide d'instructions textuelles. L'objet peut être utilisé dans des itinéraires ou dans des trains. L'objet décrit par le fichier peut contenir n'importe quel nombre de polygones individuels. Le format de fichier permet de regrouper plusieurs polygones dans des sections CreateMeshBuilder dans lesquelles des attributs tels que des informations de couleur ou de texture sont attribués à tous les polygones créés dans chaque section. Cela permet la création de nombreux polygones dans la même section CreateMeshBuilder qui partagent des attributs communs. Un polygone est appelé une face dans ce format de fichier.
 
-The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom.
+Le fichier est un fichier texte brut encodé dans n'importe quel [encodage] arbitraire ({{< ref "/information/encodings/_index.md" >}}), cependant, UTF-8 avec une marque d'ordre d'octets est le choix préféré. Le [modèle d'analyse] ({{< ref "/information/numberformats/_index.md" >}}) pour les nombres est ** Lâche **, cependant, nous vous encourageons à produire néanmoins une sortie * Strict *. Le nom du fichier est arbitraire, mais doit avoir l'extension **. Csv **. Le fichier est interprété ligne par ligne, de haut en bas.
 
-➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
+
+
+➟ [Voir aussi la référence rapide pour le format CSV ...] ({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
 ## <a name="syntax"></a>■ 2. Syntax
 
@@ -152,7 +155,7 @@ The Cube command is equivalent to a series of AddVertex and AddFace commands, wh
 ***Height***: A floating-point number representing the height of the prism in **meters**. Can be negative, which will flip the frustum vertically and display it inside-out.  
 {{% /command-arguments %}}
 
-This command creates a [frustum](http://en.wikipedia.org/wiki/Frustum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -½\**Height* to ½\**Height*.
+This command creates a [frustum](http://en.wikipedia.org/wiki/Frustum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -1⁄2\**Height* to 1⁄2\**Height*.
 
 The number of vertices *n* will usually suffice to be 6 or 8 when only small radii are used, for example to create a pole. Regardless of the values of *UpperRadius*, *LowerRadius* and *n*, the frustum will always have 2\**n* vertices, and usually *n*+2 faces unless any of the caps are omitted. If *UpperRadius* or *LowerRadius* are negative, the absolute value is being taken, but the respective caps are not created. If *Height* is negative, the roles of top and bottom are reversed and the faces will be visible from the inside, while otherwise, they will be visible from the outside.
 
