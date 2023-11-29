@@ -8,7 +8,7 @@ Plugins allow to offer functionality that openBVE does not provide out of the bo
 
 ##### ● Train plugins
 
-列車插件可更改列車運行時的行為。您可以在Panel上向顯示Custom Indicator，播放聲音並覆蓋司機設置的手柄。插件可模擬安全設備，例如ATS或ATC。
+列車插件可更改列車運行時的行為。您可以在Panel上向顯示Custom Indicator,播放聲音並覆蓋司機設置的手柄。插件可模擬安全設備,例如ATS或ATC。
 
 ## ■ 目錄
 
@@ -106,11 +106,12 @@ Be sure to compile against AnyCPU, to enable CLS-compliance checks and to remove
 
 {{% table %}}
 
-| API component | 描述   | Documentation                                     |
-| ------------- | ------------- | ------------------------------------------------- |
-| IRuntime      | 列車插件 | [View]({{< ref "/plugins/iruntime/_index.md" >}}) |
+| API component | 描述                       | Documentation                                        |
+| ------------- | --------------------------------- | ---------------------------------------------------- |
+| IRuntime      | 列車插件             | [View]({{< ref "/plugins/iruntime/_index.md" >}})    |
+| {{% /table %}}   | <a name="templates"></a>■ Template projects | In the directory **Examples\Sample Plugins**, you can find template projects targeting different programming languages. In these templates, almost everything has been prepared for you. The only thing you have to do is to include a reference to OpenBveApi.dll which comes with openBVE. |
 
-{{% /table %}}
+For those who use SharpDevelop, reference OpenBveApi.dll by clicking the *Project* menu and selecting *Add reference*, then go to the *.NET Assembly Browser* tab and click on *Browse*. Now browse to your openBVE directory and select *OpenBveApi.dll*. Confirm with *OK*. Now select *OpenBveApi* from the *Projects* window and set *Local copy* to **False**. Also be sure that *Specific Version* is set to **False**.
 
 ## <a name="templates"></a>■ Template projects
 
