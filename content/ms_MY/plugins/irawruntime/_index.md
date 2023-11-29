@@ -5,11 +5,11 @@ hidden: true
 
 This is the documentation for train plugins accepting raw input. In order to create a train plugin, implement the IRawRuntime interface from the OpenBveApi.Runtime namespace. In the following, you will find a description of how this interface works.
 
-{{% warning-nontitle %}}
+If the speed of the train is between *v<sub>1</sub>* and *v<sub>2</sub>*, the acceleration output is determined via the following formula:
 
 This interface is currently experimental / unstable, and subject to breaking changes.
 
-{{% /warning-nontitle %}}
+If the speed of the train is greater than *v<sub>2</sub>*, the acceleration output is determined via the following formula (for version 2.0 exponents):
 
 ## ■ Contents
 
