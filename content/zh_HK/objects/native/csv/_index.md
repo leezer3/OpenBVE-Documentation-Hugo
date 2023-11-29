@@ -4,7 +4,7 @@ linktitle: "CSV 物件"
 weight: 2
 ---
 
-## 目錄
+## ■ 目錄
 
 {{% contents %}}
 
@@ -22,13 +22,14 @@ weight: 2
   - [Rotate, RotateAll](#rotate)
   - [Shear, ShearAll](#shear)
   - [Mirror, MirrorAll](#mirror)
-  - [SetColor](#setcolor)
-  - [SetEmissiveColor](#setemissivecolor)
+  - [SetColor, SetColorAll](#setcolor)
+  - [SetEmissiveColor, SetEmissiveColorAll](#setemissivecolor)
   - [SetBlendMode](#setblendmode)
   - [SetWrapMode](#setwrapmode)
   - [LoadTexture](#loadtexture)
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
-  - [SetCoordinates](#settexturecoordinates)
+  - [EnableCrossfading](#enablecrossfading)
+  - [SetTextureCoordinates](#settexturecoordinates)
 
 {{% /contents %}}
 
@@ -52,7 +53,7 @@ weight: 2
 
 在 *参数<sub>i</sub>* 处留空，也可以省略该参数。在省略时会应用特定的默认值。所有默认值都在下方有列出。
 
-您可以在一行的末尾添加注释。注释由分号（U+003B，英文半角）开始。所有注释在开始解析文件之前就将被自动排除。 
+您可以在一行的末尾添加注释。注释由分号(U+003B,英文半角)开始。所有注释在开始解析文件之前就将被自动排除。 
 
 ## <a name="commands"></a>■ 3. 可用指令
 
@@ -154,7 +155,7 @@ Cube命令相当于一系列的AddVertex和AddFace命令，会影响顶点索引
 ***高*** ：一个表示该圆柱/圆锥/圆台高度的浮点数，以 **米** 为单位。如为负值，则该截锥体将上下倒转且显示面将朝内。   
 {{% /command-arguments %}} 
 
-该命令将创建一个[截锥体](http://en.wikipedia.org/wiki/Frustum)。如果 *上底半径* 和 *下底半径* 是相等的，这个物件将变成[棱柱](http://en.wikipedia.org/wiki/Prism_(geometry))，并可用作近似的圆柱。如果 *下底半径* 或 *上底半径* 为0，这个物件将变成[棱锥](http://en.wikipedia.org/wiki/Pyramid_(geometry))。创建的截椎体将以原点为中心。 即，在X和Z轴上，该截锥体下底面占据 -*下底半径* 到 *下底半径*，顶面占据 -*上底半径* 到 *上底半径*；在Y轴上，该截锥体占据 -½\**高* 到 ½\**高*。译注：以上三个链接需轻功。
+This command creates a [frustum](http://en.wikipedia.org/wiki/Frustum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -1⁄2\**Height* to 1⁄2\**Height*.
 
 当半径的值较小时， 如线杆或扶手，顶点数 *n* 为6或8就足够了。无论 *上底半径* ， *下底半径* 和 *n* 的值如何，该多面体将始终有 2\**n* 个顶点和 *n* +2个面，除非省略上下底面。若 *上底半径* 或 *下底半径* 为负数，则采用其绝对值，同时不创建相应的底面（没有盖儿）。若 *高* 为负数，则上下底面会倒转（上底在下，下底在上），同时所有面都会变为内部可见（默认情况是外部可见） 。
 
