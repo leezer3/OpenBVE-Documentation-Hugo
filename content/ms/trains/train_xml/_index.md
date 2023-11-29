@@ -18,29 +18,27 @@ This page is still under construction.
 - [3.3. The Doors section](#doors)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
-
-{{% /contents %}}
-
-## <a name="overview"></a>■ 1. Overview
+- {{% /contents %}}
+- <a name="overview"></a>■ 1. Overview
 
 The **train.xml** format is the native format for newer versions of OpenBVE, and is intended to replace the older train.dat format. It allows setting of many more properties, and is extensible.
 
-It may either be constructed as a single file containing the properties of the entire train, or as a single consist definition, along with child car files.
+## It may either be constructed as a single file containing the properties of the entire train, or as a single consist definition, along with child car files.
 
 {{% information %}}
 
-#### Positions Within Cars:
+Positions Within Cars:
 
 In the **train.xml** format, all positions are measured relative to the center of the car, which is assumed to be at 0,0,0
 Whilst this is a change for some parameters from the legacy BVE formats, it means that all positions should be consistant.
 
-{{% /information %}}
+#### {{% /information %}}
 
-## <a name="train"></a>■ 2. The Train section
+<a name="train"></a>■ 2. The Train section
 
 Whether using child car files, or a single file, the first node in each **train.xml** file must be the **\<Train\>** node.
 
-This supports the following properties:
+## This supports the following properties:
 
 {{% command %}}  
 **\<Car>** *CarProperties* **\</Car>**  
@@ -72,7 +70,7 @@ A child-node must be of the following format:
 
 **Descriptions** should be a comma-separated list, equal to the number of notches the train has for the subject.
 
-## <a name="car"></a>■ 3. The Car section
+<a name="car"></a>■ 3. The Car section
 
 {{% note %}}
 
@@ -98,7 +96,7 @@ A child-node must be of the following format:
 **\<Subject>** *Distance* **\</Subject>**  
 {{% /command %}}
 
-**Distance** should be a distance in meters from the origin point *0,0,0* at the center of the cab object.
+## **Distance** should be a distance in meters from the origin point *0,0,0* at the center of the cab object.
 
 {{% command %}}  
 **\<Length>** *LengthInMeters* **\</Length>**  
@@ -190,13 +188,13 @@ A child-node must be of the following format:
 **None**: This car carries no load (e.g. a locomotive, brake van or similar). It's weight is not affected by the loading given at stations.  
 {{% /command-arguments %}}
 
-## <a name="power"></a>■ 3.1. The Power section
+<a name="power"></a>■ 3.1. The Power section
 
 Motor cars may specifiy a **\<Power>** node.
 
 This defines the acceleration curves and the power handle fitted to the car, and supports the following child nodes:
 
-### 3.1.1. Acceleration Curves
+3.1.1. Acceleration Curves
 
 The **\<AccelerationCurves>** child node should contain a list of acceleration curve nodes. These must be in ascending order, and should correspond to the number of power notches the train has.
 
@@ -232,10 +230,9 @@ Currently, the only supported acceleration curve node is the **\<OpenBVE>** node
 
 **Speed** should be a positive floating-point number representing the reference speed for *StageTwoExponent*
 
-
 Thus:
 
-If the speed of the train is 0 km/h, *a<sub>0</sub>* indicates the acceleration output.
+## If the speed of the train is 0 km/h, *a<sub>0</sub>* indicates the acceleration output.
 
 If the speed of the train is between 0 km/h and *v<sub>1</sub>*, the acceleration output is determined via the following formula:
 
@@ -243,7 +240,7 @@ If the speed of the train is between 0 km/h and *v<sub>1</sub>*, the acceleratio
 a<sub>0</sub> + (a<sub>1</sub> - a<sub>0</sub>) \* x / v<sub>1</sub>  
 {{% /function %}}
 
-If the speed of the train is *v<sub>1</sub>*, the acceleration output is indicated by *a<sub>1</sub>*.
+### If the speed of the train is *v<sub>1</sub>*, the acceleration output is indicated by *a<sub>1</sub>*.
 
 If the speed of the train is between *v<sub>1</sub>* and *v<sub>2</sub>*, the acceleration output is determined via the following formula:
 
@@ -257,11 +254,11 @@ If the speed of the train is greater than *v<sub>2</sub>*, the acceleration outp
 v<sub>1</sub> \* a<sub>1</sub> \* v<sub>2</sub><sup>e-1</sup> / x<sup>e</sup>  
 {{% /function %}}
 
-### 3.1.2. Power Handles
+3.1.2. Power Handles
 
 {{% note-withtitle %}}
 
-#### *Driver and non-driver cars:* 
+*Driver and non-driver cars:* 
 
 The properties within this node will only be interpreted if the car is specified as the driver car.
 
@@ -285,6 +282,7 @@ The **\<Handle>** node specifies properties for the power handle, and supports t
 
 ▸ Available options for *Type*:
 
+
 {{% command-arguments %}}  
 **None**: No spring return mechanism is fitted.  
 **Single**: The spring return mechanism is reset when this handle is operated.  
@@ -292,11 +290,11 @@ The **\<Handle>** node specifies properties for the power handle, and supports t
 **AnyKey**: The spring return mechanism is reset when any keyboard key or joystick control is operated.
 {{% /command-arguments %}}
 
-## <a name="brake"></a>■ 3.2. The Brake section
+<a name="brake"></a>■ 3.2. The Brake section
 
 The **\<Brake>** section specifies properties for the braking system of the car, and consists of the following child nodes, each corresponding the a component of the twin-pipe standard air-brake system:
 
-### Air compressor
+Air compressor
 
 An optional **\<Compressor>** node, supporting the following properties:
 
@@ -306,23 +304,23 @@ An optional **\<Compressor>** node, supporting the following properties:
 
 **CompressionRate** should be a positive number, representing the compression rate in Pa/s.
 
-### Main Reservoir
+Main Reservoir
 
 The **\<MainReservoir>** node, supporting the following properties:
 
-{{% command %}}  
+### {{% command %}}  
 **\<MinimumPressure>** *Pressure* **\</MinimumPressure>**  
 {{% /command %}}
 
 **Pressure** should be a positive number, representing the minimum pressure in the main reservoir in Pa.
 
-{{% command %}}  
+#### {{% command %}}  
 **\<MaximumPressure>** *Pressure* **\</MaximumPressure>**  
 {{% /command %}}
 
 **Pressure** should be a positive number, representing the maximum achievable pressure in the main reservoir in Pa.
 
-### Auxiliary Reservoir
+Auxiliary Reservoir
 
 The **\<AuxiliaryReservoir>** node, supporting the following properties:
 
@@ -332,7 +330,7 @@ The **\<AuxiliaryReservoir>** node, supporting the following properties:
 
 **Rate** should be a positive number, representing the charge rate of the auxiliary reservoir from the main reservoir in Pa/s.
 
-### Equalizing Reservoir
+Equalizing Reservoir
 
 The **\<EqualizingReservoir>** node, supporting the following properties:
 
@@ -342,11 +340,11 @@ The **\<EqualizingReservoir>** node, supporting the following properties:
 
 **Pressure** should be a positive number, representing the normal pressure of this reservoir in Pa.
 
-### Brake Pipe
+## Brake Pipe
 
 The **\<BrakePipe>** node, supporting the following properties:
 
-{{% command %}}  
+### {{% command %}}  
 **\<NormalPressure>** *Pressure* **\</NormalPressure>**  
 {{% /command %}}
 
@@ -358,7 +356,7 @@ The **\<BrakePipe>** node, supporting the following properties:
 
 **Rate** should be a positive number, representing the normal charge rate in Pa/s.
 
-{{% command %}}  
+### {{% command %}}  
 **\<ServiceRate>** *Rate* **\</ServiceRate>**  
 {{% /command %}}
 
@@ -370,11 +368,11 @@ The **\<BrakePipe>** node, supporting the following properties:
 
 **Rate** should be a positive number, representing the charge rate in Pa/s when making an emergency brake application.
 
-### Straight Air Pipe
+Straight Air Pipe
 
 The **\<StraightAirPipe>** node, supporting the following properties:
 
-{{% command %}}  
+### {{% command %}}  
 **\<ServiceRate>** *Rate* **\</ServiceRate>**  
 {{% /command %}}
 
@@ -386,17 +384,17 @@ The **\<StraightAirPipe>** node, supporting the following properties:
 
 **Rate** should be a positive number, representing the charge rate in Pa/s when making an emergency brake application.
 
-{{% command %}}  
+### {{% command %}}  
 **\<ReleaseRate>** *Rate* **\</ReleaseRate>**  
 {{% /command %}}
 
 **Rate** should be a positive number, representing the charge rate in Pa/s when releasing a brake application.
 
-### Brake Cylinder
+Brake Cylinder
 
 The **\<BrakeCylinder>** node, supporting the following properties:
 
-{{% command %}}  
+### {{% command %}}  
 **\<ServiceMaximumPressure>** *Pressure* **\</ServiceMaximumPressure>**  
 {{% /command %}}
 
@@ -420,11 +418,11 @@ The **\<BrakeCylinder>** node, supporting the following properties:
 
 **Rate** should be a positive number, representing the charge rate in Pa/s when releasing the brakes.
 
-### 3.2.2. Brake Handles
+3.2.2. Brake Handles
 
 {{% note-withtitle %}}
 
-#### *Driver and non-driver cars:* 
+### *Driver and non-driver cars:* 
 
 The properties within this node will only be interpreted if the car is specified as the driver car.
 
@@ -446,7 +444,7 @@ The **\<Handle>** node specifies properties for the brake handle, and supports t
 ***Type***: The type of spring return fitted to this handle (if any).
 {{% /command-arguments %}}
 
-▸ Available options for *Type*:
+### ▸ Available options for *Type*:
 
 {{% command-arguments %}}  
 **None**: No spring return mechanism is fitted.  
@@ -455,7 +453,7 @@ The **\<Handle>** node specifies properties for the brake handle, and supports t
 **AnyKey**: The spring return mechanism is reset when any keyboard key or joystick control is operated.
 {{% /command-arguments %}}
 
-## <a name="doors"></a>■ 3.3. The Doors section
+<a name="doors"></a>■ 3.3. The Doors section
 
 The **\<Doors>** section specifies the properties of the passenger doors fitted to this car, and supports the following properties:
 
@@ -475,11 +473,11 @@ The **\<Doors>** section specifies the properties of the passenger doors fitted 
 
 If the opening or closing speed is not set, this will be calculated using the duration of the open / close sounds.
 
-See the **sound.cfg** documentation for further details.
+### See the **sound.cfg** documentation for further details.
 
 {{% /note %}}
 
-{{% command %}}  
+#### {{% command %}}  
 **\<Width>** *DoorWidth* **\</Width>**  
 {{% /command %}}
 
@@ -490,6 +488,188 @@ See the **sound.cfg** documentation for further details.
 {{% /command %}}
 
 **DoorTolerance** should be a positive number, setting a tolerance in meters before the door is considered to be closed.
+
+<a name="coupler"></a>■ 4. The Coupler section
+
+Car nodes (or child file references) may optionally be separated by a **\<Coupler>** node.
+
+This defines the coupler between the two cars, and supports the following properties:
+
+{{% command %}}  
+**\<Minimum>** *Distance* **\</Distance>**  
+{{% /command %}}
+
+**Distance** sets the minimum distance between the two cars.
+
+{{% command %}}  
+**\<Maximum>** *Distance* **\</Maximum>**  
+{{% /command %}}
+
+## **Distance** sets the maximum distance between the two cars.
+
+{{% command %}}  
+**\<Object>** *ObjectFile* **\</Object>**  
+{{% /command %}}
+
+**ObjectFile** should be a relative on-disk path to the exterior 3D object to use.
+
+{{% note %}}
+
+The coupler object is not deformed when the coupler stretches / compresses.
+
+{{% /note %}}
+
+<a name="misc"></a>■ 5. Miscellaneous Properties
+
+{{% command %}}  
+**\<Plugin>** *PluginFile* **\</Plugin>**  
+{{% /command %}}
+
+**PluginFile** should contain the relative path to the security plugin DLL to load.
+
+{{% command %}}  
+**\<Description>** *Text* **\</Description>**  
+{{% /command %}}
+
+**Text** should contain the textual description for the train to display in the main menu.
+
+{{% command %}}  
+**\<HeadlightStates>** *NumberOfStates* **\</HeadlightStates>**  
+{{% /command %}}
+
+**NumberOfStates** should be the total number of states that the train headlight posesses.
+
+*Note:* Headlight effects must be implemented by the train developer, using animation / panel properties. 
+
+## <a name="sanders"></a>■ 3.4. The Sanders section
+
+The **\<Sanders>** section specifies the properties of the sanders fitted to this car, and supports the following properties:
+
+{{% command %}}  
+**Type** *Type*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: The type of sanders fitted to this car (if any).
+{{% /command-arguments %}}
+
+{{% command %}}  
+**\<NormalPressure>** *Pressure* **\</NormalPressure>**  
+{{% /command %}}
+
+{{% command-arguments %}}  
+**NotFitted**: No sanding mechanism is fitted.  
+**PressAndHold**: The sanders are applied whilst the **Sanders** key is held and sufficient sand is available.  
+**Toggle**: The **Sanders** key toggles the sanders on and off.
+**NumberOfShots**: N shots of sand are available, which are applied when the **Sanders** key is pressed.
+**Automatic**: The sanders are automatically activated when wheelslip is detected and sufficient sand is present.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**Rate** *SandingRate*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***SandingRate***: The rate at which sand is applied per second.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**SandLevel** *Level*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Level***: The initial starting level of sand, if not in shot mode.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**NumberOfShots** *Shots*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Shots***: The number of sand shots available.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**ApplicationTime** *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: When in shots mode, sets the duration of a sand shot in seconds.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**ActivationTime** *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: When in automatic mode, the amount of time before the system reacts and applies sand.
+{{% /command-arguments %}}
+
+## <a name="windscreen"></a>■ 3.5. The Windscreen section
+
+The **\<Windscreen>** section specifies the properties of the windscreen, and should be used if you wish to animated a windscreen on a 3D cab using the inbuilt functionality. It supports the following properties:
+
+{{% command %}}  
+**NumberOfDrops* *Drops*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Drops***: The total number of drops on the windscreen.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**WipeSpeed* *Speed*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Speed***: The time in seconds for the wipers to make a single sweep of the windscreen.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**HoldTime* *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The time in seconds for the wipers to hold at the hold position during a sweep.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**DropLife* *Life*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Life***: The life in seconds before a drop is eligible to be recycled when all drops are visible.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**RestPosition* *Position*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Position**: The rest position for the wipers.
+{{% /command-arguments %}}
+
+▸ Available options for *Position*:
+
+{{% command-arguments %}}  
+**Left**: The wipers rest at the left of the screen when off.  
+**Right**: The wipers rest at the right of the screen when off.  
+{{% /command-arguments %}}
+
+{{% command %}}  
+**HoldPosition* *Position*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Position**: The hold position for the wipers.
+{{% /command-arguments %}}
+
+▸ Available options for *Position*:
+
+{{% command-arguments %}}  
+**Left**: The wipers hold on the left of the screen for *HoldTime* during their sweep.  
+**Right**: The wipers hold on the right of the screen for *HoldTime* during their sweep.  
+{{% /command-arguments %}}
 
 ## <a name="coupler"></a>■ 4. The Coupler section
 
@@ -509,17 +689,23 @@ This defines the coupler between the two cars, and supports the following proper
 
 **Distance** sets the maximum distance between the two cars.
 
-{{% command %}}  
-**\<Object>** *ObjectFile* **\</Object>**  
-{{% /command %}}
+This defines the acceleration curves and the power handle fitted to the car, and supports the following child nodes:
 
-**ObjectFile** should be a relative on-disk path to the exterior 3D object to use.
+3.1.1. Acceleration Curves
 
-{{% note %}}
+<a name="misc"></a>■ 5. Miscellaneous Properties
 
 The coupler object is not deformed when the coupler stretches / compresses.
 
-{{% /note %}}
+{{% command %}}  
+**\<Width>** *WidthInMeters* **\</Width>**  
+{{% /command %}}
+
+{{% command %}}  
+**\<CanUncouple>** *Boolean* **\</CanUncouple>**  
+{{% /command %}}
+
+**Boolean** should be a boolean true / false value, determining whether this coupler may be uncoupled by the player.
 
 ## <a name="misc"></a>■ 5. Miscellaneous Properties
 
