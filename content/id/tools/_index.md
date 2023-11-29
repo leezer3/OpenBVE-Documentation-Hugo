@@ -1,5 +1,5 @@
 ---
 title: "Alat"
 weight: 7
-layout: "hidden"
+layout: "Tersmbunyi"
 ---

@@ -8,7 +8,7 @@ weight: 4
 
 openBVE dapat membaca file objek Wavefront dengan format .obj
 
-Berikut adalah daftar perintah yang tidak dapat digunakan:
+Berikut ini adalah fitur yang tidak dapat digunakan:
 
 - Animasi
 - Pencahayaan
