@@ -1,17 +1,17 @@
 ---
 title: "Fejlesztés az openBVE-hez"
-linktitle: "Home"
+linktitle: "Kezdőlap"
 ---
 
-Please select a topic from the menu on the left side.
-
----
-
-Examples may be found in the 'Examples' folder.
+Kérjük, válasszon egy témát a bal oldali menüből!
 
 ---
 
-Please note that some of these pages are still under construction. This applies to the following pages:
+A példák a 'Példák' mappában találhatók meg.
 
-- The X object - 1% complete
-- The CSV route - 98% complete
+---
+
+Kérjük, vegye figyelembe, hogy ezen oldalak némelyike még fejlesztés alatt áll. Ez az alábbi oldalakra vonatkozik:
+
+- Az X objektum - 1% kész
+- A CSV route - 98%-ban kész

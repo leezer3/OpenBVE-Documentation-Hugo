@@ -1,6 +1,6 @@
 ---
-title: "The **panel.animated** file format"
-linktitle: "The panel.animated file"
+title: "A **panel.animated** fájlformátum"
+linktitle: "A panel.animated fájl"
 weight: 5
 ---
 

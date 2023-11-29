@@ -1,5 +1,5 @@
 ---
-title: "Tools"
+title: "Toolok"
 weight: 7
-layout: "hidden"
+layout: "rejtett"
 ---

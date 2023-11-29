@@ -1,5 +1,5 @@
 ---
-title: "Information"
+title: "Információ"
 weight: 6
-layout: "hidden"
+layout: "rejtett"
 ---
