@@ -4,7 +4,7 @@ linktitle: "panel2.cfg ファイル"
 weight: 5
 ---
 
-## ■ 内容
+## ■目次
 
 {{% contents %}}
 
@@ -17,7 +17,8 @@ weight: 5
 - [7. The DigitalGauge section](#digitalgauge)
 - [8. The LinearGauge section](#lineargauge)
 - [9. The Timetable section](#timetable)
-- [10. Available subjects](#subjects)
+- [10. The Windscreen section](#windscreen)
+- [11. Available subjects](#subjects)
 
 {{% /contents %}}
 
@@ -164,7 +165,7 @@ TransparentColor = *HexColor*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***HexColor***: A [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}})  *DaytimeImage* および *NighttimeImage* ファイルの双方に、透明ピクセルに対応する正確な色を定義します。 デフォルト値は #0000FF です。
+***HexColor***: [hexcolor]({{< ref "/information/numberformats/_index.md#colors" >}})  *DaytimeImage* と *NighttimeImage* ファイルの双方で、透明ピクセルに対応する正確な色を表します。デフォルト値は #0000FF です。  
 {{% /command-arguments %}}
 
 ------
@@ -224,7 +225,7 @@ Subject = *Subject*
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Subject***: [available subjects](#subjects)の内のいずれか一つを指定します。 デフォルトのsubjectは **true** です。  
+***Subject***: [available subjects](#subjects) で定義されているものの一つを指定します。デフォルトのサブジェクトは **true** です。  
 {{% /command-arguments %}}
 
 ------
