@@ -35,13 +35,13 @@ weight: 1
 
 CSVルートは、テキストファイルに記述することで路線データを作成できます。
 
-ファイルは任意のエンコードで記述されたプレーンテキストですが [encoding]({{< ref "/information/encodings/_index.md" >}})、好ましい選択としてはバイトオーダー付きのUTF-8です。 [parsing model]({{< ref "/information/numberformats/_index.md" >}}) に用いる数字は **ルーズ**（特に明記しない限りは）ですが、 それでも出力にあたっては *厳密な* 出力をすることが望ましいです。  ファイルは任意のフォルダに格納できますが、カレントフォルダもしくは相対パスは *Railway* と *Train* フォルダ 以下に存在しなければなりません。 ファイル名は任意ですが、 拡張子は必ず **.csv** を用います。 ファイルは基本的に上から下に向かって解釈されていき、各行は式ごとに分割され、左から右に向かって解釈されていきます。
+ファイルは任意のエンコードで記述されたプレーンテキストですが [encoding]({{< ref "/information/encodings/_index.md" >}})、好ましい選択としてはバイトオーダー付きのUTF-8です。 [parsing model]({{< ref "/information/numberformats/_index.md" >}}) に用いる数字は **ルーズ**(特に明記しない限りは)ですが、 それでも出力にあたっては *厳密な* 出力をすることが望ましいです。  ファイルは任意のフォルダに格納できますが、カレントフォルダもしくは相対パスは *Railway* と *Train* フォルダ 以下に存在しなければなりません。 ファイル名は任意ですが、 拡張子は必ず **.csv** を用います。 ファイルは基本的に上から下に向かって解釈されていき、各行は式ごとに分割され、左から右に向かって解釈されていきます。
 
 ルートファイルは、(Structure 名前空間)で定義された一連の命令セットにより、ルートデータ内で一貫して共通で利用されます 。 路線データ向けの追加のプロパティ、路線側が定義した既定の列車、沿線の背景のイメージファイルも同様に定義することができます。 最後に、ルートファイルは Track 名前空間でのコマンドにより指示します。 ここでは、 線路の座標 (殆どの場合、単位はメートル) を指定することにより、線路をカーブさせるタイミングや駅を設置したり、 壁や土手などを開始したり終わらせたりします。一般的には、 Track 名前空間はその他の名前空間を予め記述し、定義した後に記述する必要があります。
 
 このフォーマットには、暗黙の規定として明示的に開始、または終了することが出来ない rail 0 があり、 それは路線の始端から終端まで常に存在します。 そしてそれはプレイヤーが走行するレールを示します。 rail 0 とその他の レールは 視覚的表示に用いられるだけでなく、 同様に [Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}) にも用いられます。
 
-幾何学的に、カーブや勾配は暗黙の ｒａｉｌ ０ に対して作用しますが、 その他のすべてのレールは rail 0 に相対的に連動して定義され、 rail 0 のカーブや勾配に従って追従します。 オーバーライドされない限りファイルフォーマットではブロック長は25mの固定長で構築され、 特定のコマンドは25mのブロック単位でしか用いることができません。 オブジェクトの配置は、常に直線的に接続する非曲線座標系を想定しています。
+幾何学的に、カーブや勾配は暗黙の rail 0 に対して作用しますが、 その他のすべてのレールは rail 0 に相対的に連動して定義され、 rail 0 のカーブや勾配に従って追従します。 オーバーライドされない限りファイルフォーマットではブロック長は25mの固定長で構築され、 特定のコマンドは25mのブロック単位でしか用いることができません。 オブジェクトの配置は、常に直線的に接続する非曲線座標系を想定しています。
 
 ➟ [CSV ルートフォーマットのクイックリファレンスも参照して下さい...]({{< ref "/routes/csv_quick/_index.md" >}})
 
@@ -1889,9 +1889,9 @@ If *RailIndex<sub>1</sub>* is to the **left** of *RailIndex<sub>2</sub>* (e.g. i
 Otherwise, the objects defined in Structure.FormR, Structure.FormCL and Structure.RoofR will be used.
 
 
-##### <a name="track_signalling"></a>● 11.5. Signalling and speed limits
+<a name="track_signalling"></a>● 11.5. Signalling and speed limits
 
-------
+##### ------
 
 {{% command %}}  
 **Track.Limit** *<font color="blue">Speed</font>*; *Post*; *Cource*  
@@ -1937,9 +1937,9 @@ This command starts a section, the functional part of signalling, to be used in 
 
 {{% notice %}}
 
-#### Default versus simplified section behavior
+Default versus simplified section behavior
 
-There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
+#### There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
 
 {{% /notice %}}
 
@@ -2053,9 +2053,9 @@ Track.Signal is similar to using Track.Section and Track.SigF in one command.
 
 This commands creates a default Japanese repeating signal. The repeating signal repeats the state of the upcoming signal. Setting *X* to zero does not create a repeating signal, but forces the command to be ignored. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 and attaches a default signal post.
 
-##### <a name="track_safety"></a>● 11.6. Safety systems
+<a name="track_safety"></a>● 11.6. Safety systems
 
-------
+##### ------
 
 {{% command %}}  
 **Track.Beacon** *Type*; *BeaconStructureIndex*; *Section*; *Data*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
@@ -2181,9 +2181,9 @@ A permanent speed restriction (*Type*=1) is to be inserted at the point where th
 
 This command is equivalent to **Track.Pattern 1;_Speed_**. See there for more information. 
 
-##### <a name="track_misc"></a>● 11.7. Miscellaneous
+<a name="track_misc"></a>● 11.7. Miscellaneous
 
-------
+##### ------
 
 {{% command %}}  
 **Track.Back** *BackgroundTextureIndex*  
@@ -2498,5 +2498,7 @@ phi = 0
 {{% /function %}}
 
 上記の数式では、 [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) はコサインを表し、 [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) は正弦、 [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) は逆正接、 [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) は2つの引数の逆正接、 [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) は平方根を表します。 どちらか一方を使用するほうが、もう一方を使用するよりも直感的に見える場合、数式を用いると、球座標とデカルト座標を変換することが出来ます。数式は、光の方向が数学的に定義される公式文書として機能します (ラジアンを三角関数として用いる場合)。
+
+---
 
 ---
