@@ -1,0 +1,8 @@
+git:
+  filters:
+  - filter_type: dir
+    file_format: markdown
+    source_file_extension: md
+    source_language: en
+    source_file_dir: content/en/
+    translation_files_expression: 'content/<lang>/'

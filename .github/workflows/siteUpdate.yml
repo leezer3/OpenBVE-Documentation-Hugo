@@ -1,5 +1,7 @@
 name: siteUpdate
 on: push
+    branches:
+      - master
 jobs:
   deploy:
     runs-on: ubuntu-20.04
