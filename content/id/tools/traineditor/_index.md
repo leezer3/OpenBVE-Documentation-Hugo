@@ -5,7 +5,7 @@ weight: 4
 
 ![img](/images/tool_traineditor_screenshot_1.png)![img](/images/tool_traineditor_screenshot_2.png)![img](/images/tool_traineditor_screenshot_3.png)![img](/images/tool_traineditor_screenshot_4.png)
 
-## ■ Tentang aplikasi
+## ■ Rangkuman
 
 Alat ini berfungsi untuk meng-edit file train.dat lebih mudah. Anda dapat mengatur karakteristik kereta, mengatur akselerasi dan suara motor.
 
