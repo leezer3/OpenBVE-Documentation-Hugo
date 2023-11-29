@@ -17,7 +17,8 @@ weight: 5
 - [7. The DigitalGauge section](#digitalgauge)
 - [8. The LinearGauge section](#lineargauge)
 - [9. The Timetable section](#timetable)
-- [10. Available subjects](#subjects)
+- [10. The Windscreen section](#windscreen)
+- [11. Available subjects](#subjects)
 
 {{% /contents %}}
 
@@ -478,7 +479,10 @@ Subject = *Subject*
 ***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
 {{% /command-arguments %}}
 
-------
+{{% command %}}  
+**Track.PointOfInterest** *RailIndex*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*; *Text*  
+**Track.POI** *RailIndex*; *X*; *Y*; *Yaw*; *Pitch*; *Roll*; *Text*  
+{{% /command %}}
 
 {{% command %}}  
 Location = *Left*, *Top*  
