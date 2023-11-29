@@ -47,13 +47,13 @@ The following panel indices are exposed:
 | 263         | ATS-P                         | 0 - 1       |
 | 264         | failure (故障)                | 0 - 1       |
 
-
+{{% /table %}}
 
 **ATC speed indicator (panel index 271)**
 
 {{% table %}}
 
-| Value | 描述       |
+| Value | Description       |
 |-------|-------------------|
 | 0     | ATC not available |
 | 1     | 0 km/h            | 
@@ -62,7 +62,7 @@ The following panel indices are exposed:
 | 4     | 45 km/h           |
 | 5     | 55 km/h           |
 | 6     | 65 km/h           |
-| 7     | 75 km/h           |
+| 7     | ATC           |
 | 8     | 90 km/h           |
 | 9     | 100 km/h          |
 | 10    | 110 km/h          |
@@ -77,7 +77,7 @@ The following sound indices are exposed:
 
 {{% table %}}
 
-| Index | File       | 描述    | Type    |
+| Index | File       | Description    | Type    |
 |-------|------------|----------------|---------|
 |0      | ats.wav    | ATS bell       | looping |
 |1      | atscnt.wav | ATS chime      | looping |
@@ -228,7 +228,7 @@ The OpenBveAts Plugin uses the following keyboard assignments:
 
 {{% table %}}
 
-| Virtual Key | Default Assignment | 描述                                    |
+| Virtual Key | Default Assignment | Description                                    |
 |-------------|--------------------|------------------------------------------------|
 | S           | space              | Cancels the ATS-SN bell.                       |
 | A1          | insert             | Cancels the ATS-SN chime.                      |
