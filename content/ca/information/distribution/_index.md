@@ -10,7 +10,7 @@ Whether you have written a route, a train or a plugin, there are a few things yo
 
 Whichever text file you are about to include in your distribution, including readme files, you should make sure that the file can be correctly processed internationally. The default encoding for all text files accessed by openBVE is UTF-8. For routes and associated objects, you can also use a different encoding, but then, the user has to select the specific encoding from a list. The same situation applies to trains and associated files. If you encode your text files in anything else but UTF-8, you must inform the user about your choice, or otherwise, the user might end up with garbage characters and potentially incorrectly parsed files. Using UTF-8 is the preferred choice, while using legacy encodings is acceptable, but discouraged. Please note that all files in a route or train must use the same encoding as it is neither currently possible nor feasible for the user to select the encoding of every individual file.
 
-Pràctiques acceptables i no acceptables
+Pràctiques acceptables i inacceptables
 
 {{% table-nonheader %}}
 
@@ -26,7 +26,7 @@ Pràctiques acceptables i no acceptables
 
 When packaging a route or train, consider using a single archive instead of multiple smaller ones, unless the size of the download justifies splitting the archive. Never use platform-specific installers as they are not portable (unless you also provide an archive as an alternative). Platform-specific installers include Windows EXE files, Linux RPM repositories and Mac DMG files.
 
-Pràctiques acceptables i inacceptables:
+Pràctiques acceptables i inacceptables
 
 {{% table-nonheader %}}
 

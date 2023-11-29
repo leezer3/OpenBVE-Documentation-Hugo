@@ -107,23 +107,21 @@ This starts the section.
 
 This data entry consists of five comma-separated values. White spaces surrounding the values are ignored. The acceleration the motor cars can provide for the whole train (accounting for unpowered trailer cars) at a given speed is calculated as follows:
 
-If the speed of the train is 0 km/h, *a<sub>0</sub>* indicates the acceleration output.
+<a name="brake"></a>■ 3.2. The Brake section
 
-If the speed of the train is between 0 km/h and *v<sub>1</sub>*, the acceleration output is determined via the following formula:
+The **\<Brake>** section specifies properties for the braking system of the car, and consists of the following child nodes, each corresponding the a component of the twin-pipe standard air-brake system:
 
-{{% function "*Acceleration between 0 km/h and v<sub>1</sub>, where x is the current speed of the train in km/h:*" %}}  
-a<sub>0</sub> + (a<sub>1</sub> - a<sub>0</sub>) \* x / v<sub>1</sub>  
-{{% /function %}}
+Air compressor
 
-If the speed of the train is *v<sub>1</sub>*, the acceleration output is indicated by *a<sub>1</sub>*.
+An optional **\<Compressor>** node, supporting the following properties:
 
-If the speed of the train is between *v<sub>1</sub>* and *v<sub>2</sub>*, the acceleration output is determined via the following formula:
+{{% command %}}  
+**\<Rate>** *CompressionRate* **\</Rate>**  
+{{% /command %}}
 
-{{% function "*Acceleration between v<sub>1</sub> and v<sub>2</sub>, where x is the current speed of the train in km/h:*" %}}  
-v<sub>1</sub> \* a<sub>1</sub> / x  
-{{% /function %}}
+**CompressionRate** should be a positive number, representing the compression rate in Pa/s.
 
-If the speed of the train is greater than *v<sub>2</sub>*, the acceleration output is determined via the following formula (for version 2.0 exponents):
+Main Reservoir
 
 {{% function "_**For version 2.0:** Acceleration above v<sub>2</sub>, where x is the current speed of the train in km/h:_" %}}  
 v<sub>1</sub> \* a<sub>1</sub> \* v<sub>2</sub><sup>e-1</sup> / x<sup>e</sup>  
@@ -302,7 +300,7 @@ This starts the section.
 *JerkPowerUp*  
 {{% /command %}}
 
-A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s³) when the acceleration produced by the engine is increased. The default value is 1000.
+A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s3) when the acceleration produced by the engine is increased. The default value is 1000.
 
 ------
 
@@ -310,7 +308,7 @@ A non-negative floating point number representing the jerk in **1/100 meters per
 *JerkPowerDown*  
 {{% /command %}}
 
-A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s³) when the acceleration produced by the engine is decreased. The default value is 1000.
+A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s3) when the acceleration produced by the engine is decreased. The default value is 1000.
 
 ------
 
@@ -318,7 +316,7 @@ A non-negative floating point number representing the jerk in **1/100 meters per
 *JerkBrakeUp*  
 {{% /command %}}
 
-A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s³) when the deceleration produced by the electric brake is increased. Applies only to trains that use the electric brake. The default value is 1000.
+A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s3) when the deceleration produced by the electric brake is increased. Applies only to trains that use the electric brake. The default value is 1000.
 
 ------
 
@@ -326,7 +324,7 @@ A non-negative floating point number representing the jerk in **1/100 meters per
 *JerkBrakeDown*  
 {{% /command %}}
 
-A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s³) when the deceleration produced by the electric brake is decreased. Applies only to trains that use the electric brake. The default value is 1000.
+A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s3) when the deceleration produced by the electric brake is decreased. Applies only to trains that use the electric brake. The default value is 1000.
 
 ------
 
@@ -488,7 +486,13 @@ A positive floating-point number measured in **kilopascal** (kPa) indicating the
 When using a **train.dat** file the following default flow rates appply between the other components of the brake system:
 {{% table %}}
 
-|                     | Main Compressor | Equalizing Reservoir | Auxiliary Reservoir | Brake Pipe | Straight Air Pipe |
+|                     | Main Compressor | {{% command %}}  
+**\<ReleaseRate>** *Rate* **\</ReleaseRate>**  
+{{% /command %}} | {{% command %}}  
+**\<ServiceRate>** *Rate* **\</ServiceRate>**  
+{{% /command %}} | {{% command %}}  
+**\<ServiceMaximumPressure>** *Pressure* **\</ServiceMaximumPressure>**  
+{{% /command %}} | *Driver and non-driver cars:*  |
 | --------------------| --------------- |----------------------|---------------------|------------|-------------------|
 | Charge rate         | 5kPa /s         | 20kPa /s             | 200kPa /s           | 1000kPa /s |                   |
 | Normal flow rate    |                 | 5kPa /s              |                     | 1500kPa /s | 3000kPa /s        |
@@ -628,6 +632,22 @@ A non-negative integer indicating how many locomotive brake notches are availabl
 **1**: Independant- The locomotive brakes are independant of the train brakes.  
 **2**: Blocking- The locomotive brakes block the release of the train brakes.  
 {{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+*DriverPowerNotches*  
+{{% /command %}}
+
+A non-negative integer indicating how many power notches are available to the driver.
+
+------
+
+{{% command %}}  
+*DriverBrakeNotches*  
+{{% /command %}}
+
+A non-negative integer indicating how many brake notches are available to the driver.
 
 ------
 
@@ -817,7 +837,7 @@ A floating-point number measured in **meters** (m) indicating height above the r
 *ExposedFrontalArea*  
 {{% /command %}}
 
-A positive floating-point number measured in **square meters** (m²) indicating the frontal area of a car when it is fully exposed to resisting air. This is the case when the car is the front car and the train is driving forward, or the rear car when the train is driving backward. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. Trains usually have a lower frontal area than *WidthOfACar* \* *HeightOfACar* due to the front being rounded. This is especially true for aerodynamically enhanced trains like Shinkansen. The default value is 0.6 \* *WidthOfACar* \* *HeightOfACar*.
+A positive floating-point number measured in **square meters** (m2) indicating the frontal area of a car when it is fully exposed to resisting air. This is the case when the car is the front car and the train is driving forward, or the rear car when the train is driving backward. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. Trains usually have a lower frontal area than *WidthOfACar* \* *HeightOfACar* due to the front being rounded. This is especially true for aerodynamically enhanced trains like Shinkansen. The default value is 0.6 \* *WidthOfACar* \* *HeightOfACar*.
 
 ------
 
@@ -825,7 +845,7 @@ A positive floating-point number measured in **square meters** (m²) indicating 
 *UnexposedFrontalArea*  
 {{% /command %}}
 
-A positive floating-point number measured in **square meters** (m²) indicating the frontal area of a car when it is not fully exposed to resisting air. This is the case when the car is in the middle of the train and thus surrounded by other cars. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. The default value is 0.2 \* *WidthOfACar* \* *HeightOfACar*.
+A positive floating-point number measured in **square meters** (m2) indicating the frontal area of a car when it is not fully exposed to resisting air. This is the case when the car is in the middle of the train and thus surrounded by other cars. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. The default value is 0.2 \* *WidthOfACar* \* *HeightOfACar*.
 
 ------
 
