@@ -25,7 +25,7 @@ La secuencia de byte generado por el previo ejemplo en Shift_JIS:
 Que ocurre si la secuencia de byte es mal interpretado usando ISO 8859-1  (Latin-1) en vez de Shift_JIS:
 
 {{% code %}}  
-‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš  
+‚Ð‚ç‚a‚ÈƒJƒ^ƒJƒiŠ¿Žš  
 {{% /code %}}
 
 Por lo general, una codificación particular solo permite usar el sistema de escritura para el cual fue diseñado. Unicode, un estandard el cual cubre básicamente todos los caracteres y ha sido usado en sistemas de escritura a través del mundo, otorgando una solución a esto.
