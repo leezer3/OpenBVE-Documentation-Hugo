@@ -38,7 +38,7 @@ A key-value pair is indicated by giving the key, an equals sign (U+003D) and the
 NameOfTheKey = Value  
 {{% /command %}}
 
-您可以在一行的末尾添加注释。注释由分号（U+003B，英文半角）开始。所有注释在开始解析文件之前就将被自动排除。 
+您可以在一行的末尾添加注释。注释由分号(U+003B,英文半角)开始。所有注释在开始解析文件之前就将被自动排除。 
 
 ## <a name="content"></a> ■ 3. Content of the file
 

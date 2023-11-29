@@ -5,7 +5,7 @@ weight: 6
 
 喺路線同列車開發時嘅某些情況下，您要同其他開發人士協調，以便輕鬆咁喺唔同路線交換列車。否則，列車可能無法喺路線上行或聽起嚟唔正確。
 
-For example, the run i.wav sounds are played whenever the train moves along the rails, where i is a number identifying the rail type. If developer A used run1.wav to represent a continuously elded rail, but another developer B used run1.wav as the sound to represent jointed rails on concrete leepers, both trains might not be suited for use on the same route. This makes exchange of trains across routes difficult, even if a train would be used on that route in reality.
+例如，只要火车沿着铁轨移动，就会播放 run i.wav 声音，其中 i 是标识铁轨类型的数字。 如果开发人员 A 使用 run1.wav 来表示连续焊接的铁轨，而另一个开发人员 B 使用 run1.wav 作为声音来表示混凝土轨枕上的接合铁轨，则两列火车可能不适合在同一路线上使用。 这使得跨路线的火车交换变得困难，即使在现实中会在该路线上使用火车。
 
 As such, if you know of standards that have been created and are actually employed by enough developers, give your feedback, and these standards might be listed here.
 
