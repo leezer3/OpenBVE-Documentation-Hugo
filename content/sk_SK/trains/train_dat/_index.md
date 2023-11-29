@@ -107,23 +107,21 @@ This starts the section.
 
 This data entry consists of five comma-separated values. White spaces surrounding the values are ignored. The acceleration the motor cars can provide for the whole train (accounting for unpowered trailer cars) at a given speed is calculated as follows:
 
-If the speed of the train is 0 km/h, *a<sub>0</sub>* indicates the acceleration output.
+<a name="brake"></a>■ 3.2. The Brake section
 
-If the speed of the train is between 0 km/h and *v<sub>1</sub>*, the acceleration output is determined via the following formula:
+The **\<Brake>** section specifies properties for the braking system of the car, and consists of the following child nodes, each corresponding the a component of the twin-pipe standard air-brake system:
 
-{{% function "*Acceleration between 0 km/h and v<sub>1</sub>, where x is the current speed of the train in km/h:*" %}}  
-a<sub>0</sub> + (a<sub>1</sub> - a<sub>0</sub>) \* x / v<sub>1</sub>  
-{{% /function %}}
+Air compressor
 
-If the speed of the train is *v<sub>1</sub>*, the acceleration output is indicated by *a<sub>1</sub>*.
+An optional **\<Compressor>** node, supporting the following properties:
 
-If the speed of the train is between *v<sub>1</sub>* and *v<sub>2</sub>*, the acceleration output is determined via the following formula:
+{{% command %}}  
+**\<Rate>** *CompressionRate* **\</Rate>**  
+{{% /command %}}
 
-{{% function "*Acceleration between v<sub>1</sub> and v<sub>2</sub>, where x is the current speed of the train in km/h:*" %}}  
-v<sub>1</sub> \* a<sub>1</sub> / x  
-{{% /function %}}
+**CompressionRate** should be a positive number, representing the compression rate in Pa/s.
 
-If the speed of the train is greater than *v<sub>2</sub>*, the acceleration output is determined via the following formula (for version 2.0 exponents):
+Main Reservoir
 
 {{% function "_**For version 2.0:** Acceleration above v<sub>2</sub>, where x is the current speed of the train in km/h:_" %}}  
 v<sub>1</sub> \* a<sub>1</sub> \* v<sub>2</sub><sup>e-1</sup> / x<sup>e</sup>  
@@ -488,7 +486,13 @@ A positive floating-point number measured in **kilopascal** (kPa) indicating the
 When using a **train.dat** file the following default flow rates appply between the other components of the brake system:
 {{% table %}}
 
-|                     | Main Compressor | Equalizing Reservoir | Auxiliary Reservoir | Brake Pipe | Straight Air Pipe |
+|                     | Main Compressor | {{% command %}}  
+**\<ReleaseRate>** *Rate* **\</ReleaseRate>**  
+{{% /command %}} | {{% command %}}  
+**\<ServiceRate>** *Rate* **\</ServiceRate>**  
+{{% /command %}} | {{% command %}}  
+**\<ServiceMaximumPressure>** *Pressure* **\</ServiceMaximumPressure>**  
+{{% /command %}} | *Driver and non-driver cars:*  |
 | --------------------| --------------- |----------------------|---------------------|------------|-------------------|
 | Charge rate         | 5kPa /s         | 20kPa /s             | 200kPa /s           | 1000kPa /s |                   |
 | Normal flow rate    |                 | 5kPa /s              |                     | 1500kPa /s | 3000kPa /s        |
