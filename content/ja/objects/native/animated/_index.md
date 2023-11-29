@@ -165,6 +165,13 @@ These define the functions to shift the texture in the respective direction. The
 This defines the function which moves an object along the path of **Rail 0**. *Formula* must return a distance in meters, for which the object is then moved, respecting the curves and height changes of **Rail 0**.
 
 {{% command %}}  
+**ScaleXFunction = Formula**
+**ScaleYFunction = Formula**
+**ScaleZFunction = Formula**
+{{% /command %}}  
+These define the functions to scale the object in the respective axis. The original size of the object is represented by a nomimal **1.0** in each axis.
+
+{{% command %}}  
 **TextureOverride = Value**  
 {{% /command %}}  
 *Value* = **Timetable**: All faces will show the timetable bitmap as set up by CSV/RW routes.  
@@ -427,8 +434,8 @@ Please also note that some combinations of prefix and infix operators are not re
 | `Floor[x]`                    | Rounds down to the nearest integer.                          |
 | `Ceiling[x]`                  | Rounds up to the nearest integer.                            |
 | `Round[x]`                    | Rounds to the nearest integer. Numbers ending in .5 are rounded to the nearest even integer. |
-| `random[Minimum, Maximum]`    | Returns a new random floating-point number between *Minimum* and *Maximum*. |
-| `randomInt[Minimum, Maximum]` | Returns a new random integer between *Minimum* and *Maximum*. |
+| `random[Minimum, Maximum, Mode]`    | Returns a new random floating-point number between *Minimum* and *Maximum*. *Mode* is an optional parameter which may be set to **1** to generate a fixed value at the start of the simulation. |
+| `randomInt[Minimum, Maximum, Mode]` | Returns a new random integer between *Minimum* and *Maximum*. *Mode* is an optional parameter which may be set to **1** to generate a fixed value at the start of the simulation. |
 
 {{% /table-2col %}}
 
@@ -473,7 +480,7 @@ Please also note that some combinations of prefix and infix operators are not re
 
 {{% /table-2col %}}
 
-##### ● Time and camera
+##### ● Time, weather and camera
 
 {{% table-2col %}}
 
@@ -488,6 +495,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | `cameraYDistance` | The non-negative cartesian distance measured on the Y axis from the object to the camera in meters |
 | `cameraZDistance` | The non-negative cartesian distance measured on the Z axis from the object to the camera in meters |
 | `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
+| `ambientTemperature` | Returns the ambient temperature in degrees Kelvin. |
 
 {{% /table-2col %}}
 
@@ -506,6 +514,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `playerTrain`                 | Returns 1 if the train is the player train, 0 otherwise.     |
 | `cars`                        | The number of cars the train has.                            |
 | `carNumber`                   | Returns the index of the current car.                        |
+| `length`                      | The length of the train in m. |
 | `speed`                       | The signed actual speed of the current car in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speed[carIndex]`             | The signed actual speed of the car *carIndex* in m/s. Is positive when the train travels forward, and negative when the train travels backward. |
 | `speedometer`                 | The signed perceived speed of the current car in m/s as it would appear to a speedometer on wheel slip and wheel lock. |

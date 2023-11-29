@@ -15,7 +15,7 @@ weight: 1
 
 バイトオーダーマーク (BOM) が異なるUnicodeエンコーディングが示されない限り、Object Viewerは常にUTF-8として解釈することに注意してください。非Unicodeのエンコーディングはサポートされません。
 
-サポートされるオブジェクトファイルのフォーマット:
+サポートされるオブジェクトのファイルフォーマット:
 
 - B3D
 - CSV
@@ -26,7 +26,7 @@ weight: 1
 
 ## ■ Changelog
 
-Please also see the changelog of the main program.
+メインプログラムの更新履歴も同様に確認してください。
 
 ##### ● Version 1.4.4.0 (2016-01-30)
 
