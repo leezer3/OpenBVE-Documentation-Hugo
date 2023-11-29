@@ -5,7 +5,7 @@ weight: 2
 
 <font color="Gray">このページでは、様々なルートファイルと車両ファイルで使用する数値形式と、それらに準拠する方法について説明します。</font>
 
-## 目次
+## ■目次
 
 {{% contents %}}
 
@@ -100,13 +100,13 @@ weight: 2
 
 ## <a name="colors"></a>■ 5. 色表現
 
-**Hexcolor:** 6桁の16進数の前にはシャープ記号 (U+0023) が付きます。個々の16進数は、0 - 9 (U+0030 - U+0039) の10進数、a - fの小文字 (U+0061 - U+0066)、およびA〜Fの大文字 (U+0041 - U+0046)  で構成されます。hexcolorの形式は次のとおりです:
+**Hexcolor:** A six-digit hexadecimal number is preceded by a number sign character (U+0023). An individual hexadecimal digit can be comprised of the decimal digits from 0 to 9 (U+0030 - U+0039), the lowercase letters from a to f (U+0061 - U+0066) and the uppercase letters from A to F (U+0041 - U+0046).The hexcolor has the following form:
 
 {{% code %}}  
 \#*RRGGBB*  
 {{% /code %}}
 
-上記において、 RR は赤色要素を表し、 GG は緑色要素を、そして BB は青色要素を表します。各要素の範囲は00からFF (0 - 255) です。00ではその色成分がなく、FFではその色成分が最大限入っていることを表します。
+In this sequence, RR represents the red component, GG the green component and BB the blue component. Each component ranges from 00 to FF (0 - 255), where 00 represents no contribution for that channel and FF full contribution.
 
 一般的に使用される色 (透明性を示す) には以下が含まれます。
 
