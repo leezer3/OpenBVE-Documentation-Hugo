@@ -1,5 +1,5 @@
 ---
-title: "Other formats"
+title: "Egyéb formátumok"
 weight: 2
-layout: "hidden"
+layout: "rejtett"
 ---
