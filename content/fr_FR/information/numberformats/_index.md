@@ -5,7 +5,7 @@ weight: 2
 
 <font color="Gray">This page describes which number formats are encountered in the various route and train files and how to adhere to them.</font>
 
-## ■ Contents
+## ■ Contenu
 
 {{% contents %}}
 
@@ -17,7 +17,7 @@ weight: 2
 
 {{% /contents %}}
 
-## <a name="overview"></a>■ 1. Overview
+## <a name="overview"></a>■ 1. Présentation
 
 Within the route and train files, you will encounter numbers like integers or floating-point numbers all the time, occasionally also others. These numbers are required to adhere to a certain format, which is described in the following sections.
 
@@ -100,13 +100,13 @@ If minutes or seconds are not indicated, they are assumed to be zero. You can us
 
 ## <a name="colors"></a>■ 5. Color values
 
-**Hexcolor:** A six-digit hexadecimal number is preceded by a number sign character (U+0023). An individual hexadecimal digit can be comprised of the decimal digits from 0 to 9 (U+0030 - U+0039), the lowercase letters from a to f (U+0061 - U+0066) and the uppercase letters from A to F (U+0041 - U+0046).The hexcolor has the following form:
+**Hexcolor:** A six-digit hexadecimal number is preceded by a number sign character (U+0023). An individual hexadecimal digit can be comprised of the decimal digits from 0 to 9 (U+0030 - U+0039), the lowercase letters from a to f (U+0061 - U+0066) and the uppercase letters from A to F (U+0041 - U+0046).The hexcolor has the following form:
 
 {{% code %}}  
 \#*RRGGBB*  
 {{% /code %}}
 
-In this sequence, RR represents the red component, GG the green component and BB the blue component. Each component ranges from 00 to FF (0 - 255), where 00 represents no contribution for that channel and FF full contribution.
+In this sequence, RR represents the red component, GG the green component and BB the blue component. Each component ranges from 00 to FF (0 - 255), where 00 represents no contribution for that channel and FF full contribution.
 
 Commonly used colors (to indicate transparency) include:
 
