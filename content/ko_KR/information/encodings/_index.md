@@ -25,7 +25,7 @@ Shift_JIS로 인코드된 일본어 글자 예시 (적절한 폰트를 사용할
 이 바이트 배열이 Shift_JIS가 아닌 ISO 8859-1 (Latin-1)로 잘못 디코드되었을 때 발생한 결과:
 
 {{% code %}}  
-‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš  
+‚Ð‚ç‚a‚ÈƒJƒ^ƒJƒiŠ¿Žš  
 {{% /code %}}
 
 Usually, one particular encoding only allows to use the writing system for which it was designed for. Unicode, a standard which covers basically all characters as used in writing systems throughout the world, provides a solution here.
