@@ -612,19 +612,13 @@ If *pluginState[i]* is used with the built-in safety systems ATS and ATC, the fo
 | ATC 常用                | 0 (unlit) or 1 (lit) |
 | 120 km/h                    | ATC EMG |
 | ATC 非常                      | 0 (unlit) or 1 (lit) |
-| ATS is active             | CONST SPEED |
-
-定速
-
-0 (unlit) or 1 (lit)
-
-EB
+| ATS is active             | CONST SPEED | 定速 0 (unlit) or 1 (lit)
 
 | EB  | 0 (unlit) or 1 (lit)             | ATC speed indicator       | 0 - 12, see table on the right                                |      | {{% /table %}} | ● Sections (signalling)           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ---------------- | ----------------- |
 | 256  | The section context is defined when the object is placed using Track.SigF.                 | {{% table-2col %}}          | Variable                         |      | 0                | 描述 |
 | 257  | `section`             | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.*     | {{% /table-2col %}}           |      | 1                | <a name="performance"></a>■ 6. Performance            |
-| 258  | There are certain kinds of animation which are less expensive, and others which are more. Also, the underlying object plays a significant role. If you want to design your animated objects with as best performance as possible **for future releases of openBVE**, take a look at the following performance table:             | {{% table %}}     | 动画 |      | 2                | Object           |
+| 258  | There are certain kinds of animation which are less expensive, and others which are more. Also, the underlying object plays a significant role. If you want to design your animated objects with as best performance as possible **for future releases of openBVE**, take a look at the following performance table:             | {{% table %}}     | 動畫 |      | 2                | Object           |
 | 259  | Performance             | State changes       | Has only opaque faces                         |      | 3                | Good           |
 | 260  | State changes        | Has partially transparent faces | Moderate                         |      | 4                | Translation           |
 | 261  | Has only opaque faces       | Good | Translation                         |      | 5                | Has partially transparent faces           |
@@ -670,30 +664,7 @@ StateFunction = if[trackDistance>DISTANCE | section==0, 0, min[value + 0.5*delta
 RotateYFunction = if[currentState == 0, 0, -0.7]
 {{% /code %}}
 
-<a name="grammar"></a>■ 9. Formal Grammar
-
-| The formal grammar for the language may not match up perfectly with the implimentation included in OpenBVE. An example is a*-b which is valid under the grammar but the parser rejects it.  | {{% code %}}  
-&lt;expression>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::=  &lt;xor_expression> "&amp;" &lt;expression> &nbsp;&nbsp;&nbsp;&nbsp;| &lt;xor_expression>  
-&lt;xor_expression>&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;or_expression>&nbsp;&nbsp;"^" &lt;xor_expression> | &lt;or_expression>  
-&lt;or_expression>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;not_expression> "|" &lt;or_expression>&nbsp;&nbsp;| &lt;not_expression>   
-<br/>&lt;not_expression>&nbsp;&nbsp;&nbsp;&nbsp;::= "!" &lt;equal_expression> | &lt;equal_expression>  
-<br/>&lt;equal_expression>&nbsp;&nbsp;::= &lt;plus_expression> ("==" &lt;plus_expression>)* | &lt;plus_expression> ("!=" &lt;plus_expression>)`*`</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plus_expression> (">"&nbsp; &lt;plus_expression>)`*` | &lt;plus_expression> ("&lt;"&nbsp; &lt;plus_expression>)`*` | <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;plus_expression> ("&lt;=" &lt;plus_expression>)`*` | &lt;plus_expression> ("&lt;=" &lt;plus_expression>)`*` | &lt;plus_expression><br/>
-<br/>&lt;plus_expression>&nbsp;&nbsp;&nbsp;::= &lt;times_expression> ("+" &lt;times_expression>)`*`&nbsp; | &lt;times_expression> ("-" &lt;times_expression>)`*` | &lt;times_expression><br/>
-<br/>&lt;times_expression>&nbsp;&nbsp;::= &lt;divide_expression> "\*" &lt;times_expression>  | &lt;divide_expression>  
-&lt;divide_expression> ::= &lt;minus_expression>  "/" &lt;divide_expression> | &lt;minus_expression>  
-<br/>&lt;minus_expression>&nbsp;&nbsp;::= "-" &lt;function_call> | &lt;function_call>  
-&lt;function_call>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= &lt;name> "[" &lt;expression> ("," &lt;expression>)* "]" | &lt;term>  
-<br/>&lt;term>&nbsp;&nbsp;&nbsp;::= "(" &lt;expression> ")" | &lt;name> | &lt;number>  
-&lt;number> ::= &lt;digit>*  
-&lt;name>&nbsp;&nbsp;&nbsp;::= &lt;letter> (&lt;letter> | &lt;digit>)*  
-<br/>&lt;letter> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" |  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" |  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" |  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"  
-&lt;digit>&nbsp;&nbsp;::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
-{{% /code %}}                                                  |
+{{% table-2col %}}
 | --------- | ------------------------------------------------------------ |
 | `section` | The value of the section aspect currently shown.<br />*If this variable is used outside of a Track.SigF context, the behavior is currently undefined and subject to change.* |
 
@@ -705,7 +676,7 @@ There are certain kinds of animation which are less expensive, and others which 
 
 {{% table %}}
 
-| 动画      | Object                          | Performance |
+| 動畫      | Object                          | Performance |
 | -------------- | ------------------------------- | ----------- |
 | State changes  | Has only opaque faces           | Good        |
 | State changes  | Has partially transparent faces | Moderate    |

@@ -37,8 +37,6 @@ Supported object file formats:
 
 {{% /table %}}
 
-{{% /code %}}
-
 {{% code %}}  
 ObjectBender input.csv output.csv /n=25 /s=1 /b=25 /r=600  
 {{% /code %}}

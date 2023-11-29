@@ -974,87 +974,85 @@ Layer = *LayerIndex*
 
 ## A subject is composed of a base subject and an optional subject suffix. The subject controls what information is fed to the element that uses the subject. For example, a *Needle* can use the subject *kmph* to be fed with the current speed of the train in kilometers per hour, or with the *mr* subject to show the main reservoir pressure.
 
-● Base subjects
+##### ● Base subjects
 
-##### {{% table %}}
+{{% table %}}
 
-Base
-
-| subjectDescription              | acc                                           |
+| Base              | subjectDescription                                           |
 | ----------------- | ------------------------------------------------------------ |
-| Returns the (signed) acceleration of the train in meters per second squared (m/s2).               | atc |
-| Equivalent to *ats271*.               | ats*i*                                      |
-| Returns the state of the *i*<sup>th</sup> plugin variable, depending on the plugin used. This is the same as pluginState[*i*] in animated objects.<br/>For the built-in safety systems ATS and ATC, see below.            | locobrakecylinder |
-| Returns the pressure of the brake cylinder on the driver's car in kPa (1000 Pa). | bc |
-| Returns the pressure of the brake cylinder in kPa (1000 Pa).                | locobrakepipe |
-| Returns the pressure of the brake pipe on the driver's car in kPa (1000 Pa).     | bp |
-| Returns the pressure of the brake pipe in kPa (1000 Pa).                | brake     |
-| Returns the currently selected brake notch.<br/>For trains with automatic air brakes, 0 represents *RELEASE*, 1 represents *LAP*, 2 represents *SERVICE* and 3 represents the emergency brake.<br/>For trains without a hold brake device, 0 represents released brakes, *i* represents brake notch *i* and *n*+1 represents the emergency brake, where *n* is the number of brake notches the train has.<br/>For trains with a hold brake device, 0 represents released brakes, 1 represents the hold brake, *i*+1 represents brake notch *i*, and *n*+2 represents the emergency brakes, where *n* is the number of brake notches the train has.             | locobrake |
-| Returns the currently selected Loco Brake notch.         | csc             |
-| Returns 1 if the const speed system is currently active and 0 otherwise.               | door |
-| Returns a value between 0 (open doors) and 1 (closed doors).              | doorl*i* |
-| Returns a value between 0 (open) and 1 (closed) for the left doors of car *i*, or 2 if the car does not exist.<br/>Car index 0 represents the first car in the train, and *n*-1 the last car, where *n* is the number of cars in the train.          | doorr*i* |
-| Returns a value between 0 (open) and 1 (closed) for the right doors of car *i*, or 2 if the car does not exist.<br/>Car index 0 represents the first car in the train, and *n*-1 the last car, where *n* is the number of cars in the train.          | doorbuttonl |
-| Returns 1 if the left door button is currently pressed, 0 otherwise.       | doorbuttonr |
-| Returns 1 if the right door button is currently pressed, 0 otherwise.       | er |
-| Returns the pressure of the equalizing reservoir in kPa (1000 Pa).                | hour |
-| Returns the integer part of the current hour.              | kmph                |
-| Returns the absolute speed of the train in kilometers per hour (km/h).              | min |
-| Returns the integer part of the current minute.               | motor              |
-| Returns the acceleration which the motor of the first motor car currently generates in m/s2.             | mph |
-| Returns the absolute speed of the train in international miles per hour (mph).               | mr |
-| Returns the pressure of the main reservoir in kPa (1000 Pa).                | ms |
-| Returns the absolute speed of the train in meters per second (m/s).                | power |
-| Returns the currently selected power notch. This is an integer between 0 and *n*, where *n* is the number of power notches the train has.             | rev |
-| Returns the currently selected reverser position. 0 represents backward, 1 represents neutral and 2 represents forward.               | sap |
-| Returns the pressure of the straight air pipe in kPa (1000 Pa).               | sec |
-| Returns the integer part of the current second.               | true              |
-| Always returns 1. This is useful for the *PilotLamp* element in order to always show the associated bitmap.              | Klaxon |
-| Returns the currently playing horn (if any) as follows: (0) No horns are playing (1) The primary horn is playing (2) The secondary horn is playing (3) The music horn is playing. *Note* If multiple horns are playing, the lowest value will be returned.            | PrimaryKlaxon |
-| Returns 1 if the primary horn is currently playing, 0 otherwise.     | SecondaryKlaxon |
-| Returns 1 if the secondary horn is currently playing, 0 otherwise.   | MusicKlaxon |
-| Returns 1 if the music horn is currently playing, 0 otherwise.       | passAlarm |
-| Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active).         | pilotLamp |
-| The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit).         | stationAdjustAlarm |
-| Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). | wiperPosition |
-| The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) | wheelSlip |
-| Whether the train is currently experiencing wheelsip. Returns 1 if true, 0 otherwise.     | {{% /table %}} |
-| If ats*i* is used with the built-in safety systems ATS and ATC, the following mapping for *i* applies:       | {{% table %}} |
-| *i*     | English |
+| acc               | Returns the (signed) acceleration of the train in meters per second squared (m/s2). |
+| atc               | Equivalent to *ats271*.                                      |
+| ats*i*            | Returns the state of the *i*<sup>th</sup> plugin variable, depending on the plugin used. This is the same as pluginState[*i*] in animated objects.<br/>For the built-in safety systems ATS and ATC, see below. |
+| locobrakecylinder | Returns the pressure of the brake cylinder on the driver's car in kPa (1000 Pa). |
+| bc                | Returns the pressure of the brake cylinder in kPa (1000 Pa). |
+| locobrakepipe     | Returns the pressure of the brake pipe on the driver's car in kPa (1000 Pa). |
+| bp                | Returns the pressure of the brake pipe in kPa (1000 Pa).     |
+| brake             | Returns the currently selected brake notch.<br/>For trains with automatic air brakes, 0 represents *RELEASE*, 1 represents *LAP*, 2 represents *SERVICE* and 3 represents the emergency brake.<br/>For trains without a hold brake device, 0 represents released brakes, *i* represents brake notch *i* and *n*+1 represents the emergency brake, where *n* is the number of brake notches the train has.<br/>For trains with a hold brake device, 0 represents released brakes, 1 represents the hold brake, *i*+1 represents brake notch *i*, and *n*+2 represents the emergency brakes, where *n* is the number of brake notches the train has. |
+| locobrake         | Returns the currently selected Loco Brake notch.             |
+| csc               | Returns 1 if the const speed system is currently active and 0 otherwise. |
+| door              | Returns a value between 0 (open doors) and 1 (closed doors). |
+| doorl*i*          | Returns a value between 0 (open) and 1 (closed) for the left doors of car *i*, or 2 if the car does not exist.<br/>Car index 0 represents the first car in the train, and *n*-1 the last car, where *n* is the number of cars in the train. |
+| doorr*i*          | Returns a value between 0 (open) and 1 (closed) for the right doors of car *i*, or 2 if the car does not exist.<br/>Car index 0 represents the first car in the train, and *n*-1 the last car, where *n* is the number of cars in the train. |
+| doorbuttonl       | Returns 1 if the left door button is currently pressed, 0 otherwise. |
+| doorbuttonr       | Returns 1 if the right door button is currently pressed, 0 otherwise. |
+| er                | Returns the pressure of the equalizing reservoir in kPa (1000 Pa). |
+| hour              | Returns the integer part of the current hour.                |
+| kmph              | Returns the absolute speed of the train in kilometers per hour (km/h). |
+| min               | Returns the integer part of the current minute.              |
+| motor             | Returns the acceleration which the motor of the first motor car currently generates in m/s2. |
+| mph               | Returns the absolute speed of the train in international miles per hour (mph). |
+| mr                | Returns the pressure of the main reservoir in kPa (1000 Pa). |
+| ms                | Returns the absolute speed of the train in meters per second (m/s). |
+| power             | Returns the currently selected power notch. This is an integer between 0 and *n*, where *n* is the number of power notches the train has. |
+| rev               | Returns the currently selected reverser position. 0 represents backward, 1 represents neutral and 2 represents forward. |
+| sap               | Returns the pressure of the straight air pipe in kPa (1000 Pa). |
+| sec               | Returns the integer part of the current second.              |
+| true              | Always returns 1. This is useful for the *PilotLamp* element in order to always show the associated bitmap. |
+| Klaxon            | `MusicKlaxon` |
+| PrimaryKlaxon     | `passAlarm` |
+| SecondaryKlaxon   | `stationAdjustAlarm` |
+| MusicKlaxon       | |
+| passAlarm         | |
+| pilotLamp         | Description |
+| stationAdjustAlarm | English |
+| wiperPosition | The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) |
+| wheelSlip     | Whether the train is currently experiencing wheelsip. Returns 1 if true, 0 otherwise. |
+| sanders       | Whether the sanders are currently active. Returns 1 if true, 0 otherwise. |
+| sandLevel     | Returns the current sand level. |
 
-
-日本語
-
-Return values
-
-ats271
-
-| Meaning  | ATS             | ATS       | 0 (unlit) or 1 (lit)                                |      | ATC not available | ATS RUN           |
-| ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ------ | ----------------- |
-| 256  | ATS 作動                 | 0 (unlit), 1 (lit) or 2 (flashing)          | 0 km/h                         |      | 0      | ATS RUN |
-| 257  | ATS 作動             | 0 (unlit / non-flashing), 1 (lit / flashing)     | 15 km/h           |      | 1      | P POWER            |
-| 258  | P 電源             | 0 (unlit) or 1 (lit)     | 25 km/h |      | 2      | PTN APPROACH           |
-| 259  | パターン接近             | 0 (unlit) or 1 (lit)       | 45 km/h                         |      | 3      | BRAKE RELEASE           |
-| 260  | ブレーキ開放        | 0 (unlit) or 1 (lit) | 55 km/h                         |      | 4      | BRAKE APPLY           |
-| 261  | ブレーキ動作       | 0 (unlit) or 1 (lit) | 65 km/h                         |      | 5      | ATS P           |
-| 262  | ATS-P         | 0 (unlit) or 1 (lit) | 75 km/h                         |      | 6      | FAILURE           |
-| 263  | 故障               | 0 (unlit) or 1 (lit)        | 90 km/h                         |      | 7      | ATC           |
-| 264  | ATC             | 0 (unlit) or 1 (lit)         | 100 km/h                         |      | 8      | ATC POWER           |
-| 265  | ATC 電源                 | 0 (unlit) or 1 (lit)          | 110 km/h                         |      | 9      | ATC SRV          |
-| 266  | ATC 常用           | 0 (unlit) or 1 (lit)     | 120 km/h                         |      | 10     | ATC EMG          |
-| 267  | ATC 非常             | 0 (unlit) or 1 (lit)     | ATS is active                         |      | 11     | CONST SPEED          |
-| 268  | 定速             | 0 (unlit) or 1 (lit)     | EB                         |      | 12     | EB     |
-| 269  | 0 (unlit) or 1 (lit)         | ATC speed indicator         | 0 - 12, see table on the right                         |      |        |                   |
-| 270  | {{% /table %}}                  | ● Suffixes           | {{% table %}}                         |      |        |                   |
-| 271  | Subject suffix |              | Description               |      |        |                   |
-
-d*i*
-
-##### With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10.
 
 {{% /table %}}
 
-| **Example:** kmphd1 can be used to feed a *DigitalNumber* with the tens of the current speed of the train in kilometers per hour. The image used by the *DigitalNumber* will thus need to be composed of images from 0 to 10 in order to show all possible states kmphd1 can return, where images 0 through 9 correspond to the digits, and 10 corresponds to an image shown at the tens when the speed is below 10 km/h (e.g. another 0-digit, or blank space). | 描述                                                  |
+If ats*i* is used with the built-in safety systems ATS and ATC, the following mapping for *i* applies:
+
+{{% table %}}
+
+| Arti  | ATS             | ATS       | 0 (unlit) or 1 (lit)                                |      | ats271 | Arti           |
+| ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ------ | ----------------- |
+| 256  | ATS 作動                 | ATS 作動          | 55 km/h                         |      | 0      | ATC not available |
+| 257  | ATS 作動             | 0 (unlit) or 1 (lit)     | 15 km/h           |      | 1      | 0 km/h            |
+| 258  | ATS 作動             | 0 (unlit) or 1 (lit)     | 25 km/h |      | 2      | 15 km/h           |
+| 259  | パターン接近             | 0 (unlit) or 1 (lit)       | 55 km/h                         |      | 3      | 25 km/h           |
+| 260  | ブレーキ開放        | 0 (unlit) or 1 (lit) | 55 km/h                         |      | 4      | 45 km/h           |
+| 261  | ブレーキ動作       | 0 (unlit) or 1 (lit) | 55 km/h                         |      | 5      | 55 km/h           |
+| 262  | ATS-P         | 0 (unlit) or 1 (lit) | 55 km/h                         |      | 6      | 65 km/h           |
+| 263  | 故障               | ATS-P        | 55 km/h                         |      | 7      | 75 km/h           |
+| 264  | ATC             | 0 (unlit) or 1 (lit)         | 55 km/h                         |      | 8      | 90 km/h           |
+| 265  | ATC 電源                 | ATC 電源          | 55 km/h                         |      | 9      | 100 km/h          |
+| 266  | ATC 常用           | 0 (unlit) or 1 (lit)     | 55 km/h                         |      | 10     | 110 km/h          |
+| 267  | ATC 非常             | 0 (unlit) or 1 (lit)     | 55 km/h                         |      | 11     | 120 km/h          |
+| 268  | 定速             | 0 (unlit) or 1 (lit)     | 55 km/h                         |      | 12     | ATS is active     |
+| 269  | 0 (unlit) or 1 (lit)         | ATC speed indicator         | 55 km/h                         |      |        |                   |
+| 270  | ● Sections (signalling)                  | ● Sections (signalling)           | 55 km/h                         |      |        |                   |
+| 271  |  |              | Variable               |      |        |                   |
+
+{{% /table %}}
+
+##### ● Suffixes
+
+{{% table %}}
+
+| Subject suffix | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
 | d*i*           | With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10. |
 
