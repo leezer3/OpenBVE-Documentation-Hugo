@@ -77,7 +77,7 @@ A new section is opened by starting the line with a number sign character (U+002
 
 The order in which sections appear within the file is irrelevant. Each line following the opening of a new section is interpreted as a data entry. These data entries are not named, thus their order is important. When a data entry is expected but omitted because a new section was started, a default value will apply. The exact interpretation of each data entry is explained in the following sections, along with default values.
 
-您可以在一行的末尾添加注释。注释由分号（U+003B，英文半角）开始。所有注释在开始解析文件之前就将被自动排除。 
+您可以在一行的末尾添加注释。注释由分号(U+003B,英文半角)开始。所有注释在开始解析文件之前就将被自动排除。 
 
 ## <a name="acceleration"></a>■ 4. The Acceleration section
 
@@ -302,7 +302,7 @@ This starts the section.
 *JerkPowerUp*  
 {{% /command %}}
 
-A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s³) when the acceleration produced by the engine is increased. The default value is 1000.
+A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s3) when the acceleration produced by the engine is increased. The default value is 1000.
 
 ------
 
@@ -310,7 +310,7 @@ A non-negative floating point number representing the jerk in **1/100 meters per
 *JerkPowerDown*  
 {{% /command %}}
 
-A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s³) when the acceleration produced by the engine is decreased. The default value is 1000.
+A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s3) when the acceleration produced by the engine is decreased. The default value is 1000.
 
 ------
 
@@ -318,7 +318,7 @@ A non-negative floating point number representing the jerk in **1/100 meters per
 *JerkBrakeUp*  
 {{% /command %}}
 
-A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s³) when the deceleration produced by the electric brake is increased. Applies only to trains that use the electric brake. The default value is 1000.
+A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s3) when the deceleration produced by the electric brake is increased. Applies only to trains that use the electric brake. The default value is 1000.
 
 ------
 
@@ -326,7 +326,7 @@ A non-negative floating point number representing the jerk in **1/100 meters per
 *JerkBrakeDown*  
 {{% /command %}}
 
-A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s³) when the deceleration produced by the electric brake is decreased. Applies only to trains that use the electric brake. The default value is 1000.
+A non-negative floating point number representing the jerk in **1/100 meters per second cubed** (1/100 m/s3) when the deceleration produced by the electric brake is decreased. Applies only to trains that use the electric brake. The default value is 1000.
 
 ------
 
@@ -631,6 +631,22 @@ A non-negative integer indicating how many locomotive brake notches are availabl
 
 ------
 
+{{% command %}}  
+*DriverPowerNotches*  
+{{% /command %}}
+
+A non-negative integer indicating how many power notches are available to the driver.
+
+------
+
+{{% command %}}  
+*DriverBrakeNotches*  
+{{% /command %}}
+
+A non-negative integer indicating how many brake notches are available to the driver.
+
+------
+
 {{% code "*Example of a Handle section:*" %}}  
 #HANDLE  
 0  
@@ -817,7 +833,7 @@ A floating-point number measured in **meters** (m) indicating height above the r
 *ExposedFrontalArea*  
 {{% /command %}}
 
-A positive floating-point number measured in **square meters** (m²) indicating the frontal area of a car when it is fully exposed to resisting air. This is the case when the car is the front car and the train is driving forward, or the rear car when the train is driving backward. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. Trains usually have a lower frontal area than *WidthOfACar* \* *HeightOfACar* due to the front being rounded. This is especially true for aerodynamically enhanced trains like Shinkansen. The default value is 0.6 \* *WidthOfACar* \* *HeightOfACar*.
+A positive floating-point number measured in **square meters** (m2) indicating the frontal area of a car when it is fully exposed to resisting air. This is the case when the car is the front car and the train is driving forward, or the rear car when the train is driving backward. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. Trains usually have a lower frontal area than *WidthOfACar* \* *HeightOfACar* due to the front being rounded. This is especially true for aerodynamically enhanced trains like Shinkansen. The default value is 0.6 \* *WidthOfACar* \* *HeightOfACar*.
 
 ------
 
@@ -825,7 +841,7 @@ A positive floating-point number measured in **square meters** (m²) indicating 
 *UnexposedFrontalArea*  
 {{% /command %}}
 
-A positive floating-point number measured in **square meters** (m²) indicating the frontal area of a car when it is not fully exposed to resisting air. This is the case when the car is in the middle of the train and thus surrounded by other cars. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. The default value is 0.2 \* *WidthOfACar* \* *HeightOfACar*.
+A positive floating-point number measured in **square meters** (m2) indicating the frontal area of a car when it is not fully exposed to resisting air. This is the case when the car is in the middle of the train and thus surrounded by other cars. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. The default value is 0.2 \* *WidthOfACar* \* *HeightOfACar*.
 
 ------
 
