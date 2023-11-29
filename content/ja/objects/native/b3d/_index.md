@@ -4,7 +4,7 @@ linktitle: "B3D オブジェクト"
 weight: 1
 ---
 
-## ■ 概要
+## ■目次
 
 {{% contents %}}
 
@@ -22,12 +22,13 @@ weight: 1
   - [Rotate, RotateAll](#rotate)
   - [Shear, ShearAll](#shear)
   - [Mirror, MirrorAll](#mirror)
-  - [Color](#setcolor)
-  - [EmissiveColor](#setemissivecolor)
+  - [Color, ColorAll](#setcolor)
+  - [EmissiveColor, EmissiveColorAll](#setemissivecolor)
   - [BlendMode](#setblendmode)
   - [WrapMode](#setwrapmode)
   - [Load](#loadtexture)
   - [Transparent](#setdecaltransparentcolor)
+  - [Crossfading](#enablecrossfading)
   - [Coordinates](#settexturecoordinates)
 
 {{% /contents %}}
@@ -152,7 +153,7 @@ Cube コマンドは、一連の Vertex と Face コマンド群を実行する�
 ***Height***: 浮動小数点数:角柱の側面の高さを **メートル** で表します。 負の数を指定すると、角柱を垂直方向に反転させ、裏返しにして表示します。
 {{% /command-arguments %}}
 
-このコマンドは [錐台](http://en.wikipedia.org/wiki/Frustrum) を作ることができます。 もし *LowerRadius* と *UpperRadius* が等しい場合、生成されるオブジェクトは [角柱](http://en.wikipedia.org/wiki/Prism_(geometry)) となり、 円柱に近いものとして使うことができます。 もし、 *LowerRadius* もしくは *UpperRadius* がゼロの場合、 [角錐](http://en.wikipedia.org/wiki/Pyramid_(geometry)) が生成されます。錐台は原点を中心とします（0,0,0）。 X軸又はZ軸上に沿って、錐台は -*LowerRadius* から *LowerRadius* を下底の基準として、そして -*UpperRadius* から *UpperRadius* を上底の基準として拡がります。 Y軸上では、錐台は -½\**Height* から ½\**Height* に拡がります。
+This command creates a [frustrum](http://en.wikipedia.org/wiki/Frustrum). If *LowerRadius* and *UpperRadius* are equal, the object generated will reduce to a [prism](http://en.wikipedia.org/wiki/Prism_(geometry)), which can be used as an approximation to the cylinder. If either *LowerRadius* or *UpperRadius* are zero, the object generated will reduce to a [pyramid](http://en.wikipedia.org/wiki/Pyramid_(geometry)). The frustum will be centered on the origin (0,0,0). On the x- and z-axes, the frustum extends from -*LowerRadius* to *LowerRadius* for the lower base and from -*UpperRadius* to *UpperRadius* for the upper base. On the y-axis, the frustum extends from -1⁄2\**Height* to 1⁄2\**Height*.
 
 The number of vertices *n* will usually suffice to be 6 or 8 when only small radii are used, for example to create a pole. Regardless of the values of *UpperRadius*, *LowerRadius* and *n*, the frustum will always have 2\**n* vertices, and usually *n*+2 faces unless any of the caps are omitted. If *UpperRadius* or *LowerRadius* are negative, the absolute value is being taken, but the respective caps are not created. If *Height* is negative, the roles of top and bottom are reversed and the faces will be visible from the inside, while otherwise, they will be visible from the outside.
 
@@ -271,8 +272,8 @@ The **Mirror** command mirrors all vertices that have been created so far in the
 <a name="setcolor"></a>
 
 {{% command %}}
-**Color** *Red*, *Green*, *Blue*, *Alpha*
-**ColorAll** *Red*, *Green*, *Blue*, *Alpha*
+**Color** *Red*, *Green*, *Blue*, *Alpha*  
+**ColorAll** *Red*, *Green*, *Blue*, *Alpha*  
 {{% /command %}}
 
 {{% command-arguments %}}
@@ -291,8 +292,8 @@ The **ColorAll** command sets the color for all faces that were already created 
 <a name="setemissivecolor"></a>
 
 {{% command %}}
-**EmissiveColor** *Red*, *Green*, *Blue*
-**EmissiveColorAll** *Red*, *Green*, *Blue*
+**EmissiveColor** *Red*, *Green*, *Blue*  
+**EmissiveColorAll** *Red*, *Green*, *Blue*  
 {{% /command %}}
 
 {{% command-arguments %}}
@@ -390,6 +391,29 @@ If *NighttimeTexture* is used, it specifies the texture to be used on nighttime 
 This command sets the color used for screendoor transparency for all faces that were already created. The texture loaded via the Load command will become transparent for all pixels which match exactly with the color specified via the *Red*, *Green* and *Blue* parameters. The use of screendoor transparency is much more efficient than using a full alpha channel, so prefer using a texture without an alpha channel and use this command instead to make parts of the texture transparent. You need to specify texture coordinates via the Coordinate command in order for the texture to correctly appear on the faces.
 
 ----------
+
+<a name="enablecrossfading"></a>
+
+{{% command %}}  
+**Crossfading** *value* 
+{{% /command %}}
+
+{{% command-arguments %}}  
+**value**: Either true to enable cross-fading, or false (default) to disable.
+{{% /command-arguments %}}
+
+This command controls the blending mode when both a daytime and a nighttime texture are specified.
+
+When this is set to **false** the behavior is as follows:
+1. The daytime texture is drawn.
+2. The opacity level for the nighttime texture is calculated from the __Track.Brightness__ value, where a value of **255** produces a fully opaque texture, and a value of **0** produces a fully transparent texture.
+3. The nighttime texture is drawn.
+
+When this is set to **true** the behaviour is as follows:
+
+The opacity level for each texture is blended proportionately, so that for example, a __Track.Brightness__ value of **128** would produce an (approximately) 50% blend of each texture and so-on.
+
+---------
 
 <a name="settexturecoordinates"></a>
 
