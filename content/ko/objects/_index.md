@@ -1,5 +1,5 @@
 ---
 title: "Objects"
 weight: 2
-layout: "hidden"
+layout: "숨겨짐"
 ---
