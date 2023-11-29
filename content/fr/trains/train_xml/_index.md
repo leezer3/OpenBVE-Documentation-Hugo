@@ -16,6 +16,8 @@ This page is still under construction.
 - [3.1. The Power section](#power)
 - [3.2. The Brake section](#brake)
 - [3.3. The Doors section](#doors)
+- [3.4. The Sanders section](#sanders)
+- [3.4. The Windscreen section](#windscreen)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
@@ -70,7 +72,33 @@ A child-node must be of the following format:
 **\<Subject>** *Descriptions* **\</Subject>**  
 {{% /command %}}
 
-**Descriptions** should be a comma-separated list, equal to the number of notches the train has for the subject.
+**Descriptions** should be a comma or semi-colon separated list, equal to the number of notches the train has for the subject.
+
+The entries for this list must be placed in order from low to high. 
+
+For an example brake or locomotive brake handle with EB, hold brake and 8 notches, the following would be used:
+
+{{% function "_Example Brake Handle NotchDescriptions:_" %}}  
+\<NotchDescriptions>EB,HLD,N,1,2,3,4,5,6,7,8\</NotchDescriptions>  
+{{% /function %}}
+
+A train using the automatic air-brake has a total of three notches, e.g:
+
+{{% function "_Example Brake Handle NotchDescriptions:_" %}}  
+\<NotchDescriptions>EB,REL,LAP,SRV\</NotchDescriptions>  
+{{% /function %}}
+
+For an example power handle with 8 notches, the following would be used:
+
+{{% function "_Example Power Handle NotchDescriptions:_" %}}  
+\<NotchDescriptions>N,1,2,3,4,5,6,7,8\</NotchDescriptions>  
+{{% /function %}}
+
+The reverser must be in the order Neutral, Forwards, Reverse:
+
+{{% function "_Example Reverser Handle NotchDescriptions:_" %}}  
+\<NotchDescriptions>N,F,R\</NotchDescriptions>  
+{{% /function %}}
 
 ## <a name="car"></a>■ 3. The Car section
 
@@ -117,6 +145,24 @@ A child-node must be of the following format:
 {{% /command %}}
 
 **HeightInMeters** should be the length of the car in meters.
+
+{{% command %}}  
+**\<CenterOfGravityHeight>** *CenterOfGravityInMeters* **\</CenterOfGravityHeight>**  
+{{% /command %}}
+
+**CenterOfGravityInMeters** should be the height above the rails in meters at which the center of mass is located.
+
+{{% command %}}  
+**\<ExposedFrontalArea>** *Area* **\</ExposedFrontalArea>**  
+{{% /command %}}
+
+**Area** should be a positive floating-point number measured in square meters (m2) indicating the frontal area of a car when it is fully exposed to resisting air, for example when the car is the front car in the current nominal direction of travel. 
+
+{{% command %}}  
+**\<UnexposedFrontalArea>** *Area* **\</UnexposedFrontalArea>**  
+{{% /command %}}
+
+**Area** should be a positive floating-point number measured in square meters (m2) indicating the frontal area of a car when it is fully not exposed to resisting air, namely any car in the train other than the front car.
 
 {{% command %}}  
 **\<Mass>** *EmptyMass* **\</EmptyMass>**  
@@ -197,6 +243,14 @@ Motor cars may specifiy a **\<Power>** node.
 This defines the acceleration curves and the power handle fitted to the car, and supports the following child nodes:
 
 ### 3.1.1. Acceleration Curves
+
+{{% warning-nontitle %}}
+
+In the **train.dat** acceleration curve figures are given for the train as a whole, and an internal calculation is performed to produce the per-car acceleration figures.
+<br><br>
+However, in **train.xml** acceleration curve figures apply to the current car only.
+
+------
 
 The **\<AccelerationCurves>** child node should contain a list of acceleration curve nodes. These must be in ascending order, and should correspond to the number of power notches the train has.
 
@@ -491,6 +545,134 @@ See the **sound.cfg** documentation for further details.
 
 **DoorTolerance** should be a positive number, setting a tolerance in meters before the door is considered to be closed.
 
+## <a name="sanders"></a>■ 3.4. The Sanders section
+
+The **\<Sanders>** section specifies the properties of the sanders fitted to this car, and supports the following properties:
+
+{{% command %}}  
+**Type** *Type*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Type***: The type of sanders fitted to this car (if any).
+{{% /command-arguments %}}
+
+▸ Available options for *Type*:
+
+{{% command-arguments %}}  
+**NotFitted**: No sanding mechanism is fitted.  
+**PressAndHold**: The sanders are applied whilst the **Sanders** key is held and sufficient sand is available.  
+**Toggle**: The **Sanders** key toggles the sanders on and off.
+**NumberOfShots**: N shots of sand are available, which are applied when the **Sanders** key is pressed.
+**Automatic**: The sanders are automatically activated when wheelslip is detected and sufficient sand is present.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**Rate** *SandingRate*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***SandingRate***: The rate at which sand is applied per second.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**SandLevel** *Level*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Level***: The initial starting level of sand, if not in shot mode.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**NumberOfShots** *Shots*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Shots***: The number of sand shots available.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**ApplicationTime** *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: When in shots mode, sets the duration of a sand shot in seconds.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**ActivationTime** *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: When in automatic mode, the amount of time before the system reacts and applies sand.
+{{% /command-arguments %}}
+
+## <a name="windscreen"></a>■ 3.5. The Windscreen section
+
+The **\<Windscreen>** section specifies the properties of the windscreen, and should be used if you wish to animated a windscreen on a 3D cab using the inbuilt functionality. It supports the following properties:
+
+{{% command %}}  
+**NumberOfDrops* *Drops*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Drops***: The total number of drops on the windscreen.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**WipeSpeed* *Speed*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Speed***: The time in seconds for the wipers to make a single sweep of the windscreen.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**HoldTime* *Time*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The time in seconds for the wipers to hold at the hold position during a sweep.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**DropLife* *Life*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Life***: The life in seconds before a drop is eligible to be recycled when all drops are visible.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**RestPosition* *Position*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Position**: The rest position for the wipers.
+{{% /command-arguments %}}
+
+▸ Available options for *Position*:
+
+{{% command-arguments %}}  
+**Left**: The wipers rest at the left of the screen when off.  
+**Right**: The wipers rest at the right of the screen when off.  
+{{% /command-arguments %}}
+
+{{% command %}}  
+**HoldPosition* *Position*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Position**: The hold position for the wipers.
+{{% /command-arguments %}}
+
+▸ Available options for *Position*:
+
+{{% command-arguments %}}  
+**Left**: The wipers hold on the left of the screen for *HoldTime* during their sweep.  
+**Right**: The wipers hold on the right of the screen for *HoldTime* during their sweep.  
+{{% /command-arguments %}}
+
 ## <a name="coupler"></a>■ 4. The Coupler section
 
 Car nodes (or child file references) may optionally be separated by a **\<Coupler>** node.
@@ -520,6 +702,12 @@ This defines the coupler between the two cars, and supports the following proper
 The coupler object is not deformed when the coupler stretches / compresses.
 
 {{% /note %}}
+
+{{% command %}}  
+**\<CanUncouple>** *Boolean* **\</CanUncouple>**  
+{{% /command %}}
+
+**Boolean** should be a boolean true / false value, determining whether this coupler may be uncoupled by the player.
 
 ## <a name="misc"></a>■ 5. Miscellaneous Properties
 
