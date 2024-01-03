@@ -620,6 +620,10 @@ Route.RunInterval is the same as Train.Interval.
 
 {{% /note %}}
 
+{{% warning-nontitle %}}  
+The minimum value for RunInterval is 120s, in order to provide sufficient time for the AI train to clear the initial station.  
+{{% /warning-nontitle %}}
+
 ---
 
 {{% command %}}  
