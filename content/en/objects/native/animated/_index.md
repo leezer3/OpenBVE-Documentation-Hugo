@@ -496,6 +496,8 @@ Please also note that some combinations of prefix and infix operators are not re
 | `cameraZDistance` | The non-negative cartesian distance measured on the Z axis from the object to the camera in meters |
 | `cameraMode`     | Returns 0 if the camera is currently in a 2D or 3D cab, 1 otherwise. |
 | `ambientTemperature` | Returns the ambient temperature in degrees Kelvin. |
+| `billboardX` | Returns the rotation required to billboard the object in the X axis. |
+| `billboardY` | Returns the rotation required to billboard the object in the Y axis. |
 
 {{% /table-2col %}}
 
