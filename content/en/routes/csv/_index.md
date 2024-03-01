@@ -803,6 +803,23 @@ This command allows the route developer to place the initial camera in one of th
 ---
 
 {{% command %}}  
+**Route.TfoXML** *TfoFile*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***TfoFile***: Defines the path to a Track Following Object XML file.
+{{% /command-arguments %}}
+
+A Track Following Object allows developers to add moving AI trains to the route.
+These do not affect the signalling system, but do support basic sounds etc.
+
+Please see the following page for further details:
+
+https://openbve-project.net/documentation_hugo/en/routes/xml/trackfollowingobject.html
+ 
+---
+
+{{% command %}}  
 **<font color=#555555>Route.DeveloperID</font>**  
 {{% /command %}}
 
