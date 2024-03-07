@@ -26,13 +26,14 @@ As such, signalling, speed limits etc. are poorly or not supported when running 
 ## ■ Commands
 
 {{% command %}}  
-**Track.Switch** *FirstRail*; *SecondRail*; *InitialSetting*; *SwitchName*; *FirstTrackName*; *SecondTrackName*  
+**Track.Switch** *FirstRail*; *SecondRail*; *InitialSetting*; *Reserved*; *SwitchName*; *FirstTrackName*; *SecondTrackName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
 ***FirstRail***: A non-negative integer representing the first of the two switch rail indicies.   
 ***SecondRail***: A non-negative integer representing the second of the two switch rail indicies.  
 ***InitialSetting***: The initial setting for the switch.  
+***Reserved***: Not currently used, reserved for future use.  
 ***SwitchName***: The name for the switch displayed on the map.  
 ***FirstTrackName***: The name for the first track when displayed on the map.  
 ***SecondTrackName***: The name for the second track when displayed on the map.  
@@ -45,13 +46,14 @@ If the player train is running in the forwards direction on the rail index defin
 If the player train is running in the reverse direction on the rail index defined by **SecondRail**, and the current setting of the switch is also **SecondRail** it will be switched to **FirstRail**.
 
 {{% command %}}  
-**Track.SwitchT** *FirstRail*; *SecondRail*; *InitialSetting*; *SwitchName*; *FirstTrackName*; *SecondTrackName*  
+**Track.SwitchT** *FirstRail*; *SecondRail*; *InitialSetting*; *Reserved*; *SwitchName*; *FirstTrackName*; *SecondTrackName*  
 {{% /command %}}
 
 {{% command-arguments %}}  
 ***FirstRail***: A non-negative integer representing the first of the two switch rail indicies.   
 ***SecondRail***: A non-negative integer representing the second of the two switch rail indicies.  
 ***InitialSetting***: The initial setting for the switch.  
+***Reserved***: Not currently used, reserved for future use.  
 ***SwitchName***: The name for the switch displayed on the map.  
 ***FirstTrackName***: The name for the first track when displayed on the map.  
 ***SecondTrackName***: The name for the second track when displayed on the map.  
