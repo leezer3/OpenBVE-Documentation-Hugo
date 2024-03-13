@@ -10,6 +10,10 @@ weight: 3
 
 - [1. Overview](#overview)
 - [2. Sections](#description)
+  - [[Include]](#include)
+  - [[Object]](#object)
+  - [[Sound]](#sound)
+  - [[StateChangeSound]](#statechangesound)
 - [3. List of infix notation operators](#operators)
 - [4. List of functions](#functions)
 - [5. List of variables](#variables)
@@ -47,7 +51,7 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ## <a name="description"></a>■ 2. Sections
 
-##### ● The [Include] section
+##### <a name="include"></a>● The [Include] section
 
 You can use the [Include] section to just include other objects, but without animating them. This allows you to use the ANIMATED object file as a container to group other objects. There can be any number of [Include] sections within the file.
 
@@ -71,7 +75,7 @@ This defines the position of the objects, basically allowing you to offset them 
 
 ------
 
-##### ● The [Object] section
+##### <a name="object"></a>● The [Object] section
 
 You can use the [Object] section to create a single animation. This requires to set up at least one state via the *States* parameter, and to use any combination of functions you want, which provide control over the animation. There can be any number of [Object] sections within the file.
 
@@ -184,7 +188,7 @@ This defines the minimum amount of time that needs to pass before the functions 
 
 ------
 
-##### ● The [Sound] section
+##### <a name="sound"></a>● The [Sound] section
 
 You can use the [Sound] section to add standalone sound effects to animated objects.
 
@@ -238,7 +242,7 @@ This defines the function which moves the source of the sound along the path of 
 
 ------
 
-##### ● The [StateChangeSound] section
+##### <a name="statechangesound"></a>● The [StateChangeSound] section
 
 You can use the [StateChangeSound] section to attach sound effects to the preceeding [Object] section.
 

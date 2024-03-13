@@ -500,6 +500,27 @@ This command can be used to specify the length of a block. This is an overall se
 **1**: On: Hacks are enabled.  
 {{% /command-arguments %}}
 
+---
+
+{{% command %}}  
+**Options.ReverseDirection** *Mode*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Mode***: The mode determining whether the routefile is driven in the reverse direction.  
+{{% /command-arguments %}}
+
+▸ Available options for *Mode*:
+
+{{% command-arguments %}}  
+**0**: Off: The routefile is to be driven by the player in the forwards direction.  
+**1**: On: The routefile is to be driven by the player in the reverse direction. 
+{{% /command-arguments %}}
+
+This experimental command allows for routefiles to be driven by the player in the reverse direction to that of construction. 
+
+Please note that it is a work in progress, and many features, including signalling may not work correctly.
+
 ## <a name="route"></a>■ 5. The Route namespace
 
 Commands from this namespace define general properties of the route.
