@@ -11,6 +11,12 @@ At present, this is a basic implementation, and has many flaws which are centere
 
 Please note that further development is ongoing.
 
+{{% warning-nontitle %}}
+
+The **.Turn** command may not be used in routes containing switches. Please use the **.Curve** command instead.
+
+{{% /warning-nontitle %}} 	 
+
 ## ■ Basic Principles
 
 
