@@ -529,8 +529,10 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `acceleration[carIndex]`      | The actual acceleration of the car *carIndex* in m/s².       |
 | `accelerationMotor`           | The acceleration which the motor of the first motor car currently generates in m/s². |
 | `accelerationMotor[carIndex]` | The acceleration which the motor of the car *carIndex* currently generates in m/s². |
+| `playerDistance`              | The non-negative cartesian distance measured from the object to the closest car of the player train in meters. Only meaningful for scenery objects. |
 | `distance`                    | The non-negative cartesian distance measured from the object to the closest car in meters. Only meaningful for scenery objects. |
 | `distance[carIndex]`          | The non-negative cartesian distance measured from the object to the car *carIndex* in meters, or 0 if the car does not exist. Only meaningful for scenery objects. |
+| `playerTrackDistance`         | The signed track distance measured from the object to the closest end of the player train in meters. Is positive when the train is in front of the object, negative when behind, and zero when the object lies between the ends of the train. |
 | `trackDistance`               | The signed track distance measured from the object to the closest end of the nearest train in meters. Is positive when the train is in front of the object, negative when behind, and zero when the object lies between the ends of the train. |
 | `trackDistance[carIndex]`     | The signed track distance measured from the object to the car *carIndex* of the nearest train in meters. Is positive when the center of the car is in front of the object, and negative if behind. Returns 0 if the car does not exist. Only meaningful for scenery objects. |
 | `destination`                 | The currently set destination for this train. (Set via *Track.Destination* or the plugin interface) |
