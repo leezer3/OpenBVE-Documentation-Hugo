@@ -864,6 +864,16 @@ Train.File *FolderName*
 ---
 
 {{% command %}}  
+Train.DownloadLocation *WebLink*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***WebLink***: Provides a HTTP or HTTPS link to a website where the train may be downloaded if the user does not already posess it.
+{{% /command-arguments %}}
+
+---
+
+{{% command %}}  
 **Train.Run**(*RailTypeIndex*)<font color="gray">.Set</font> *RunSoundIndex*   
 **Train.Rail**(*RailTypeIndex*)<font color="gray">.Set</font> *RunSoundIndex*  
 {{% /command %}}

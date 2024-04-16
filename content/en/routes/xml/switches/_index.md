@@ -72,12 +72,13 @@ If the player train is running in the reverse direction on the rail index define
 If the player train is running in the forwards direction on the rail index defined by **SecondRail**, and the current setting of the switch is also **SecondRail** it will be switched to **FirstRail**.
 
 {{% command %}}  
-**Track.PlayerPath** *FirstRail*; *SecondRail*
+**Track.PlayerPath** *FirstRail*; *SecondRail*; *SwitchName*
 {{% /command %}}
 
 {{% command-arguments %}}  
 ***FirstRail***: A non-negative integer representing the first rail indicies.   
 ***SecondRail***: A non-negative integer representing the second rail indicies.  
+***SwitchName***: The name for the switch displayed on the map. 
 {{% /command-arguments %}}
 
 This switches the path (rail) that the player train is running on.
