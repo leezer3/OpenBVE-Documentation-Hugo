@@ -286,6 +286,19 @@ Currently, the only supported acceleration curve node is the **\<OpenBVE>** node
 
 **Speed** should be a positive floating-point number representing the reference speed for *StageTwoExponent*
 
+{{% command %}}  
+**\<Multiplier>** *Number* **\</Multiplier>**  
+{{% /command %}}
+
+**Number** should be a positive floating-point number representing the blended output of the motor car to the train's acceleration. The default value is **1.0**
+
+{{% warning-nontitle %}}
+
+This figure is only meaningful for trains using BVE acceleration numbers converted via *CarXMLConvertor*, and should be omitted if setting acceleration outputs on a per-car basis.
+
+{{% /warning-nontitle %}}
+
+
 
 Thus:
 
