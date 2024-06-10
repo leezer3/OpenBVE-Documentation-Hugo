@@ -47,7 +47,7 @@ The following panel indices are exposed:
 | 263         | ATS-P                         | 0 - 1       |
 | 264         | failure (故障)                | 0 - 1       |
 
-
+{{% /table %}}
 
 **ATC speed indicator (panel index 271)**
 
