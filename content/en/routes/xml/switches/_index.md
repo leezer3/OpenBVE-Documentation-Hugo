@@ -135,3 +135,25 @@ This command places a bumper. The train can collide with the bumper in both the 
 {{% command-arguments %}}  
 ***RailIndex***: The rail index on which the bumper is placed.  
 {{% /command-arguments %}}
+
+{{% command %}}  
+**Track.RailAccuracy**  *RailIndex*, *Value*
+{{%/command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: The rail index for which to set the accuracy value.  
+***Value***: A non-negative floating-point number representing the accuracy of the track. The default value is 2.  
+{{% /command-arguments %}}
+
+This command sets the accuracy of the track from this point on. Values should be in the range from 0 to 4, where 0 means perfect accuracy (no inaccuracy at all), 1 means very good accuracy (high speed lines), 2 means good accuracy, 3 means mediocre accuracy, and 4 means poor accuracy. Intermediate values are also possible. Currently, values below 0 are clamped at 0, and values above 4 are clamped at 4.
+
+{{% command %}}  
+**Track.RailAdhesion**  *RailIndex*, *Rate*
+{{%/command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: The rail index for which to set the adhesion value.  
+***Rate***: A non-negative floating-point number measured in percent representing the adhesion of the track. The default value is 100.  
+{{% /command-arguments %}}
+
+This command sets the adhesion of the track from this point on. As a reference, the value of 135 represents dry conditions, 85 represents frost and 50 represents snowy conditions. With a value of 0, the train will not be able to move at all. 
