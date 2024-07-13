@@ -255,8 +255,8 @@ El mapeado de cambio es hecho sobre el origen. Pobremente hablando, el objeto es
 <a name="mirror"></a>
 
 {{% command %}}
-**Mirror**, *X*, *Y*, *Z*  
-**MirrorAll**, *X*, *Y*, *Z*
+**Mirror** *X*, *Y*, *Z*  
+**MirrorAll** *X*, *Y*, *Z*
 {{% /command %}}
 
 {{% command-arguments %}}
