@@ -255,8 +255,8 @@ The **Rotate** command rotates all vertices that have been created so far in the
 <a name="mirror"></a>
 
 {{% command %}}
-**Mirror**, *X*, *Y*, *Z*  
-**MirrorAll**, *X*, *Y*, *Z*
+**Mirror** *X*, *Y*, *Z*  
+**MirrorAll** *X*, *Y*, *Z*
 {{% /command %}}
 
 {{% command-arguments %}}

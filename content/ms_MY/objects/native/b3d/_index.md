@@ -255,8 +255,8 @@ The shear mapping is performed around the origin. Loosely speaking, the object i
 <a name="mirror"></a>
 
 {{% command %}}
-**Mirror**, *X*, *Y*, *Z*  
-**MirrorAll**, *X*, *Y*, *Z*
+**Mirror** *X*, *Y*, *Z*  
+**MirrorAll** *X*, *Y*, *Z*
 {{% /command %}}
 
 {{% command-arguments %}}
