@@ -35,9 +35,9 @@ weight: 1
 
 CSV格式的路線是由純文字檔案建立成路線。
 
-這純文字檔案是可以以任意 [編碼]({{< ref "/information/encodings/_index.md" >}})，但建議使用UTF8-BOM。 數字的 [解析方法]({{< ref "/information/numberformats/_index.md" >}}) 是 **寬鬆 (Loose)**（除非另有說明），但我們還是鼓勵您使用 *嚴謹 (Strict)* 輸出。 該檔案必須放在包含 *Railway* 或 *Train* 的資料夾中。 檔案可随意命名，但必須具有擴展名**.csv**。 該文件以每行為基礎，從上到下進行分析，每一行從左到右分析。
+這純文字檔案是可以以任意 [編碼]({{< ref "/information/encodings/_index.md" >}}),但建議使用UTF8-BOM。 數字的 [解析方法]({{< ref "/information/numberformats/_index.md" >}}) 是 **寬鬆 (Loose)**(除非另有說明),但我們還是鼓勵您使用 *嚴謹 (Strict)* 輸出。 該檔案必須放在包含 *Railway* 或 *Train* 的資料夾中。 檔案可随意命名,但必須具有擴展名**.csv**。 該文件以每行為基礎,從上到下進行分析,每一行從左到右分析。
 
-路線文件由一系列命令組成，這些命令定義了在整個用來導入線路中用到的模型 (Structure)。 還可以定義路線，要使用的默認火車和要使用的背景圖像的其他屬性。 最後，路線文件將包含來自Track名稱空間的指令。 此處，軌道位置（通常以米為單位）用於定義軌道何時彎曲，何時放置樁，何時開始和結束牆體等等。 一般而言，在使用來自任何其他命名空間的指令之後，應使用來自Track命名空間的指令。
+路線文件由一系列命令組成,這些命令定義了在整個用來導入線路中用到的模型 (Structure)。 還可以定義路線,要使用的默認火車和要使用的背景圖像的其他屬性。 最後,路線文件將包含來自Track名稱空間的指令。 此處,軌道位置(通常以米為單位)用於定義軌道何時彎曲,何時放置樁,何時開始和結束牆體等等。 一般而言,在使用來自任何其他命名空間的指令之後,應使用來自Track命名空間的指令。
 
 這個格式默認了一條遊戲默認的主軌道 (0號軌道), 不可以指定它開始的位置, 都不可以完。 遊戲中其他軌道同不同的是, 它由路線的開始一直延續到路線的終點, 代表著玩家駕駛的列車行駛的軌道。 除此之外, 遊戲中定義的其他軌道都是裝飾, 玩家不能行駛的。 不過可以使用 [跟隨軌道物件 Track Following Object]({{< ref "/routes/xml/trackfollowingobject/_index.md" >}}) 來給 AI 列車在其它軌道上行駛。
 
@@ -48,13 +48,13 @@ CSV格式的路線是由純文字檔案建立成路線。
 
 ## <a name="syntax"></a>■ 2. 語法
 
-對於路線文件中每一行, 開頭和結尾的 [空格]({{< ref "/information/whitespaces/_index.md" >}}) 會被忽略。 然後，每行指令都會㩒逗號 (U+002C) 分割。 于是, 每行都會被看作這樣一個格式:
+對於路線文件中每一行, 開頭和結尾的 [空格]({{< ref "/information/whitespaces/_index.md" >}}) 會被忽略。 然後,每行指令都會㩒逗號 (U+002C) 分割。 于是, 每行都會被看作這樣一個格式:
 
 {{% command %}}
 *表達式內容<sub>1</sub>*,* 表達式內容<sub>2</sub>*,* 表達式內容<sub>3</sub>*, ..., *表達式內容<sub>n</sub>*
 {{% /command %}}
 
-表達式內容主要有以下類別：
+表達式內容主要有以下類別:
 
 ##### ● 註釋
 
@@ -65,38 +65,38 @@ CSV格式的路線是由純文字檔案建立成路線。
 {{% command %}}
 *位置* 
 {{% /command %}}
-一個非負的 [嚴格格式]({{< ref "/information/numberformats/_index.md" >}}) 浮點數，代表一個主軌道位置。隨後的指令都將以此位置作為基準點。
+一個非負的 [嚴格格式]({{< ref "/information/numberformats/_index.md" >}}) 浮點數,代表一個主軌道位置。隨後的指令都將以此位置作為基準點。
 
 {{% command %}}
 *第<sub>1</sub>部分*:*第<sub>2</sub>部分*:...:*第<sub>n</sub>部分* 
 {{% /command %}}
 是一個配合 Options.UnitOfLength 的更加複雜的距離指定格式, 可用于非公制計量單位。 每一個 * 部分<sub>i</sub>* 都是 [嚴格格式]({{< ref "/information/numberformats/_index.md" >}}) 的浮點數。 *部分<sub>1</sub>* 會比搭返 *是數 <sub>1</sub> *,* 部分<sub>2</sub>* 搭返 * 是數 <sub>2</sub>*, 以此類推, 真正的主軌道位置是所有的和。 這個結果一定是非負的。 各部分被冒號 (U+003A) 分隔。 如果想了解如何設定系數, 請參見 Options.UnitOflength 節。
 
-在任何參數中使用距離的命令中，這個冒號表示法就可以被使用，到時我們會用<font color="green">綠色</font>標示呢種情況。
+在任何參數中使用距離的命令中,這個冒號表示法就可以被使用,到時我們會用<font color="green">綠色</font>標示呢種情況。
 
 當 *n* 個單位系數被使用 Options.UnitOflength 定義, 但是使用冒號表示法時輸入的部分卻少了, 咁呢啲系數將會被嚮右匹配, 在左邊的會被忽略。 因此, 幾種表示方法是等傚的: *0:0:2*,*0:2*, 同 *2*.
 
 ##### ● 指令
 
-無參數的指令：
+無參數的指令:
 
 {{% command %}}
 *指令的名稱*
 {{% /command %}}
 
-含有參數的指令：
+含有參數的指令:
 
 {{% command %}}
 *指令名稱* *參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>* *指令名稱*(*參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>*) 
 {{% /command %}}
 
-有參數仲有後綴同編號的指令：
+有參數仲有後綴同編號的指令:
 
 {{% command %}}
 *指令名稱*(*編號<sub>1</sub>*;*編號<sub>2</sub>*;...;*編號<sub>m</sub>*) *參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>* *指令名稱*(*編號<sub>1</sub>*;*編號<sub>2</sub>*;...;*編號<sub>m</sub>*).*後綴* *參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub> * *指令名稱*(*編號<sub>1</sub>*;*編號<sub>2</sub>*;...;*編號<sub>m</sub>*).*後綴*(*參數<sub>1</sub>*;*參數<sub>2</sub>*;*參數<sub>3</sub>*;...;*參數<sub>n</sub>*)
 {{% /command %}}
 
-規則：
+規則:
 
 *指令名稱* 是大小寫都可以的。 編號和參數被分號 (U+003B) 隔開。 *指令名稱*、編號和參數都在周圍的空格都是被忽略的, 括號周圍的空格都是被忽略的。
 
@@ -244,7 +244,7 @@ $Sub(*編號*)
 {{% /command %}}
 
 {{% command-arguments %}}
-***編號***：一個非負整數，代表要讀出的變量編號。
+***編號***:一個非負整數,代表要讀出的變量編號。
 {{% /command-arguments %}}
 
 這個指令會在原位插入編號為 * 編號 * 的變量的內容。 在讀取前這個變量必須先被賦值。
@@ -515,7 +515,7 @@ Commands from this namespace define general properties of the route.
 {{% /command-arguments %}}
 
 {{% warning-nontitle %}}
-如果需要插入換行、逗號之類的字符，必須使用$Chr。
+如果需要插入換行、逗號之類的字符,必須使用$Chr。
 {{% /warning-nontitle %}}
 
 ---
@@ -525,7 +525,7 @@ Commands from this namespace define general properties of the route.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***文件***: 相對於路線文件夾，出現在路線選擇對話框中的圖檔的文件名。
+***文件***: 相對於路線文件夾,出現在路線選擇對話框中的圖檔的文件名。
 {{% /command-arguments %}}
 
 ---
@@ -535,11 +535,11 @@ Commands from this namespace define general properties of the route.
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Text***：顯示在默認時間表頂部的文字。 
+***Text***:顯示在默認時間表頂部的文字。 
 {{% /command-arguments %}}
 
 {{% warning-nontitle %}}
-如果需要插入換行、逗號之類的字符，必須使用$Chr。
+如果需要插入換行、逗號之類的字符,必須使用$Chr。
 {{% /warning-nontitle %}}
 
 ---
@@ -555,9 +555,9 @@ Commands from this namespace define general properties of the route.
 ▸ *模式* 的選項:
 
 {{% command-arguments %}}  
-**-1 **：安全系統已 **啟動**，並且已應用了 *服務* 制動器。 
-**0**: 安全系統已 **啟動**，並且已應用了 **緊急** 制動器。  
-**1**: 安全系統 *未啟動*，並且已應用了 **緊急** 制動器。
+**-1 **:安全系統已 **啟動**,並且已應用了 *服務* 制動器。 
+**0**: 安全系統已 **啟動**,並且已應用了 **緊急** 制動器。  
+**1**: 安全系統 *未啟動*,並且已應用了 **緊急** 制動器。
 {{% /command-arguments %}}
 
 ---
@@ -637,7 +637,7 @@ Route.RunInterval 是同 Train.Interval 一樣
 {{% /command %}}
 
 {{% command-arguments %}}  
-***<font color="green">高度 </font>***: 浮點數，代表初始海拔高度，**默認情況下**，以 **米** 為單位。 默認值為0。
+***<font color="green">高度 </font>***: 浮點數,代表初始海拔高度,**默認情況下**,以 **米** 為單位。 默認值為0。
 {{% /command-arguments %}}
 
 ---
@@ -679,7 +679,7 @@ This command allows speed related messages (overspeed etc.) to be displayed in a
 {{% /command %}}
 
 {{% command-arguments %}}    
-***圖片***：所支援圖片文件的路徑。
+***圖片***:所支援圖片文件的路徑。
 {{% /command-arguments %}}
 
 此指令允許將自定圖片設為加載時的背景。
@@ -1890,9 +1890,9 @@ If *RailIndex<sub>1</sub>* is to the **left** of *RailIndex<sub>2</sub>* (e.g. i
 Otherwise, the objects defined in Structure.FormR, Structure.FormCL and Structure.RoofR will be used.
 
 
-##### <a name="track_signalling"></a>● 11.5. Signalling and speed limits
+<a name="track_signalling"></a>● 11.5. Signalling and speed limits
 
-------
+##### ------
 
 {{% command %}}  
 **Track.Limit** *<font color="blue">Speed</font>*; *Post*; *Cource*  
@@ -1938,9 +1938,9 @@ This command starts a section, the functional part of signalling, to be used in 
 
 {{% notice %}}
 
-#### Default versus simplified section behavior
+Default versus simplified section behavior
 
-There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
+#### There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
 
 {{% /notice %}}
 
@@ -2054,9 +2054,9 @@ Track.Signal is similar to using Track.Section and Track.SigF in one command.
 
 This commands creates a default Japanese repeating signal. The repeating signal repeats the state of the upcoming signal. Setting *X* to zero does not create a repeating signal, but forces the command to be ignored. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 and attaches a default signal post.
 
-##### <a name="track_safety"></a>● 11.6. Safety systems
+<a name="track_safety"></a>● 11.6. Safety systems
 
-------
+##### ------
 
 {{% command %}}  
 **Track.Beacon** *Type*; *BeaconStructureIndex*; *Section*; *Data*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
@@ -2182,9 +2182,9 @@ A permanent speed restriction (*Type*=1) is to be inserted at the point where th
 
 This command is equivalent to **Track.Pattern 1;_Speed_**. See there for more information. 
 
-##### <a name="track_misc"></a>● 11.7. Miscellaneous
+<a name="track_misc"></a>● 11.7. Miscellaneous
 
-------
+##### ------
 
 {{% command %}}  
 **Track.Back** *BackgroundTextureIndex*  
@@ -2499,5 +2499,7 @@ phi = 0
 {{% /function %}}
 
 In the formulas above, [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) represents the cosine, [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) the sine, [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) the inverse tangent, [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) the two-argument inverse tangent and [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) the square root. The formulas can be used to convert between spherical and cartesian coordinates if working with either one seems more intuitive than working with the other one. The formulas also serve as the official documentation on how the light direction is mathematically defined (using radians for the trigonometric functions).
+
+---
 
 ---
