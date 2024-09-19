@@ -39,7 +39,13 @@ A CSV object allows to create a single object by using textual instructions. The
 
 The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file name is arbitrary, but must have the extension **.csv**. The file is interpreted on a per-line basis, from top to bottom.
 
-➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
+➟ [See also the quick reference for the CSV format...]({{< ref "/objects/native/csv_quick/_index.md" >}})
+
+{{% warning-nontitle %}}
+
+Any single **CSV** object may contain a maximum of 65,534 vertices. The **OBJ** and **X** formats support greater numbers of vertices, but you should consider carefully the overall load on the renderer when using extremely complex objects. 
+
+{{% /warning-nontitle %}}
 
 ## <a name="syntax"></a>■ 2. Syntax
 

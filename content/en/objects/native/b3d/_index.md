@@ -41,6 +41,12 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ➟ [See also the quick reference for the B3D format...]({{< ref "/objects/native/b3d_quick/_index.md" >}})
 
+{{% warning-nontitle %}}
+
+Any single **B3D** object may contain a maximum of 65,534 vertices. The **OBJ** and **X** formats support greater numbers of vertices, but you should consider carefully the overall load on the renderer when using extremely complex objects. 
+
+{{% /warning-nontitle %}}
+
 ## <a name="syntax"></a>■ 2. Syntax
 
 Each line in the file is split into the name of a command and its arguments. The syntax for all commands is the same:
