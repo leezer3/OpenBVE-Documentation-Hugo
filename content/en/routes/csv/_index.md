@@ -1987,6 +1987,45 @@ The *Cource* option is used solely when creating the limit post object. Please u
 ------
 
 {{% command %}}  
+**Track.RailLimit** *RailIndex*; *<font color="blue">Speed</font>*; *Post*; *Cource*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: The rail index for which this limit applies. The default value is 0.  
+***<font color="blue">Speed</font>***: A positive floating-point number representing the speed, **by default** measured in **km/h**, or 0 to indicate no speed restriction. The default value is 0.  
+***Post***: The side on which to place a default Japanese-style speed limit post. The default value is 0.  
+***Cource***: The directional indication. The default value is 0.  
+{{% /command-arguments %}}
+
+![illustration_limit](/images/illustration_limit.png)
+
+▸ Options for *Post*:
+
+{{% command-arguments %}}  
+**-1**: The post is placed on the left side of the track.  
+**0**: No post will be placed.  
+**1**: The post is placed on the right side of the track.  
+{{% /command-arguments %}}
+
+▸ Options for *Cource*:
+
+{{% command-arguments %}}  
+**-1**: The post applies for a left-bound track.  
+**0**: The post does not indicate a particular direction.  
+**1**: The post applies for a right-bound track.  
+{{% /command-arguments %}}
+
+This command defines the new speed limit from this point on. If the new speed limit is lower than the current speed limit, the new speed limit will take effect immediately. If the speed limit is higher than the current speed limit, the new speed limit will take effect only once the whole train has passed this point. By setting *Speed* to `0`, the speed restriction is released. By setting *Post* to either `-1` or `1`, a default Japanese-style speed post is placed at the respective side of the track. Setting *Course* to either `-1` or `1` includes a directional indication, which is usually used at railroad switches to indicate that the speed limit only applies if the respective direction is being taken. If *Speed* is set to `0`, the setting of *Course* has no effect.
+
+{{% notice %}}
+
+The *Cource* option is used solely when creating the limit post object. Please use a separate **Track.RailLimit** command for each track.
+
+{{% /notice %}}
+
+------
+
+{{% command %}}  
 **Track.Section** *a<sub>0</sub>*; *a<sub>1</sub>*; *a<sub>2</sub>*; ...; *a<sub>n</sub>*  
 {{% /command %}}
 
@@ -2435,7 +2474,20 @@ This command places an environmental sound effect at the specified location. The
 **Track.Buffer**  
 {{%/command %}}
 
-This command places a bumper. The train can collide with the bumper in both the forward and backward directions. Place this command at the beginning and the end of the route. An object is not automatically created, so use Track.FreeObj to create a visual representation of the bumper if necessary.
+This command places a bumper on **Rail 0**. The train can collide with the bumper in both the forward and backward directions. Place this command at the beginning and the end of the route. An object is not automatically created, so use Track.FreeObj to create a visual representation of the bumper if necessary.
+
+------
+
+{{% command %}}  
+**Track.RailBuffer** *RailIndex*; *AffectsAI*
+{{%/command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: The rail index to place the bumper on.
+***AffectsAI***: Whether AI trains collide with the bumper.  
+{{% /command-arguments %}}
+
+This command places a bumper on the rail specified by *RailIndex*. An object is not automatically created, so use Track.FreeObj to create a visual representation of the bumper if necessary.
 
 ------
 
