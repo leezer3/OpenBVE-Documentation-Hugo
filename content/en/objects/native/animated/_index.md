@@ -549,7 +549,10 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `routeLimit`                  | Returns the current route speed limit applying to this train in km/h. |
 | `headlights`                  | Gets the current state of the train's headlights. |
 | `wheelSlip`                   | Returns 1 if the train is experincing wheelslip in the current car, 0 otherwise. |
-| `wheelSlip[carIndex]`         | Returns 1 if the train is experinging wheelslip in the specified car, 0 otherwise. |
+| `frontCoupler`         		| Returns 1 if the front coupler for the current car is coupled to another car, 0 otherwise. |
+| `frontCoupler[carIndex]`      | Returns 1 if the front coupler for *carIndex* is coupled to another car, 0 otherwise. |
+| `rearCoupler`         		| Returns 1 if the rear coupler for the current car is coupled to another car, 0 otherwise. |
+| `rearCoupler[carIndex]`       | Returns 1 if the rear coupler for *carIndex* is coupled to another car, 0 otherwise. |
 
 {{% /table-2col %}}
 
