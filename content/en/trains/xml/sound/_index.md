@@ -236,6 +236,12 @@ This node supports the following child nodes:
 
 The **\<Uncouple>** child-node, containing the sound played when a coupler is uncoupled.
 
+The **\<Couple>** child-node, containing the sound played when a coupler is coupled.
+
+The **\<CoupleCab>** child-node, containing the sound played in the driver's cab when a coupler is coupled.
+
+The **\<UncoupleCab>** child-node, containing the sound played in the driver's cab when a couuple is uncoupled.
+
 ## <a name="misc"></a>■ 19. Miscellaneous Sounds
 
 The **\<Loop>** node defines a sound to be played in a continuous loop throughout the simulation.
