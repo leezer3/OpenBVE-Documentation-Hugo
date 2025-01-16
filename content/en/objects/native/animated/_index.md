@@ -12,6 +12,7 @@ weight: 3
 - [2. Sections](#description)
   - [[Include]](#include)
   - [[Object]](#object)
+	- [Advanced Scripting](#advancedscript)
   - [[Sound]](#sound)
   - [[StateChangeSound]](#statechangesound)
 - [3. List of infix notation operators](#operators)
@@ -188,6 +189,45 @@ This defines the minimum amount of time that needs to pass before the functions 
 
 ------
 
+##### <a name="advancedscript"></a>● Advanced Scripting
+
+OpenBVE supports the use of scripts written in the C# language, via the **CSScript** interface.
+
+Scripts must be of the following format:
+{{% command %}}  
+using System;
+using System.Collections.Generic;
+using OpenBveApi.Hosts;
+using OpenBveApi.Interface;
+using OpenBveApi.Math;
+using OpenBveApi.Trains;
+
+public class OpenBVEScript {
+
+	public OpenBVEScript(Dictionary<string, string> args) 
+	{
+		
+	}
+
+	public double ExecuteScript(AbstractTrain Train, int CarIndex, Vector3 Position, double TrackPosition, int SectionIndex, bool IsPartOfTrain, double TimeElapsed, int CurrentState) 
+	{
+		return val;
+	}
+}
+{{% /command %}}  
+
+The _ExecuteScript_ function is called by the main simulation according to the **RefreshRate** of your object, and the return value is passed to the appropriate animated object as per any other function.
+
+Scripts may be declared in the following manner:
+
+{{% command %}}  
+**RotateXScript = Path\To\ScriptFile.cs?Argument1,Argument..,Argument3**
+{{% /command %}}  
+
+Arguments to a script file should be declared as a comma-separated array. 
+
+------
+
 ##### <a name="sound"></a>● The [Sound] section
 
 You can use the [Sound] section to add standalone sound effects to animated objects.
@@ -309,16 +349,6 @@ This defines whether the sound effect defined above should be played when the re
 **PlayOnShow** and **PlayOnHide** will be ignored when using multiple state sounds.
 
 {{% /note %}}
-
-------
-
-{{% warning %}}
-
-#### openBVE 2 compatibility note
-
-During the development of openBVE (v0.9) and during the development of the animated object format, there were certain commands in existance ending in *RPN*, such as *TranslateXFunctionRPN*. These commands never made it into any official release (v1.0) and were thus never meant to be used outside of development environments. While they are still available undocumentedly, they will be removed for openBVE 2. If you are using these commands, please get rid of them as soon as possible.
-
-{{% /warning %}}
 
 ------
 
