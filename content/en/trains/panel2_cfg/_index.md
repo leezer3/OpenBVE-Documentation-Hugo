@@ -443,6 +443,8 @@ DampingRatio = *Value*
 
 Defines the damping ratio for the oscillatory system. Values between 0 and 1 represent [under-damping](http://en.wikipedia.org/wiki/Damping#Under-damping), 1 represents [critical damping](http://en.wikipedia.org/wiki/Damping#Critical_damping) and values above 1 represent [over-damping](http://en.wikipedia.org/wiki/Damping#Over-damping). Compare the following illustration in which the angle of rotation changes from 0 to 1 over time:
 
+![illustration_damping](/images/illustration_damping.png)
+
 If specified, *NaturalFreq* should also be specified.
 
 ------
