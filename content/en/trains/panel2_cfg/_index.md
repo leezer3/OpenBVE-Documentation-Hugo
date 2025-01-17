@@ -457,6 +457,26 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
+------
+
+{{% command %}}  
+Backstop = *Boolean*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Boolean***: If set to **true** or **1**, the needle's range of motion will be limited to that possible between _Minimum_ and _Maximum_.  
+{{% /command-arguments %}}
+
+------
+
+{{% command %}}  
+Smoothed = *Boolean*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Boolean***: If set to **true** or **1**, and the subject is _Time_ related, the needle will use smooth motion. Otherwise, the needle will act as a mechanical watch.  
+{{% /command-arguments %}}
+
 ## <a name="digitalnumber"></a>■ 6. The DigitalNumber section
 
 The DigitalNumber section creates an indicator that can switch between multiple states, useful to build up a display of decimal digits. You can use as many of these sections as required.
