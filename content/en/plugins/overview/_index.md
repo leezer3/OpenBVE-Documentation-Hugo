@@ -115,6 +115,11 @@ Be sure to compile against AnyCPU, to enable CLS-compliance checks and to remove
 
 ## <a name="templates"></a>■ Template projects
 
-In the directory **Examples\Sample Plugins**, you can find template projects targeting different programming languages. In these templates, almost everything has been prepared for you. The only thing you have to do is to include a reference to OpenBveApi.dll which comes with openBVE.
+[Boo Template (Multi-Platform)](/examples/plugin_iruntime_boo.zip)
+[C# (Multi-Platform)](/examples/plugin_iruntime_c_sharp.zip)
+[C# (Windows)](/examples/plugin_iruntime_c_sharp_win32.zip)
+[VB .Net Template (Windows)](/examples/plugin_iruntime_vb_net.zip)
+
+In these templates, almost everything has been prepared for you. The only thing you have to do is to include a reference to OpenBveApi.dll which comes with openBVE.
 
 For those who use SharpDevelop, reference OpenBveApi.dll by clicking the *Project* menu and selecting *Add reference*, then go to the *.NET Assembly Browser* tab and click on *Browse*. Now browse to your openBVE directory and select *OpenBveApi.dll*. Confirm with *OK*. Now select *OpenBveApi* from the *Projects* window and set *Local copy* to **False**. Also be sure that *Specific Version* is set to **False**.
