@@ -334,6 +334,8 @@ This defines the radius in meters from it's source at which the sound effect pla
 
 This defines whether the sound effect defined above should be played when a the relevant state is shown. 
 
+The default value for this is **true**
+
 {{% command %}}  
 **PlayOnHide = Value**  
 {{% /command %}}  
@@ -343,6 +345,8 @@ This defines whether the sound effect defined above should be played when a the 
 *Value* = **1**: The sound effect will be played.
 
 This defines whether the sound effect defined above should be played when the relevant state is hidden.
+
+The default value for this is **true**
 
 {{% note %}}
 
