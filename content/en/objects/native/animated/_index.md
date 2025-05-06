@@ -95,6 +95,12 @@ Defines the position of the object. This basically corresponds to a final Transl
 {{% /command %}}  
 Loads *n* objects of CSV/B3D/X extension. Please note that the first file indicated has state index 0. Use multiple files only if you want to use state changes.
 
+{{% warning-nontitle %}}
+
+A state with a missing object file, or a setting the animation to a state higher than those defined will be treated by the game engine as hidden.
+
+{{% /warning-nontitle %}}
+
 {{% command %}}  
 **StateFunction = Formula**  
 {{% /command %}}  
