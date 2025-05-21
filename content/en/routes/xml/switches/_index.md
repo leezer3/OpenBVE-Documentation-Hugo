@@ -157,3 +157,31 @@ This command sets the accuracy of the track from this point on. Values should be
 {{% /command-arguments %}}
 
 This command sets the adhesion of the track from this point on. As a reference, the value of 135 represents dry conditions, 85 represents frost and 50 represents snowy conditions. With a value of 0, the train will not be able to move at all. 
+
+
+{{% command %}}  
+**Track.RailAnnounce** *RailIndex*; *FileName*; *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}
+***RailIndex***: The rail index on which to place the sound event.  
+***FileName***: The file name for the sound to play, relative to the **Sound** folder.  
+***<font color="blue">Speed</font>***: The reference speed in km/h for speed-dependant sounds, or 0 to play the sound speed-independently. The default value is 0.  
+{{% /command-arguments %}}
+
+This command plays an announcement or other kind of sound in the cab once the player's train crosses the point where this command is used. If *Speed* is set to 0 (default), the sound is played as-is. If a *Speed* is given though, the sound plays at is original pitch at the specified speed, and is pitch-modulated proportionally for other speeds, useful for custom flange sounds, pointwork sounds, etc.
+
+
+{{% command %}}  
+**Track.RailAnnounceAll** *RailIndex*; *FileName*; *<font color="blue">Speed</font>*  
+{{% /command %}}
+
+{{% command-arguments %}}
+***RailIndex***: The rail index on which to place the sound event.  
+***FileName***: The file name for the sound to play, relative to the **Sound** folder.  
+***<font color="blue">Speed</font>***: The reference speed in km/h for speed-dependant sounds, or 0 to play the sound speed-independently. The default value is 0.  
+{{% /command-arguments %}}
+
+This command plays an announcement or other kind of sound in each car once the player's train crosses the point where this command is used. If *Speed* is set to 0 (default), the sound is played as-is. If a *Speed* is given though, the sound plays at is original pitch at the specified speed, and is pitch-modulated proportionally for other speeds, useful for custom flange sounds, pointwork sounds, etc.
+
+------
