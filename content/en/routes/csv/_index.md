@@ -43,6 +43,8 @@ The format assumes an implicit rail 0 which cannot be explicitly started or ende
 
 Geometrically, you can curve and pitch the implicit rail 0, while all other rails are defined relative to rail 0 and follow rail 0 into curves and pitch changes. Unless overridden, the file format is built around a fixed block size of 25 meters length, and it is only possible for certain commands to be used on 25 meter block boundaries. The placement of objects always assumes a non-curved coordinate system which connects blocks linearly.
 
+It is also experimentally possible to run on alternate rails within the world. Full details and the associated commands may be found in the [switches documentation]({{< ref "/routes/xml/switches/_index.md" >}})
+
 ➟ [See also the quick reference for the CSV route...]({{< ref "/routes/csv_quick/_index.md" >}})
 
 ## <a name="syntax"></a>■ 2. Syntax
