@@ -17,7 +17,8 @@ This page is still under construction.
 - [3.2. The Brake section](#brake)
 - [3.3. The Doors section](#doors)
 - [3.4. The Sanders section](#sanders)
-- [3.4. The Windscreen section](#windscreen)
+- [3.5. The Windscreen section](#windscreen)
+- [3.6. Particle Sources](#particles)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
@@ -684,6 +685,58 @@ The **\<Windscreen>** section specifies the properties of the windscreen, and sh
 {{% command-arguments %}}  
 **Left**: The wipers hold on the left of the screen for *HoldTime* during their sweep.  
 **Right**: The wipers hold on the right of the screen for *HoldTime* during their sweep.  
+{{% /command-arguments %}}
+
+## <a name="particles"></a>■ 3.5. Particle Sources
+
+The **\<ParticleSource>** section attaches a particle source, such as a diesel exhaust to the car. 
+
+Currently, the size of particles is **only** controlled by the engine power level, but the aim is to add additional controllers at a later date.
+
+When a particle is generated, it's maximum final size will be determined by linearly interpolating between **MaximumSize** and **MaximumGrown** size using the engine power level. This number is fixed for the life of the particle.
+
+
+
+It supports the following properties:
+
+{{% command %}}  
+**Location* *SourceLocation*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***SourceLocation***: A comma-separated 3D vector, describing the location of the particle emitter, relative to the center of the car.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**MaximumSize* *Size*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Size***: The maximum initial size of emitted particles. This should normally be set to the diameter of the apeature through which particles are emitted.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**MaximumGrownSize* *Size*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Size***: The maximum size a particle will spread to, at maximum power level.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**InitialDirection* *Direction*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Direction***: A comma-separated 3D vector, describing the initial direction of motion of the particles when emitted.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**Texture* *FileName*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***FileName***: A relative path to 4x4 texture atlas containing particle textures to be used by this emitter.
 {{% /command-arguments %}}
 
 ## <a name="coupler"></a>■ 4. The Coupler section
