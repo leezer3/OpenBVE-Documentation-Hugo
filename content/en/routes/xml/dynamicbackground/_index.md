@@ -104,3 +104,9 @@ A sample XML is shown below:
   &lt;/Background>
 &lt;/openBVE>  
 {{< /textarea >}}
+
+{{% note %}}
+
+For fog and some other effects to work correctly, the radius of a background object must be greater than the initial fog distance, and should approximately be equal to the viewing distance.
+
+{{% /note %}}
