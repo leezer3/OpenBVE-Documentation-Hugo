@@ -6,9 +6,9 @@ weight: 5
 
 This page explains the principle and implementation of the XML-based Track Following Object, which is supported in openBVE v1.6.0 or later.
 
-## ■ Basic Principles
+## ■ 1. Basic Principles
 
-openBVE can freely run a Track Following Object on other tracks.
+A Track Following Object can run on any other rail index which has been defined in the simulation. They do not affect the signalling system.
 
 In order to do this, it is necessary to setup each object that you want to run using Track Following Object XML files. An example is shown below.
 
@@ -97,7 +97,7 @@ In this example the object runs as follows.
 
 As you can see, the file consists of one **\<Definition>** section, one **\<Car>** section and one **\<Stops>** section. The **\<Stops>** section consists of two or more **\<Stop>** sections.
 
-## ■ Definition attribute
+## ■ 1.1 The Definition attribute
 
 {{% command %}}  
 **\<AppearanceTime>** *Time* **\</AppearanceTime>**  
@@ -137,7 +137,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 
 *Note:* If this parameter is omitted, the object will remain visible until the end of the game, or until it is hidden by **\<AppearanceEndPosition>**
 
-## ■ Train attribute
+## ■ 1.2 The Train attribute
 
 {{% command %}}  
 **\<Directory>** *Path* **\</Directory>**  
@@ -153,7 +153,7 @@ As you can see, the file consists of one **\<Definition>** section, one **\<Car>
 
 If this attribute is set to **true**  then the consist of the train will be reversed.
 
-## ■ Stop attribute
+## ■ 1.3 The Stop attribute
 
 {{% command %}}  
 **\<Decelerate>** *Value* **\</Decelerate>**  
@@ -224,3 +224,56 @@ If this attribute is set to **true**  then the consist of the train will be reve
 {{% /command %}}
 
 **RailIndex** sets the trajectory on which the object will run. It is necessary to define the trajectory by the **Track.Rail** command of the route file.
+
+## ■ 2. Other Trains
+
+The Track Following Object format also supports adding other trains within the simulation. These other trains are visible and fully operational, and affect the signalling system.
+
+Via the Track.Sta command, you can also define stations where only the player or only the other trains should stop. 
+
+Follow-up trains only appear once the section they are placed in has been cleared by other trains, but the player’s train is introduced regardless of the current signalling section’s state. 
+
+
+{{< textarea >}}  
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;openBVE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  &lt;TrackFollowingObject>
+    &lt;RunInterval>
+      120
+    &lt;/RunInterval>
+    &lt;Train>
+      &lt;!--Relative path of Train folder-->
+      &lt;Directory>TrainDirectory&lt;/Directory>
+    &lt;/Train>
+  &lt;/TrackFollowingObject>
+&lt;/openBVE>
+{{< /textarea >}}
+
+## ■ 2.1 The RunInterval / PreTrain attribute
+
+The **RunInterval** and **PreTrain** may attributes be used interchangeably.
+
+{{% command %}}  
+**\<RunInterval>** *Interval* **\</RunInterval>**  
+**\<PreTrain>** *Interval* **\</PreTrain>**  
+{{% /command %}}
+
+**Interval** A floating-point number representing the time interval between the player’s train’s timetable and that of another train to be created, measured in seconds. Positive values indicate an earlier train, negative numbers a later train. 
+
+
+
+## ■ 2.2 The Train attribute
+
+{{% command %}}  
+**\<Directory>** *Path* **\</Directory>**  
+{{% /command %}}
+
+**Path** sets the relative path to the directory containing the object's train.dat, sound.cfg and extensions.cfg.
+
+*Note:* If a train folder is intended solely for AI use, then the **train.dat** file may be renamed **train.ai**
+
+{{% command %}}  
+**\<Reversed>** *true* **\</Reversed>**  
+{{% /command %}}
+
+If this attribute is set to **true**  then the consist of the train will be reversed.
