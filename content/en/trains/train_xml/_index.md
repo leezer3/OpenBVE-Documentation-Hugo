@@ -205,7 +205,19 @@ A child-node must be of the following format:
 **\<InteriorView>** *ObjectFile* **\</InteriorView>**  
 {{% /command %}}
 
-**ObjectFile** should be a relative on-disk path to the interior 3D object to use.
+**ObjectFile** should be a relative on-disk path to the interior view to use. This may be a 3D object, or a **panel2.cfg** file.
+
+{{% command %}}  
+**\<InteriorDirection>** *DirectionX*, *DirectionY*, *DirectionZ* **\</InteriorDirection>**  
+{{% /command %}}
+
+This command allows you to rotate the interior camera, allowing for views which do not align with the forwards track direction.
+
+{{% command-arguments %}}  
+**DirectionX** The number of degrees that the initial interior camera is rotated in the X-axis.
+**DirectionY** The number of degrees that the initial interior camera is rotated in the Y-axis.
+**DirectionZ** The number of degrees that the initial interior camera is rotated in the Z-axis.
+{{% /command-arguments %}}  
 
 {{% command %}}  
 **\<VisibleFromInterior>** *IsVisible* **\</VisibleFromInterior>**  
