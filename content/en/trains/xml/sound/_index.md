@@ -23,7 +23,9 @@ weight: 1
 - [15. Breaker Sounds](#breaker)
 - [16. Windscreen Related Sounds](#windscreen)
 - [17. Sanders Related Sounds](#sanders)
-- [17. Miscellaneous Sounds](#misc)
+- [18. Coupler Related Sounds](#coupler)
+- [19. Headlights Related Sounds](#headlights)
+- [20. Miscellaneous Sounds](#misc)
 
 {{% /contents %}}
 
@@ -228,7 +230,7 @@ The **\<Loop>** child-node, containing the sound played in a loop whilst the san
 
 The **\<Empty>** child-node, containing the sound played once when the sander have no sand remaining.
 
-## <a name="sanders"></a>■ 18. Coupler Related Sounds
+## <a name="coupler"></a>■ 18. Coupler Related Sounds
 
 The **\<Coupler>** node defines the sounds relating to the train's couplers.
 
@@ -242,7 +244,15 @@ The **\<CoupleCab>** child-node, containing the sound played in the driver's cab
 
 The **\<UncoupleCab>** child-node, containing the sound played in the driver's cab when a couuple is uncoupled.
 
-## <a name="misc"></a>■ 19. Miscellaneous Sounds
+## <a name="headlights"></a>■ 18. Headlights Related Sounds
+
+The **\<Headlights>** node defines the sounds relating to the train's headlights.
+
+This node supports the following child nodes:
+
+The **\<Switch>** child-node, containing the sound played in the driver's cab when the headlights switch is activateed.
+
+## <a name="misc"></a>■ 20. Miscellaneous Sounds
 
 The **\<Loop>** node defines a sound to be played in a continuous loop throughout the simulation.
 

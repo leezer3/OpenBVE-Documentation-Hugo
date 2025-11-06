@@ -793,7 +793,21 @@ The coupler object is not deformed when the coupler stretches / compresses.
 **\<Plugin>** *PluginFile* **\</Plugin>**  
 {{% /command %}}
 
-**PluginFile** should contain the relative path to the security plugin DLL to load.
+**PluginFile** should contain the relative path to the security plugin DLL to load- This applies to the player train only.
+
+When using a .Net plugin which supports multiple running instances, the following alternative format may be used:
+
+{{% command %}}  
+**\<Plugin>** <br>
+&nbsp;**\<File>** *PluginFile* **\</File>** <br>
+&nbsp;**\<SupportsAI>** *Boolean* **\</SupportsAI>** <br>
+**\</Plugin>**  
+{{% /command %}}
+
+**PluginFile** should contain the relative path to a .Net based security plugin DLL to load.
+
+**Boolean** should be a boolean true / false value, determining whether this plugin supports additional AI instances.
+
 
 {{% command %}}  
 **\<Description>** *Text* **\</Description>**  
