@@ -594,6 +594,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `rearCoupler`         		| Returns 1 if the rear coupler for the current car is coupled to another car, 0 otherwise. |
 | `rearCoupler[carIndex]`       | Returns 1 if the rear coupler for *carIndex* is coupled to another car, 0 otherwise. |
 | `wiperState`                  | Returns the current state of the wipers. 0 - Off, 1 - Intermittant, 2 - Constant |
+| `pantographState`             | Returns the current state of the pantograph. 0 - Lowered, 1 - Raised, 2 - Dewired |
 
 {{% /table-2col %}}
 
