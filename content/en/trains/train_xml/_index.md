@@ -19,6 +19,8 @@ This page is still under construction.
 - [3.4. The Sanders section](#sanders)
 - [3.5. The Windscreen section](#windscreen)
 - [3.6. Particle Sources](#particles)
+- [3.7. Safety Systems](#safetysystems)
+- [3.7.1. Driver Supervision Device](#dsd)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
@@ -576,7 +578,7 @@ See the **sound.cfg** documentation for further details.
 The **\<Sanders>** section specifies the properties of the sanders fitted to this car, and supports the following properties:
 
 {{% command %}}  
-**Type** *Type*  
+**\<Type>** *Type*  **\</Type>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -594,7 +596,7 @@ The **\<Sanders>** section specifies the properties of the sanders fitted to thi
 {{% /command-arguments %}}
 
 {{% command %}}  
-**Rate** *SandingRate*  
+**\<Rate>** *SandingRate*  **\</Rate>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -602,7 +604,7 @@ The **\<Sanders>** section specifies the properties of the sanders fitted to thi
 {{% /command-arguments %}}
 
 {{% command %}}  
-**SandLevel** *Level*  
+**\<SandLevel>** *Level*  **\</SandLevel>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -610,7 +612,7 @@ The **\<Sanders>** section specifies the properties of the sanders fitted to thi
 {{% /command-arguments %}}
 
 {{% command %}}  
-**NumberOfShots** *Shots*  
+**\<NumberOfShots>** *Shots*  **\</NumberOfShots>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -618,7 +620,7 @@ The **\<Sanders>** section specifies the properties of the sanders fitted to thi
 {{% /command-arguments %}}
 
 {{% command %}}  
-**ApplicationTime** *Time*  
+**\<ApplicationTime>** *Time*  **\</ApplicationTime>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -626,7 +628,7 @@ The **\<Sanders>** section specifies the properties of the sanders fitted to thi
 {{% /command-arguments %}}
 
 {{% command %}}  
-**ActivationTime** *Time*  
+**\<ActivationTime>** *Time*  **\</ActivationTime>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -638,7 +640,7 @@ The **\<Sanders>** section specifies the properties of the sanders fitted to thi
 The **\<Windscreen>** section specifies the properties of the windscreen, and should be used if you wish to animated a windscreen on a 3D cab using the inbuilt functionality. It supports the following properties:
 
 {{% command %}}  
-**NumberOfDrops* *Drops*  
+**\<NumberOfDrops>** *Drops*  **\</NumberOfDrops>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -646,7 +648,7 @@ The **\<Windscreen>** section specifies the properties of the windscreen, and sh
 {{% /command-arguments %}}
 
 {{% command %}}  
-**WipeSpeed* *Speed*  
+**\<WipeSpeed>** *Speed*  **\</WipeSpeed>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -654,7 +656,7 @@ The **\<Windscreen>** section specifies the properties of the windscreen, and sh
 {{% /command-arguments %}}
 
 {{% command %}}  
-**HoldTime* *Time*  
+**\<HoldTime>** *Time*  **\</HoldTime>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -662,7 +664,7 @@ The **\<Windscreen>** section specifies the properties of the windscreen, and sh
 {{% /command-arguments %}}
 
 {{% command %}}  
-**DropLife* *Life*  
+**\<DropLife>** *Life*  **\</DropLife>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -670,7 +672,7 @@ The **\<Windscreen>** section specifies the properties of the windscreen, and sh
 {{% /command-arguments %}}
 
 {{% command %}}  
-**RestPosition* *Position*  
+**\<RestPosition>** *Position*  **\</RestPosition>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -685,7 +687,7 @@ The **\<Windscreen>** section specifies the properties of the windscreen, and sh
 {{% /command-arguments %}}
 
 {{% command %}}  
-**HoldPosition* *Position*  
+**\<HoldPosition>** *Position*  **\</HoldPosition>** 
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -699,7 +701,7 @@ The **\<Windscreen>** section specifies the properties of the windscreen, and sh
 **Right**: The wipers hold on the right of the screen for *HoldTime* during their sweep.  
 {{% /command-arguments %}}
 
-## <a name="particles"></a>■ 3.5. Particle Sources
+## <a name="particles"></a>■ 3.6. Particle Sources
 
 The **\<ParticleSource>** section attaches a particle source, such as a diesel exhaust to the car. 
 
@@ -712,7 +714,7 @@ When a particle is generated, it's maximum final size will be determined by line
 It supports the following properties:
 
 {{% command %}}  
-**Location* *SourceLocation*  
+**\<Location>** *SourceLocation*  **\</Location>** 
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -720,15 +722,15 @@ It supports the following properties:
 {{% /command-arguments %}}
 
 {{% command %}}  
-**MaximumSize* *Size*  
+**\<MaximumSize>** *Size*  **\</MaximumSize>** 
 {{% /command %}}
 
 {{% command-arguments %}}  
-***Size***: The maximum initial size of emitted particles. This should normally be set to the diameter of the apeature through which particles are emitted.
+**\<Size***: The maximum initial size of emitted particles. This should normally be set to the diameter of the apeature through which particles are emitted.
 {{% /command-arguments %}}
 
 {{% command %}}  
-**MaximumGrownSize* *Size*  
+**\<MaximumGrownSize>** *Size*  **\</MaximumGrownSize>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -736,7 +738,7 @@ It supports the following properties:
 {{% /command-arguments %}}
 
 {{% command %}}  
-**InitialDirection* *Direction*  
+**\<InitialDirection>** *Direction*  **\</InitialDirection>**
 {{% /command %}}
 
 {{% command-arguments %}}  
@@ -744,11 +746,85 @@ It supports the following properties:
 {{% /command-arguments %}}
 
 {{% command %}}  
-**Texture* *FileName*  
+**\<Texture>** *FileName*  **\</Texture>** 
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FileName***: A relative path to 4x4 texture atlas containing particle textures to be used by this emitter.
+***FileName>***: A relative path to 4x4 texture atlas containing particle textures to be used by this emitter.
+{{% /command-arguments %}}
+
+## <a name="safetysystems"></a>■ 3.7. Safety Systems
+### <a name="dsd"></a>■ 3.7.1. Driver Supervision Device
+
+The **\<DriverSupervisionDevice>** section creates a driver supervision device, which may intervene if the driver fails to cancel it in time. 
+
+It supports the following properties:
+
+{{% command %}}  
+**\<Type>** *DeviceType*  **\</Type>** 
+{{% /command %}}
+
+▸ Available options for *DeviceType*:
+
+{{% command-arguments %}}  
+**None**: No driver supervision device is fitted.  
+**CutsPower**: The device cuts the train's power when activated.
+**ApplyBrake**: The device applies service brakes when activated.
+**ApplyEmergencyBrake**: The device applies the emergency brake when activated.  
+{{% /command-arguments %}}
+
+{{% command %}}  
+**\<Mode>** *DeviceMode*  **\</Mode>** 
+{{% /command %}}
+
+▸ Available options for *DeviceType*:
+
+{{% command-arguments %}}  
+**Power**: The device timer is reset when the power handle is moved.  
+**Brake**: The device timer is reset when the brake handle is moved.  
+**AnyHandle**: The device timer is reset when any handle is moved.  
+**Independant**: The device timer is reset when DSD key is pressed.  
+**HeldKey**: The DSD key must remain pressed.  
+{{% /command-arguments %}}
+
+{{% command %}}  
+**\<AlarmTime>** *Time*  **\</AlarmTime>** 
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The time in seconds before the device enters alarm state. No intervention is performed until **InterventionTime** is passed.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**\<InterventionTime>** *Time*  **\</InterventionTime>** 
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The time in seconds from when the device enters alarm state, until it intervenes.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**\<RequiredStopTime>** *Time*  **\</RequiredStopTime>** 
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Time***: The time in seconds the train must be stopped following an intervention, until the device may be reset.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**\<LoopingAlert>** *boolean*  **\</LoopingAlert>**
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Boolean** should be a boolean true / false value, determining whether the alert tone is played once, or continuously until the device intervenes.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**\<LoopingAlarm>** *boolean*  **\</LoopingAlarm>**
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Boolean** should be a boolean true / false value, determining whether the alarm tone is played once, or continuously until the device is reset.
 {{% /command-arguments %}}
 
 ## <a name="coupler"></a>■ 4. The Coupler section
