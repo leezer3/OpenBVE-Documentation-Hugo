@@ -25,6 +25,7 @@ weight: 1
 - [17. Sanders Related Sounds](#sanders)
 - [18. Coupler Related Sounds](#coupler)
 - [19. Headlights Related Sounds](#headlights)
+- [20. Pantograph Related Sounds](#pantograph)
 - [20. Miscellaneous Sounds](#misc)
 
 {{% /contents %}}
@@ -244,15 +245,25 @@ The **\<CoupleCab>** child-node, containing the sound played in the driver's cab
 
 The **\<UncoupleCab>** child-node, containing the sound played in the driver's cab when a couuple is uncoupled.
 
-## <a name="headlights"></a>■ 18. Headlights Related Sounds
+## <a name="headlights"></a>■ 19. Headlights Related Sounds
 
 The **\<Headlights>** node defines the sounds relating to the train's headlights.
 
 This node supports the following child nodes:
 
-The **\<Switch>** child-node, containing the sound played in the driver's cab when the headlights switch is activateed.
+The **\<Switch>** child-node, containing the sound played in the driver's cab when the headlights switch is activated.
 
-## <a name="misc"></a>■ 20. Miscellaneous Sounds
+## <a name="pantograph"></a>■ 20. Pantograph Related Sounds
+
+The **\<Pantograph>** node defines the sounds relating to the train's headlights.
+
+This node supports the following child nodes:
+
+The **\<Raise>** child-node, containing the sound played when the panograph is raised.
+
+The **\<Lower>** child-node, containing the sound played when the panograph is lowered.
+
+## <a name="misc"></a>■ 21. Miscellaneous Sounds
 
 The **\<Loop>** node defines a sound to be played in a continuous loop throughout the simulation.
 

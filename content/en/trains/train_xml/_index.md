@@ -15,12 +15,13 @@ This page is still under construction.
 - [3. The Car section](#car)
 - [3.1. The Power section](#power)
 - [3.2. The Brake section](#brake)
-- [3.3. The Doors section](#doors)
-- [3.4. The Sanders section](#sanders)
-- [3.5. The Windscreen section](#windscreen)
-- [3.6. Particle Sources](#particles)
-- [3.7. Safety Systems](#safetysystems)
-- [3.7.1. Driver Supervision Device](#dsd)
+- [3.3. Traction Models](#traction)
+- [3.4. The Doors section](#doors)
+- [3.5. The Sanders section](#sanders)
+- [3.6. The Windscreen section](#windscreen)
+- [3.7. Particle Sources](#particles)
+- [3.8. Safety Systems](#safetysystems)
+- [3.8.1. Driver Supervision Device](#dsd)
 - [4. The Coupler section](#coupler)
 - [5. Miscellaneous Properties](#misc)
 
@@ -537,7 +538,26 @@ The **\<Handle>** node specifies properties for the brake handle, and supports t
 **AnyKey**: The spring return mechanism is reset when any keyboard key or joystick control is operated.
 {{% /command-arguments %}}
 
-## <a name="doors"></a>■ 3.3. The Doors section
+## <a name="traction"></a>■ 3.3. Traction Modelling
+
+### 3.3.1. Electric Engine
+
+The **\<ElectricEngine>** node models a simplistic electric engine, using a pantograph to collect current from an overhead wire.
+
+With this traction model in use, one car in the train must possess a pantograph, which must be raised for the train to be moved.
+
+It supports the following properties:
+
+{{% command %}}  
+**\<Pantograph>** *boolean*  **\</Pantograph>**
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Boolean** should be a boolean true / false value, determining whether this vehicle has a pantograph.
+{{% /command-arguments %}}
+
+
+## <a name="doors"></a>■ 3.4. The Doors section
 
 The **\<Doors>** section specifies the properties of the passenger doors fitted to this car, and supports the following properties:
 
@@ -573,7 +593,7 @@ See the **sound.cfg** documentation for further details.
 
 **DoorTolerance** should be a positive number, setting a tolerance in meters before the door is considered to be closed.
 
-## <a name="sanders"></a>■ 3.4. The Sanders section
+## <a name="sanders"></a>■ 3.5. The Sanders section
 
 The **\<Sanders>** section specifies the properties of the sanders fitted to this car, and supports the following properties:
 
@@ -635,7 +655,7 @@ The **\<Sanders>** section specifies the properties of the sanders fitted to thi
 ***Time***: When in automatic mode, the amount of time before the system reacts and applies sand.
 {{% /command-arguments %}}
 
-## <a name="windscreen"></a>■ 3.5. The Windscreen section
+## <a name="windscreen"></a>■ 3.6. The Windscreen section
 
 The **\<Windscreen>** section specifies the properties of the windscreen, and should be used if you wish to animated a windscreen on a 3D cab using the inbuilt functionality. It supports the following properties:
 
@@ -701,7 +721,7 @@ The **\<Windscreen>** section specifies the properties of the windscreen, and sh
 **Right**: The wipers hold on the right of the screen for *HoldTime* during their sweep.  
 {{% /command-arguments %}}
 
-## <a name="particles"></a>■ 3.6. Particle Sources
+## <a name="particles"></a>■ 3.7. Particle Sources
 
 The **\<ParticleSource>** section attaches a particle source, such as a diesel exhaust to the car. 
 
@@ -753,8 +773,8 @@ It supports the following properties:
 ***FileName>***: A relative path to 4x4 texture atlas containing particle textures to be used by this emitter.
 {{% /command-arguments %}}
 
-## <a name="safetysystems"></a>■ 3.7. Safety Systems
-### <a name="dsd"></a>■ 3.7.1. Driver Supervision Device
+## <a name="safetysystems"></a>■ 3.8. Safety Systems
+### <a name="dsd"></a>■ 3.8.1. Driver Supervision Device
 
 The **\<DriverSupervisionDevice>** section creates a driver supervision device, which may intervene if the driver fails to cancel it in time. 
 
