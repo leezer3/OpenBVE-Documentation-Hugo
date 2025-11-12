@@ -26,7 +26,7 @@ weight: 1
 - [18. Coupler Related Sounds](#coupler)
 - [19. Headlights Related Sounds](#headlights)
 - [20. Pantograph Related Sounds](#pantograph)
-- [20. Miscellaneous Sounds](#misc)
+- [21. Miscellaneous Sounds](#misc)
 
 {{% /contents %}}
 
