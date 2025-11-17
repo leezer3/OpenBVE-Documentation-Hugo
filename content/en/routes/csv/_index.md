@@ -1422,6 +1422,57 @@ Of this, there is a 40% chance that this will be a snowflake.
 
 {{% /notice %}}
 
+---
+
+{{% command %}}  
+**Track.PowerSupply** *RailIndex*; *PowerSupplyType*; *VoltageType*; *Voltage*; *Amperage*; *ContactHeight* 
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: The rail index on which to start the power supply.  
+***PowerSupplyType***: The type of power supply.
+**VoltageType**: The type of voltage.
+**Voltage**: The voltage supplied by the power supply.
+**Amperage**: The maximum amperage supplied by the power supply.
+**ContactHeight**: The contact height in meters.
+{{% /command-arguments %}}
+
+This command starts a new power supply type on the given RailIndex, or modifies the properties of an existing power supply.
+
+▸ Available options for *PowerSupplyType*:
+
+{{% command-arguments %}}  
+**0** or **OHLE**: Overhead line.  
+**1** or **ThirdRail**: Third rail.
+**2** or **FourthRail**: Fourth rail.
+{{% /command-arguments %}}
+
+▸ Available options for *VoltageType*:
+
+{{% command-arguments %}}  
+**0** or **AC**: Alternating current.  
+**1** or **DC**: Direct current.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**Track.PowerSupplyEnd** *RailIndex*; *PowerSupplyType*
+{{% /command %}}
+
+{{% command-arguments %}}  
+***RailIndex***: The rail index on which to start the power supply.  
+***PowerSupplyType***: The type of power supply.
+{{% /command-arguments %}}
+
+This command ends the given power supply type on the given RailIndex.
+
+▸ Available options for *PowerSupplyType*:
+
+{{% command-arguments %}}  
+**0** or **OHLE**: Overhead line.  
+**1** or **ThirdRail**: Third rail.
+**2** or **FourthRail**: Fourth rail.
+{{% /command-arguments %}}
+
 ##### <a name="track_geometry"></a>● 11.2. Geometry
 
 ---
