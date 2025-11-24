@@ -550,10 +550,31 @@ It supports the following properties:
 
 {{% command %}}  
 **\<Pantograph>** *boolean*  **\</Pantograph>**
+**\<CollectorShoe>** *boolean*  **\</CollectorShoe>**
 {{% /command %}}
 
 {{% command-arguments %}}  
-**Boolean** should be a boolean true / false value, determining whether this vehicle has a pantograph.
+**Boolean** should be a boolean true / false value, determining whether this vehicle has a pantograph  / third rail collector shoe.
+{{% /command-arguments %}}
+
+Traction motors may be added via the **\<TractionMotor>** or **\<RegenerativeTractionMotor>** child nodes.
+
+These support the following properties:
+
+{{% command %}}  
+**\<MaxAmps>** *Amps*  **\</MaxAmps>**
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Amps** represents the number of amps drawn by the traction motor when the train is accelerating at maximum.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**\<MaxRegenerativeAmps>** *Amps*  **\</MaxRegenerativeAmps>**
+{{% /command %}}
+
+{{% command-arguments %}}  
+**Amps** represents the number of amps drawn by the traction motor when the train is braking at maximum, when this traction motor is a regenerative traction motor.
 {{% /command-arguments %}}
 
 
