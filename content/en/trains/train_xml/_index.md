@@ -939,3 +939,20 @@ When using a .Net plugin which supports multiple running instances, the followin
 **NumberOfStates** should be the total number of states that the train headlight posesses.
 
 *Note:* Headlight effects must be implemented by the train developer, using animation / panel properties. 
+
+The **\<DriverBody>** node contains properties pertaining to the driver's body. This is used to calculate the head-bounce cased by the **Track.Accuracy** command.
+
+This supports the following properties:
+
+{{% command %}}  
+**\<ShoulderHeight>** *Height* **\</ShoulderHeight>**  
+{{% /command %}}
+
+**Height** should be the height in meters of the driver's shoulders above the pivot point- If the driver is seated, this should be the distance from the seat base to the shoulders, and if standing it should be the height from floor to shoulders.
+
+{{% command %}}  
+**\<HeadHeight>** *Height* **\</HeadHeight>**  
+{{% /command %}}
+
+**Height** should be the height in meters from the driver's shoulders to the center point of the head.
+
