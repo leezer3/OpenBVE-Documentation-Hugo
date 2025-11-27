@@ -594,8 +594,7 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `rearCoupler`         		| Returns 1 if the rear coupler for the current car is coupled to another car, 0 otherwise. |
 | `rearCoupler[carIndex]`       | Returns 1 if the rear coupler for *carIndex* is coupled to another car, 0 otherwise. |
 | `wiperState`                  | Returns the current state of the wipers. 0 - Off, 1 - Intermittant, 2 - Constant |
-| `pantographState`             | Returns the current state of the pantograph for the train. 0 - Lowered, 1 - Raised, 2 - Dewired |
-| `pantographState[carIndex]`   | Returns the current state of the pantograph of the car *carIndex*. 0 - Lowered, 1 - Raised, 2 - Dewired |
+
 
 {{% /table-2col %}}
 
@@ -637,6 +636,43 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `leftDoorButton`            | The state of the left doors button. Returns either 0 (released) or 1 (pressed). |
 | `rightDoorButton`           | The state of the right doors button. Returns either 0 (released) or 1 (pressed). |
 | `pilotLamp`                  | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
+
+{{% /table-2col %}}
+
+##### ● Trains (traction modelling)
+
+{{% table-2col %}}
+
+| Variable                     | Description                                                  |
+| ---------------------------- | ------------------------------------------------------------ |
+| `pantographState`            | Returns the current state of the pantograph for the train. 0 - Lowered, 1 - Raised, 2 - Dewired |
+| `pantographState[carIndex]`  | Returns the current state of the pantograph of the car *carIndex*. 0 - Lowered, 1 - Raised, 2 - Dewired |
+| `amps`                       | Returns the total current draw of the train's traction motors |
+| `amps[carIndex]`             | Returns the current draw of the traction motors in the car *carIndex*. |
+|                              |                                                              |
+| `overheadAC`                 | Returns 1 if an overhead line is available to the train, 0 otherwise. |
+| `overheadAC[carIndex]`       | Returns 1 if an overhead line is available to the car *carIndex*, 0 otherwise. |
+| `overheadHeight`             | Returns the height of the overhead line. |
+| `overheadHeight[carIndex]`   | Returns the height of the overhead line at the position of the car *carIndex*. |
+| `overheadVolts`              | Returns the voltage on the overhead line available to the train. |
+| `overheadVolts[carIndex]`    | Returns the voltage on the overhead line available in the car *carIndex*. |
+| `overheadAmps`               | Returns the ampage on the overhead line available to the train. |
+| `overheadAmps[carIndex]`     | Returns the ampage available on the overhead line available in the car *carIndex*. |
+|                              |                                                              |
+| `thirdRailAC`                | Returns 1 if a third rail is available to the train, 0 otherwise. |
+| `thirdRailAC[carIndex]`      | Returns 1 if an third rail is available to the car *carIndex*, 0 otherwise. |
+| `thirdRailHeight`            | Returns the height of the third rail. |
+| `thirdRailHeight[carIndex]`   | Returns the height of the third rail at the position of the car *carIndex*. |
+| `thirdRailVolts`             | Returns the voltage on the third rail available to the train. |
+| `thirdRailVolts[carIndex]`   | Returns the voltage on the third rail available in the car *carIndex*. |
+|                              |                                                              |
+| `fourthRailAC`                | Returns 1 if a fourth rail is available to the train, 0 otherwise. |
+| `fourthRailAC[carIndex]`      | Returns 1 if an fourth rail is available to the car *carIndex*, 0 otherwise. |
+| `fourthRailHeight`            | Returns the height of the fourth rail. |
+| `fourthRailHeight[carIndex]`   | Returns the height of the fourth rail at the position of the car *carIndex*. |
+| `fourthRailVolts`             | Returns the voltage on the fourth rail available to the train. |
+| `fourthRailVolts[carIndex]`   | Returns the voltage on the fourth rail available in the car *carIndex*. |
+|
 
 {{% /table-2col %}}
 
