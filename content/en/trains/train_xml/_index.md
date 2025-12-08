@@ -787,6 +787,14 @@ It supports the following properties:
 {{% /command-arguments %}}
 
 {{% command %}}  
+**\<MaximumLifespan>** *Life*  **\</MaximumLifespan>**
+{{% /command %}}
+ 
+{{% command-arguments %}}  
+***Life***: The maximum life in seconds of a particle.
+{{% /command-arguments %}}
+
+{{% command %}}  
 **\<Texture>** *FileName*  **\</Texture>** 
 {{% /command %}}
 
