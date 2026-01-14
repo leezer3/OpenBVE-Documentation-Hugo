@@ -767,7 +767,7 @@ It supports the following properties:
 {{% /command %}}
 
 {{% command-arguments %}}  
-**\<Size***: The maximum initial size of emitted particles. This should normally be set to the diameter of the apeature through which particles are emitted.
+**Size***: The maximum initial size of emitted particles. This should normally be set to the diameter of the apeature through which particles are emitted.
 {{% /command-arguments %}}
 
 {{% command %}}  
@@ -799,8 +799,27 @@ It supports the following properties:
 {{% /command %}}
 
 {{% command-arguments %}}  
-***FileName>***: A relative path to 4x4 texture atlas containing particle textures to be used by this emitter.
+***FileName***: A relative path to 4x4 texture atlas containing particle textures to be used by this emitter.
 {{% /command-arguments %}}
+
+{{% command %}}  
+**\<Function>** *FunctionScript*  **\</Function>** 
+{{% /command %}}
+
+{{% command-arguments %}}  
+***FunctionScript***: A function script returning a value on execution between **0 (Size)** and **1 (MaximumGrownSize)**, controlling the maximum size of emitted particles. 
+{{% /command-arguments %}}
+
+{{% information %}}
+
+#### Escaping Special Characters in XML:
+
+The **>** (greater than sign) , **<** (less than sign) and **&** (ampersand) are reseved characters in XML, and must be escaped for the file to be readable.
+
+Please see the [Microsoft documentation](https://learn.microsoft.com/en-us/dotnet/desktop/xaml-services/xml-character-entities) 
+
+{{% /information %}}
+
 
 ## <a name="safetysystems"></a>■ 3.8. Safety Systems
 ### <a name="dsd"></a>■ 3.8.1. Driver Supervision Device
