@@ -748,7 +748,9 @@ The **\<ParticleSource>** section attaches a particle source, such as a diesel e
 
 Currently, the size of particles is **only** controlled by the engine power level, but the aim is to add additional controllers at a later date.
 
-When a particle is generated, it's maximum final size will be determined by linearly interpolating between **MaximumSize** and **MaximumGrown** size using the engine power level. This number is fixed for the life of the particle.
+When a particle is generated, it's maximum final size will be determined by linearly interpolating between **MaximumSize** and **MaximumGrown** size. This number is fixed for the life of the particle.
+
+If no **Function** is specified, the interpolated size of the particle will be controlled by the power level of the engine, otherwise the result of **Function** will be used.
 
 
 
@@ -800,6 +802,14 @@ It supports the following properties:
 
 {{% command-arguments %}}  
 ***FileName***: A relative path to 4x4 texture atlas containing particle textures to be used by this emitter.
+{{% /command-arguments %}}
+
+{{% command %}}  
+**\<EmitsAtIdle>** *Boolean*  **\</EmitsAtIdle>** 
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Boolean***: **True** or **1** if particles should be emitted at idle, **False** or **0** otherwise.
 {{% /command-arguments %}}
 
 {{% command %}}  
