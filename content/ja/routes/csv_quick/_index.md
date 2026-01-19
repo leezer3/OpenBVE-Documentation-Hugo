@@ -94,14 +94,14 @@ hidden: true
 <font color="red">Texture namespace</font>  
 **Texture.Background**(*BackgroundTextureIndex*)<font color="gray">.Load</font> *FileName*  
 **Texture.Background**(*BackgroundTextureIndex*)**.X** *RepetitionCount*  
-**Texture.Background**(*BackgroundTextureIndex*)**.Aspect** <font color="gray">{</font> **0** = fixed height <font color="gray">|</font> **1** = keep aspect ratio <font color="gray">}</font>
+**Texture.Background**(*BackgroundTextureIndex*)**.Aspect** <font color="gray">{</font> **0** = fixed height <font color="gray">|</font> **1** = keep aspect ratio <font color="gray">}</font>
 
 <font color="red">Cycle namespace</font>  
 **Cycle.Ground**(*GroundStructureIndex*)<font color="gray">.Params</font> *GroundStructureIndex<sub>1</sub>*; *GroundStructureIndex<sub>2</sub>*; *...*; *GroundStructureIndex<sub>n</sub>*  
 **Cycle.Rail**(*RailStructureIndex*)<font color="gray">.Params</font> *RailStructureIndex<sub>1</sub>*; *RailStructureIndex<sub>2</sub>*; *...*; *RailStructureIndex<sub>n</sub>*
 
 <font color="red">Signal namespace</font>  
-**Signal**(*SignalIndex*)<font color="gray">.Load</font> *AnimatedObjectFile*  
+**Signal**(*SignalIndex*)<font color="gray">.Load</font> *AnimatedObjectFile*  
 **Signal**(*SignalIndex*)<font color="gray">.Load</font> *SignalFileWithoutExtension*; *GlowFileWithoutExtension*
 
 <font color="red">Track namespace</font>  
