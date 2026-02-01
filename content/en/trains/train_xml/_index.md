@@ -538,6 +538,12 @@ The **\<Handle>** node specifies properties for the brake handle, and supports t
 **AnyKey**: The spring return mechanism is reset when any keyboard key or joystick control is operated.
 {{% /command-arguments %}}
 
+{{% command %}}  
+**\<MotorBrakeNotch>** *Notch* **\</MotorBrakeNotch>**  
+{{% /command %}}
+
+**Notch** should be a positive integer, defining the maximum notch in which motor assisted braking is available.
+
 ## <a name="traction"></a>■ 3.3. Traction Modelling
 
 ### 3.3.1. Electric Engine
