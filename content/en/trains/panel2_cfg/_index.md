@@ -228,6 +228,16 @@ Subject = *Subject*
 ***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
 {{% /command-arguments %}}
 
+Alternatively, a pure [function script]({{< ref "/objects/native/animated/_index.md" >}}) may be used, with the following command:
+
+{{% command %}}  
+Function = *Function*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Function***: The function script controlling the state.  
+{{% /command-arguments %}}
+
 ------
 
 {{% command %}}  
@@ -301,6 +311,16 @@ Subject = *Subject*
 
 {{% command-arguments %}}  
 ***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
+{{% /command-arguments %}}
+
+Alternatively, a pure [function script]({{< ref "/objects/native/animated/_index.md" >}}) may be used, with the following command:
+
+{{% command %}}  
+Function = *Function*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Function***: The function script controlling the state.  
 {{% /command-arguments %}}
 
 ------
@@ -501,6 +521,16 @@ Subject = *Subject*
 ***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
 {{% /command-arguments %}}
 
+Alternatively, a pure [function script]({{< ref "/objects/native/animated/_index.md" >}}) may be used, with the following command:
+
+{{% command %}}  
+Function = *Function*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Function***: The function script controlling the state.  
+{{% /command-arguments %}}
+
 ------
 
 {{% command %}}  
@@ -590,6 +620,16 @@ Subject = *Subject*
 
 {{% command-arguments %}}  
 ***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
+{{% /command-arguments %}}
+
+Alternatively, a pure [function script]({{< ref "/objects/native/animated/_index.md" >}}) may be used, with the following command:
+
+{{% command %}}  
+Function = *Function*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Function***: The function script controlling the state.  
 {{% /command-arguments %}}
 
 ------
@@ -723,6 +763,16 @@ Subject = *Subject*
 
 {{% command-arguments %}}  
 ***Subject***: One of the [available subjects](#subjects). The default subject is **true**.  
+{{% /command-arguments %}}
+
+Alternatively, a pure [function script]({{< ref "/objects/native/animated/_index.md" >}}) may be used, with the following command:
+
+{{% command %}}  
+Function = *Function*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Function***: The function script controlling the state.  
 {{% /command-arguments %}}
 
 ------
