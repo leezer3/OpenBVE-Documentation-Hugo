@@ -9,8 +9,6 @@ This is the documentation for train plugins accepting raw input. In order to cre
 
 This interface is currently experimental / unstable, and subject to breaking changes.
 
-{{% /warning-nontitle %}}
-
 ------
 
 ## ■ Contenu
