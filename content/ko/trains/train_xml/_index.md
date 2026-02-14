@@ -250,8 +250,6 @@ In the **train.dat** acceleration curve figures are given for the train as a who
 <br><br>
 However, in **train.xml** acceleration curve figures apply to the current car only.
 
-{{% /warning-nontitle %}}
-
 ------
 
 The **\<AccelerationCurves>** child node should contain a list of acceleration curve nodes. These must be in ascending order, and should correspond to the number of power notches the train has.
