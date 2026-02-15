@@ -200,8 +200,6 @@ Default versus simplified section behavior
 
 #### When camera restriction affects the default camera setup
 
-{{% notice %}}
-
 Camera restriction is the built-in functionality to limit the camera view inside cabs created by the panel2.cfg to the rectangle as specified via *Left*, *Right*, *Top* and *Bottom*. If your setup of *Center*and *Resolution* would force the camera to show parts that are outside of that specified region even with the default camera settings, the camera position will be altered to guarantee that the view stays inside the cab region. In order to verify that your *Center* and *Origin* setup is unaffected by this, disable camera restriction by hitting the CAMERA_RESTRICTION key (default: CTRL+R) and then reset the camera by hitting the CAMERA_RESET key (default: num 5). The *Center* and *Origin* values will now be exactly as scripted, thereby revealing possible problems in the relations of *Resolution*, *Left*, *Right*, *Top*, *Bottom*, *Center* and *Origin*.
 
 {{% /notice %}}
@@ -1015,8 +1013,8 @@ A subject is composed of a base subject and an optional subject suffix. The subj
 | Klaxon            | `MusicKlaxon` |
 | PrimaryKlaxon     | `passAlarm` |
 | SecondaryKlaxon   | `stationAdjustAlarm` |
-| MusicKlaxon       | |
-| passAlarm         | |
+| MusicKlaxon       | {{% /table-2col %}} |
+| passAlarm         | {{% table %}} |
 | pilotLamp         | Description |
 | stationAdjustAlarm | English |
 | wiperPosition | The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) |
@@ -1048,7 +1046,7 @@ If ats*i* is used with the built-in safety systems ATS and ATC, the following ma
 | 268  | 定速             | 0 (unlit) or 1 (lit)     | 55 km/h                         |      | 12     | ATS is active     |
 | 269  | 0 (unlit) or 1 (lit)         | ATC speed indicator         | 55 km/h                         |      |        |                   |
 | 270  | ● Sections (signalling)                  | ● Sections (signalling)           | 55 km/h                         |      |        |                   |
-| 271  |  |              | Variable               |      |        |                   |
+| 271  | {{% table-2col %}} |              | Variable               |      |        |                   |
 
 {{% /table %}}
 
