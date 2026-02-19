@@ -160,12 +160,6 @@ The $Include directive is useful for splitting up a large file into smaller file
 
 If any of the *File<sub>i</sub>* is followed by :*TrackPositionOffset*, then all expressions in the included file are offset by the specified track position **in meters**. For example, $Include(stations.include:2000) shifts all track positions in the part.include file by 2000 meters before including them. It is important to understand that "track positions" are not actually understood until after the $-directives have been processed, so all expressions in the included file are simply flagged to be offset later should they form track positions then. This means that if the included file contains expressions such as 1$Rnd(2;8)00, these are offset, too, even though at this stage, they do not form track positions yet.
 
-{{% warning-nontitle %}}
-
-The track position offset feature is only available in the development release 1.2.11 and above.
-
-{{% /warning-nontitle %}}
-
 ---
 
 {{% command %}}  
