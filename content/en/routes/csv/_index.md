@@ -133,7 +133,7 @@ Route.Timetable 1157_M
 
 ## <a name="preprocessing"></a>■ 3. Preprocessing
 
-Before any of the commands in the route file are actually interpreted, the expressions are preprocessed. The first thing done is to replace any occurrences of the $-directives within an expression from right to left. The $Chr, $Rnd and $Sub directives may be nested in any way, while $Include, $If, $Else and $EndIf must not appear inside another directive.
+Before any of the commands in the route file are actually interpreted, the expressions are preprocessed. The first thing done is to replace any occurrences of the $-directives within an expression from right to left. The $Chr, $Rnd and $Sub directives may be nested in any way, while $Include, $If, $ElseIf, $Else and $EndIf must not appear inside another directive.
 
 {{% warning-nontitle %}}
 
@@ -263,7 +263,19 @@ $If(*Condition*)
 ***Condition***: A number that represents **false** if zero, and **true** otherwise.  
 {{% /command-arguments %}}
 
-The $If directive allows to only process subsequent expressions if the specified condition evaluates to true (any non-zero number). $If must be followed by $EndIf in any subsequent expression. Optionally, an $Else directive may appear between $If and $EndIf.
+The $If directive allows to only process subsequent expressions if the specified condition evaluates to true (any non-zero number). $If must be followed by $EndIf in any subsequent expression. Optionally, an $ElseIf or an $Else directive may appear between $If and $EndIf.
+
+---
+
+{{% command %}}  
+$ElseIf(*Condition*)  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***Condition***: A number that represents **false** if zero, and **true** otherwise.  
+{{% /command-arguments %}}
+
+The $ElseIf directive allows a new condition to be specified if the preceeding $If is false. Subsequent expressions are only processed if the specified condition evaluates to true (any non-zero number). The $Else and $ElseIf must be followed by $EndIf in any subsequent expression. Optionally, an $Else directive may appear between $ElseIf and $EndIf.
 
 ---
 
