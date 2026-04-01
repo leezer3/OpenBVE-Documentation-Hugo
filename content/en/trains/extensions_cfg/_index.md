@@ -176,7 +176,7 @@ This starts the section for coupler *i*, which is an integer between 0 and *n*-2
 ***Maximum***: A floating-point number indicating the maximum allowed distance between the cars.  
 {{% /command-arguments %}}
 
-This key-value pair defines the lowest and highest allowed distances between the cars, resembling a buffer and chain coupler. The condition *Minimum* ≤ *Maximum* must hold.
+This key-value pair defines the lowest and highest allowed distances between the cars, resembling a buffer and chain coupler. The condition *Minimum* < *Maximum* must hold.
 
 ------
 

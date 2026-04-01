@@ -929,6 +929,8 @@ This defines the coupler between the two cars, and supports the following proper
 
 **Distance** sets the maximum distance between the two cars.
 
+Note that the condition *Minimum* < *Maximum* must hold.
+
 {{% command %}}  
 **\<Object>** *ObjectFile* **\</Object>**  
 {{% /command %}}
