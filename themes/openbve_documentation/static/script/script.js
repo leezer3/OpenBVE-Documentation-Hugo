@@ -12,40 +12,39 @@ String.prototype.normalizeURL = function(){
 }
 
 function toggleMenu() {
-    var toggle = "responsive-hide";
     var sideBar = document.getElementById("sidebar");
-    if (sideBar.className.indexOf(toggle) !== -1){
-        var newClassName = "";
-        var classes = sideBar.className.split(" ");
-        for(var i = 0; i < classes.length; i++)
-            if(classes[i] !== toggle) newClassName += classes[i] + " ";
-        $("#sidebar").width("0px");
-        sideBar.className = newClassName.trim();
-        $("#sidebar").animate({width:"240px"}, "fast");
-    } else {
-        $("#sidebar").animate({width:"0px"}, "fast", function() {
-            sideBar.className += " " + toggle;
-            $("#sidebar").width("240px");
-        });
-    }
+    sideBar.classList.toggle("responsive-hide");
 }
 
 function toggleLanguageMenu() {
-    $("#sidebar-language-menu").animate({height:"toggle"});
+    var menu = document.getElementById("sidebar-language-menu");
+    if (menu.style.display === "none") {
+        menu.style.display = "block";
+    } else {
+        menu.style.display = "none";
+    }
 }
 
 function adaptClientLanguage() {
     var language = (navigator.languages ? navigator.languages[0]
         : (navigator.language || navigator.userLanguage)).replace("-","_").toLowerCase();
-    var currentLanguage = document.getElementsByName("langmeta-current")[0].content.toLowerCase();
-    var baseURL = $('link[rel=icon]')[0].href;
+    
+    var langMeta = document.getElementsByName("langmeta-current")[0];
+    if (!langMeta) return;
+    var currentLanguage = langMeta.content.toLowerCase();
+    
+    var iconLink = document.querySelector('link[rel=icon]');
+    if (!iconLink) return;
+    var baseURL = iconLink.href;
     baseURL = baseURL.substring(0, Math.max(baseURL.lastIndexOf("/"), baseURL.lastIndexOf("\\"))).normalizeURL();
+    
     var referrer = document.referrer.normalizeURL();
     if (!referrer) {
         try {
             if (window.opener) referrer = window.opener.location.href.normalizeURL();
         } catch (e) {}
     }
+    
     if (!referrer || referrer.indexOf(baseURL)<0 || referrer==baseURL) {
         if (currentLanguage == language) return;
         var thisparts = language.split("_");
@@ -68,10 +67,11 @@ function adaptClientLanguage() {
     }
 }
 
+// Run language adaptation
 adaptClientLanguage();
 
-//In case jQuery failed to load, the language menu will be shown by default.
-//Which makes the site even compatible with Netscape Navigator 9.
-$(function(){
-    $("#sidebar-language-menu").hide();
-});
+// Hide language menu by default on load
+document.addEventListener("DOMContentLoaded", function() {
+    var langMenu = document.getElementById("sidebar-language-menu");
+    if (langMenu) langMenu.style.display = "none";
+});
