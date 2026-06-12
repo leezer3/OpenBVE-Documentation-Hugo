@@ -529,6 +529,22 @@ This experimental command allows for routefiles to be driven by the player in th
 
 Please note that it is a work in progress, and many features, including signalling may not work correctly.
 
+---
+
+{{% command %}}  
+**Options.StartingDirection** *DirectionX; DirectionZ*  
+{{% /command %}}
+
+{{% command-arguments %}}  
+***DirectionX***: The X component of the direction vector.  
+***DirectionZ***: The Z component of the direction vector.  
+{{% /command-arguments %}}
+
+This command takes a 2D (X, Z) vector, allows for the starting direction of the initial track element to be changed. 
+The Y element of direction is handled via the **Track.Pitch** command.
+
+When this option is not set, the inital track element will always point due North (e.g. 0,1)
+
 ## <a name="route"></a>■ 5. The Route namespace
 
 Commands from this namespace define general properties of the route.
