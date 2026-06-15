@@ -225,6 +225,60 @@ If this attribute is set to **true**  then the consist of the train will be reve
 
 **RailIndex** sets the trajectory on which the object will run. It is necessary to define the trajectory by the **Track.Rail** command of the route file.
 
+## ■ 1.3 The Point attribute
+
+The Point section allows you to change the speed of a moving object without stopping it, or to change the track it's moving on.
+
+{{% command %}}  
+**\<Position>** *Value* **\</Position>**  
+{{% /command %}}
+
+**Value** sets the in-game distance for this point. The unit is **meter**.
+
+------
+
+{{% command %}}  
+**\<Decelerate>** *Value* **\</Decelerate>**  
+{{% /command %}}
+
+**Value** sets the deceleration of the object used to reach this position. The unit is **km/h/s**.
+
+------
+
+{{% command %}}  
+**\<Accelerate>** *Value* **\</Accelerate>**  
+{{% /command %}}
+
+**Value** sets the acceleration of the object after it reaches this position. The unit is **km/h/s**.
+
+------
+
+{{% command %}}  
+**\<PassingSpeed>** *Value* **\</PassingSpeed>**  
+{{% /command %}}
+
+**Value** sets the speed of the object at this position. The unit is **km/h**.
+
+------
+
+{{% command %}}  
+**\<TargetSpeed>** *Value* **\</TargetSpeed>**  
+{{% /command %}}
+
+**Value** sets the target speed of the object after this position. The unit is **km/h*.
+
+------
+
+
+{{% command %}}  
+**\<Rail>** *RailIndex* **\</Rail>**  
+{{% /command %}}
+
+**RailIndex** sets the index of the route rail on which the object runs.
+
+**NOTE:** To ensure smooth transitions beetween rails, the old and new rails should follow the same path for at least one block prior to and following the distance specified by this point.
+
+
 ## ■ 2. Other Trains
 
 The Track Following Object format also supports adding other trains within the simulation. These other trains are visible and fully operational, and affect the signalling system.
