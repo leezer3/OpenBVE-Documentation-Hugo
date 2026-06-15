@@ -26,6 +26,15 @@ This page presents information developers need to be aware of and general tips f
 - Try to create textures that wrap around objects by using texture coordinates appropriately. This will reduce or eliminate the need to change the texture when rendering, which is expensive.
 - Use only textures which are of power-of-two size, e.g. whose sides are of length 1, 2, 4, 8, 16, 32, etc. Textures do not need to be square, though.
 
+## ■ Supported Texture Formats
+- MSTS ACE
+- PNG
+- BMP
+- GIF, both static and animated.
+- TIFF
+- TGA
+- DDS
+
 ## ■ Transparency
 
 - For best visual quality, every transparency has its overhead. Avoid using transparency at all if there are alternatives of similar implementational and geometric complexity.
