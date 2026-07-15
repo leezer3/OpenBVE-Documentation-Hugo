@@ -494,6 +494,25 @@ Played when the wiper switch is moved.
 
 ------
 
+##### ● [RequestStop]
+
+{{% command %}}  
+Stop = *FileName*  
+{{% /command %}}  
+Played when a request stop triggers, and requests that the train stops.
+
+{{% command %}}  
+Pass = *FileName*  
+{{% /command %}}  
+Played when a request stop triggers, and the train should pass.
+
+{{% command %}}  
+Ignored = *FileName*  
+{{% /command %}}  
+Played when a request stop triggers, but the train does not meet the conditions to stop. (e.g. length is too long).
+
+------
+
 ##### ● [Others]
 
 {{% command %}}  

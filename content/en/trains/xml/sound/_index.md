@@ -26,7 +26,8 @@ weight: 1
 - [18. Coupler Related Sounds](#coupler)
 - [19. Headlights Related Sounds](#headlights)
 - [20. Pantograph Related Sounds](#pantograph)
-- [21. Miscellaneous Sounds](#misc)
+- [20. Request Stop Sounds](#requeststop)
+- [22. Miscellaneous Sounds](#misc)
 
 {{% /contents %}}
 
@@ -263,7 +264,19 @@ The **\<Raise>** child-node, containing the sound played when the panograph is r
 
 The **\<Lower>** child-node, containing the sound played when the panograph is lowered.
 
-## <a name="misc"></a>■ 21. Miscellaneous Sounds
+## <a name="resueststop"></a>■ 21. Request Stop Related Sounds
+
+The **\<RequestStop>** node defines the sounds played when a request stop is triggered.
+
+This node supports the following child nodes:
+
+The **\<Stop>** child-node, containing the sound played when the request stop triggers and the train should stop.
+
+The **\<Pass>** child-node, containing the sound played when the request stop triggers and the train should pass.
+
+The **\<Ignored>** child-node, containing the sound played when the request stop triggers, but the train does not meet the conditions to stop. (e.g. length is too long).
+
+## <a name="misc"></a>■ 22. Miscellaneous Sounds
 
 The **\<Loop>** node defines a sound to be played in a continuous loop throughout the simulation.
 
