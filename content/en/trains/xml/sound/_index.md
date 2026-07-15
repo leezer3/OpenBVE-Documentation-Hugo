@@ -28,6 +28,7 @@ weight: 1
 - [20. Pantograph Related Sounds](#pantograph)
 - [20. Request Stop Sounds](#requeststop)
 - [22. Miscellaneous Sounds](#misc)
+- [22. Touch Sounds](#touch)
 
 {{% /contents %}}
 
@@ -283,3 +284,13 @@ The **\<Loop>** node defines a sound to be played in a continuous loop throughou
 The **\<Rub>** node defines the sound to be played in a loop when the brake shoe rubs against the wheels. The sound is played at a pitch inversely proportional to the speed, and the volume of the sound decreases with increasing speeds.
 
 The **\<Halt>** node defines the sound to be played once or in a loop (depending on the train.dat setting) when the pass alarm system warns about an approaching station stop.
+
+## <a name="touch"></a>■ 23. Touch Sounds
+
+The **\<Touch>** node defines sounds to be played by when a touch control defined via **Panel.xml** is pressed, and must contain a minimum of one **\<Sound>** child-node, with the following additional unique properties:
+
+{{% command %}}  
+**\<Index>** *SoundIndex* **\</Index>**  
+{{% /command %}}
+
+**SoundIndex** must be a non-negative integer, defining the touch sound index to be assigned.
