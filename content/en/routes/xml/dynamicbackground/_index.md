@@ -92,8 +92,6 @@ A dynamic background should simply be made up of multiple **Background** element
 
 An object based background may also be used. With these, the specified object is rendered with it's **0,0,0** co-ordinate centered upon the camera center.
 
-Only **.b3d , .csv and .x** files with no animation are supported. No transition effects or other attributes are supported.
-
 A sample XML is shown below:
 
 {{< textarea >}}  
@@ -110,3 +108,11 @@ A sample XML is shown below:
 For fog and some other effects to work correctly, the radius of a background object must be greater than the initial fog distance, and should approximately be equal to the viewing distance.
 
 {{% /note %}}
+
+A sample animated object based background, contributed by Aditiya Afrizal may be found here:
+
+<a href="http://openbve-project.net/files/AnimatedBackground.zip">http://openbve-project.net/files/AnimatedBackground.zip</a>
+
+**Notes:**
+- For dome based backgrounds to work correctly, the sky texture (**sky.jpg**) should be a 360° seamless panoramic image.
+- Faces on the background object should generally be set to emit pure white (**255,255,255**), unless you wish the background to be affected by the ambient lighting.
