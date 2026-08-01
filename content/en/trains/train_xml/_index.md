@@ -389,6 +389,14 @@ An optional **\<Compressor>** node, supporting the following properties:
 
 **CompressionRate** should be a positive number, representing the compression rate in Pa/s.
 
+{{% command %}}  
+**\<RestartPressure>** *CompressionRate* **\</RestartPressure>**  
+{{% /command %}}
+
+**Pressure** should be a positive number, representing pressure in Pa in the main reservoir, at which the compressor restarts.
+
+**Note:** When not set, the compressor restarts when the pressure in the main reservoir reaches minimum.
+
 ### Main Reservoir
 
 The **\<MainReservoir>** node, supporting the following properties:
