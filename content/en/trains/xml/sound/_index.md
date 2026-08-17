@@ -133,7 +133,13 @@ The **\<Minimum>** child-node, containing the sound to be played when the handle
 
 The **\<Apply>** child-node, containing the sound to be played when the notch is changed to a notch greater than zero, but less than maximum.
 
+The **\<ApplyFast>** child-node, containing the sound to be played once for each notch when the notch is increased in a single continuous motion to any value below the maximum notch.
+
 The **\<Maxiumum>** child-node, containing the sound to be played when the handle is increased to the maximum notch.
+
+The **\<Decrease>** child-node, containing the sound to be played when the handle setting is decreased to a notch greater than zero.
+
+The **\<DecreaseFast>** child-node, containing the sound to be played once for each notch when the notch is decreased in a single continuous motion to any value above zero.
 
 ## <a name="reverser"></a>■ 10. Reverser Sounds
 
