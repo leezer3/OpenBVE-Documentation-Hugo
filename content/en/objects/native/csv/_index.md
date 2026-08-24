@@ -296,6 +296,14 @@ The **SetColor** command sets the color for all faces that were already created 
 
 The **SetColorAll** command sets the color for all faces that were already created in the current CreateMeshBuilder section, and all those created in the previous CreateMeshBuilder sections.
 
+{{% notice %}}  
+
+#### Faces After A Color Statement
+
+Please note that the color for any faces created after a Color statement, but before the end of the MeshBuilder will be reset to pure white.
+
+{{% /notice %}}
+
 ------
 
 <a name="setemissivecolor"></a>
