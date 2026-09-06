@@ -30,7 +30,6 @@ weight: 2
   - [SetDecalTransparentColor](#setdecaltransparentcolor)
   - [EnableCrossfading](#enablecrossfading)
   - [SetTextureCoordinates](#settexturecoordinates)
-{{% /contents %}}
 
 The **train.xml** format is the native format for newer versions of OpenBVE, and is intended to replace the older train.dat format. It allows setting of many more properties, and is extensible.
 

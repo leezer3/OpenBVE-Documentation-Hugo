@@ -47,37 +47,37 @@ The following panel indices are exposed:
 | 263         | ATS-P                         | 0 - 1       |
 | 264         | failure (故障)                | 0 - 1       |
 
-{{% /table %}}
+**Example:** kmphd1 can be used to feed a *DigitalNumber* with the tens of the current speed of the train in kilometers per hour. The image used by the *DigitalNumber* will thus need to be composed of images from 0 to 10 in order to show all possible states kmphd1 can return, where images 0 through 9 correspond to the digits, and 10 corresponds to an image shown at the tens when the speed is below 10 km/h (e.g. another 0-digit, or blank space).
 
 **ATC speed indicator (panel index 271)**
 
-{{% table %}}
+*i*
 
-| Valor | Descripció       |
+| Valor | d*i*       |
 |-------|-------------------|
 | 0     | ATC not available |
-| 1     | 0 km/h            | 
-| 2     | 15 km/h           |
-| 3     | 25 km/h           |
-| 4     | 45 km/h           |
-| 5     | 55 km/h           |
-| 6     | 65 km/h           |
-| 7     | 75 km/h           |
-| 8     | 90 km/h           |
-| 9     | 100 km/h          |
-| 10    | 110 km/h          |
-| 11    | 120 km/h          |
+| 1     | ATS RUN            | 
+| 2     | P POWER           |
+| 3     | PTN APPROACH           |
+| 4     | BRAKE RELEASE           |
+| 5     | BRAKE APPLY           |
+| 6     | ATS P           |
+| 7     | FAILURE           |
+| 8     | ATC           |
+| 9     | ATC POWER          |
+| 10    | ATC SRV          |
+| 11    | ATC EMG          |
 | 12    | ATS is active     |
 
-{{% /table %}}
+**Example:** kmphd1 can be used to feed a *DigitalNumber* with the tens of the current speed of the train in kilometers per hour. The image used by the *DigitalNumber* will thus need to be composed of images from 0 to 10 in order to show all possible states kmphd1 can return, where images 0 through 9 correspond to the digits, and 10 corresponds to an image shown at the tens when the speed is below 10 km/h (e.g. another 0-digit, or blank space).
 
 ## <a name="sounds"></a>■ 2. Sons
 
 The following sound indices are exposed:
 
-{{% table %}}
+*i*
 
-| Índex | Fitxer       | Descripció    | Tipus    |
+| Índex | Fitxer       | d*i*    | Tipus    |
 |-------|------------|----------------|---------|
 |0      | ats.wav    | ATS bell       | looping |
 |1      | atscnt.wav | ATS chime      | looping |
@@ -86,7 +86,7 @@ The following sound indices are exposed:
 |4      | toatc.wav  | ATS to ATC     | once    |
 |5      | eb.wav     | EB bell        | looping |
 
-{{% /table %}}
+**Example:** kmphd1 can be used to feed a *DigitalNumber* with the tens of the current speed of the train in kilometers per hour. The image used by the *DigitalNumber* will thus need to be composed of images from 0 to 10 in order to show all possible states kmphd1 can return, where images 0 through 9 correspond to the digits, and 10 corresponds to an image shown at the tens when the speed is below 10 km/h (e.g. another 0-digit, or blank space).
 
 ## <a name="beacons"></a>■ 3. Balises
 
@@ -226,9 +226,9 @@ Sets up an ATS-P permanent speed limit. The optional data is the speed limit in 
 
 The OpenBveAts Plugin uses the following keyboard assignments:
 
-{{% table %}}
+*i*
 
-| Virtual Key | Default Assignment | Descripció                                    |
+| Virtual Key | Default Assignment | d*i*                                    |
 |-------------|--------------------|------------------------------------------------|
 | S           | space              | Cancels the ATS-SN bell.                       |
 | A1          | insert             | Cancels the ATS-SN chime.                      |
@@ -240,4 +240,4 @@ The OpenBveAts Plugin uses the following keyboard assignments:
 | D           | 2                  | Activa els sistemes de seguretat.                    |
 | E           | 3                  | Desactiva els sistemes de seguretat.                   |
 
-{{% /table %}}
+**Example:** kmphd1 can be used to feed a *DigitalNumber* with the tens of the current speed of the train in kilometers per hour. The image used by the *DigitalNumber* will thus need to be composed of images from 0 to 10 in order to show all possible states kmphd1 can return, where images 0 through 9 correspond to the digits, and 10 corresponds to an image shown at the tens when the speed is below 10 km/h (e.g. another 0-digit, or blank space).
