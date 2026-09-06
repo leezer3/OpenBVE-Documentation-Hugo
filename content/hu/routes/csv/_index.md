@@ -1889,9 +1889,9 @@ If *RailIndex<sub>1</sub>* is to the **left** of *RailIndex<sub>2</sub>* (e.g. i
 Otherwise, the objects defined in Structure.FormR, Structure.FormCL and Structure.RoofR will be used.
 
 
-##### <a name="track_signalling"></a>● 11.5. Signalling and speed limits
+<a name="track_signalling"></a>● 11.5. Signalling and speed limits
 
-------
+##### ------
 
 {{% command %}}  
 **Track.Limit** *<font color="blue">Speed</font>*; *Post*; *Cource*  
@@ -1937,9 +1937,9 @@ This command starts a section, the functional part of signalling, to be used in 
 
 {{% notice %}}
 
-#### Default versus simplified section behavior
+Default versus simplified section behavior
 
-There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
+#### There are two different modes of behavior on how to interpret the *a<sub>i</sub>* parameters. The mode can be set via Options.SectionBehavior. The following are separate descriptions for default and simplified behavior.
 
 {{% /notice %}}
 
@@ -2053,9 +2053,9 @@ Track.Signal is similar to using Track.Section and Track.SigF in one command.
 
 This commands creates a default Japanese repeating signal. The repeating signal repeats the state of the upcoming signal. Setting *X* to zero does not create a repeating signal, but forces the command to be ignored. Setting *X* to a non-zero number and *Y* to a negative number resets the y-coordinate to 4.8 and attaches a default signal post.
 
-##### <a name="track_safety"></a>● 11.6. Safety systems
+<a name="track_safety"></a>● 11.6. Safety systems
 
-------
+##### ------
 
 {{% command %}}  
 **Track.Beacon** *Type*; *BeaconStructureIndex*; *Section*; *Data*; *<font color="green">X</font>*; *<font color="green">Y</font>*; *Yaw*; *Pitch*; *Roll*  
@@ -2181,9 +2181,9 @@ A permanent speed restriction (*Type*=1) is to be inserted at the point where th
 
 This command is equivalent to **Track.Pattern 1;_Speed_**. See there for more information. 
 
-##### <a name="track_misc"></a>● 11.7. Miscellaneous
+<a name="track_misc"></a>● 11.7. Miscellaneous
 
-------
+##### ------
 
 {{% command %}}  
 **Track.Back** *BackgroundTextureIndex*  
@@ -2498,5 +2498,7 @@ phi = 0
 {{% /function %}}
 
 In the formulas above, [*cos(x)*](http://functions.wolfram.com/ElementaryFunctions/Cos/02) represents the cosine, [*sin(x)*](http://functions.wolfram.com/ElementaryFunctions/Sin/02) the sine, [*arctan(x)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan/02) the inverse tangent, [*arctan(x,y)*](http://functions.wolfram.com/ElementaryFunctions/ArcTan2/02) the two-argument inverse tangent and [*sqrt(x)*](http://functions.wolfram.com/ElementaryFunctions/Sqrt/02) the square root. The formulas can be used to convert between spherical and cartesian coordinates if working with either one seems more intuitive than working with the other one. The formulas also serve as the official documentation on how the light direction is mathematically defined (using radians for the trigonometric functions).
+
+---
 
 ---
