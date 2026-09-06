@@ -63,7 +63,7 @@ NameOfTheKey = Value
 
 Some values are further split into multiple parts, separated by commas (U+002C). Instead of a comma, a colon (U+003A) can be used interchangeably.
 
-您可以在一行的末尾添加注释。注释由分号（U+003B，英文半角）开始。所有注释在开始解析文件之前就将被自动排除。 
+您可以在一行的末尾添加注释。注释由分号(U+003B,英文半角)开始。所有注释在开始解析文件之前就将被自动排除。 
 
 ## <a name="panel"></a>■ 3. The Panel section
 
