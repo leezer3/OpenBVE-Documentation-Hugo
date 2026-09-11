@@ -18,20 +18,19 @@ weight: 5
 - [8. The LinearGauge section](#lineargauge)
 - [9. The Timetable section](#timetable)
 - [10. Available subjects](#subjects)
+- {{% /contents %}}
 
-{{% /contents %}}
+<a name="overview"></a>■ 1. 개요
 
-## <a name="overview"></a>■ 1. 개요
-
-The panel2.cfg file allows to create 2D panels by defining which elements to use, like lamps, needles, etc., what they are intended to display and where they are to be placed.
+## The panel2.cfg file allows to create 2D panels by defining which elements to use, like lamps, needles, etc., what they are intended to display and where they are to be placed.
 
 The panel2.cfg file is a plain text file encoded in any arbitrary [encoding]({{< ref "/information/encodings/_index.md" >}}), however, UTF-8 with a byte order mark is the preferred choice. The [parsing model]({{< ref "/information/numberformats/_index.md" >}}) for numbers is **Loose**, however, you are encouraged to produce *Strict* output nonetheless. The file is required to be located inside the train folder and is expected to be named **panel2.cfg**. The file is interpreted on a per-line basis, from top to bottom.
 
 {{% notice %}}
 
-#### Layers
+Layers
 
-All elements in the panel are associated layers. The layer is described as an integer, where small values represent the background and high numbers the foreground. When placing elements, you should make sure that no overlapping elements share the same layer number. The background image of the panel is always associated layer number 0, so elements on top of it should start with layer number 1 or higher. If you want to place elements behind the panel background image, you can likewise use negative numbers to represent these layers.
+#### All elements in the panel are associated layers. The layer is described as an integer, where small values represent the background and high numbers the foreground. When placing elements, you should make sure that no overlapping elements share the same layer number. The background image of the panel is always associated layer number 0, so elements on top of it should start with layer number 1 or higher. If you want to place elements behind the panel background image, you can likewise use negative numbers to represent these layers.
 
 {{% /notice %}}
 
@@ -39,9 +38,9 @@ All elements in the panel are associated layers. The layer is described as an in
 
 {{% notice %}}
 
-#### Daytime and nighttime images
+Daytime and nighttime images
 
-For all elements that take a texture, you can specify distinct daytime and nighttime textures. Depending on the lighting conditions and additional route instructions, openBVE will display any intermediate blend between the daytime and nighttime textures. If no nighttime textures are used, the daytime images will be darkened to simulate corresponding nighttime images.
+#### For all elements that take a texture, you can specify distinct daytime and nighttime textures. Depending on the lighting conditions and additional route instructions, openBVE will display any intermediate blend between the daytime and nighttime textures. If no nighttime textures are used, the daytime images will be darkened to simulate corresponding nighttime images.
 
 {{% /notice %}}
 
@@ -49,15 +48,15 @@ For all elements that take a texture, you can specify distinct daytime and night
 
 {{% notice %}}
 
-#### Overlay and Lighting
+Overlay and Lighting
 
-The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light.
+#### The cab is rendered as an overlay. This means that the cab will always appear in front of scenery objects. This is intentional, because this way, rain, walls and other obstructing objects cannot be accidentally rendered inside the cab. Furthermore, lighting in the cab is different than in the scenery. While the ambient brightness is reflected in the cab, the ambient color is not, and the cab always appears as if reflecting white light.
 
 {{% /notice %}}
 
-## <a name="syntax"></a>■ 2. Syntax
+<a name="syntax"></a>■ 2. Syntax
 
-Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
+## Each line in the file can be empty (or solely consist of white spaces) and will be ignored, can mark the beginning of a new section or contain key-value pairs inside a section. All key-value pairs relate to the last section opened.
 
 A new section is opened by starting the line with an opening bracket (U+005B) and ending it with a closing bracket (U+005D). The text in-between the brackets indicates the name of the section and is case-insensitive. White spaces at the beginning and the end of the line are ignored, as well as at the beginning and the end of the name of the section. Thus, the beginning of the section has the following form:
 
@@ -75,9 +74,9 @@ Some values are further split into multiple parts, separated by commas (U+002C).
 
 You can use comments anywhere at the end of a line. A comment is started by a semicolon (U+003B). Comments, if present, are stripped away from all lines before these are processed.
 
-## <a name="this"></a>■ 3. The This section
+<a name="this"></a>■ 3. The This section
 
-The This section defines the background image to use for the panel and which resolution the panel has. Only one This section may be used within the file.
+## The This section defines the background image to use for the panel and which resolution the panel has. Only one This section may be used within the file.
 
 ------
 
@@ -197,15 +196,15 @@ Defines which pixel in the background image corresponds to the vanishing point f
 
 {{% notice %}}
 
-#### When camera restriction affects the default camera setup
+When camera restriction affects the default camera setup
 
-Camera restriction is the built-in functionality to limit the camera view inside cabs created by the panel2.cfg to the rectangle as specified via *Left*, *Right*, *Top* and *Bottom*. If your setup of *Center*and *Resolution* would force the camera to show parts that are outside of that specified region even with the default camera settings, the camera position will be altered to guarantee that the view stays inside the cab region. In order to verify that your *Center* and *Origin* setup is unaffected by this, disable camera restriction by hitting the CAMERA_RESTRICTION key (default: CTRL+R) and then reset the camera by hitting the CAMERA_RESET key (default: num 5). The *Center* and *Origin* values will now be exactly as scripted, thereby revealing possible problems in the relations of *Resolution*, *Left*, *Right*, *Top*, *Bottom*, *Center* and *Origin*.
+#### Camera restriction is the built-in functionality to limit the camera view inside cabs created by the panel2.cfg to the rectangle as specified via *Left*, *Right*, *Top* and *Bottom*. If your setup of *Center*and *Resolution* would force the camera to show parts that are outside of that specified region even with the default camera settings, the camera position will be altered to guarantee that the view stays inside the cab region. In order to verify that your *Center* and *Origin* setup is unaffected by this, disable camera restriction by hitting the CAMERA_RESTRICTION key (default: CTRL+R) and then reset the camera by hitting the CAMERA_RESET key (default: num 5). The *Center* and *Origin* values will now be exactly as scripted, thereby revealing possible problems in the relations of *Resolution*, *Left*, *Right*, *Top*, *Bottom*, *Center* and *Origin*.
 
 {{% /notice %}}
 
-## <a name="pilotlamp"></a>■ 4. The PilotLamp section
+<a name="pilotlamp"></a>■ 4. The PilotLamp section
 
-The PilotLamp section creates an indicator that can be made visible or invisible. You can use as many of these sections as required.
+## The PilotLamp section creates an indicator that can be made visible or invisible. You can use as many of these sections as required.
 
 The *DaytimeImage* is required to be specified if you make use of the PilotLamp section. The *Subject* used needs to return 1 if the PilotLamp is to be made visible, otherwise it will be invisible.
 
@@ -278,9 +277,9 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="needle"></a>■ 5. The Needle section
+<a name="needle"></a>■ 5. The Needle section
 
-The Needle section creates a rotating element, or needle. You can use as many of these sections as required.
+## The Needle section creates a rotating element, or needle. You can use as many of these sections as required.
 
 The image used for the Needle, defined by *DaytimeImage* (required) or *NighttimeImage* (optional), will be rotated around a defined *Origin* and optionally scaled if *Radius* is used. The needle depicted in the image should be pointing up.
 
@@ -454,9 +453,9 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="digitalnumber"></a>■ 6. The DigitalNumber section
+<a name="digitalnumber"></a>■ 6. The DigitalNumber section
 
-The DigitalNumber section creates an indicator that can switch between multiple states, useful to build up a display of decimal digits. You can use as many of these sections as required.
+## The DigitalNumber section creates an indicator that can switch between multiple states, useful to build up a display of decimal digits. You can use as many of these sections as required.
 
 The image used for the DigitalNumber, defined by *DaytimeImage* (required) and *NighttimeImage* (optional), is comprised of the individual states, which are stacked vertically, anchored at the top of the image. The width of a single state is equal to the width of the image, while the height of a single state is defined by *Interval* (required). The *Subject* used needs to return an integer from 0 (first element) to *n*-1 (last element), where *n* is the number of elements. If a value outside of that range is returned by *Subject*, the DigitalNumber will be made invisible.
 
@@ -539,9 +538,9 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="digitalgauge"></a>■ 7. The DigitalGauge section
+<a name="digitalgauge"></a>■ 7. The DigitalGauge section
 
-The DigitalGauge section creates a solid-color square of which only a radial section is shown at a time. You can use as many of these sections as required.
+## The DigitalGauge section creates a solid-color square of which only a radial section is shown at a time. You can use as many of these sections as required.
 
 There are three important angles to consider. The *InitialAngle* defines which angle corresponds to the *Minimum* value, while *LastAngle* defines which angle corresponds to the *Maximum* value. The current value at a given time corresponds to the current angle. The solid-color square will only show the part that is between the current angle and the *LastAngle*. If *InitialAngle* is less than *LastAngle*, the solid-color square will wind clockwise. If *InitialAngle* is greater than *LastAngle*, the solid-color square will wind counter-clockwise.
 
@@ -674,9 +673,9 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="lineargauge"></a>■ 8. The LinearGauge section
+<a name="lineargauge"></a>■ 8. The LinearGauge section
 
-The LinearGauge section creates a panel layer, which uses texture shifting to create a sliding linear gauge. You can use as many of these sections as required.
+## The LinearGauge section creates a panel layer, which uses texture shifting to create a sliding linear gauge. You can use as many of these sections as required.
 
 Consider a standard openBVE face:
 
@@ -764,9 +763,9 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="timetable"></a>■ 9. The Timetable section
+<a name="timetable"></a>■ 9. The Timetable section
 
-The Timetable section defines where to place custom timetables. The actual images are loaded via the route file. Only one Timetable section may be used within the file.
+## The Timetable section defines where to place custom timetables. The actual images are loaded via the route file. Only one Timetable section may be used within the file.
 
 ------
 
@@ -827,9 +826,9 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="windscreen"></a>■ 10. The Windscreen section
+<a name="windscreen"></a>■ 10. The Windscreen section
 
-The Windscreen section defines a set of animated raindrops / snowflakes and windscreen wipers.
+## The Windscreen section defines a set of animated raindrops / snowflakes and windscreen wipers.
 
 ------
 
@@ -971,92 +970,94 @@ Layer = *LayerIndex*
 ***LayerIndex***: An integer which uniquely defines this element among overlapping elements. Lower numbers represent the background and higher numbers the foreground. Elements may use the same *LayerIndex* as long as they do not overlap. The default value is 0.  
 {{% /command-arguments %}}
 
-## <a name="subjects"></a>■ 11. Available subjects
+<a name="subjects"></a>■ 11. Available subjects
 
-A subject is composed of a base subject and an optional subject suffix. The subject controls what information is fed to the element that uses the subject. For example, a *Needle* can use the subject *kmph* to be fed with the current speed of the train in kilometers per hour, or with the *mr* subject to show the main reservoir pressure.
+## A subject is composed of a base subject and an optional subject suffix. The subject controls what information is fed to the element that uses the subject. For example, a *Needle* can use the subject *kmph* to be fed with the current speed of the train in kilometers per hour, or with the *mr* subject to show the main reservoir pressure.
 
-##### ● Base subjects
+● Base subjects
 
-{{% table %}}
+##### {{% table %}}
 
-| Base              | subjectDescription                                           |
+Base
+
+| subjectDescription              | acc                                           |
 | ----------------- | ------------------------------------------------------------ |
-| acc               | Returns the (signed) acceleration of the train in meters per second squared (m/s2). |
-| atc               | Equivalent to *ats271*.                                      |
-| ats*i*            | Returns the state of the *i*<sup>th</sup> plugin variable, depending on the plugin used. This is the same as pluginState[*i*] in animated objects.<br/>For the built-in safety systems ATS and ATC, see below. |
-| locobrakecylinder | Returns the pressure of the brake cylinder on the driver's car in kPa (1000 Pa). |
-| bc                | Returns the pressure of the brake cylinder in kPa (1000 Pa). |
-| locobrakepipe     | Returns the pressure of the brake pipe on the driver's car in kPa (1000 Pa). |
-| bp                | Returns the pressure of the brake pipe in kPa (1000 Pa).     |
-| brake             | Returns the currently selected brake notch.<br/>For trains with automatic air brakes, 0 represents *RELEASE*, 1 represents *LAP*, 2 represents *SERVICE* and 3 represents the emergency brake.<br/>For trains without a hold brake device, 0 represents released brakes, *i* represents brake notch *i* and *n*+1 represents the emergency brake, where *n* is the number of brake notches the train has.<br/>For trains with a hold brake device, 0 represents released brakes, 1 represents the hold brake, *i*+1 represents brake notch *i*, and *n*+2 represents the emergency brakes, where *n* is the number of brake notches the train has. |
-| locobrake         | Returns the currently selected Loco Brake notch.             |
-| csc               | Returns 1 if the const speed system is currently active and 0 otherwise. |
-| door              | Returns a value between 0 (open doors) and 1 (closed doors). |
-| doorl*i*          | Returns a value between 0 (open) and 1 (closed) for the left doors of car *i*, or 2 if the car does not exist.<br/>Car index 0 represents the first car in the train, and *n*-1 the last car, where *n* is the number of cars in the train. |
-| doorr*i*          | Returns a value between 0 (open) and 1 (closed) for the right doors of car *i*, or 2 if the car does not exist.<br/>Car index 0 represents the first car in the train, and *n*-1 the last car, where *n* is the number of cars in the train. |
-| doorbuttonl       | Returns 1 if the left door button is currently pressed, 0 otherwise. |
-| doorbuttonr       | Returns 1 if the right door button is currently pressed, 0 otherwise. |
-| er                | Returns the pressure of the equalizing reservoir in kPa (1000 Pa). |
-| hour              | Returns the integer part of the current hour.                |
-| kmph              | Returns the absolute speed of the train in kilometers per hour (km/h). |
-| min               | Returns the integer part of the current minute.              |
-| motor             | Returns the acceleration which the motor of the first motor car currently generates in m/s2. |
-| mph               | Returns the absolute speed of the train in international miles per hour (mph). |
-| mr                | Returns the pressure of the main reservoir in kPa (1000 Pa). |
-| ms                | Returns the absolute speed of the train in meters per second (m/s). |
-| power             | Returns the currently selected power notch. This is an integer between 0 and *n*, where *n* is the number of power notches the train has. |
-| rev               | Returns the currently selected reverser position. 0 represents backward, 1 represents neutral and 2 represents forward. |
-| sap               | Returns the pressure of the straight air pipe in kPa (1000 Pa). |
-| sec               | Returns the integer part of the current second.              |
-| true              | Always returns 1. This is useful for the *PilotLamp* element in order to always show the associated bitmap. |
-| Klaxon            | Returns the currently playing horn (if any) as follows: (0) No horns are playing (1) The primary horn is playing (2) The secondary horn is playing (3) The music horn is playing. *Note* If multiple horns are playing, the lowest value will be returned. |
-| PrimaryKlaxon     | Returns 1 if the primary horn is currently playing, 0 otherwise. |
-| SecondaryKlaxon   | Returns 1 if the secondary horn is currently playing, 0 otherwise. |
-| MusicKlaxon       | Returns 1 if the music horn is currently playing, 0 otherwise. |
-| passAlarm         | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
-| pilotLamp         | The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit). |
-| stationAdjustAlarm | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
-| wiperPosition | The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) |
-| wheelSlip     | Whether the train is currently experiencing wheelsip. Returns 1 if true, 0 otherwise. |
-| sanders       | Whether the sanders are currently active. Returns 1 if true, 0 otherwise. |
-| sandLevel     | Returns the current sand level. |
+| Returns the (signed) acceleration of the train in meters per second squared (m/s2).               | atc |
+| Equivalent to *ats271*.               | ats*i*                                      |
+| Returns the state of the *i*<sup>th</sup> plugin variable, depending on the plugin used. This is the same as pluginState[*i*] in animated objects.<br/>For the built-in safety systems ATS and ATC, see below.            | locobrakecylinder |
+| Returns the pressure of the brake cylinder on the driver's car in kPa (1000 Pa). | bc |
+| Returns the pressure of the brake cylinder in kPa (1000 Pa).                | locobrakepipe |
+| Returns the pressure of the brake pipe on the driver's car in kPa (1000 Pa).     | bp |
+| Returns the pressure of the brake pipe in kPa (1000 Pa).                | brake     |
+| Returns the currently selected brake notch.<br/>For trains with automatic air brakes, 0 represents *RELEASE*, 1 represents *LAP*, 2 represents *SERVICE* and 3 represents the emergency brake.<br/>For trains without a hold brake device, 0 represents released brakes, *i* represents brake notch *i* and *n*+1 represents the emergency brake, where *n* is the number of brake notches the train has.<br/>For trains with a hold brake device, 0 represents released brakes, 1 represents the hold brake, *i*+1 represents brake notch *i*, and *n*+2 represents the emergency brakes, where *n* is the number of brake notches the train has.             | locobrake |
+| Returns the currently selected Loco Brake notch.         | csc             |
+| Returns 1 if the const speed system is currently active and 0 otherwise.               | door |
+| Returns a value between 0 (open doors) and 1 (closed doors).              | doorl*i* |
+| Returns a value between 0 (open) and 1 (closed) for the left doors of car *i*, or 2 if the car does not exist.<br/>Car index 0 represents the first car in the train, and *n*-1 the last car, where *n* is the number of cars in the train.          | doorr*i* |
+| Returns a value between 0 (open) and 1 (closed) for the right doors of car *i*, or 2 if the car does not exist.<br/>Car index 0 represents the first car in the train, and *n*-1 the last car, where *n* is the number of cars in the train.          | doorbuttonl |
+| Returns 1 if the left door button is currently pressed, 0 otherwise.       | doorbuttonr |
+| Returns 1 if the right door button is currently pressed, 0 otherwise.       | er |
+| Returns the pressure of the equalizing reservoir in kPa (1000 Pa).                | hour |
+| Returns the integer part of the current hour.              | kmph                |
+| Returns the absolute speed of the train in kilometers per hour (km/h).              | min |
+| Returns the integer part of the current minute.               | motor              |
+| Returns the acceleration which the motor of the first motor car currently generates in m/s2.             | mph |
+| Returns the absolute speed of the train in international miles per hour (mph).               | mr |
+| Returns the pressure of the main reservoir in kPa (1000 Pa).                | ms |
+| Returns the absolute speed of the train in meters per second (m/s).                | power |
+| Returns the currently selected power notch. This is an integer between 0 and *n*, where *n* is the number of power notches the train has.             | rev |
+| Returns the currently selected reverser position. 0 represents backward, 1 represents neutral and 2 represents forward.               | sap |
+| Returns the pressure of the straight air pipe in kPa (1000 Pa).               | sec |
+| Returns the integer part of the current second.               | true              |
+| Always returns 1. This is useful for the *PilotLamp* element in order to always show the associated bitmap.              | Klaxon |
+| Returns the currently playing horn (if any) as follows: (0) No horns are playing (1) The primary horn is playing (2) The secondary horn is playing (3) The music horn is playing. *Note* If multiple horns are playing, the lowest value will be returned.            | PrimaryKlaxon |
+| Returns 1 if the primary horn is currently playing, 0 otherwise.     | SecondaryKlaxon |
+| Returns 1 if the secondary horn is currently playing, 0 otherwise.   | MusicKlaxon |
+| Returns 1 if the music horn is currently playing, 0 otherwise.       | passAlarm |
+| Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active).         | pilotLamp |
+| The state of the pilot lamp (Doors closed & ready to start). Returns either 0 (unlit) or 1 (lit).         | stationAdjustAlarm |
+| Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). | wiperPosition |
+| The current position of the wiper blade on the panel. Ranges from 0 (left) to 100 (right) | wheelSlip |
+| Whether the train is currently experiencing wheelsip. Returns 1 if true, 0 otherwise.     | sanders |
+| Whether the sanders are currently active. Returns 1 if true, 0 otherwise.       | sandLevel |
+| Returns the current sand level.     | {{% /table %}} |
 
-
-{{% /table %}}
 
 If ats*i* is used with the built-in safety systems ATS and ATC, the following mapping for *i* applies:
 
 {{% table %}}
 
-| *i*  | English             | 日本語       | Return values                                |      | ats271 | Meaning           |
+*i*
+
+| English  | 日本語             | Return values       | ats271                                |      | Meaning | ATS           |
 | ---- | ------------------- | ------------ | -------------------------------------------- | ---- | ------ | ----------------- |
-| 256  | ATS                 | ATS          | 0 (unlit) or 1 (lit)                         |      | 0      | ATC not available |
-| 257  | ATS RUN             | ATS 作動     | 0 (unlit), 1 (lit) or 2 (flashing)           |      | 1      | 0 km/h            |
-| 258  | ATS RUN             | ATS 作動     | 0 (unlit / non-flashing), 1 (lit / flashing) |      | 2      | 15 km/h           |
-| 259  | P POWER             | P 電源       | 0 (unlit) or 1 (lit)                         |      | 3      | 25 km/h           |
-| 260  | PTN APPROACH        | パターン接近 | 0 (unlit) or 1 (lit)                         |      | 4      | 45 km/h           |
-| 261  | BRAKE RELEASE       | ブレーキ開放 | 0 (unlit) or 1 (lit)                         |      | 5      | 55 km/h           |
-| 262  | BRAKE APPLY         | ブレーキ動作 | 0 (unlit) or 1 (lit)                         |      | 6      | 65 km/h           |
-| 263  | ATS P               | ATS-P        | 0 (unlit) or 1 (lit)                         |      | 7      | 75 km/h           |
-| 264  | FAILURE             | 故障         | 0 (unlit) or 1 (lit)                         |      | 8      | 90 km/h           |
-| 265  | ATC                 | ATC          | 0 (unlit) or 1 (lit)                         |      | 9      | 100 km/h          |
-| 266  | ATC POWER           | ATC 電源     | 0 (unlit) or 1 (lit)                         |      | 10     | 110 km/h          |
-| 267  | ATC SRV             | ATC 常用     | 0 (unlit) or 1 (lit)                         |      | 11     | 120 km/h          |
-| 268  | ATC EMG             | ATC 非常     | 0 (unlit) or 1 (lit)                         |      | 12     | ATS is active     |
-| 269  | CONST SPEED         | 定速         | 0 (unlit) or 1 (lit)                         |      |        |                   |
-| 270  | EB                  | EB           | 0 (unlit) or 1 (lit)                         |      |        |                   |
-| 271  | ATC speed indicator |              | 0 - 12, see table on the right               |      |        |                   |
+| 256  | ATS                 | 0 (unlit) or 1 (lit)          | ATC not available                         |      | 0      | ATS RUN |
+| 257  | ATS 作動             | 0 (unlit), 1 (lit) or 2 (flashing)     | 0 km/h           |      | 1      | ATS RUN            |
+| 258  | ATS 作動             | 0 (unlit / non-flashing), 1 (lit / flashing)     | 15 km/h |      | 2      | P POWER           |
+| 259  | P 電源             | 0 (unlit) or 1 (lit)       | 25 km/h                         |      | 3      | PTN APPROACH           |
+| 260  | パターン接近        | 0 (unlit) or 1 (lit) | 45 km/h                         |      | 4      | BRAKE RELEASE           |
+| 261  | ブレーキ開放       | 0 (unlit) or 1 (lit) | 55 km/h                         |      | 5      | BRAKE APPLY           |
+| 262  | ブレーキ動作         | 0 (unlit) or 1 (lit) | 65 km/h                         |      | 6      | ATS P           |
+| 263  | ATS-P               | 0 (unlit) or 1 (lit)        | 75 km/h                         |      | 7      | FAILURE           |
+| 264  | 故障             | 0 (unlit) or 1 (lit)         | 90 km/h                         |      | 8      | ATC           |
+| 265  | ATC                 | 0 (unlit) or 1 (lit)          | 100 km/h                         |      | 9      | ATC POWER          |
+| 266  | ATC 電源           | 0 (unlit) or 1 (lit)     | 110 km/h                         |      | 10     | ATC SRV          |
+| 267  | ATC 常用             | 0 (unlit) or 1 (lit)     | 120 km/h                         |      | 11     | ATC EMG          |
+| 268  | ATC 非常             | 0 (unlit) or 1 (lit)     | ATS is active                         |      | 12     | CONST SPEED     |
+| 269  | 定速         | 0 (unlit) or 1 (lit)         | EB                         |      |        |                   |
+| 270  | EB                  | 0 (unlit) or 1 (lit)           | ATC speed indicator                         |      |        |                   |
+| 271  | 0 - 12, see table on the right |              | {{% /table %}}               |      |        |                   |
 
-{{% /table %}}
+● Suffixes
 
-##### ● Suffixes
+##### {{% table %}}
 
-{{% table %}}
+Subject suffix
 
-| Subject suffix | Description                                                  |
+| Description | d*i*                                                  |
 | -------------- | ------------------------------------------------------------ |
-| d*i*           | With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10. |
+| With d0 for the ones, d1 for the tens, d2 for the hundreds, etc., this suffix returns a value between 0 and 9 corresponding to the respective digit of the underlying subject, but only if the value of the subject is less than 10 for d1, less than 100 for d2, etc., otherwise this suffix returns 10.           | {{% /table %}} |
 
-{{% /table %}}
+**Example:** kmphd1 can be used to feed a *DigitalNumber* with the tens of the current speed of the train in kilometers per hour. The image used by the *DigitalNumber* will thus need to be composed of images from 0 to 10 in order to show all possible states kmphd1 can return, where images 0 through 9 correspond to the digits, and 10 corresponds to an image shown at the tens when the speed is below 10 km/h (e.g. another 0-digit, or blank space).
 
 **Example:** kmphd1 can be used to feed a *DigitalNumber* with the tens of the current speed of the train in kilometers per hour. The image used by the *DigitalNumber* will thus need to be composed of images from 0 to 10 in order to show all possible states kmphd1 can return, where images 0 through 9 correspond to the digits, and 10 corresponds to an image shown at the tens when the speed is below 10 km/h (e.g. another 0-digit, or blank space).
