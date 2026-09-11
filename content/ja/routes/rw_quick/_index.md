@@ -83,13 +83,13 @@ hidden: true
 **FreeObj**(*FreeObjStructureIndex*) = *FileName*  
 **Back**(*BackgroundTextureIndex*) = *FileName*  
 **Back**(*BackgroundTextureIndex*)**.X** = *RepetitionCount*  
-**Back**(*BackgroundTextureIndex*)**.Aspect** <font color="gray">{</font> **0** = fixed height <font color="gray">|</font> **1** = keep aspect ratio <font color="gray">}</font>
+**Back**(*BackgroundTextureIndex*)**.Aspect** <font color="gray">{</font> **0** = fixed height <font color="gray">|</font> **1** = keep aspect ratio <font color="gray">}</font>
 
 <font color="red">[Cycle]</font>  
 *GroundStructureIndex* = *GroundStructureIndex<sub>1</sub>*; *GroundStructureIndex<sub>2</sub>*; *...*; *GroundStructureIndex<sub>n</sub>*  
 
 <font color="red">[Signal]</font>  
-*SignalIndex* = *AnimatedObjectFile*  
+*SignalIndex* = *AnimatedObjectFile*  
 *SignalIndex* = *SignalFileWithoutExtension*; *GlowFileWithoutExtension*
 
 <font color="red">[Railway]</font>  
