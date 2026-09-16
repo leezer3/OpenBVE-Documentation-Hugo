@@ -521,6 +521,7 @@ Please also note that some combinations of prefix and infix operators are not re
 | `value`        | The value returned by the function in the last evaluation. At the beginning of the simulation, this is 0. |
 | `delta`        | The time difference since the last evaluation of the function in seconds. Please note that there is no guaranteed time that elapses between successive function calls. |
 | `currentState` | Returns the current numerical state of the object.           |
+| `totalStates`  | Returns the total number of states- In functions other than the *StateFunction* this returns 1.           |
 
 {{% /table-2col %}}
 
@@ -712,6 +713,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `MusicKlaxon`                    | Returns 1 if the music horn is currently playing, 0 otherwise. |
 | `passAlarm`                      | Whether the station pass alarm has been activated. Returns either 0 (inactive) or 1 (active). |
 | `stationAdjustAlarm`             | Whether the station adjust alarm has been activated. Returns either 0 (inactive) or 1 (active). |
+| `railIndex`                      | Returns the rail index for the front car of the train. |
+| `railIndex[carIndex]`            | Returns the rail index for the car specified by *carIndex*. |
 
 {{% /table-2col %}}
 
