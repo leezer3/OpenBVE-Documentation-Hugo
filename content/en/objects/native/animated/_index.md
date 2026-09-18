@@ -596,6 +596,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `rearCoupler`         		| Returns 1 if the rear coupler for the current car is coupled to another car, 0 otherwise. |
 | `rearCoupler[carIndex]`       | Returns 1 if the rear coupler for *carIndex* is coupled to another car, 0 otherwise. |
 | `wiperState`                  | Returns the current state of the wipers. 0 - Off, 1 - Intermittant, 2 - Constant |
+| `carMass`                     | Returns the total mass in KG of the current car. |
+| `carMass[index]`              | Returns the total mass in KG for *carIndex* |
 
 
 {{% /table-2col %}}
@@ -616,6 +618,8 @@ In some of the following variables, *carIndex* has the following meaning: 0 is t
 | `brakeCylinder[carIndex]`      | The current pressure in the brake cylinder in car *carIndex*, measured in Pa. |
 | `straightAirPipe`              | The current pressure in the straight air pipe in this car, measured in Pa. |
 | `straightAirPipe[carIndex]`    | The current pressure in the straight air pipe in car *carIndex*, measured in Pa. |
+| `decelerationMotor`            | The current deceleration provided by the motor in this car in m/s². |
+| `decelerationMotor`            | The current deceleration provided by the motor in car *carIndex* in m/s². |
 
 {{% /table-2col %}}
 
