@@ -45,18 +45,24 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 The first line in the train.dat is expected to be an identifier indicating the version of the file format. The known values are:
 
 {{% code %}}  
+
 BVE1200000  
+
 BVE1210000  
+
 BVE1220000
-BVE2000000  
+
+BVE2000000
+
 OPENBVE  
+
 {{% /code %}}
 
 {{% note-withtitle %}}
 
 #### *BVE1200000 and BVE1210000 Format Files:* 
 
-These file versions do not support setting the vehicle width or height. The default values will be assumed.
+These file versions use a fixed vehicle length of .
 
 Version 1.22 is used when parsing the #ACCELERATION section.
 
@@ -856,7 +862,7 @@ A floating-point number measured in **meters** (m) indicating height above the r
 *ExposedFrontalArea*  
 {{% /command %}}
 
-A positive floating-point number measured in **square meters** (m²) indicating the frontal area of a car when it is fully exposed to resisting air. This is the case when the car is the front car and the train is driving forward, or the rear car when the train is driving backward. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. Trains usually have a lower frontal area than *WidthOfACar* \* *HeightOfACar* due to the front being rounded. This is especially true for aerodynamically enhanced trains like Shinkansen. The default value is 0.6 \* *WidthOfACar* \* *HeightOfACar*.
+A positive floating-point number measured in **square meters** (m²) indicating the frontal area of a car when it is fully exposed to resisting air. This is the case when the car is the front car and the train is driving forward, or the rear car when the train is driving backward. The number is applied to all the cars in the train. The value is primarily used in the calculation of air resistance. Trains usually have a lower frontal area than *WidthOfACar* \* *HeightOfACar* due to the front being rounded. This is especially true for aerodynamically enhanced trains like Shinkansen. The default value is 0.65 \* *WidthOfACar* \* *HeightOfACar*.
 
 ------
 
