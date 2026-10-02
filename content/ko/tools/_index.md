@@ -1,5 +1,5 @@
 ---
 title: "Tools"
 weight: 7
-layout: "hidden"
+layout: "숨겨짐"
 ---
