@@ -56,13 +56,13 @@ The following panel indices are exposed:
 | Value | 描述       |
 |-------|-------------------|
 | 0     | ATC not available |
-| 1     | 0 km/h            | 
+| 1     | P POWER            | 
 | 2     | 15 km/h           |
-| 3     | 25 km/h           |
+| 3     | BRAKE RELEASE           |
 | 4     | 45 km/h           |
-| 5     | 55 km/h           |
+| 5     | ATS P           |
 | 6     | 65 km/h           |
-| 7     | 75 km/h           |
+| 7     | ATC           |
 | 8     | 90 km/h           |
 | 9     | 100 km/h          |
 | 10    | 110 km/h          |
