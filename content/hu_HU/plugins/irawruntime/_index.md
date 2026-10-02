@@ -85,3 +85,5 @@ Arguments:
 | BlockingInput | boolean  | Whether the plugin is blocking input- This should be set when taking custom keyboard input to avoid triggering controls. |
 | ------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
 |               |          |                                                                                                                          |
+
+{{% /table-nonheader %}}
