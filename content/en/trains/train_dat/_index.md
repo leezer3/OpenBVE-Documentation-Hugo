@@ -42,18 +42,42 @@ The file is a plain text file encoded in any arbitrary [encoding]({{< ref "/info
 
 ## <a name="identifier"></a>■ 2. The file identifier
 
-The first line in the train.dat is expected to be an identifier indicating the version of the file format. Allowed values are:
+The first line in the train.dat is expected to be an identifier indicating the version of the file format. The known values are:
 
-{{% code "*Version 1.22 is being used:*" %}}  
+{{% code %}}  
 BVE1200000  
 BVE1210000  
-BVE1220000  
-{{% /code %}}
-
-{{% code "*Version 2.0 is being used (choose either one):*" %}}  
+BVE1220000
 BVE2000000  
 OPENBVE  
 {{% /code %}}
+
+{{% note-withtitle %}}
+
+#### *BVE1200000 and BVE1210000 Format Files:* 
+
+These file versions do not support setting the vehicle width or height. The default values will be assumed.
+
+Version 1.22 is used when parsing the #ACCELERATION section.
+
+{{% /note-withtitle %}}
+
+{{% note-withtitle %}}
+
+#### *BVE1220000 Format Files:* 
+
+Version 1.22 is used when parsing the #ACCELERATION section.
+
+{{% /note-withtitle %}}
+
+{{% note-withtitle %}}
+
+#### *All Other File Formats:* 
+
+Version 2.0 is used when parsing the #ACCELERATION section.
+
+{{% /note-withtitle %}}
+
 
 From Version **1.5.3.3** onwards, the *OPENBVE* identifier may optionally be followed by the minimum version number of openBVE required, e.g.
 
@@ -61,7 +85,6 @@ From Version **1.5.3.3** onwards, the *OPENBVE* identifier may optionally be fol
 OPENBVE1530  
 {{% /code %}}
 
-Any other value will be reported as being non-supported and version 2.0 will be assumed. The selected version number affects the parsing of the #ACCELERATION section, which is explained later on.
 
 ## <a name="syntax"></a>■ 3. Syntax
 
