@@ -170,6 +170,12 @@ Please see the **Key** documentation for further details on validity rules for k
 
 A track is implicitly started when a unique key is first used- If no position is defined, it will start at **0,0** relative to the player's rail.
 
+{{% warning-nontitle %}}
+
+Where two co-ordinates exist for a track at the same position, the first will be used, and the second ignored.
+
+{{% /warning-nontitle %}}
+
 {{% command %}}  
 **Track[*trackKey*].Cant.SetGauge** (*ValueInMeters*)
 **Track[*trackKey*].Gauge** (*ValueInMeters*)
