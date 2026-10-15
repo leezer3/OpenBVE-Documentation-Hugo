@@ -25,7 +25,7 @@ The byte sequence generated from the previous example in Shift_JIS:
 What happens if the byte sequence is misinterpreted as being ISO 8859-1 (Latin-1) instead of Shift_JIS: 
 
 {{% code %}}  
-‚Ð‚ç‚ª‚ÈƒJƒ^ƒJƒiŠ¿Žš  
+‚Ð‚ç‚a‚ÈƒJƒ^ƒJƒiŠ¿Žš  
 {{% /code %}}
 
 Usually, one particular encoding only allows to use the writing system for which it was designed for. Unicode, a standard which covers basically all characters as used in writing systems throughout the world, provides a solution here.
